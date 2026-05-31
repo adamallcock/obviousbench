@@ -56,7 +56,11 @@ def build_shareable_artifacts(inputs: ShareableArtifactInputs) -> ShareableArtif
         encoding="utf-8",
     )
     paths.gallery.write_text(
-        _build_gallery(comparison_rows, max_failures=inputs.max_failures),
+        _build_gallery(
+            comparison_rows,
+            generated_on=inputs.generated_on,
+            max_failures=inputs.max_failures,
+        ),
         encoding="utf-8",
     )
     shutil.copyfile(comparison_source, paths.comparison)
@@ -86,7 +90,21 @@ def _build_card(
     family_rows: list[dict[str, str]],
 ) -> str:
     base = source.read_text(encoding="utf-8").rstrip()
-    lines = [base, "", "## Latest Comparison Snapshot", "", f"Generated on: {generated_on}", ""]
+    lines = [
+        "---",
+        "title: ObviousBench Shareable Benchmark Card",
+        f"date: {generated_on}",
+        "type: benchmark-card",
+        "status: shareable",
+        "---",
+        "",
+        base,
+        "",
+        "## Latest Comparison Snapshot",
+        "",
+        f"Generated on: {generated_on}",
+        "",
+    ]
     for row in comparison_rows:
         label = row.get("label") or row.get("model") or "model"
         accuracy = _percent(row.get("accuracy"))
@@ -112,29 +130,52 @@ def _build_card(
     return "\n".join(lines) + "\n"
 
 
-def _build_gallery(comparison_rows: list[dict[str, str]], *, max_failures: int) -> str:
+def _build_gallery(
+    comparison_rows: list[dict[str, str]], *, generated_on: str, max_failures: int
+) -> str:
     sections = [
+        "---",
+        "title: ObviousBench Failure Gallery",
+        f"date: {generated_on}",
+        "type: gallery",
+        "status: shareable",
+        "---",
+        "",
         "# ObviousBench Failure Gallery",
         "",
         "Curated examples from summarized local runs. Raw Inspect logs and provider "
         "payloads are intentionally excluded.",
         "",
     ]
-    failures_added = 0
+    gallery_sections: list[tuple[str, list[str]]] = []
+    max_sections = 0
     for row in comparison_rows:
         summary_dir = Path(row.get("summary_dir", ""))
         gallery = summary_dir / "failure_gallery.md"
         if not gallery.exists():
             continue
         label = row.get("label") or row.get("model") or summary_dir.name
-        for failure in _failure_sections(gallery.read_text(encoding="utf-8")):
+        failures = _failure_sections(gallery.read_text(encoding="utf-8"))
+        if failures:
+            gallery_sections.append((label, failures))
+            max_sections = max(max_sections, len(failures))
+
+    failures_added = 0
+    for index in range(max_sections):
+        for label, failures in gallery_sections:
+            if index >= len(failures):
+                continue
             if failures_added >= max_failures:
                 return "\n".join(sections).rstrip() + "\n"
             failures_added += 1
-            sections.append(f"## Example {failures_added}: {label}")
-            sections.append("")
-            sections.append(_without_failure_heading(failure))
-            sections.append("")
+            sections.extend(
+                [
+                    f"## Example {failures_added}: {label}",
+                    "",
+                    _without_failure_heading(failures[index]),
+                    "",
+                ]
+            )
     if failures_added == 0:
         sections.append("No scored model failures were available in the selected summaries.")
     return "\n".join(sections).rstrip() + "\n"
@@ -165,6 +206,13 @@ def _without_failure_heading(section: str) -> str:
 def _build_index(generated_on: str) -> str:
     return "\n".join(
         [
+            "---",
+            "title: ObviousBench Shareable Results",
+            f"date: {generated_on}",
+            "type: index",
+            "status: shareable",
+            "---",
+            "",
             "# ObviousBench Shareable Results",
             "",
             f"Generated on: {generated_on}",

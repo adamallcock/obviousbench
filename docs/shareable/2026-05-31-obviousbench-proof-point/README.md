@@ -1,3 +1,10 @@
+---
+title: ObviousBench Shareable Results
+date: 2026-05-31
+type: index
+status: shareable
+---
+
 # ObviousBench Shareable Results
 
 Generated on: 2026-05-31

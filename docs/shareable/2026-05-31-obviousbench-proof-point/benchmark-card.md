@@ -1,3 +1,10 @@
+---
+title: ObviousBench Shareable Benchmark Card
+date: 2026-05-31
+type: benchmark-card
+status: shareable
+---
+
 # ObviousBench Benchmark Card
 
 ObviousBench is a lightweight reliability benchmark for public-facing AI
