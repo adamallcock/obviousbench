@@ -1,0 +1,180 @@
+{
+  "text": "```json\n{\n  \"date_searched\": \"2026-05-30\",\n  \"scope\": \"second-pass public source leads for underrepresented ObviousBench archetypes\",\n  \"archetypes\": [\n    {\n      \"source_id_slug\": \"local-llama-json-break\",\n      \"platform\": \"reddit\",\n      \"url\": \"https://www.reddit.com/r/LocalLLaMA/comments/1q74ngh/local_models_breaking_strict_json_output_for/\",\n      \"source_date\": \"2024-10-01\",\n      \"date_seen\": \"2026-05-30\",\n      \"author_or_handle\": null,\n      \"source_type\": \"forum_thread\",\n      \"media_type\": \"text\",\n      \"original_prompt\": \"structured JSON output for conversations\",\n      \"claimed_model\": \"local LLMs via LM Studio\",\n      \"claimed_output\": \"breaking the pattern / malformed JSON\",\n      \"correct_answer\": \"valid strict JSON matching schema\",\n      \"failure_description\": \"Local models break strict JSON formatting and schema compliance in structured output tasks.\",\n      \"task_family\": \"format_compliance\",\n      \"subfamily\": \"exact_json_schema\",\n      \"answer_type\": \"json\",\n      \"deterministic_scorer\": \"json_field\",\n      \"human_triviality\": \"A person can copy a provided schema and output only matching JSON without extra text.\",\n      \"rights_status\": \"link_only\",\n      \"confidence\": \"high\",\n      \"recommended_action\": \"include\",\n      \"citation_title\": \"Local models breaking strict JSON output for conversations\",\n      \"citation_url\": \"https://www.reddit.com/r/LocalLLaMA/comments/1q74ngh/local_models_breaking_strict_json_output_for/\",\n      \"expansion_pattern\": \"Vary schemas (objects, arrays, nested fields) and require exact JSON with no extra text or explanations.\",\n      \"synthetic_expansion_ideas\": [\n        {\n          \"question\": \"Output exactly this JSON: {\\\"name\\\": \\\"Alice\\\", \\\"age\\\": 30}. Do not add any other text.\",\n          \"target\": \"{\\\"name\\\": \\\"Alice\\\", \\\"age\\\": 30}\",\n          \"answer_type\": \"json\",\n          \"scorer\": \"json_field\"\n        },\n        {\n          \"question\": \"Return a JSON array of exactly two objects: one with id 1 and color red, one with id 2 and color blue. Output only the JSON.\",\n          \"target\": \"[{\\\"id\\\":1,\\\"color\\\":\\\"red\\\"},{\\\"id\\\":2,\\\"color\\\":\\\"blue\\\"}]\",\n          \"answer_type\": \"json\",\n          \"scorer\": \"json_field\"\n        },\n        {\n          \"question\": \"Produce valid JSON with keys 'item' (string) and 'quantity' (integer 5). No explanations.\",\n          \"target\": \"{\\\"item\\\":\\\"example\\\",\\\"quantity\\\":5}\",\n          \"answer_type\": \"json\",\n          \"scorer\": \"json_field\"\n        },\n        {\n          \"question\": \"Output JSON: {\\\"status\\\":\\\"success\\\",\\\"count\\\":3}. Single token response only if possible, otherwise exact JSON.\",\n          \"target\": \"{\\\"status\\\":\\\"success\\\",\\\"count\\\":3}\",\n          \"answer_type\": \"json\",\n          \"scorer\": \"json_field\"\n        },\n        {\n          \"question\": \"Return exactly this structure as JSON: a top-level object with 'results' as an array of two strings. Nothing else.\",\n          \"target\": \"{\\\"results\\\":[\\\"first\\\",\\\"second\\\"]}\",\n          \"answer_type\": \"json\",\n          \"scorer\": \"json_field\"\n        }\n      ],\n      \"notes\": \"Strong direct forum evidence of repeated JSON schema failures; easy to reproduce with local models.\"\n    },\n    {\n      \"source_id_slug\": \"claude-word-count-fail\",\n      \"platform\": \"reddit\",\n      \"url\": \"https://www.reddit.com/r/ClaudeAI/comments/1tn4u2k/why_cant_claude_count_and_how_can_i_help_it_do_so/\",\n      \"source_date\": \"2025-01-15\",\n      \"date_seen\": \"2026-05-30\",\n      \"author_or_handle\": null,\n      \"source_type\": \"forum_thread\",\n      \"media_type\": \"text\",\n      \"original_prompt\": \"write things to a certain length - say, 50 words\",\n      \"claimed_model\": \"Claude\",\n      \"claimed_output\": \"incapable of exact length even when prompted\",\n      \"correct_answer\": \"exactly 50 words\",\n      \"failure_description\": \"Model cannot reliably produce text of an exact specified word count.\",\n      \"task_family\": \"word_count\",\n      \"subfamily\": \"exact_word_count\",\n      \"answer_type\": \"string\",\n      \"deterministic_scorer\": \"word_count\",\n      \"human_triviality\": \"A person can write text and manually count words to match a target exactly.\",\n      \"rights_status\": \"link_only\",\n      \"confidence\": \"high\",\n      \"recommended_action\": \"include\",\n      \"citation_title\": \"Why can't Claude count, and how can I help it do so?\",\n      \"citation_url\": \"https://www.reddit.com/r/ClaudeAI/comments/1tn4u2k/why_cant_claude_count_and_how_can_i_help_it_do_so/\",\n      \"expansion_pattern\": \"Specify different exact word counts (10-100) and short topics; verify post-generation count.\",\n      \"synthetic_expansion_ideas\": [\n        {\n          \"question\": \"Write exactly 25 words about a cat. Count carefully and stop at 25.\",\n          \"target\": \"any 25-word sentence on topic\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"word_count\"\n        },\n        {\n          \"question\": \"Produce a response of exactly 40 words describing a simple recipe. Output only the text.\",\n          \"target\": \"any 40-word recipe description\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"word_count\"\n        },\n        {\n          \"question\": \"Write exactly 15 words listing three fruits. No more, no less.\",\n          \"target\": \"any 15-word fruit list\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"word_count\"\n        },\n        {\n          \"question\": \"Generate exactly 60 words on the benefits of exercise. Verify word count internally.\",\n          \"target\": \"any 60-word exercise text\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"word_count\"\n        },\n        {\n          \"question\": \"Output a paragraph of precisely 30 words about weather. Do not exceed or fall short.\",\n          \"target\": \"any 30-word weather paragraph\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"word_count\"\n        }\n      ],\n      \"notes\": \"Multiple corroborating threads confirm consistent word-count failures across models.\"\n    },\n    {\n      \"source_id_slug\": \"conflicting-instructions-blog\",\n      \"platform\": \"blog\",\n      \"url\": \"https://prompt-eval.com/en/blog/conflicting-instructions-in-ai-prompts\",\n      \"source_date\": \"2026-05-24\",\n      \"date_seen\": \"2026-05-30\",\n      \"author_or_handle\": null,\n      \"source_type\": \"article_about_example\",\n      \"media_type\": \"article\",\n      \"original_prompt\": \"examples of scope/role/format/audience conflicts\",\n      \"claimed_model\": null,\n      \"claimed_output\": \"inconsistent outputs satisfying one directive while ignoring another\",\n      \"correct_answer\": \"resolve or prioritize explicitly without conflict\",\n      \"failure_description\": \"LLMs produce inconsistent or partial compliance when prompts contain directly conflicting instructions.\",\n      \"task_family\": \"instruction_conflict\",\n      \"subfamily\": \"explicit_conflict_resolution\",\n      \"answer_type\": \"string\",\n      \"deterministic_scorer\": \"exact_string\",\n      \"human_triviality\": \"A person notices contradictions and asks for clarification or follows the most recent/primary rule.\",\n      \"rights_status\": \"link_only\",\n      \"confidence\": \"high\",\n      \"recommended_action\": \"include\",\n      \"citation_title\": \"Conflicting Instructions in AI Prompts: How to Detect and Fix\",\n      \"citation_url\": \"https://prompt-eval.com/en/blog/conflicting-instructions-in-ai-prompts\",\n      \"expansion_pattern\": \"Create paired contradictory rules (e.g., length vs detail, format vs style) and require explicit choice or balanced output.\",\n      \"synthetic_expansion_ideas\": [\n        {\n          \"question\": \"Be very detailed and also keep the answer under 20 words. Resolve the conflict.\",\n          \"target\": \"short response acknowledging conflict or prioritizing one\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"exact_string\"\n        },\n        {\n          \"question\": \"Write in paragraphs but also use only bullet points. Which wins?\",\n          \"target\": \"clear statement of chosen format\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"exact_string\"\n        },\n        {\n          \"question\": \"Be creative and also output valid JSON only. Do both if possible.\",\n          \"target\": \"JSON or explanation of impossibility\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"exact_string\"\n        },\n        {\n          \"question\": \"Use formal language and also keep it under 10 words for a casual audience.\",\n          \"target\": \"brief formal response or note conflict\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"exact_string\"\n        },\n        {\n          \"question\": \"Cite all sources and limit response to 50 words total.\",\n          \"target\": \"short cited response or conflict note\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"exact_string\"\n        }\n      ],\n      \"notes\": \"Recent article with concrete conflict classes; directly usable for variants.\"\n    },\n    {\n      \"source_id_slug\": \"ai-negation-struggle\",\n      \"platform\": \"web\",\n      \"url\": \"https://www.phenx.io/post/why-ai-still-struggles-with-negation-and-how-we-can-fix-it\",\n      \"source_date\": \"2025-05-20\",\n      \"date_seen\": \"2026-05-30\",\n      \"author_or_handle\": null,\n      \"source_type\": \"article_about_example\",\n      \"media_type\": \"article\",\n      \"original_prompt\": \"interpreting “The tumor is not malignant” or absence queries\",\n      \"claimed_model\": \"vision-language and general LLMs\",\n      \"claimed_output\": \"misinterpreting negation, absence, or contradiction\",\n      \"correct_answer\": \"correctly handle 'not', 'no', 'except', 'without'\",\n      \"failure_description\": \"Models frequently fail to correctly interpret or reason about negation and absence in prompts.\",\n      \"task_family\": \"negation\",\n      \"subfamily\": \"concrete_negation_handling\",\n      \"answer_type\": \"boolean\",\n      \"deterministic_scorer\": \"exact_string\",\n      \"human_triviality\": \"A person easily understands statements like 'the item is not red' or 'do everything except X'.\",\n      \"rights_status\": \"link_only\",\n      \"confidence\": \"high\",\n      \"recommended_action\": \"include\",\n      \"citation_title\": \"Why AI Still Struggles with Negation and How We Can Fix It\",\n      \"citation_url\": \"https://www.phenx.io/post/why-ai-still-struggles-with-negation-and-how-we-can-fix-it\",\n      \"expansion_pattern\": \"Use concrete objects/properties with 'not', 'except', or 'without' and ask for yes/no or list.\",\n      \"synthetic_expansion_ideas\": [\n        {\n          \"question\": \"Is the sky not blue? Answer yes or no only.\",\n          \"target\": \"yes\",\n          \"answer_type\": \"boolean\",\n          \"scorer\": \"exact_string\"\n        },\n        {\n          \"question\": \"List fruits except apples. Output only the list.\",\n          \"target\": \"any fruits excluding apples\",\n          \"answer_type\": \"list\",\n          \"scorer\": \"normalized_list\"\n        },\n        {\n          \"question\": \"Does the statement 'the car is without wheels' mean it has no wheels? Yes or no.\",\n          \"target\": \"yes\",\n          \"answer_type\": \"boolean\",\n          \"scorer\": \"exact_string\"\n        },\n        {\n          \"question\": \"Name colors that are not primary. Single word answers only.\",\n          \"target\": \"any non-primary color (e.g., purple)\",\n          \"answer_type\": \"string\",\n          \"scorer\": \"exact_string\"\n        },\n        {\n          \"question\": \"The number is not even. Is 7 the answer? Yes or no.\",\n          \"target\": \"yes\",\n          \"answer_type\": \"boolean\",\n          \"scorer\": \"exact_string\"\n        }\n      ],\n      \"notes\": \"Strong article with medical/news-style negation examples; highly concrete.\"\n    },\n    {\n      \"source_id_slug\": \"chatgpt-wordcount-community\",\n      \"platform\": \"forum\",\n      \"url\": \"https://community.openai.com/t/chatgpt-cannot-count-words-or-produce-word-count-limited-text/47380\",\n      \"source_date\": \"2023-02-04\",\n      \"date_seen\": \"2026-05-30\",\n      \"author_or_handle\": null,\n      \"source_type\": \"forum_thread\",\n      \"media_type\": \"text\",\n      \"original_prompt\": \"produce word-count-limited text\",\n      \"claimed_model\": \"ChatGPT\",\n      \"claimed_output\": \"cannot accurately count or limit to exact word counts\",\n      \"correct_answer\": \"exact specified word count\",\n      \"failure_description\": \"Persistent inability to generate or self-report exact word counts in generated text.\",\n      \"task_family\": \"word_count\",\n      \"subfamily\": \"self_count_verification\",\n      \"answer_type\": \"integer\",\n      \"deterministic_scorer\": \"exact_integer\",\n      \"human_triviality\": \"Anyone can paste text into a word processor and get an exact count.\",\n      \"rights_status\": \"link_only\",\n      \"confidence\": \"high\",\n      \"recommended_action\": \"include\",\n      \"citation_title\": \"ChatGPT cannot count words or produce word-count-limited text\",\n      \"citation_url\": \"https://community.openai.com/t/chatgpt-cannot-count-words-or-produce-word-count-limited-text/47380\",\n      \"expansion_pattern\": \"Ask model to both generate text and report its own word count; vary targets.\",\n      \"synthetic_expansion_ideas\": [\n        {\n          \"question\": \"Write a 20-word sentence about dogs and then state the exact word count of your sentence.\",\n          \"target\": \"20\",\n          \"answer_type\": \"integer\",\n          \"scorer\": \"exact_integer\"\n        },\n        {\n          \"question\": \"Generate 35 words on travel. At the end, report how many words you used.\",\n          \"target\": \"35\",\n          \"answer_type\": \"integer\",\n          \"scorer\": \"exact_integer\"\n        },\n        {\n          \"question\": \"Output exactly 12 words about the ocean. Then give the word count.\",\n          \"target\": \"12\",\n          \"answer_type\": \"integer\",\n          \"scorer\": \"exact_integer\"\n        },\n        {\n          \"question\": \"Create a 50-word story summary and confirm the count at the end.\",\n          \"target\": \"50\",\n          \"answer_type\": \"integer\",\n          \"scorer\": \"exact_integer\"\n        },\n        {\n          \"question\": \"Write 8 words listing animals. Report the count after.\",\n          \"target\": \"8\",\n          \"answer_type\": \"integer\",\n          \"scorer\": \"exact_integer\"\n        }\n      ],\n      \"notes\": \"Classic long-running thread with many user-reported failures; complements other word-count lead.\"\n    }\n  ],\n  \"rejected_or_weak_leads\": [\n    {\n      \"lead\": \"general constraint engineering articles without concrete failure examples\",\n      \"reason\": \"too vague; lack specific public prompts or observed model outputs for reproduction\"\n    },\n    {\n      \"lead\": \"arithmetic decimal comparison searches\",\n      \"reason\": \"no strong public concrete examples found beyond excluded broad calc clusters\"\n    }\n  ],\n  \"search_notes\": \"Strong coverage on JSON compliance, word counts, instruction conflicts, and negation from Reddit, forums, and articles. Constraint-awareness examples remain mostly general; 5 solid archetypes extracted with direct sources. Physical/shop-style constraints had insufficient concrete public leads.\"\n}\n```",
+  "citations": [
+    "https://www.s-anand.net/blog/how-do-llms-handle-conflicting-instructions/",
+    "https://community.openai.com/t/prompt-anti-patterns-when-more-instructions-may-harm-model-performance/1372460",
+    "https://medium.com/@adnanmasood/a-field-guide-to-llm-failure-modes-5ffaeeb08e80",
+    "https://arxiv.org/html/2604.09443v3",
+    "https://www.goinsight.ai/blog/llm-prompt-mistake/",
+    "https://www.reddit.com/r/PromptEngineering/comments/1t8xx0i/i_stopped_treating_llm_failures_as_bad_prompting/",
+    "https://www.reddit.com/r/LocalLLaMA/comments/1q74ngh/local_models_breaking_strict_json_output_for/",
+    "https://github.com/n8n-io/n8n/issues/14774",
+    "https://github.com/FlowiseAI/Flowise/issues/4502",
+    "https://tianpan.co/blog/2026-05-07-system-prompt-instruction-contradiction-layered-architecture",
+    "https://www.reddit.com/r/PromptEngineering/comments/1pxnb29/instruction_difficulties_as_measures_of/",
+    "https://www.reddit.com/r/LocalLLaMA/comments/1cgoorg/force_local_llm_to_output_json_with_specific/",
+    "https://www.reddit.com/r/LocalLLaMA/comments/1kiljg5/realworld_best_practices_for_guaranteeing_json/",
+    "https://www.linkedin.com/posts/leonbarnard_chatgpt-cant-do-a-simple-word-count-i-recently-activity-7432112415473045506-yMjn",
+    "https://bendaviesromano.medium.com/why-you-cant-count-on-chatgpt-literally-chatgpt-s-issues-with-word-and-character-counts-f48d77ad1b3a",
+    "https://arxiv.org/html/2602.03516v2",
+    "https://bkarak.medium.com/why-your-ai-prompts-fail-and-how-to-fix-them-a66fd7bbe409",
+    "https://www.facebook.com/groups/703007927897194/posts/796319861899333/",
+    "https://arxiv.org/html/2510.06092",
+    "https://multidisciplined.substack.com/p/constraining-an-llm-for-values-aligned-interactions",
+    "https://blog.stackademic.com/the-hidden-settings-behind-every-llm-failure-c8564fac439a",
+    "https://www.reddit.com/r/LocalLLaMA/comments/1cwa3jl/misguided_attention_challenging_the_reasoning/",
+    "https://jjlangr.substack.com/p/a-deliberately-non-compliant-llm",
+    "https://www.reddit.com/r/LocalLLaMA/comments/1dhe0e9/dealing_with_incomplete_structured_output/",
+    "https://github.com/imaurer/awesome-llm-json",
+    "https://prompt-eval.com/en/blog/conflicting-instructions-in-ai-prompts",
+    "https://www.patronus.ai/ai-reliability/ai-context",
+    "https://dev.to/franciscoferreiraff/why-your-production-llm-prompt-keeps-failing-and-how-to-diagnose-it-in-4-steps-4241",
+    "https://github.com/run-llama/llama_index/issues/13562",
+    "https://community.openai.com/t/chatgpt-cannot-count-words-or-produce-word-count-limited-text/47380",
+    "https://www.phenx.io/post/why-ai-still-struggles-with-negation-and-how-we-can-fix-it",
+    "https://github.com/run-llama/llama_index/issues/8701",
+    "https://nwquantum.uw.edu/2026/05/14/promptimus-improving-already-good-llm-prompts-with-zero-manual-engineering/",
+    "https://gadlet.com/posts/negative-prompting/",
+    "https://www.reddit.com/r/Python/comments/1tagc2g/i_tested_structured_output_from_288_llm_calls_and/",
+    "https://github.com/DyfanJones/llmjson",
+    "https://www.blakestockton.com/dont-write-like-ai-1-101-negation/",
+    "https://community.openai.com/t/chatgpt-failing-to-to-meet-word-count-over-and-over-past-3-4-months/1111976",
+    "https://pbjmarketing.com/blog/why-chatgpt-struggles-with-exact-word-counts",
+    "https://www.linkedin.com/posts/ayush-mongia-288a0b165_ai-promptengineering-llm-activity-7352339080451383297-k2dU",
+    "https://github.com/langchain-ai/langchain/issues/9082",
+    "https://github.com/langchain-ai/langchain/issues/8691",
+    "https://dev.to/joao_victorsouza_ef8ff8a/beyond-the-basics-advanced-prompt-engineering-techniques-3oh",
+    "https://github.com/orgs/community/discussions/177647",
+    "https://galileo.ai/blog/why-llm-as-a-judge-fails",
+    "https://www.lesswrong.com/posts/CSFa9rvGNGAfCzBk6/problems-with-instruction-following-as-an-alignment-target",
+    "https://medium.com/@mstyvola/unskilled-skills-52925a75eb3d",
+    "https://x.com/dakisan/status/1901381577663529422",
+    "https://www.reddit.com/r/ClaudeAI/comments/1tn4u2k/why_cant_claude_count_and_how_can_i_help_it_do_so/",
+    "https://github.com/BerriAI/litellm/issues/6353",
+    "https://www.saxifrage.xyz/post/chatgpt-wordcount",
+    "https://www.medrxiv.org/content/10.64898/2026.05.20.26353719v1.full",
+    "https://blog.gopenai.com/why-your-llm-keeps-breaking-production-and-how-to-fix-it-9cf25d428da8",
+    "https://www.reddit.com/r/LangChain/comments/1hssvvq/order_of_json_fields_can_hurt_your_llm_output/"
+  ],
+  "usage": {
+    "input_tokens": 17327,
+    "input_tokens_details": {
+      "cached_tokens": 3520
+    },
+    "output_tokens": 4353,
+    "output_tokens_details": {
+      "reasoning_tokens": 914
+    },
+    "total_tokens": 21680,
+    "num_sources_used": 0,
+    "num_server_side_tools_used": 5,
+    "cost_in_usd_ticks": 538452500,
+    "server_side_tool_usage_details": {
+      "web_search_calls": 5,
+      "x_search_calls": 0,
+      "code_interpreter_calls": 0,
+      "file_search_calls": 0,
+      "mcp_calls": 0,
+      "document_search_calls": 0
+    },
+    "context_details": {
+      "input_tokens": 14378,
+      "output_tokens": 3800
+    }
+  },
+  "cost": {
+    "total_usd": "0.02656025",
+    "currency": "USD",
+    "components": [
+      {
+        "name": "input_uncached_tokens",
+        "quantity": "13807",
+        "unit": "token",
+        "unit_price": "0.00000125",
+        "cost": "0.01725875",
+        "price_card_id": "xai:grok-4.3:models-dev",
+        "discount_eligible": true
+      },
+      {
+        "name": "input_cache_read_tokens",
+        "quantity": "3520",
+        "unit": "token",
+        "unit_price": "0.0000002",
+        "cost": "0.000704",
+        "price_card_id": "xai:grok-4.3:models-dev",
+        "discount_eligible": true
+      },
+      {
+        "name": "output_text_tokens",
+        "quantity": "3439",
+        "unit": "token",
+        "unit_price": "0.0000025",
+        "cost": "0.0085975",
+        "price_card_id": "xai:grok-4.3:models-dev",
+        "discount_eligible": true
+      }
+    ],
+    "warnings": [
+      {
+        "code": "component_unpriced",
+        "message": "No price found for output_reasoning_tokens (token).",
+        "metadata": {
+          "component": "output_reasoning_tokens",
+          "unit": "token",
+          "model": "grok-4.3"
+        }
+      },
+      {
+        "code": "tool_component_unpriced",
+        "message": "No price found for tool or feature component web_search_units on model grok-4.3.",
+        "metadata": {
+          "component": "web_search_units",
+          "unit": "search",
+          "model": "grok-4.3"
+        }
+      },
+      {
+        "code": "tool_component_unpriced",
+        "message": "No price found for tool or feature component web_search_units on model grok-4.3.",
+        "metadata": {
+          "component": "web_search_units",
+          "unit": "search",
+          "model": "grok-4.3"
+        }
+      },
+      {
+        "code": "tool_component_unpriced",
+        "message": "No price found for tool or feature component web_search_units on model grok-4.3.",
+        "metadata": {
+          "component": "web_search_units",
+          "unit": "search",
+          "model": "grok-4.3"
+        }
+      },
+      {
+        "code": "tool_component_unpriced",
+        "message": "No price found for tool or feature component web_search_units on model grok-4.3.",
+        "metadata": {
+          "component": "web_search_units",
+          "unit": "search",
+          "model": "grok-4.3"
+        }
+      },
+      {
+        "code": "tool_component_unpriced",
+        "message": "No price found for tool or feature component web_search_units on model grok-4.3.",
+        "metadata": {
+          "component": "web_search_units",
+          "unit": "search",
+          "model": "grok-4.3"
+        }
+      }
+    ],
+    "model": {
+      "requested": "grok-4.3",
+      "returned": "grok-4.3",
+      "billed": "grok-4.3",
+      "alias_resolution": "none"
+    }
+  }
+}

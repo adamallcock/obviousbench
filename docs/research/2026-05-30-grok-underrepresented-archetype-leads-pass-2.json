@@ -1,0 +1,312 @@
+{
+  "date_searched": "2026-05-30",
+  "scope": "second-pass public source leads for underrepresented ObviousBench archetypes",
+  "archetypes": [
+    {
+      "source_id_slug": "local-llama-json-break",
+      "platform": "reddit",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1q74ngh/local_models_breaking_strict_json_output_for/",
+      "source_date": "2024-10-01",
+      "date_seen": "2026-05-30",
+      "author_or_handle": null,
+      "source_type": "forum_thread",
+      "media_type": "text",
+      "original_prompt": "structured JSON output for conversations",
+      "claimed_model": "local LLMs via LM Studio",
+      "claimed_output": "breaking the pattern / malformed JSON",
+      "correct_answer": "valid strict JSON matching schema",
+      "failure_description": "Local models break strict JSON formatting and schema compliance in structured output tasks.",
+      "task_family": "format_compliance",
+      "subfamily": "exact_json_schema",
+      "answer_type": "json",
+      "deterministic_scorer": "json_field",
+      "human_triviality": "A person can copy a provided schema and output only matching JSON without extra text.",
+      "rights_status": "link_only",
+      "confidence": "high",
+      "recommended_action": "include",
+      "citation_title": "Local models breaking strict JSON output for conversations",
+      "citation_url": "https://www.reddit.com/r/LocalLLaMA/comments/1q74ngh/local_models_breaking_strict_json_output_for/",
+      "expansion_pattern": "Vary schemas (objects, arrays, nested fields) and require exact JSON with no extra text or explanations.",
+      "synthetic_expansion_ideas": [
+        {
+          "question": "Output exactly this JSON: {\"name\": \"Alice\", \"age\": 30}. Do not add any other text.",
+          "target": "{\"name\": \"Alice\", \"age\": 30}",
+          "answer_type": "json",
+          "scorer": "json_field"
+        },
+        {
+          "question": "Return a JSON array of exactly two objects: one with id 1 and color red, one with id 2 and color blue. Output only the JSON.",
+          "target": "[{\"id\":1,\"color\":\"red\"},{\"id\":2,\"color\":\"blue\"}]",
+          "answer_type": "json",
+          "scorer": "json_field"
+        },
+        {
+          "question": "Produce valid JSON with keys 'item' (string) and 'quantity' (integer 5). No explanations.",
+          "target": "{\"item\":\"example\",\"quantity\":5}",
+          "answer_type": "json",
+          "scorer": "json_field"
+        },
+        {
+          "question": "Output JSON: {\"status\":\"success\",\"count\":3}. Single token response only if possible, otherwise exact JSON.",
+          "target": "{\"status\":\"success\",\"count\":3}",
+          "answer_type": "json",
+          "scorer": "json_field"
+        },
+        {
+          "question": "Return exactly this structure as JSON: a top-level object with 'results' as an array of two strings. Nothing else.",
+          "target": "{\"results\":[\"first\",\"second\"]}",
+          "answer_type": "json",
+          "scorer": "json_field"
+        }
+      ],
+      "notes": "Strong direct forum evidence of repeated JSON schema failures; easy to reproduce with local models."
+    },
+    {
+      "source_id_slug": "claude-word-count-fail",
+      "platform": "reddit",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1tn4u2k/why_cant_claude_count_and_how_can_i_help_it_do_so/",
+      "source_date": "2025-01-15",
+      "date_seen": "2026-05-30",
+      "author_or_handle": null,
+      "source_type": "forum_thread",
+      "media_type": "text",
+      "original_prompt": "write things to a certain length - say, 50 words",
+      "claimed_model": "Claude",
+      "claimed_output": "incapable of exact length even when prompted",
+      "correct_answer": "exactly 50 words",
+      "failure_description": "Model cannot reliably produce text of an exact specified word count.",
+      "task_family": "word_count",
+      "subfamily": "exact_word_count",
+      "answer_type": "string",
+      "deterministic_scorer": "word_count",
+      "human_triviality": "A person can write text and manually count words to match a target exactly.",
+      "rights_status": "link_only",
+      "confidence": "high",
+      "recommended_action": "include",
+      "citation_title": "Why can't Claude count, and how can I help it do so?",
+      "citation_url": "https://www.reddit.com/r/ClaudeAI/comments/1tn4u2k/why_cant_claude_count_and_how_can_i_help_it_do_so/",
+      "expansion_pattern": "Specify different exact word counts (10-100) and short topics; verify post-generation count.",
+      "synthetic_expansion_ideas": [
+        {
+          "question": "Write exactly 25 words about a cat. Count carefully and stop at 25.",
+          "target": "any 25-word sentence on topic",
+          "answer_type": "string",
+          "scorer": "word_count"
+        },
+        {
+          "question": "Produce a response of exactly 40 words describing a simple recipe. Output only the text.",
+          "target": "any 40-word recipe description",
+          "answer_type": "string",
+          "scorer": "word_count"
+        },
+        {
+          "question": "Write exactly 15 words listing three fruits. No more, no less.",
+          "target": "any 15-word fruit list",
+          "answer_type": "string",
+          "scorer": "word_count"
+        },
+        {
+          "question": "Generate exactly 60 words on the benefits of exercise. Verify word count internally.",
+          "target": "any 60-word exercise text",
+          "answer_type": "string",
+          "scorer": "word_count"
+        },
+        {
+          "question": "Output a paragraph of precisely 30 words about weather. Do not exceed or fall short.",
+          "target": "any 30-word weather paragraph",
+          "answer_type": "string",
+          "scorer": "word_count"
+        }
+      ],
+      "notes": "Multiple corroborating threads confirm consistent word-count failures across models."
+    },
+    {
+      "source_id_slug": "conflicting-instructions-blog",
+      "platform": "blog",
+      "url": "https://prompt-eval.com/en/blog/conflicting-instructions-in-ai-prompts",
+      "source_date": "2026-05-24",
+      "date_seen": "2026-05-30",
+      "author_or_handle": null,
+      "source_type": "article_about_example",
+      "media_type": "article",
+      "original_prompt": "examples of scope/role/format/audience conflicts",
+      "claimed_model": null,
+      "claimed_output": "inconsistent outputs satisfying one directive while ignoring another",
+      "correct_answer": "resolve or prioritize explicitly without conflict",
+      "failure_description": "LLMs produce inconsistent or partial compliance when prompts contain directly conflicting instructions.",
+      "task_family": "instruction_conflict",
+      "subfamily": "explicit_conflict_resolution",
+      "answer_type": "string",
+      "deterministic_scorer": "exact_string",
+      "human_triviality": "A person notices contradictions and asks for clarification or follows the most recent/primary rule.",
+      "rights_status": "link_only",
+      "confidence": "high",
+      "recommended_action": "include",
+      "citation_title": "Conflicting Instructions in AI Prompts: How to Detect and Fix",
+      "citation_url": "https://prompt-eval.com/en/blog/conflicting-instructions-in-ai-prompts",
+      "expansion_pattern": "Create paired contradictory rules (e.g., length vs detail, format vs style) and require explicit choice or balanced output.",
+      "synthetic_expansion_ideas": [
+        {
+          "question": "Be very detailed and also keep the answer under 20 words. Resolve the conflict.",
+          "target": "short response acknowledging conflict or prioritizing one",
+          "answer_type": "string",
+          "scorer": "exact_string"
+        },
+        {
+          "question": "Write in paragraphs but also use only bullet points. Which wins?",
+          "target": "clear statement of chosen format",
+          "answer_type": "string",
+          "scorer": "exact_string"
+        },
+        {
+          "question": "Be creative and also output valid JSON only. Do both if possible.",
+          "target": "JSON or explanation of impossibility",
+          "answer_type": "string",
+          "scorer": "exact_string"
+        },
+        {
+          "question": "Use formal language and also keep it under 10 words for a casual audience.",
+          "target": "brief formal response or note conflict",
+          "answer_type": "string",
+          "scorer": "exact_string"
+        },
+        {
+          "question": "Cite all sources and limit response to 50 words total.",
+          "target": "short cited response or conflict note",
+          "answer_type": "string",
+          "scorer": "exact_string"
+        }
+      ],
+      "notes": "Recent article with concrete conflict classes; directly usable for variants."
+    },
+    {
+      "source_id_slug": "ai-negation-struggle",
+      "platform": "web",
+      "url": "https://www.phenx.io/post/why-ai-still-struggles-with-negation-and-how-we-can-fix-it",
+      "source_date": "2025-05-20",
+      "date_seen": "2026-05-30",
+      "author_or_handle": null,
+      "source_type": "article_about_example",
+      "media_type": "article",
+      "original_prompt": "interpreting “The tumor is not malignant” or absence queries",
+      "claimed_model": "vision-language and general LLMs",
+      "claimed_output": "misinterpreting negation, absence, or contradiction",
+      "correct_answer": "correctly handle 'not', 'no', 'except', 'without'",
+      "failure_description": "Models frequently fail to correctly interpret or reason about negation and absence in prompts.",
+      "task_family": "negation",
+      "subfamily": "concrete_negation_handling",
+      "answer_type": "boolean",
+      "deterministic_scorer": "exact_string",
+      "human_triviality": "A person easily understands statements like 'the item is not red' or 'do everything except X'.",
+      "rights_status": "link_only",
+      "confidence": "high",
+      "recommended_action": "include",
+      "citation_title": "Why AI Still Struggles with Negation and How We Can Fix It",
+      "citation_url": "https://www.phenx.io/post/why-ai-still-struggles-with-negation-and-how-we-can-fix-it",
+      "expansion_pattern": "Use concrete objects/properties with 'not', 'except', or 'without' and ask for yes/no or list.",
+      "synthetic_expansion_ideas": [
+        {
+          "question": "Is the sky not blue? Answer yes or no only.",
+          "target": "yes",
+          "answer_type": "boolean",
+          "scorer": "exact_string"
+        },
+        {
+          "question": "List fruits except apples. Output only the list.",
+          "target": "any fruits excluding apples",
+          "answer_type": "list",
+          "scorer": "normalized_list"
+        },
+        {
+          "question": "Does the statement 'the car is without wheels' mean it has no wheels? Yes or no.",
+          "target": "yes",
+          "answer_type": "boolean",
+          "scorer": "exact_string"
+        },
+        {
+          "question": "Name colors that are not primary. Single word answers only.",
+          "target": "any non-primary color (e.g., purple)",
+          "answer_type": "string",
+          "scorer": "exact_string"
+        },
+        {
+          "question": "The number is not even. Is 7 the answer? Yes or no.",
+          "target": "yes",
+          "answer_type": "boolean",
+          "scorer": "exact_string"
+        }
+      ],
+      "notes": "Strong article with medical/news-style negation examples; highly concrete."
+    },
+    {
+      "source_id_slug": "chatgpt-wordcount-community",
+      "platform": "forum",
+      "url": "https://community.openai.com/t/chatgpt-cannot-count-words-or-produce-word-count-limited-text/47380",
+      "source_date": "2023-02-04",
+      "date_seen": "2026-05-30",
+      "author_or_handle": null,
+      "source_type": "forum_thread",
+      "media_type": "text",
+      "original_prompt": "produce word-count-limited text",
+      "claimed_model": "ChatGPT",
+      "claimed_output": "cannot accurately count or limit to exact word counts",
+      "correct_answer": "exact specified word count",
+      "failure_description": "Persistent inability to generate or self-report exact word counts in generated text.",
+      "task_family": "word_count",
+      "subfamily": "self_count_verification",
+      "answer_type": "integer",
+      "deterministic_scorer": "exact_integer",
+      "human_triviality": "Anyone can paste text into a word processor and get an exact count.",
+      "rights_status": "link_only",
+      "confidence": "high",
+      "recommended_action": "include",
+      "citation_title": "ChatGPT cannot count words or produce word-count-limited text",
+      "citation_url": "https://community.openai.com/t/chatgpt-cannot-count-words-or-produce-word-count-limited-text/47380",
+      "expansion_pattern": "Ask model to both generate text and report its own word count; vary targets.",
+      "synthetic_expansion_ideas": [
+        {
+          "question": "Write a 20-word sentence about dogs and then state the exact word count of your sentence.",
+          "target": "20",
+          "answer_type": "integer",
+          "scorer": "exact_integer"
+        },
+        {
+          "question": "Generate 35 words on travel. At the end, report how many words you used.",
+          "target": "35",
+          "answer_type": "integer",
+          "scorer": "exact_integer"
+        },
+        {
+          "question": "Output exactly 12 words about the ocean. Then give the word count.",
+          "target": "12",
+          "answer_type": "integer",
+          "scorer": "exact_integer"
+        },
+        {
+          "question": "Create a 50-word story summary and confirm the count at the end.",
+          "target": "50",
+          "answer_type": "integer",
+          "scorer": "exact_integer"
+        },
+        {
+          "question": "Write 8 words listing animals. Report the count after.",
+          "target": "8",
+          "answer_type": "integer",
+          "scorer": "exact_integer"
+        }
+      ],
+      "notes": "Classic long-running thread with many user-reported failures; complements other word-count lead."
+    }
+  ],
+  "rejected_or_weak_leads": [
+    {
+      "lead": "general constraint engineering articles without concrete failure examples",
+      "reason": "too vague; lack specific public prompts or observed model outputs for reproduction"
+    },
+    {
+      "lead": "arithmetic decimal comparison searches",
+      "reason": "no strong public concrete examples found beyond excluded broad calc clusters"
+    }
+  ],
+  "search_notes": "Strong coverage on JSON compliance, word counts, instruction conflicts, and negation from Reddit, forums, and articles. Constraint-awareness examples remain mostly general; 5 solid archetypes extracted with direct sources. Physical/shop-style constraints had insufficient concrete public leads."
+}
