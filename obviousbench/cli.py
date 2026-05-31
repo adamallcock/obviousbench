@@ -6,6 +6,10 @@ import argparse
 import sys
 from pathlib import Path
 
+from obviousbench.analysis.shareable_artifacts import (
+    ShareableArtifactInputs,
+    build_shareable_artifacts,
+)
 from obviousbench.analysis.summarize_results import summarize_results
 from obviousbench.barrage import (
     BarrageProfile,
@@ -57,6 +61,34 @@ def _make_barrage(args: argparse.Namespace) -> int:
     return 0
 
 
+def _build_shareable(args: argparse.Namespace) -> int:
+    try:
+        output_paths = build_shareable_artifacts(
+            ShareableArtifactInputs(
+                comparison_dir=Path(args.comparison_dir),
+                output_dir=Path(args.out),
+                generated_on=args.generated_on,
+                benchmark_card_source=Path(args.benchmark_card_source),
+                model_matrix_source=Path(args.model_matrix_source),
+                max_failures=args.max_failures,
+            )
+        )
+    except Exception as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    for attr in (
+        "card",
+        "gallery",
+        "comparison",
+        "family_comparison",
+        "model_matrix",
+        "index",
+    ):
+        output_path = getattr(output_paths, attr)
+        print(f"Wrote {output_path}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="obviousbench")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -81,6 +113,18 @@ def build_parser() -> argparse.ArgumentParser:
     make_barrage.add_argument("--data-dir", default="data")
     make_barrage.add_argument("--out", required=True)
     make_barrage.set_defaults(func=_make_barrage)
+
+    shareable = subparsers.add_parser(
+        "build-shareable",
+        help="Promote summarized results into tracked shareable Markdown and CSV artifacts",
+    )
+    shareable.add_argument("--comparison-dir", required=True)
+    shareable.add_argument("--out", required=True)
+    shareable.add_argument("--generated-on", required=True)
+    shareable.add_argument("--benchmark-card-source", default="docs/benchmark_card.md")
+    shareable.add_argument("--model-matrix-source", default="configs/models_v0.example.yaml")
+    shareable.add_argument("--max-failures", default=8, type=int)
+    shareable.set_defaults(func=_build_shareable)
 
     return parser
 

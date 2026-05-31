@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 from obviousbench.cli import main
 from obviousbench.datasets.schemas import FAMILY_SHORT_NAMES
@@ -110,3 +111,45 @@ def test_cli_summarize_defaults_to_runcost(monkeypatch, tmp_path):
     )
 
     assert exit_code == 0
+
+
+def test_cli_build_shareable_passes_paths(monkeypatch, tmp_path, capsys):
+    calls = {}
+
+    class FakePaths:
+        card = tmp_path / "shareable" / "benchmark-card.md"
+        gallery = tmp_path / "shareable" / "failure-gallery.md"
+        comparison = tmp_path / "shareable" / "model-comparison.csv"
+        family_comparison = tmp_path / "shareable" / "family-comparison.csv"
+        model_matrix = tmp_path / "shareable" / "model-matrix.yaml"
+        index = tmp_path / "shareable" / "README.md"
+
+    def fake_build_shareable(inputs):
+        calls["comparison_dir"] = inputs.comparison_dir
+        calls["output_dir"] = inputs.output_dir
+        calls["generated_on"] = inputs.generated_on
+        calls["benchmark_card_source"] = inputs.benchmark_card_source
+        calls["model_matrix_source"] = inputs.model_matrix_source
+        return FakePaths()
+
+    monkeypatch.setattr("obviousbench.cli.build_shareable_artifacts", fake_build_shareable)
+
+    exit_code = main(
+        [
+            "build-shareable",
+            "--comparison-dir",
+            "results/summaries/comparison",
+            "--out",
+            str(tmp_path / "shareable"),
+            "--generated-on",
+            "2026-05-31",
+        ]
+    )
+
+    assert exit_code == 0
+    assert calls["comparison_dir"].as_posix() == "results/summaries/comparison"
+    assert calls["output_dir"] == tmp_path / "shareable"
+    assert calls["generated_on"] == "2026-05-31"
+    assert calls["benchmark_card_source"] == Path("docs/benchmark_card.md")
+    assert calls["model_matrix_source"] == Path("configs/models_v0.example.yaml")
+    assert "benchmark-card.md" in capsys.readouterr().out
