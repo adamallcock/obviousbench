@@ -2,6 +2,9 @@
   "name": "benchmark-oops",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "runcost": "^0.1.2"
   }
