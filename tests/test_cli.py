@@ -69,8 +69,9 @@ def test_cli_make_barrage_writes_materialized_profile(tmp_path, capsys):
 
 
 def test_cli_summarize_accepts_cost_none(monkeypatch, tmp_path, capsys):
-    def fake_summarize(logs, out, cost_mode="none"):
+    def fake_summarize(logs, out, cost_mode="none", rescore=False):
         assert cost_mode == "none"
+        assert not rescore
         out.mkdir()
         return out / "summary.csv", out / "failure_gallery.md"
 
@@ -93,8 +94,9 @@ def test_cli_summarize_accepts_cost_none(monkeypatch, tmp_path, capsys):
 
 
 def test_cli_summarize_defaults_to_runcost(monkeypatch, tmp_path):
-    def fake_summarize(logs, out, cost_mode="none"):
+    def fake_summarize(logs, out, cost_mode="none", rescore=False):
         assert cost_mode == "runcost"
+        assert not rescore
         out.mkdir()
         return out / "summary.csv", out / "failure_gallery.md", out / "cost_ledger.json"
 
@@ -103,6 +105,28 @@ def test_cli_summarize_defaults_to_runcost(monkeypatch, tmp_path):
     exit_code = main(
         [
             "summarize",
+            "--logs",
+            "results/raw/example",
+            "--out",
+            str(tmp_path / "summary"),
+        ]
+    )
+
+    assert exit_code == 0
+
+
+def test_cli_rescore_uses_current_scorers(monkeypatch, tmp_path):
+    def fake_summarize(logs, out, cost_mode="none", rescore=False):
+        assert cost_mode == "runcost"
+        assert rescore
+        out.mkdir()
+        return out / "summary.csv", out / "failure_gallery.md", out / "cost_ledger.json"
+
+    monkeypatch.setattr("obviousbench.cli.summarize_results", fake_summarize)
+
+    exit_code = main(
+        [
+            "rescore",
             "--logs",
             "results/raw/example",
             "--out",
@@ -153,3 +177,90 @@ def test_cli_build_shareable_passes_paths(monkeypatch, tmp_path, capsys):
     assert calls["benchmark_card_source"] == Path("docs/benchmark_card.md")
     assert calls["model_matrix_source"] == Path("configs/models_v0.example.yaml")
     assert "benchmark-card.md" in capsys.readouterr().out
+
+
+def test_cli_build_report_passes_paths(monkeypatch, tmp_path, capsys):
+    calls = {}
+
+    class FakePaths:
+        html = tmp_path / "report" / "report.html"
+        leaderboard_csv = tmp_path / "report" / "leaderboard.csv"
+        leaderboard_md = tmp_path / "report" / "leaderboard.md"
+        family_heatmap_csv = tmp_path / "report" / "family-heatmap.csv"
+
+    def fake_build_report(inputs):
+        calls["comparison_dir"] = inputs.comparison_dir
+        calls["output_dir"] = inputs.output_dir
+        calls["generated_on"] = inputs.generated_on
+        calls["title"] = inputs.title
+        return FakePaths()
+
+    monkeypatch.setattr("obviousbench.cli.build_benchmark_report", fake_build_report)
+
+    exit_code = main(
+        [
+            "build-report",
+            "--comparison-dir",
+            "results/summaries/comparison",
+            "--out",
+            str(tmp_path / "report"),
+            "--generated-on",
+            "2026-05-31",
+            "--title",
+            "Expanded Sweep",
+        ]
+    )
+
+    assert exit_code == 0
+    assert calls["comparison_dir"].as_posix() == "results/summaries/comparison"
+    assert calls["output_dir"] == tmp_path / "report"
+    assert calls["generated_on"] == "2026-05-31"
+    assert calls["title"] == "Expanded Sweep"
+    assert "report.html" in capsys.readouterr().out
+
+
+def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, capsys):
+    calls = {}
+
+    class FakePaths:
+        comparison = tmp_path / "comparison" / "comparison.csv"
+        family_comparison = tmp_path / "comparison" / "family_comparison.csv"
+        section_comparison = tmp_path / "comparison" / "section_comparison.csv"
+        delta = tmp_path / "comparison" / "delta.csv"
+
+    def fake_build_comparison(inputs):
+        calls["manifest"] = inputs.manifest
+        calls["output_dir"] = inputs.output_dir
+        calls["summary_root"] = inputs.summary_root
+        calls["baseline_comparison"] = inputs.baseline_comparison
+        calls["manual_xai_costs"] = inputs.manual_xai_costs
+        return FakePaths()
+
+    monkeypatch.setattr(
+        "obviousbench.cli.build_comparison_from_manifest",
+        fake_build_comparison,
+    )
+
+    exit_code = main(
+        [
+            "build-comparison",
+            "--manifest",
+            "results/summaries/original/comparison.csv",
+            "--summary-root",
+            "results/summaries/rescored",
+            "--baseline-comparison",
+            "results/summaries/original/comparison.csv",
+            "--manual-xai-costs",
+            "--out",
+            str(tmp_path / "comparison"),
+        ]
+    )
+
+    assert exit_code == 0
+    assert calls["manifest"].as_posix() == "results/summaries/original/comparison.csv"
+    assert calls["summary_root"].as_posix() == "results/summaries/rescored"
+    assert calls["baseline_comparison"].as_posix() == (
+        "results/summaries/original/comparison.csv"
+    )
+    assert calls["manual_xai_costs"]
+    assert "comparison.csv" in capsys.readouterr().out

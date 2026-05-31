@@ -18,7 +18,7 @@ def test_compute_summary_reports_obvious_failure_rate():
             "openai/gpt-5-nano",
             "id4",
             "format_compliance",
-            False,
+            True,
             "verbose_noncompliance",
             False,
             False,
@@ -34,9 +34,15 @@ def test_compute_summary_reports_obvious_failure_rate():
 
     assert summary.model == "openai/gpt-5-nano"
     assert summary.scored_samples == 8
-    assert summary.failures == 2
-    assert summary.obvious_failure_rate == 0.25
-    assert summary.failures_per_1000 == 250
+    assert summary.failures == 1
+    assert summary.obvious_failure_rate == 0.125
+    assert summary.failures_per_1000 == 125
+    assert summary.answer_correct == 7
+    assert summary.format_correct == 7
+    assert summary.strict_correct == 6
+    assert summary.answer_accuracy == 0.875
+    assert summary.format_accuracy == 0.875
+    assert summary.strict_accuracy == 0.75
     assert summary.provider_errors == 1
     assert summary.format_failures == 1
 

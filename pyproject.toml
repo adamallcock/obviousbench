@@ -9,16 +9,18 @@ description = "A lightweight Inspect AI benchmark for obvious public-facing LLM 
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-  "inspect-ai>=0.3",
-  "openai>=1.0",
-  "pydantic>=2.7",
-  "pyyaml>=6.0",
+  "anthropic>=0.105,<1",
+  "inspect-ai>=0.3.231",
+  "openai>=2.38,<3",
+  "pydantic>=2.13,<3",
+  "pyyaml>=6.0.3",
+  "xai_sdk>=1.15,<2",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "pytest>=8.0",
-  "ruff>=0.5",
+  "pytest>=8.4",
+  "ruff>=0.15",
 ]
 
 [project.scripts]

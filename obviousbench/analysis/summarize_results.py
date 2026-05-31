@@ -19,8 +19,14 @@ from obviousbench.analysis.usage import (
 )
 
 
-def summarize_results(logs: Path, out: Path, *, cost_mode: str = "none") -> tuple[Path, ...]:
-    records, failures = load_eval_logs_with_failures(logs)
+def summarize_results(
+    logs: Path,
+    out: Path,
+    *,
+    cost_mode: str = "none",
+    rescore: bool = False,
+) -> tuple[Path, ...]:
+    records, failures = load_eval_logs_with_failures(logs, rescore=rescore)
     cost_ledger = None
     if cost_mode == "runcost":
         records, cost_ledger = price_records_with_runcost(records)

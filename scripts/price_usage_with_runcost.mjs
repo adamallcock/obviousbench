@@ -4,7 +4,7 @@ import { calculateCost, defaultPriceCards } from "runcost";
 
 const input = await readStdin();
 const payload = JSON.parse(input || "{}");
-const priceCards = defaultPriceCards();
+const priceCards = normalizeDecimalValues(defaultPriceCards());
 const records = [];
 
 for (const record of payload.records ?? []) {
@@ -101,6 +101,35 @@ function component(name, quantity) {
 
 function numberValue(value) {
   return Number(value ?? 0);
+}
+
+function normalizeDecimalValues(value) {
+  if (Array.isArray(value)) {
+    return value.map((entry) => normalizeDecimalValues(entry));
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [
+        key,
+        normalizeDecimalValues(entry),
+      ]),
+    );
+  }
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return decimalString(value);
+  }
+  if (typeof value === "string" && /^-?\d+(?:\.\d+)?e-?\d+$/i.test(value)) {
+    return decimalString(Number(value));
+  }
+  return value;
+}
+
+function decimalString(value) {
+  const text = String(value);
+  if (!text.includes("e")) {
+    return text;
+  }
+  return value.toFixed(24).replace(/0+$/, "").replace(/\.$/, "");
 }
 
 function readStdin() {

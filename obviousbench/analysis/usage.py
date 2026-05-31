@@ -23,6 +23,9 @@ class UsageBreakdownRow:
     samples: int
     correct: int
     failures: int
+    answer_correct: int
+    format_correct: int
+    strict_correct: int
     input_tokens: int
     output_tokens: int
     reasoning_tokens: int
@@ -54,6 +57,9 @@ def export_usage_by_sample_csv(records: list[EvalRecord], path: Path) -> None:
         "question",
         "correct",
         "failure_type",
+        "answer_correct",
+        "format_correct",
+        "strict_correct",
         "provider_error",
         "timeout",
         "input_tokens",
@@ -84,6 +90,9 @@ def export_usage_by_sample_csv(records: list[EvalRecord], path: Path) -> None:
                     "question": record.question,
                     "correct": record.correct,
                     "failure_type": record.failure_type,
+                    "answer_correct": record.answer_ok,
+                    "format_correct": record.format_ok,
+                    "strict_correct": record.strict_ok,
                     "provider_error": record.provider_error,
                     "timeout": record.timeout,
                     "input_tokens": record.input_tokens,
@@ -152,6 +161,9 @@ def _compute_breakdown(
                 samples=len(family_records),
                 correct=sum(record.correct for record in family_records),
                 failures=sum(not record.correct for record in family_records),
+                answer_correct=sum(record.answer_ok for record in family_records),
+                format_correct=sum(record.format_ok for record in family_records),
+                strict_correct=sum(record.strict_ok for record in family_records),
                 input_tokens=sum(record.input_tokens for record in family_records),
                 output_tokens=sum(record.output_tokens for record in family_records),
                 reasoning_tokens=sum(
@@ -187,6 +199,9 @@ def export_usage_by_family_csv(rows: list[UsageByFamilyRow], path: Path) -> None
             "samples",
             "correct",
             "failures",
+            "answer_correct",
+            "format_correct",
+            "strict_correct",
             "input_tokens",
             "output_tokens",
             "reasoning_tokens",
@@ -212,6 +227,9 @@ def export_usage_by_section_csv(rows: list[UsageBySectionRow], path: Path) -> No
             "samples",
             "correct",
             "failures",
+            "answer_correct",
+            "format_correct",
+            "strict_correct",
             "input_tokens",
             "output_tokens",
             "reasoning_tokens",
@@ -239,6 +257,9 @@ def export_usage_by_question_csv(rows: list[UsageByQuestionRow], path: Path) -> 
             "samples",
             "correct",
             "failures",
+            "answer_correct",
+            "format_correct",
+            "strict_correct",
             "input_tokens",
             "output_tokens",
             "reasoning_tokens",

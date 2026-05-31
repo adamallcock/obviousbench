@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from itertools import groupby
 from typing import Any
 
+from obviousbench.scorers.common import FORMAT_FAILURE_TYPES
+
 
 @dataclass(frozen=True)
 class EvalRecord:
@@ -31,6 +33,9 @@ class EvalRecord:
     estimated_cost_usd: float | None = None
     cost_source: str | None = None
     cost_warnings: str = ""
+    answer_correct: bool | None = None
+    format_correct: bool | None = None
+    strict_correct: bool | None = None
 
     @property
     def run_variant(self) -> str:
@@ -41,6 +46,22 @@ class EvalRecord:
             reasoning_effort=self.reasoning_effort,
             reasoning_summary=self.reasoning_summary,
         )
+
+    @property
+    def answer_ok(self) -> bool:
+        return self.correct if self.answer_correct is None else self.answer_correct
+
+    @property
+    def format_ok(self) -> bool:
+        if self.format_correct is not None:
+            return self.format_correct
+        return self.failure_type not in FORMAT_FAILURE_TYPES
+
+    @property
+    def strict_ok(self) -> bool:
+        if self.strict_correct is not None:
+            return self.strict_correct
+        return self.answer_ok and self.format_ok
 
 
 @dataclass(frozen=True)
@@ -55,8 +76,14 @@ class SummaryRow:
     scored_samples: int
     correct: int
     failures: int
+    answer_correct: int
+    format_correct: int
+    strict_correct: int
     obvious_failure_rate: float
     accuracy: float
+    answer_accuracy: float
+    format_accuracy: float
+    strict_accuracy: float
     failures_per_1000: int
     provider_errors: int
     timeouts: int
@@ -104,6 +131,9 @@ def compute_summary(records: list[EvalRecord]) -> list[SummaryRow]:
         correct = sum(record.correct for record in scored)
         failures = len(scored) - correct
         scored_count = len(scored)
+        answer_correct = sum(record.answer_ok for record in scored)
+        format_correct = sum(record.format_ok for record in scored)
+        strict_correct = sum(record.strict_ok for record in scored)
         failure_rate = failures / scored_count if scored_count else 0.0
         accuracy = correct / scored_count if scored_count else 0.0
         rows.append(
@@ -118,15 +148,21 @@ def compute_summary(records: list[EvalRecord]) -> list[SummaryRow]:
                 scored_samples=scored_count,
                 correct=correct,
                 failures=failures,
+                answer_correct=answer_correct,
+                format_correct=format_correct,
+                strict_correct=strict_correct,
                 obvious_failure_rate=failure_rate,
                 accuracy=accuracy,
+                answer_accuracy=answer_correct / scored_count if scored_count else 0.0,
+                format_accuracy=format_correct / scored_count if scored_count else 0.0,
+                strict_accuracy=strict_correct / scored_count if scored_count else 0.0,
                 failures_per_1000=round(failure_rate * 1000),
                 provider_errors=provider_errors,
                 timeouts=timeouts,
                 non_answers=sum(record.failure_type == "non_answer" for record in scored),
                 format_failures=sum(
                     record.failure_type
-                    in {"format_noncompliance", "verbose_noncompliance", "json_malformed"}
+                    in FORMAT_FAILURE_TYPES
                     for record in scored
                 ),
                 input_tokens=sum(record.input_tokens for record in model_records),

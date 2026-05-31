@@ -13,6 +13,8 @@ from obviousbench.scorers.exact_integer import score_exact_integer_extract_first
         ("four days", "6", False, "4", "incorrect_count"),
         ("", "3", False, None, "non_answer"),
         ("three", "3", True, "3", "none"),
+        ("3\n\nPositions 1, 7, and 8 contain r.", "3", True, "3", "verbose_noncompliance"),
+        ("210\n\n\\confidence{90}", "210", True, "210", "verbose_noncompliance"),
         ("2 or 3", "3", False, None, "ambiguous_output"),
         ("one d in four days", "6", False, None, "ambiguous_output"),
     ],

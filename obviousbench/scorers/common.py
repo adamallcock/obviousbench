@@ -14,6 +14,28 @@ class ScoreDecision:
     extracted: str | None
     failure_type: str
     explanation: str
+    format_correct: bool | None = None
+
+    @property
+    def answer_correct(self) -> bool:
+        return self.correct
+
+    @property
+    def resolved_format_correct(self) -> bool:
+        if self.format_correct is not None:
+            return self.format_correct
+        return self.failure_type not in FORMAT_FAILURE_TYPES
+
+    @property
+    def strict_correct(self) -> bool:
+        return self.answer_correct and self.resolved_format_correct
+
+
+FORMAT_FAILURE_TYPES = {
+    "format_noncompliance",
+    "verbose_noncompliance",
+    "json_malformed",
+}
 
 
 def inspect_score(
@@ -30,6 +52,9 @@ def inspect_score(
             "failure_type": decision.failure_type,
             "scorer_name": scorer_name,
             "strict_format": strict_format,
+            "answer_correct": decision.answer_correct,
+            "format_correct": decision.resolved_format_correct,
+            "strict_correct": decision.strict_correct,
         },
     )
 

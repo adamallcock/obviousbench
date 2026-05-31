@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import subprocess
 import sys
@@ -13,6 +12,15 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+
+from obviousbench.runners.cache import (
+    DEFAULT_CACHE_DIR,
+    DEFAULT_CACHE_EXPIRY,
+    add_cache_args,
+    append_cache_args,
+    cache_from_args,
+    inspect_cache_env,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 OPENROUTER_RESET_RE = re.compile(
@@ -36,6 +44,8 @@ class RunnerConfig:
     timeout: int
     attempt_timeout: int
     keychain_service: str | None
+    cache: str | None = DEFAULT_CACHE_EXPIRY
+    cache_dir: Path | None = DEFAULT_CACHE_DIR
     independent_batches: bool = False
     resume: bool = False
     strict_batch_errors: bool = False
@@ -133,6 +143,8 @@ def build_inspect_command(config: RunnerConfig, sample_ids: Sequence[str]) -> li
         config.model,
         "--log-dir",
         str(config.log_dir),
+        "-T",
+        f"dataset={config.dataset}",
         "--sample-id",
         ",".join(sample_ids),
         "--max-connections",
@@ -146,6 +158,7 @@ def build_inspect_command(config: RunnerConfig, sample_ids: Sequence[str]) -> li
         "--no-log-realtime",
         "--no-log-model-api",
     ]
+    append_cache_args(command, config.cache)
     if not config.strict_batch_errors:
         command.extend(
             [
@@ -158,7 +171,7 @@ def build_inspect_command(config: RunnerConfig, sample_ids: Sequence[str]) -> li
 
 
 def openrouter_env(config: RunnerConfig) -> dict[str, str]:
-    env = os.environ.copy()
+    env = inspect_cache_env(config.cache_dir)
     if env.get("OPENROUTER_API_KEY"):
         return env
     if config.keychain_service is None:
@@ -224,6 +237,8 @@ def run_batches(config: RunnerConfig) -> int:
             timeout=config.timeout,
             attempt_timeout=config.attempt_timeout,
             keychain_service=config.keychain_service,
+            cache=config.cache,
+            cache_dir=config.cache_dir,
             independent_batches=config.independent_batches,
             resume=config.resume,
             strict_batch_errors=config.strict_batch_errors,
@@ -317,6 +332,7 @@ def parse_args(argv: Sequence[str] | None = None) -> RunnerConfig:
     parser.add_argument("--timeout", default=900, type=int)
     parser.add_argument("--attempt-timeout", default=180, type=int)
     parser.add_argument("--keychain-service", default="OPENROUTER_API_KEY")
+    add_cache_args(parser)
     parser.add_argument("--independent-batches", action="store_true")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--strict-batch-errors", action="store_true")
@@ -337,6 +353,8 @@ def parse_args(argv: Sequence[str] | None = None) -> RunnerConfig:
         timeout=args.timeout,
         attempt_timeout=args.attempt_timeout,
         keychain_service=args.keychain_service,
+        cache=cache_from_args(args),
+        cache_dir=args.cache_dir,
         independent_batches=args.independent_batches,
         resume=args.resume,
         strict_batch_errors=args.strict_batch_errors,

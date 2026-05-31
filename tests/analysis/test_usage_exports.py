@@ -75,6 +75,9 @@ def test_export_usage_by_sample_csv(tmp_path):
     )
     assert rows[0]["sample_id"] == "id1"
     assert rows[0]["input_tokens"] == "10"
+    assert rows[0]["answer_correct"] == "True"
+    assert rows[0]["format_correct"] == "True"
+    assert rows[0]["strict_correct"] == "True"
     assert rows[0]["estimated_cost_usd"] == "0.1"
 
 
@@ -95,6 +98,9 @@ def test_export_usage_by_family_csv(tmp_path):
             "samples": "2",
             "correct": "1",
             "failures": "1",
+            "answer_correct": "1",
+            "format_correct": "2",
+            "strict_correct": "1",
             "input_tokens": "30",
             "output_tokens": "12",
             "reasoning_tokens": "1",
@@ -126,6 +132,9 @@ def test_export_usage_by_section_csv(tmp_path):
             "samples": "2",
             "correct": "1",
             "failures": "1",
+            "answer_correct": "1",
+            "format_correct": "2",
+            "strict_correct": "1",
             "input_tokens": "30",
             "output_tokens": "12",
             "reasoning_tokens": "1",
@@ -148,6 +157,9 @@ def test_export_usage_by_question_csv(tmp_path):
     assert rows[0]["sample_id"] == "id1"
     assert rows[0]["question"] == "How many r's are in strawberry?"
     assert rows[0]["correct"] == "1"
+    assert rows[0]["answer_correct"] == "1"
+    assert rows[0]["format_correct"] == "1"
+    assert rows[0]["strict_correct"] == "1"
     assert rows[1]["sample_id"] == "id2"
     assert rows[1]["failures"] == "1"
 

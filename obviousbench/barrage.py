@@ -13,8 +13,29 @@ from obviousbench.datasets.load import load_benchmark_jsonl
 from obviousbench.datasets.schemas import BenchmarkItem, Family
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PROFILE_RE = re.compile(r"^balanced_(?P<families>\d+)x(?P<per_family>\d+)$")
+PROFILE_RE = re.compile(
+    r"^(?P<strategy>balanced|hard_obvious)_(?P<families>\d+)x(?P<per_family>\d+)$"
+)
 FAMILY_ORDER = tuple(family.value for family in Family)
+HARD_SUBFAMILY_ORDER = {
+    "arithmetic": (
+        "numeric_comparison",
+        "unit_conversion_and_small_calc",
+        "small_integer_arithmetic",
+    ),
+    "character_count": ("single_letter_count",),
+    "constraint_awareness": ("object_must_be_present",),
+    "format_compliance": (
+        "exact_json_schema",
+        "json_field",
+        "instruction_conflict",
+        "only_yes_no",
+    ),
+    "negation": ("without_constraint", "not_choice"),
+    "ordering": ("numeric_sort", "alphabetical_sort"),
+    "spelling_transform": ("remove_letter", "replace_letter", "reverse_word"),
+    "word_count": ("comma_list_count", "sentence_word_count"),
+}
 
 
 @dataclass(frozen=True)
@@ -24,19 +45,27 @@ class BarrageProfile:
     name: str
     family_count: int
     per_family: int
+    strategy: str = "balanced"
 
     @classmethod
     def parse(cls, value: str) -> BarrageProfile:
         match = PROFILE_RE.fullmatch(value)
         if not match:
             raise ValueError(
-                "Unknown barrage profile. Expected a name like balanced_8x10."
+                "Unknown barrage profile. Expected a name like balanced_8x10 "
+                "or hard_obvious_8x10."
             )
+        strategy = match.group("strategy")
         family_count = int(match.group("families"))
         per_family = int(match.group("per_family"))
         if family_count < 1 or per_family < 1:
             raise ValueError("Barrage profile counts must be positive.")
-        return cls(name=value, family_count=family_count, per_family=per_family)
+        return cls(
+            name=value,
+            family_count=family_count,
+            per_family=per_family,
+            strategy=strategy,
+        )
 
     @property
     def sample_count(self) -> int:
@@ -70,10 +99,20 @@ def build_barrage(
         by_family[item.family].append(item)
 
     selected_families = _select_families(by_family, profile)
-    family_picks = {
-        family: _select_family_items(by_family[family], profile.per_family, seed=seed)
-        for family in selected_families
-    }
+    family_picks = {}
+    for family in selected_families:
+        if profile.strategy == "hard_obvious":
+            family_picks[family] = _select_hard_family_items(
+                by_family[family],
+                profile.per_family,
+                seed=seed,
+            )
+        else:
+            family_picks[family] = _select_family_items(
+                by_family[family],
+                profile.per_family,
+                seed=seed,
+            )
     return _interleave_family_picks(family_picks, selected_families, profile.per_family)
 
 
@@ -141,6 +180,30 @@ def _select_family_items(
                 f"Family {items[0].family} has fewer than {quota} selectable items."
             )
     return selected
+
+
+def _select_hard_family_items(
+    items: list[BenchmarkItem],
+    quota: int,
+    *,
+    seed: int,
+) -> list[BenchmarkItem]:
+    priority = {
+        subfamily: index
+        for index, subfamily in enumerate(HARD_SUBFAMILY_ORDER.get(items[0].family, ()))
+    }
+    ranked = sorted(
+        items,
+        key=lambda item: (
+            priority.get(item.subfamily, len(priority)),
+            _stable_sort_key(seed, item.family, item.subfamily, item.id),
+        ),
+    )
+    if len(ranked) < quota:
+        raise ValueError(
+            f"Family {items[0].family} has fewer than {quota} selectable items."
+        )
+    return ranked[:quota]
 
 
 def _interleave_family_picks(

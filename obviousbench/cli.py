@@ -6,6 +6,14 @@ import argparse
 import sys
 from pathlib import Path
 
+from obviousbench.analysis.benchmark_report import (
+    BenchmarkReportInputs,
+    build_benchmark_report,
+)
+from obviousbench.analysis.comparison import (
+    ComparisonBuildInputs,
+    build_comparison_from_manifest,
+)
 from obviousbench.analysis.shareable_artifacts import (
     ShareableArtifactInputs,
     build_shareable_artifacts,
@@ -36,6 +44,7 @@ def _summarize(args: argparse.Namespace) -> int:
             Path(args.logs),
             Path(args.out),
             cost_mode=args.cost,
+            rescore=getattr(args, "rescore", False),
         )
     except Exception as exc:
         print(str(exc), file=sys.stderr)
@@ -89,6 +98,47 @@ def _build_shareable(args: argparse.Namespace) -> int:
     return 0
 
 
+def _build_report(args: argparse.Namespace) -> int:
+    try:
+        output_paths = build_benchmark_report(
+            BenchmarkReportInputs(
+                comparison_dir=Path(args.comparison_dir),
+                output_dir=Path(args.out),
+                generated_on=args.generated_on,
+                title=args.title,
+            )
+        )
+    except Exception as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    for attr in ("html", "leaderboard_csv", "leaderboard_md", "family_heatmap_csv"):
+        print(f"Wrote {getattr(output_paths, attr)}")
+    return 0
+
+
+def _build_comparison(args: argparse.Namespace) -> int:
+    try:
+        output_paths = build_comparison_from_manifest(
+            ComparisonBuildInputs(
+                manifest=Path(args.manifest),
+                output_dir=Path(args.out),
+                summary_root=Path(args.summary_root) if args.summary_root else None,
+                baseline_comparison=(
+                    Path(args.baseline_comparison)
+                    if args.baseline_comparison
+                    else None
+                ),
+                manual_xai_costs=args.manual_xai_costs,
+            )
+        )
+    except Exception as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    for attr in ("comparison", "family_comparison", "section_comparison", "delta"):
+        print(f"Wrote {getattr(output_paths, attr)}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="obviousbench")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -101,7 +151,21 @@ def build_parser() -> argparse.ArgumentParser:
     summarize.add_argument("--logs", required=True)
     summarize.add_argument("--out", required=True)
     summarize.add_argument("--cost", choices=["none", "runcost"], default="runcost")
+    summarize.add_argument(
+        "--rescore",
+        action="store_true",
+        help="Recompute deterministic scores from logged model completions.",
+    )
     summarize.set_defaults(func=_summarize)
+
+    rescore = subparsers.add_parser(
+        "rescore",
+        help="Summarize logs after recomputing scores with current deterministic scorers",
+    )
+    rescore.add_argument("--logs", required=True)
+    rescore.add_argument("--out", required=True)
+    rescore.add_argument("--cost", choices=["none", "runcost"], default="runcost")
+    rescore.set_defaults(func=_summarize, rescore=True)
 
     make_barrage = subparsers.add_parser(
         "make-barrage",
@@ -125,6 +189,37 @@ def build_parser() -> argparse.ArgumentParser:
     shareable.add_argument("--model-matrix-source", default="configs/models_v0.example.yaml")
     shareable.add_argument("--max-failures", default=8, type=int)
     shareable.set_defaults(func=_build_shareable)
+
+    report = subparsers.add_parser(
+        "build-report",
+        help="Build a static benchmark report with leaderboard tables and SVG charts",
+    )
+    report.add_argument("--comparison-dir", required=True)
+    report.add_argument("--out", required=True)
+    report.add_argument("--generated-on", required=True)
+    report.add_argument("--title", default="ObviousBench Report")
+    report.set_defaults(func=_build_report)
+
+    comparison = subparsers.add_parser(
+        "build-comparison",
+        help="Aggregate summarized run directories into comparison CSVs",
+    )
+    comparison.add_argument("--manifest", required=True)
+    comparison.add_argument("--out", required=True)
+    comparison.add_argument(
+        "--summary-root",
+        help="Optional root used with the basename of each manifest summary_dir",
+    )
+    comparison.add_argument(
+        "--baseline-comparison",
+        help="Optional previous comparison.csv used to write delta.csv",
+    )
+    comparison.add_argument(
+        "--manual-xai-costs",
+        action="store_true",
+        help="Apply direct xAI Grok pricing when runcost has no price card",
+    )
+    comparison.set_defaults(func=_build_comparison)
 
     return parser
 

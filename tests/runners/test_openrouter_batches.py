@@ -117,6 +117,8 @@ def test_strict_batch_errors_omits_inspect_error_scoring_flags(tmp_path):
         attempt_timeout=180,
         keychain_service=None,
         strict_batch_errors=True,
+        cache="10Y",
+        cache_dir=tmp_path / "cache",
     )
 
     command = build_inspect_command(config, ["sample-1"])
@@ -124,6 +126,59 @@ def test_strict_batch_errors_omits_inspect_error_scoring_flags(tmp_path):
     assert "--score-on-error" not in command
     assert "--no-fail-on-error" not in command
     assert "--continue-on-fail" not in command
+    assert "--cache" in command
+    assert command[command.index("--cache") + 1] == "10Y"
+    assert "-T" in command
+    assert command[command.index("-T") + 1] == f"dataset={tmp_path / 'dataset.jsonl'}"
+
+
+def test_build_inspect_command_can_disable_cache(tmp_path):
+    config = RunnerConfig(
+        task="task.py",
+        dataset=tmp_path / "dataset.jsonl",
+        model="openrouter/example/free",
+        log_dir=tmp_path / "logs",
+        batch_size=2,
+        max_batch_retries=1,
+        reset_buffer_seconds=5,
+        fallback_initial_seconds=10,
+        fallback_max_seconds=300,
+        inspect_max_retries=1,
+        timeout=900,
+        attempt_timeout=180,
+        keychain_service=None,
+        cache=None,
+        cache_dir=tmp_path / "cache",
+    )
+
+    command = build_inspect_command(config, ["sample-1"])
+
+    assert "--cache" not in command
+
+
+def test_openrouter_env_sets_inspect_cache_dir(tmp_path, monkeypatch):
+    monkeypatch.delenv("INSPECT_CACHE_DIR", raising=False)
+    config = RunnerConfig(
+        task="task.py",
+        dataset=tmp_path / "dataset.jsonl",
+        model="openrouter/example/free",
+        log_dir=tmp_path / "logs",
+        batch_size=2,
+        max_batch_retries=1,
+        reset_buffer_seconds=5,
+        fallback_initial_seconds=10,
+        fallback_max_seconds=300,
+        inspect_max_retries=1,
+        timeout=900,
+        attempt_timeout=180,
+        keychain_service=None,
+        cache="10Y",
+        cache_dir=tmp_path / "cache",
+    )
+
+    env = openrouter_batches.openrouter_env(config)
+
+    assert env["INSPECT_CACHE_DIR"] == str(tmp_path / "cache")
 
 
 def test_continue_after_batch_error_records_failure_and_keeps_going(

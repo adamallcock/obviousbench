@@ -6,6 +6,8 @@ from inspect_ai.log import read_eval_log
 
 from obviousbench.analysis.build_failure_gallery import FailureGalleryEntry
 from obviousbench.analysis.metrics import EvalRecord
+from obviousbench.analysis.rescore import rescore_output
+from obviousbench.scorers.common import FORMAT_FAILURE_TYPES, ScoreDecision
 
 
 def load_eval_logs(path: Path) -> list[EvalRecord]:
@@ -13,11 +15,15 @@ def load_eval_logs(path: Path) -> list[EvalRecord]:
     return records
 
 
-def load_eval_logs_with_failures(path: Path) -> tuple[list[EvalRecord], list[FailureGalleryEntry]]:
+def load_eval_logs_with_failures(
+    path: Path,
+    *,
+    rescore: bool = False,
+) -> tuple[list[EvalRecord], list[FailureGalleryEntry]]:
     if not path.exists():
         raise FileNotFoundError(f"Log path does not exist: {path}")
 
-    log_files = [path] if path.is_file() else sorted(path.glob("*.eval"))
+    log_files = [path] if path.is_file() else sorted(path.rglob("*.eval"))
     records: list[EvalRecord] = []
     entries: list[FailureGalleryEntry] = []
 
@@ -25,18 +31,12 @@ def load_eval_logs_with_failures(path: Path) -> tuple[list[EvalRecord], list[Fai
         eval_log = read_eval_log(log_file)
         model = str(eval_log.eval.model)
         task_args = eval_log.eval.task_args or {}
+        eval_metadata = eval_log.eval.metadata or {}
         generate_config = eval_log.eval.model_generate_config
         for sample in eval_log.samples or []:
             provider_error = sample.error is not None
             timeout = bool(sample.limit and getattr(sample.limit, "type", None) == "time")
-            score = next(iter((sample.scores or {}).values()), None)
-            failure_type = "provider_error" if provider_error else "non_answer"
-            correct = False
-            extracted = None
-            if score is not None:
-                correct = score.value == "C"
-                extracted = score.answer
-                failure_type = str((score.metadata or {}).get("failure_type", failure_type))
+            score_result = score_sample(sample, provider_error=provider_error, rescore=rescore)
             family = str(sample.metadata.get("family", "unknown"))
             subfamily = str(sample.metadata.get("subfamily", ""))
             sample_id = str(sample.id)
@@ -48,12 +48,21 @@ def load_eval_logs_with_failures(path: Path) -> tuple[list[EvalRecord], list[Fai
                     family=family,
                     subfamily=subfamily,
                     question=_question_from_input(str(sample.input)),
-                    correct=correct,
-                    failure_type=failure_type,
+                    correct=score_result.correct,
+                    failure_type=score_result.failure_type,
                     provider_error=provider_error,
                     timeout=timeout,
-                    barrage_profile=str(task_args.get("profile") or ""),
-                    barrage_seed=_optional_int(task_args.get("seed")),
+                    answer_correct=score_result.answer_correct,
+                    format_correct=score_result.format_correct,
+                    strict_correct=score_result.strict_correct,
+                    barrage_profile=str(
+                        eval_metadata.get("barrage_profile")
+                        or task_args.get("profile")
+                        or ""
+                    ),
+                    barrage_seed=_optional_int(
+                        eval_metadata.get("barrage_seed") or task_args.get("seed")
+                    ),
                     reasoning_effort=str(
                         getattr(generate_config, "reasoning_effort", None) or ""
                     ),
@@ -68,7 +77,7 @@ def load_eval_logs_with_failures(path: Path) -> tuple[list[EvalRecord], list[Fai
                     total_tokens=_usage_int(usage, "total_tokens"),
                 )
             )
-            if not correct and not provider_error and not timeout:
+            if not score_result.correct and not provider_error and not timeout:
                 entries.append(
                     FailureGalleryEntry(
                         model=model,
@@ -76,9 +85,9 @@ def load_eval_logs_with_failures(path: Path) -> tuple[list[EvalRecord], list[Fai
                         sample_id=sample_id,
                         question=_question_from_input(str(sample.input)),
                         expected_answer=str(sample.target),
-                        extracted_answer=extracted,
+                        extracted_answer=score_result.extracted,
                         raw_output=sample.output.completion,
-                        failure_type=failure_type,
+                        failure_type=score_result.failure_type,
                         human_triviality=str(sample.metadata.get("human_triviality", "")),
                         source_type=str(sample.metadata.get("source_type", "")),
                         why_obvious=str(
@@ -93,10 +102,65 @@ def load_eval_logs_with_failures(path: Path) -> tuple[list[EvalRecord], list[Fai
     return records, entries
 
 
+def score_sample(sample, *, provider_error: bool, rescore: bool) -> ScoreDecision:
+    if provider_error:
+        return ScoreDecision(
+            False,
+            None,
+            "provider_error",
+            "Provider error.",
+            format_correct=False,
+        )
+    if rescore:
+        scorer_name = str(sample.metadata.get("scorer", "exact_string_trim_v0"))
+        decision = rescore_output(
+            scorer_name=scorer_name,
+            output=sample.output.completion,
+            target=str(sample.target),
+        )
+        return ScoreDecision(
+            decision.correct,
+            decision.extracted,
+            decision.failure_type,
+            decision.explanation,
+            format_correct=decision.resolved_format_correct,
+        )
+
+    score = next(iter((sample.scores or {}).values()), None)
+    if score is None:
+        return ScoreDecision(False, None, "non_answer", "No score was logged.")
+
+    metadata = score.metadata or {}
+    correct = score.value == "C"
+    failure_type = str(metadata.get("failure_type", "none" if correct else "non_answer"))
+    answer_correct = _metadata_bool(metadata.get("answer_correct"), default=correct)
+    format_correct = _metadata_bool(
+        metadata.get("format_correct"),
+        default=failure_type not in FORMAT_FAILURE_TYPES,
+    )
+    return ScoreDecision(
+        answer_correct,
+        score.answer,
+        failure_type,
+        str(getattr(score, "explanation", "") or ""),
+        format_correct=format_correct,
+    )
+
+
 def _sample_usage(model_usage: dict, model: str):
     if model in model_usage:
         return model_usage[model]
     return next(iter(model_usage.values()), None) if model_usage else None
+
+
+def _metadata_bool(value, *, default: bool) -> bool:
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.strip().casefold() in {"1", "true", "yes"}
+    return bool(value)
 
 
 def _usage_int(usage, field: str) -> int:

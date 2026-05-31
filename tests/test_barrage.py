@@ -42,6 +42,16 @@ def test_parse_balanced_profile_name():
     assert profile.family_count == 8
     assert profile.per_family == 10
     assert profile.name == "balanced_8x10"
+    assert profile.strategy == "balanced"
+
+
+def test_parse_hard_obvious_profile_name():
+    profile = BarrageProfile.parse("hard_obvious_8x10")
+
+    assert profile.family_count == 8
+    assert profile.per_family == 10
+    assert profile.name == "hard_obvious_8x10"
+    assert profile.strategy == "hard_obvious"
 
 
 def test_build_barrage_balances_families_and_round_robins_subfamilies():
@@ -94,6 +104,26 @@ def test_build_barrage_is_seed_stable():
 
     assert first == second
     assert first != different
+
+
+def test_hard_obvious_profile_prioritizes_hard_subfamilies():
+    items = [
+        _item("arithmetic", "small_integer_arithmetic", 1),
+        _item("arithmetic", "numeric_comparison", 2),
+        _item("character_count", "single_letter_count", 3),
+    ]
+
+    selected = build_barrage(
+        items,
+        BarrageProfile.parse("hard_obvious_2x1"),
+        seed=1,
+    )
+
+    selected_by_family = {item.family: item.subfamily for item in selected}
+    assert selected_by_family == {
+        "arithmetic": "numeric_comparison",
+        "character_count": "single_letter_count",
+    }
 
 
 def test_write_and_load_materialized_barrage(tmp_path):
