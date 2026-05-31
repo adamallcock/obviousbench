@@ -203,6 +203,33 @@ sample. The bridge uses normalized Inspect usage rather than raw provider
 responses, so `--no-log-model-api` runs can still be priced. Use `--cost none`
 to skip pricing.
 
+## Build Shareable Artifacts
+
+Use this when you want a tracked external-facing bundle from ignored local
+summary outputs:
+
+```bash
+.venv/bin/obviousbench build-shareable \
+  --comparison-dir results/summaries/model-comparison-balanced-8x10-nothinking-20260530-2136 \
+  --out docs/shareable/2026-05-31-obviousbench-proof-point \
+  --generated-on 2026-05-31
+```
+
+Outputs:
+
+```text
+docs/shareable/2026-05-31-obviousbench-proof-point/README.md
+docs/shareable/2026-05-31-obviousbench-proof-point/benchmark-card.md
+docs/shareable/2026-05-31-obviousbench-proof-point/failure-gallery.md
+docs/shareable/2026-05-31-obviousbench-proof-point/model-comparison.csv
+docs/shareable/2026-05-31-obviousbench-proof-point/family-comparison.csv
+docs/shareable/2026-05-31-obviousbench-proof-point/model-matrix.yaml
+```
+
+The shareable builder copies compact summaries and curated failure examples. It
+does not promote raw Inspect logs, raw provider requests, credentials, or local
+cache files.
+
 ## Build A Balanced Barrage
 
 Balanced barrage profiles use the shape `balanced_<families>x<items>`.
@@ -281,6 +308,6 @@ PY
 - Mine and normalize real public examples beyond the current small source catalog.
 - Reproduce source claims against a model panel.
 - Human-review generated variants for ambiguity and scorer suitability.
-- Run the full chosen 5-8 model panel.
+- Expand beyond the current small comparison panel when a broader claim is needed.
 - Manually inspect real model failures for scorer false positives and false negatives.
-- Decide which result artifacts should be promoted out of ignored `results/`.
+- Decide when a promoted proof-point bundle should become a versioned release artifact.

@@ -1,0 +1,25 @@
+label,model,family,samples,correct,failures,input_tokens,output_tokens,total_tokens,estimated_cost_usd
+gpt-4.1,openai/gpt-4.1,arithmetic,10,10,0,375,20,395,0.00091
+gpt-4.1,openai/gpt-4.1,character_count,10,5,5,332,10,342,0.000744
+gpt-4.1,openai/gpt-4.1,constraint_awareness,10,5,5,632,13,645,0.001368
+gpt-4.1,openai/gpt-4.1,format_compliance,10,10,0,433,35,468,0.001146
+gpt-4.1,openai/gpt-4.1,negation,10,8,2,455,13,468,0.001014
+gpt-4.1,openai/gpt-4.1,ordering,10,10,0,418,85,503,0.001516
+gpt-4.1,openai/gpt-4.1,spelling_transform,10,6,4,314,32,346,0.000884
+gpt-4.1,openai/gpt-4.1,word_count,10,10,0,402,11,413,0.000892
+gpt-4o,openai/gpt-4o,arithmetic,10,10,0,375,20,395,0.0011375
+gpt-4o,openai/gpt-4o,character_count,10,7,3,332,17,349,0.001
+gpt-4o,openai/gpt-4o,constraint_awareness,10,1,9,632,33,665,0.00191
+gpt-4o,openai/gpt-4o,format_compliance,10,7,3,433,47,480,0.0015525
+gpt-4o,openai/gpt-4o,negation,10,5,5,455,21,476,0.0013475
+gpt-4o,openai/gpt-4o,ordering,10,10,0,418,85,503,0.001895
+gpt-4o,openai/gpt-4o,spelling_transform,10,9,1,314,32,346,0.001105
+gpt-4o,openai/gpt-4o,word_count,10,10,0,402,10,412,0.001105
+gpt-5.5 none,openai/gpt-5.5,arithmetic,10,10,0,365,59,424,0.003595
+gpt-5.5 none,openai/gpt-5.5,character_count,10,5,5,322,50,372,0.00311
+gpt-5.5 none,openai/gpt-5.5,constraint_awareness,10,10,0,622,50,672,0.00461
+gpt-5.5 none,openai/gpt-5.5,format_compliance,10,10,0,423,70,493,0.004215
+gpt-5.5 none,openai/gpt-5.5,negation,10,10,0,445,51,496,0.003755
+gpt-5.5 none,openai/gpt-5.5,ordering,10,10,0,408,125,533,0.00579
+gpt-5.5 none,openai/gpt-5.5,spelling_transform,10,8,2,304,73,377,0.00371
+gpt-5.5 none,openai/gpt-5.5,word_count,10,10,0,392,50,442,0.00346

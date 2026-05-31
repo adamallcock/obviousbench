@@ -27,17 +27,29 @@ Validation passed.
 
 ## Run A Smoke Eval
 
-This command requires whichever provider credentials are needed for the selected Inspect model:
+For a local plumbing check that does not call a real provider, use Inspect's
+mock model:
 
 ```bash
-.venv/bin/inspect eval obviousbench/tasks/smoke.py --model <provider/model> --log-dir results/raw
+.venv/bin/inspect eval obviousbench/tasks/smoke.py \
+  --model mockllm/model \
+  --log-dir results/raw \
+  --limit 3 \
+  --no-log-realtime
 ```
 
-For a local plumbing check that does not call a real provider, use an Inspect mock model if available in your Inspect installation:
+Then summarize the smoke log:
 
 ```bash
-.venv/bin/inspect eval obviousbench/tasks/smoke.py --model mockllm/model --log-dir results/raw --limit 3
+.venv/bin/obviousbench summarize \
+  --logs results/raw \
+  --out results/summaries \
+  --cost none
 ```
+
+The mock model returns default text, so the summary is expected to show model
+failures while proving that task loading, scoring, logging, and reporting run
+cleanly.
 
 ## Summarize Logs
 
@@ -58,6 +70,20 @@ npm install
 ```
 
 Use `--cost none` to skip pricing.
+
+## Build Shareable Artifacts
+
+Promote a selected comparison summary into a tracked recruiter-safe bundle:
+
+```bash
+.venv/bin/obviousbench build-shareable \
+  --comparison-dir results/summaries/model-comparison-balanced-8x10-nothinking-20260530-2136 \
+  --out docs/shareable/2026-05-31-obviousbench-proof-point \
+  --generated-on 2026-05-31
+```
+
+The bundle contains a benchmark card, curated failure gallery, model/family CSVs,
+and the exact model matrix. Raw Inspect logs stay ignored under `results/raw/`.
 
 ## Build A Balanced Barrage
 
