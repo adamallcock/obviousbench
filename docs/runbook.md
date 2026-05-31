@@ -150,6 +150,12 @@ Notes:
 
 - Use `openrouter/...` model strings with this wrapper, not `openai/...` plus a
   base URL.
+- The wrapper enables Inspect's local generation cache by default with
+  `--cache 10Y` and `INSPECT_CACHE_DIR=.cache/inspect`. This caches provider
+  completions only; summaries and scorers are recomputed when logs are
+  summarized.
+- Use `--no-cache` for fresh provider-behavior sweeps, or `--cache <duration>`
+  for another expiry.
 - Keep `--batch-size` below the provider's per-minute free-model limit. The
   observed OpenRouter free-model limit was 16 requests per minute.
 - `--attempt-timeout` is the per-request generation timeout passed to Inspect.
@@ -172,6 +178,31 @@ Notes:
 - The wrapper keeps `--no-log-model-api` enabled so raw model requests and
   responses are not written to the Inspect log.
 
+## Run Any Inspect Eval With Cache Defaults
+
+For non-OpenRouter runs, prefer the generic wrapper rather than calling
+`inspect eval` directly during development:
+
+```bash
+.venv/bin/python scripts/run_inspect_eval.py \
+  --task obviousbench/tasks/barrage.py \
+  --model openai/gpt-5.4 \
+  --log-dir results/raw \
+  -T profile=hard_obvious_8x10 \
+  -T seed=20260531 \
+  --inspect-arg=--no-log-model-api
+```
+
+Defaults:
+
+- `--cache 10Y`
+- `--cache-dir .cache/inspect`
+- raw Inspect flags are passed only when supplied via `--inspect-arg`
+
+Use `--no-cache` to force fresh provider calls. Use repeated `--inspect-arg`
+values to pass raw Inspect flags; use `--inspect-arg=--flag-name` when the raw
+argument itself starts with `--`.
+
 ## Summarize Logs
 
 ```bash
@@ -189,7 +220,7 @@ The summarizer always writes:
 - `usage_by_question.csv`: question-level rollups for spotting specific prompt
   lines that are costly or failure-prone.
 
-Estimated cost uses the local Node `runcost` bridge by default:
+Estimated cost uses the local Node 20+ `runcost` bridge by default:
 
 ```bash
 npm install
@@ -202,6 +233,93 @@ Costed summaries also write `cost_ledger.json`, with one runcost ledger per
 sample. The bridge uses normalized Inspect usage rather than raw provider
 responses, so `--no-log-model-api` runs can still be priced. Use `--cost none`
 to skip pricing.
+
+When deterministic scorer logic changes, rescore existing logs instead of
+calling providers again:
+
+```bash
+.venv/bin/obviousbench rescore \
+  --logs results/raw/<run-dir> \
+  --out results/summaries/<run-dir>-rescored
+```
+
+Summaries and rollups report three related metrics:
+
+- `answer_accuracy`: the model gave the right answer content.
+- `format_accuracy`: the model followed the required output format.
+- `strict_accuracy`: answer and format were both correct.
+
+Use `build-comparison` to aggregate one-row run summaries into the model,
+family, and section CSVs consumed by reports:
+
+```bash
+.venv/bin/obviousbench build-comparison \
+  --manifest results/summaries/hard-obvious-panel-20260531/manifest.csv \
+  --out results/summaries/hard-obvious-panel-20260531
+```
+
+If a comparison is being regenerated after rescoring, pass the old comparison as
+`--baseline-comparison` to write `delta.csv`. For direct xAI Grok runs, add
+`--manual-xai-costs` when the local `runcost` card set does not price the
+`grok/*` aliases.
+
+## Build Benchmark Reports
+
+Use `build-report` for the table-and-chart view of a completed comparison:
+
+```bash
+.venv/bin/obviousbench build-report \
+  --comparison-dir results/summaries/expanded-model-sweep-20260531-0028 \
+  --out docs/reports/2026-05-31-expanded-model-sweep \
+  --generated-on 2026-05-31 \
+  --title "ObviousBench Expanded Model Sweep"
+```
+
+Outputs:
+
+```text
+docs/reports/2026-05-31-expanded-model-sweep/report.html
+docs/reports/2026-05-31-expanded-model-sweep/leaderboard.csv
+docs/reports/2026-05-31-expanded-model-sweep/leaderboard.md
+docs/reports/2026-05-31-expanded-model-sweep/family-heatmap.csv
+```
+
+The report follows a few benchmark-reporting conventions:
+
+- Show aggregate accuracy alongside cost, tokens, and cost per correct answer.
+- Preserve family slices so aggregate scores cannot hide brittle categories.
+- Keep provider errors and pricing warnings visible in the same report.
+- Rank only comparable sample cohorts; shorter smoke/free runs are shown but
+  marked `n/a` for rank when the main panel used more scored samples.
+
+## Barrage Profiles
+
+The default profile family is `balanced_XxY`, for example `balanced_8x10`. It
+selects `X` eligible families and `Y` samples per family, round-robinning across
+subfamilies to keep broad coverage.
+
+Use `hard_obvious_XxY` when the goal is model separation rather than broad
+coverage. It keeps the same family balance but selects from the subfamilies that
+have been most failure-prone in sweep results:
+
+```bash
+.venv/bin/obviousbench make-barrage \
+  --profile hard_obvious_8x10 \
+  --split public_v0 \
+  --seed 20260531 \
+  --out data/barrages/hard_obvious_8x10_seed_20260531.jsonl
+```
+
+Current hard-obvious priorities are:
+
+- `character_count`: single-letter counts.
+- `spelling_transform`: remove-letter, replace-letter, reverse-word.
+- `constraint_awareness`: object-must-be-present tasks.
+- `arithmetic`: numeric comparison, unit conversion, small arithmetic.
+- `format_compliance`: exact JSON, JSON field, instruction conflict.
+- `negation`: without-constraint, not-choice.
+- `ordering`: numeric sort before alphabetical sort.
+- `word_count`: comma-list counts before sentence word counts.
 
 ## Build Shareable Artifacts
 
@@ -250,8 +368,10 @@ Materialize a barrage JSONL:
 Run the dynamic barrage task directly without writing a JSONL file:
 
 ```bash
+INSPECT_CACHE_DIR=.cache/inspect \
 .venv/bin/inspect eval obviousbench/tasks/barrage.py \
   --model <provider/model> \
+  --cache 10Y \
   --log-dir results/raw \
   -T profile=balanced_8x10 \
   -T seed=20260531
@@ -260,11 +380,19 @@ Run the dynamic barrage task directly without writing a JSONL file:
 Run a materialized barrage:
 
 ```bash
+INSPECT_CACHE_DIR=.cache/inspect \
 .venv/bin/inspect eval obviousbench/tasks/barrage.py \
   --model <provider/model> \
+  --cache 10Y \
   --log-dir results/raw \
   -T dataset=data/barrages/balanced_8x10_seed_20260531.jsonl
 ```
+
+Inspect's cache key includes model/base URL, prompt message history, epoch,
+generate config, tools, and tool choice. That is the desired developer loop:
+when one or two questions are added, unchanged calls are reused, but upgraded
+scorers and summaries still run over the cached raw completions. Avoid semantic
+or similarity caches for benchmark runs.
 
 Outputs:
 

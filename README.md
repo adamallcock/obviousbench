@@ -59,8 +59,8 @@ cleanly.
 
 The summary command emits run, sample, family, section, and question-level CSVs.
 Costing with `runcost` is enabled by default and writes estimated cost columns
-plus a `cost_ledger.json` artifact. Run `npm install` before summarizing in a
-fresh checkout:
+plus a `cost_ledger.json` artifact. The Node bridge supports Node 20 and newer.
+Run `npm install` before summarizing in a fresh checkout:
 
 ```bash
 npm install
@@ -70,6 +70,45 @@ npm install
 ```
 
 Use `--cost none` to skip pricing.
+
+Use `rescore` when scorer logic changes and you want to re-evaluate existing
+raw model completions without making new provider calls:
+
+```bash
+.venv/bin/obviousbench rescore \
+  --logs results/raw/<run-dir> \
+  --out results/summaries/<run-dir>-rescored
+```
+
+`summary.csv` and all usage rollups include three score views:
+
+- `answer_accuracy`: whether the answer content is correct.
+- `format_accuracy`: whether the response obeyed the expected output format.
+- `strict_accuracy`: answer and format both correct.
+
+Aggregate per-run summaries into comparison inputs for reports:
+
+```bash
+.venv/bin/obviousbench build-comparison \
+  --manifest results/summaries/hard-obvious-panel-20260531/manifest.csv \
+  --out results/summaries/hard-obvious-panel-20260531
+```
+
+## Build A Benchmark Report
+
+Turn a comparison directory into a static HTML report with leaderboard tables,
+cost-efficiency columns, provider-error caveats, and inline SVG charts:
+
+```bash
+.venv/bin/obviousbench build-report \
+  --comparison-dir results/summaries/expanded-model-sweep-20260531-0028 \
+  --out docs/reports/2026-05-31-expanded-model-sweep \
+  --generated-on 2026-05-31 \
+  --title "ObviousBench Expanded Model Sweep"
+```
+
+The report assigns ranks only within the largest scored sample cohort so short
+smoke/free-model runs stay visible without being ranked against full runs.
 
 ## Build Shareable Artifacts
 
@@ -101,10 +140,44 @@ Or run the barrage task directly:
 ```bash
 .venv/bin/inspect eval obviousbench/tasks/barrage.py \
   --model <provider/model> \
+  --cache 10Y \
   --log-dir results/raw \
   -T profile=balanced_8x10 \
   -T seed=20260531
 ```
+
+For local development, prefer the generic runner. It keeps Inspect's response
+cache in the repo-local ignored cache directory, uses a 10-year cache expiry by
+default, and still reruns parsing, scoring, and summaries:
+
+```bash
+.venv/bin/python scripts/run_inspect_eval.py \
+  --task obviousbench/tasks/barrage.py \
+  --model <provider/model> \
+  --log-dir results/raw \
+  -T profile=hard_obvious_8x10 \
+  -T seed=20260531 \
+  --inspect-arg=--no-log-model-api
+```
+
+Use `--no-cache` for fresh published sweeps where current provider behavior
+matters more than iteration speed. The cache stores model generations, not
+parsed scores.
+
+For a more discriminative stress run, use the hard-obvious profile. It keeps the
+same `XxY` shape but prioritizes subfamilies that separated models in the
+expanded sweeps, such as character counting, remove-letter transforms, object
+presence, numeric comparison, and JSON/fenced-output handling:
+
+```bash
+.venv/bin/obviousbench make-barrage \
+  --profile hard_obvious_8x10 \
+  --seed 20260531 \
+  --out data/barrages/hard_obvious_8x10_seed_20260531.jsonl
+```
+
+Any positive `XxY` shape is valid when enough public items exist, for example
+`hard_obvious_8x5` for a faster 40-sample pass.
 
 ## Runbook
 

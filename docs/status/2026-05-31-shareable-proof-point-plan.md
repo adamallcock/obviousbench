@@ -2,7 +2,7 @@
 title: Shareable Proof Point Plan
 date: 2026-05-31
 type: plan
-status: in-progress
+status: complete
 ---
 
 # Shareable Proof Point Plan
@@ -42,3 +42,27 @@ result files.
 - Raw Inspect logs remain ignored under `results/raw/`.
 - Promoted artifacts should explain that `public_v0` is generated seed data
   inspired by source archetypes, not a public leaderboard or vendor claim.
+
+## Completed Artifact Set
+
+Generated bundle:
+
+```text
+docs/shareable/2026-05-31-obviousbench-proof-point/README.md
+docs/shareable/2026-05-31-obviousbench-proof-point/benchmark-card.md
+docs/shareable/2026-05-31-obviousbench-proof-point/failure-gallery.md
+docs/shareable/2026-05-31-obviousbench-proof-point/model-comparison.csv
+docs/shareable/2026-05-31-obviousbench-proof-point/family-comparison.csv
+docs/shareable/2026-05-31-obviousbench-proof-point/model-matrix.yaml
+```
+
+Verification completed on 2026-05-31:
+
+- `92 passed` from `.venv/bin/python -m pytest tests -q`.
+- `Validation passed.` from dataset validation.
+- `All checks passed!` from Ruff.
+- `.venv/bin/python -m compileall -q obviousbench` exited `0`.
+- Mock smoke eval plus summary exited `0`; the mock model scored `0/3` as
+  expected because it returns default mock text.
+- Shareable artifact privacy scan found no obvious credential, secret, or local
+  filesystem path patterns.

@@ -1,0 +1,233 @@
+label,family,accuracy_pct,correct,samples,failures,estimated_cost_usd
+Claude Haiku 4.5,arithmetic,100.00,10,10,0,0.000712
+Claude Haiku 4.5,character_count,50.00,5,10,5,0.000612
+Claude Haiku 4.5,constraint_awareness,60.00,6,10,4,0.00086
+Claude Haiku 4.5,format_compliance,50.00,5,10,5,0.000936
+Claude Haiku 4.5,negation,90.00,9,10,1,0.000691
+Claude Haiku 4.5,ordering,100.00,10,10,0,0.00104
+Claude Haiku 4.5,spelling_transform,60.00,6,10,4,0.001003
+Claude Haiku 4.5,word_count,100.00,10,10,0,0.000682
+Claude Opus 4.6 high,arithmetic,100.00,10,10,0,0.00356
+Claude Opus 4.6 high,character_count,80.00,8,10,2,0.014635
+Claude Opus 4.6 high,constraint_awareness,100.00,10,10,0,0.0043
+Claude Opus 4.6 high,format_compliance,100.00,10,10,0,0.00393
+Claude Opus 4.6 high,negation,100.00,10,10,0,0.003455
+Claude Opus 4.6 high,ordering,100.00,10,10,0,0.0052
+Claude Opus 4.6 high,spelling_transform,90.00,9,10,1,0.00464
+Claude Opus 4.6 high,word_count,90.00,9,10,1,0.004435
+Claude Opus 4.6 low,arithmetic,100.00,10,10,0,0.00356
+Claude Opus 4.6 low,character_count,70.00,7,10,3,0.00306
+Claude Opus 4.6 low,constraint_awareness,100.00,10,10,0,0.0043
+Claude Opus 4.6 low,format_compliance,100.00,10,10,0,0.00393
+Claude Opus 4.6 low,negation,80.00,8,10,2,0.003455
+Claude Opus 4.6 low,ordering,100.00,10,10,0,0.0052
+Claude Opus 4.6 low,spelling_transform,80.00,8,10,2,0.00659
+Claude Opus 4.6 low,word_count,100.00,10,10,0,0.00341
+Claude Opus 4.6 medium,arithmetic,100.00,10,10,0,0.00356
+Claude Opus 4.6 medium,character_count,80.00,8,10,2,0.00541
+Claude Opus 4.6 medium,constraint_awareness,100.00,10,10,0,0.0043
+Claude Opus 4.6 medium,format_compliance,100.00,10,10,0,0.00393
+Claude Opus 4.6 medium,negation,100.00,10,10,0,0.003455
+Claude Opus 4.6 medium,ordering,100.00,10,10,0,0.0052
+Claude Opus 4.6 medium,spelling_transform,90.00,9,10,1,0.004615
+Claude Opus 4.6 medium,word_count,100.00,10,10,0,0.00341
+Claude Opus 4.7 high,arithmetic,100.00,10,10,0,0.00454
+Claude Opus 4.7 high,character_count,50.00,5,10,5,0.00408
+Claude Opus 4.7 high,constraint_awareness,100.00,10,10,0,0.00576
+Claude Opus 4.7 high,format_compliance,100.00,10,10,0,0.005745
+Claude Opus 4.7 high,negation,100.00,10,10,0,0.0047
+Claude Opus 4.7 high,ordering,100.00,10,10,0,0.00664
+Claude Opus 4.7 high,spelling_transform,90.00,9,10,1,0.00458
+Claude Opus 4.7 high,word_count,100.00,10,10,0,0.00456
+Claude Opus 4.7 low,arithmetic,100.00,10,10,0,0.00454
+Claude Opus 4.7 low,character_count,40.00,4,10,6,0.00408
+Claude Opus 4.7 low,constraint_awareness,100.00,10,10,0,0.00576
+Claude Opus 4.7 low,format_compliance,100.00,10,10,0,0.005745
+Claude Opus 4.7 low,negation,100.00,10,10,0,0.0047
+Claude Opus 4.7 low,ordering,100.00,10,10,0,0.00664
+Claude Opus 4.7 low,spelling_transform,90.00,9,10,1,0.00458
+Claude Opus 4.7 low,word_count,100.00,10,10,0,0.00456
+Claude Opus 4.7 medium,arithmetic,100.00,10,10,0,0.00454
+Claude Opus 4.7 medium,character_count,50.00,5,10,5,0.00408
+Claude Opus 4.7 medium,constraint_awareness,100.00,10,10,0,0.00576
+Claude Opus 4.7 medium,format_compliance,100.00,10,10,0,0.005745
+Claude Opus 4.7 medium,negation,100.00,10,10,0,0.0047
+Claude Opus 4.7 medium,ordering,100.00,10,10,0,0.00664
+Claude Opus 4.7 medium,spelling_transform,100.00,10,10,0,0.00458
+Claude Opus 4.7 medium,word_count,100.00,10,10,0,0.00456
+Claude Opus 4.8 high,arithmetic,100.00,10,10,0,0.00354
+Claude Opus 4.8 high,character_count,80.00,8,10,2,0.00308
+Claude Opus 4.8 high,constraint_awareness,100.00,10,10,0,0.00501
+Claude Opus 4.8 high,format_compliance,100.00,10,10,0,0.00497
+Claude Opus 4.8 high,negation,100.00,10,10,0,0.003925
+Claude Opus 4.8 high,ordering,100.00,10,10,0,0.00579
+Claude Opus 4.8 high,spelling_transform,70.00,7,10,3,0.003755
+Claude Opus 4.8 high,word_count,100.00,10,10,0,0.00356
+Claude Opus 4.8 low,arithmetic,100.00,10,10,0,0.00354
+Claude Opus 4.8 low,character_count,70.00,7,10,3,0.00308
+Claude Opus 4.8 low,constraint_awareness,100.00,10,10,0,0.00501
+Claude Opus 4.8 low,format_compliance,100.00,10,10,0,0.00497
+Claude Opus 4.8 low,negation,100.00,10,10,0,0.003925
+Claude Opus 4.8 low,ordering,100.00,10,10,0,0.00579
+Claude Opus 4.8 low,spelling_transform,70.00,7,10,3,0.003755
+Claude Opus 4.8 low,word_count,100.00,10,10,0,0.00356
+Claude Opus 4.8 medium,arithmetic,100.00,10,10,0,0.00354
+Claude Opus 4.8 medium,character_count,80.00,8,10,2,0.00308
+Claude Opus 4.8 medium,constraint_awareness,100.00,10,10,0,0.00501
+Claude Opus 4.8 medium,format_compliance,100.00,10,10,0,0.00497
+Claude Opus 4.8 medium,negation,100.00,10,10,0,0.003925
+Claude Opus 4.8 medium,ordering,100.00,10,10,0,0.00579
+Claude Opus 4.8 medium,spelling_transform,70.00,7,10,3,0.003755
+Claude Opus 4.8 medium,word_count,100.00,10,10,0,0.00356
+Claude Sonnet 4.6,arithmetic,100.00,10,10,0,0.002136
+Claude Sonnet 4.6,character_count,30.00,3,10,7,0.002571
+Claude Sonnet 4.6,constraint_awareness,40.00,4,10,6,0.00297
+Claude Sonnet 4.6,format_compliance,100.00,10,10,0,0.002358
+Claude Sonnet 4.6,negation,90.00,9,10,1,0.002073
+Claude Sonnet 4.6,ordering,100.00,10,10,0,0.00312
+Claude Sonnet 4.6,spelling_transform,60.00,6,10,4,0.003834
+Claude Sonnet 4.6,word_count,100.00,10,10,0,0.002046
+GPT-4.1 none,arithmetic,100.00,10,10,0,0.00091
+GPT-4.1 none,character_count,50.00,5,10,5,0.000744
+GPT-4.1 none,constraint_awareness,50.00,5,10,5,0.001368
+GPT-4.1 none,format_compliance,100.00,10,10,0,0.001146
+GPT-4.1 none,negation,80.00,8,10,2,0.001014
+GPT-4.1 none,ordering,100.00,10,10,0,0.001516
+GPT-4.1 none,spelling_transform,60.00,6,10,4,0.000884
+GPT-4.1 none,word_count,100.00,10,10,0,0.000892
+GPT-4o none,arithmetic,100.00,10,10,0,0.0011375
+GPT-4o none,character_count,70.00,7,10,3,0.001
+GPT-4o none,constraint_awareness,10.00,1,10,9,0.00191
+GPT-4o none,format_compliance,70.00,7,10,3,0.0015525
+GPT-4o none,negation,50.00,5,10,5,0.0013475
+GPT-4o none,ordering,100.00,10,10,0,0.001895
+GPT-4o none,spelling_transform,90.00,9,10,1,0.001105
+GPT-4o none,word_count,100.00,10,10,0,0.001105
+GPT-5 Nano minimal,arithmetic,90.00,9,10,1,9.785e-05
+GPT-5 Nano minimal,character_count,20.00,2,10,8,9.21e-05
+GPT-5 Nano minimal,constraint_awareness,90.00,9,10,1,0.0001071
+GPT-5 Nano minimal,format_compliance,100.00,10,10,0,0.00010595
+GPT-5 Nano minimal,negation,100.00,10,10,0,9.865e-05
+GPT-5 Nano minimal,ordering,80.00,8,10,2,0.000142
+GPT-5 Nano minimal,spelling_transform,30.00,3,10,7,0.000158
+GPT-5 Nano minimal,word_count,90.00,9,10,1,9.56e-05
+GPT-5 low,arithmetic,100.00,10,10,0,0.00576625
+GPT-5 low,character_count,100.00,10,10,0,0.0123525
+GPT-5 low,constraint_awareness,90.00,9,10,1,0.0066675
+GPT-5 low,format_compliance,100.00,10,10,0,0.00858875
+GPT-5 low,negation,100.00,10,10,0,0.00589625
+GPT-5 low,ordering,100.00,10,10,0,0.00854
+GPT-5 low,spelling_transform,100.00,10,10,0,0.01363
+GPT-5 low,word_count,100.00,10,10,0,0.006
+GPT-5.2 none,arithmetic,100.00,10,10,0,0.00147875
+GPT-5.2 none,character_count,40.00,4,10,6,0.0012635
+GPT-5.2 none,constraint_awareness,100.00,10,10,0,0.0017885
+GPT-5.2 none,format_compliance,100.00,10,10,0,0.00172025
+GPT-5.2 none,negation,100.00,10,10,0,0.00149275
+GPT-5.2 none,ordering,100.00,10,10,0,0.002464
+GPT-5.2 none,spelling_transform,70.00,7,10,3,0.00154
+GPT-5.2 none,word_count,90.00,9,10,1,0.001386
+GPT-5.4 high,arithmetic,100.00,10,10,0,0.0061475
+GPT-5.4 high,character_count,100.00,10,10,0,0.014005
+GPT-5.4 high,constraint_awareness,100.00,10,10,0,0.00706
+GPT-5.4 high,format_compliance,100.00,10,10,0,0.0078375
+GPT-5.4 high,negation,100.00,10,10,0,0.0065875
+GPT-5.4 high,ordering,100.00,10,10,0,0.007335
+GPT-5.4 high,spelling_transform,90.00,9,10,1,0.01525
+GPT-5.4 high,word_count,100.00,10,10,0,0.00749
+GPT-5.4 low,arithmetic,100.00,10,10,0,0.0035375
+GPT-5.4 low,character_count,90.00,9,10,1,0.00799
+GPT-5.4 low,constraint_awareness,100.00,10,10,0,0.00511
+GPT-5.4 low,format_compliance,100.00,10,10,0,0.0042675
+GPT-5.4 low,negation,100.00,10,10,0,0.0034975
+GPT-5.4 low,ordering,100.00,10,10,0,0.003735
+GPT-5.4 low,spelling_transform,90.00,9,10,1,0.007405
+GPT-5.4 low,word_count,100.00,10,10,0,0.005045
+GPT-5.4 medium,arithmetic,100.00,10,10,0,0.0054575
+GPT-5.4 medium,character_count,100.00,10,10,0,0.0112
+GPT-5.4 medium,constraint_awareness,100.00,10,10,0,0.006535
+GPT-5.4 medium,format_compliance,100.00,10,10,0,0.0070275
+GPT-5.4 medium,negation,100.00,10,10,0,0.0053725
+GPT-5.4 medium,ordering,100.00,10,10,0,0.005685
+GPT-5.4 medium,spelling_transform,80.00,8,10,2,0.011065
+GPT-5.4 medium,word_count,100.00,10,10,0,0.00701
+GPT-5.4 none,arithmetic,100.00,10,10,0,0.0017975
+GPT-5.4 none,character_count,70.00,7,10,3,0.001555
+GPT-5.4 none,constraint_awareness,60.00,6,10,4,0.002305
+GPT-5.4 none,format_compliance,100.00,10,10,0,0.0021075
+GPT-5.4 none,negation,100.00,10,10,0,0.0018775
+GPT-5.4 none,ordering,100.00,10,10,0,0.002895
+GPT-5.4 none,spelling_transform,70.00,7,10,3,0.001795
+GPT-5.4 none,word_count,100.00,10,10,0,0.00173
+GPT-5.5 high,arithmetic,100.00,10,10,0,0.012205
+GPT-5.5 high,character_count,100.00,10,10,0,0.02345
+GPT-5.5 high,constraint_awareness,100.00,10,10,0,0.01712
+GPT-5.5 high,format_compliance,100.00,10,10,0,0.018495
+GPT-5.5 high,negation,100.00,10,10,0,0.012245
+GPT-5.5 high,ordering,100.00,10,10,0,0.01578
+GPT-5.5 high,spelling_transform,100.00,10,10,0,0.02519
+GPT-5.5 high,word_count,100.00,10,10,0,0.01471
+GPT-5.5 medium,arithmetic,100.00,10,10,0,0.010585
+GPT-5.5 medium,character_count,100.00,10,10,0,0.01844
+GPT-5.5 medium,constraint_awareness,100.00,10,10,0,0.01313
+GPT-5.5 medium,format_compliance,100.00,10,10,0,0.011685
+GPT-5.5 medium,negation,100.00,10,10,0,0.009785
+GPT-5.5 medium,ordering,100.00,10,10,0,0.01419
+GPT-5.5 medium,spelling_transform,100.00,10,10,0,0.02093
+GPT-5.5 medium,word_count,100.00,10,10,0,0.01189
+GPT-5.5 none,arithmetic,100.00,10,10,0,0.003595
+GPT-5.5 none,character_count,50.00,5,10,5,0.00311
+GPT-5.5 none,constraint_awareness,100.00,10,10,0,0.00461
+GPT-5.5 none,format_compliance,100.00,10,10,0,0.004215
+GPT-5.5 none,negation,100.00,10,10,0,0.003755
+GPT-5.5 none,ordering,100.00,10,10,0,0.00579
+GPT-5.5 none,spelling_transform,80.00,8,10,2,0.00371
+GPT-5.5 none,word_count,100.00,10,10,0,0.00346
+Gemini 3 Flash Preview OR,arithmetic,100.00,10,10,0,0.000254
+Gemini 3 Flash Preview OR,character_count,40.00,4,10,6,0.000175
+Gemini 3 Flash Preview OR,constraint_awareness,100.00,10,10,0,0.000323
+Gemini 3 Flash Preview OR,format_compliance,100.00,10,10,0,0.000319
+Gemini 3 Flash Preview OR,negation,100.00,10,10,0,0.0002355
+Gemini 3 Flash Preview OR,ordering,100.00,10,10,0,0.0004545
+Gemini 3 Flash Preview OR,spelling_transform,60.00,6,10,4,0.000213
+Gemini 3 Flash Preview OR,word_count,100.00,10,10,0,0.000206
+Gemini 3.1 Flash Lite OR,arithmetic,100.00,10,10,0,0.000128
+Gemini 3.1 Flash Lite OR,character_count,30.00,3,10,7,8.925e-05
+Gemini 3.1 Flash Lite OR,constraint_awareness,60.00,6,10,4,0.0001625
+Gemini 3.1 Flash Lite OR,format_compliance,100.00,10,10,0,0.00015375
+Gemini 3.1 Flash Lite OR,negation,100.00,10,10,0,0.000119
+Gemini 3.1 Flash Lite OR,ordering,100.00,10,10,0,0.00022825
+Gemini 3.1 Flash Lite OR,spelling_transform,70.00,7,10,3,0.00011375
+Gemini 3.1 Flash Lite OR,word_count,90.00,9,10,1,0.0001035
+Gemini 3.1 Pro Preview OR,arithmetic,100.00,10,10,0,0.018596
+Gemini 3.1 Pro Preview OR,character_count,100.00,10,10,0,0.026932
+Gemini 3.1 Pro Preview OR,constraint_awareness,100.00,10,10,0,0.025172
+Gemini 3.1 Pro Preview OR,format_compliance,100.00,10,10,0,0.0208
+Gemini 3.1 Pro Preview OR,negation,100.00,10,10,0,0.020682
+Gemini 3.1 Pro Preview OR,ordering,100.00,10,10,0,0.027882
+Gemini 3.1 Pro Preview OR,spelling_transform,100.00,10,10,0,0.02532
+Gemini 3.1 Pro Preview OR,word_count,100.00,10,10,0,0.017528
+Gemini 3.5 Flash OR,arithmetic,100.00,10,10,0,0.013587
+Gemini 3.5 Flash OR,character_count,100.00,10,10,0,0.025599
+Gemini 3.5 Flash OR,constraint_awareness,100.00,10,10,0,0.020364
+Gemini 3.5 Flash OR,format_compliance,100.00,10,10,0,0.022035
+Gemini 3.5 Flash OR,negation,100.00,10,10,0,0.0150075
+Gemini 3.5 Flash OR,ordering,100.00,10,10,0,0.0192555
+Gemini 3.5 Flash OR,spelling_transform,100.00,10,10,0,0.019962
+Gemini 3.5 Flash OR,word_count,100.00,10,10,0,0.013209
+Grok 4.20 xAI,arithmetic,0.00,0,10,10,0.01295625
+Grok 4.20 xAI,character_count,60.00,6,10,4,0.02045
+Grok 4.20 xAI,constraint_awareness,10.00,1,10,9,0.0184025
+Grok 4.20 xAI,format_compliance,50.00,5,10,5,0.01648375
+Grok 4.20 xAI,negation,0.00,0,10,10,0.01125875
+Grok 4.20 xAI,ordering,0.00,0,10,10,0.01345875
+Grok 4.20 xAI,spelling_transform,0.00,0,10,10,0.0417675
+Grok 4.20 xAI,word_count,40.00,4,10,6,0.0124
+Grok 4.3 xAI,arithmetic,50.00,5,10,5,0.00733625
+Grok 4.3 xAI,character_count,90.00,9,10,1,0.0111775
+Grok 4.3 xAI,constraint_awareness,20.00,2,10,8,0.0074725
+Grok 4.3 xAI,format_compliance,100.00,10,10,0,0.00597375
+Grok 4.3 xAI,negation,30.00,3,10,7,0.00572375
+Grok 4.3 xAI,ordering,70.00,7,10,3,0.00800375
+Grok 4.3 xAI,spelling_transform,90.00,9,10,1,0.009645
+Grok 4.3 xAI,word_count,50.00,5,10,5,0.0072575
