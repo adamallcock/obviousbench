@@ -1,0 +1,8 @@
+# Copy this file locally and replace placeholders with exact Inspect model strings.
+frontier:
+  - "<provider/current-frontier-model>"
+cost_effective:
+  - "<provider/cheap-fast-model>"
+open_or_local:
+  - "mockllm/model"
+

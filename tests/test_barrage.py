@@ -1,0 +1,122 @@
+import json
+from collections import Counter
+
+from obviousbench.barrage import (
+    BarrageProfile,
+    build_barrage,
+    load_split_items,
+    write_barrage_jsonl,
+)
+from obviousbench.datasets.schemas import FAMILY_SHORT_NAMES, BenchmarkItem
+from tests.datasets.test_schemas import valid_record
+
+
+def _record(family: str, subfamily: str, index: int) -> dict:
+    family_short = FAMILY_SHORT_NAMES[family]
+    return valid_record(
+        id=f"obviousbench.{family_short}.en.v0.public.{index:06d}",
+        family=family,
+        subfamily=subfamily,
+        question=f"{family} {subfamily} {index}?",
+        prompt=f"Question: {family} {subfamily} {index}?\nAnswer:",
+        target="A",
+        answer_type="multiple_choice",
+        scorer="multiple_choice_letter_v0",
+        source_type="generated_variant",
+        source_refs=[f"src_{family}_{subfamily}"],
+        metadata={
+            **valid_record()["metadata"],
+            "choices": ["A", "B"],
+            "variant_of": f"{family}_{subfamily}",
+        },
+    )
+
+
+def _item(family: str, subfamily: str, index: int) -> BenchmarkItem:
+    return BenchmarkItem.model_validate(_record(family, subfamily, index))
+
+
+def test_parse_balanced_profile_name():
+    profile = BarrageProfile.parse("balanced_8x10")
+
+    assert profile.family_count == 8
+    assert profile.per_family == 10
+    assert profile.name == "balanced_8x10"
+
+
+def test_build_barrage_balances_families_and_round_robins_subfamilies():
+    items = [
+        *[_item("character_count", "letters", index) for index in range(1, 5)],
+        *[_item("character_count", "positions", index) for index in range(5, 9)],
+        *[_item("word_count", "sentences", index) for index in range(9, 13)],
+        *[_item("word_count", "commas", index) for index in range(13, 17)],
+    ]
+
+    selected = build_barrage(
+        items,
+        BarrageProfile(name="balanced_2x4", family_count=2, per_family=4),
+        seed=123,
+    )
+
+    assert Counter(item.family for item in selected) == {
+        "character_count": 4,
+        "word_count": 4,
+    }
+    assert Counter(
+        (item.family, item.subfamily) for item in selected
+    ) == {
+        ("character_count", "letters"): 2,
+        ("character_count", "positions"): 2,
+        ("word_count", "sentences"): 2,
+        ("word_count", "commas"): 2,
+    }
+    assert [item.family for item in selected[:4]] == [
+        "character_count",
+        "word_count",
+        "character_count",
+        "word_count",
+    ]
+
+
+def test_build_barrage_is_seed_stable():
+    items = [
+        _item(family, "one", index)
+        for index, family in enumerate(
+            ["character_count"] * 8 + ["word_count"] * 8,
+            1,
+        )
+    ]
+    profile = BarrageProfile(name="balanced_2x3", family_count=2, per_family=3)
+
+    first = [item.id for item in build_barrage(items, profile, seed=42)]
+    second = [item.id for item in build_barrage(items, profile, seed=42)]
+    different = [item.id for item in build_barrage(items, profile, seed=43)]
+
+    assert first == second
+    assert first != different
+
+
+def test_write_and_load_materialized_barrage(tmp_path):
+    out = tmp_path / "barrage.jsonl"
+    items = [_item("character_count", "letters", 1)]
+
+    write_barrage_jsonl(items, out)
+
+    assert json.loads(out.read_text(encoding="utf-8"))["id"] == items[0].id
+
+
+def test_load_split_items_reads_all_split_jsonl_files(tmp_path):
+    split_dir = tmp_path / "public_v0"
+    split_dir.mkdir()
+    (split_dir / "character_count.jsonl").write_text(
+        json.dumps(_record("character_count", "letters", 1)) + "\n",
+        encoding="utf-8",
+    )
+    (split_dir / "word_count.jsonl").write_text(
+        json.dumps(_record("word_count", "sentences", 2)) + "\n",
+        encoding="utf-8",
+    )
+
+    items = load_split_items("public_v0", data_dir=tmp_path)
+
+    assert [item.family for item in items] == ["character_count", "word_count"]

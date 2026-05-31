@@ -1,0 +1,159 @@
+"""Summary metric computation."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from itertools import groupby
+from typing import Any
+
+
+@dataclass(frozen=True)
+class EvalRecord:
+    model: str
+    sample_id: str
+    family: str
+    correct: bool
+    failure_type: str
+    provider_error: bool
+    timeout: bool
+    subfamily: str = ""
+    question: str = ""
+    barrage_profile: str | None = None
+    barrage_seed: int | None = None
+    reasoning_effort: str | None = None
+    reasoning_summary: str | None = None
+    input_tokens: int = 0
+    output_tokens: int = 0
+    reasoning_tokens: int = 0
+    cache_read_tokens: int = 0
+    cache_write_tokens: int = 0
+    total_tokens: int = 0
+    estimated_cost_usd: float | None = None
+    cost_source: str | None = None
+    cost_warnings: str = ""
+
+    @property
+    def run_variant(self) -> str:
+        return run_variant_key(
+            model=self.model,
+            barrage_profile=self.barrage_profile,
+            barrage_seed=self.barrage_seed,
+            reasoning_effort=self.reasoning_effort,
+            reasoning_summary=self.reasoning_summary,
+        )
+
+
+@dataclass(frozen=True)
+class SummaryRow:
+    run_variant: str
+    model: str
+    barrage_profile: str | None
+    barrage_seed: int | None
+    reasoning_effort: str | None
+    reasoning_summary: str | None
+    total_samples: int
+    scored_samples: int
+    correct: int
+    failures: int
+    obvious_failure_rate: float
+    accuracy: float
+    failures_per_1000: int
+    provider_errors: int
+    timeouts: int
+    non_answers: int
+    format_failures: int
+    input_tokens: int
+    output_tokens: int
+    reasoning_tokens: int
+    cache_read_tokens: int
+    cache_write_tokens: int
+    total_tokens: int
+    estimated_cost_usd: float | None
+    cost_source: str
+    cost_warnings: str
+
+
+def run_variant_key(
+    *,
+    model: str,
+    barrage_profile: str | None,
+    barrage_seed: int | None,
+    reasoning_effort: str | None,
+    reasoning_summary: str | None,
+) -> str:
+    return (
+        f"{model}|profile={barrage_profile or ''}|seed={barrage_seed or ''}|"
+        f"reasoning_effort={reasoning_effort or ''}|"
+        f"reasoning_summary={reasoning_summary or ''}"
+    )
+
+
+def compute_summary(records: list[EvalRecord]) -> list[SummaryRow]:
+    rows: list[SummaryRow] = []
+    sorted_records = sorted(records, key=lambda record: record.run_variant)
+    for _variant, grouped in groupby(sorted_records, key=lambda record: record.run_variant):
+        model_records = list(grouped)
+        first = model_records[0]
+        provider_errors = sum(record.provider_error for record in model_records)
+        timeouts = sum(record.timeout for record in model_records)
+        scored = [
+            record
+            for record in model_records
+            if not record.provider_error and not record.timeout
+        ]
+        correct = sum(record.correct for record in scored)
+        failures = len(scored) - correct
+        scored_count = len(scored)
+        failure_rate = failures / scored_count if scored_count else 0.0
+        accuracy = correct / scored_count if scored_count else 0.0
+        rows.append(
+            SummaryRow(
+                run_variant=first.run_variant,
+                model=first.model,
+                barrage_profile=first.barrage_profile,
+                barrage_seed=first.barrage_seed,
+                reasoning_effort=first.reasoning_effort,
+                reasoning_summary=first.reasoning_summary,
+                total_samples=len(model_records),
+                scored_samples=scored_count,
+                correct=correct,
+                failures=failures,
+                obvious_failure_rate=failure_rate,
+                accuracy=accuracy,
+                failures_per_1000=round(failure_rate * 1000),
+                provider_errors=provider_errors,
+                timeouts=timeouts,
+                non_answers=sum(record.failure_type == "non_answer" for record in scored),
+                format_failures=sum(
+                    record.failure_type
+                    in {"format_noncompliance", "verbose_noncompliance", "json_malformed"}
+                    for record in scored
+                ),
+                input_tokens=sum(record.input_tokens for record in model_records),
+                output_tokens=sum(record.output_tokens for record in model_records),
+                reasoning_tokens=sum(record.reasoning_tokens for record in model_records),
+                cache_read_tokens=sum(record.cache_read_tokens for record in model_records),
+                cache_write_tokens=sum(
+                    record.cache_write_tokens for record in model_records
+                ),
+                total_tokens=sum(record.total_tokens for record in model_records),
+                estimated_cost_usd=_sum_optional_costs(model_records),
+                cost_source=_join_unique(record.cost_source for record in model_records),
+                cost_warnings=_join_unique(record.cost_warnings for record in model_records),
+            )
+        )
+    return rows
+
+
+def _sum_optional_costs(records: list[EvalRecord]) -> float | None:
+    costs = [
+        record.estimated_cost_usd
+        for record in records
+        if record.estimated_cost_usd is not None
+    ]
+    return round(sum(costs), 12) if costs else None
+
+
+def _join_unique(values: Any) -> str:
+    unique = sorted({str(value) for value in values if value})
+    return "; ".join(unique)

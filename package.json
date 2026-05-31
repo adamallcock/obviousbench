@@ -1,0 +1,8 @@
+{
+  "name": "benchmark-oops",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "runcost": "^0.1.2"
+  }
+}
