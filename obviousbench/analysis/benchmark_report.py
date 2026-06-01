@@ -7,6 +7,8 @@ import html
 from dataclasses import dataclass
 from pathlib import Path
 
+from obviousbench.analysis.statistics import wilson_interval
+
 
 @dataclass(frozen=True)
 class BenchmarkReportInputs:
@@ -29,6 +31,10 @@ def build_benchmark_report(inputs: BenchmarkReportInputs) -> BenchmarkReportPath
     inputs.output_dir.mkdir(parents=True, exist_ok=True)
     comparison_rows = _read_csv(inputs.comparison_dir / "comparison.csv")
     family_rows = _read_csv(inputs.comparison_dir / "family_comparison.csv")
+    effort_rows = _read_optional_csv(inputs.comparison_dir / "effort_curve.csv")
+    metamorphic_rows = _read_optional_csv(
+        inputs.comparison_dir / "metamorphic_consistency.csv"
+    )
 
     leaderboard = _leaderboard_rows(comparison_rows)
     family_heatmap = _family_heatmap_rows(family_rows)
@@ -48,6 +54,8 @@ def build_benchmark_report(inputs: BenchmarkReportInputs) -> BenchmarkReportPath
             generated_on=inputs.generated_on,
             leaderboard=leaderboard,
             family_heatmap=family_heatmap,
+            effort_rows=effort_rows,
+            metamorphic_rows=metamorphic_rows,
         ),
         encoding="utf-8",
     )
@@ -57,6 +65,12 @@ def build_benchmark_report(inputs: BenchmarkReportInputs) -> BenchmarkReportPath
 def _read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+def _read_optional_csv(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    return _read_csv(path)
 
 
 def _leaderboard_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -86,6 +100,12 @@ def _leaderboard_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
         correct = _int(row.get("correct"))
         cost = _optional_float(row.get("estimated_cost_usd"))
         total_tokens = _int(row.get("total_tokens"))
+        tokens_per_correct = _optional_float(row.get("tokens_per_correct"))
+        if tokens_per_correct is None and correct:
+            tokens_per_correct = total_tokens / correct
+        cost_per_correct = _optional_float(row.get("cost_per_correct_usd"))
+        if cost_per_correct is None and cost is not None and correct:
+            cost_per_correct = cost / correct
         leaderboard.append(
             {
                 "rank": rank_value,
@@ -93,6 +113,7 @@ def _leaderboard_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
                 "model": row.get("model", ""),
                 "barrage_profile": row.get("barrage_profile", ""),
                 "accuracy_pct": _format_percent(row.get("accuracy")),
+                "accuracy_ci_95": _accuracy_interval(row),
                 "answer_accuracy_pct": _format_percent(
                     row.get("answer_accuracy") or row.get("accuracy")
                 ),
@@ -114,12 +135,12 @@ def _leaderboard_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
                 "timeouts": str(_int(row.get("timeouts"))),
                 "total_tokens": str(total_tokens),
                 "estimated_cost_usd": _format_money(cost),
-                "cost_per_correct_usd": _format_money(
-                    cost / correct if cost is not None and correct else None
+                "cost_per_correct_usd": _format_money(cost_per_correct),
+                "tokens_per_correct": _format_number(tokens_per_correct),
+                "overthinking_index": _format_number(
+                    _optional_float(row.get("overthinking_index"))
                 ),
-                "tokens_per_correct": _format_number(
-                    total_tokens / correct if correct else None
-                ),
+                "reasoning_token_source": row.get("reasoning_token_source", ""),
                 "cost_warnings": row.get("cost_warnings", ""),
                 "summary_dir": row.get("summary_dir", ""),
             }
@@ -131,14 +152,23 @@ def _family_heatmap_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     heatmap: list[dict[str, str]] = []
     for row in sorted(rows, key=lambda item: (item.get("label", ""), item.get("family", ""))):
         samples = _int(row.get("samples"))
+        scored_samples = _int(row.get("scored_samples"))
+        denominator = scored_samples if row.get("scored_samples", "") != "" else samples
         correct = _int(row.get("correct"))
         heatmap.append(
             {
                 "label": row.get("label", ""),
                 "family": row.get("family", ""),
-                "accuracy_pct": f"{(correct / samples * 100):.2f}" if samples else "",
+                "accuracy_pct": (
+                    f"{(correct / denominator * 100):.2f}" if denominator else ""
+                ),
                 "correct": str(correct),
                 "samples": str(samples),
+                "scored_samples": (
+                    str(scored_samples) if row.get("scored_samples", "") != "" else ""
+                ),
+                "provider_errors": row.get("provider_errors", ""),
+                "timeouts": row.get("timeouts", ""),
                 "failures": str(_int(row.get("failures"))),
                 "estimated_cost_usd": row.get("estimated_cost_usd", ""),
             }
@@ -151,7 +181,7 @@ def _write_csv(path: Path, rows: list[dict[str, str]]) -> None:
         path.write_text("", encoding="utf-8")
         return
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -160,11 +190,16 @@ def _leaderboard_markdown(rows: list[dict[str, str]]) -> str:
     headers = [
         "Rank",
         "Model",
+        "Accuracy",
+        "95% CI",
         "Answer",
         "Format",
         "Strict",
         "Cost",
+        "Tokens",
+        "Tokens / Correct",
         "Cost / Correct",
+        "Overthinking",
         "Provider Errors",
     ]
     lines = [
@@ -180,11 +215,16 @@ def _leaderboard_markdown(rows: list[dict[str, str]]) -> str:
                 [
                     row["rank"] or "n/a",
                     row["label"],
+                    f"{row['accuracy_pct']}%",
+                    row["accuracy_ci_95"] or "n/a",
                     f"{row['answer_accuracy_pct']}%",
                     f"{row['format_accuracy_pct']}%",
                     f"{row['strict_accuracy_pct']}%",
                     _display_money(row["estimated_cost_usd"]),
+                    row["total_tokens"],
+                    row["tokens_per_correct"] or "n/a",
                     _display_money(row["cost_per_correct_usd"]),
+                    row["overthinking_index"] or "n/a",
                     row["provider_errors"],
                 ]
             )
@@ -199,6 +239,8 @@ def _html_report(
     generated_on: str,
     leaderboard: list[dict[str, str]],
     family_heatmap: list[dict[str, str]],
+    effort_rows: list[dict[str, str]],
+    metamorphic_rows: list[dict[str, str]],
 ) -> str:
     return "\n".join(
         [
@@ -219,18 +261,30 @@ def _html_report(
             _summary_cards(leaderboard),
             "<h2>Leaderboard</h2>",
             _leaderboard_table(leaderboard),
+            '<p class="note">Intervals are Wilson 95% confidence intervals over '
+            "scored samples. Close rankings should be treated as directional rather "
+            "than decisive.</p>",
+            _uncertainty_cautions(leaderboard),
+            _effort_warnings(effort_rows),
+            "<h2>Accuracy vs tokens</h2>",
+            _tokens_scatter_svg(leaderboard),
             "<h2>Accuracy vs Estimated Cost</h2>",
             _scatter_svg(leaderboard),
             "<h2>Accuracy Leaderboard</h2>",
             _bar_svg(leaderboard),
             "<h2>Family Accuracy Heatmap</h2>",
             _heatmap_table(family_heatmap),
+            "<h2>Metamorphic Consistency</h2>",
+            _metamorphic_consistency_table(metamorphic_rows),
             "<h2>Provider Errors</h2>",
             _provider_errors(leaderboard),
             "<h2>Reading Notes</h2>",
             "<ul>",
             "<li>Rank scored runs by accuracy, while keeping provider-error rows visible.</li>",
-            "<li>Show cost, token, and cost-per-correct tradeoffs beside accuracy.</li>",
+            "<li>Show cost, token, cost-per-correct, and overthinking tradeoffs "
+            "beside accuracy.</li>",
+            "<li>Overthinking index is reasoning tokens divided by visible output "
+            "tokens; missing reasoning tokens are provider-dependent.</li>",
             "<li>Use family slices to reveal where aggregate scores hide weak spots.</li>",
             "</ul>",
             "</main>",
@@ -264,12 +318,16 @@ def _leaderboard_table(rows: list[dict[str, str]]) -> str:
         "Rank",
         "Model",
         "Profile",
+        "Accuracy",
+        "95% CI",
         "Answer",
         "Format",
         "Strict",
         "Correct",
         "Cost",
         "Cost / Correct",
+        "Tokens / Correct",
+        "Overthinking index",
         "Tokens",
         "Provider Errors",
     ]
@@ -280,17 +338,54 @@ def _leaderboard_table(rows: list[dict[str, str]]) -> str:
             f"<td>{html.escape(row['rank'] or 'n/a')}</td>"
             f"<td>{html.escape(row['label'])}<br><code>{html.escape(row['model'])}</code></td>"
             f"<td>{html.escape(row['barrage_profile'])}</td>"
+            f"<td>{html.escape(row['accuracy_pct'])}%</td>"
+            f"<td>{html.escape(row['accuracy_ci_95'] or 'n/a')}</td>"
             f"<td>{html.escape(row['answer_accuracy_pct'])}%</td>"
             f"<td>{html.escape(row['format_accuracy_pct'])}%</td>"
             f"<td>{html.escape(row['strict_accuracy_pct'])}%</td>"
             f"<td>{html.escape(row['correct'])}/{html.escape(row['scored_samples'])}</td>"
             f"<td>{html.escape(_display_money(row['estimated_cost_usd']))}</td>"
             f"<td>{html.escape(_display_money(row['cost_per_correct_usd']))}</td>"
+            f"<td>{html.escape(row['tokens_per_correct'] or 'n/a')}</td>"
+            f"<td>{html.escape(row['overthinking_index'] or 'n/a')}</td>"
             f"<td>{html.escape(row['total_tokens'])}</td>"
             f"<td>{html.escape(row['provider_errors'])}</td>"
             "</tr>"
         )
     return _table(headers, body)
+
+
+def _uncertainty_cautions(rows: list[dict[str, str]]) -> str:
+    scored = [row for row in rows if row["rank"]]
+    warnings = []
+    for left, right in zip(scored, scored[1:], strict=False):
+        left_accuracy = (_optional_float(left["accuracy_pct"]) or 0.0) / 100
+        right_accuracy = (_optional_float(right["accuracy_pct"]) or 0.0) / 100
+        max_half_width = max(_ci_half_width(left), _ci_half_width(right))
+        if max_half_width > 0 and abs(left_accuracy - right_accuracy) < max_half_width:
+            warnings.append(
+                f"{left['label']} and {right['label']} are closer than the larger "
+                "accuracy interval half-width."
+            )
+    if not warnings:
+        return ""
+    items = "".join(f"<li>{html.escape(warning)}</li>" for warning in warnings)
+    return (
+        '<section class="note"><strong>Accuracy interval cautions</strong><ul>'
+        + items
+        + "</ul></section>"
+    )
+
+
+def _ci_half_width(row: dict[str, str]) -> float:
+    interval = row.get("accuracy_ci_95", "")
+    if " - " not in interval:
+        return 0.0
+    low_raw, high_raw = interval.split(" - ", maxsplit=1)
+    low = (_optional_float(low_raw.strip().removesuffix("%")) or 0.0) / 100
+    high = (_optional_float(high_raw.strip().removesuffix("%")) or 0.0) / 100
+    accuracy = (_optional_float(row.get("accuracy_pct")) or 0.0) / 100
+    return max(abs(accuracy - low), abs(high - accuracy))
 
 
 def _scatter_svg(rows: list[dict[str, str]]) -> str:
@@ -323,6 +418,42 @@ def _scatter_svg(rows: list[dict[str, str]]) -> str:
         f'<line x1="{pad}" y1="{height-pad}" x2="{width-pad}" y2="{height-pad}" />'
         f'<line x1="{pad}" y1="{pad}" x2="{pad}" y2="{height-pad}" />'
         f'<text x="{width/2}" y="{height-10}">Estimated cost USD</text>'
+        '<text x="8" y="24">Accuracy</text>'
+        + "".join(circles)
+        + "</svg>"
+    )
+
+
+def _tokens_scatter_svg(rows: list[dict[str, str]]) -> str:
+    points = [
+        (
+            row,
+            _optional_float(row["tokens_per_correct"]),
+            _optional_float(row["accuracy_pct"]),
+        )
+        for row in rows
+        if row["rank"] and _optional_float(row["tokens_per_correct"]) is not None
+    ]
+    if not points:
+        return "<p>No token efficiency values available.</p>"
+    max_tokens = max(tokens or 0 for _, tokens, _ in points) or 1
+    width, height, pad = 760, 360, 48
+    circles = []
+    for row, tokens, accuracy in points:
+        x = pad + ((tokens or 0) / max_tokens) * (width - pad * 2)
+        y = height - pad - ((accuracy or 0) / 100) * (height - pad * 2)
+        label = html.escape(row["label"])
+        circles.append(
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6"><title>{label}: '
+            f'{row["accuracy_pct"]}% at {row["tokens_per_correct"]} '
+            "tokens/correct</title></circle>"
+        )
+    return (
+        f'<svg viewBox="0 0 {width} {height}" role="img" '
+        'aria-label="Accuracy versus tokens per correct scatter plot">'
+        f'<line x1="{pad}" y1="{height-pad}" x2="{width-pad}" y2="{height-pad}" />'
+        f'<line x1="{pad}" y1="{pad}" x2="{pad}" y2="{height-pad}" />'
+        f'<text x="{width/2}" y="{height-10}">Tokens per correct answer</text>'
         '<text x="8" y="24">Accuracy</text>'
         + "".join(circles)
         + "</svg>"
@@ -387,6 +518,63 @@ def _provider_errors(rows: list[dict[str, str]]) -> str:
             f"{html.escape(details)}</li>"
         )
     return "<ul>" + "".join(items) + "</ul>"
+
+
+def _effort_warnings(rows: list[dict[str, str]]) -> str:
+    warning_rows = [row for row in rows if row.get("efficiency_warning")]
+    if not warning_rows:
+        return ""
+    items = []
+    for row in warning_rows:
+        label = row.get("model_base") or row.get("model") or "model"
+        effort = row.get("reasoning_effort") or "unknown effort"
+        warning = row.get("efficiency_warning", "")
+        accuracy_delta = row.get("accuracy_delta_from_min_effort", "")
+        token_delta = row.get("token_delta_from_min_effort", "")
+        cost_delta = row.get("cost_delta_from_min_effort", "")
+        details = (
+            f"{warning}; effort={effort}; accuracy delta={accuracy_delta}; "
+            f"token delta={token_delta}; cost delta={cost_delta}"
+        )
+        items.append(
+            f"<li><strong>{html.escape(label)}</strong>: {html.escape(details)}</li>"
+        )
+    return (
+        '<section class="note"><strong>Efficiency warnings</strong><ul>'
+        + "".join(items)
+        + "</ul></section>"
+    )
+
+
+def _metamorphic_consistency_table(rows: list[dict[str, str]]) -> str:
+    if not rows:
+        return "<p>No metamorphic groups were present in this comparison.</p>"
+    headers = [
+        "Model",
+        "Family",
+        "Groups",
+        "Assessable",
+        "Unassessable",
+        "Consistency",
+        "Mixed Outcomes",
+        "Mixed Group IDs",
+    ]
+    body = []
+    for row in rows:
+        mixed_group_ids = row.get("mixed_group_ids", "")
+        body.append(
+            "<tr>"
+            f"<td>{html.escape(row.get('label', ''))}</td>"
+            f"<td>{html.escape(row.get('family', ''))}</td>"
+            f"<td>{html.escape(row.get('groups', ''))}</td>"
+            f"<td>{html.escape(row.get('assessable_groups', ''))}</td>"
+            f"<td>{html.escape(row.get('unassessable_groups', ''))}</td>"
+            f"<td>{html.escape(_display_percent(row.get('consistency_rate')))}</td>"
+            f"<td>{html.escape(row.get('mixed_outcome_groups', ''))}</td>"
+            f"<td>{html.escape(mixed_group_ids or 'n/a')}</td>"
+            "</tr>"
+        )
+    return _table(headers, body)
 
 
 def _table(headers: list[str], body_rows: list[str]) -> str:
@@ -457,8 +645,31 @@ def _display_money(value: str) -> str:
         return value
 
 
+def _display_percent(value: str | None) -> str:
+    if value in (None, ""):
+        return "n/a"
+    return f"{_format_percent(value)}%"
+
+
 def _format_percent(value: str | None) -> str:
     return f"{_float(value) * 100:.2f}"
+
+
+def _format_interval(low: str | None, high: str | None) -> str:
+    if low in (None, "") or high in (None, ""):
+        return ""
+    return f"{_float(low) * 100:.2f}% - {_float(high) * 100:.2f}%"
+
+
+def _accuracy_interval(row: dict[str, str]) -> str:
+    explicit = _format_interval(row.get("accuracy_ci_low"), row.get("accuracy_ci_high"))
+    if explicit:
+        return explicit
+    scored_samples = _int(row.get("scored_samples"))
+    if scored_samples <= 0:
+        return ""
+    low, high = wilson_interval(_int(row.get("correct")), scored_samples)
+    return f"{low * 100:.2f}% - {high * 100:.2f}%"
 
 
 def _format_money(value: float | None) -> str:

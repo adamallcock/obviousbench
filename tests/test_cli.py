@@ -27,6 +27,58 @@ def test_cli_validate_failure(tmp_path, capsys):
     assert "validation_error" in captured.err
 
 
+def test_cli_validate_passes_item_card_flags(tmp_path, capsys):
+    path = tmp_path / "items.jsonl"
+    cards_dir = tmp_path / "item_cards"
+    cards_dir.mkdir()
+    path.write_text(json.dumps(valid_record()) + "\n", encoding="utf-8")
+
+    exit_code = main(
+        [
+            "validate",
+            str(path),
+            "--item-cards-dir",
+            str(cards_dir),
+            "--allow-extra-item-cards",
+        ]
+    )
+
+    assert exit_code == 0
+    assert "Validation passed." in capsys.readouterr().out
+
+
+def test_cli_validate_can_require_item_cards(tmp_path, capsys):
+    path = tmp_path / "items.jsonl"
+    cards_dir = tmp_path / "item_cards"
+    cards_dir.mkdir()
+    path.write_text(json.dumps(valid_record()) + "\n", encoding="utf-8")
+
+    exit_code = main(
+        [
+            "validate",
+            str(path),
+            "--item-cards-dir",
+            str(cards_dir),
+            "--require-item-cards",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    assert exit_code == 1
+    assert "missing_item_card" in captured.err
+
+
+def test_cli_validate_require_item_cards_requires_cards_dir(tmp_path, capsys):
+    path = tmp_path / "items.jsonl"
+    path.write_text(json.dumps(valid_record()) + "\n", encoding="utf-8")
+
+    exit_code = main(["validate", str(path), "--require-item-cards"])
+
+    captured = capsys.readouterr()
+    assert exit_code == 1
+    assert "missing_item_cards_dir" in captured.err
+
+
 def _barrage_record(family: str, index: int) -> dict:
     family_short = FAMILY_SHORT_NAMES[family]
     return valid_record(
@@ -66,6 +118,86 @@ def test_cli_make_barrage_writes_materialized_profile(tmp_path, capsys):
     assert exit_code == 0
     assert len(out.read_text(encoding="utf-8").splitlines()) == 4
     assert "Wrote 4 barrage samples" in capsys.readouterr().out
+
+
+def test_cli_make_barrage_passes_metamorphic_sibling_cap(monkeypatch, tmp_path):
+    calls = {}
+    out = tmp_path / "barrage.jsonl"
+
+    def fake_load_split_items(split, data_dir=None):
+        calls["split"] = split
+        calls["data_dir"] = data_dir
+        return []
+
+    def fake_build_barrage(items, profile, *, seed, max_metamorphic_siblings_per_group):
+        calls["profile"] = profile
+        calls["seed"] = seed
+        calls["max_metamorphic_siblings_per_group"] = (
+            max_metamorphic_siblings_per_group
+        )
+        return []
+
+    def fake_write_barrage_jsonl(items, path):
+        calls["out"] = path
+        path.write_text("", encoding="utf-8")
+        return path
+
+    monkeypatch.setattr("obviousbench.cli.load_split_items", fake_load_split_items)
+    monkeypatch.setattr("obviousbench.cli.build_barrage", fake_build_barrage)
+    monkeypatch.setattr("obviousbench.cli.write_barrage_jsonl", fake_write_barrage_jsonl)
+
+    exit_code = main(
+        [
+            "make-barrage",
+            "--profile",
+            "balanced_2x2",
+            "--data-dir",
+            str(tmp_path),
+            "--out",
+            str(out),
+            "--seed",
+            "7",
+            "--max-metamorphic-siblings-per-group",
+            "3",
+        ]
+    )
+
+    assert exit_code == 0
+    assert calls["max_metamorphic_siblings_per_group"] == 3
+
+
+def test_cli_make_barrage_defaults_metamorphic_sibling_cap(monkeypatch, tmp_path):
+    calls = {}
+    out = tmp_path / "barrage.jsonl"
+
+    monkeypatch.setattr("obviousbench.cli.load_split_items", lambda split, data_dir=None: [])
+
+    def fake_build_barrage(items, profile, *, seed, max_metamorphic_siblings_per_group):
+        calls["max_metamorphic_siblings_per_group"] = (
+            max_metamorphic_siblings_per_group
+        )
+        return []
+
+    monkeypatch.setattr("obviousbench.cli.build_barrage", fake_build_barrage)
+    monkeypatch.setattr(
+        "obviousbench.cli.write_barrage_jsonl",
+        lambda items, path: path,
+    )
+
+    exit_code = main(
+        [
+            "make-barrage",
+            "--profile",
+            "balanced_2x2",
+            "--data-dir",
+            str(tmp_path),
+            "--out",
+            str(out),
+        ]
+    )
+
+    assert exit_code == 0
+    assert calls["max_metamorphic_siblings_per_group"] == 1
 
 
 def test_cli_summarize_accepts_cost_none(monkeypatch, tmp_path, capsys):
@@ -226,6 +358,8 @@ def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, cap
         comparison = tmp_path / "comparison" / "comparison.csv"
         family_comparison = tmp_path / "comparison" / "family_comparison.csv"
         section_comparison = tmp_path / "comparison" / "section_comparison.csv"
+        effort_curve = tmp_path / "comparison" / "effort_curve.csv"
+        metamorphic_consistency = tmp_path / "comparison" / "metamorphic_consistency.csv"
         delta = tmp_path / "comparison" / "delta.csv"
 
     def fake_build_comparison(inputs):

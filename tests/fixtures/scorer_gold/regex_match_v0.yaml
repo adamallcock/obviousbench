@@ -1,0 +1,121 @@
+examples:
+  - id: regex.basic_code.correct
+    scorer: regex_match_v0
+    target: '[A-Z]{3}-\d{3}'
+    output: "ABC-123"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "ABC-123", failure_type: none}
+    notes: Full regex match is accepted.
+  - id: regex.trimmed_code.correct
+    scorer: regex_match_v0
+    target: '[A-Z]{3}-\d{3}'
+    output: " ABC-123\n"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "ABC-123", failure_type: none}
+    notes: Outer whitespace is trimmed before fullmatch.
+  - id: regex.lowercase_mismatch.format_failure
+    scorer: regex_match_v0
+    target: '[A-Z]{3}-\d{3}'
+    output: "abc-123"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "abc-123", failure_type: format_noncompliance}
+    notes: Case mismatch fails strict regex format.
+  - id: regex.trailing_punctuation.format_failure
+    scorer: regex_match_v0
+    target: '[A-Z]{3}-\d{3}'
+    output: "ABC-123."
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "ABC-123.", failure_type: format_noncompliance}
+    notes: Regex scoring requires fullmatch with no punctuation.
+  - id: regex.empty.non_answer
+    scorer: regex_match_v0
+    target: '[A-Z]{3}-\d{3}'
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty regex output is a non-answer.
+  - id: regex.two_digits.correct
+    scorer: regex_match_v0
+    target: '\d{2}'
+    output: "42"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "42", failure_type: none}
+    notes: Exact two-digit output matches.
+  - id: regex.too_many_digits.format_failure
+    scorer: regex_match_v0
+    target: '\d{2}'
+    output: "0042"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "0042", failure_type: format_noncompliance}
+    notes: Extra digits fail fullmatch.
+  - id: regex.yes_no.correct
+    scorer: regex_match_v0
+    target: 'yes|no'
+    output: "yes"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "yes", failure_type: none}
+    notes: Alternation patterns are supported.
+  - id: regex.case_mismatch.format_failure
+    scorer: regex_match_v0
+    target: 'yes|no'
+    output: "Yes"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "Yes", failure_type: format_noncompliance}
+    notes: Regex matching is case-sensitive unless the pattern says otherwise.
+  - id: regex.choice_letter.correct
+    scorer: regex_match_v0
+    target: '[A-D]'
+    output: "A"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "A", failure_type: none}
+    notes: Single-letter class match is accepted.
+  - id: regex.choice_letter_outside.format_failure
+    scorer: regex_match_v0
+    target: '[A-D]'
+    output: "E"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "E", failure_type: format_noncompliance}
+    notes: Letters outside the class fail format.
+  - id: regex.iso_date.correct
+    scorer: regex_match_v0
+    target: '\d{4}-\d{2}-\d{2}'
+    output: "2026-05-31"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "2026-05-31", failure_type: none}
+    notes: ISO-like date pattern matches.
+  - id: regex.date_slashes.format_failure
+    scorer: regex_match_v0
+    target: '\d{4}-\d{2}-\d{2}'
+    output: "2026/05/31"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "2026/05/31", failure_type: format_noncompliance}
+    notes: Slash-separated date fails a hyphen pattern.
+  - id: regex.literal_json.correct
+    scorer: regex_match_v0
+    target: '\{"answer":"yes"\}'
+    output: '{"answer":"yes"}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: '{"answer":"yes"}', failure_type: none}
+    notes: Escaped literal braces are supported in target patterns.
+  - id: regex.literal_json_spaces.format_failure
+    scorer: regex_match_v0
+    target: '\{"answer":"yes"\}'
+    output: '{"answer": "yes"}'
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: '{"answer": "yes"}', failure_type: format_noncompliance}
+    notes: Unmatched spaces fail exact literal regex.
+  - id: regex.hyphenated_direction.correct
+    scorer: regex_match_v0
+    target: '(north|south)-(east|west)'
+    output: "north-east"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "north-east", failure_type: none}
+    notes: Group alternation with a hyphen is accepted.
+  - id: regex.missing_hyphen.format_failure
+    scorer: regex_match_v0
+    target: '(north|south)-(east|west)'
+    output: "north east"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "north east", failure_type: format_noncompliance}
+    notes: Missing required punctuation fails format.
+  - id: regex.prefixed_number.correct
+    scorer: regex_match_v0
+    target: 'ID: \d{3}'
+    output: "ID: 123"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "ID: 123", failure_type: none}
+    notes: Literal prefixes and numeric groups are supported.
+  - id: regex.prefixed_number_extra_digit.format_failure
+    scorer: regex_match_v0
+    target: 'ID: \d{3}'
+    output: "ID: 1234"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "ID: 1234", failure_type: format_noncompliance}
+    notes: Extra digits fail fullmatch.
+  - id: regex.verbose_answer.format_failure
+    scorer: regex_match_v0
+    target: '[A-Z]{3}-\d{3}'
+    output: "Final: ABC-123"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "Final: ABC-123", failure_type: format_noncompliance}
+    notes: Regex scorer rejects verbose wrappers unless the pattern allows them.

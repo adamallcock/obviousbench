@@ -1,7 +1,69 @@
+import csv
+import shutil
+from pathlib import Path
+
 from obviousbench.analysis.benchmark_report import (
     BenchmarkReportInputs,
+    _uncertainty_cautions,
     build_benchmark_report,
 )
+
+REPORT_FIXTURES = Path(__file__).parents[1] / "fixtures" / "benchmark_report"
+
+
+def test_build_benchmark_report_from_rich_fixture(tmp_path):
+    comparison_dir = tmp_path / "comparison"
+    shutil.copytree(REPORT_FIXTURES / "rich_comparison", comparison_dir)
+    output_dir = tmp_path / "report"
+
+    paths = build_benchmark_report(
+        BenchmarkReportInputs(
+            comparison_dir=comparison_dir,
+            output_dir=output_dir,
+            generated_on="2026-05-31",
+            title="Rich Fixture Sweep",
+        )
+    )
+
+    html = paths.html.read_text(encoding="utf-8")
+    leaderboard_rows = list(csv.DictReader(paths.leaderboard_csv.open(encoding="utf-8")))
+    heatmap_rows = list(csv.DictReader(paths.family_heatmap_csv.open(encoding="utf-8")))
+    leaderboard_md = paths.leaderboard_md.read_text(encoding="utf-8")
+
+    assert [row["label"] for row in leaderboard_rows] == [
+        "Strict Model",
+        "Verbose Correct Model",
+        "Provider Flaky Model",
+    ]
+    assert leaderboard_rows[0]["rank"] == "1"
+    assert leaderboard_rows[1]["answer_accuracy_pct"] == "97.50"
+    assert leaderboard_rows[1]["format_accuracy_pct"] == "82.50"
+    assert leaderboard_rows[1]["strict_accuracy_pct"] == "77.50"
+    assert leaderboard_rows[1]["overthinking_index"] == "1.64"
+    assert leaderboard_rows[2]["rank"] == ""
+    assert leaderboard_rows[2]["provider_errors"] == "12"
+    assert leaderboard_rows[2]["timeouts"] == "4"
+
+    flaky_format = [
+        row
+        for row in heatmap_rows
+        if row["label"] == "Provider Flaky Model"
+        and row["family"] == "format_compliance"
+    ][0]
+    assert flaky_format["accuracy_pct"] == "66.67"
+    assert flaky_format["samples"] == "10"
+    assert flaky_format["scored_samples"] == "6"
+    assert flaky_format["provider_errors"] == "2"
+    assert flaky_format["timeouts"] == "2"
+
+    assert "Rich Fixture Sweep" in html
+    assert "higher_cost_no_accuracy_gain" in html
+    assert "high reasoning token share" in html
+    assert "rate limited on 12 samples; timed out on 4 samples" in html
+    assert "spell.remove.001;spell.remove.002" in html
+    assert "Provider Flaky Model</strong>: 12 provider errors" in html
+    assert "Accuracy interval cautions" in html
+    assert "| 2 | Verbose Correct Model | 87.50%" in leaderboard_md
 
 
 def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
@@ -13,20 +75,22 @@ def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
         "\n".join(
             [
                 "label,model,barrage_profile,total_samples,scored_samples,correct,failures,"
-                "answer_correct,format_correct,strict_correct,answer_accuracy,"
+                "answer_correct,format_correct,strict_correct,accuracy_ci_low,"
+                "accuracy_ci_high,answer_accuracy,"
                 "format_accuracy,strict_accuracy,provider_errors,timeouts,accuracy,"
                 "obvious_failure_rate,input_tokens,"
                 "output_tokens,reasoning_tokens,total_tokens,estimated_cost_usd,cost_source,"
+                "tokens_per_correct,cost_per_correct_usd,overthinking_index,"
                 "cost_warnings,summary_dir",
                 "Model A,provider/model-a,balanced_8x10,80,80,72,8,72,76,68,"
-                "0.9,0.95,0.85,0,0,0.9,0.1,"
-                "100,50,0,150,0.02,runcost,,results/a",
+                "0.82,0.95,0.9,0.95,0.85,0,0,0.9,0.1,"
+                "100,50,0,150,0.02,runcost,2.083333,0.000278,0,,results/a",
                 "Model B,provider/model-b,balanced_8x10,80,80,64,16,64,80,64,"
-                "0.8,1.0,0.8,0,0,0.8,0.2,"
-                "100,40,0,140,0.004,runcost,,results/b",
+                "0.7,0.88,0.8,1.0,0.8,0,0,0.8,0.2,"
+                "100,40,0,140,0.004,runcost,2.1875,0.000063,0,,results/b",
                 "Model C,provider/model-c,balanced_8x10,80,0,0,0,0,0,0,"
-                "0,0,0,80,0,0,0,"
-                "0,0,0,0,0.0,runcost,provider rate limited,results/c",
+                "0,0,0,0,0,80,0,0,0,"
+                "0,0,0,0,0.0,runcost,,,,provider rate limited,results/c",
             ]
         )
         + "\n",
@@ -53,6 +117,35 @@ def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
         "total_tokens,estimated_cost_usd,summary_dir\n",
         encoding="utf-8",
     )
+    (comparison_dir / "effort_curve.csv").write_text(
+        "\n".join(
+            [
+                "model_base,barrage_profile,reasoning_summary,effort_order,"
+                "reasoning_effort,accuracy,strict_accuracy,total_tokens,"
+                "reasoning_tokens,estimated_cost_usd,accuracy_delta_from_min_effort,"
+                "token_delta_from_min_effort,cost_delta_from_min_effort,"
+                "efficiency_warning",
+                "provider/model-a,balanced_8x10,,2,medium,0.9,0.85,150,100,"
+                "0.02,0,10,0.01,higher_cost_no_accuracy_gain",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (comparison_dir / "metamorphic_consistency.csv").write_text(
+        "\n".join(
+            [
+                "label,model,barrage_profile,reasoning_effort,reasoning_summary,"
+                "family,groups,samples,scored_samples,consistent_groups,"
+                "inconsistent_groups,assessable_groups,unassessable_groups,"
+                "mixed_outcome_groups,consistency_rate,mixed_group_ids,summary_dir",
+                "Model A,provider/model-a,balanced_8x10,,,spelling_transform,2,4,"
+                "4,1,1,2,0,1,0.5,spell.reverse.001,results/a",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
     paths = build_benchmark_report(
         BenchmarkReportInputs(
@@ -70,17 +163,171 @@ def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
 
     html = paths.html.read_text(encoding="utf-8")
     leaderboard = paths.leaderboard_csv.read_text(encoding="utf-8")
+    leaderboard_md = paths.leaderboard_md.read_text(encoding="utf-8")
     heatmap = paths.family_heatmap_csv.read_text(encoding="utf-8")
 
     assert "Expanded Sweep" in html
     assert "Accuracy vs Estimated Cost" in html
+    assert "Accuracy vs tokens" in html
+    assert "Overthinking index" in html
+    assert "Efficiency warnings" in html
+    assert "higher_cost_no_accuracy_gain" in html
+    assert "Accuracy interval" in html
     assert "<svg" in html
     assert "Family Accuracy Heatmap" in html
+    assert "Metamorphic Consistency" in html
+    assert "spell.reverse.001" in html
     assert "Provider Errors" in html
     assert "rate limited" in html
-    assert "rank,label,model,barrage_profile,accuracy_pct" in leaderboard
-    assert "1,Model A,provider/model-a,balanced_8x10,90.00" in leaderboard
+    assert "rank,label,model,barrage_profile,accuracy_pct,accuracy_ci_95" in leaderboard
+    assert "1,Model A,provider/model-a,balanced_8x10,90.00,82.00% - 95.00%" in leaderboard
     assert "strict_accuracy_pct" in leaderboard
+    assert (
+        "| Rank | Model | Accuracy | 95% CI | Answer | Format | Strict | Cost | "
+        "Tokens | Tokens / Correct |"
+        in leaderboard_md
+    )
+    assert (
+        "| 1 | Model A | 90.00% | 82.00% - 95.00% | 90.00% | 95.00% | 85.00% | "
+        "$0.020000 | 150 |"
+        in leaderboard_md
+    )
     assert "Format" in html
     assert "cost_per_correct_usd" in leaderboard
     assert "Model B,spelling_transform,100.00" in heatmap
+
+
+def test_family_heatmap_uses_scored_samples_denominator(tmp_path):
+    comparison_dir = tmp_path / "comparison"
+    comparison_dir.mkdir()
+    output_dir = tmp_path / "report"
+
+    (comparison_dir / "comparison.csv").write_text(
+        "label,model,barrage_profile,total_samples,scored_samples,correct,failures,"
+        "accuracy,provider_errors,timeouts,total_tokens,estimated_cost_usd,"
+        "cost_warnings,summary_dir\n"
+        "Model A,provider/model-a,balanced_8x10,2,1,1,0,1,1,0,100,0.01,,"
+        "results/a\n",
+        encoding="utf-8",
+    )
+    (comparison_dir / "family_comparison.csv").write_text(
+        "label,model,barrage_profile,family,samples,scored_samples,provider_errors,"
+        "timeouts,correct,failures,total_tokens,estimated_cost_usd,summary_dir\n"
+        "Model A,provider/model-a,balanced_8x10,character_count,2,1,1,0,1,0,"
+        "100,0.01,results/a\n",
+        encoding="utf-8",
+    )
+
+    paths = build_benchmark_report(
+        BenchmarkReportInputs(
+            comparison_dir=comparison_dir,
+            output_dir=output_dir,
+            generated_on="2026-05-31",
+        )
+    )
+
+    heatmap = paths.family_heatmap_csv.read_text(encoding="utf-8")
+    assert "Model A,character_count,100.00,1,2,1,1,0,0,0.01" in heatmap
+
+
+def test_build_benchmark_report_backfills_accuracy_interval(tmp_path):
+    comparison_dir = tmp_path / "comparison"
+    comparison_dir.mkdir()
+    output_dir = tmp_path / "report"
+
+    (comparison_dir / "comparison.csv").write_text(
+        "\n".join(
+            [
+                "label,model,barrage_profile,total_samples,scored_samples,correct,"
+                "failures,accuracy,provider_errors,timeouts,total_tokens,"
+                "estimated_cost_usd,cost_warnings,summary_dir",
+                "Model A,provider/model-a,balanced_8x10,10,10,8,2,0.8,0,0,150,"
+                "0.02,,results/a",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (comparison_dir / "family_comparison.csv").write_text(
+        "label,model,barrage_profile,family,samples,correct,failures,total_tokens,"
+        "estimated_cost_usd,summary_dir\n",
+        encoding="utf-8",
+    )
+
+    paths = build_benchmark_report(
+        BenchmarkReportInputs(
+            comparison_dir=comparison_dir,
+            output_dir=output_dir,
+            generated_on="2026-05-31",
+        )
+    )
+
+    leaderboard = paths.leaderboard_csv.read_text(encoding="utf-8")
+    leaderboard_md = paths.leaderboard_md.read_text(encoding="utf-8")
+
+    assert "accuracy_ci_95" in leaderboard
+    assert "49.02% - 94.33%" in leaderboard_md
+
+
+def test_build_benchmark_report_marks_unassessable_metamorphic_groups(tmp_path):
+    comparison_dir = tmp_path / "comparison"
+    comparison_dir.mkdir()
+    output_dir = tmp_path / "report"
+
+    (comparison_dir / "comparison.csv").write_text(
+        "label,model,barrage_profile,total_samples,scored_samples,correct,failures,"
+        "accuracy,provider_errors,timeouts,total_tokens,estimated_cost_usd,"
+        "cost_warnings,summary_dir\n"
+        "Model A,provider/model-a,balanced_8x10,1,1,1,0,1,0,0,100,0.01,,"
+        "results/a\n",
+        encoding="utf-8",
+    )
+    (comparison_dir / "family_comparison.csv").write_text(
+        "label,model,barrage_profile,family,samples,correct,failures,total_tokens,"
+        "estimated_cost_usd,summary_dir\n",
+        encoding="utf-8",
+    )
+    (comparison_dir / "metamorphic_consistency.csv").write_text(
+        "label,model,barrage_profile,reasoning_effort,reasoning_summary,family,"
+        "groups,samples,scored_samples,assessable_groups,unassessable_groups,"
+        "consistent_groups,inconsistent_groups,mixed_outcome_groups,"
+        "consistency_rate,mixed_group_ids,summary_dir\n"
+        "Model A,provider/model-a,balanced_8x10,,,spelling,3,3,3,0,3,0,0,0,,,"
+        "results/a\n",
+        encoding="utf-8",
+    )
+
+    paths = build_benchmark_report(
+        BenchmarkReportInputs(
+            comparison_dir=comparison_dir,
+            output_dir=output_dir,
+            generated_on="2026-05-31",
+        )
+    )
+
+    html = paths.html.read_text(encoding="utf-8")
+
+    assert "Unassessable" in html
+    assert "<td>3</td>" in html
+    assert "<td>n/a</td>" in html
+
+
+def test_uncertainty_cautions_parse_percent_bounds_on_both_sides():
+    html = _uncertainty_cautions(
+        [
+            {
+                "rank": "1",
+                "label": "Model A",
+                "accuracy_pct": "90.00",
+                "accuracy_ci_95": "82.00% - 95.00%",
+            },
+            {
+                "rank": "2",
+                "label": "Model B",
+                "accuracy_pct": "50.00",
+                "accuracy_ci_95": "45.00% - 55.00%",
+            },
+        ]
+    )
+
+    assert html == ""

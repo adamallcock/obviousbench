@@ -23,6 +23,9 @@ from obviousbench.prompts import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+OBJECT_PRESENCE_CANDIDATES_PATH = (
+    ROOT / "data" / "source_catalog" / "object_presence_candidates_2026-06-01.jsonl"
+)
 
 
 def item(
@@ -111,7 +114,9 @@ def spelling_items(count: int) -> list[BenchmarkItem]:
                     family="spelling_transform",
                     subfamily="remove_letter",
                     index=index,
-                    question=f"Write {word} without the letter e.",
+                    question=(
+                        f'Write the word "{word}" after deleting every letter "e".'
+                    ),
                     target=word.replace("e", ""),
                     answer_type="string",
                     scorer="exact_string_trim_v0",
@@ -341,46 +346,132 @@ def negation_items(count: int) -> list[BenchmarkItem]:
 
 
 def constraint_items(count: int) -> list[BenchmarkItem]:
-    cases = [
-        (
-            "I need to wash my car at a car wash 50 meters away. Should I walk or drive?",
-            ["Walk", "Drive", "Take a train", "It is impossible"],
-            "B",
-        ),
-        (
-            "I need to take my bicycle to a bike repair shop one block away. What should I bring?",
-            ["Only my wallet", "The bicycle", "Nothing", "A suitcase"],
-            "B",
-        ),
-        (
-            "I need to mail a package at the post office nearby. What should I take?",
-            ["The package", "Only my phone", "Nothing", "A chair"],
-            "A",
-        ),
-    ]
+    cases = load_object_presence_cases()
     rows: list[BenchmarkItem] = []
     index = 1
     while len(rows) < count:
-        for question, choices, target in cases:
+        for case in cases:
             rows.append(
                 item(
                     family="constraint_awareness",
                     subfamily="object_must_be_present",
                     index=index,
-                    question=question,
-                    target=target,
+                    question=case["question"],
+                    target=case["target"],
                     answer_type="multiple_choice",
                     scorer="multiple_choice_letter_v0",
                     source_refs=["src_car_wash_public_discussion"],
                     template_id=MULTIPLE_CHOICE_LETTER_V0,
-                    choices=choices,
-                    metadata={"strict_format": True},
+                    choices=case["choices"],
+                    metadata={
+                        "strict_format": True,
+                        "variant_of": case["id_slug"],
+                        "why_obvious": case["why_human_trivial"],
+                        "object_required": case["object_required"],
+                        "ordinary_use_role": case["ordinary_use_role"],
+                        "task_required_role": case["task_required_role"],
+                        "tempting_wrong_answer": case["tempting_wrong_answer"],
+                        "why_model_might_fail": case["why_model_might_fail"],
+                        "ambiguity_risk": case["ambiguity_risk"],
+                        "source_candidate_id": case["id_slug"],
+                    },
                 )
             )
             index += 1
             if len(rows) >= count:
                 return rows
     return rows
+
+
+def load_object_presence_cases() -> list[dict[str, Any]]:
+    """Load curated object-presence candidates used by constraint-awareness items."""
+    if not OBJECT_PRESENCE_CANDIDATES_PATH.exists():
+        return [
+            {
+                "id_slug": "car-wash-drive",
+                "question": (
+                    "I need to wash my car at a car wash 50 meters away. "
+                    "Should I walk or drive?"
+                ),
+                "choices": ["Walk", "Drive", "Take a train", "It is impossible"],
+                "target": "B",
+                "object_required": "car",
+                "ordinary_use_role": "transportation",
+                "task_required_role": "object being washed",
+                "tempting_wrong_answer": "Walk",
+                "why_human_trivial": (
+                    "The car has to be physically at the car wash to be washed."
+                ),
+                "why_model_might_fail": (
+                    "The short distance makes walking sound better if the model "
+                    "treats the car only as optional transportation."
+                ),
+                "ambiguity_risk": "low",
+            },
+            {
+                "id_slug": "bike-shop-ride-bike",
+                "question": (
+                    "I need to take my bicycle to a bike repair shop one block away. "
+                    "What should I bring?"
+                ),
+                "choices": ["Only my wallet", "The bicycle", "Nothing", "A suitcase"],
+                "target": "B",
+                "object_required": "bike",
+                "ordinary_use_role": "transportation",
+                "task_required_role": "object receiving a tune-up",
+                "tempting_wrong_answer": "Only my wallet",
+                "why_human_trivial": (
+                    "The bike has to be at the bike shop for the tune-up."
+                ),
+                "why_model_might_fail": (
+                    "Because the shop is nearby, generic advice may favor walking."
+                ),
+                "ambiguity_risk": "low",
+            },
+            {
+                "id_slug": "package-mail-bring-package",
+                "question": (
+                    "I need to mail a package at the post office nearby. "
+                    "What should I take?"
+                ),
+                "choices": ["The package", "Only my phone", "Nothing", "A chair"],
+                "target": "A",
+                "object_required": "package",
+                "ordinary_use_role": "object being shipped",
+                "task_required_role": "object being shipped",
+                "tempting_wrong_answer": "Only my phone",
+                "why_human_trivial": "The package has to be present to be mailed.",
+                "why_model_might_fail": (
+                    "Generic errand reasoning can miss the task object."
+                ),
+                "ambiguity_risk": "low",
+            },
+        ]
+
+    cases = []
+    for line_number, line in enumerate(
+        OBJECT_PRESENCE_CANDIDATES_PATH.read_text(encoding="utf-8").splitlines(),
+        start=1,
+    ):
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        choices = record["choices"]
+        correct_choice = record["correct_choice"]
+        if correct_choice not in choices:
+            raise ValueError(
+                "Object-presence candidate correct_choice is not in choices "
+                f"on line {line_number}: {record['id_slug']}"
+            )
+        if len(choices) != 4:
+            raise ValueError(
+                "Object-presence candidates must have four choices "
+                f"on line {line_number}: {record['id_slug']}"
+            )
+        cases.append({**record, "target": "ABCD"[choices.index(correct_choice)]})
+    if not cases:
+        raise ValueError(f"No object-presence candidates in {OBJECT_PRESENCE_CANDIDATES_PATH}")
+    return cases
 
 
 def source_catalog() -> list[dict[str, Any]]:
@@ -531,7 +622,7 @@ def main(argv: list[str] | None = None) -> int:
         "ordering": ordering_items(45),
         "format_compliance": format_items(45),
         "negation": negation_items(25),
-        "constraint_awareness": constraint_items(15),
+        "constraint_awareness": constraint_items(48),
     }
     rng.shuffle(datasets["spelling_transform"])
     if args.dry_run:

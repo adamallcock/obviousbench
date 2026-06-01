@@ -1,0 +1,4 @@
+label,model,barrage_profile,reasoning_effort,reasoning_summary,family,groups,samples,scored_samples,assessable_groups,unassessable_groups,consistent_groups,inconsistent_groups,mixed_outcome_groups,consistency_rate,mixed_group_ids,summary_dir
+Strict Model,provider/strict-model,balanced_8x10,none,native,spelling_transform,3,6,6,3,0,3,0,0,1.0,,results/strict
+Verbose Correct Model,provider/verbose-model,balanced_8x10,medium,reasoning-visible,spelling_transform,3,6,6,3,0,1,2,2,0.333333,spell.remove.001;spell.remove.002,results/verbose
+Provider Flaky Model,provider/flaky-model,balanced_8x10,low,provider-retry,spelling_transform,3,6,4,1,2,1,0,0,1.0,,results/flaky

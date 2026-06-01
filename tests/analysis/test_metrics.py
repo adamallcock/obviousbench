@@ -36,6 +36,17 @@ def test_compute_summary_reports_obvious_failure_rate():
     assert summary.scored_samples == 8
     assert summary.failures == 1
     assert summary.obvious_failure_rate == 0.125
+    assert summary.accuracy_ci_low <= summary.accuracy <= summary.accuracy_ci_high
+    assert (
+        summary.answer_accuracy_ci_low
+        <= summary.answer_accuracy
+        <= summary.answer_accuracy_ci_high
+    )
+    assert (
+        summary.strict_accuracy_ci_low
+        <= summary.strict_accuracy
+        <= summary.strict_accuracy_ci_high
+    )
     assert summary.failures_per_1000 == 125
     assert summary.answer_correct == 7
     assert summary.format_correct == 7
@@ -103,3 +114,45 @@ def test_compute_summary_rolls_up_usage_and_cost_by_variant():
     assert summary.estimated_cost_usd == 0.00003
     assert summary.cost_source == "runcost"
     assert summary.cost_warnings == "No cached-token price."
+
+
+def test_compute_summary_adds_efficiency_metrics():
+    records = [
+        EvalRecord(
+            "openai/gpt-5-nano",
+            "id1",
+            "character_count",
+            True,
+            "none",
+            False,
+            False,
+            output_tokens=10,
+            reasoning_tokens=30,
+            total_tokens=50,
+            estimated_cost_usd=0.2,
+        ),
+        EvalRecord(
+            "openai/gpt-5-nano",
+            "id2",
+            "character_count",
+            False,
+            "incorrect_count",
+            False,
+            False,
+            output_tokens=10,
+            reasoning_tokens=30,
+            total_tokens=50,
+            estimated_cost_usd=0.2,
+        ),
+    ]
+
+    summary = compute_summary(records)[0]
+
+    assert summary.tokens_per_scored_sample == 50.0
+    assert summary.output_tokens_per_scored_sample == 10.0
+    assert summary.reasoning_tokens_per_scored_sample == 30.0
+    assert summary.tokens_per_correct == 100.0
+    assert summary.cost_per_correct_usd == 0.4
+    assert summary.reasoning_token_share == 0.6
+    assert summary.overthinking_index == 3.0
+    assert summary.reasoning_token_source == "reported"

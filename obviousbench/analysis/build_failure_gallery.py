@@ -1,5 +1,6 @@
 """Build Markdown failure galleries."""
 
+import json
 from dataclasses import dataclass
 
 
@@ -16,6 +17,22 @@ class FailureGalleryEntry:
     human_triviality: str
     source_type: str
     why_obvious: str
+    run: str = ""
+    epoch: int | str = 1
+
+    @property
+    def reference(self) -> str:
+        parts = []
+        if self.run:
+            parts.append(f"run={self.run}")
+        parts.extend(
+            [
+                f"sample={self.sample_id}",
+                f"epoch={self.epoch}",
+                f"model={self.model}",
+            ]
+        )
+        return " ".join(parts)
 
 
 def build_failure_gallery(entries: list[FailureGalleryEntry], limit: int = 10) -> str:
@@ -28,6 +45,8 @@ def build_failure_gallery(entries: list[FailureGalleryEntry], limit: int = 10) -
                 "",
                 f"- Model: `{entry.model}`",
                 f"- Sample ID: `{entry.sample_id}`",
+                f"- Reference: `{entry.reference}`",
+                _copy_reference_button(entry.reference),
                 f"- Question: {entry.question}",
                 f"- Expected answer: `{entry.expected_answer}`",
                 f"- Extracted answer: `{entry.extracted_answer}`",
@@ -41,3 +60,10 @@ def build_failure_gallery(entries: list[FailureGalleryEntry], limit: int = 10) -
         )
     return "\n".join(lines).rstrip() + "\n"
 
+
+def _copy_reference_button(reference: str) -> str:
+    encoded = json.dumps(reference)
+    return (
+        f"<button type=\"button\" onclick='navigator.clipboard.writeText({encoded})'>"
+        "Copy reference</button>"
+    )

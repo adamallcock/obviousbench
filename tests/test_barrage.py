@@ -36,6 +36,23 @@ def _item(family: str, subfamily: str, index: int) -> BenchmarkItem:
     return BenchmarkItem.model_validate(_record(family, subfamily, index))
 
 
+def _metamorphic_item(
+    family: str,
+    subfamily: str,
+    index: int,
+    group_id: str,
+) -> BenchmarkItem:
+    record = _record(family, subfamily, index)
+    record["metadata"] = {
+        **record["metadata"],
+        "metamorphic_group_id": group_id,
+        "metamorphic_role": f"variant_{index}",
+        "metamorphic_relation": "equivalent",
+        "metamorphic_expected_behavior": "The answer should not change.",
+    }
+    return BenchmarkItem.model_validate(record)
+
+
 def test_parse_balanced_profile_name():
     profile = BarrageProfile.parse("balanced_8x10")
 
@@ -104,6 +121,71 @@ def test_build_barrage_is_seed_stable():
 
     assert first == second
     assert first != different
+
+
+def test_build_barrage_default_limits_metamorphic_siblings_per_group():
+    items = [
+        _metamorphic_item("character_count", "letters", 1, "g1"),
+        _metamorphic_item("character_count", "letters", 2, "g1"),
+        _item("character_count", "letters", 3),
+        _item("character_count", "letters", 4),
+        _item("word_count", "sentences", 5),
+        _item("word_count", "sentences", 6),
+        _item("word_count", "sentences", 7),
+        _item("word_count", "sentences", 8),
+    ]
+
+    selected = build_barrage(
+        items,
+        BarrageProfile(name="balanced_2x2", family_count=2, per_family=2),
+        seed=1,
+    )
+
+    assert Counter(
+        item.metadata.metamorphic_group_id
+        for item in selected
+        if item.metadata.metamorphic_group_id
+    ) == {"g1": 1}
+
+
+def test_build_barrage_can_include_more_metamorphic_siblings_when_requested():
+    items = [
+        _metamorphic_item("character_count", "letters", 1, "g1"),
+        _metamorphic_item("character_count", "letters", 2, "g1"),
+        _item("word_count", "sentences", 5),
+        _item("word_count", "sentences", 6),
+    ]
+
+    selected = build_barrage(
+        items,
+        BarrageProfile(name="balanced_2x2", family_count=2, per_family=2),
+        seed=1,
+        max_metamorphic_siblings_per_group=2,
+    )
+
+    assert Counter(
+        item.metadata.metamorphic_group_id
+        for item in selected
+        if item.metadata.metamorphic_group_id
+    ) == {"g1": 2}
+
+
+def test_metamorphic_sibling_cap_is_namespaced_by_family():
+    items = [
+        _metamorphic_item("character_count", "letters", 1, "g1"),
+        _metamorphic_item("word_count", "sentences", 2, "g1"),
+    ]
+
+    selected = build_barrage(
+        items,
+        BarrageProfile(name="balanced_2x1", family_count=2, per_family=1),
+        seed=1,
+    )
+
+    assert Counter((item.family, item.metadata.metamorphic_group_id) for item in selected) == {
+        ("character_count", "g1"): 1,
+        ("word_count", "g1"): 1,
+    }
 
 
 def test_hard_obvious_profile_prioritizes_hard_subfamilies():

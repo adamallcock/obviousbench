@@ -15,6 +15,8 @@ def test_failure_gallery_limits_and_renders_stable_markdown():
             human_triviality="H0",
             source_type="public_archetype",
             why_obvious="Humans can count the visible letters directly.",
+            run="hard-obvious-gpt-5-nano-20260531",
+            epoch=1,
         ),
         FailureGalleryEntry(
             model="model/a",
@@ -36,4 +38,9 @@ def test_failure_gallery_limits_and_renders_stable_markdown():
     assert markdown.count("## Failure") == 1
     assert "How many r's are in strawberry?" in markdown
     assert "Return only the number" not in markdown
-
+    assert (
+        "run=hard-obvious-gpt-5-nano-20260531 "
+        "sample=obviousbench.char_count.en.v0.public.000001 "
+        "epoch=1 model=model/a"
+    ) in markdown
+    assert "Copy reference</button>" in markdown

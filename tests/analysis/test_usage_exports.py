@@ -37,6 +37,9 @@ def _records():
             total_tokens=15,
             estimated_cost_usd=0.1,
             cost_source="runcost",
+            metamorphic_group_id="char_count.strawberry.001",
+            metamorphic_role="base",
+            metamorphic_relation="equivalent",
         ),
         EvalRecord(
             model="openai/gpt-5-nano",
@@ -78,6 +81,9 @@ def test_export_usage_by_sample_csv(tmp_path):
     assert rows[0]["answer_correct"] == "True"
     assert rows[0]["format_correct"] == "True"
     assert rows[0]["strict_correct"] == "True"
+    assert rows[0]["metamorphic_group_id"] == "char_count.strawberry.001"
+    assert rows[0]["metamorphic_role"] == "base"
+    assert rows[0]["metamorphic_relation"] == "equivalent"
     assert rows[0]["estimated_cost_usd"] == "0.1"
 
 
@@ -96,6 +102,9 @@ def test_export_usage_by_family_csv(tmp_path):
             "model": "openai/gpt-5-nano",
             "family": "character_count",
             "samples": "2",
+            "scored_samples": "2",
+            "provider_errors": "0",
+            "timeouts": "0",
             "correct": "1",
             "failures": "1",
             "answer_correct": "1",
@@ -108,6 +117,11 @@ def test_export_usage_by_family_csv(tmp_path):
             "cache_write_tokens": "0",
             "total_tokens": "43",
             "estimated_cost_usd": "0.3",
+            "tokens_per_scored_sample": "21.5",
+            "tokens_per_correct": "43.0",
+            "cost_per_correct_usd": "0.3",
+            "reasoning_token_share": "0.023255813953488372",
+            "overthinking_index": "0.08333333333333333",
             "cost_source": "runcost",
             "cost_warnings": "fallback price",
         }
@@ -130,6 +144,9 @@ def test_export_usage_by_section_csv(tmp_path):
             "family": "character_count",
             "subfamily": "single_letter_count",
             "samples": "2",
+            "scored_samples": "2",
+            "provider_errors": "0",
+            "timeouts": "0",
             "correct": "1",
             "failures": "1",
             "answer_correct": "1",
@@ -142,6 +159,11 @@ def test_export_usage_by_section_csv(tmp_path):
             "cache_write_tokens": "0",
             "total_tokens": "43",
             "estimated_cost_usd": "0.3",
+            "tokens_per_scored_sample": "21.5",
+            "tokens_per_correct": "43.0",
+            "cost_per_correct_usd": "0.3",
+            "reasoning_token_share": "0.023255813953488372",
+            "overthinking_index": "0.08333333333333333",
             "cost_source": "runcost",
             "cost_warnings": "fallback price",
         }
@@ -156,12 +178,75 @@ def test_export_usage_by_question_csv(tmp_path):
     rows = list(csv.DictReader(path.open(encoding="utf-8")))
     assert rows[0]["sample_id"] == "id1"
     assert rows[0]["question"] == "How many r's are in strawberry?"
+    assert rows[0]["scored_samples"] == "1"
+    assert rows[0]["provider_errors"] == "0"
+    assert rows[0]["timeouts"] == "0"
     assert rows[0]["correct"] == "1"
     assert rows[0]["answer_correct"] == "1"
     assert rows[0]["format_correct"] == "1"
     assert rows[0]["strict_correct"] == "1"
+    assert rows[0]["tokens_per_scored_sample"] == "15.0"
+    assert rows[0]["tokens_per_correct"] == "15.0"
+    assert rows[0]["cost_per_correct_usd"] == "0.1"
+    assert rows[0]["reasoning_token_share"] == "0.0"
+    assert rows[0]["overthinking_index"] == "0.0"
     assert rows[1]["sample_id"] == "id2"
     assert rows[1]["failures"] == "1"
+    assert rows[1]["tokens_per_correct"] == ""
+
+
+def test_usage_breakdowns_do_not_score_provider_errors_or_timeouts(tmp_path):
+    path = tmp_path / "usage_by_family.csv"
+    records = [
+        *_records(),
+        EvalRecord(
+            model="openai/gpt-5-nano",
+            sample_id="id3",
+            family="character_count",
+            correct=False,
+            failure_type="provider_error",
+            provider_error=True,
+            timeout=False,
+            subfamily="single_letter_count",
+            question="Provider failed",
+            barrage_profile="balanced_8x10",
+            barrage_seed=1,
+            reasoning_effort="minimal",
+            reasoning_summary="none",
+            input_tokens=3,
+            output_tokens=0,
+            total_tokens=3,
+        ),
+        EvalRecord(
+            model="openai/gpt-5-nano",
+            sample_id="id4",
+            family="character_count",
+            correct=False,
+            failure_type="timeout",
+            provider_error=False,
+            timeout=True,
+            subfamily="single_letter_count",
+            question="Provider timed out",
+            barrage_profile="balanced_8x10",
+            barrage_seed=1,
+            reasoning_effort="minimal",
+            reasoning_summary="none",
+            input_tokens=4,
+            output_tokens=0,
+            total_tokens=4,
+        ),
+    ]
+
+    export_usage_by_family_csv(compute_usage_by_family(records), path)
+
+    row = next(csv.DictReader(path.open(encoding="utf-8")))
+    assert row["samples"] == "4"
+    assert row["scored_samples"] == "2"
+    assert row["provider_errors"] == "1"
+    assert row["timeouts"] == "1"
+    assert row["correct"] == "1"
+    assert row["failures"] == "1"
+    assert row["answer_correct"] == "1"
 
 
 def test_build_cost_input_uses_normalized_usage_fields():

@@ -92,26 +92,39 @@ def build_barrage(
     profile: BarrageProfile,
     *,
     seed: int,
+    max_metamorphic_siblings_per_group: int = 1,
 ) -> list[BenchmarkItem]:
     """Select a deterministic family-balanced, subfamily-diverse barrage."""
+    if max_metamorphic_siblings_per_group < 1:
+        raise ValueError("max_metamorphic_siblings_per_group must be at least 1.")
+
     by_family: dict[str, list[BenchmarkItem]] = defaultdict(list)
     for item in items:
         by_family[item.family].append(item)
 
-    selected_families = _select_families(by_family, profile)
+    selected_families = _select_families(
+        by_family,
+        profile,
+        max_metamorphic_siblings_per_group=max_metamorphic_siblings_per_group,
+    )
     family_picks = {}
+    metamorphic_group_counts: dict[tuple[str, str], int] = defaultdict(int)
     for family in selected_families:
         if profile.strategy == "hard_obvious":
             family_picks[family] = _select_hard_family_items(
                 by_family[family],
                 profile.per_family,
                 seed=seed,
+                metamorphic_group_counts=metamorphic_group_counts,
+                max_metamorphic_siblings_per_group=max_metamorphic_siblings_per_group,
             )
         else:
             family_picks[family] = _select_family_items(
                 by_family[family],
                 profile.per_family,
                 seed=seed,
+                metamorphic_group_counts=metamorphic_group_counts,
+                max_metamorphic_siblings_per_group=max_metamorphic_siblings_per_group,
             )
     return _interleave_family_picks(family_picks, selected_families, profile.per_family)
 
@@ -131,11 +144,18 @@ def write_barrage_jsonl(items: list[BenchmarkItem], path: Path | str) -> Path:
 def _select_families(
     by_family: dict[str, list[BenchmarkItem]],
     profile: BarrageProfile,
+    *,
+    max_metamorphic_siblings_per_group: int,
 ) -> list[str]:
     eligible = [
         family
         for family in FAMILY_ORDER
-        if family in by_family and len(by_family[family]) >= profile.per_family
+        if family in by_family
+        and _selectable_count(
+            by_family[family],
+            max_metamorphic_siblings_per_group=max_metamorphic_siblings_per_group,
+        )
+        >= profile.per_family
     ]
     if len(eligible) < profile.family_count:
         raise ValueError(
@@ -150,6 +170,8 @@ def _select_family_items(
     quota: int,
     *,
     seed: int,
+    metamorphic_group_counts: dict[tuple[str, str], int],
+    max_metamorphic_siblings_per_group: int,
 ) -> list[BenchmarkItem]:
     by_subfamily: dict[str, list[BenchmarkItem]] = defaultdict(list)
     for item in items:
@@ -169,9 +191,14 @@ def _select_family_items(
         made_progress = False
         for subfamily in subfamilies:
             queue = queues[subfamily]
-            if not queue:
+            item = _pop_selectable_item(
+                queue,
+                metamorphic_group_counts,
+                max_metamorphic_siblings_per_group,
+            )
+            if item is None:
                 continue
-            selected.append(queue.pop(0))
+            selected.append(item)
             made_progress = True
             if len(selected) == quota:
                 break
@@ -187,6 +214,8 @@ def _select_hard_family_items(
     quota: int,
     *,
     seed: int,
+    metamorphic_group_counts: dict[tuple[str, str], int],
+    max_metamorphic_siblings_per_group: int,
 ) -> list[BenchmarkItem]:
     priority = {
         subfamily: index
@@ -199,11 +228,21 @@ def _select_hard_family_items(
             _stable_sort_key(seed, item.family, item.subfamily, item.id),
         ),
     )
-    if len(ranked) < quota:
-        raise ValueError(
-            f"Family {items[0].family} has fewer than {quota} selectable items."
-        )
-    return ranked[:quota]
+    selected: list[BenchmarkItem] = []
+    for item in ranked:
+        if not _can_select_metamorphic_item(
+            item,
+            metamorphic_group_counts,
+            max_metamorphic_siblings_per_group,
+        ):
+            continue
+        _record_metamorphic_selection(item, metamorphic_group_counts)
+        selected.append(item)
+        if len(selected) == quota:
+            return selected
+    raise ValueError(
+        f"Family {items[0].family} has fewer than {quota} selectable items."
+    )
 
 
 def _interleave_family_picks(
@@ -221,3 +260,66 @@ def _interleave_family_picks(
 def _stable_sort_key(seed: int, *parts: str) -> str:
     payload = "\0".join([str(seed), *parts])
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _selectable_count(
+    items: list[BenchmarkItem],
+    *,
+    max_metamorphic_siblings_per_group: int,
+) -> int:
+    counts: dict[tuple[str, str], int] = defaultdict(int)
+    selectable = 0
+    for item in items:
+        group_key = _metamorphic_group_key(item)
+        if group_key is not None:
+            if counts[group_key] >= max_metamorphic_siblings_per_group:
+                continue
+            counts[group_key] += 1
+        selectable += 1
+    return selectable
+
+
+def _pop_selectable_item(
+    queue: list[BenchmarkItem],
+    metamorphic_group_counts: dict[tuple[str, str], int],
+    max_metamorphic_siblings_per_group: int,
+) -> BenchmarkItem | None:
+    for index, item in enumerate(queue):
+        if not _can_select_metamorphic_item(
+            item,
+            metamorphic_group_counts,
+            max_metamorphic_siblings_per_group,
+        ):
+            continue
+        selected = queue.pop(index)
+        _record_metamorphic_selection(selected, metamorphic_group_counts)
+        return selected
+    return None
+
+
+def _can_select_metamorphic_item(
+    item: BenchmarkItem,
+    metamorphic_group_counts: dict[tuple[str, str], int],
+    max_metamorphic_siblings_per_group: int,
+) -> bool:
+    group_key = _metamorphic_group_key(item)
+    return (
+        group_key is None
+        or metamorphic_group_counts[group_key] < max_metamorphic_siblings_per_group
+    )
+
+
+def _record_metamorphic_selection(
+    item: BenchmarkItem,
+    metamorphic_group_counts: dict[tuple[str, str], int],
+) -> None:
+    group_key = _metamorphic_group_key(item)
+    if group_key is not None:
+        metamorphic_group_counts[group_key] += 1
+
+
+def _metamorphic_group_key(item: BenchmarkItem) -> tuple[str, str] | None:
+    group_id = item.metadata.metamorphic_group_id
+    if not group_id:
+        return None
+    return (item.family, group_id)

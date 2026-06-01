@@ -37,6 +37,11 @@ FORMAT_FAILURE_TYPES = {
     "json_malformed",
 }
 
+_CONFIDENCE_ANNOTATION_RE = re.compile(
+    r"\s*(?:\\+confidence\s*\{[^{}]*\}|\[?confidence\s*[:=]\s*\d+(?:\.\d+)?%?\]?)\s*$",
+    re.IGNORECASE,
+)
+
 
 def inspect_score(
     decision: ScoreDecision,
@@ -69,6 +74,10 @@ def normalize_string(value: str) -> str:
 
 def normalize_string_casefold(value: str) -> str:
     return value.strip().casefold()
+
+
+def strip_confidence_annotation(value: str) -> str:
+    return _CONFIDENCE_ANNOTATION_RE.sub("", value).strip()
 
 
 _INTEGER_RE = re.compile(r"(?<![\w.])-?\d+(?![\w])")
@@ -121,7 +130,7 @@ def extract_single_integer(output: str) -> tuple[str | None, bool]:
 
 
 def normalize_list(value: str) -> tuple[str, ...]:
-    normalized = _strip_enclosing_list_markup(value.strip())
+    normalized = _strip_enclosing_list_markup(strip_confidence_annotation(value))
     if not normalized:
         return ()
     parts = normalized.split(",") if "," in normalized else normalized.split()

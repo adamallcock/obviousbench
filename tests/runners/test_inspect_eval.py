@@ -1,10 +1,13 @@
 from pathlib import Path
+from types import SimpleNamespace
 
+import obviousbench.runners.inspect_eval as inspect_eval
 from obviousbench.runners.inspect_eval import (
     InspectEvalConfig,
     build_inspect_eval_command,
     inspect_eval_env,
     parse_args,
+    run_inspect_eval,
 )
 
 
@@ -96,3 +99,40 @@ def test_parse_args_can_disable_cache():
     )
 
     assert config.cache is None
+
+
+def test_generic_runner_retries_provider_refusal_without_cache(tmp_path, monkeypatch):
+    calls = []
+    provider_checks = []
+
+    def fake_run(command, *, cwd, env, check):
+        calls.append(command)
+        return SimpleNamespace(returncode=0)
+
+    def fake_provider_refusal_sample_ids(log_dir, sample_ids=None, *, existing_logs=None):
+        provider_checks.append(sample_ids)
+        return ["sample-1"] if len(provider_checks) == 1 else []
+
+    monkeypatch.setattr(inspect_eval.subprocess, "run", fake_run)
+    monkeypatch.setattr(
+        inspect_eval,
+        "provider_refusal_sample_ids",
+        fake_provider_refusal_sample_ids,
+    )
+
+    returncode = run_inspect_eval(
+        InspectEvalConfig(
+            task="obviousbench/tasks/barrage.py",
+            model="xai/grok-4.3",
+            log_dir=tmp_path / "logs",
+            cache="10Y",
+            cache_dir=tmp_path / "cache",
+        )
+    )
+
+    assert returncode == 0
+    assert len(calls) == 2
+    assert "--sample-id" not in calls[0]
+    assert calls[0][calls[0].index("--cache") + 1] == "10Y"
+    assert calls[1][calls[1].index("--sample-id") + 1] == "sample-1"
+    assert "--cache" not in calls[1]

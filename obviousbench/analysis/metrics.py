@@ -6,6 +6,14 @@ from dataclasses import dataclass
 from itertools import groupby
 from typing import Any
 
+from obviousbench.analysis.efficiency import (
+    cost_per_correct_usd,
+    overthinking_index,
+    reasoning_token_share,
+    safe_ratio,
+    tokens_per_correct,
+)
+from obviousbench.analysis.statistics import wilson_interval
 from obviousbench.scorers.common import FORMAT_FAILURE_TYPES
 
 
@@ -36,6 +44,9 @@ class EvalRecord:
     answer_correct: bool | None = None
     format_correct: bool | None = None
     strict_correct: bool | None = None
+    metamorphic_group_id: str = ""
+    metamorphic_role: str = ""
+    metamorphic_relation: str = ""
 
     @property
     def run_variant(self) -> str:
@@ -81,9 +92,15 @@ class SummaryRow:
     strict_correct: int
     obvious_failure_rate: float
     accuracy: float
+    accuracy_ci_low: float
+    accuracy_ci_high: float
     answer_accuracy: float
+    answer_accuracy_ci_low: float
+    answer_accuracy_ci_high: float
     format_accuracy: float
     strict_accuracy: float
+    strict_accuracy_ci_low: float
+    strict_accuracy_ci_high: float
     failures_per_1000: int
     provider_errors: int
     timeouts: int
@@ -96,6 +113,14 @@ class SummaryRow:
     cache_write_tokens: int
     total_tokens: int
     estimated_cost_usd: float | None
+    tokens_per_scored_sample: float | None
+    output_tokens_per_scored_sample: float | None
+    reasoning_tokens_per_scored_sample: float | None
+    tokens_per_correct: float | None
+    cost_per_correct_usd: float | None
+    reasoning_token_share: float | None
+    overthinking_index: float | None
+    reasoning_token_source: str
     cost_source: str
     cost_warnings: str
 
@@ -136,6 +161,13 @@ def compute_summary(records: list[EvalRecord]) -> list[SummaryRow]:
         strict_correct = sum(record.strict_ok for record in scored)
         failure_rate = failures / scored_count if scored_count else 0.0
         accuracy = correct / scored_count if scored_count else 0.0
+        accuracy_ci_low, accuracy_ci_high = wilson_interval(correct, scored_count)
+        answer_ci_low, answer_ci_high = wilson_interval(answer_correct, scored_count)
+        strict_ci_low, strict_ci_high = wilson_interval(strict_correct, scored_count)
+        output_tokens = sum(record.output_tokens for record in model_records)
+        reasoning_tokens = sum(record.reasoning_tokens for record in model_records)
+        total_tokens = sum(record.total_tokens for record in model_records)
+        estimated_cost_usd = _sum_optional_costs(model_records)
         rows.append(
             SummaryRow(
                 run_variant=first.run_variant,
@@ -153,9 +185,15 @@ def compute_summary(records: list[EvalRecord]) -> list[SummaryRow]:
                 strict_correct=strict_correct,
                 obvious_failure_rate=failure_rate,
                 accuracy=accuracy,
+                accuracy_ci_low=round(accuracy_ci_low, 6),
+                accuracy_ci_high=round(accuracy_ci_high, 6),
                 answer_accuracy=answer_correct / scored_count if scored_count else 0.0,
+                answer_accuracy_ci_low=round(answer_ci_low, 6),
+                answer_accuracy_ci_high=round(answer_ci_high, 6),
                 format_accuracy=format_correct / scored_count if scored_count else 0.0,
                 strict_accuracy=strict_correct / scored_count if scored_count else 0.0,
+                strict_accuracy_ci_low=round(strict_ci_low, 6),
+                strict_accuracy_ci_high=round(strict_ci_high, 6),
                 failures_per_1000=round(failure_rate * 1000),
                 provider_errors=provider_errors,
                 timeouts=timeouts,
@@ -166,14 +204,39 @@ def compute_summary(records: list[EvalRecord]) -> list[SummaryRow]:
                     for record in scored
                 ),
                 input_tokens=sum(record.input_tokens for record in model_records),
-                output_tokens=sum(record.output_tokens for record in model_records),
-                reasoning_tokens=sum(record.reasoning_tokens for record in model_records),
+                output_tokens=output_tokens,
+                reasoning_tokens=reasoning_tokens,
                 cache_read_tokens=sum(record.cache_read_tokens for record in model_records),
                 cache_write_tokens=sum(
                     record.cache_write_tokens for record in model_records
                 ),
-                total_tokens=sum(record.total_tokens for record in model_records),
-                estimated_cost_usd=_sum_optional_costs(model_records),
+                total_tokens=total_tokens,
+                estimated_cost_usd=estimated_cost_usd,
+                tokens_per_scored_sample=safe_ratio(total_tokens, scored_count),
+                output_tokens_per_scored_sample=safe_ratio(output_tokens, scored_count),
+                reasoning_tokens_per_scored_sample=safe_ratio(
+                    reasoning_tokens,
+                    scored_count,
+                ),
+                tokens_per_correct=tokens_per_correct(
+                    total_tokens=total_tokens,
+                    correct=correct,
+                ),
+                cost_per_correct_usd=cost_per_correct_usd(
+                    estimated_cost_usd=estimated_cost_usd,
+                    correct=correct,
+                ),
+                reasoning_token_share=reasoning_token_share(
+                    reasoning_tokens=reasoning_tokens,
+                    total_tokens=total_tokens,
+                ),
+                overthinking_index=overthinking_index(
+                    reasoning_tokens=reasoning_tokens,
+                    output_tokens=output_tokens,
+                ),
+                reasoning_token_source=(
+                    "reported" if reasoning_tokens else "not_reported_or_zero"
+                ),
                 cost_source=_join_unique(record.cost_source for record in model_records),
                 cost_warnings=_join_unique(record.cost_warnings for record in model_records),
             )

@@ -6,6 +6,10 @@ from obviousbench.analysis.build_failure_gallery import build_failure_gallery
 from obviousbench.analysis.costing import price_records_with_runcost
 from obviousbench.analysis.export_csv import export_summary_csv
 from obviousbench.analysis.logs import load_eval_logs_with_failures
+from obviousbench.analysis.metamorphic import (
+    compute_metamorphic_consistency,
+    export_metamorphic_consistency_csv,
+)
 from obviousbench.analysis.metrics import compute_summary
 from obviousbench.analysis.usage import (
     compute_usage_by_family,
@@ -41,6 +45,7 @@ def summarize_results(
     family_usage_path = out / "usage_by_family.csv"
     section_usage_path = out / "usage_by_section.csv"
     question_usage_path = out / "usage_by_question.csv"
+    metamorphic_consistency_path = out / "metamorphic_consistency.csv"
     export_summary_csv(rows, summary_path)
     export_usage_by_sample_csv(records, sample_usage_path)
     export_usage_by_family_csv(compute_usage_by_family(records), family_usage_path)
@@ -55,6 +60,13 @@ def summarize_results(
         section_usage_path,
         question_usage_path,
     ]
+    metamorphic_rows = compute_metamorphic_consistency(records)
+    if metamorphic_rows:
+        export_metamorphic_consistency_csv(
+            metamorphic_rows,
+            metamorphic_consistency_path,
+        )
+        paths.append(metamorphic_consistency_path)
     if cost_ledger is not None:
         cost_ledger_path = out / "cost_ledger.json"
         write_cost_ledger(cost_ledger, cost_ledger_path)

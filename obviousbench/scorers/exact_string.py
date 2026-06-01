@@ -6,7 +6,12 @@ from decimal import Decimal, InvalidOperation
 from inspect_ai.scorer import Score, Target, scorer
 from inspect_ai.solver import TaskState
 
-from obviousbench.scorers.common import ScoreDecision, inspect_score, is_non_answer
+from obviousbench.scorers.common import (
+    ScoreDecision,
+    inspect_score,
+    is_non_answer,
+    strip_confidence_annotation,
+)
 
 SCORER_NAME = "exact_string_trim_v0"
 _NUMBER_RE = re.compile(r"(?<![\w.])-?(?:\d+(?:\.\d+)?|\.\d+)(?![\w.])")
@@ -16,6 +21,8 @@ _FINAL_ANSWER_RE = re.compile(
     re.IGNORECASE,
 )
 _QUOTED_EQUALS_RE = re.compile(r"=\s*['\"](?P<answer>[^'\"]+)['\"]\s*[.!]?$")
+_COLON_SUFFIX_RE = re.compile(r":\s*(?P<answer>[^\n.;,]+)[\s.;,!]*$")
+_ANSWER_CUE_RE = re.compile(r"\b(?:answer|final answer|result|therefore)\b", re.IGNORECASE)
 
 
 def score_exact_string_trim(output: str, target: str) -> ScoreDecision:
@@ -29,12 +36,38 @@ def score_exact_string_trim(output: str, target: str) -> ScoreDecision:
         return ScoreDecision(
             True,
             extracted_final,
-            "none",
-            f"Matched final answer candidate {target}.",
+            "verbose_noncompliance",
+            f"Matched final answer candidate {target}, with extra text.",
+            format_correct=False,
+        )
+    confidence_stripped = strip_confidence_annotation(extracted)
+    if confidence_stripped == target:
+        return ScoreDecision(
+            True,
+            target,
+            "verbose_noncompliance",
+            f"Matched {target} after removing confidence annotation.",
+            format_correct=False,
+        )
+    if _starts_with_target(extracted, target):
+        return ScoreDecision(
+            True,
+            target,
+            "verbose_noncompliance",
+            f"Matched {target}, with extra text.",
+            format_correct=False,
         )
     numeric_decision = _score_single_numeric_with_optional_units(extracted, target)
     if numeric_decision is not None:
         return numeric_decision
+    if _ends_with_target_after_answer_cue(extracted, target):
+        return ScoreDecision(
+            True,
+            target,
+            "verbose_noncompliance",
+            f"Matched {target}, with extra text.",
+            format_correct=False,
+        )
     return ScoreDecision(
         False,
         extracted,
@@ -44,11 +77,29 @@ def score_exact_string_trim(output: str, target: str) -> ScoreDecision:
 
 
 def _extract_final_answer_candidate(output: str) -> str | None:
-    for pattern in (_QUOTED_EQUALS_RE, _FINAL_ANSWER_RE):
+    for pattern in (_QUOTED_EQUALS_RE, _FINAL_ANSWER_RE, _COLON_SUFFIX_RE):
         match = pattern.search(output)
         if match:
             return _clean_candidate(match.group("answer"))
     return None
+
+
+def _starts_with_target(output: str, target: str) -> bool:
+    if not target:
+        return False
+    if not output.startswith(target) or len(output) == len(target):
+        return False
+    remainder = output[len(target) :].lstrip()
+    if not remainder:
+        return False
+    return remainder.startswith(("(", "[", "{", ":", "-"))
+
+
+def _ends_with_target_after_answer_cue(output: str, target: str) -> bool:
+    if not output.endswith(target) or not _ANSWER_CUE_RE.search(output):
+        return False
+    prefix = output[: -len(target)]
+    return bool(prefix) and prefix[-1] in " \t\r\n:=-"
 
 
 def _clean_candidate(value: str) -> str:

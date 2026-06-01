@@ -29,7 +29,12 @@ from obviousbench.datasets.validation import validate_dataset_paths
 
 
 def _validate(args: argparse.Namespace) -> int:
-    report = validate_dataset_paths([Path(path) for path in args.paths])
+    report = validate_dataset_paths(
+        [Path(path) for path in args.paths],
+        item_cards_dir=Path(args.item_cards_dir) if args.item_cards_dir else None,
+        require_item_cards=args.require_item_cards,
+        allow_extra_item_cards=args.allow_extra_item_cards,
+    )
     if report.ok:
         print("Validation passed.")
         return 0
@@ -61,6 +66,9 @@ def _make_barrage(args: argparse.Namespace) -> int:
             load_split_items(args.split, data_dir=Path(args.data_dir)),
             profile,
             seed=args.seed,
+            max_metamorphic_siblings_per_group=(
+                args.max_metamorphic_siblings_per_group
+            ),
         )
         output = write_barrage_jsonl(items, Path(args.out))
     except Exception as exc:
@@ -134,7 +142,14 @@ def _build_comparison(args: argparse.Namespace) -> int:
     except Exception as exc:
         print(str(exc), file=sys.stderr)
         return 1
-    for attr in ("comparison", "family_comparison", "section_comparison", "delta"):
+    for attr in (
+        "comparison",
+        "family_comparison",
+        "section_comparison",
+        "effort_curve",
+        "metamorphic_consistency",
+        "delta",
+    ):
         print(f"Wrote {getattr(output_paths, attr)}")
     return 0
 
@@ -145,6 +160,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     validate = subparsers.add_parser("validate", help="Validate benchmark JSONL files")
     validate.add_argument("paths", nargs="+")
+    validate.add_argument("--item-cards-dir")
+    validate.add_argument("--require-item-cards", action="store_true")
+    validate.add_argument("--allow-extra-item-cards", action="store_true")
     validate.set_defaults(func=_validate)
 
     summarize = subparsers.add_parser("summarize", help="Summarize Inspect logs")
@@ -176,6 +194,7 @@ def build_parser() -> argparse.ArgumentParser:
     make_barrage.add_argument("--seed", default=20260531, type=int)
     make_barrage.add_argument("--data-dir", default="data")
     make_barrage.add_argument("--out", required=True)
+    make_barrage.add_argument("--max-metamorphic-siblings-per-group", default=1, type=int)
     make_barrage.set_defaults(func=_make_barrage)
 
     shareable = subparsers.add_parser(

@@ -9,7 +9,7 @@ import subprocess
 import sys
 import time
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -21,6 +21,7 @@ from obviousbench.runners.cache import (
     cache_from_args,
     inspect_cache_env,
 )
+from obviousbench.runners.provider_refusals import provider_refusal_sample_ids
 
 ROOT = Path(__file__).resolve().parents[2]
 OPENROUTER_RESET_RE = re.compile(
@@ -46,6 +47,7 @@ class RunnerConfig:
     keychain_service: str | None
     cache: str | None = DEFAULT_CACHE_EXPIRY
     cache_dir: Path | None = DEFAULT_CACHE_DIR
+    retry_provider_refusals: bool = True
     independent_batches: bool = False
     resume: bool = False
     strict_batch_errors: bool = False
@@ -223,38 +225,59 @@ def run_batches(config: RunnerConfig) -> int:
             if config.independent_batches
             else config.log_dir
         )
-        batch_config = RunnerConfig(
-            task=config.task,
-            dataset=config.dataset,
-            model=config.model,
-            log_dir=batch_log_dir,
-            batch_size=config.batch_size,
-            max_batch_retries=config.max_batch_retries,
-            reset_buffer_seconds=config.reset_buffer_seconds,
-            fallback_initial_seconds=config.fallback_initial_seconds,
-            fallback_max_seconds=config.fallback_max_seconds,
-            inspect_max_retries=config.inspect_max_retries,
-            timeout=config.timeout,
-            attempt_timeout=config.attempt_timeout,
-            keychain_service=config.keychain_service,
-            cache=config.cache,
-            cache_dir=config.cache_dir,
-            independent_batches=config.independent_batches,
-            resume=config.resume,
-            strict_batch_errors=config.strict_batch_errors,
-            continue_after_batch_error=config.continue_after_batch_error,
-            dry_run=config.dry_run,
-        )
-        command = build_inspect_command(batch_config, batch)
+        active_batch = list(batch)
+        bypass_cache = False
         for attempt in range(1, config.max_batch_retries + 1):
+            batch_config = replace(
+                config,
+                log_dir=batch_log_dir,
+                cache=None if bypass_cache else config.cache,
+            )
+            command = build_inspect_command(batch_config, active_batch)
             print(
                 f"batch {batch_index}/{len(batches)} attempt {attempt}: "
-                f"{batch[0]}..{batch[-1]}",
+                f"{active_batch[0]}..{active_batch[-1]}",
                 flush=True,
             )
+            existing_logs = set(batch_log_dir.rglob("*.eval"))
             returncode, output = run_batch(command, env=env, dry_run=config.dry_run)
             print(output, end="" if output.endswith("\n") else "\n")
             if returncode == 0:
+                refused_sample_ids = (
+                    []
+                    if not config.retry_provider_refusals or config.dry_run
+                    else provider_refusal_sample_ids(
+                        batch_log_dir,
+                        active_batch,
+                        existing_logs=existing_logs,
+                    )
+                )
+                if refused_sample_ids:
+                    print(
+                        "provider refusal text detected; retrying "
+                        f"{len(refused_sample_ids)} sample(s) without cache",
+                        flush=True,
+                    )
+                    if attempt < config.max_batch_retries:
+                        active_batch = refused_sample_ids
+                        bypass_cache = True
+                        continue
+                    write_manifest_entry(
+                        manifest_path(config.log_dir),
+                        {
+                            "attempt": attempt,
+                            "batch_index": batch_index,
+                            "log_dir": str(batch_log_dir),
+                            "returncode": 1,
+                            "sample_ids": list(batch),
+                            "status": "provider_refusal",
+                            "transient_sample_ids": refused_sample_ids,
+                        },
+                    )
+                    if not config.continue_after_batch_error:
+                        return 1
+                    final_returncode = 1
+                    break
                 write_manifest_entry(
                     manifest_path(config.log_dir),
                     {
@@ -335,6 +358,14 @@ def parse_args(argv: Sequence[str] | None = None) -> RunnerConfig:
     add_cache_args(parser)
     parser.add_argument("--independent-batches", action="store_true")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--no-retry-provider-refusals",
+        action="store_true",
+        help=(
+            "Do not retry provider safety/error strings returned as assistant text. "
+            "By default these are retried without Inspect cache."
+        ),
+    )
     parser.add_argument("--strict-batch-errors", action="store_true")
     parser.add_argument("--continue-after-batch-error", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
@@ -355,6 +386,7 @@ def parse_args(argv: Sequence[str] | None = None) -> RunnerConfig:
         keychain_service=args.keychain_service,
         cache=cache_from_args(args),
         cache_dir=args.cache_dir,
+        retry_provider_refusals=not args.no_retry_provider_refusals,
         independent_batches=args.independent_batches,
         resume=args.resume,
         strict_batch_errors=args.strict_batch_errors,

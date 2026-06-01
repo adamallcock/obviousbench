@@ -1,0 +1,121 @@
+examples:
+  - id: exact_string.exact.correct
+    scorer: exact_string_trim_v0
+    target: "yrrebwarts"
+    output: "yrrebwarts"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "yrrebwarts", failure_type: none}
+    notes: Exact string match is accepted.
+  - id: exact_string.whitespace.correct
+    scorer: exact_string_trim_v0
+    target: "yrrebwarts"
+    output: "  yrrebwarts\n"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "yrrebwarts", failure_type: none}
+    notes: Leading and trailing whitespace is trimmed.
+  - id: exact_string.final_answer_cue.verbose
+    scorer: exact_string_trim_v0
+    target: "strawbrry"
+    output: "If removing e from strawberry, the result is strawbrry. So answer: strawbrry."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "strawbrry", failure_type: verbose_noncompliance}
+    notes: A final-answer cue at the end can extract the answer, but extra text is not strict.
+  - id: exact_string.quoted_equals.verbose
+    scorer: exact_string_trim_v0
+    target: "committ"
+    output: "committee without the letter e = \"committ\""
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "committ", failure_type: verbose_noncompliance}
+    notes: A quoted value after equals is answer-correct, but the wrapper is not strict.
+  - id: exact_string.decimal_unit_suffix.correct
+    scorer: exact_string_trim_v0
+    target: "4.827"
+    output: "4.827 km"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "4.827", failure_type: none}
+    notes: A single matching decimal with unit suffix is accepted.
+  - id: exact_string.numeric_exact.correct
+    scorer: exact_string_trim_v0
+    target: "4.827"
+    output: "4.827"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "4.827", failure_type: none}
+    notes: Numeric exact strings still pass through the exact path.
+  - id: exact_string.numeric_conflict.ambiguous
+    scorer: exact_string_trim_v0
+    target: "4.827"
+    output: "4.827 km from 3 miles"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "4.827 km from 3 miles", failure_type: ambiguous_output}
+    notes: Unit suffix behavior rejects extra conflicting numbers.
+  - id: exact_string.trailing_punctuation.wrong
+    scorer: exact_string_trim_v0
+    target: "yrrebwarts"
+    output: "yrrebwarts."
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "yrrebwarts.", failure_type: wrong_letter_or_substring}
+    notes: Punctuation is not stripped from exact non-numeric strings.
+  - id: exact_string.prompt_rewrite.rejected
+    scorer: exact_string_trim_v0
+    target: "necess@ry"
+    output: "Replace every @ in necess@ry with @."
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "Replace every @ in necess@ry with @.", failure_type: wrong_letter_or_substring}
+    notes: Observed regression guard for prompt-wide rewrites containing the target.
+  - id: exact_string.empty.non_answer
+    scorer: exact_string_trim_v0
+    target: "yrrebwarts"
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty exact-string output is a non-answer.
+  - id: exact_string.answer_colon.verbose
+    scorer: exact_string_trim_v0
+    target: "blue"
+    output: "Answer: blue"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "blue", failure_type: verbose_noncompliance}
+    notes: A terminal answer-colon cue is answer-correct, but the wrapper is not strict.
+  - id: exact_string.result_equals.verbose
+    scorer: exact_string_trim_v0
+    target: "blue"
+    output: "result=blue"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "blue", failure_type: verbose_noncompliance}
+    notes: A terminal result-equals cue is answer-correct, but the wrapper is not strict.
+  - id: exact_string.extra_text.wrong
+    scorer: exact_string_trim_v0
+    target: "blue"
+    output: "blue and red"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "blue and red", failure_type: wrong_letter_or_substring}
+    notes: Extra incompatible text is rejected for exact strings.
+  - id: exact_string.answer_with_two_values.wrong
+    scorer: exact_string_trim_v0
+    target: "blue"
+    output: "answer: blue and red"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "answer: blue and red", failure_type: wrong_letter_or_substring}
+    notes: Final-answer extraction does not make a two-value string correct.
+  - id: exact_string.leading_decimal_unit.correct
+    scorer: exact_string_trim_v0
+    target: "0.5"
+    output: ".5 liters"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: ".5", failure_type: none}
+    notes: Decimal comparison accepts leading-dot decimal notation with units.
+  - id: exact_string.trailing_zero_decimal.correct
+    scorer: exact_string_trim_v0
+    target: "0.5"
+    output: "0.50 kg"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "0.50", failure_type: none}
+    notes: Decimal comparison accepts equivalent trailing zeroes.
+  - id: exact_string.integer_unit.correct
+    scorer: exact_string_trim_v0
+    target: "5"
+    output: "There are 5"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "5", failure_type: none}
+    notes: Numeric exact-string policy accepts a single integer embedded in text.
+  - id: exact_string.number_word_numeric.wrong
+    scorer: exact_string_trim_v0
+    target: "5"
+    output: "five"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "five", failure_type: wrong_letter_or_substring}
+    notes: Exact-string numeric fallback does not accept number words.
+  - id: exact_string.final_answer_not_terminal.wrong
+    scorer: exact_string_trim_v0
+    target: "blue"
+    output: "final answer: blue\nbecause it is stated above"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "final answer: blue\nbecause it is stated above", failure_type: wrong_letter_or_substring}
+    notes: Final-answer cues must be terminal.
+  - id: exact_string.quoted_final_answer.verbose
+    scorer: exact_string_trim_v0
+    target: "blue"
+    output: "The final answer: \"blue\"."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "blue", failure_type: verbose_noncompliance}
+    notes: Quoted terminal final answers are cleaned, but the wrapper is not strict.

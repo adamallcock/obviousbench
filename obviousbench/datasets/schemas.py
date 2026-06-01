@@ -127,6 +127,10 @@ class BenchmarkMetadata(BaseModel):
     seed: int | None = None
     strict_format: bool = False
     why_obvious: str | None = None
+    metamorphic_group_id: str | None = None
+    metamorphic_role: str | None = None
+    metamorphic_relation: str | None = None
+    metamorphic_expected_behavior: str | None = None
 
     @field_validator("prompt_template_id")
     @classmethod
@@ -134,6 +138,20 @@ class BenchmarkMetadata(BaseModel):
         if value not in SUPPORTED_PROMPT_TEMPLATE_IDS:
             raise ValueError(f"Unknown prompt template: {value}")
         return value
+
+    @field_validator(
+        "metamorphic_group_id",
+        "metamorphic_role",
+        "metamorphic_relation",
+        "metamorphic_expected_behavior",
+        mode="before",
+    )
+    @classmethod
+    def normalize_optional_metamorphic_text(cls, value: Any) -> str | None:
+        if value is None:
+            return None
+        text = str(value).strip()
+        return text or None
 
     @property
     def extra(self) -> dict[str, Any]:

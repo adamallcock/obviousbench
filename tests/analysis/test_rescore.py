@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-from obviousbench.analysis.logs import load_eval_logs, score_sample
+from obviousbench.analysis.logs import load_eval_logs, load_eval_logs_with_failures, score_sample
 from obviousbench.analysis.rescore import rescore_output
 
 
@@ -116,3 +116,120 @@ def test_load_eval_logs_discovers_nested_batch_logs(tmp_path, monkeypatch):
     assert records[0].sample_id == "sample-1"
     assert records[0].barrage_profile == "hard_obvious_8x10_seed_20260531"
     assert records[0].barrage_seed == 20260531
+
+
+def test_load_eval_logs_treats_provider_safety_text_as_provider_error(
+    tmp_path,
+    monkeypatch,
+):
+    log_dir = tmp_path / "results" / "raw" / "hard-obvious-grok"
+    log_dir.mkdir(parents=True)
+    (log_dir / "run.eval").write_text("placeholder", encoding="utf-8")
+
+    def fake_read_eval_log(path):
+        assert path.name == "run.eval"
+        return SimpleNamespace(
+            eval=SimpleNamespace(
+                model="grok/grok-4.3",
+                task_args={},
+                metadata={},
+                model_generate_config=SimpleNamespace(
+                    reasoning_effort=None,
+                    reasoning_summary=None,
+                ),
+            ),
+            samples=[
+                SimpleNamespace(
+                    id="obviousbench.format.en.v0.public.000050",
+                    epoch=1,
+                    input="Question: Return JSON.\nAnswer:",
+                    target="true",
+                    output=SimpleNamespace(
+                        completion=(
+                            "Content violates usage guidelines. "
+                            "Failed check: SAFETY_CHECK_TYPE_BIO"
+                        )
+                    ),
+                    metadata={"family": "format_compliance", "subfamily": "json"},
+                    scores={
+                        "score": SimpleNamespace(
+                            value="I",
+                            answer=None,
+                            metadata={"failure_type": "json_malformed"},
+                        )
+                    },
+                    error=None,
+                    limit=None,
+                    model_usage={},
+                )
+            ],
+        )
+
+    monkeypatch.setattr("obviousbench.analysis.logs.read_eval_log", fake_read_eval_log)
+
+    records, failures = load_eval_logs_with_failures(log_dir)
+
+    assert records[0].provider_error
+    assert records[0].failure_type == "provider_error"
+    assert records[0].correct is False
+    assert failures == []
+
+
+def test_load_eval_logs_includes_format_noncompliance_in_failure_gallery(
+    tmp_path,
+    monkeypatch,
+):
+    log_dir = tmp_path / "results" / "raw" / "strict-run"
+    log_dir.mkdir(parents=True)
+    (log_dir / "run.eval").write_text("placeholder", encoding="utf-8")
+
+    def fake_read_eval_log(path):
+        assert path.name == "run.eval"
+        return SimpleNamespace(
+            eval=SimpleNamespace(
+                model="provider/model-a",
+                task_args={},
+                metadata={},
+                model_generate_config=SimpleNamespace(
+                    reasoning_effort=None,
+                    reasoning_summary=None,
+                ),
+            ),
+            samples=[
+                SimpleNamespace(
+                    id="sample-1",
+                    epoch=1,
+                    input="Question: Choose the item.\nAnswer:",
+                    target="paper",
+                    output=SimpleNamespace(completion="paper (because it is not metal)"),
+                    metadata={"family": "negation", "subfamily": "not_metal"},
+                    scores={
+                        "score": SimpleNamespace(
+                            value="C",
+                            answer="paper",
+                            explanation="Matched with extra text.",
+                            metadata={
+                                "failure_type": "verbose_noncompliance",
+                                "answer_correct": True,
+                                "format_correct": False,
+                                "strict_correct": False,
+                            },
+                        )
+                    },
+                    error=None,
+                    limit=None,
+                    model_usage={},
+                )
+            ],
+        )
+
+    monkeypatch.setattr("obviousbench.analysis.logs.read_eval_log", fake_read_eval_log)
+
+    records, failures = load_eval_logs_with_failures(log_dir)
+
+    assert records[0].correct
+    assert records[0].answer_ok
+    assert not records[0].format_ok
+    assert not records[0].strict_ok
+    assert failures[0].sample_id == "sample-1"
+    assert failures[0].reference == "run=strict-run sample=sample-1 epoch=1 model=provider/model-a"

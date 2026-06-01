@@ -7,6 +7,7 @@ from inspect_ai.log import read_eval_log
 from obviousbench.analysis.build_failure_gallery import FailureGalleryEntry
 from obviousbench.analysis.metrics import EvalRecord
 from obviousbench.analysis.rescore import rescore_output
+from obviousbench.provider_errors import is_provider_transient_output
 from obviousbench.scorers.common import FORMAT_FAILURE_TYPES, ScoreDecision
 
 
@@ -34,13 +35,17 @@ def load_eval_logs_with_failures(
         eval_metadata = eval_log.eval.metadata or {}
         generate_config = eval_log.eval.model_generate_config
         for sample in eval_log.samples or []:
-            provider_error = sample.error is not None
+            provider_error = (
+                sample.error is not None
+                or is_provider_transient_output(sample.output.completion)
+            )
             timeout = bool(sample.limit and getattr(sample.limit, "type", None) == "time")
             score_result = score_sample(sample, provider_error=provider_error, rescore=rescore)
             family = str(sample.metadata.get("family", "unknown"))
             subfamily = str(sample.metadata.get("subfamily", ""))
             sample_id = str(sample.id)
             usage = _sample_usage(sample.model_usage or {}, model)
+            metamorphic_metadata = _metamorphic_metadata(sample.metadata or {})
             records.append(
                 EvalRecord(
                     model=model,
@@ -75,9 +80,12 @@ def load_eval_logs_with_failures(
                     cache_read_tokens=_usage_int(usage, "input_tokens_cache_read"),
                     cache_write_tokens=_usage_int(usage, "input_tokens_cache_write"),
                     total_tokens=_usage_int(usage, "total_tokens"),
+                    metamorphic_group_id=metamorphic_metadata["metamorphic_group_id"],
+                    metamorphic_role=metamorphic_metadata["metamorphic_role"],
+                    metamorphic_relation=metamorphic_metadata["metamorphic_relation"],
                 )
             )
-            if not score_result.correct and not provider_error and not timeout:
+            if not score_result.strict_correct and not provider_error and not timeout:
                 entries.append(
                     FailureGalleryEntry(
                         model=model,
@@ -97,6 +105,8 @@ def load_eval_logs_with_failures(
                                 "or simple mental work.",
                             )
                         ),
+                        run=_run_reference(log_file),
+                        epoch=getattr(sample, "epoch", 1) or 1,
                     )
                 )
     return records, entries
@@ -179,9 +189,36 @@ def _optional_int(value) -> int | None:
         return None
 
 
+def _metamorphic_metadata(metadata: dict) -> dict[str, str]:
+    benchmark_metadata = metadata.get("benchmark_metadata") or {}
+    if not isinstance(benchmark_metadata, dict):
+        benchmark_metadata = {}
+    values: dict[str, str] = {}
+    for field in (
+        "metamorphic_group_id",
+        "metamorphic_role",
+        "metamorphic_relation",
+    ):
+        values[field] = str(
+            benchmark_metadata.get(field) or metadata.get(field) or ""
+        ).strip()
+    return values
+
+
 def _question_from_input(prompt: str) -> str:
     marker = "Question: "
     if marker not in prompt:
         return prompt
     question = prompt.split(marker, 1)[1]
     return question.split("\nAnswer:", 1)[0].strip()
+
+
+def _run_reference(log_file: Path) -> str:
+    parts = log_file.parts
+    if "raw" in parts and "results" in parts:
+        raw_index = parts.index("raw")
+        if raw_index + 1 < len(parts) - 1:
+            return parts[raw_index + 1]
+        return log_file.stem
+    parent = log_file.parent.name
+    return parent if parent else log_file.stem

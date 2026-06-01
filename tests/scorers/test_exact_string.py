@@ -28,7 +28,8 @@ def test_exact_string_accepts_final_answer_cue_at_end():
 
     assert decision.correct
     assert decision.extracted == "strawbrry"
-    assert decision.failure_type == "none"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
 
 
 def test_exact_string_accepts_quoted_value_after_equals():
@@ -39,7 +40,32 @@ def test_exact_string_accepts_quoted_value_after_equals():
 
     assert decision.correct
     assert decision.extracted == "committ"
-    assert decision.failure_type == "none"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_leading_answer_with_explanation_as_wrong_format():
+    decision = score_exact_string_trim(
+        "paper (The answer is paper, since the others are metal.)",
+        "paper",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "paper"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_colon_suffix_answer_as_wrong_format():
+    decision = score_exact_string_trim(
+        "strawberry without the letter e: strawbrry",
+        "strawbrry",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "strawbrry"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
 
 
 def test_exact_string_rejects_prompt_rewrite_with_target_inside():
@@ -59,6 +85,27 @@ def test_exact_string_accepts_decimal_with_unit_suffix():
     assert decision.correct
     assert decision.extracted == "4.827"
     assert decision.failure_type == "none"
+
+
+def test_exact_string_accepts_confidence_macro_as_wrong_format():
+    decision = score_exact_string_trim(r"7.2 \confidence{100}", "7.2")
+
+    assert decision.correct
+    assert decision.extracted == "7.2"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_leading_numeric_with_parenthetical_explanation():
+    decision = score_exact_string_trim(
+        "9.9 (The answer is 9.9, as 9.9 = 9.90 > 9.11.)",
+        "9.9",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "9.9"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
 
 
 def test_exact_string_rejects_numeric_output_with_conflicting_extra_number():
