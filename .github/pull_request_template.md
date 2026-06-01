@@ -4,10 +4,11 @@
 
 ## Validation
 
-- [ ] `python -m ruff check .`
-- [ ] `python -m compileall obviousbench`
-- [ ] `python scripts/validate_dataset.py data/public_v0/*.jsonl data/calibration_v0/smoke_test.jsonl`
-- [ ] `python -m pytest tests -q`
+- [ ] `.venv/bin/python -m ruff check .`
+- [ ] `.venv/bin/python -m compileall obviousbench`
+- [ ] `.venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl data/calibration_v0/smoke_test.jsonl`
+- [ ] `.venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl --item-cards-dir data/item_cards --allow-extra-item-cards`
+- [ ] `.venv/bin/python -m pytest tests -q`
 
 ## Safety
 

@@ -25,6 +25,21 @@ Expected:
 Validation passed.
 ```
 
+To include the current draft item-card layer in validation:
+
+```bash
+.venv/bin/python scripts/validate_dataset.py \
+  data/public_v0/*.jsonl \
+  --item-cards-dir data/item_cards \
+  --allow-extra-item-cards
+```
+
+The current `public_v0` snapshot has 401 items across 8 task families, including
+399 generated variants, 2 public archetype items, and 3 items with metamorphic
+group metadata. Its item cards are generated draft review scaffolding, not a
+claim that every public seed item has been human-reviewed for trusted benchmark
+release.
+
 ## Run A Smoke Eval
 
 For a local plumbing check that does not call a real provider, use Inspect's
@@ -85,6 +100,11 @@ raw model completions without making new provider calls:
 - `answer_accuracy`: whether the answer content is correct.
 - `format_accuracy`: whether the response obeyed the expected output format.
 - `strict_accuracy`: answer and format both correct.
+
+Summaries also include Wilson 95% confidence intervals for accuracy-like
+metrics. Provider errors and timeouts remain visible in sample counts, but
+accuracy denominators use scored samples so infrastructure failures do not get
+reported as wrong model answers.
 
 Aggregate per-run summaries into comparison inputs for reports:
 

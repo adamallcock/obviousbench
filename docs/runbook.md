@@ -18,10 +18,11 @@ item from the web.
 Current public dataset:
 
 ```text
-318 total items
-316 generated variants
+401 total items
+399 generated variants
 2 public archetype items
 8 task families
+3 items with metamorphic group metadata
 ```
 
 ## Install
@@ -42,6 +43,44 @@ Expected output:
 ```text
 Validation passed.
 ```
+
+To also validate item-card contracts against the current public seed data:
+
+```bash
+.venv/bin/python scripts/validate_dataset.py \
+  data/public_v0/*.jsonl \
+  --item-cards-dir data/item_cards \
+  --allow-extra-item-cards
+```
+
+Trusted future splits should require reviewed item cards:
+
+```bash
+.venv/bin/obviousbench validate \
+  data/public_v0/*.jsonl \
+  --item-cards-dir data/item_cards \
+  --require-item-cards
+```
+
+`public_v0` currently has generated draft card stubs, so the strict
+`--require-item-cards` mode is for reviewed/trusted split promotion, not for the
+current draft-card seed set.
+
+## Generate Item-Card Stubs
+
+Use this when JSONL rows have changed and draft review cards need to be created
+or regenerated:
+
+```bash
+.venv/bin/python scripts/generate_item_card_stubs.py \
+  data/public_v0/*.jsonl \
+  --out data/item_cards/public_v0/cards.yaml \
+  --generated-on 2026-05-31
+```
+
+Generated cards are intentionally `review.status: draft` and contain
+`TODO(review)` fields. They are provenance/review scaffolding, not evidence that
+an item is trusted.
 
 ## Regenerate Public V0 Data
 
@@ -156,6 +195,10 @@ Notes:
   summarized.
 - Use `--no-cache` for fresh provider-behavior sweeps, or `--cache <duration>`
   for another expiry.
+- Provider safety/error strings that arrive as assistant text, for example
+  `SAFETY_CHECK_TYPE_*`, are retried by default as transient provider failures.
+  These retry attempts bypass the Inspect cache so a cached refusal is not
+  replayed. Use `--no-retry-provider-refusals` to disable this behavior.
 - Keep `--batch-size` below the provider's per-minute free-model limit. The
   observed OpenRouter free-model limit was 16 requests per minute.
 - `--attempt-timeout` is the per-request generation timeout passed to Inspect.
@@ -203,6 +246,11 @@ Use `--no-cache` to force fresh provider calls. Use repeated `--inspect-arg`
 values to pass raw Inspect flags; use `--inspect-arg=--flag-name` when the raw
 argument itself starts with `--`.
 
+Like the OpenRouter batch runner, the generic wrapper retries provider
+safety/error strings returned as assistant text once by default, rerunning only
+the affected sample ids without Inspect cache. Use
+`--no-retry-provider-refusals` or `--provider-refusal-retries <n>` to tune this.
+
 ## Summarize Logs
 
 ```bash
@@ -212,13 +260,20 @@ argument itself starts with `--`.
 The summarizer always writes:
 
 - `summary.csv`: run-level accuracy, failure, token, and optional cost totals.
-- `failure_gallery.md`: high-legibility failure examples.
+- `failure_gallery.md`: high-legibility strict-failure examples, including
+  answer-correct but format-noncompliant responses.
 - `usage_by_sample.csv`: one row per sample.
 - `usage_by_family.csv`: family-level rollups.
 - `usage_by_section.csv`: section rollups, where section is
   `family + subfamily`.
 - `usage_by_question.csv`: question-level rollups for spotting specific prompt
   lines that are costly or failure-prone.
+
+When evaluated samples include metamorphic metadata, the summarizer also writes
+`metamorphic_consistency.csv`. Provider errors, provider safety/error strings,
+and timeouts are counted in `samples`, but accuracy-like correctness columns
+use `scored_samples` so infrastructure failures do not become model-answer
+failures.
 
 Estimated cost uses the local Node 20+ `runcost` bridge by default:
 
@@ -249,6 +304,10 @@ Summaries and rollups report three related metrics:
 - `format_accuracy`: the model followed the required output format.
 - `strict_accuracy`: answer and format were both correct.
 
+Summaries also include Wilson 95% confidence intervals for `accuracy`,
+`answer_accuracy`, and `strict_accuracy`. Treat them as uncertainty bands over
+the scored samples, not as guarantees about future samples.
+
 Use `build-comparison` to aggregate one-row run summaries into the model,
 family, and section CSVs consumed by reports:
 
@@ -259,9 +318,32 @@ family, and section CSVs consumed by reports:
 ```
 
 If a comparison is being regenerated after rescoring, pass the old comparison as
-`--baseline-comparison` to write `delta.csv`. For direct xAI Grok runs, add
-`--manual-xai-costs` when the local `runcost` card set does not price the
-`grok/*` aliases.
+`--baseline-comparison` to write `delta.csv`. When both the old and new summary
+directories still contain `usage_by_sample.csv`, deltas are paired by
+`sample_id` and include matched counts, wins, losses, ties, and a deterministic
+bootstrap interval. If sample rows are missing, `delta.csv` falls back to
+aggregate unpaired deltas and marks `delta_method=aggregate_unpaired`; use those
+as directional checks rather than strong model-comparison claims. For direct xAI
+Grok runs, add `--manual-xai-costs` when the local `runcost` card set does not
+price the `grok/*` aliases.
+
+Small panels such as 40 or 80 items are useful for fast regression checks, but
+their intervals can be wide. Close rankings should be treated as directional
+until repeated on a larger or more targeted panel.
+
+Efficiency metrics are secondary diagnostics, not ranking keys. `summary.csv`,
+comparison outputs, and usage rollups include token and cost efficiency fields
+such as `tokens_per_scored_sample`, `tokens_per_correct`,
+`cost_per_correct_usd`, `reasoning_token_share`, and `overthinking_index`.
+Reasoning tokens are not reported by every provider; use
+`reasoning_token_source` to distinguish reported reasoning usage from missing or
+zero values.
+
+Comparison builds also write `effort_curve.csv` and
+`metamorphic_consistency.csv` when the source summaries contain the relevant
+fields. Warnings such as `higher_cost_no_accuracy_gain` and
+`higher_tokens_lower_accuracy` flag cases where extra effort spends more tokens
+or cost without an accuracy improvement.
 
 ## Build Benchmark Reports
 
@@ -286,7 +368,10 @@ docs/reports/2026-05-31-expanded-model-sweep/family-heatmap.csv
 
 The report follows a few benchmark-reporting conventions:
 
-- Show aggregate accuracy alongside cost, tokens, and cost per correct answer.
+- Show aggregate accuracy alongside cost, tokens, cost per correct answer, and
+  overthinking index.
+- Show confidence intervals beside accuracy so close rankings are not
+  over-interpreted.
 - Preserve family slices so aggregate scores cannot hide brittle categories.
 - Keep provider errors and pricing warnings visible in the same report.
 - Rank only comparable sample cohorts; shorter smoke/free runs are shown but
@@ -410,6 +495,7 @@ These paths are ignored by git.
 .venv/bin/python -m ruff check .
 .venv/bin/python -m compileall obviousbench
 .venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl data/calibration_v0/smoke_test.jsonl
+.venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl --item-cards-dir data/item_cards --allow-extra-item-cards
 ```
 
 ## Inspect Current Dataset Composition
