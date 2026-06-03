@@ -408,8 +408,14 @@ their accuracy/cost/token numbers differ from the prior (thinking-off) condition
 any paper text comparing these rows must use the regenerated artifacts.
 
 **Still open / follow-ups:**
-- Fix the panel-expansion step to preserve `control_style` (prevents silent
-  thinking-off on future big runs).
+- **Fixed (runner guard):** `_translate_control_style_generation_settings`
+  (`obviousbench/research/model_panel_runner.py`) now also translates a bare
+  Anthropic `effort` → `reasoning_effort` when `control_style` is missing, so a
+  dropped `control_style` can no longer silently disable thinking on Anthropic
+  effort entries (effort-less defaults stay thinking-off; an explicit non-adaptive
+  `control_style` still opts out). The untracked panel-expander that rebuilds
+  panels from leaderboard/comparison CSVs still cannot repopulate `control_style`
+  (those tables have no such column), but the runner guard makes that harmless.
 - The smaller 80-question combined runs (`paper-v1-combined-228/234/237-…`) still
   contain the old thinking-off Anthropic entries; rerun+override them the same way
   if they feed any published artifact.
