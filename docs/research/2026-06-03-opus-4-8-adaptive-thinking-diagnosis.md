@@ -352,7 +352,65 @@ All four patches and the free re-pricing were applied and verified.
 - **Verification** — full suite green (`559 passed`); probe and the 9 summaries
   regenerated.
 
-**Still open (deliberate, paid):** a full no-cache re-run of the 9 Anthropic
-entries (~$0.5, since billed thinking is only captured on fresh runs) to publish
-corrected per-sample thinking curves. Not done automatically — it regenerates eval
-*responses*, not just instrumentation, so it is a separate decision.
+## 9. 224-question run correction — `control_style` drop (2026-06-03)
+
+While merging the corrected telemetry into the canonical **224-question, 222-model
+run** (`paper-v1-8x28-current-222-20260602-keyed`, comparison at
+`results/summaries/paper-v1-8x28-current-222-final-20260602/comparison`, report at
+`docs/reports/2026-06-02-paper-v1-8x28-current-222-final`), we found a **third
+bug**, distinct from P1–P4:
+
+- The 11 Anthropic Opus/Sonnet entries in the 222-panel
+  (`configs/paper_v1_8x28_current_222_20260602_panel.yaml`) had
+  **`control_style: null`** and passed bare `effort` (not `reasoning_effort`).
+- In Inspect, bare `config.effort` sets `output_config.effort` but does **not**
+  trigger `thinking:{type:adaptive}`; `is_using_thinking` only keys off
+  `reasoning_effort`. Per the docs, "on Opus 4.8 thinking is off unless you
+  explicitly set `thinking:{type:adaptive}`."
+- Result: the entire "thinking sweep" for Opus/Sonnet in the 224-q run ran with
+  **extended thinking DISABLED** (verified in the raw log: `effort=max`,
+  `reasoning_effort=None`, assistant content `['text']` only, `reasoning_tokens=0`).
+  So `reasoning_tokens=0` and the costs were already correct *for that shape* — but
+  the run was not measuring thinking at all.
+- Root cause: the source builder `scripts/build_thinking_model_panel.mjs` emits
+  `control_style: anthropic_adaptive_thinking_effort` correctly; it was dropped by
+  the (untracked) "expand222" panel-merge step. **Follow-up: preserve
+  `control_style` when expanding/merging panels**, or Anthropic effort entries
+  silently run thinking-off.
+
+**Correction applied (user-approved "rerun with thinking ON"):** re-ran the 9
+effort-sweep entries on the 224-question dataset with adaptive thinking enabled
+(via the clean panel's `control_style`), cache-busted (`--no-cache`), with P1+P2
+active (`results/summaries/paper-v1-8x28-anthropic-thinking-rerun-20260603`,
+~$1.39). Overrode the 9 `expand222-top-thinking-*` summary dirs in the keyed run
+(backups in `results/_backups/paper-v1-8x28-keyed-anthropic-20260603/`), left the 2
+no-effort defaults untouched, and rebuilt comparison + report (still 222 rows;
+`reasoning ≤ output` holds for all 9; `reasoning_token_source=reported`).
+
+Before → after (224 q; thinking off → on), answer accuracy and billed thinking/sample:
+
+| entry | acc before | acc after | rea/sample before→after |
+|---|---:|---:|---|
+| Opus 4.8 low | 0.960 | 0.960 | 0 → 2.2 |
+| Opus 4.8 medium | 0.951 | 0.960 | 0 → 1.2 |
+| Opus 4.8 high | 0.960 | 0.964 | 0 → 3.6 |
+| Opus 4.8 xhigh | 0.960 | 0.964 | 0 → 6.5 |
+| **Opus 4.8 max** | **0.911** | **0.982** | 0 → 27.3 |
+| Sonnet 4.6 low | 0.897 | 0.888 | 0 → 0.2 |
+| Sonnet 4.6 medium | 0.897 | 0.946 | 0 → 5.4 |
+| **Sonnet 4.6 high** | **0.875** | **0.978** | 0 → 39.8 |
+| **Sonnet 4.6 max** | **0.888** | **0.996** | 0 → 69.3 |
+
+The 2 no-effort default entries (`Anthropic Claude Opus 4.8`,
+`Anthropic Claude Sonnet 4.6`) are unchanged — they intentionally request no
+thinking. Note the corrected entries are now a genuine adaptive-thinking sweep, so
+their accuracy/cost/token numbers differ from the prior (thinking-off) condition;
+any paper text comparing these rows must use the regenerated artifacts.
+
+**Still open / follow-ups:**
+- Fix the panel-expansion step to preserve `control_style` (prevents silent
+  thinking-off on future big runs).
+- The smaller 80-question combined runs (`paper-v1-combined-228/234/237-…`) still
+  contain the old thinking-off Anthropic entries; rerun+override them the same way
+  if they feed any published artifact.
+- Re-confirm the SDK streaming-accumulator bug (§7.2) with Anthropic.
