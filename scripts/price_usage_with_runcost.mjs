@@ -62,7 +62,21 @@ function buildUsageLedger(record) {
     inputTokens - cacheReadTokens - cacheWriteTokens,
     0,
   );
-  const outputTextTokens = Math.max(outputTokens - reasoningTokens, 0);
+  // `output_tokens` is the provider's authoritative, billing-inclusive total: it
+  // already contains any billed thinking/reasoning tokens, charged at the output
+  // rate (true for Anthropic, OpenAI, and the OpenRouter models we price). We
+  // therefore price the full `output_tokens` as a single `output_text_tokens`
+  // component.
+  //
+  // The previous code carved `output_text = output_tokens - reasoning_tokens`
+  // and priced a separate `output_reasoning_tokens` line. That was unsafe for two
+  // reasons: (1) for Anthropic Claude 4.x `reasoning_tokens` is the re-tokenized
+  // *summary* length, not billed thinking, and can even exceed `output_tokens`;
+  // (2) when a price card has no reasoning rate (e.g.
+  // anthropic:claude-opus-4-8:models-dev) runcost silently dropped that
+  // component, under-charging reasoning-heavy rows (~36% on Opus 4.8 max).
+  // `reasoning_tokens` is retained in raw_usage / metadata for observability only.
+  const outputTextTokens = outputTokens;
 
   return {
     schema_version: "0.1",
@@ -78,11 +92,11 @@ function buildUsageLedger(record) {
       component("input_cache_read_tokens", cacheReadTokens),
       component("input_cache_write_tokens", cacheWriteTokens),
       component("output_text_tokens", outputTextTokens),
-      component("output_reasoning_tokens", reasoningTokens),
     ].filter((entry) => Number(entry.quantity) > 0),
     raw_usage: usage,
     metadata: {
       sample_id: record.sample_id,
+      reasoning_tokens: reasoningTokens,
     },
   };
 }
