@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="628" viewBox="0 0 1040 628" role="img" aria-labelledby="model-answer-vs-strict-accuracy-title model-answer-vs-strict-accuracy-desc">
+<title id="model-answer-vs-strict-accuracy-title">Model answer vs strict accuracy</title>
+<desc id="model-answer-vs-strict-accuracy-desc">Top model/settings rows in the frozen release report. Generated from source release artifacts.</desc>
+<rect width="100%" height="100%" fill="#fbfaf7" />
+<text x="24" y="34" font-size="22" font-weight="700" fill="#1f2023">Model answer vs strict accuracy</text>
+<text x="24" y="58" font-size="13" fill="#5f6368">Top model/settings rows in the frozen release report</text>
+<text x="24" y="101" font-size="12" fill="#344054">OpenAI GPT-5.5 low (thinking=low) answer</text>
+<rect x="260" y="86" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="86" width="660.00" height="18" fill="#216db4" />
+<text x="932" y="101" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="131" font-size="12" fill="#344054">OpenAI GPT-5.5 low (thinking=low) strict</text>
+<rect x="260" y="116" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="116" width="660.00" height="18" fill="#d77250" />
+<text x="932" y="131" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="161" font-size="12" fill="#344054">OpenAI GPT-5.5 xhigh (thinking=xhigh) answer</text>
+<rect x="260" y="146" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="146" width="660.00" height="18" fill="#216db4" />
+<text x="932" y="161" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="191" font-size="12" fill="#344054">OpenAI GPT-5.5 xhigh (thinking=xhigh) strict</text>
+<rect x="260" y="176" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="176" width="660.00" height="18" fill="#d77250" />
+<text x="932" y="191" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="221" font-size="12" fill="#344054">Qwen: Qwen3.7 Max (thinking=max) answer</text>
+<rect x="260" y="206" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="206" width="660.00" height="18" fill="#216db4" />
+<text x="932" y="221" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="251" font-size="12" fill="#344054">Qwen: Qwen3.7 Max (thinking=max) strict</text>
+<rect x="260" y="236" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="236" width="660.00" height="18" fill="#d77250" />
+<text x="932" y="251" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="281" font-size="12" fill="#344054">Gemini 3 Flash Preview (provider default) answer</text>
+<rect x="260" y="266" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="266" width="657.36" height="18" fill="#216db4" />
+<text x="932" y="281" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="311" font-size="12" fill="#344054">Gemini 3 Flash Preview (provider default) strict</text>
+<rect x="260" y="296" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="296" width="657.36" height="18" fill="#d77250" />
+<text x="932" y="311" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="341" font-size="12" fill="#344054">Google: Gemini 3.1 Pro Preview Custom Tools... answer</text>
+<rect x="260" y="326" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="326" width="657.36" height="18" fill="#216db4" />
+<text x="932" y="341" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="371" font-size="12" fill="#344054">Google: Gemini 3.1 Pro Preview Custom Tools... strict</text>
+<rect x="260" y="356" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="356" width="657.36" height="18" fill="#d77250" />
+<text x="932" y="371" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="401" font-size="12" fill="#344054">MoonshotAI: Kimi K2.6 (provider default) answer</text>
+<rect x="260" y="386" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="386" width="657.36" height="18" fill="#216db4" />
+<text x="932" y="401" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="431" font-size="12" fill="#344054">MoonshotAI: Kimi K2.6 (provider default) strict</text>
+<rect x="260" y="416" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="416" width="657.36" height="18" fill="#d77250" />
+<text x="932" y="431" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="461" font-size="12" fill="#344054">OpenAI GPT-5.5 high (thinking=high) answer</text>
+<rect x="260" y="446" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="446" width="657.36" height="18" fill="#216db4" />
+<text x="932" y="461" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="491" font-size="12" fill="#344054">OpenAI GPT-5.5 high (thinking=high) strict</text>
+<rect x="260" y="476" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="476" width="657.36" height="18" fill="#d77250" />
+<text x="932" y="491" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="521" font-size="12" fill="#344054">OpenAI GPT-5.5 low (thinking=low/none) answer</text>
+<rect x="260" y="506" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="506" width="657.36" height="18" fill="#216db4" />
+<text x="932" y="521" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="551" font-size="12" fill="#344054">OpenAI GPT-5.5 low (thinking=low/none) strict</text>
+<rect x="260" y="536" width="660" height="18" fill="#ebe5db" />
+<rect x="260" y="536" width="657.36" height="18" fill="#d77250" />
+<text x="932" y="551" font-size="12" fill="#344054">99.6%</text>
+<text x="24" y="604" font-size="12" fill="#5f6368">Generated from Generated from leaderboard.csv or comparison.csv.</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="298" viewBox="0 0 960 298" role="img" aria-labelledby="evidence-readiness-title evidence-readiness-desc">
+<title id="evidence-readiness-title">Evidence readiness</title>
+<desc id="evidence-readiness-desc">Release evidence coverage checks derived from the frozen snapshot. Generated from source release artifacts.</desc>
+<rect width="100%" height="100%" fill="#fbfaf7" />
+<text x="24" y="34" font-size="22" font-weight="700" fill="#1f2023">Evidence readiness</text>
+<text x="24" y="58" font-size="13" fill="#5f6368">Release evidence coverage checks derived from the frozen snapshot</text>
+<text x="24" y="101" font-size="12" fill="#344054">registry paths present</text>
+<rect x="260" y="86" width="580" height="18" fill="#ebe5db" />
+<rect x="260" y="86" width="580.00" height="18" fill="#216db4" />
+<text x="852" y="101" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="131" font-size="12" fill="#344054">item cards present</text>
+<rect x="260" y="116" width="580" height="18" fill="#ebe5db" />
+<rect x="260" y="116" width="580.00" height="18" fill="#d77250" />
+<text x="852" y="131" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="161" font-size="12" fill="#344054">items reviewed</text>
+<rect x="260" y="146" width="580" height="18" fill="#ebe5db" />
+<rect x="260" y="146" width="207.14" height="18" fill="#216db4" />
+<text x="852" y="161" font-size="12" fill="#344054">35.7%</text>
+<text x="24" y="191" font-size="12" fill="#344054">items publishable</text>
+<rect x="260" y="176" width="580" height="18" fill="#ebe5db" />
+<rect x="260" y="176" width="580.00" height="18" fill="#d77250" />
+<text x="852" y="191" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="221" font-size="12" fill="#344054">model rows complete</text>
+<rect x="260" y="206" width="580" height="18" fill="#ebe5db" />
+<rect x="260" y="206" width="580.00" height="18" fill="#216db4" />
+<text x="852" y="221" font-size="12" fill="#344054">100.0%</text>
+<text x="24" y="274" font-size="12" fill="#5f6368">Generated from Generated from snapshot registry, item review matrix, and comparison CSV.</text>
+</svg>

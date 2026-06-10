@@ -1,0 +1,29 @@
+{
+  "title": "ObviousBench: Where Obvious Tasks Still Break Language Models",
+  "upload_type": "software",
+  "description": "A compact benchmark for short prompts that should be easy for a careful human but still produce visible failures in public-facing language models.",
+  "creators": [
+    {
+      "name": "Allcock, Adam",
+      "affiliation": "Independent Researcher"
+    }
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "language-model-evaluation",
+    "benchmark",
+    "reliability"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/adamallcock/obviousbench",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://huggingface.co/datasets/adamallcock/obviousbench",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset"
+    }
+  ]
+}
