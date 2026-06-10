@@ -1,0 +1,530 @@
+schema_version: paper-model-panel-v1
+created_at: '2026-06-06'
+run_status: planned
+dataset: data/barrages/hard_obvious_8x28_seed_20260531.jsonl
+profile: hard_obvious_8x28
+dataset_seed: 20260531
+source_panel: configs/model_thinking_settings_v1.yaml
+defaults:
+  inspect_args:
+  - --no-log-model-api
+  - --no-log-realtime
+  - --timeout=1200
+  - --max-retries=1
+  - --no-fail-on-error
+  - --continue-on-fail
+  - --score-on-error
+  - --attempt-timeout=300
+  - --max-connections=128
+selection_policy:
+  summary: Three independent cache-disabled trials for Gemini 3.5 Flash and Gemini 3.1 Flash Lite thinking settings on hard_obvious_8x28.
+  notes:
+  - Run with --no-cache and --no-skip-completed.
+  - pass^3 is computed with answer_correct as the primary y-axis metric for the requested curve.
+  - Gemini 3 thinking settings use Inspect reasoning_effort, which maps to Gemini thinkingLevel.
+  - Trial entries are cache-disabled and share the same dataset seed convention as the existing pass^3 panels.
+entries:
+- id: gemini-3-5-flash-minimal-trial-01
+  label: Gemini 3.5 Flash minimal trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-minimal-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: minimal
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: minimal
+  estimated_cost_usd_8x10: 0.0337635
+- id: gemini-3-5-flash-minimal-trial-02
+  label: Gemini 3.5 Flash minimal trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-minimal-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: minimal
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: minimal
+  estimated_cost_usd_8x10: 0.0337635
+- id: gemini-3-5-flash-minimal-trial-03
+  label: Gemini 3.5 Flash minimal trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-minimal-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: minimal
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: minimal
+  estimated_cost_usd_8x10: 0.0337635
+- id: gemini-3-5-flash-low-trial-01
+  label: Gemini 3.5 Flash low trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-low-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: low
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: low
+  estimated_cost_usd_8x10: 0.0568035
+- id: gemini-3-5-flash-low-trial-02
+  label: Gemini 3.5 Flash low trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-low-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: low
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: low
+  estimated_cost_usd_8x10: 0.0568035
+- id: gemini-3-5-flash-low-trial-03
+  label: Gemini 3.5 Flash low trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-low-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: low
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: low
+  estimated_cost_usd_8x10: 0.0568035
+- id: gemini-3-5-flash-medium-trial-01
+  label: Gemini 3.5 Flash medium trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-medium-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: medium
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 8264
+      thinkingConfig:
+        thinkingLevel: medium
+  estimated_cost_usd_8x10: 0.1489635
+- id: gemini-3-5-flash-medium-trial-02
+  label: Gemini 3.5 Flash medium trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-medium-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: medium
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 8264
+      thinkingConfig:
+        thinkingLevel: medium
+  estimated_cost_usd_8x10: 0.1489635
+- id: gemini-3-5-flash-medium-trial-03
+  label: Gemini 3.5 Flash medium trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-medium-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: medium
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 8264
+      thinkingConfig:
+        thinkingLevel: medium
+  estimated_cost_usd_8x10: 0.1489635
+- id: gemini-3-5-flash-high-trial-01
+  label: Gemini 3.5 Flash high trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-high-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 24576
+  generation_settings:
+    max_tokens: 24648
+    reasoning_effort: high
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 24648
+      thinkingConfig:
+        thinkingLevel: high
+  estimated_cost_usd_8x10: 0.2872035
+- id: gemini-3-5-flash-high-trial-02
+  label: Gemini 3.5 Flash high trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-high-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 24576
+  generation_settings:
+    max_tokens: 24648
+    reasoning_effort: high
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 24648
+      thinkingConfig:
+        thinkingLevel: high
+  estimated_cost_usd_8x10: 0.2872035
+- id: gemini-3-5-flash-high-trial-03
+  label: Gemini 3.5 Flash high trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.5-flash
+  model_id: gemini-3.5-flash
+  trial_group_id: gemini-3-5-flash-high-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 24576
+  generation_settings:
+    max_tokens: 24648
+    reasoning_effort: high
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 24648
+      thinkingConfig:
+        thinkingLevel: high
+  estimated_cost_usd_8x10: 0.2872035
+- id: gemini-3-1-flash-lite-minimal-trial-01
+  label: Gemini 3.1 Flash Lite minimal trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-minimal-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: minimal
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: minimal
+  estimated_cost_usd_8x10: 0.00562725
+- id: gemini-3-1-flash-lite-minimal-trial-02
+  label: Gemini 3.1 Flash Lite minimal trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-minimal-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: minimal
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: minimal
+  estimated_cost_usd_8x10: 0.00562725
+- id: gemini-3-1-flash-lite-minimal-trial-03
+  label: Gemini 3.1 Flash Lite minimal trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-minimal-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: minimal
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: minimal
+  estimated_cost_usd_8x10: 0.00562725
+- id: gemini-3-1-flash-lite-low-trial-01
+  label: Gemini 3.1 Flash Lite low trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-low-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: low
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: low
+  estimated_cost_usd_8x10: 0.00946725
+- id: gemini-3-1-flash-lite-low-trial-02
+  label: Gemini 3.1 Flash Lite low trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-low-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: low
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: low
+  estimated_cost_usd_8x10: 0.00946725
+- id: gemini-3-1-flash-lite-low-trial-03
+  label: Gemini 3.1 Flash Lite low trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-low-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 1096
+    reasoning_effort: low
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 1096
+      thinkingConfig:
+        thinkingLevel: low
+  estimated_cost_usd_8x10: 0.00946725
+- id: gemini-3-1-flash-lite-medium-trial-01
+  label: Gemini 3.1 Flash Lite medium trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-medium-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: medium
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 8264
+      thinkingConfig:
+        thinkingLevel: medium
+  estimated_cost_usd_8x10: 0.02482725
+- id: gemini-3-1-flash-lite-medium-trial-02
+  label: Gemini 3.1 Flash Lite medium trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-medium-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: medium
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 8264
+      thinkingConfig:
+        thinkingLevel: medium
+  estimated_cost_usd_8x10: 0.02482725
+- id: gemini-3-1-flash-lite-medium-trial-03
+  label: Gemini 3.1 Flash Lite medium trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-medium-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: medium
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 8264
+      thinkingConfig:
+        thinkingLevel: medium
+  estimated_cost_usd_8x10: 0.02482725
+- id: gemini-3-1-flash-lite-high-trial-01
+  label: Gemini 3.1 Flash Lite high trial 01
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-high-k3
+  trial_index: 1
+  control_style: gemini_thinking_level
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 24576
+  generation_settings:
+    max_tokens: 24648
+    reasoning_effort: high
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 24648
+      thinkingConfig:
+        thinkingLevel: high
+  estimated_cost_usd_8x10: 0.04786725
+- id: gemini-3-1-flash-lite-high-trial-02
+  label: Gemini 3.1 Flash Lite high trial 02
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-high-k3
+  trial_index: 2
+  control_style: gemini_thinking_level
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 24576
+  generation_settings:
+    max_tokens: 24648
+    reasoning_effort: high
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 24648
+      thinkingConfig:
+        thinkingLevel: high
+  estimated_cost_usd_8x10: 0.04786725
+- id: gemini-3-1-flash-lite-high-trial-03
+  label: Gemini 3.1 Flash Lite high trial 03
+  provider_route: gemini
+  upstream_provider: google
+  provider_api: gemini_generate_content
+  inspect_model: google/gemini-3.1-flash-lite
+  model_id: gemini-3.1-flash-lite
+  trial_group_id: gemini-3-1-flash-lite-high-k3
+  trial_index: 3
+  control_style: gemini_thinking_level
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 24576
+  generation_settings:
+    max_tokens: 24648
+    reasoning_effort: high
+  provider_request_settings:
+    generationConfig:
+      maxOutputTokens: 24648
+      thinkingConfig:
+        thinkingLevel: high
+  estimated_cost_usd_8x10: 0.04786725

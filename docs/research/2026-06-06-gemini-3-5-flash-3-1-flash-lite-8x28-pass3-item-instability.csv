@@ -1,0 +1,81 @@
+curve,model,mode,sample_id,family,answer_successes,strict_successes,correct_successes,trials,question
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,minimal,obviousbench.spell.en.v0.public.000002,spelling_transform,2,2,2,3,Write strawberry without the letter e.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,minimal,obviousbench.spell.en.v0.public.000005,spelling_transform,2,2,2,3,Write necessary without the letter e.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,minimal,obviousbench.spell.en.v0.public.000006,spelling_transform,2,2,2,3,Replace every a in necessary with @.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,minimal,obviousbench.spell.en.v0.public.000018,spelling_transform,2,2,2,3,Replace every a in orange with @.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000017,character_count,2,2,2,3,How many e's are in responsiveness?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000022,character_count,2,2,2,3,How many i's are in accessibility?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000029,character_count,2,2,2,3,How many g's are in rearrangement?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000030,character_count,1,1,1,3,How many h's are in alphabetical?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000040,character_count,1,1,1,3,How many a's are in alphabetical?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000046,character_count,2,2,2,3,How many t's are in accessibility?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000053,character_count,2,2,2,3,How many e's are in rearrangement?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000062,character_count,1,1,1,3,How many p's are in responsiveness?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.char_count.en.v0.public.000076,character_count,2,2,2,3,How many n's are in rearrangement?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.constraint.en.v0.public.000008,constraint_awareness,2,2,2,3,"The window tinting shop is 100m away. If I want the windows on my car tinted, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Bring only the appointment card
+D. It is impossible"
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.constraint.en.v0.public.000042,constraint_awareness,2,2,2,3,"The campus store is downstairs. If I want to exchange my backpack, should I carry my books by hand or wear or bring the backpack?
+
+A. Carry my books by hand
+B. Wear or bring the backpack
+C. Bring only the receipt
+D. It is impossible"
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.spell.en.v0.public.000004,spelling_transform,1,1,1,3,Spell necessary backwards.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,low,obviousbench.spell.en.v0.public.000006,spelling_transform,1,1,1,3,Replace every a in necessary with @.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,medium,obviousbench.constraint.en.v0.public.000004,constraint_awareness,2,2,2,3,"The windshield repair garage is at the end of my street. If I want the chip in my car windshield repaired, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Skate there
+D. It is impossible"
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,medium,obviousbench.constraint.en.v0.public.000042,constraint_awareness,2,2,2,3,"The campus store is downstairs. If I want to exchange my backpack, should I carry my books by hand or wear or bring the backpack?
+
+A. Carry my books by hand
+B. Wear or bring the backpack
+C. Bring only the receipt
+D. It is impossible"
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,medium,obviousbench.spell.en.v0.public.000005,spelling_transform,2,2,2,3,Write necessary without the letter e.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,medium,obviousbench.spell.en.v0.public.000024,spelling_transform,1,1,1,3,Spell bookkeeper backwards.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,high,obviousbench.char_count.en.v0.public.000036,character_count,2,2,2,3,How many s's are in responsiveness?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,high,obviousbench.char_count.en.v0.public.000074,character_count,2,2,2,3,How many t's are in alphabetical?
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,high,obviousbench.constraint.en.v0.public.000042,constraint_awareness,2,2,2,3,"The campus store is downstairs. If I want to exchange my backpack, should I carry my books by hand or wear or bring the backpack?
+
+A. Carry my books by hand
+B. Wear or bring the backpack
+C. Bring only the receipt
+D. It is impossible"
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,high,obviousbench.spell.en.v0.public.000004,spelling_transform,2,2,2,3,Spell necessary backwards.
+Gemini 3.1 Flash Lite,google/gemini-3.1-flash-lite,high,obviousbench.spell.en.v0.public.000027,spelling_transform,2,2,2,3,Spell reliability backwards.
+Gemini 3.5 Flash,google/gemini-3.5-flash,minimal,obviousbench.char_count.en.v0.public.000010,character_count,1,1,1,3,How many l's are in google?
+Gemini 3.5 Flash,google/gemini-3.5-flash,minimal,obviousbench.char_count.en.v0.public.000055,character_count,2,2,2,3,How many a's are in assesses?
+Gemini 3.5 Flash,google/gemini-3.5-flash,minimal,obviousbench.constraint.en.v0.public.000013,constraint_awareness,2,2,2,3,"The bike shop is around the corner. If my bike needs a tune-up, should I walk there or ride the bike there?
+
+A. Walk there
+B. Ride the bike there
+C. Drive a car there
+D. It is impossible"
+Gemini 3.5 Flash,google/gemini-3.5-flash,minimal,obviousbench.spell.en.v0.public.000006,spelling_transform,2,2,2,3,Replace every a in necessary with @.
+Gemini 3.5 Flash,google/gemini-3.5-flash,minimal,obviousbench.spell.en.v0.public.000020,spelling_transform,1,1,1,3,Write committee without the letter e.
+Gemini 3.5 Flash,google/gemini-3.5-flash,minimal,obviousbench.spell.en.v0.public.000025,spelling_transform,2,2,2,3,Write bookkeeper without the letter e.
+Gemini 3.5 Flash,google/gemini-3.5-flash,low,obviousbench.char_count.en.v0.public.000047,character_count,1,1,1,3,How many o's are in terracotta?
+Gemini 3.5 Flash,google/gemini-3.5-flash,low,obviousbench.constraint.en.v0.public.000013,constraint_awareness,2,2,2,3,"The bike shop is around the corner. If my bike needs a tune-up, should I walk there or ride the bike there?
+
+A. Walk there
+B. Ride the bike there
+C. Drive a car there
+D. It is impossible"
+Gemini 3.5 Flash,google/gemini-3.5-flash,low,obviousbench.constraint.en.v0.public.000041,constraint_awareness,1,1,1,3,"The luggage store is across the mall. If I am returning my suitcase, should I move my things to a backpack or roll or carry the suitcase there?
+
+A. Move my things to a backpack
+B. Roll or carry the suitcase there
+C. Bring only the luggage tag
+D. It is impossible"
+Gemini 3.5 Flash,google/gemini-3.5-flash,low,obviousbench.spell.en.v0.public.000006,spelling_transform,2,2,2,3,Replace every a in necessary with @.
+Gemini 3.5 Flash,google/gemini-3.5-flash,low,obviousbench.spell.en.v0.public.000024,spelling_transform,2,2,2,3,Spell bookkeeper backwards.
+Gemini 3.5 Flash,google/gemini-3.5-flash,medium,obviousbench.spell.en.v0.public.000024,spelling_transform,1,1,1,3,Spell bookkeeper backwards.
+Gemini 3.5 Flash,google/gemini-3.5-flash,high,obviousbench.spell.en.v0.public.000004,spelling_transform,2,2,2,3,Spell necessary backwards.
+Gemini 3.5 Flash,google/gemini-3.5-flash,high,obviousbench.spell.en.v0.public.000024,spelling_transform,1,1,1,3,Spell bookkeeper backwards.

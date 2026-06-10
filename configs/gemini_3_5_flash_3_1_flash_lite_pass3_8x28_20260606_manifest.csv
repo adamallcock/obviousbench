@@ -1,0 +1,25 @@
+label,model,summary_dir
+Gemini 3.5 Flash minimal trial 01,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-minimal-trial-01
+Gemini 3.5 Flash minimal trial 02,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-minimal-trial-02
+Gemini 3.5 Flash minimal trial 03,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-minimal-trial-03
+Gemini 3.5 Flash low trial 01,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-low-trial-01
+Gemini 3.5 Flash low trial 02,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-low-trial-02
+Gemini 3.5 Flash low trial 03,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-low-trial-03
+Gemini 3.5 Flash medium trial 01,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-medium-trial-01
+Gemini 3.5 Flash medium trial 02,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-medium-trial-02
+Gemini 3.5 Flash medium trial 03,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-medium-trial-03
+Gemini 3.5 Flash high trial 01,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-high-trial-01
+Gemini 3.5 Flash high trial 02,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-high-trial-02
+Gemini 3.5 Flash high trial 03,google/gemini-3.5-flash,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-5-flash-high-trial-03
+Gemini 3.1 Flash Lite minimal trial 01,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-minimal-trial-01
+Gemini 3.1 Flash Lite minimal trial 02,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-minimal-trial-02
+Gemini 3.1 Flash Lite minimal trial 03,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-minimal-trial-03
+Gemini 3.1 Flash Lite low trial 01,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-low-trial-01
+Gemini 3.1 Flash Lite low trial 02,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-low-trial-02
+Gemini 3.1 Flash Lite low trial 03,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-low-trial-03
+Gemini 3.1 Flash Lite medium trial 01,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-medium-trial-01
+Gemini 3.1 Flash Lite medium trial 02,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-medium-trial-02
+Gemini 3.1 Flash Lite medium trial 03,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-medium-trial-03
+Gemini 3.1 Flash Lite high trial 01,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-high-trial-01
+Gemini 3.1 Flash Lite high trial 02,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-high-trial-02
+Gemini 3.1 Flash Lite high trial 03,google/gemini-3.1-flash-lite,results/summaries/gemini-3-5-flash-3-1-flash-lite-pass3-8x28-20260606/runs/gemini-3-1-flash-lite-high-trial-03

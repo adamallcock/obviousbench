@@ -1,0 +1,237 @@
+schema_version: paper-model-panel-v1
+created_at: '2026-06-06'
+run_status: planned
+dataset: data/barrages/hard_obvious_8x28_seed_20260531.jsonl
+profile: hard_obvious_8x28
+seed: 20260531
+defaults:
+  inspect_args:
+  - --no-log-model-api
+  - --no-log-realtime
+  - --timeout=900
+  - --max-retries=1
+  - --no-fail-on-error
+  - --continue-on-fail
+  - --score-on-error
+  - --attempt-timeout=180
+  - --max-connections=128
+selection_policy:
+  summary: Five independent cache-disabled trials for GPT-5.4 mini reasoning modes
+    on hard_obvious_8x28.
+  notes:
+  - Run with scripts/run_model_panel.py using --no-cache and --no-skip-completed.
+  - The same 224-item 8x28 dataset is used for every entry.
+  - Temperature is fixed at 0 for the none condition; reasoning-enabled OpenAI modes
+    may ignore temperature.
+  - Max output tokens are fixed at 10000 for all four reasoning modes so the experiment
+    isolates reasoning_effort rather than output-cap differences.
+  - pass^3 and pass^5 should be computed from the five trial summaries per mode after
+    the run completes.
+  - Inspect max_connections is raised to 128 for this mini run to reduce wall-clock
+    time.
+entries:
+- id: gpt-5-4-mini-none-trial-01
+  label: OpenAI GPT-5.4 mini none trial 01
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-none-k5
+  trial_index: 1
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+- id: gpt-5-4-mini-none-trial-02
+  label: OpenAI GPT-5.4 mini none trial 02
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-none-k5
+  trial_index: 2
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+- id: gpt-5-4-mini-none-trial-03
+  label: OpenAI GPT-5.4 mini none trial 03
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-none-k5
+  trial_index: 3
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+- id: gpt-5-4-mini-none-trial-04
+  label: OpenAI GPT-5.4 mini none trial 04
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-none-k5
+  trial_index: 4
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+- id: gpt-5-4-mini-none-trial-05
+  label: OpenAI GPT-5.4 mini none trial 05
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-none-k5
+  trial_index: 5
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+- id: gpt-5-4-mini-low-trial-01
+  label: OpenAI GPT-5.4 mini low trial 01
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-low-k5
+  trial_index: 1
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: low
+- id: gpt-5-4-mini-low-trial-02
+  label: OpenAI GPT-5.4 mini low trial 02
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-low-k5
+  trial_index: 2
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: low
+- id: gpt-5-4-mini-low-trial-03
+  label: OpenAI GPT-5.4 mini low trial 03
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-low-k5
+  trial_index: 3
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: low
+- id: gpt-5-4-mini-low-trial-04
+  label: OpenAI GPT-5.4 mini low trial 04
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-low-k5
+  trial_index: 4
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: low
+- id: gpt-5-4-mini-low-trial-05
+  label: OpenAI GPT-5.4 mini low trial 05
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-low-k5
+  trial_index: 5
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: low
+- id: gpt-5-4-mini-medium-trial-01
+  label: OpenAI GPT-5.4 mini medium trial 01
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-medium-k5
+  trial_index: 1
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: medium
+- id: gpt-5-4-mini-medium-trial-02
+  label: OpenAI GPT-5.4 mini medium trial 02
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-medium-k5
+  trial_index: 2
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: medium
+- id: gpt-5-4-mini-medium-trial-03
+  label: OpenAI GPT-5.4 mini medium trial 03
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-medium-k5
+  trial_index: 3
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: medium
+- id: gpt-5-4-mini-medium-trial-04
+  label: OpenAI GPT-5.4 mini medium trial 04
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-medium-k5
+  trial_index: 4
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: medium
+- id: gpt-5-4-mini-medium-trial-05
+  label: OpenAI GPT-5.4 mini medium trial 05
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-medium-k5
+  trial_index: 5
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: medium
+- id: gpt-5-4-mini-high-trial-01
+  label: OpenAI GPT-5.4 mini high trial 01
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-high-k5
+  trial_index: 1
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: high
+- id: gpt-5-4-mini-high-trial-02
+  label: OpenAI GPT-5.4 mini high trial 02
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-high-k5
+  trial_index: 2
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: high
+- id: gpt-5-4-mini-high-trial-03
+  label: OpenAI GPT-5.4 mini high trial 03
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-high-k5
+  trial_index: 3
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: high
+- id: gpt-5-4-mini-high-trial-04
+  label: OpenAI GPT-5.4 mini high trial 04
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-high-k5
+  trial_index: 4
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: high
+- id: gpt-5-4-mini-high-trial-05
+  label: OpenAI GPT-5.4 mini high trial 05
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  trial_group_id: gpt-5-4-mini-high-k5
+  trial_index: 5
+  generation_settings:
+    temperature: 0
+    max_tokens: 10000
+    reasoning_effort: high
