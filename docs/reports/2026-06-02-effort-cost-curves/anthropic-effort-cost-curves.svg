@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1120" viewBox="0 0 1900 1120">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;fill:#1f2023}
+.title{font-size:54px;font-weight:800}.subtitle{font-size:30px;fill:#5f6368}
+.axis{font-size:30px;font-weight:700}.tick{font-size:24px;fill:#5f6368}
+.label{font-size:26px;font-weight:700}.foot{font-size:21px;fill:#5f6368}
+</style>
+<rect width="100%" height="100%" fill="#fbfaf7"/>
+<text class="title" x="558.1" y="78">Anthropic Adaptive Thinking</text>
+<text class="subtitle" x="368.3" y="124">224-question panel; default rows are provider default, not explicit no-thinking</text>
+<line x1="170" y1="905.3" x2="1470" y2="905.3" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="98.5" y="913.3">85%</text>
+<line x1="170" y1="681.8" x2="1470" y2="681.8" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="98.5" y="689.8">90%</text>
+<line x1="170" y1="458.2" x2="1470" y2="458.2" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="98.5" y="466.2">95%</text>
+<line x1="170" y1="234.7" x2="1470" y2="234.7" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="85.0" y="242.7">100%</text>
+<line x1="170.0" y1="190" x2="170.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="140.0" y="996">$0.01</text>
+<line x1="430.0" y1="190" x2="430.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="400.0" y="996">$0.08</text>
+<line x1="690.0" y1="190" x2="690.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="660.0" y="996">$0.14</text>
+<line x1="950.0" y1="190" x2="950.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="920.0" y="996">$0.21</text>
+<line x1="1210.0" y1="190" x2="1210.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="1180.0" y="996">$0.27</text>
+<line x1="1470.0" y1="190" x2="1470.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="1440.0" y="996">$0.34</text>
+<line x1="170" y1="950" x2="1470" y2="950" stroke="#1f2023" stroke-width="4"/>
+<line x1="170" y1="190" x2="170" y2="950" stroke="#1f2023" stroke-width="4"/>
+<text class="axis" x="170" y="158">Answer accuracy (%)</text>
+<text class="axis" x="449.7" y="1055">Estimated total run cost, USD (224 questions)</text>
+<polyline points="276.5,753.6 336.2,733.7 413.5,474.2 963.5,334.5 1380.3,254.7" fill="none" stroke="#216db4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="276.5" cy="753.6" r="13" fill="#216db4" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="298.5" y="795.6">default</text>
+<circle cx="336.2" cy="733.7" r="13" fill="#216db4" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="358.2" y="681.7">low</text>
+<circle cx="413.5" cy="474.2" r="13" fill="#216db4" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="435.5" y="464.2">medium</text>
+<circle cx="963.5" cy="334.5" r="13" fill="#216db4" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="985.5" y="310.5">high</text>
+<circle cx="1380.3" cy="254.7" r="13" fill="#216db4" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="1286.3" y="296.7">max</text>
+<polyline points="259.7,414.3 574.3,414.3 547.3,414.3 602.2,394.4 670.4,394.4 1136.0,314.5" fill="none" stroke="#d77250" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="259.7" cy="414.3" r="13" fill="#d77250" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="139.7" y="414.3">default</text>
+<circle cx="574.3" cy="414.3" r="13" fill="#d77250" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="502.3" y="460.3">low</text>
+<circle cx="547.3" cy="414.3" r="13" fill="#d77250" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="569.3" y="472.3">medium</text>
+<circle cx="602.2" cy="394.4" r="13" fill="#d77250" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="624.2" y="352.4">high</text>
+<circle cx="670.4" cy="394.4" r="13" fill="#d77250" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="692.4" y="382.4">xhigh</text>
+<circle cx="1136.0" cy="314.5" r="13" fill="#d77250" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="1158.0" y="290.5">max</text>
+<line x1="1540" y1="197" x2="1610" y2="197" stroke="#216db4" stroke-width="7"/>
+<text class="tick" x="1626" y="205">Claude Sonnet 4.6</text>
+<line x1="1540" y1="242" x2="1610" y2="242" stroke="#d77250" stroke-width="7"/>
+<text class="tick" x="1626" y="250">Claude Opus 4.8</text>
+<text class="foot" x="170" y="1098">Source: 223-row merged 224-question 8x28 leaderboard. Anthropic default is provider default; costs use reported telemetry, not hidden-thinking billing.</text>
+</svg>

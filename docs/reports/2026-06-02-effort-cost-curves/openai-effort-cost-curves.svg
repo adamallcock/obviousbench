@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1120" viewBox="0 0 1900 1120">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;fill:#1f2023}
+.title{font-size:54px;font-weight:800}.subtitle{font-size:30px;fill:#5f6368}
+.axis{font-size:30px;font-weight:700}.tick{font-size:24px;fill:#5f6368}
+.label{font-size:26px;font-weight:700}.foot{font-size:21px;fill:#5f6368}
+</style>
+<rect width="100%" height="100%" fill="#fbfaf7"/>
+<text class="title" x="571.5" y="78">OpenAI Effort Cost Curves</text>
+<text class="subtitle" x="504.5" y="124">224-question panel; answer score (%) vs reported run cost</text>
+<line x1="170" y1="855.0" x2="1470" y2="855.0" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="98.5" y="863.0">80%</text>
+<line x1="170" y1="696.7" x2="1470" y2="696.7" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="98.5" y="704.7">85%</text>
+<line x1="170" y1="538.3" x2="1470" y2="538.3" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="98.5" y="546.3">90%</text>
+<line x1="170" y1="380.0" x2="1470" y2="380.0" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="98.5" y="388.0">95%</text>
+<line x1="170" y1="221.7" x2="1470" y2="221.7" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="85.0" y="229.7">100%</text>
+<line x1="170.0" y1="190" x2="170.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="133.3" y="996">$0.000</text>
+<line x1="430.0" y1="190" x2="430.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="400.0" y="996">$0.08</text>
+<line x1="690.0" y1="190" x2="690.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="660.0" y="996">$0.17</text>
+<line x1="950.0" y1="190" x2="950.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="920.0" y="996">$0.25</text>
+<line x1="1210.0" y1="190" x2="1210.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="1180.0" y="996">$0.33</text>
+<line x1="1470.0" y1="190" x2="1470.0" y2="950" stroke="#ded8ce" stroke-width="2"/>
+<text class="tick" x="1440.0" y="996">$0.42</text>
+<line x1="170" y1="950" x2="1470" y2="950" stroke="#1f2023" stroke-width="4"/>
+<line x1="170" y1="190" x2="170" y2="950" stroke="#1f2023" stroke-width="4"/>
+<text class="axis" x="170" y="158">Answer accuracy (%)</text>
+<text class="axis" x="449.7" y="1055">Estimated total run cost, USD (224 questions)</text>
+<polyline points="174.3,843.7 181.7,645.8 199.1,433.7 202.3,391.3 236.2,334.8" fill="none" stroke="#d04f83" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="174.3" cy="843.7" r="13" fill="#d04f83" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="188.3" y="828.7">none</text>
+<circle cx="181.7" cy="645.8" r="13" fill="#d04f83" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="195.7" y="630.8">low</text>
+<circle cx="199.1" cy="433.7" r="13" fill="#d04f83" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="213.1" y="418.7">medium</text>
+<circle cx="202.3" cy="391.3" r="13" fill="#d04f83" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="216.3" y="376.3">high</text>
+<circle cx="236.2" cy="334.8" r="13" fill="#d04f83" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="250.2" y="319.8">xhigh</text>
+<polyline points="185.7,688.2 265.3,334.8 304.7,334.8 347.8,278.2 689.9,278.2" fill="none" stroke="#7d8b17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="185.7" cy="688.2" r="13" fill="#7d8b17" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="199.7" y="673.2">none</text>
+<circle cx="265.3" cy="334.8" r="13" fill="#7d8b17" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="279.3" y="319.8">low</text>
+<circle cx="304.7" cy="334.8" r="13" fill="#7d8b17" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="318.7" y="319.8">medium</text>
+<circle cx="347.8" cy="278.2" r="13" fill="#7d8b17" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="361.8" y="263.2">high</text>
+<circle cx="689.9" cy="278.2" r="13" fill="#7d8b17" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="703.9" y="263.2">xhigh</text>
+<polyline points="222.9,447.9 321.8,306.5 403.4,278.2 484.6,292.4 971.4,249.9" fill="none" stroke="#1aa16f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="222.9" cy="447.9" r="13" fill="#1aa16f" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="236.9" y="432.9">none</text>
+<circle cx="321.8" cy="306.5" r="13" fill="#1aa16f" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="335.8" y="291.5">low</text>
+<circle cx="403.4" cy="278.2" r="13" fill="#1aa16f" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="417.4" y="263.2">medium</text>
+<circle cx="484.6" cy="292.4" r="13" fill="#1aa16f" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="498.6" y="277.4">high</text>
+<circle cx="971.4" cy="249.9" r="13" fill="#1aa16f" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="985.4" y="234.9">xhigh</text>
+<polyline points="273.9,391.3 606.1,221.7 631.3,235.8 825.1,235.8 1374.0,221.7" fill="none" stroke="#2075b9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="273.9" cy="391.3" r="13" fill="#2075b9" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="287.9" y="376.3">none</text>
+<circle cx="606.1" cy="221.7" r="13" fill="#2075b9" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="620.1" y="206.7">low</text>
+<circle cx="631.3" cy="235.8" r="13" fill="#2075b9" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="645.3" y="220.8">medium</text>
+<circle cx="825.1" cy="235.8" r="13" fill="#2075b9" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="839.1" y="220.8">high</text>
+<circle cx="1374.0" cy="221.7" r="13" fill="#2075b9" stroke="#fbfaf7" stroke-width="4"/>
+<text class="label" x="1388.0" y="206.7">xhigh</text>
+<line x1="1540" y1="197" x2="1610" y2="197" stroke="#d04f83" stroke-width="7"/>
+<text class="tick" x="1626" y="205">GPT-5.4 nano</text>
+<line x1="1540" y1="242" x2="1610" y2="242" stroke="#7d8b17" stroke-width="7"/>
+<text class="tick" x="1626" y="250">GPT-5.4 mini</text>
+<line x1="1540" y1="287" x2="1610" y2="287" stroke="#1aa16f" stroke-width="7"/>
+<text class="tick" x="1626" y="295">GPT-5.4</text>
+<line x1="1540" y1="332" x2="1610" y2="332" stroke="#2075b9" stroke-width="7"/>
+<text class="tick" x="1626" y="340">GPT-5.5</text>
+<text class="foot" x="170" y="1098">Source: 223-row merged 224-question 8x28 leaderboard. Y uses answer correctness.</text>
+</svg>

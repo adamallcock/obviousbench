@@ -1,0 +1,233 @@
+label,family,accuracy_pct,correct,samples,scored_samples,provider_errors,timeouts,failures,estimated_cost_usd
+Claude Opus 4.8 high,arithmetic,100.00,10,10,10,0,0,0,0.003405
+Claude Opus 4.8 high,character_count,80.00,8,10,10,0,0,2,0.00308
+Claude Opus 4.8 high,constraint_awareness,100.00,10,10,10,0,0,0,0.006805
+Claude Opus 4.8 high,format_compliance,100.00,10,10,10,0,0,0,0.00516
+Claude Opus 4.8 high,negation,100.00,10,10,10,0,0,0,0.003925
+Claude Opus 4.8 high,ordering,100.00,10,10,10,0,0,0,0.00579
+Claude Opus 4.8 high,spelling_transform,60.00,6,10,10,0,0,4,0.00332
+Claude Opus 4.8 high,word_count,100.00,10,10,10,0,0,0,0.00151
+Claude Opus 4.8 low,arithmetic,100.00,10,10,10,0,0,0,0.003405
+Claude Opus 4.8 low,character_count,80.00,8,10,10,0,0,2,0.00308
+Claude Opus 4.8 low,constraint_awareness,100.00,10,10,10,0,0,0,0.006805
+Claude Opus 4.8 low,format_compliance,100.00,10,10,10,0,0,0,0.00516
+Claude Opus 4.8 low,negation,100.00,10,10,10,0,0,0,0.003925
+Claude Opus 4.8 low,ordering,100.00,10,10,10,0,0,0,0.00579
+Claude Opus 4.8 low,spelling_transform,60.00,6,10,10,0,0,4,0.003295
+Claude Opus 4.8 low,word_count,100.00,10,10,10,0,0,0,0.00188
+Claude Opus 4.8 max,arithmetic,100.00,10,10,10,0,0,0,0.003615
+Claude Opus 4.8 max,character_count,70.00,7,10,10,0,0,3,0.00653
+Claude Opus 4.8 max,constraint_awareness,100.00,10,10,10,0,0,0,0.006705
+Claude Opus 4.8 max,format_compliance,100.00,10,10,10,0,0,0,0.00507
+Claude Opus 4.8 max,negation,100.00,10,10,10,0,0,0,0.003825
+Claude Opus 4.8 max,ordering,100.00,10,10,10,0,0,0,0.00569
+Claude Opus 4.8 max,spelling_transform,60.00,6,10,10,0,0,4,0.006005
+Claude Opus 4.8 max,word_count,100.00,10,10,10,0,0,0,0.00219
+Claude Opus 4.8 medium,arithmetic,100.00,10,10,10,0,0,0,0.003405
+Claude Opus 4.8 medium,character_count,80.00,8,10,10,0,0,2,0.00308
+Claude Opus 4.8 medium,constraint_awareness,100.00,10,10,10,0,0,0,0.006805
+Claude Opus 4.8 medium,format_compliance,100.00,10,10,10,0,0,0,0.00516
+Claude Opus 4.8 medium,negation,100.00,10,10,10,0,0,0,0.003925
+Claude Opus 4.8 medium,ordering,100.00,10,10,10,0,0,0,0.00579
+Claude Opus 4.8 medium,spelling_transform,60.00,6,10,10,0,0,4,0.003445
+Claude Opus 4.8 medium,word_count,100.00,10,10,10,0,0,0,0.00225
+Claude Opus 4.8 xhigh,arithmetic,100.00,10,10,10,0,0,0,0.003405
+Claude Opus 4.8 xhigh,character_count,80.00,8,10,10,0,0,2,0.00308
+Claude Opus 4.8 xhigh,constraint_awareness,100.00,10,10,10,0,0,0,0.006805
+Claude Opus 4.8 xhigh,format_compliance,100.00,10,10,10,0,0,0,0.00516
+Claude Opus 4.8 xhigh,negation,100.00,10,10,10,0,0,0,0.003535
+Claude Opus 4.8 xhigh,ordering,100.00,10,10,10,0,0,0,0.00579
+Claude Opus 4.8 xhigh,spelling_transform,60.00,6,10,10,0,0,4,0.00432
+Claude Opus 4.8 xhigh,word_count,100.00,10,10,10,0,0,0,0.00188
+Claude Sonnet 4.6 high,arithmetic,100.00,10,10,10,0,0,0,0.001989
+Claude Sonnet 4.6 high,character_count,20.00,2,10,10,0,0,8,0.002601
+Claude Sonnet 4.6 high,constraint_awareness,100.00,10,10,10,0,0,0,0.003858
+Claude Sonnet 4.6 high,format_compliance,100.00,10,10,10,0,0,0,0.00249
+Claude Sonnet 4.6 high,negation,100.00,10,10,10,0,0,0,0.002073
+Claude Sonnet 4.6 high,ordering,100.00,10,10,10,0,0,0,0.00312
+Claude Sonnet 4.6 high,spelling_transform,100.00,10,10,10,0,0,0,0.003393
+Claude Sonnet 4.6 high,word_count,100.00,10,10,10,0,0,0,0.001056
+Claude Sonnet 4.6 low,arithmetic,100.00,10,10,10,0,0,0,0.001989
+Claude Sonnet 4.6 low,character_count,30.00,3,10,10,0,0,7,0.001836
+Claude Sonnet 4.6 low,constraint_awareness,100.00,10,10,10,0,0,0,0.003348
+Claude Sonnet 4.6 low,format_compliance,100.00,10,10,10,0,0,0,0.002415
+Claude Sonnet 4.6 low,negation,100.00,10,10,10,0,0,0,0.002073
+Claude Sonnet 4.6 low,ordering,100.00,10,10,10,0,0,0,0.00312
+Claude Sonnet 4.6 low,spelling_transform,100.00,10,10,10,0,0,0,0.002433
+Claude Sonnet 4.6 low,word_count,100.00,10,10,10,0,0,0,0.000846
+Claude Sonnet 4.6 max,arithmetic,100.00,10,10,10,0,0,0,0.001989
+Claude Sonnet 4.6 max,character_count,20.00,2,10,10,0,0,8,0.001836
+Claude Sonnet 4.6 max,constraint_awareness,100.00,10,10,10,0,0,0,0.004293
+Claude Sonnet 4.6 max,format_compliance,100.00,10,10,10,0,0,0,0.002565
+Claude Sonnet 4.6 max,negation,100.00,10,10,10,0,0,0,0.002073
+Claude Sonnet 4.6 max,ordering,100.00,10,10,10,0,0,0,0.00312
+Claude Sonnet 4.6 max,spelling_transform,80.00,8,10,10,0,0,2,0.002928
+Claude Sonnet 4.6 max,word_count,100.00,10,10,10,0,0,0,0.001056
+Claude Sonnet 4.6 medium,arithmetic,100.00,10,10,10,0,0,0,0.001989
+Claude Sonnet 4.6 medium,character_count,30.00,3,10,10,0,0,7,0.001836
+Claude Sonnet 4.6 medium,constraint_awareness,100.00,10,10,10,0,0,0,0.003348
+Claude Sonnet 4.6 medium,format_compliance,100.00,10,10,10,0,0,0,0.002415
+Claude Sonnet 4.6 medium,negation,100.00,10,10,10,0,0,0,0.002073
+Claude Sonnet 4.6 medium,ordering,100.00,10,10,10,0,0,0,0.00312
+Claude Sonnet 4.6 medium,spelling_transform,90.00,9,10,10,0,0,1,0.003048
+Claude Sonnet 4.6 medium,word_count,100.00,10,10,10,0,0,0,0.000846
+Google: Gemini 3.1 Flash Lite high,arithmetic,100.00,10,10,10,0,0,0,0.002886
+Google: Gemini 3.1 Flash Lite high,character_count,100.00,10,10,10,0,0,0,0.00472375
+Google: Gemini 3.1 Flash Lite high,constraint_awareness,100.00,10,10,10,0,0,0,0.004642
+Google: Gemini 3.1 Flash Lite high,format_compliance,100.00,10,10,10,0,0,0,0.00274525
+Google: Gemini 3.1 Flash Lite high,negation,100.00,10,10,10,0,0,0,0.00281625
+Google: Gemini 3.1 Flash Lite high,ordering,100.00,10,10,10,0,0,0,0.00378475
+Google: Gemini 3.1 Flash Lite high,spelling_transform,100.00,10,10,10,0,0,0,0.00293475
+Google: Gemini 3.1 Flash Lite high,word_count,100.00,10,10,10,0,0,0,0.00157875
+Google: Gemini 3.1 Flash Lite low,arithmetic,100.00,10,10,10,0,0,0,0.00184625
+Google: Gemini 3.1 Flash Lite low,character_count,70.00,7,10,10,0,0,3,0.00281275
+Google: Gemini 3.1 Flash Lite low,constraint_awareness,100.00,10,10,10,0,0,0,0.00196325
+Google: Gemini 3.1 Flash Lite low,format_compliance,100.00,10,10,10,0,0,0,0.001835
+Google: Gemini 3.1 Flash Lite low,negation,100.00,10,10,10,0,0,0,0.0019545
+Google: Gemini 3.1 Flash Lite low,ordering,100.00,10,10,10,0,0,0,0.00214475
+Google: Gemini 3.1 Flash Lite low,spelling_transform,100.00,10,10,10,0,0,0,0.001939
+Google: Gemini 3.1 Flash Lite low,word_count,100.00,10,10,10,0,0,0,0.001215
+Google: Gemini 3.1 Flash Lite medium,arithmetic,100.00,10,10,10,0,0,0,0.00158525
+Google: Gemini 3.1 Flash Lite medium,character_count,100.00,10,10,10,0,0,0,0.004058
+Google: Gemini 3.1 Flash Lite medium,constraint_awareness,100.00,10,10,10,0,0,0,0.00330175
+Google: Gemini 3.1 Flash Lite medium,format_compliance,100.00,10,10,10,0,0,0,0.0012275
+Google: Gemini 3.1 Flash Lite medium,negation,100.00,10,10,10,0,0,0,0.00211575
+Google: Gemini 3.1 Flash Lite medium,ordering,100.00,10,10,10,0,0,0,0.00220025
+Google: Gemini 3.1 Flash Lite medium,spelling_transform,100.00,10,10,10,0,0,0,0.00200175
+Google: Gemini 3.1 Flash Lite medium,word_count,100.00,10,10,10,0,0,0,0.0006585
+Google: Gemini 3.1 Flash Lite minimal,arithmetic,100.00,10,10,10,0,0,0,0.00011925
+Google: Gemini 3.1 Flash Lite minimal,character_count,30.00,3,10,10,0,0,7,8.875e-05
+Google: Gemini 3.1 Flash Lite minimal,constraint_awareness,80.00,8,10,10,0,0,2,0.0002105
+Google: Gemini 3.1 Flash Lite minimal,format_compliance,100.00,10,10,10,0,0,0,0.0001675
+Google: Gemini 3.1 Flash Lite minimal,negation,100.00,10,10,10,0,0,0,0.00011925
+Google: Gemini 3.1 Flash Lite minimal,ordering,100.00,10,10,10,0,0,0,0.0002285
+Google: Gemini 3.1 Flash Lite minimal,spelling_transform,70.00,7,10,10,0,0,3,9.95e-05
+Google: Gemini 3.1 Flash Lite minimal,word_count,100.00,10,10,10,0,0,0,5.6e-05
+Google: Gemini 3.1 Pro Preview Custom Tools high,arithmetic,100.00,10,10,10,0,0,0,0.016962
+Google: Gemini 3.1 Pro Preview Custom Tools high,character_count,100.00,10,10,10,0,0,0,0.025452
+Google: Gemini 3.1 Pro Preview Custom Tools high,constraint_awareness,100.00,10,10,10,0,0,0,0.031816
+Google: Gemini 3.1 Pro Preview Custom Tools high,format_compliance,100.00,10,10,10,0,0,0,0.021958
+Google: Gemini 3.1 Pro Preview Custom Tools high,negation,100.00,10,10,10,0,0,0,0.020306
+Google: Gemini 3.1 Pro Preview Custom Tools high,ordering,100.00,10,10,10,0,0,0,0.026018
+Google: Gemini 3.1 Pro Preview Custom Tools high,spelling_transform,100.00,10,10,10,0,0,0,0.027076
+Google: Gemini 3.1 Pro Preview Custom Tools high,word_count,100.00,10,10,10,0,0,0,0.009094
+Google: Gemini 3.1 Pro Preview Custom Tools low,arithmetic,100.00,10,10,10,0,0,0,0.014802
+Google: Gemini 3.1 Pro Preview Custom Tools low,character_count,100.00,10,10,10,0,0,0,0.02154
+Google: Gemini 3.1 Pro Preview Custom Tools low,constraint_awareness,100.00,10,10,10,0,0,0,0.0199
+Google: Gemini 3.1 Pro Preview Custom Tools low,format_compliance,100.00,10,10,10,0,0,0,0.015298
+Google: Gemini 3.1 Pro Preview Custom Tools low,negation,100.00,10,10,10,0,0,0,0.017678
+Google: Gemini 3.1 Pro Preview Custom Tools low,ordering,100.00,10,10,10,0,0,0,0.021626
+Google: Gemini 3.1 Pro Preview Custom Tools low,spelling_transform,100.00,10,10,10,0,0,0,0.01732
+Google: Gemini 3.1 Pro Preview Custom Tools low,word_count,100.00,10,10,10,0,0,0,0.009556
+Google: Gemini 3.5 Flash high,arithmetic,100.00,10,10,10,0,0,0,0.011916
+Google: Gemini 3.5 Flash high,character_count,100.00,10,10,10,0,0,0,0.027741
+Google: Gemini 3.5 Flash high,constraint_awareness,100.00,10,10,10,0,0,0,0.035826
+Google: Gemini 3.5 Flash high,format_compliance,100.00,10,10,10,0,0,0,0.017508
+Google: Gemini 3.5 Flash high,negation,100.00,10,10,10,0,0,0,0.0139005
+Google: Gemini 3.5 Flash high,ordering,100.00,10,10,10,0,0,0,0.0210465
+Google: Gemini 3.5 Flash high,spelling_transform,100.00,10,10,10,0,0,0,0.0219315
+Google: Gemini 3.5 Flash high,word_count,100.00,10,10,10,0,0,0,0.004704
+Google: Gemini 3.5 Flash low,arithmetic,100.00,10,10,10,0,0,0,0.009216
+Google: Gemini 3.5 Flash low,character_count,100.00,10,10,10,0,0,0,0.0152595
+Google: Gemini 3.5 Flash low,constraint_awareness,100.00,10,10,10,0,0,0,0.01554
+Google: Gemini 3.5 Flash low,format_compliance,100.00,10,10,10,0,0,0,0.01443
+Google: Gemini 3.5 Flash low,negation,100.00,10,10,10,0,0,0,0.0088515
+Google: Gemini 3.5 Flash low,ordering,100.00,10,10,10,0,0,0,0.0118125
+Google: Gemini 3.5 Flash low,spelling_transform,100.00,10,10,10,0,0,0,0.0130845
+Google: Gemini 3.5 Flash low,word_count,100.00,10,10,10,0,0,0,0.005121
+Google: Gemini 3.5 Flash medium,arithmetic,100.00,10,10,10,0,0,0,0.012456
+Google: Gemini 3.5 Flash medium,character_count,90.00,9,10,10,0,0,1,0.025383
+Google: Gemini 3.5 Flash medium,constraint_awareness,100.00,10,10,10,0,0,0,0.036843
+Google: Gemini 3.5 Flash medium,format_compliance,100.00,10,10,10,0,0,0,0.017409
+Google: Gemini 3.5 Flash medium,negation,100.00,10,10,10,0,0,0,0.0138375
+Google: Gemini 3.5 Flash medium,ordering,100.00,10,10,10,0,0,0,0.0182745
+Google: Gemini 3.5 Flash medium,spelling_transform,100.00,10,10,10,0,0,0,0.0200775
+Google: Gemini 3.5 Flash medium,word_count,100.00,10,10,10,0,0,0,0.005712
+Google: Gemini 3.5 Flash minimal,arithmetic,100.00,10,10,10,0,0,0,0.000702
+Google: Gemini 3.5 Flash minimal,character_count,50.00,5,10,10,0,0,5,0.000525
+Google: Gemini 3.5 Flash minimal,constraint_awareness,100.00,10,10,10,0,0,0,0.001257
+Google: Gemini 3.5 Flash minimal,format_compliance,100.00,10,10,10,0,0,0,0.001092
+Google: Gemini 3.5 Flash minimal,negation,100.00,10,10,10,0,0,0,0.0007065
+Google: Gemini 3.5 Flash minimal,ordering,100.00,10,10,10,0,0,0,0.0013635
+Google: Gemini 3.5 Flash minimal,spelling_transform,70.00,7,10,10,0,0,3,0.0005835
+Google: Gemini 3.5 Flash minimal,word_count,100.00,10,10,10,0,0,0,0.000333
+OpenAI GPT-5.4 high,arithmetic,100.00,10,10,10,0,0,0,0.00609
+OpenAI GPT-5.4 high,character_count,100.00,10,10,10,0,0,0,0.014125
+OpenAI GPT-5.4 high,constraint_awareness,100.00,10,10,10,0,0,0,0.0112625
+OpenAI GPT-5.4 high,format_compliance,100.00,10,10,10,0,0,0,0.00569
+OpenAI GPT-5.4 high,negation,100.00,10,10,10,0,0,0,0.0061225
+OpenAI GPT-5.4 high,ordering,100.00,10,10,10,0,0,0,0.00816
+OpenAI GPT-5.4 high,spelling_transform,80.00,8,10,10,0,0,2,0.0159125
+OpenAI GPT-5.4 high,word_count,100.00,10,10,10,0,0,0,0.00392
+OpenAI GPT-5.4 low,arithmetic,100.00,10,10,10,0,0,0,0.002835
+OpenAI GPT-5.4 low,character_count,90.00,9,10,10,0,0,1,0.00721
+OpenAI GPT-5.4 low,constraint_awareness,100.00,10,10,10,0,0,0,0.0056975
+OpenAI GPT-5.4 low,format_compliance,100.00,10,10,10,0,0,0,0.0035875
+OpenAI GPT-5.4 low,negation,100.00,10,10,10,0,0,0,0.0032575
+OpenAI GPT-5.4 low,ordering,100.00,10,10,10,0,0,0,0.00426
+OpenAI GPT-5.4 low,spelling_transform,80.00,8,10,10,0,0,2,0.0077975
+OpenAI GPT-5.4 low,word_count,100.00,10,10,10,0,0,0,0.001495
+OpenAI GPT-5.4 medium,arithmetic,100.00,10,10,10,0,0,0,0.004725
+OpenAI GPT-5.4 medium,character_count,100.00,10,10,10,0,0,0,0.011065
+OpenAI GPT-5.4 medium,constraint_awareness,100.00,10,10,10,0,0,0,0.0115025
+OpenAI GPT-5.4 medium,format_compliance,100.00,10,10,10,0,0,0,0.0050425
+OpenAI GPT-5.4 medium,negation,100.00,10,10,10,0,0,0,0.0055975
+OpenAI GPT-5.4 medium,ordering,100.00,10,10,10,0,0,0,0.007005
+OpenAI GPT-5.4 medium,spelling_transform,80.00,8,10,10,0,0,2,0.0131525
+OpenAI GPT-5.4 medium,word_count,100.00,10,10,10,0,0,0,0.002515
+OpenAI GPT-5.4 none,arithmetic,100.00,10,10,10,0,0,0,0.001665
+OpenAI GPT-5.4 none,character_count,50.00,5,10,10,0,0,5,0.001555
+OpenAI GPT-5.4 none,constraint_awareness,100.00,10,10,10,0,0,0,0.0027875
+OpenAI GPT-5.4 none,format_compliance,100.00,10,10,10,0,0,0,0.0021475
+OpenAI GPT-5.4 none,negation,100.00,10,10,10,0,0,0,0.0018775
+OpenAI GPT-5.4 none,ordering,100.00,10,10,10,0,0,0,0.002895
+OpenAI GPT-5.4 none,spelling_transform,40.00,4,10,10,0,0,6,0.0016025
+OpenAI GPT-5.4 none,word_count,100.00,10,10,10,0,0,0,0.000715
+OpenAI GPT-5.4 xhigh,arithmetic,100.00,10,10,10,0,0,0,0.007515
+OpenAI GPT-5.4 xhigh,character_count,100.00,10,10,10,0,0,0,0.018685
+OpenAI GPT-5.4 xhigh,constraint_awareness,100.00,10,10,10,0,0,0,0.0186275
+OpenAI GPT-5.4 xhigh,format_compliance,100.00,10,10,10,0,0,0,0.0115375
+OpenAI GPT-5.4 xhigh,negation,100.00,10,10,10,0,0,0,0.0073975
+OpenAI GPT-5.4 xhigh,ordering,100.00,10,10,10,0,0,0,0.00885
+OpenAI GPT-5.4 xhigh,spelling_transform,90.00,9,10,10,0,0,1,0.0224825
+OpenAI GPT-5.4 xhigh,word_count,100.00,10,10,10,0,0,0,0.0049425
+OpenAI GPT-5.5 high,arithmetic,100.00,10,10,10,0,0,0,0.01119
+OpenAI GPT-5.5 high,character_count,100.00,10,10,10,0,0,0,0.0227
+OpenAI GPT-5.5 high,constraint_awareness,100.00,10,10,10,0,0,0,0.026125
+OpenAI GPT-5.5 high,format_compliance,100.00,10,10,10,0,0,0,0.01021
+OpenAI GPT-5.5 high,negation,100.00,10,10,10,0,0,0,0.013025
+OpenAI GPT-5.5 high,ordering,100.00,10,10,10,0,0,0,0.01545
+OpenAI GPT-5.5 high,spelling_transform,100.00,10,10,10,0,0,0,0.029725
+OpenAI GPT-5.5 high,word_count,100.00,10,10,10,0,0,0,0.00557
+OpenAI GPT-5.5 low,arithmetic,100.00,10,10,10,0,0,0,0.00897
+OpenAI GPT-5.5 low,character_count,100.00,10,10,10,0,0,0,0.01589
+OpenAI GPT-5.5 low,constraint_awareness,100.00,10,10,10,0,0,0,0.019075
+OpenAI GPT-5.5 low,format_compliance,100.00,10,10,10,0,0,0,0.00694
+OpenAI GPT-5.5 low,negation,100.00,10,10,10,0,0,0,0.008375
+OpenAI GPT-5.5 low,ordering,100.00,10,10,10,0,0,0,0.01209
+OpenAI GPT-5.5 low,spelling_transform,100.00,10,10,10,0,0,0,0.017185
+OpenAI GPT-5.5 low,word_count,100.00,10,10,10,0,0,0,0.00389
+OpenAI GPT-5.5 medium,arithmetic,100.00,10,10,10,0,0,0,0.00954
+OpenAI GPT-5.5 medium,character_count,100.00,10,10,10,0,0,0,0.01838
+OpenAI GPT-5.5 medium,constraint_awareness,100.00,10,10,10,0,0,0,0.020125
+OpenAI GPT-5.5 medium,format_compliance,100.00,10,10,10,0,0,0,0.007775
+OpenAI GPT-5.5 medium,negation,100.00,10,10,10,0,0,0,0.010055
+OpenAI GPT-5.5 medium,ordering,100.00,10,10,10,0,0,0,0.01374
+OpenAI GPT-5.5 medium,spelling_transform,100.00,10,10,10,0,0,0,0.022015
+OpenAI GPT-5.5 medium,word_count,100.00,10,10,10,0,0,0,0.005625
+OpenAI GPT-5.5 none,arithmetic,100.00,10,10,10,0,0,0,0.00333
+OpenAI GPT-5.5 none,character_count,60.00,6,10,10,0,0,4,0.00311
+OpenAI GPT-5.5 none,constraint_awareness,100.00,10,10,10,0,0,0,0.005575
+OpenAI GPT-5.5 none,format_compliance,100.00,10,10,10,0,0,0,0.004295
+OpenAI GPT-5.5 none,negation,100.00,10,10,10,0,0,0,0.003755
+OpenAI GPT-5.5 none,ordering,100.00,10,10,10,0,0,0,0.00579
+OpenAI GPT-5.5 none,spelling_transform,70.00,7,10,10,0,0,3,0.003265
+OpenAI GPT-5.5 none,word_count,100.00,10,10,10,0,0,0,0.001785
+OpenAI GPT-5.5 xhigh,arithmetic,100.00,10,10,10,0,0,0,0.01329
+OpenAI GPT-5.5 xhigh,character_count,100.00,10,10,10,0,0,0,0.02663
+OpenAI GPT-5.5 xhigh,constraint_awareness,100.00,10,10,10,0,0,0,0.033565
+OpenAI GPT-5.5 xhigh,format_compliance,100.00,10,10,10,0,0,0,0.016205
+OpenAI GPT-5.5 xhigh,negation,100.00,10,10,10,0,0,0,0.015455
+OpenAI GPT-5.5 xhigh,ordering,100.00,10,10,10,0,0,0,0.0192
+OpenAI GPT-5.5 xhigh,spelling_transform,100.00,10,10,10,0,0,0,0.035275
+OpenAI GPT-5.5 xhigh,word_count,100.00,10,10,10,0,0,0,0.00653
