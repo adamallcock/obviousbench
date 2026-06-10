@@ -12,9 +12,10 @@ build/
 *.egg-info/
 node_modules/
 logs/
-results/raw/
-results/summaries/
-results/failure_gallery/
+results/
+tmp/
+reports/runs/
+AGENTS.md
 *.eval
 .env
 .env.*
