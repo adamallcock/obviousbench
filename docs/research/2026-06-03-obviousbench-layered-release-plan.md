@@ -698,7 +698,7 @@ agent fixes source/config first and does not weaken checks.
 ### Subagent Dispatch Template
 
 ```text
-You are working in /Users/adamallcock/Documents/Coding/benchmark-oops.
+You are working in /Users/adamallcock/Documents/Coding/benchmark-obviousbench.
 Claim exactly one work block from
 docs/research/2026-06-03-obviousbench-layered-release-plan.md.
 

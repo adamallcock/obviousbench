@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,9 +9,6 @@ description = "A lightweight Inspect AI benchmark for obvious public-facing LLM 
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
-classifiers = [
-  "License :: OSI Approved :: Apache Software License",
-]
 dependencies = [
   "anthropic>=0.105,<1",
   "google-genai>=1.53,<2",

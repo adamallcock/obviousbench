@@ -57,7 +57,7 @@ Preferred final execution wrapper:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openai/gpt-5-nano --log-dir results/raw/paper-v1-final-high-cap/paper-openai-gpt-5-nano-minimal -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000 --generation-setting reasoning_effort=minimal
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openai/gpt-5-nano --log-dir results/raw/paper-v1-final-high-cap/paper-openai-gpt-5-nano-minimal -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000 --generation-setting reasoning_effort=minimal
 ```
 
 Summarize/rescore:
@@ -75,7 +75,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openai/gpt-4.1 --log-dir results/raw/paper-v1-final-high-cap/paper-openai-gpt-4-1 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openai/gpt-4.1 --log-dir results/raw/paper-v1-final-high-cap/paper-openai-gpt-4-1 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -93,7 +93,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openai/gpt-4.1-mini --log-dir results/raw/paper-v1-final-high-cap/paper-openai-gpt-4-1-mini -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openai/gpt-4.1-mini --log-dir results/raw/paper-v1-final-high-cap/paper-openai-gpt-4-1-mini -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -111,7 +111,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model anthropic/claude-sonnet-4-6 --log-dir results/raw/paper-v1-final-high-cap/paper-anthropic-claude-sonnet-4-6 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model anthropic/claude-sonnet-4-6 --log-dir results/raw/paper-v1-final-high-cap/paper-anthropic-claude-sonnet-4-6 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -129,7 +129,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model anthropic/claude-haiku-4-5 --log-dir results/raw/paper-v1-final-high-cap/paper-anthropic-claude-haiku-4-5 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model anthropic/claude-haiku-4-5 --log-dir results/raw/paper-v1-final-high-cap/paper-anthropic-claude-haiku-4-5 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -147,7 +147,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model google/gemini-3.5-flash --log-dir results/raw/paper-v1-final-high-cap/paper-gemini-3-5-flash -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model google/gemini-3.5-flash --log-dir results/raw/paper-v1-final-high-cap/paper-gemini-3-5-flash -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -165,7 +165,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model google/gemini-2.5-flash-lite --log-dir results/raw/paper-v1-final-high-cap/paper-gemini-2-5-flash-lite -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model google/gemini-2.5-flash-lite --log-dir results/raw/paper-v1-final-high-cap/paper-gemini-2-5-flash-lite -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -183,7 +183,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model grok/grok-4.3 --log-dir results/raw/paper-v1-final-high-cap/paper-grok-4-3 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model grok/grok-4.3 --log-dir results/raw/paper-v1-final-high-cap/paper-grok-4-3 -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -201,7 +201,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/xiaomi/mimo-v2-flash --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-xiaomi-mimo-v2-flash -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/xiaomi/mimo-v2-flash --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-xiaomi-mimo-v2-flash -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -219,7 +219,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/nvidia/nemotron-3-nano-30b-a3b --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-nemotron-3-nano -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/nvidia/nemotron-3-nano-30b-a3b --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-nemotron-3-nano -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -237,7 +237,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/openai/gpt-oss-20b --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-gpt-oss-20b -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/openai/gpt-oss-20b --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-gpt-oss-20b -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:
@@ -255,7 +255,7 @@ Summarize/rescore:
 Inspect run:
 
 ```bash
-.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/qwen/qwen3-next-80b-a3b-instruct --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-qwen3-next -T dataset=/Users/adamallcock/Documents/Coding/benchmark-oops/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
+.venv/bin/python -m obviousbench.runners.inspect_eval --task obviousbench/tasks/barrage.py --model openrouter/qwen/qwen3-next-80b-a3b-instruct --log-dir results/raw/paper-v1-final-high-cap/paper-openrouter-qwen3-next -T dataset=/Users/adamallcock/Documents/Coding/benchmark-obviousbench/data/barrages/hard_obvious_8x10_seed_20260531.jsonl --inspect-arg=--no-log-model-api --inspect-arg=--no-log-realtime --inspect-arg=--timeout=60 --inspect-arg=--max-retries=0 --generation-setting temperature=0 --generation-setting max_tokens=10000
 ```
 
 Summarize/rescore:

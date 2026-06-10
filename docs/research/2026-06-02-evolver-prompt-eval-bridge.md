@@ -121,7 +121,7 @@ temporary manifest:
 ```bash
 uv run --project . evolver external-gepa-evolve \
   --items-path /tmp/evolver-obviousbench.4SRgIp/items.jsonl \
-  --eval-command "/Users/adamallcock/Documents/Coding/benchmark-oops/.venv/bin/obviousbench prompt-eval --request {request} --response {response}" \
+  --eval-command "/Users/adamallcock/Documents/Coding/benchmark-obviousbench/.venv/bin/obviousbench prompt-eval --request {request} --response {response}" \
   --artifact-dir runs/verify-obviousbench-prompt-eval \
   --max-metric-calls 48
 ```
@@ -142,7 +142,7 @@ The stronger smoke uses an exported manifest from real ObviousBench rows:
 ```bash
 uv run --project . evolver external-gepa-evolve \
   --items-path /tmp/obviousbench-evolver-format-manifest.jsonl \
-  --eval-command "/Users/adamallcock/Documents/Coding/benchmark-oops/.venv/bin/obviousbench prompt-eval --request {request} --response {response}" \
+  --eval-command "/Users/adamallcock/Documents/Coding/benchmark-obviousbench/.venv/bin/obviousbench prompt-eval --request {request} --response {response}" \
   --artifact-dir runs/verify-obviousbench-exported-format \
   --max-metric-calls 48
 ```

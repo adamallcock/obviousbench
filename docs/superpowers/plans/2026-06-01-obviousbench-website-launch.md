@@ -53,7 +53,7 @@ Execution rule:
 Recommended:
 
 - Create a new private GitHub repo named `website-obviousbench-com`.
-- Keep it separate from `/Users/adamallcock/Documents/Coding/benchmark-oops`.
+- Keep it separate from `/Users/adamallcock/Documents/Coding/benchmark-obviousbench`.
 - Publish only copied/generated artifacts that are safe for the public site.
 
 Rationale:

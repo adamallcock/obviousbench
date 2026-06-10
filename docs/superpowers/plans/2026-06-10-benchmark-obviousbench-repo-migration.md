@@ -19,9 +19,10 @@ status: active
 
 ## Current Facts
 
-- Primary checkout: `/Users/adamallcock/Documents/Coding/benchmark-oops`.
+- Primary checkout: `/Users/adamallcock/Documents/Coding/benchmark-obviousbench` after renaming from `/Users/adamallcock/Documents/Coding/benchmark-oops`.
 - Desired local checkout name: `/Users/adamallcock/Documents/Coding/benchmark-obviousbench`.
-- Current branch: `fix/anthropic-opus-4-8-thinking-telemetry-cost`, tracking `origin/fix/anthropic-opus-4-8-thinking-telemetry-cost`.
+- Current local branch after integration: `main`, ahead of `origin/main` by the locally committed migration/research delta.
+- Source branch retained for reference: `fix/anthropic-opus-4-8-thinking-telemetry-cost`, tracking `origin/fix/anthropic-opus-4-8-thinking-telemetry-cost`.
 - Current benchmark remote: `https://github.com/adamallcock/obviousbench`, private, default branch `main`, current user has `ADMIN`.
 - Current website repo found by GitHub inventory: `adamallcock/website-obviousbench-com`, private.
 - No separate working-set repo was found in the first inventory pass.
@@ -35,6 +36,13 @@ status: active
   - PASS: `.venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl --item-cards-dir data/item_cards --allow-extra-item-cards`.
   - PASS: `npm ls runcost` (`runcost@0.1.4`).
   - FAIL: `.venv/bin/python -m ruff check .`; failures are concentrated in untracked experiment scripts/notebook cells plus a few import/style issues.
+- Validation after local `main` integration and folder rename:
+  - PASS: `.venv/bin/python -m pytest -q` (`579 passed`).
+  - PASS: `.venv/bin/python -m ruff check .`.
+  - PASS: `.venv/bin/python -m compileall -q obviousbench scripts`.
+  - PASS: `.venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl data/calibration_v0/smoke_test.jsonl`.
+  - PASS: `.venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl --item-cards-dir data/item_cards --allow-extra-item-cards`.
+  - PASS: `npm ci`.
 
 ## Commit-Wave Rules
 
@@ -96,7 +104,7 @@ Expected: one small commit with no source behavior changes.
 ### Task 2: Complete And Commit Primary Checkout Work
 
 **Files:**
-- Modify: tracked Python source, tests, docs, configs, release artifacts, and generated report artifacts that are already present in `/Users/adamallcock/Documents/Coding/benchmark-oops`.
+- Modify: tracked Python source, tests, docs, configs, release artifacts, and generated report artifacts that are already present in `/Users/adamallcock/Documents/Coding/benchmark-obviousbench`.
 
 - [ ] **Step 1: Re-run a clean status after Task 1**
 
@@ -280,18 +288,20 @@ Run the same ignore, ruff, dataset, and pytest gates that apply to the touched f
 **Files:**
 - Git history only.
 
-- [ ] **Step 1: Merge after Task 2 passes**
+- [x] **Step 1: Integrate after Task 2 passes**
 
 Run:
 
 ```bash
+git fetch --prune origin
 git switch main
-git merge --no-ff fix/anthropic-opus-4-8-thinking-telemetry-cost
+git merge --ff-only origin/main
+git cherry-pick c6e3068..fix/anthropic-opus-4-8-thinking-telemetry-cost
 ```
 
-Expected: clean merge or explicit conflict list. Do not delete the source branch until the rename and GitHub checks are complete.
+Expected: clean integration or explicit conflict list. This avoids duplicating the Anthropic telemetry commits already represented by the squash merge on `origin/main`. Do not delete the source branch until the rename and GitHub checks are complete.
 
-- [ ] **Step 2: Validate on main**
+- [x] **Step 2: Validate on main**
 
 Run the full validation set from Task 2 Step 9.
 
@@ -311,7 +321,7 @@ Expected: `origin/main` contains the complete committed work.
 - Local filesystem folder.
 - Potentially modify: `package.json`, `package-lock.json`, docs that intentionally mention the old local checkout path.
 
-- [ ] **Step 1: Require a clean `main` worktree**
+- [x] **Step 1: Require a clean `main` worktree**
 
 Run:
 
@@ -321,32 +331,33 @@ git status --short --branch
 
 Expected: clean `main`. Do not rename with uncommitted work present.
 
-- [ ] **Step 2: Rename the folder from the parent directory**
+- [x] **Step 2: Rename the folder from the parent directory**
 
 Run:
 
 ```bash
 cd /Users/adamallcock/Documents/Coding
 mv benchmark-oops benchmark-obviousbench
+ln -s benchmark-obviousbench benchmark-oops
 cd benchmark-obviousbench
 ```
 
-Expected: `git status --short --branch` still works.
+Expected: `git status --short --branch` still works from the new path, and the old path resolves through the compatibility symlink.
 
-- [ ] **Step 3: Rebuild path-sensitive local runtime state**
+- [x] **Step 3: Rebuild path-sensitive local runtime state**
 
 Run:
 
 ```bash
 rm -rf .venv
-python -m venv .venv
+/opt/homebrew/bin/python3.13 -m venv .venv
 .venv/bin/python -m pip install -e ".[dev]"
 npm ci
 ```
 
-Expected: `.venv` entrypoints use the new absolute path.
+Expected: `.venv` entrypoints use the new absolute path. Python 3.13 was used locally because a Python 3.11 shim was not available on PATH and the project declares `requires-python = ">=3.11"`.
 
-- [ ] **Step 4: Audit old path references**
+- [x] **Step 4: Audit old path references**
 
 Run:
 
@@ -356,7 +367,7 @@ rg -n -I '/Users/adamallcock/Documents/Coding/benchmark-oops|benchmark-oops' --h
 
 Expected: no stale absolute paths in tracked source/docs. Historical mentions are allowed only in migration notes. Keep Python package/CLI names as `obviousbench`.
 
-- [ ] **Step 5: Commit the local rename metadata**
+- [x] **Step 5: Commit the local rename metadata**
 
 If package metadata is still named `benchmark-oops`, update only the private npm package metadata to `benchmark-obviousbench`; keep Python package metadata unchanged.
 
