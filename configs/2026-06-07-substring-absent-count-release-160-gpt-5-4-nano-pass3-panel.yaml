@@ -1,0 +1,159 @@
+schema_version: paper-model-panel-v1
+created_at: "2026-06-07"
+run_status: planned
+dataset: data/experiments/2026-06-07-substring-absent-count-release-160.jsonl
+profile: substring_absent_count_release_160
+seed: 20260607
+defaults:
+  inspect_args:
+    - --no-log-model-api
+    - --no-log-realtime
+    - --timeout=900
+    - --max-retries=1
+    - --no-fail-on-error
+    - --continue-on-fail
+    - --score-on-error
+    - --attempt-timeout=180
+    - --max-connections=16
+selection_policy:
+  summary: Three independent cache-disabled trials for GPT-5.4 nano on the 160-item release-candidate absent-substring count suite.
+  notes:
+    - Run with scripts/run_model_panel.py using --no-cache and --no-skip-completed.
+    - The suite has 127 zero-target absent-substring traps and 33 positive controls.
+    - The split shape is 10 dev_calibration, 120 main_eval, and 30 challenge items.
+    - The known public seed example is calibration-only and should not be treated as private evaluation evidence.
+    - Max output tokens are fixed at 10000 so the experiment isolates reasoning_effort.
+    - pass^3 is computed with answer_correct as the primary reliability metric.
+entries:
+  - id: gpt-5-4-nano-release-160-none-trial-01
+    label: OpenAI GPT-5.4 nano none trial 01 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: none
+    trial_group_id: gpt-5-4-nano-release-160-none-k3
+    trial_index: 1
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: none
+      reasoning_summary: none
+  - id: gpt-5-4-nano-release-160-none-trial-02
+    label: OpenAI GPT-5.4 nano none trial 02 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: none
+    trial_group_id: gpt-5-4-nano-release-160-none-k3
+    trial_index: 2
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: none
+      reasoning_summary: none
+  - id: gpt-5-4-nano-release-160-none-trial-03
+    label: OpenAI GPT-5.4 nano none trial 03 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: none
+    trial_group_id: gpt-5-4-nano-release-160-none-k3
+    trial_index: 3
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: none
+      reasoning_summary: none
+  - id: gpt-5-4-nano-release-160-low-trial-01
+    label: OpenAI GPT-5.4 nano low trial 01 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: low
+    trial_group_id: gpt-5-4-nano-release-160-low-k3
+    trial_index: 1
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: low
+  - id: gpt-5-4-nano-release-160-low-trial-02
+    label: OpenAI GPT-5.4 nano low trial 02 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: low
+    trial_group_id: gpt-5-4-nano-release-160-low-k3
+    trial_index: 2
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: low
+  - id: gpt-5-4-nano-release-160-low-trial-03
+    label: OpenAI GPT-5.4 nano low trial 03 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: low
+    trial_group_id: gpt-5-4-nano-release-160-low-k3
+    trial_index: 3
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: low
+  - id: gpt-5-4-nano-release-160-medium-trial-01
+    label: OpenAI GPT-5.4 nano medium trial 01 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: medium
+    trial_group_id: gpt-5-4-nano-release-160-medium-k3
+    trial_index: 1
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: medium
+  - id: gpt-5-4-nano-release-160-medium-trial-02
+    label: OpenAI GPT-5.4 nano medium trial 02 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: medium
+    trial_group_id: gpt-5-4-nano-release-160-medium-k3
+    trial_index: 2
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: medium
+  - id: gpt-5-4-nano-release-160-medium-trial-03
+    label: OpenAI GPT-5.4 nano medium trial 03 release 160
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: medium
+    trial_group_id: gpt-5-4-nano-release-160-medium-k3
+    trial_index: 3
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: medium

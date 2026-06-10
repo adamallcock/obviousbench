@@ -1,0 +1,100 @@
+schema_version: paper-model-panel-v1
+created_at: "2026-06-07"
+run_status: planned
+dataset: data/experiments/2026-06-07-substring-absent-count.jsonl
+profile: substring_absent_count_10
+seed: 20260607
+defaults:
+  inspect_args:
+    - --no-log-model-api
+    - --no-log-realtime
+    - --timeout=900
+    - --max-retries=1
+    - --no-fail-on-error
+    - --continue-on-fail
+    - --score-on-error
+    - --attempt-timeout=180
+    - --max-connections=8
+selection_policy:
+  summary: Correction panel for the OpenAI GPT-5.4 nano and mini aliases on the 10-item absent-substring count smoke dataset.
+  notes:
+    - Run with scripts/run_model_panel.py using --no-cache and --no-skip-completed.
+    - This panel corrects the earlier user-supplied gpt-5.5 nano/mini aliases to gpt-5.4 nano/mini.
+    - The GPT-5.5 base and Gemini 3.1 Flash Lite rows from the prior smoke are not rerun here.
+entries:
+  - id: gpt-5-4-nano-none
+    label: OpenAI GPT-5.4 nano none
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: none
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: none
+      reasoning_summary: none
+  - id: gpt-5-4-nano-low
+    label: OpenAI GPT-5.4 nano low
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: low
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: low
+  - id: gpt-5-4-nano-medium
+    label: OpenAI GPT-5.4 nano medium
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-nano
+    model_id: gpt-5.4-nano
+    control_style: openai_reasoning_effort
+    thinking_depth: medium
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: medium
+  - id: gpt-5-4-mini-none
+    label: OpenAI GPT-5.4 mini none
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-mini
+    model_id: gpt-5.4-mini
+    control_style: openai_reasoning_effort
+    thinking_depth: none
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: none
+      reasoning_summary: none
+  - id: gpt-5-4-mini-low
+    label: OpenAI GPT-5.4 mini low
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-mini
+    model_id: gpt-5.4-mini
+    control_style: openai_reasoning_effort
+    thinking_depth: low
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: low
+  - id: gpt-5-4-mini-medium
+    label: OpenAI GPT-5.4 mini medium
+    provider_route: openai
+    upstream_provider: openai
+    provider_api: openai_responses
+    inspect_model: openai/gpt-5.4-mini
+    model_id: gpt-5.4-mini
+    control_style: openai_reasoning_effort
+    thinking_depth: medium
+    generation_settings:
+      max_tokens: 10000
+      reasoning_effort: medium

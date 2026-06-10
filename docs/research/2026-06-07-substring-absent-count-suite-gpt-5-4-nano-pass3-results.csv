@@ -1,0 +1,4 @@
+mode,trials,items,attempts,answer_pass1,answer_pass3,answer_pass_at_3,answer_majority_pass,answer_unstable_items,answer_pairwise_disagreement,strict_pass1,strict_pass3,strict_pass_at_3,zero_attempt_accuracy,zero_pass3,zero_failure_attempts,positive_attempt_accuracy,positive_pass3,provider_errors,timeouts,total_cost_usd,total_tokens,input_tokens,output_tokens,reasoning_tokens,reasoning_token_share,trial_answer_range
+none,3,80,240,0.879167,0.875,0.8875,0.875,1,0.008333,0.879167,0.875,0.8875,0.927083,0.921875,14,0.6875,0.6875,0,0,0.003946,13428,12228,1200,0,0,0.0125
+low,3,80,240,0.979167,0.95,1,0.9875,4,0.033333,0.979167,0.95,1,0.984375,0.96875,3,0.958333,0.875,1,0,0.020727,26810,12177,14633,12958,0.483327,0.0125
+medium,3,80,240,0.995833,0.9875,1,1,1,0.008333,0.995833,0.9875,1,0.994792,0.984375,1,1,1,0,0,0.027516,32284,12228,20056,18378,0.56926,0.0125
