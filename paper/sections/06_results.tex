@@ -1,0 +1,73 @@
+\section{Results}
+
+This section reports the frozen 2026-06-03 \paperSplit{} evidence snapshot.
+The snapshot contains 223 model settings and 178 unique model identifiers. Each
+row contains 224 scored attempts after the configured retry and repair policy;
+provider errors, refusals, or timeouts are counted as incorrect final attempts
+when they remain in the selected row.
+
+Three model settings answered all 224 questions correctly, 80 reached at least
+95\% answer correctness, and 40 scored below 80\%. These counts should be read
+as first-draft benchmark evidence rather than a universal model ranking: the
+split is intentionally small, public, and focused on short obvious tasks.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/leaderboard.pdf}
+  \caption{Answer-correctness distribution for all 223 model/settings rows in
+  the \paperSplit{} evidence run, with representative high-scoring rows called
+  out. Exact row-level values are reported in Table~\ref{tab:main-results} and
+  the generated leaderboard CSV.}
+  \label{fig:leaderboard}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Top model-setting rows from the \paperSplit{} evidence run. The
+  table ranks by answer correctness, then cost per correct answer and tokens
+  per correct answer.}
+  \label{tab:main-results}
+  \input{tables/main_results}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/family_heatmap.pdf}
+  \caption{Median answer correctness by model family and task family across the
+  full evidence snapshot. Columns are task families ordered by aggregate
+  difficulty, so the hardest task families appear first.}
+  \label{fig:family-heatmap}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Aggregate family-level answer correctness, format accuracy, strict
+  accuracy, Wilson intervals, and estimated cost across all displayed model
+  rows.}
+  \label{tab:family-results}
+  \input{tables/family_results}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/answer_format_gap.pdf}
+  \caption{Largest gaps between answer correctness and strict interface
+  compliance. These cases often indicate correct answers wrapped in extra text
+  or otherwise valid answers that violate the requested response interface.}
+  \label{fig:answer-format-gap}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/cost_frontier.pdf}
+  \caption{Answer correctness versus estimated total cost for the 224-question
+  split. The x-axis is log-scaled estimated USD for this run, and the y-axis is
+  answer correctness.}
+  \label{fig:cost-frontier}
+\end{figure}
+
+\paragraph{Deferred human validation.}
+The fast preprint does not report measured human accuracy, response time
+distributions, or model-versus-human gaps. A future strict version should add
+participant count, no-tools instructions, exclusion policy, scoring method, and
+a note that changing the item set invalidates reuse of collected human rows.

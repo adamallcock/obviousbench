@@ -1,0 +1,89 @@
+\appendix
+
+\section{Appendix: Artifacts}
+
+The final paper package should include:
+
+\begin{itemize}
+  \item \path{data/splits/paper_v1_manifest.jsonl};
+  \item reviewed item cards for all \paperSplit{} items;
+  \item scorer-gold fixtures;
+  \item model run manifest, aliases, run dates, and generation settings;
+  \item generated comparison tables and figures; and
+  \item release metadata, license, citation metadata, and public URLs.
+\end{itemize}
+
+Raw provider logs should remain outside the arXiv source bundle.
+
+\section{Appendix: Scoring Artifacts}
+
+\begin{table}[H]
+  \centering
+  \caption{Current scorer-gold fixture coverage.}
+  \label{tab:scorer-gold-coverage}
+  \input{tables/scorer_gold_coverage}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Evidence-run model manifest summary for the first-draft
+  \paperSplit{} results. The full manifest records every model-setting label,
+  model identifier, and summary directory.}
+  \label{tab:model-panel}
+  \input{tables/model_panel}
+\end{table}
+
+\section{Appendix: Related-Work Matrix}
+
+\input{tables/related_work_positioning}
+
+\section{Appendix: Human-Baseline Infrastructure}
+
+The fast preprint does not require \path{data/human_baseline/paper_v1.csv}.
+Human-baseline collection packets, scoring helpers, threshold audits, and
+participant instructions are maintained as future-validation infrastructure
+for a strict benchmark version.
+
+\section{Appendix: Build Commands}
+
+The cheap paper-asset command is:
+
+\begin{verbatim}
+make -C paper assets
+\end{verbatim}
+
+The fast-preprint readiness gate is:
+
+\begin{verbatim}
+make -C paper readiness-preprint
+\end{verbatim}
+
+The strict benchmark gate, which requires audited human rows before empirical
+human-triviality claims, is:
+
+\begin{verbatim}
+make -C paper readiness
+\end{verbatim}
+
+\section{Appendix: Item-Card Schema}
+
+Each paper item card should include source references, source summary, answer
+derivation, expected answer, scorer contract, ambiguity notes, split policy,
+and review metadata. Cards containing incomplete review text must not support
+paper claims.
+
+\section{Appendix: Reported Results Checklist}
+
+Before submission, every headline result must identify:
+
+\begin{itemize}
+  \item split name and data vintage,
+  \item sample count and scored denominator,
+  \item answer correctness and Wilson interval,
+  \item format accuracy,
+  \item strict accuracy as a secondary compliance diagnostic,
+  \item provider errors,
+  \item estimated cost and pricing vintage,
+  \item token usage, and
+  \item cost or tokens per correct answer.
+\end{itemize}

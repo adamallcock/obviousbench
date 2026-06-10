@@ -1,0 +1,101 @@
+id,label,inspect_model,source_kind,thinking_depth,provider_route,estimated_cost_usd,input_price_per_mtok_usd,output_price_per_mtok_usd
+next-001-registry-openrouter-109-google-gemma-3-4b-it,Google: Gemma 3 4B,openrouter/google/gemma-3-4b-it,registry,,openrouter,0.00018356,0.04,0.08
+next-002-registry-openrouter-110-google-gemma-3-12b-it,Google: Gemma 3 12B,openrouter/google/gemma-3-12b-it,registry,,openrouter,0.00021556,0.04,0.13
+next-003-registry-openrouter-086-qwen-qwen3-5-9b,Qwen: Qwen3.5-9B,openrouter/qwen/qwen3.5-9b,registry,,openrouter,0.00022836,0.04,0.15
+next-004-registry-openrouter-095-mistralai-ministral-3b-2512,Mistral: Ministral 3 3B 2512,openrouter/mistralai/ministral-3b-2512,registry,,openrouter,0.00039490,0.1,0.1
+next-005-registry-openrouter-167-rekaai-reka-edge,Reka Edge,openrouter/rekaai/reka-edge,registry,,openrouter,0.00039490,0.1,0.1
+next-006-registry-openrouter-111-google-gemma-3-27b-it,Google: Gemma 3 27B,openrouter/google/gemma-3-27b-it,registry,,openrouter,0.00036712,0.08,0.16
+next-007-registry-openrouter-104-mistralai-mistral-small-3-2-24b-instruct,Mistral: Mistral Small 3.2 24B,openrouter/mistralai/mistral-small-3.2-24b-instruct,registry,,openrouter,0.00037617,0.075,0.2
+next-008-registry-openrouter-094-mistralai-ministral-8b-2512,Mistral: Ministral 3 8B 2512,openrouter/mistralai/ministral-8b-2512,registry,,openrouter,0.00059235,0.15,0.15
+next-009-registry-openrouter-102-bytedance-ui-tars-1-5-7b,ByteDance: UI-TARS 7B ,openrouter/bytedance/ui-tars-1.5-7b,registry,,openrouter,0.00045890,0.1,0.2
+next-010-registry-openrouter-090-qwen-qwen3-5-flash-02-23,Qwen: Qwen3.5-Flash,openrouter/qwen/qwen3.5-flash-02-23,registry,,openrouter,0.00038149,0.065,0.26
+next-011-registry-openrouter-105-meta-llama-llama-guard-4-12b,Meta: Llama Guard 4 12B,openrouter/meta-llama/llama-guard-4-12b,registry,,openrouter,0.00071082,0.18,0.18
+next-012-registry-openrouter-107-meta-llama-llama-4-scout,Meta: Llama 4 Scout,openrouter/meta-llama/llama-4-scout,registry,,openrouter,0.00045672,0.08,0.3
+next-013-registry-openrouter-084-google-gemma-4-26b-a4b-it,Google: Gemma 4 26B A4B ,openrouter/google/gemma-4-26b-a4b-it,registry,,openrouter,0.00040974,0.06,0.33
+next-014-registry-openrouter-093-mistralai-ministral-14b-2512,Mistral: Ministral 3 14B 2512,openrouter/mistralai/ministral-14b-2512,registry,,openrouter,0.00078980,0.2,0.2
+next-015-registry-openrouter-096-mistralai-voxtral-small-24b-2507,Mistral: Voxtral Small 24B 2507,openrouter/mistralai/voxtral-small-24b-2507,registry,,openrouter,0.00052290,0.1,0.3
+next-016-registry-openrouter-163-xiaomi-mimo-v2-5,Xiaomi: MiMo-V2.5,openrouter/xiaomi/mimo-v2.5,registry,,openrouter,0.00064246,0.14,0.28
+next-017-registry-openrouter-165-google-gemma-4-31b-it,Google: Gemma 4 31B,openrouter/google/gemma-4-31b-it,registry,,openrouter,0.00063388,0.12,0.37
+next-018-registry-openrouter-177-meta-llama-llama-3-2-11b-vision-instruct,Meta: Llama 3.2 11B Vision Instruct,openrouter/meta-llama/llama-3.2-11b-vision-instruct,registry,,openrouter,0.00096751,0.245,0.245
+next-019-registry-openai-gpt-4-1-nano,OpenAI GPT-4.1 nano,openai/gpt-4.1-nano,registry,,openai,0.00058690,0.1,0.4
+next-020-registry-openrouter-097-qwen-qwen3-vl-32b-instruct,Qwen: Qwen3 VL 32B Instruct,openrouter/qwen/qwen3-vl-32b-instruct,registry,,openrouter,0.00061038,0.104,0.416
+next-021-registry-openrouter-098-qwen-qwen3-vl-8b-instruct,Qwen: Qwen3 VL 8B Instruct,openrouter/qwen/qwen3-vl-8b-instruct,registry,,openrouter,0.00058472,0.08,0.5
+next-022-registry-openrouter-099-qwen-qwen3-vl-30b-a3b-instruct,Qwen: Qwen3 VL 30B A3B Instruct,openrouter/qwen/qwen3-vl-30b-a3b-instruct,registry,,openrouter,0.00076297,0.13,0.52
+next-023-registry-openrouter-101-baidu-ernie-4-5-vl-28b-a3b,Baidu: ERNIE 4.5 VL 28B A3B,openrouter/baidu/ernie-4.5-vl-28b-a3b,registry,,openrouter,0.00082166,0.14,0.56
+next-024-registry-openai-gpt-4o-mini,OpenAI GPT-4o mini,openai/gpt-4o-mini,registry,,openai,0.00088035,0.15,0.6
+next-025-registry-openrouter-085-mistralai-mistral-small-2603,Mistral: Mistral Small 4,openrouter/mistralai/mistral-small-2603,registry,,openrouter,0.00088035,0.15,0.6
+next-026-registry-openrouter-106-meta-llama-llama-4-maverick,Meta: Llama 4 Maverick,openrouter/meta-llama/llama-4-maverick,registry,,openrouter,0.00088035,0.15,0.6
+next-027-registry-openrouter-176-mistralai-mistral-saba,Mistral: Saba,openrouter/mistralai/mistral-saba,registry,,openrouter,0.00104580,0.2,0.6
+next-028-registry-openrouter-108-mistralai-mistral-small-3-1-24b-instruct,Mistral: Mistral Small 3.1 24B,openrouter/mistralai/mistral-small-3.1-24b-instruct,registry,,openrouter,0.00151666,0.351,0.555
+next-029-registry-openrouter-112-qwen-qwen2-5-vl-72b-instruct,Qwen: Qwen2.5 VL 72B Instruct,openrouter/qwen/qwen2.5-vl-72b-instruct,registry,,openrouter,0.00130725,0.25,0.75
+next-030-registry-openrouter-100-qwen-qwen3-vl-235b-a22b-instruct,Qwen: Qwen3 VL 235B A22B Instruct,openrouter/qwen/qwen3-vl-235b-a22b-instruct,registry,,openrouter,0.00122500,0.2,0.88
+next-031-registry-openrouter-082-qwen-qwen3-6-35b-a3b,Qwen: Qwen3.6 35B A3B,openrouter/qwen/qwen3.6-35b-a3b,registry,,openrouter,0.00110326,0.14,1
+next-032-registry-openrouter-087-qwen-qwen3-5-35b-a3b,Qwen: Qwen3.5-35B-A3B,openrouter/qwen/qwen3.5-35b-a3b,registry,,openrouter,0.00110326,0.14,1
+next-033-registry-openrouter-170-z-ai-glm-4-6v,Z.ai: GLM 4.6V,openrouter/z-ai/glm-4.6v,registry,,openrouter,0.00156870,0.3,0.9
+next-034-registry-openrouter-174-mistralai-codestral-2508,Mistral: Codestral 2508,openrouter/mistralai/codestral-2508,registry,,openrouter,0.00156870,0.3,0.9
+next-035-registry-openrouter-113-minimax-minimax-01,MiniMax: MiniMax-01,openrouter/minimax/minimax-01,registry,,openrouter,0.00136580,0.2,1.1
+next-036-registry-openrouter-081-qwen-qwen3-6-flash,Qwen: Qwen3.6 Flash,openrouter/qwen/qwen3.6-flash,registry,,openrouter,0.00134044,0.1875,1.125
+next-037-registry-openai-gpt-5-4-nano-none,OpenAI GPT-5.4 nano no thinking,openai/gpt-5.4-nano,registry,,openai,0.00146180,0.2,1.25
+next-038-registry-openrouter-122-qwen-qwen3-vl-8b-thinking,Qwen: Qwen3 VL 8B Thinking,openrouter/qwen/qwen3-vl-8b-thinking,registry,,openrouter,0.00126075,0.117,1.365
+next-039-registry-openrouter-080-minimax-minimax-m3,MiniMax: MiniMax M3,openrouter/minimax/minimax-m3,registry,,openrouter,0.00176070,0.3,1.2
+next-040-registry-openrouter-103-baidu-ernie-4-5-vl-424b-a47b,Baidu: ERNIE 4.5 VL 424B A47B ,openrouter/baidu/ernie-4.5-vl-424b-a47b,registry,,openrouter,0.00218978,0.42,1.25
+next-041-registry-openrouter-123-qwen-qwen3-vl-30b-a3b-thinking,Qwen: Qwen3 VL 30B A3B Thinking,openrouter/qwen/qwen3-vl-30b-a3b-thinking,registry,,openrouter,0.00142857,0.13,1.56
+next-042-registry-gemini-3-1-flash-lite,Gemini 3.1 Flash-Lite,google/gemini-3.1-flash-lite,registry,,gemini,0.00178725,0.25,1.5
+next-043-registry-openrouter-088-qwen-qwen3-5-27b,Qwen: Qwen3.5-27B,openrouter/qwen/qwen3.5-27b,registry,,openrouter,0.00164366,0.195,1.56
+next-044-registry-openrouter-168-qwen-qwen3-5-plus-02-15,Qwen: Qwen3.5 Plus 2026-02-15,openrouter/qwen/qwen3.5-plus-02-15,registry,,openrouter,0.00185874,0.26,1.56
+next-045-registry-openrouter-171-mistralai-mistral-large-2512,Mistral: Mistral Large 3 2512,openrouter/mistralai/mistral-large-2512,registry,,openrouter,0.00261450,0.5,1.5
+next-046-registry-openrouter-162-qwen-qwen3-5-plus-20260420,Qwen: Qwen3.5 Plus 2026-04-20,openrouter/qwen/qwen3.5-plus-20260420,registry,,openrouter,0.00214470,0.3,1.8
+next-047-registry-openai-gpt-5-mini-minimal,OpenAI GPT-5 mini minimal,openai/gpt-5-mini,registry,,openai,0.00210725,0.25,2
+next-048-registry-openrouter-166-qwen-qwen3-6-plus,Qwen: Qwen3.6 Plus,openrouter/qwen/qwen3.6-plus,registry,,openrouter,0.00232343,0.325,1.95
+next-049-registry-openrouter-169-moonshotai-kimi-k2-5,MoonshotAI: Kimi K2.5,openrouter/moonshotai/kimi-k2.5,registry,,openrouter,0.00253960,0.4,1.9
+next-050-registry-openrouter-089-qwen-qwen3-5-122b-a10b,Qwen: Qwen3.5-122B-A10B,openrouter/qwen/qwen3.5-122b-a10b,registry,,openrouter,0.00219154,0.26,2.08
+next-051-registry-openrouter-092-mistralai-devstral-2512,Mistral: Devstral 2 2512,openrouter/mistralai/devstral-2512,registry,,openrouter,0.00260360,0.4,2
+next-052-registry-openrouter-172-mistralai-mistral-medium-3-1,Mistral: Mistral Medium 3.1,openrouter/mistralai/mistral-medium-3.1,registry,,openrouter,0.00260360,0.4,2
+next-053-registry-openrouter-173-z-ai-glm-4-5v,Z.ai: GLM 4.5V,openrouter/z-ai/glm-4.5v,registry,,openrouter,0.00313740,0.6,1.8
+next-054-registry-openrouter-175-mistralai-mistral-medium-3,Mistral: Mistral Medium 3,openrouter/mistralai/mistral-medium-3,registry,,openrouter,0.00260360,0.4,2
+next-055-registry-openrouter-091-qwen-qwen3-5-397b-a17b,Qwen: Qwen3.5 397B A17B,openrouter/qwen/qwen3.5-397b-a17b,registry,,openrouter,0.00278811,0.39,2.34
+next-056-registry-gemini-2-5-flash,Gemini 2.5 Flash,google/gemini-2.5-flash,registry,,gemini,0.00259270,0.3,2.5
+next-057-registry-openrouter-124-qwen-qwen3-vl-235b-a22b-thinking,Qwen: Qwen3 VL 235B A22B Thinking,openrouter/qwen/qwen3-vl-235b-a22b-thinking,registry,,openrouter,0.00252434,0.26,2.6
+next-058-registry-grok-build-0-1,Grok Build 0.1,grok/grok-build-0.1,registry,,grok,0.00458900,1,2
+next-059-registry-openrouter-083-qwen-qwen3-6-27b,Qwen: Qwen3.6 27B,openrouter/qwen/qwen3.6-27b,registry,,openrouter,0.00300761,0.29,3.2
+next-060-registry-gemini-3-flash-preview,Gemini 3 Flash Preview,google/gemini-3-flash-preview,registry,,gemini,0.00357450,0.5,3
+next-061-registry-openrouter-139-qwen-qwen3-coder-plus,Qwen: Qwen3 Coder Plus,openrouter/qwen/qwen3-coder-plus,registry,,openrouter,0.00423085,0.65,3.25
+next-062-registry-openrouter-144-nousresearch-hermes-4-405b,Nous: Hermes 4 405B,openrouter/nousresearch/hermes-4-405b,registry,,openrouter,0.00522900,1,3
+next-063-registry-openrouter-128-z-ai-glm-5-1,Z.ai: GLM 5.1,openrouter/z-ai/glm-5.1,registry,,openrouter,0.00521402,0.98,3.08
+next-064-registry-openrouter-161-moonshotai-kimi-latest,MoonshotAI Kimi Latest,openrouter/~moonshotai/kimi-latest,registry,,openrouter,0.00445216,0.684,3.42
+next-065-registry-openrouter-164-moonshotai-kimi-k2-6,MoonshotAI: Kimi K2.6,openrouter/moonshotai/kimi-k2.6,registry,,openrouter,0.00445216,0.684,3.42
+next-066-registry-openrouter-138-qwen-qwen3-max,Qwen: Qwen3 Max,openrouter/qwen/qwen3-max,registry,,openrouter,0.00507702,0.78,3.9
+next-067-registry-openrouter-178-qwen-qwen3-7-max,Qwen: Qwen3.7 Max,openrouter/qwen/qwen3.7-max,registry,,openrouter,0.00653625,1.25,3.75
+next-068-registry-openrouter-180-z-ai-glm-5-turbo,Z.ai: GLM 5 Turbo,openrouter/z-ai/glm-5-turbo,registry,,openrouter,0.00653080,1.2,4
+next-069-registry-openrouter-184-z-ai-glm-5v-turbo,Z.ai: GLM 5V Turbo,openrouter/z-ai/glm-5v-turbo,registry,,openrouter,0.00653080,1.2,4
+next-070-registry-openai-gpt-5-4-mini-none,OpenAI GPT-5.4 mini no thinking,openai/gpt-5.4-mini,registry,,openai,0.00536175,0.75,4.5
+next-071-registry-openrouter-179-qwen-qwen3-6-max-preview,Qwen: Qwen3.6 Max Preview,openrouter/qwen/qwen3.6-max-preview,registry,,openrouter,0.00743496,1.04,6.24
+next-072-registry-openrouter-114-anthracite-org-magnum-v4-72b,Magnum v4 72B,openrouter/anthracite-org/magnum-v4-72b,registry,,openrouter,0.01312700,3,5
+next-073-registry-openrouter-115-mistralai-mixtral-8x22b-instruct,Mistral: Mixtral 8x22B Instruct,openrouter/mistralai/mixtral-8x22b-instruct,registry,,openrouter,0.01045800,2,6
+next-074-registry-openrouter-185-mistralai-mistral-large-2407,Mistral Large 2407,openrouter/mistralai/mistral-large-2407,registry,,openrouter,0.01045800,2,6
+next-075-registry-openrouter-183-mistralai-mistral-medium-3-5,Mistral: Mistral Medium 3.5,openrouter/mistralai/mistral-medium-3-5,registry,,openrouter,0.00976350,1.5,7.5
+next-076-registry-openrouter-181-ai21-jamba-large-1-7,AI21: Jamba Large 1.7,openrouter/ai21/jamba-large-1.7,registry,,openrouter,0.01173800,2,8
+next-077-registry-openai-gpt-5-minimal,OpenAI GPT-5 minimal,openai/gpt-5,registry,,openai,0.01053625,1.25,10
+next-078-registry-openai-gpt-4o,OpenAI GPT-4o,openai/gpt-4o,registry,,openai,0.01467250,2.5,10
+next-079-registry-openrouter-182-cohere-command-a,Cohere: Command A,openrouter/cohere/command-a,registry,,openrouter,0.01467250,2.5,10
+next-080-registry-openai-gpt-5-2-none,OpenAI GPT-5.2 no thinking,openai/gpt-5.2,registry,,openai,0.01475075,1.75,14
+next-081-registry-openai-gpt-5-4-none,OpenAI GPT-5.4 no thinking,openai/gpt-5.4,registry,,openai,0.01787250,2.5,15
+next-082-registry-anthropic-claude-opus-4-6,Anthropic Claude Opus 4.6,anthropic/claude-opus-4-6,registry,,anthropic,0.03254500,5,25
+next-083-registry-anthropic-claude-opus-4-7,Anthropic Claude Opus 4.7,anthropic/claude-opus-4-7,registry,,anthropic,0.03254500,5,25
+next-084-registry-anthropic-claude-opus-4-8,Anthropic Claude Opus 4.8,anthropic/claude-opus-4-8,registry,,anthropic,0.03254500,5,25
+next-085-registry-openai-gpt-5-5-low,OpenAI GPT-5.5 low,openai/gpt-5.5,registry,,openai,0.03574500,5,30
+next-086-registry-openai-gpt-5-5-none,OpenAI GPT-5.5 no thinking,openai/gpt-5.5,registry,,openai,0.03574500,5,30
+next-087-thinking-openai-gpt-5-nano-minimal,OpenAI GPT-5 nano minimal,openai/gpt-5-nano,thinking,minimal,openai,0.00093345,0.05,0.4
+next-088-thinking-openai-gpt-5-nano-low,OpenAI GPT-5 nano low,openai/gpt-5-nano,thinking,low,openai,0.00246945,0.05,0.4
+next-089-thinking-gemini-gemini-2-5-flash-lite-low,Gemini 2.5 Flash-Lite low_budget_1024,google/gemini-2.5-flash-lite,thinking,low,gemini,0.00263490,0.1,0.4
+next-090-thinking-openai-gpt-5-nano-medium,OpenAI GPT-5 nano medium,openai/gpt-5-nano,thinking,medium,openai,0.00349345,0.05,0.4
+next-091-thinking-openrouter-deepseek-deepseek-r1-distill-qwen-32b-low,DeepSeek: R1 Distill Qwen 32B low_budget_512,openrouter/deepseek/deepseek-r1-distill-qwen-32b,thinking,low,openrouter,0.00411481,0.29,0.29
+next-092-thinking-openai-gpt-5-mini-minimal,OpenAI GPT-5 mini minimal,openai/gpt-5-mini,thinking,minimal,openai,0.00466725,0.25,2
+next-093-thinking-gemini-gemini-3-1-flash-lite-minimal,Gemini 3.1 Flash-Lite minimal_budget_1024,google/gemini-3.1-flash-lite,thinking,minimal,gemini,0.00562725,0.25,1.5
+next-094-thinking-openrouter-google-gemini-3-1-flash-lite-minimal,Google: Gemini 3.1 Flash Lite minimal,openrouter/google/gemini-3.1-flash-lite,thinking,minimal,openrouter,0.00562725,0.25,1.5
+next-095-thinking-openrouter-google-gemini-3-1-flash-lite-preview-minimal,Google: Gemini 3.1 Flash Lite Preview minimal,openrouter/google/gemini-3.1-flash-lite-preview,thinking,minimal,openrouter,0.00562725,0.25,1.5
+next-096-thinking-openrouter-qwen-qwen3-6-35b-a3b-low,Qwen: Qwen3.6 35B A3B low_budget_512,openrouter/qwen/qwen3.6-35b-a3b,thinking,low,openrouter,0.00622326,0.14,1
+next-097-thinking-gemini-gemini-2-5-flash-lite-medium,Gemini 2.5 Flash-Lite medium_budget_8192,google/gemini-2.5-flash-lite,thinking,medium,gemini,0.00673090,0.1,0.4
+next-098-thinking-openrouter-qwen-qwen3-6-flash-low,Qwen: Qwen3.6 Flash low_budget_512,openrouter/qwen/qwen3.6-flash,thinking,low,openrouter,0.00710044,0.1875,1.125
+next-099-thinking-openai-gpt-5-4-nano-low,OpenAI GPT-5.4 nano low,openai/gpt-5.4-nano,thinking,low,openai,0.00786180,0.2,1.25
+next-100-thinking-openrouter-openai-gpt-5-4-nano-low,OpenAI: GPT-5.4 Nano low,openrouter/openai/gpt-5.4-nano,thinking,low,openrouter,0.00786180,0.2,1.25

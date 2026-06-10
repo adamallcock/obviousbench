@@ -1,0 +1,38 @@
+entry_id,source_thinking_entry_id,label,inspect_model,provider_route,control_style,thinking_depth,max_tokens,estimated_cost_usd,configured_reasoning_tokens_per_sample,estimated_reasoning_tokens_per_sample
+top-thinking-001-openai-gpt-5-5-none,openai-gpt-5-5-none,OpenAI GPT-5.5 none,openai/gpt-5.5,openai,openai_reasoning_effort,none,2000,0.035745,0,0
+top-thinking-002-openai-gpt-5-5-low,openai-gpt-5-5-low,OpenAI GPT-5.5 low,openai/gpt-5.5,openai,openai_reasoning_effort,low,2000,0.189345,256,64
+top-thinking-003-openai-gpt-5-5-medium,openai-gpt-5-5-medium,OpenAI GPT-5.5 medium,openai/gpt-5.5,openai,openai_reasoning_effort,medium,2000,0.266145,1024,96
+top-thinking-004-openai-gpt-5-5-high,openai-gpt-5-5-high,OpenAI GPT-5.5 high,openai/gpt-5.5,openai,openai_reasoning_effort,high,4168,0.419745,4096,160
+top-thinking-005-openai-gpt-5-5-xhigh,openai-gpt-5-5-xhigh,OpenAI GPT-5.5 xhigh,openai/gpt-5.5,openai,openai_reasoning_effort,xhigh,8264,0.803745,8192,320
+top-thinking-006-openai-gpt-5-4-none,openai-gpt-5-4-none,OpenAI GPT-5.4 none,openai/gpt-5.4,openai,openai_reasoning_effort,none,2000,0.0178725,0,0
+top-thinking-007-openai-gpt-5-4-low,openai-gpt-5-4-low,OpenAI GPT-5.4 low,openai/gpt-5.4,openai,openai_reasoning_effort,low,2000,0.0946725,256,64
+top-thinking-008-openai-gpt-5-4-medium,openai-gpt-5-4-medium,OpenAI GPT-5.4 medium,openai/gpt-5.4,openai,openai_reasoning_effort,medium,2000,0.1330725,1024,96
+top-thinking-009-openai-gpt-5-4-high,openai-gpt-5-4-high,OpenAI GPT-5.4 high,openai/gpt-5.4,openai,openai_reasoning_effort,high,4168,0.2098725,4096,160
+top-thinking-010-openai-gpt-5-4-xhigh,openai-gpt-5-4-xhigh,OpenAI GPT-5.4 xhigh,openai/gpt-5.4,openai,openai_reasoning_effort,xhigh,8264,0.4018725,8192,320
+top-thinking-011-anthropic-claude-opus-4-8-low,anthropic-claude-opus-4-8-low,Claude Opus 4.8 low,anthropic/claude-opus-4-8,anthropic,anthropic_adaptive_thinking_effort,low,2000,0.064545,512,16
+top-thinking-012-anthropic-claude-opus-4-8-medium,anthropic-claude-opus-4-8-medium,Claude Opus 4.8 medium,anthropic/claude-opus-4-8,anthropic,anthropic_adaptive_thinking_effort,medium,2120,0.128545,2048,48
+top-thinking-013-anthropic-claude-opus-4-8-high,anthropic-claude-opus-4-8-high,Claude Opus 4.8 high,anthropic/claude-opus-4-8,anthropic,anthropic_adaptive_thinking_effort,high,8264,0.288545,8192,128
+top-thinking-014-anthropic-claude-opus-4-8-xhigh,anthropic-claude-opus-4-8-xhigh,Claude Opus 4.8 xhigh,anthropic/claude-opus-4-8,anthropic,anthropic_adaptive_thinking_effort,xhigh,16456,0.544545,16384,256
+top-thinking-015-anthropic-claude-opus-4-8-max,anthropic-claude-opus-4-8-max,Claude Opus 4.8 max,anthropic/claude-opus-4-8,anthropic,anthropic_adaptive_thinking_effort,max,32840,0.800545,32768,384
+top-thinking-016-anthropic-claude-sonnet-4-6-low,anthropic-claude-sonnet-4-6-low,Claude Sonnet 4.6 low,anthropic/claude-sonnet-4-6,anthropic,anthropic_adaptive_thinking_effort,low,2000,0.038727,512,16
+top-thinking-017-anthropic-claude-sonnet-4-6-medium,anthropic-claude-sonnet-4-6-medium,Claude Sonnet 4.6 medium,anthropic/claude-sonnet-4-6,anthropic,anthropic_adaptive_thinking_effort,medium,2120,0.077127,2048,48
+top-thinking-018-anthropic-claude-sonnet-4-6-high,anthropic-claude-sonnet-4-6-high,Claude Sonnet 4.6 high,anthropic/claude-sonnet-4-6,anthropic,anthropic_adaptive_thinking_effort,high,8264,0.173127,8192,128
+top-thinking-019-anthropic-claude-sonnet-4-6-max,anthropic-claude-sonnet-4-6-max,Claude Sonnet 4.6 max,anthropic/claude-sonnet-4-6,anthropic,anthropic_adaptive_thinking_effort,max,32840,0.480327,32768,384
+top-thinking-020-grok-grok-4-3-none,grok-grok-4-3-none,Grok 4.3 none,grok/grok-4.3,grok,xai_reasoning_effort,none,2000,0.00573625,0,0
+top-thinking-021-grok-grok-4-3-low,grok-grok-4-3-low,Grok 4.3 low,grok/grok-4.3,grok,xai_reasoning_effort,low,2000,0.03133625,256,128
+top-thinking-022-grok-grok-4-3-medium,grok-grok-4-3-medium,Grok 4.3 medium,grok/grok-4.3,grok,xai_reasoning_effort,medium,2000,0.05693625,1024,256
+top-thinking-023-grok-grok-4-3-high,grok-grok-4-3-high,Grok 4.3 high,grok/grok-4.3,grok,xai_reasoning_effort,high,4168,0.10813625,4096,512
+top-thinking-024-openrouter-x-ai-grok-4-3-none,openrouter-x-ai-grok-4-3-none,xAI: Grok 4.3 none,openrouter/x-ai/grok-4.3,openrouter,openrouter_reasoning_effort,none,2000,0.00573625,0,0
+top-thinking-025-openrouter-x-ai-grok-4-3-low,openrouter-x-ai-grok-4-3-low,xAI: Grok 4.3 low,openrouter/x-ai/grok-4.3,openrouter,openrouter_reasoning_effort,low,2000,0.03133625,512,128
+top-thinking-026-openrouter-x-ai-grok-4-3-medium,openrouter-x-ai-grok-4-3-medium,xAI: Grok 4.3 medium,openrouter/x-ai/grok-4.3,openrouter,openrouter_reasoning_effort,medium,2120,0.05693625,2048,256
+top-thinking-027-openrouter-x-ai-grok-4-3-high,openrouter-x-ai-grok-4-3-high,xAI: Grok 4.3 high,openrouter/x-ai/grok-4.3,openrouter,openrouter_reasoning_effort,high,8264,0.10813625,8192,512
+top-thinking-028-openrouter-google-gemini-3-5-flash-minimal,openrouter-google-gemini-3-5-flash-minimal,Google: Gemini 3.5 Flash minimal,openrouter/google/gemini-3.5-flash,openrouter,openrouter_reasoning_effort,minimal,2000,0.0337635,64,32
+top-thinking-029-openrouter-google-gemini-3-5-flash-low,openrouter-google-gemini-3-5-flash-low,Google: Gemini 3.5 Flash low,openrouter/google/gemini-3.5-flash,openrouter,openrouter_reasoning_effort,low,2000,0.0568035,512,64
+top-thinking-030-openrouter-google-gemini-3-5-flash-medium,openrouter-google-gemini-3-5-flash-medium,Google: Gemini 3.5 Flash medium,openrouter/google/gemini-3.5-flash,openrouter,openrouter_reasoning_effort,medium,2120,0.1489635,2048,192
+top-thinking-031-openrouter-google-gemini-3-5-flash-high,openrouter-google-gemini-3-5-flash-high,Google: Gemini 3.5 Flash high,openrouter/google/gemini-3.5-flash,openrouter,openrouter_reasoning_effort,high,8264,0.2872035,8192,384
+top-thinking-032-openrouter-google-gemini-3-1-pro-preview-customtools-low,openrouter-google-gemini-3-1-pro-preview-customtools-low,Google: Gemini 3.1 Pro Preview Custom Tools low,openrouter/google/gemini-3.1-pro-preview-customtools,openrouter,openrouter_reasoning_effort,low,2000,0.075738,512,64
+top-thinking-033-openrouter-google-gemini-3-1-pro-preview-customtools-high,openrouter-google-gemini-3-1-pro-preview-customtools-high,Google: Gemini 3.1 Pro Preview Custom Tools high,openrouter/google/gemini-3.1-pro-preview-customtools,openrouter,openrouter_reasoning_effort,high,8264,0.382938,8192,384
+top-thinking-034-openrouter-google-gemini-3-1-flash-lite-minimal,openrouter-google-gemini-3-1-flash-lite-minimal,Google: Gemini 3.1 Flash Lite minimal,openrouter/google/gemini-3.1-flash-lite,openrouter,openrouter_reasoning_effort,minimal,2000,0.00562725,64,32
+top-thinking-035-openrouter-google-gemini-3-1-flash-lite-low,openrouter-google-gemini-3-1-flash-lite-low,Google: Gemini 3.1 Flash Lite low,openrouter/google/gemini-3.1-flash-lite,openrouter,openrouter_reasoning_effort,low,2000,0.00946725,512,64
+top-thinking-036-openrouter-google-gemini-3-1-flash-lite-medium,openrouter-google-gemini-3-1-flash-lite-medium,Google: Gemini 3.1 Flash Lite medium,openrouter/google/gemini-3.1-flash-lite,openrouter,openrouter_reasoning_effort,medium,2120,0.02482725,2048,192
+top-thinking-037-openrouter-google-gemini-3-1-flash-lite-high,openrouter-google-gemini-3-1-flash-lite-high,Google: Gemini 3.1 Flash Lite high,openrouter/google/gemini-3.1-flash-lite,openrouter,openrouter_reasoning_effort,high,8264,0.04786725,8192,384

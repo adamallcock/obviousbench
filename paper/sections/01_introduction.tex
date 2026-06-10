@@ -1,0 +1,32 @@
+\section{Introduction}
+
+Some model failures are hard to explain. Others are instantly legible: the
+model counts the wrong number of letters, removes the wrong character, ignores
+an output format, or answers a prompt whose key constraint was written in plain
+view. These are small failure modes, but they matter because users can
+recognize them immediately.
+
+\benchmarkname{} focuses on that surface. It is not intended to replace broad
+capability benchmarks. It asks a narrower question: can a model reliably handle
+short, objective, single-turn prompts that look obvious to a careful human and
+are easy to score without an LLM judge?
+
+The benchmark is intentionally simple. Items are short. Answers are objective.
+Scorers are deterministic. The report shows answer accuracy, format accuracy,
+strict accuracy, and cost rather than a single undifferentiated score. The
+headline score is answer correctness; strict accuracy remains visible as an
+interface-compliance diagnostic. The goal is to make obvious failures easy to
+track, compare, and regress.
+
+The intended contributions are:
+
+\begin{itemize}
+  \item a 224-question \paperSplit{} manifest spanning eight obvious-task
+        families;
+  \item reviewed item cards with source summaries, answer derivations,
+        ambiguity notes, scorer contracts, and split-policy rationale;
+  \item deterministic scoring that separates answer correctness from format
+        compliance; and
+  \item a frozen 2026-06-03 evidence snapshot covering 223 model settings,
+        178 unique model identifiers, provider outcomes, cost, and token burden.
+\end{itemize}

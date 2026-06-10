@@ -1,0 +1,47 @@
+\section{Scoring}
+
+\benchmarkname{} uses deterministic scorers for primary results. The primary
+score is answer correctness: did the model give the objectively right answer,
+even if it included surrounding prose? The scorer also checks format
+correctness and strict correctness as secondary interface-compliance
+diagnostics. This keeps the benchmark focused on obvious task failures rather
+than making exact response style the headline target.
+
+The paper reports:
+
+\begin{itemize}
+  \item answer correctness as the primary ranking metric,
+  \item obvious failure rate as one minus answer correctness,
+  \item Wilson 95\% confidence intervals for answer correctness,
+  \item format accuracy as a secondary compliance diagnostic,
+  \item strict accuracy as a secondary exact-interface diagnostic,
+  \item provider error count,
+  \item estimated cost,
+  \item tokens per correct answer, and
+  \item cost per correct answer.
+\end{itemize}
+
+The current readiness gate requires each scorer used by the paper split to
+have at least 20 gold examples. Current scorer-gold coverage and the planned
+model panel are listed in the appendix so the main report stays focused on the
+benchmark definition and results.
+
+\paragraph{Run protocol.}
+Final model sweeps should use a frozen prompt format, frozen model aliases,
+recorded run dates, documented generation settings, and a provider-error
+accounting policy. After configured retries, final provider errors, refusals,
+and timeouts count as incorrect attempts while remaining separately reported.
+Smoke runs remain engineering checks and are not ranked against full paper runs.
+The current evidence run uses short-answer prompts with a safety-oriented output
+cap and records the requested generation settings in the per-model run
+manifest. Temperature is fixed where the adapter exposes it so the benchmark is
+closer to a deterministic reliability probe than a sampling study.
+
+\paragraph{Thinking controls.}
+The report distinguishes configured thinking settings from reported reasoning
+tokens. OpenAI reasoning effort, Gemini thinking levels or budgets, Anthropic
+thinking budgets, xAI reasoning effort, and OpenRouter-normalized reasoning
+settings are request-time controls when explicitly configured. Reported
+reasoning tokens are response-time telemetry. They are useful for cost and
+efficiency analysis, but they do not by themselves prove which thinking depth
+was requested.

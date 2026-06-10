@@ -1,0 +1,26 @@
+\section{Positioning}
+
+SimpleBench is the closest public comparison in spirit: it foregrounds everyday
+reasoning cases where a non-specialist human baseline can exceed frontier
+models \citep{simplebench}. \benchmarkname{} takes the same plain-language
+stance, but narrows the scope to deterministic regression use: objective
+targets, reviewed item cards, split hygiene, and scorer contracts.
+
+Broad capability benchmarks such as MMLU-Pro, GPQA, and Humanity's Last Exam
+measure much harder knowledge and reasoning questions
+\citep{wang2024mmlupro,rein2023gpqa,phan2026hle}. \benchmarkname{} is not a
+harder exam. It is a check for short, visible mistakes that users expect models
+to avoid.
+
+The scoring design borrows from nearby work on short-answer factuality and
+verifiable instruction following. SimpleQA emphasizes clear answer criteria
+\citep{wei2024simpleqa}; IFEval and FollowBench show that constraints can be
+reported separately by type \citep{zhou2023ifeval,jiang2024followbench}. The
+data policy borrows from live and contamination-aware benchmark practice:
+record source vintage, avoid overclaiming public seed data, and refresh when
+needed \citep{white2025livebench,jain2024livecodebench,jiang2025benchmarkaging}.
+Metamorphic and symbolic robustness work motivates paired variants that test
+whether a model is applying the operation rather than matching a familiar
+surface form \citep{mirzadeh2025gsmsymbolic}.
+The full comparator matrix is kept in the appendix so the main report stays
+compact.
