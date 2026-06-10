@@ -64,6 +64,8 @@ class EvalRecord:
 
     @property
     def format_ok(self) -> bool:
+        if self.provider_error or self.timeout:
+            return False
         if self.format_correct is not None:
             return self.format_correct
         return self.failure_type not in FORMAT_FAILURE_TYPES
@@ -148,11 +150,7 @@ def compute_summary(records: list[EvalRecord]) -> list[SummaryRow]:
         first = model_records[0]
         provider_errors = sum(record.provider_error for record in model_records)
         timeouts = sum(record.timeout for record in model_records)
-        scored = [
-            record
-            for record in model_records
-            if not record.provider_error and not record.timeout
-        ]
+        scored = model_records
         correct = sum(record.correct for record in scored)
         failures = len(scored) - correct
         scored_count = len(scored)

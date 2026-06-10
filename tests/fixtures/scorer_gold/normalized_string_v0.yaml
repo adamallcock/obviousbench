@@ -45,14 +45,14 @@ examples:
     scorer: normalized_string_v0
     target: "apple"
     output: "Apple"
-    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "Apple", failure_type: wrong_letter_or_substring}
-    notes: The current alias remains case-sensitive.
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "Apple", failure_type: none}
+    notes: Normalized strings are compared case-insensitively.
   - id: normalized_string.trailing_punctuation.wrong
     scorer: normalized_string_v0
     target: "apple"
     output: "apple."
-    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "apple.", failure_type: wrong_letter_or_substring}
-    notes: Punctuation is not normalized away.
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "apple", failure_type: verbose_noncompliance}
+    notes: Terminal punctuation is answer-correct but not strict final-answer format.
   - id: normalized_string.empty.non_answer
     scorer: normalized_string_v0
     target: "apple"
@@ -117,5 +117,5 @@ examples:
     scorer: normalized_string_v0
     target: "apple"
     output: "Therefore: APPLE"
-    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "Therefore: APPLE", failure_type: wrong_letter_or_substring}
-    notes: Extracted final answer remains case-sensitive.
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "APPLE", failure_type: verbose_noncompliance}
+    notes: Extracted final answers are compared case-insensitively.

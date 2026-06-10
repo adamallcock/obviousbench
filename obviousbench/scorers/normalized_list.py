@@ -9,6 +9,7 @@ from obviousbench.scorers.common import (
     ScoreDecision,
     inspect_score,
     normalize_list,
+    normalize_token_artifacts,
     strip_confidence_annotation,
 )
 
@@ -18,10 +19,12 @@ _FINAL_LIST_RE = re.compile(
     r"(?P<answer>[^\n]+)$",
     re.IGNORECASE,
 )
+_COLON_LIST_RE = re.compile(r":\s*(?P<answer>[^\n]+)$")
 
 
 def score_normalized_list(output: str, target: str) -> ScoreDecision:
     cleaned_output = strip_confidence_annotation(output)
+    artifact_normalized = normalize_token_artifacts(cleaned_output)
     extracted_parts = normalize_list(cleaned_output)
     target_parts = normalize_list(target)
     extracted = ", ".join(extracted_parts) if extracted_parts else None
@@ -30,7 +33,11 @@ def score_normalized_list(output: str, target: str) -> ScoreDecision:
     if extracted_parts == target_parts:
         failure_type = (
             "verbose_noncompliance"
-            if cleaned_output.strip() != output.strip()
+            if (
+                cleaned_output.strip() != output.strip()
+                or artifact_normalized.strip() != cleaned_output.strip()
+                or _has_terminal_list_punctuation(cleaned_output)
+            )
             else "none"
         )
         return ScoreDecision(
@@ -61,10 +68,11 @@ def score_normalized_list(output: str, target: str) -> ScoreDecision:
 
 
 def _extract_final_list_parts(output: str) -> tuple[str, ...] | None:
-    match = _FINAL_LIST_RE.search(output.strip())
-    if match is None:
-        return None
-    return normalize_list(match.group("answer"))
+    for pattern in (_FINAL_LIST_RE, _COLON_LIST_RE):
+        match = pattern.search(output.strip())
+        if match is not None:
+            return normalize_list(match.group("answer"))
+    return None
 
 
 def _starts_with_target_list(output: str, target: str) -> bool:
@@ -74,6 +82,11 @@ def _starts_with_target_list(output: str, target: str) -> bool:
     if not remainder:
         return False
     return remainder.startswith(("(", "[", "{", ":", "-"))
+
+
+def _has_terminal_list_punctuation(output: str) -> bool:
+    stripped = output.strip()
+    return bool(stripped) and stripped[-1] in ".!?;"
 
 
 @scorer(metrics=[])

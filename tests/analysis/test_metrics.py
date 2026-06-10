@@ -33,9 +33,9 @@ def test_compute_summary_reports_obvious_failure_rate():
     summary = compute_summary(records)[0]
 
     assert summary.model == "openai/gpt-5-nano"
-    assert summary.scored_samples == 8
-    assert summary.failures == 1
-    assert summary.obvious_failure_rate == 0.125
+    assert summary.scored_samples == 9
+    assert summary.failures == 2
+    assert summary.obvious_failure_rate == 2 / 9
     assert summary.accuracy_ci_low <= summary.accuracy <= summary.accuracy_ci_high
     assert (
         summary.answer_accuracy_ci_low
@@ -47,15 +47,67 @@ def test_compute_summary_reports_obvious_failure_rate():
         <= summary.strict_accuracy
         <= summary.strict_accuracy_ci_high
     )
-    assert summary.failures_per_1000 == 125
+    assert summary.failures_per_1000 == 222
     assert summary.answer_correct == 7
     assert summary.format_correct == 7
     assert summary.strict_correct == 6
-    assert summary.answer_accuracy == 0.875
-    assert summary.format_accuracy == 0.875
-    assert summary.strict_accuracy == 0.75
+    assert summary.answer_accuracy == 7 / 9
+    assert summary.format_accuracy == 7 / 9
+    assert summary.strict_accuracy == 6 / 9
     assert summary.provider_errors == 1
     assert summary.format_failures == 1
+
+
+def test_compute_summary_counts_provider_errors_and_timeouts_as_incorrect_attempts():
+    records = [
+        EvalRecord(
+            "grok/grok-4.3",
+            "id1",
+            "format_compliance",
+            True,
+            "none",
+            False,
+            False,
+            total_tokens=10,
+        ),
+        EvalRecord(
+            "grok/grok-4.3",
+            "id2",
+            "format_compliance",
+            False,
+            "provider_error",
+            True,
+            False,
+            total_tokens=5,
+        ),
+        EvalRecord(
+            "grok/grok-4.3",
+            "id3",
+            "format_compliance",
+            False,
+            "timeout",
+            False,
+            True,
+            total_tokens=5,
+        ),
+    ]
+
+    summary = compute_summary(records)[0]
+
+    assert summary.total_samples == 3
+    assert summary.scored_samples == 3
+    assert summary.provider_errors == 1
+    assert summary.timeouts == 1
+    assert summary.correct == 1
+    assert summary.failures == 2
+    assert summary.answer_correct == 1
+    assert summary.format_correct == 1
+    assert summary.strict_correct == 1
+    assert summary.accuracy == 1 / 3
+    assert summary.answer_accuracy == 1 / 3
+    assert summary.format_accuracy == 1 / 3
+    assert summary.strict_accuracy == 1 / 3
+    assert summary.tokens_per_scored_sample == 20 / 3
 
 
 def test_compute_summary_rolls_up_usage_and_cost_by_variant():

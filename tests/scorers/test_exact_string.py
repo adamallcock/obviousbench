@@ -9,12 +9,44 @@ def test_exact_string_accepts_trimmed_match():
     assert decision.failure_type == "none"
 
 
-def test_exact_string_rejects_punctuation():
+def test_exact_string_accepts_case_only_difference_as_exact_match():
+    decision = score_exact_string_trim("Circle", "circle")
+
+    assert decision.correct
+    assert decision.extracted == "Circle"
+    assert decision.failure_type == "none"
+    assert decision.resolved_format_correct
+
+
+def test_exact_string_accepts_terminal_punctuation_as_wrong_format():
     decision = score_exact_string_trim("yrrebwarts.", "yrrebwarts")
 
-    assert not decision.correct
-    assert decision.extracted == "yrrebwarts."
-    assert decision.failure_type == "wrong_letter_or_substring"
+    assert decision.correct
+    assert decision.extracted == "yrrebwarts"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_byte_token_artifacts_as_wrong_format():
+    decision = score_exact_string_trim("\u010a\u010aplum", "plum")
+
+    assert decision.correct
+    assert decision.extracted == "plum"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_explicit_alternate_target():
+    decision = score_exact_string_trim(
+        "Mars",
+        "plant",
+        accepted_targets=("mars", "pluto"),
+    )
+
+    assert decision.correct
+    assert decision.extracted == "Mars"
+    assert decision.failure_type == "none"
+    assert decision.resolved_format_correct
 
 
 def test_exact_string_accepts_final_answer_cue_at_end():
@@ -56,6 +88,53 @@ def test_exact_string_accepts_leading_answer_with_explanation_as_wrong_format():
     assert not decision.resolved_format_correct
 
 
+def test_exact_string_accepts_leading_answer_sentence_as_wrong_format():
+    decision = score_exact_string_trim("Paper is not made of metal.", "paper")
+
+    assert decision.correct
+    assert decision.extracted == "paper"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_first_line_answer_with_explanation_as_wrong_format():
+    decision = score_exact_string_trim(
+        "paper \n\nThe question asks for the item that is not metal.",
+        "paper",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "paper"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_final_line_answer_after_self_correction_as_wrong_format():
+    decision = score_exact_string_trim(
+        (
+            "committx\n\n"
+            "Wait: comittx\n\n"
+            "Removing e's from committee gives a different result.\n\n"
+            "**committ**"
+        ),
+        "committ",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "committ"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_markdown_wrapped_answer_as_wrong_format():
+    decision = score_exact_string_trim("**paralll**", "paralll")
+
+    assert decision.correct
+    assert decision.extracted == "paralll"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
 def test_exact_string_accepts_colon_suffix_answer_as_wrong_format():
     decision = score_exact_string_trim(
         "strawberry without the letter e: strawbrry",
@@ -64,6 +143,18 @@ def test_exact_string_accepts_colon_suffix_answer_as_wrong_format():
 
     assert decision.correct
     assert decision.extracted == "strawbrry"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_terminal_copula_answer_as_wrong_format():
+    decision = score_exact_string_trim(
+        "The number that is not greater than 10 is 9.",
+        "9",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "9"
     assert decision.failure_type == "verbose_noncompliance"
     assert not decision.resolved_format_correct
 
@@ -85,6 +176,23 @@ def test_exact_string_accepts_decimal_with_unit_suffix():
     assert decision.correct
     assert decision.extracted == "4.827"
     assert decision.failure_type == "none"
+
+
+def test_exact_string_accepts_numeric_equation_rhs_as_wrong_format():
+    decision = score_exact_string_trim("3 * 1.609 = 4.827 km", "4.827")
+
+    assert decision.correct
+    assert decision.extracted == "4.827"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_rejects_prompt_specific_rounding_miss():
+    decision = score_exact_string_trim("4.828 kilometers", "4.827")
+
+    assert not decision.correct
+    assert decision.extracted == "4.828 kilometers"
+    assert decision.failure_type == "wrong_letter_or_substring"
 
 
 def test_exact_string_accepts_confidence_macro_as_wrong_format():

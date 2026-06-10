@@ -1,3 +1,10 @@
+---
+title: Scoring Policy
+date: 2026-05-31
+type: policy
+status: current
+---
+
 # Scoring Policy
 
 ObviousBench v0.1 uses deterministic Python scorers only. No model output is scored by another LLM.
@@ -58,7 +65,10 @@ forms, such as `3 or three`, is not ambiguous under the integer extractor.
 
 Provider safety or policy strings returned as assistant text, for example
 `SAFETY_CHECK_TYPE_*`, are treated as provider errors by log summarization rather
-than as model reasoning failures.
+than as ordinary model reasoning failures. After configured retries, final
+provider errors, refusals, and timeouts remain in the scored denominator as
+incorrect attempts. Their counts are reported separately so readers can
+distinguish wrong answers from provider-side refusals or infrastructure issues.
 
 Scorer gold examples live in `tests/fixtures/scorer_gold/` and are exercised
 through `obviousbench.analysis.rescore.rescore_output`. Scorer changes that

@@ -19,6 +19,25 @@ def test_rescore_output_uses_current_dynamic_scorer():
     assert not decision.strict_correct
 
 
+def test_score_sample_applies_planet_item_accepted_answer_override():
+    sample = SimpleNamespace(
+        id="obviousbench.spell.en.v0.public.000014",
+        metadata={"scorer": "exact_string_trim_v0"},
+        output=SimpleNamespace(completion="Mars"),
+        target="plant",
+        scores={},
+    )
+
+    decision = score_sample(sample, provider_error=False, rescore=True)
+
+    assert decision.correct
+    assert decision.extracted == "Mars"
+    assert decision.failure_type == "none"
+    assert decision.answer_correct
+    assert decision.format_correct
+    assert decision.strict_correct
+
+
 def test_score_sample_can_rescore_stale_logged_score():
     sample = SimpleNamespace(
         metadata={"scorer": "json_exact_field_v0"},
@@ -118,6 +137,74 @@ def test_load_eval_logs_discovers_nested_batch_logs(tmp_path, monkeypatch):
     assert records[0].barrage_seed == 20260531
 
 
+def test_load_eval_logs_deduplicates_retry_logs_and_prefers_success(
+    tmp_path,
+    monkeypatch,
+):
+    log_dir = tmp_path / "results" / "raw" / "repair-run"
+    log_dir.mkdir(parents=True)
+    (log_dir / "001-full.eval").write_text("placeholder", encoding="utf-8")
+    (log_dir / "002-retry.eval").write_text("placeholder", encoding="utf-8")
+
+    def fake_read_eval_log(path):
+        completion = (
+            "Content violates usage guidelines. Failed check: SAFETY_CHECK_TYPE_BIO"
+            if path.name == "001-full.eval"
+            else '{"answer": true}'
+        )
+        stop_reason = "content_filter" if path.name == "001-full.eval" else "stop"
+        score = (
+            SimpleNamespace(
+                value="I",
+                answer=None,
+                metadata={"failure_type": "json_malformed"},
+            )
+            if path.name == "001-full.eval"
+            else SimpleNamespace(
+                value="C",
+                answer="true",
+                metadata={"failure_type": "none"},
+            )
+        )
+        return SimpleNamespace(
+            eval=SimpleNamespace(
+                model="provider/model",
+                task_args={},
+                metadata={},
+                model_generate_config=SimpleNamespace(
+                    reasoning_effort=None,
+                    reasoning_summary=None,
+                ),
+            ),
+            samples=[
+                SimpleNamespace(
+                    id="obviousbench.format.en.v0.public.000050",
+                    epoch=1,
+                    input="Question: Return JSON.\nAnswer:",
+                    target="true",
+                    output=SimpleNamespace(
+                        completion=completion,
+                        stop_reason=stop_reason,
+                    ),
+                    metadata={"family": "format_compliance", "subfamily": "json"},
+                    scores={"score": score},
+                    error=None,
+                    limit=None,
+                    model_usage={},
+                )
+            ],
+        )
+
+    monkeypatch.setattr("obviousbench.analysis.logs.read_eval_log", fake_read_eval_log)
+
+    records = load_eval_logs(log_dir)
+
+    assert len(records) == 1
+    assert records[0].sample_id == "obviousbench.format.en.v0.public.000050"
+    assert records[0].correct
+    assert not records[0].provider_error
+
+
 def test_load_eval_logs_treats_provider_safety_text_as_provider_error(
     tmp_path,
     monkeypatch,
@@ -172,6 +259,64 @@ def test_load_eval_logs_treats_provider_safety_text_as_provider_error(
     assert records[0].provider_error
     assert records[0].failure_type == "provider_error"
     assert records[0].correct is False
+    assert failures == []
+
+
+def test_load_eval_logs_treats_content_filter_stop_as_provider_error(
+    tmp_path,
+    monkeypatch,
+):
+    log_dir = tmp_path / "results" / "raw" / "content-filter-stop"
+    log_dir.mkdir(parents=True)
+    (log_dir / "run.eval").write_text("placeholder", encoding="utf-8")
+
+    def fake_read_eval_log(path):
+        assert path.name == "run.eval"
+        return SimpleNamespace(
+            eval=SimpleNamespace(
+                model="openai/gpt-5-nano",
+                task_args={},
+                metadata={},
+                model_generate_config=SimpleNamespace(
+                    reasoning_effort=None,
+                    reasoning_summary=None,
+                ),
+            ),
+            samples=[
+                SimpleNamespace(
+                    id="obviousbench.spell.en.v0.public.000022",
+                    epoch=1,
+                    input="Question: Rewrite the word.\nAnswer:",
+                    target="paralll",
+                    output=SimpleNamespace(
+                        completion=(
+                            "Invalid prompt: your prompt was flagged as potentially "
+                            "violating our usage policy."
+                        ),
+                        stop_reason="content_filter",
+                    ),
+                    metadata={"family": "spelling_transform", "subfamily": "replace"},
+                    scores={
+                        "score": SimpleNamespace(
+                            value="I",
+                            answer=None,
+                            metadata={"failure_type": "wrong_letter_or_substring"},
+                        )
+                    },
+                    error=None,
+                    limit=None,
+                    model_usage={},
+                )
+            ],
+        )
+
+    monkeypatch.setattr("obviousbench.analysis.logs.read_eval_log", fake_read_eval_log)
+
+    records, failures = load_eval_logs_with_failures(log_dir, rescore=True)
+
+    assert records[0].provider_error
+    assert records[0].failure_type == "provider_error"
+    assert records[0].answer_correct is False
     assert failures == []
 
 

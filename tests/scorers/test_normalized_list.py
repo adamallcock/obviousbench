@@ -46,6 +46,39 @@ def test_normalized_list_accepts_leading_list_with_explanation_as_wrong_format()
     assert not decision.resolved_format_correct
 
 
+def test_normalized_list_accepts_colon_prefixed_sorted_list_as_wrong_format():
+    decision = score_normalized_list(
+        "The items sorted alphabetically: cap, car, cat",
+        "cap, car, cat",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "cap, car, cat"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_normalized_list_accepts_terminal_period_as_wrong_format():
+    decision = score_normalized_list("Blue, green, red.", "blue, green, red")
+
+    assert decision.correct
+    assert decision.extracted == "blue, green, red"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_normalized_list_accepts_numeric_colon_prefixed_list_as_wrong_format():
+    decision = score_normalized_list(
+        "The numbers sorted from smallest to largest is: 5.05, 5.15, 5.5",
+        "5.05, 5.15, 5.5",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "5.05, 5.15, 5.5"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
 def test_normalized_list_rejects_wrong_order():
     decision = score_normalized_list("9, 3, 12", "3, 9, 12")
 

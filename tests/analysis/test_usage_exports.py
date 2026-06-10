@@ -195,7 +195,7 @@ def test_export_usage_by_question_csv(tmp_path):
     assert rows[1]["tokens_per_correct"] == ""
 
 
-def test_usage_breakdowns_do_not_score_provider_errors_or_timeouts(tmp_path):
+def test_usage_breakdowns_count_provider_errors_and_timeouts_as_incorrect_attempts(tmp_path):
     path = tmp_path / "usage_by_family.csv"
     records = [
         *_records(),
@@ -241,12 +241,15 @@ def test_usage_breakdowns_do_not_score_provider_errors_or_timeouts(tmp_path):
 
     row = next(csv.DictReader(path.open(encoding="utf-8")))
     assert row["samples"] == "4"
-    assert row["scored_samples"] == "2"
+    assert row["scored_samples"] == "4"
     assert row["provider_errors"] == "1"
     assert row["timeouts"] == "1"
     assert row["correct"] == "1"
-    assert row["failures"] == "1"
+    assert row["failures"] == "3"
     assert row["answer_correct"] == "1"
+    assert row["format_correct"] == "2"
+    assert row["strict_correct"] == "1"
+    assert row["tokens_per_scored_sample"] == "12.5"
 
 
 def test_build_cost_input_uses_normalized_usage_fields():

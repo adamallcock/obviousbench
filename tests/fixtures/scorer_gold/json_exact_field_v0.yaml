@@ -25,10 +25,10 @@ examples:
     notes: JSON numeric values are stringified before comparison.
   - id: json_field.boolean_answer.correct
     scorer: json_exact_field_v0
-    target: "True"
+    target: "true"
     output: '{"answer": true}'
-    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "True", failure_type: none}
-    notes: JSON booleans are stringified using Python truth value text.
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "true", failure_type: none}
+    notes: JSON booleans are rendered with JSON literal text for comparison.
   - id: json_field.extra_fields.correct
     scorer: json_exact_field_v0
     target: "north"
@@ -67,10 +67,10 @@ examples:
     notes: Valid JSON with a wrong answer field is answer-incorrect.
   - id: json_field.null_answer.correct
     scorer: json_exact_field_v0
-    target: "None"
+    target: "null"
     output: '{"answer": null}'
-    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "None", failure_type: none}
-    notes: JSON null is stringified as Python None by current policy.
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "null", failure_type: none}
+    notes: JSON null is rendered with JSON literal text for comparison.
   - id: json_field.fenced_plain.verbose
     scorer: json_exact_field_v0
     target: "3"

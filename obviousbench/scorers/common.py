@@ -80,6 +80,10 @@ def strip_confidence_annotation(value: str) -> str:
     return _CONFIDENCE_ANNOTATION_RE.sub("", value).strip()
 
 
+def normalize_token_artifacts(value: str) -> str:
+    return value.replace("\u010a", "\n").replace("\u0120", " ")
+
+
 _INTEGER_RE = re.compile(r"(?<![\w.])-?\d+(?![\w])")
 _INTEGER_WORDS = {
     "zero": "0",
@@ -130,7 +134,9 @@ def extract_single_integer(output: str) -> tuple[str | None, bool]:
 
 
 def normalize_list(value: str) -> tuple[str, ...]:
-    normalized = _strip_enclosing_list_markup(strip_confidence_annotation(value))
+    normalized = _strip_enclosing_list_markup(
+        strip_confidence_annotation(normalize_token_artifacts(value))
+    )
     if not normalized:
         return ()
     parts = normalized.split(",") if "," in normalized else normalized.split()
@@ -148,7 +154,7 @@ def _strip_enclosing_list_markup(value: str) -> str:
 
 
 def _normalize_list_part(value: str) -> str:
-    normalized = value.strip()
+    normalized = value.strip().rstrip(".!?")
     if len(normalized) >= 2 and normalized[0] == normalized[-1] and normalized[0] in {
         '"',
         "'",

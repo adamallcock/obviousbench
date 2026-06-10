@@ -15,6 +15,13 @@ from obviousbench.scorers.exact_integer import score_exact_integer_extract_first
         ("three", "3", True, "3", "none"),
         ("3\n\nPositions 1, 7, and 8 contain r.", "3", True, "3", "verbose_noncompliance"),
         ("210\n\n\\confidence{90}", "210", True, "210", "verbose_noncompliance"),
+        (
+            "0 g's\n\nThere is 1 g in rearrangement.\n\nThe answer is **1**.",
+            "1",
+            True,
+            "1",
+            "verbose_noncompliance",
+        ),
         ("2 or 3", "3", False, None, "ambiguous_output"),
         ("one d in four days", "6", False, None, "ambiguous_output"),
     ],

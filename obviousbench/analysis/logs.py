@@ -8,6 +8,7 @@ from obviousbench.analysis.build_failure_gallery import FailureGalleryEntry
 from obviousbench.analysis.metrics import EvalRecord
 from obviousbench.analysis.rescore import rescore_output
 from obviousbench.provider_errors import is_provider_transient_output
+from obviousbench.scorers.accepted_answers import accepted_answers_for_sample
 from obviousbench.scorers.common import FORMAT_FAILURE_TYPES, ScoreDecision
 
 
@@ -25,8 +26,8 @@ def load_eval_logs_with_failures(
         raise FileNotFoundError(f"Log path does not exist: {path}")
 
     log_files = [path] if path.is_file() else sorted(path.rglob("*.eval"))
-    records: list[EvalRecord] = []
-    entries: list[FailureGalleryEntry] = []
+    records_by_key: dict[tuple[str, str], EvalRecord] = {}
+    entries_by_key: dict[tuple[str, str], FailureGalleryEntry] = {}
 
     for log_file in log_files:
         eval_log = read_eval_log(log_file)
@@ -35,10 +36,7 @@ def load_eval_logs_with_failures(
         eval_metadata = eval_log.eval.metadata or {}
         generate_config = eval_log.eval.model_generate_config
         for sample in eval_log.samples or []:
-            provider_error = (
-                sample.error is not None
-                or is_provider_transient_output(sample.output.completion)
-            )
+            provider_error = _sample_provider_error(sample)
             timeout = bool(sample.limit and getattr(sample.limit, "type", None) == "time")
             score_result = score_sample(sample, provider_error=provider_error, rescore=rescore)
             family = str(sample.metadata.get("family", "unknown"))
@@ -46,7 +44,7 @@ def load_eval_logs_with_failures(
             sample_id = str(sample.id)
             usage = _sample_usage(sample.model_usage or {}, model)
             metamorphic_metadata = _metamorphic_metadata(sample.metadata or {})
-            records.append(
+            record = (
                 EvalRecord(
                     model=model,
                     sample_id=sample_id,
@@ -85,8 +83,9 @@ def load_eval_logs_with_failures(
                     metamorphic_relation=metamorphic_metadata["metamorphic_relation"],
                 )
             )
+            key = (record.run_variant, record.sample_id)
             if not score_result.strict_correct and not provider_error and not timeout:
-                entries.append(
+                entry = (
                     FailureGalleryEntry(
                         model=model,
                         family=family,
@@ -109,7 +108,16 @@ def load_eval_logs_with_failures(
                         epoch=getattr(sample, "epoch", 1) or 1,
                     )
                 )
-    return records, entries
+            else:
+                entry = None
+            previous = records_by_key.get(key)
+            if previous is None or _dedupe_rank(record) >= _dedupe_rank(previous):
+                records_by_key[key] = record
+                if entry is None:
+                    entries_by_key.pop(key, None)
+                else:
+                    entries_by_key[key] = entry
+    return list(records_by_key.values()), list(entries_by_key.values())
 
 
 def score_sample(sample, *, provider_error: bool, rescore: bool) -> ScoreDecision:
@@ -127,6 +135,10 @@ def score_sample(sample, *, provider_error: bool, rescore: bool) -> ScoreDecisio
             scorer_name=scorer_name,
             output=sample.output.completion,
             target=str(sample.target),
+            accepted_targets=accepted_answers_for_sample(
+                sample_id=str(getattr(sample, "id", "") or ""),
+                metadata=sample.metadata or {},
+            ),
         )
         return ScoreDecision(
             decision.correct,
@@ -155,6 +167,34 @@ def score_sample(sample, *, provider_error: bool, rescore: bool) -> ScoreDecisio
         str(getattr(score, "explanation", "") or ""),
         format_correct=format_correct,
     )
+
+
+def _sample_provider_error(sample) -> bool:
+    if sample.error is not None:
+        return True
+    if _sample_stop_reason(sample) == "content_filter":
+        return True
+    output = getattr(sample, "output", None)
+    completion = getattr(output, "completion", None)
+    return is_provider_transient_output(completion)
+
+
+def _dedupe_rank(record: EvalRecord) -> int:
+    if not record.provider_error and not record.timeout:
+        return 2
+    if record.timeout:
+        return 1
+    return 0
+
+
+def _sample_stop_reason(sample) -> str:
+    output = getattr(sample, "output", None)
+    if output is None:
+        return ""
+    try:
+        return str(getattr(output, "stop_reason", "") or "")
+    except (AttributeError, IndexError):
+        return ""
 
 
 def _sample_usage(model_usage: dict, model: str):

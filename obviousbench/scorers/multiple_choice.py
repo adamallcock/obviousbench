@@ -10,8 +10,13 @@ from obviousbench.scorers.common import ScoreDecision, inspect_score, is_non_ans
 SCORER_NAME = "multiple_choice_letter_v0"
 _LETTER_RE = re.compile(r"^[A-D]$")
 _LEADING_CHOICE_RE = re.compile(r"^\s*(?P<choice>[A-D])(?:[\s.)}:,-]|$)", re.IGNORECASE)
+_LEADING_MARKDOWN_CHOICE_RE = re.compile(
+    r"^\s*(?:[*_`~]+)?(?P<choice>[A-D])(?:[*_`~]+)?(?:[\s.)}:,-]|$)",
+    re.IGNORECASE,
+)
 _ANSWER_CHOICE_RE = re.compile(
-    r"\b(?:answer|choice|option|final answer)\s*(?:is|:|=)?\s*(?P<choice>[A-D])\b",
+    r"\b(?:answer|choice|option|final answer)\s*(?:is|:|=)?\s*"
+    r"(?:[*_`~]+)?(?P<choice>[A-D])(?:[*_`~]+)?\b",
     re.IGNORECASE,
 )
 
@@ -46,7 +51,7 @@ def score_multiple_choice_letter(output: str, target: str) -> ScoreDecision:
 
 
 def _extract_choice(output: str) -> str | None:
-    for pattern in (_LEADING_CHOICE_RE, _ANSWER_CHOICE_RE):
+    for pattern in (_LEADING_CHOICE_RE, _LEADING_MARKDOWN_CHOICE_RE, _ANSWER_CHOICE_RE):
         match = pattern.search(output)
         if match:
             return match.group("choice").upper()

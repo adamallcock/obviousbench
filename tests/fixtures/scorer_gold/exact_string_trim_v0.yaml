@@ -45,8 +45,8 @@ examples:
     scorer: exact_string_trim_v0
     target: "yrrebwarts"
     output: "yrrebwarts."
-    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "yrrebwarts.", failure_type: wrong_letter_or_substring}
-    notes: Punctuation is not stripped from exact non-numeric strings.
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "yrrebwarts", failure_type: verbose_noncompliance}
+    notes: Terminal punctuation is answer-correct but not strict final-answer format.
   - id: exact_string.prompt_rewrite.rejected
     scorer: exact_string_trim_v0
     target: "necess@ry"

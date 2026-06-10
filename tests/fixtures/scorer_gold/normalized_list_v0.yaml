@@ -105,8 +105,8 @@ examples:
     scorer: normalized_list_v0
     target: "a, b, c"
     output: "a, b, c."
-    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "a, b, c.", failure_type: ordering_error}
-    notes: Punctuation remains part of an item.
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "a, b, c", failure_type: verbose_noncompliance}
+    notes: Terminal punctuation is answer-correct but not strict list format.
   - id: normalized_list.empty_segment.correct
     scorer: normalized_list_v0
     target: "a, b, c"

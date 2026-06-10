@@ -166,11 +166,7 @@ def _compute_breakdown(
     rows: list[UsageBreakdownRow] = []
     for _key, family_records in sorted(grouped.items()):
         first = family_records[0]
-        scored_records = [
-            record
-            for record in family_records
-            if not record.provider_error and not record.timeout
-        ]
+        scored_records = family_records
         costs = [
             record.estimated_cost_usd
             for record in family_records

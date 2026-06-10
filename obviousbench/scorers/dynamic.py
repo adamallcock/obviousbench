@@ -3,6 +3,7 @@
 from inspect_ai.scorer import Score, Target, scorer
 from inspect_ai.solver import TaskState
 
+from obviousbench.scorers.accepted_answers import accepted_answers_for_sample
 from obviousbench.scorers.common import inspect_score
 from obviousbench.scorers.exact_integer import score_exact_integer_extract_first
 from obviousbench.scorers.exact_string import score_exact_string_trim
@@ -15,11 +16,21 @@ from obviousbench.scorers.word_count import score_word_count
 SCORER_NAME = "dynamic_metadata_scorer_v0"
 
 
-def score_by_name(scorer_name: str, output: str, target: str):
+def score_by_name(
+    scorer_name: str,
+    output: str,
+    target: str,
+    *,
+    accepted_targets: tuple[str, ...] = (),
+):
+    if scorer_name in {"exact_string_trim_v0", "normalized_string_v0"}:
+        return score_exact_string_trim(
+            output,
+            target,
+            accepted_targets=accepted_targets,
+        )
     scorers = {
         "exact_integer_extract_first_v0": score_exact_integer_extract_first,
-        "exact_string_trim_v0": score_exact_string_trim,
-        "normalized_string_v0": score_exact_string_trim,
         "normalized_list_v0": score_normalized_list,
         "multiple_choice_letter_v0": score_multiple_choice_letter,
         "regex_match_v0": score_regex_match,
@@ -36,7 +47,12 @@ def score_by_name(scorer_name: str, output: str, target: str):
 def dynamic_metadata_scorer():
     async def score(state: TaskState, target: Target) -> Score:
         scorer_name = state.metadata.get("scorer", "exact_string_trim_v0")
-        decision = score_by_name(scorer_name, state.output.completion, target.text)
+        decision = score_by_name(
+            scorer_name,
+            state.output.completion,
+            target.text,
+            accepted_targets=accepted_answers_for_sample(metadata=state.metadata),
+        )
         strict = scorer_name in {
             "exact_string_trim_v0",
             "multiple_choice_letter_v0",
@@ -46,4 +62,3 @@ def dynamic_metadata_scorer():
         return inspect_score(decision, scorer_name, strict_format=strict)
 
     return score
-
