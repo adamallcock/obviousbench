@@ -62,11 +62,15 @@ function buildUsageLedger(record) {
     inputTokens - cacheReadTokens - cacheWriteTokens,
     0,
   );
+  const separateReasoningTokens = shouldPriceReasoningSeparately(record)
+    ? reasoningTokens
+    : 0;
   // `output_tokens` is the provider's authoritative, billing-inclusive total: it
   // already contains any billed thinking/reasoning tokens, charged at the output
-  // rate (true for Anthropic, OpenAI, and the OpenRouter models we price). We
-  // therefore price the full `output_tokens` as a single `output_text_tokens`
-  // component.
+  // rate for Anthropic, OpenAI, and the OpenRouter models we price. Direct
+  // Gemini is the exception in our normalized Inspect logs: `output_tokens`
+  // excludes reported thinking tokens, so we pass those as a separate
+  // `output_reasoning_tokens` component and let runcost price them.
   //
   // The previous code carved `output_text = output_tokens - reasoning_tokens`
   // and priced a separate `output_reasoning_tokens` line. That was unsafe for two
@@ -92,13 +96,35 @@ function buildUsageLedger(record) {
       component("input_cache_read_tokens", cacheReadTokens),
       component("input_cache_write_tokens", cacheWriteTokens),
       component("output_text_tokens", outputTextTokens),
+      component("output_reasoning_tokens", separateReasoningTokens),
     ].filter((entry) => Number(entry.quantity) > 0),
     raw_usage: usage,
     metadata: {
       sample_id: record.sample_id,
       reasoning_tokens: reasoningTokens,
+      reasoning_token_treatment:
+        separateReasoningTokens > 0
+          ? "priced_as_output_reasoning_tokens"
+          : "observability_only",
     },
   };
+}
+
+function shouldPriceReasoningSeparately(record) {
+  const usage = record.usage ?? {};
+  if (numberValue(usage.reasoning_tokens) <= 0) {
+    return false;
+  }
+  const provider = String(record.provider ?? "").toLowerCase();
+  const model = String(record.model ?? "").toLowerCase();
+  const surface = String(record.surface ?? "").toLowerCase();
+  return (
+    ((provider === "google" ||
+      provider === "vertex" ||
+      provider === "google-vertex") &&
+      model.includes("gemini")) ||
+    surface.includes("gemini.generate_content")
+  );
 }
 
 function billedModel(model) {

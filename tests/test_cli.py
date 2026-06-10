@@ -200,6 +200,56 @@ def test_cli_make_barrage_defaults_metamorphic_sibling_cap(monkeypatch, tmp_path
     assert calls["max_metamorphic_siblings_per_group"] == 1
 
 
+def test_cli_estimate_cost_prints_dry_run_estimate(monkeypatch, tmp_path, capsys):
+    calls = {}
+
+    class FakeEstimate:
+        model = "openai/gpt-5-nano"
+        profile = "balanced_2x1"
+        seed = 7
+        total_samples = 2
+        cache_hits = 1
+        billable_samples = 1
+        estimated_billable_cost_usd = 0.000123
+        estimated_cached_cost_avoided_usd = 0.000045
+        usage_source = "historical_sample"
+        pricing_source = "runcost"
+        warnings = ()
+        rows = ()
+
+    def fake_estimate(inputs):
+        calls["inputs"] = inputs
+        return FakeEstimate()
+
+    monkeypatch.setattr("obviousbench.cli.estimate_benchmark_cost", fake_estimate)
+
+    exit_code = main(
+        [
+            "estimate-cost",
+            "--model",
+            "openai/gpt-5-nano",
+            "--profile",
+            "balanced_2x1",
+            "--seed",
+            "7",
+            "--summary-root",
+            str(tmp_path / "summaries"),
+            "--cache-dir",
+            str(tmp_path / "cache"),
+            "--setting",
+            "reasoning_effort=low",
+        ]
+    )
+
+    assert exit_code == 0
+    assert calls["inputs"].model == "openai/gpt-5-nano"
+    assert calls["inputs"].settings == {"reasoning_effort": "low"}
+    captured = capsys.readouterr().out
+    assert "Dry-run cost estimate" in captured
+    assert "billable samples: 1/2" in captured
+    assert "$0.000123" in captured
+
+
 def test_cli_summarize_accepts_cost_none(monkeypatch, tmp_path, capsys):
     def fake_summarize(logs, out, cost_mode="none", rescore=False):
         assert cost_mode == "none"
@@ -368,6 +418,7 @@ def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, cap
         calls["summary_root"] = inputs.summary_root
         calls["baseline_comparison"] = inputs.baseline_comparison
         calls["manual_xai_costs"] = inputs.manual_xai_costs
+        calls["openrouter_price_registry"] = inputs.openrouter_price_registry
         return FakePaths()
 
     monkeypatch.setattr(
@@ -385,6 +436,8 @@ def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, cap
             "--baseline-comparison",
             "results/summaries/original/comparison.csv",
             "--manual-xai-costs",
+            "--openrouter-price-registry",
+            "configs/model_registry_v1.yaml",
             "--out",
             str(tmp_path / "comparison"),
         ]
@@ -397,4 +450,5 @@ def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, cap
         "results/summaries/original/comparison.csv"
     )
     assert calls["manual_xai_costs"]
+    assert calls["openrouter_price_registry"].as_posix() == "configs/model_registry_v1.yaml"
     assert "comparison.csv" in capsys.readouterr().out

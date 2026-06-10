@@ -184,6 +184,22 @@ Use `--no-cache` for fresh published sweeps where current provider behavior
 matters more than iteration speed. The cache stores model generations, not
 parsed scores.
 
+Before making provider calls, estimate the dry-run cost from saved usage
+history, `runcost` price cards, and any exact Inspect cache hits the estimator
+can prove:
+
+```bash
+.venv/bin/obviousbench estimate-cost \
+  --model openai/gpt-5-nano \
+  --profile hard_obvious_8x10 \
+  --seed 20260531 \
+  --setting reasoning_effort=minimal
+```
+
+Use `--json` for a per-sample estimate. Cache hits are counted as free; misses
+are approximate and use matching historical samples or model averages when
+available.
+
 For a more discriminative stress run, use the hard-obvious profile. It keeps the
 same `XxY` shape but prioritizes subfamilies that separated models in the
 expanded sweeps, such as character counting, remove-letter transforms, object

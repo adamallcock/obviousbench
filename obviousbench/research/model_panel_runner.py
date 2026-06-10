@@ -232,7 +232,28 @@ def _select_entries(
             raise ValueError(f"model panel entries not found: {', '.join(missing)}")
     if limit is not None:
         selected = selected[:limit]
-    return selected
+    return [_normalize_entry_controls(entry) for entry in selected]
+
+
+def _normalize_entry_controls(entry: dict[str, Any]) -> dict[str, Any]:
+    """Restore control metadata that can be lost in CSV-derived panel expansion."""
+    normalized = dict(entry)
+    if _needs_anthropic_adaptive_control_style(normalized):
+        normalized["control_style"] = "anthropic_adaptive_thinking_effort"
+    return normalized
+
+
+def _needs_anthropic_adaptive_control_style(entry: dict[str, Any]) -> bool:
+    if entry.get("control_style"):
+        return False
+    inspect_model = str(entry.get("inspect_model") or "")
+    if not inspect_model.startswith("anthropic/"):
+        return False
+    generation_settings = entry.get("generation_settings") or {}
+    return (
+        isinstance(generation_settings, dict)
+        and generation_settings.get("effort") is not None
+    ) or entry.get("effort") is not None
 
 
 def _inspect_config(

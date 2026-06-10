@@ -130,7 +130,7 @@ def provider_path() -> Path:
     try:
         from inspect_ai.model._providers import anthropic as _anthropic
     except Exception as exc:  # noqa: BLE001
-        raise SystemExit(f"could not import Inspect Anthropic provider: {exc}")
+        raise SystemExit(f"could not import Inspect Anthropic provider: {exc}") from exc
     return Path(_anthropic.__file__)
 
 

@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -85,6 +86,133 @@ def test_parse_args_uses_default_cache_and_accepts_raw_inspect_args():
     assert config.cache_dir == Path.cwd() / ".cache" / "inspect"
     assert config.task_args == ("profile=hard_obvious_8x10",)
     assert config.inspect_args == ("--no-log-model-api",)
+
+
+def test_generic_runner_passes_generation_settings_via_generate_config(tmp_path):
+    config = InspectEvalConfig(
+        task="obviousbench/tasks/barrage.py",
+        model="openai/gpt-5.5",
+        log_dir=tmp_path / "logs",
+        generation_settings={
+            "reasoning_effort": "low",
+            "reasoning_summary": "none",
+        },
+    )
+
+    command = build_inspect_eval_command(config)
+
+    assert "--generate-config" in command
+    config_path = Path(command[command.index("--generate-config") + 1])
+    assert config_path.parent == tmp_path / "logs"
+    assert config_path.name.startswith("_generate_config_")
+    assert "-M" not in command
+
+
+def test_generation_settings_separate_thinking_variants_in_command(tmp_path):
+    base = {
+        "task": "obviousbench/tasks/barrage.py",
+        "model": "openai/gpt-5.5",
+        "log_dir": tmp_path / "logs",
+    }
+    low_command = build_inspect_eval_command(
+        InspectEvalConfig(
+            **base,
+            generation_settings={
+                "reasoning_effort": "low",
+                "reasoning_summary": "none",
+            },
+        )
+    )
+    high_command = build_inspect_eval_command(
+        InspectEvalConfig(
+            **base,
+            generation_settings={
+                "reasoning_effort": "high",
+                "reasoning_summary": "none",
+            },
+        )
+    )
+
+    assert low_command != high_command
+    assert low_command[low_command.index("--generate-config") + 1] != high_command[
+        high_command.index("--generate-config") + 1
+    ]
+
+
+def test_parse_args_accepts_generation_settings():
+    config = parse_args(
+        [
+            "--task",
+            "obviousbench/tasks/barrage.py",
+            "--model",
+            "openai/gpt-5.5",
+            "--generation-setting",
+            "reasoning_effort=low",
+            "--generation-setting",
+            "reasoning_summary=none",
+            "--generation-setting",
+            "seed=1",
+        ]
+    )
+
+    assert config.generation_settings == {
+        "reasoning_effort": "low",
+        "reasoning_summary": "none",
+        "seed": 1,
+    }
+
+
+def test_run_writes_generation_config_file(tmp_path, monkeypatch):
+    calls = []
+
+    def fake_run(command, *, cwd, env, check):
+        calls.append(command)
+        return SimpleNamespace(returncode=0)
+
+    monkeypatch.setattr(inspect_eval.subprocess, "run", fake_run)
+    monkeypatch.setattr(inspect_eval, "provider_refusal_sample_ids", lambda *a, **k: [])
+
+    returncode = run_inspect_eval(
+        InspectEvalConfig(
+            task="obviousbench/tasks/barrage.py",
+            model="openai/gpt-5.5",
+            log_dir=tmp_path / "logs",
+            generation_settings={
+                "reasoning_effort": "low",
+                "reasoning_summary": "none",
+            },
+        )
+    )
+
+    assert returncode == 0
+    config_path = Path(calls[0][calls[0].index("--generate-config") + 1])
+    assert json.loads(config_path.read_text()) == {
+        "reasoning_effort": "low",
+        "reasoning_summary": "none",
+    }
+
+
+def test_run_passes_configured_sample_ids(tmp_path, monkeypatch):
+    calls = []
+
+    def fake_run(command, *, cwd, env, check):
+        calls.append(command)
+        return SimpleNamespace(returncode=0)
+
+    monkeypatch.setattr(inspect_eval.subprocess, "run", fake_run)
+    monkeypatch.setattr(inspect_eval, "provider_refusal_sample_ids", lambda *a, **k: [])
+
+    returncode = run_inspect_eval(
+        InspectEvalConfig(
+            task="obviousbench/tasks/barrage.py",
+            model="openai/gpt-5.5",
+            log_dir=tmp_path / "logs",
+            sample_ids=("sample-a", "sample-b"),
+        )
+    )
+
+    assert returncode == 0
+    assert calls[0][calls[0].index("--sample-id") + 1] == "sample-a,sample-b"
 
 
 def test_parse_args_can_disable_cache():

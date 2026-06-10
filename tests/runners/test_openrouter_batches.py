@@ -1,4 +1,6 @@
+import json
 from datetime import UTC, datetime
+from pathlib import Path
 
 import obviousbench.runners.openrouter_batches as openrouter_batches
 import obviousbench.runners.provider_refusals as provider_refusals
@@ -156,6 +158,104 @@ def test_build_inspect_command_can_disable_cache(tmp_path):
     command = build_inspect_command(config, ["sample-1"])
 
     assert "--cache" not in command
+
+
+def test_build_inspect_command_passes_generation_settings(tmp_path):
+    config = RunnerConfig(
+        task="task.py",
+        dataset=tmp_path / "dataset.jsonl",
+        model="openrouter/example/free",
+        log_dir=tmp_path / "logs",
+        batch_size=2,
+        max_batch_retries=1,
+        reset_buffer_seconds=5,
+        fallback_initial_seconds=10,
+        fallback_max_seconds=300,
+        inspect_max_retries=1,
+        timeout=900,
+        attempt_timeout=180,
+        keychain_service=None,
+        cache="10Y",
+        cache_dir=tmp_path / "cache",
+        generation_settings={
+            "reasoning_effort": "low",
+            "reasoning_summary": "none",
+        },
+    )
+
+    command = build_inspect_command(config, ["sample-1"])
+
+    assert "--generate-config" in command
+    config_path = Path(command[command.index("--generate-config") + 1])
+    assert config_path.parent == tmp_path / "logs"
+    assert config_path.name.startswith("_generate_config_")
+    assert "-M" not in command
+
+
+def test_openrouter_parse_args_accepts_generation_settings(tmp_path):
+    dataset = tmp_path / "dataset.jsonl"
+    config = openrouter_batches.parse_args(
+        [
+            "--task",
+            "task.py",
+            "--dataset",
+            str(dataset),
+            "--generation-setting",
+            "reasoning_effort=high",
+            "--generation-setting",
+            "reasoning_summary=none",
+            "--generation-setting",
+            "seed=1",
+        ]
+    )
+
+    assert config.generation_settings == {
+        "reasoning_effort": "high",
+        "reasoning_summary": "none",
+        "seed": 1,
+    }
+
+
+def test_openrouter_run_batches_writes_generation_config_file(tmp_path, monkeypatch):
+    dataset = tmp_path / "dataset.jsonl"
+    dataset.write_text('{"id": "sample-1"}', encoding="utf-8")
+    calls = []
+
+    def fake_run_batch(command, *, env, dry_run=False):
+        calls.append(command)
+        return 0, "ok"
+
+    monkeypatch.setattr(openrouter_batches, "openrouter_env", lambda config: {})
+    monkeypatch.setattr(openrouter_batches, "run_batch", fake_run_batch)
+
+    returncode = run_batches(
+        RunnerConfig(
+            task="task.py",
+            dataset=dataset,
+            model="openrouter/example/free",
+            log_dir=tmp_path / "logs",
+            batch_size=1,
+            max_batch_retries=1,
+            reset_buffer_seconds=5,
+            fallback_initial_seconds=10,
+            fallback_max_seconds=300,
+            inspect_max_retries=1,
+            timeout=900,
+            attempt_timeout=180,
+            keychain_service=None,
+            generation_settings={
+                "reasoning_effort": "low",
+                "reasoning_summary": "none",
+            },
+        )
+    )
+
+    assert returncode == 0
+    config_path = Path(calls[0][calls[0].index("--generate-config") + 1])
+    assert json.loads(config_path.read_text()) == {
+        "reasoning_effort": "low",
+        "reasoning_summary": "none",
+    }
 
 
 def test_openrouter_env_sets_inspect_cache_dir(tmp_path, monkeypatch):

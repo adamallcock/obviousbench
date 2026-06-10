@@ -66,3 +66,40 @@ def test_runcost_bridge_handles_scientific_notation_price_cards():
     record = ledger["records"][0]
     assert record["estimated_cost_usd"] is not None
     assert "Cannot convert" not in json.dumps(record["warnings"])
+
+
+def test_runcost_bridge_prices_direct_gemini_reasoning_tokens():
+    bridge = Path("scripts/price_usage_with_runcost.mjs")
+    payload = {
+        "records": [
+            {
+                "sample_id": "gemini",
+                "provider": "google",
+                "model": "google/gemini-3.5-flash",
+                "usage": {
+                    "input_tokens": 32,
+                    "output_tokens": 1,
+                    "reasoning_tokens": 1000,
+                },
+            }
+        ]
+    }
+
+    completed = subprocess.run(
+        ["node", str(bridge)],
+        input=json.dumps(payload),
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    ledger = json.loads(completed.stdout)
+
+    record = ledger["records"][0]
+    components = {entry["name"]: entry for entry in record["ledger"]["components"]}
+    assert record["estimated_cost_usd"] == 0.009057
+    assert components["output_reasoning_tokens"]["quantity"] == "1000"
+    assert components["output_reasoning_tokens"]["cost"] == "0.009"
+    assert components["output_reasoning_tokens"]["metadata"] == {
+        "pricing_policy": "gemini_thinking_tokens_priced_as_output_tokens",
+        "priced_as_component": "output_text_tokens",
+    }

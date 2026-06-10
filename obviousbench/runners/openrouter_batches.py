@@ -9,9 +9,10 @@ import subprocess
 import sys
 import time
 from collections.abc import Sequence
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 from obviousbench.runners.cache import (
     DEFAULT_CACHE_DIR,
@@ -20,6 +21,12 @@ from obviousbench.runners.cache import (
     append_cache_args,
     cache_from_args,
     inspect_cache_env,
+)
+from obviousbench.runners.generation_config import (
+    add_generation_setting_args,
+    generation_config_path,
+    parse_generation_settings,
+    write_generation_config,
 )
 from obviousbench.runners.provider_refusals import provider_refusal_sample_ids
 
@@ -47,6 +54,7 @@ class RunnerConfig:
     keychain_service: str | None
     cache: str | None = DEFAULT_CACHE_EXPIRY
     cache_dir: Path | None = DEFAULT_CACHE_DIR
+    generation_settings: dict[str, Any] = field(default_factory=dict)
     retry_provider_refusals: bool = True
     independent_batches: bool = False
     resume: bool = False
@@ -161,6 +169,13 @@ def build_inspect_command(config: RunnerConfig, sample_ids: Sequence[str]) -> li
         "--no-log-model-api",
     ]
     append_cache_args(command, config.cache)
+    if config.generation_settings:
+        command.extend(
+            [
+                "--generate-config",
+                str(generation_config_path(config.log_dir, config.generation_settings)),
+            ]
+        )
     if not config.strict_batch_errors:
         command.extend(
             [
@@ -232,6 +247,10 @@ def run_batches(config: RunnerConfig) -> int:
                 config,
                 log_dir=batch_log_dir,
                 cache=None if bypass_cache else config.cache,
+            )
+            write_generation_config(
+                batch_config.log_dir,
+                batch_config.generation_settings,
             )
             command = build_inspect_command(batch_config, active_batch)
             print(
@@ -355,6 +374,7 @@ def parse_args(argv: Sequence[str] | None = None) -> RunnerConfig:
     parser.add_argument("--timeout", default=900, type=int)
     parser.add_argument("--attempt-timeout", default=180, type=int)
     parser.add_argument("--keychain-service", default="OPENROUTER_API_KEY")
+    add_generation_setting_args(parser)
     add_cache_args(parser)
     parser.add_argument("--independent-batches", action="store_true")
     parser.add_argument("--resume", action="store_true")
@@ -370,6 +390,10 @@ def parse_args(argv: Sequence[str] | None = None) -> RunnerConfig:
     parser.add_argument("--continue-after-batch-error", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args(argv)
+    try:
+        generation_settings = parse_generation_settings(args.generation_setting)
+    except ValueError as exc:
+        parser.error(str(exc))
     return RunnerConfig(
         task=args.task,
         dataset=args.dataset,
@@ -386,6 +410,7 @@ def parse_args(argv: Sequence[str] | None = None) -> RunnerConfig:
         keychain_service=args.keychain_service,
         cache=cache_from_args(args),
         cache_dir=args.cache_dir,
+        generation_settings=generation_settings,
         retry_provider_refusals=not args.no_retry_provider_refusals,
         independent_batches=args.independent_batches,
         resume=args.resume,

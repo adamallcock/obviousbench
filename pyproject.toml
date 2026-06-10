@@ -8,8 +8,13 @@ version = "0.1.0"
 description = "A lightweight Inspect AI benchmark for obvious public-facing LLM failures."
 readme = "README.md"
 requires-python = ">=3.11"
+license = "Apache-2.0"
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+]
 dependencies = [
   "anthropic>=0.105,<1",
+  "google-genai>=1.53,<2",
   "inspect-ai>=0.3.231",
   "openai>=2.38,<3",
   "pydantic>=2.13,<3",

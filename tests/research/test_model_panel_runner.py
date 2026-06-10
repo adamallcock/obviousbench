@@ -11,6 +11,7 @@ import yaml
 from obviousbench.research.model_panel_runner import (
     ModelPanelRunInputs,
     _generation_settings,
+    _select_entries,
     run_model_panel,
 )
 
@@ -193,6 +194,29 @@ def test_generation_settings_enables_thinking_when_control_style_dropped():
     settings = _generation_settings(entry, defaults={})
     assert settings.get("reasoning_effort") == "max"
     assert "effort" not in settings
+
+
+def test_select_entries_restores_anthropic_control_style_when_dropped():
+    entries = [
+        {
+            "id": "expand222-top-thinking-015-anthropic-claude-opus-4-8-max",
+            "inspect_model": "anthropic/claude-opus-4-8",
+            "generation_settings": {"effort": "max", "max_tokens": 32840},
+            "run_status": "planned",
+        },
+        {
+            "id": "expand222-paper-anthropic-claude-sonnet-4-6",
+            "inspect_model": "anthropic/claude-sonnet-4-6",
+            "generation_settings": {"max_tokens": 64, "temperature": 0},
+            "run_status": "planned",
+        },
+    ]
+
+    selected = _select_entries(entries, only=(), limit=None)
+
+    assert selected[0]["control_style"] == "anthropic_adaptive_thinking_effort"
+    assert "control_style" not in selected[1]
+    assert "control_style" not in entries[0]
 
 
 def test_generation_settings_leaves_effortless_anthropic_default_thinking_off():

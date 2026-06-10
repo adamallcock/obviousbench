@@ -6,6 +6,8 @@ import csv
 from dataclasses import dataclass
 from pathlib import Path
 
+import yaml
+
 from obviousbench.analysis.efficiency import (
     cost_per_correct_usd,
     overthinking_index,
@@ -32,6 +34,7 @@ class ComparisonBuildInputs:
     summary_root: Path | None = None
     baseline_comparison: Path | None = None
     manual_xai_costs: bool = False
+    openrouter_price_registry: Path | None = None
 
 
 @dataclass(frozen=True)
@@ -57,6 +60,8 @@ COMPARISON_FIELDS = [
     "answer_correct",
     "format_correct",
     "strict_correct",
+    "answer_failures",
+    "format_only_failures",
     "provider_errors",
     "timeouts",
     "accuracy",
@@ -235,6 +240,7 @@ def build_comparison_from_manifest(
     family_rows: list[dict[str, str]] = []
     section_rows: list[dict[str, str]] = []
     metamorphic_rows: list[dict[str, str]] = []
+    price_registry = _load_price_registry(inputs.openrouter_price_registry)
 
     for manifest_row in manifest_rows:
         summary_dir = _resolve_summary_dir(
@@ -245,16 +251,23 @@ def build_comparison_from_manifest(
         summary = _first_row(summary_dir / "summary.csv")
         summary = dict(summary)
         label = manifest_row.get("label") or summary.get("model") or summary_dir.name
+        reasoning_effort = _comparison_reasoning_effort(
+            summary=summary,
+            manifest_row=manifest_row,
+            label=label,
+        )
         context = {
             "label": label,
             "summary_dir": str(summary_dir),
             "barrage_profile": summary.get("barrage_profile", ""),
-            "reasoning_effort": summary.get("reasoning_effort", ""),
+            "reasoning_effort": reasoning_effort,
             "reasoning_summary": summary.get("reasoning_summary", ""),
         }
         if inputs.manual_xai_costs:
             _apply_manual_xai_cost(summary)
+        _apply_price_registry_cost(summary, price_registry)
         _backfill_ci_fields(summary)
+        _backfill_outcome_breakdown_fields(summary)
         _backfill_efficiency_fields(summary)
         comparison_rows.append(_project_row({**summary, **context}, COMPARISON_FIELDS))
 
@@ -262,6 +275,7 @@ def build_comparison_from_manifest(
             merged = {**family_row, **context}
             if inputs.manual_xai_costs:
                 _apply_manual_xai_cost(merged)
+            _apply_price_registry_cost(merged, price_registry)
             _backfill_usage_efficiency_fields(merged)
             family_rows.append(_project_row(merged, FAMILY_COMPARISON_FIELDS))
 
@@ -269,6 +283,7 @@ def build_comparison_from_manifest(
             merged = {**section_row, **context}
             if inputs.manual_xai_costs:
                 _apply_manual_xai_cost(merged)
+            _apply_price_registry_cost(merged, price_registry)
             _backfill_usage_efficiency_fields(merged)
             section_rows.append(_project_row(merged, SECTION_COMPARISON_FIELDS))
 
@@ -430,6 +445,51 @@ def _backfill_ci_fields(row: dict[str, str]) -> None:
     )
 
 
+def _comparison_reasoning_effort(
+    *,
+    summary: dict[str, str],
+    manifest_row: dict[str, str],
+    label: str,
+) -> str:
+    for field in ("reasoning_effort", "thinking_depth"):
+        value = (summary.get(field) or manifest_row.get(field) or "").strip()
+        if value:
+            return value
+    return _reasoning_effort_from_label(label)
+
+
+def _reasoning_effort_from_label(label: str) -> str:
+    normalized = (
+        label.lower()
+        .replace("_", " ")
+        .replace("-", " ")
+        .replace("/", " ")
+        .replace("(", " ")
+        .replace(")", " ")
+    )
+    tokens = set(normalized.split())
+    if "none" in tokens or "nothinking" in tokens or "no thinking" in normalized:
+        return "none"
+    for effort in ("minimal", "low", "medium", "xhigh", "high", "max"):
+        if effort in tokens:
+            return effort
+    return ""
+
+
+def _backfill_outcome_breakdown_fields(row: dict[str, str]) -> None:
+    scored_samples = _optional_int(row.get("scored_samples"))
+    answer_correct = _optional_int(row.get("answer_correct"))
+    strict_correct = _optional_int(row.get("strict_correct"))
+    if scored_samples is not None and answer_correct is not None:
+        _set_missing(row, "answer_failures", str(max(scored_samples - answer_correct, 0)))
+    if answer_correct is not None and strict_correct is not None:
+        _set_missing(
+            row,
+            "format_only_failures",
+            str(max(answer_correct - strict_correct, 0)),
+        )
+
+
 def _backfill_interval(
     row: dict[str, str],
     *,
@@ -583,15 +643,85 @@ def _apply_manual_xai_cost(row: dict[str, str]) -> None:
     cost = (
         _float(row.get("input_tokens")) * XAI_INPUT_PER_MILLION
         + _float(row.get("cache_read_tokens")) * XAI_CACHED_INPUT_PER_MILLION
-        + (
-            _float(row.get("output_tokens"))
-            + _float(row.get("reasoning_tokens"))
-        )
-        * XAI_OUTPUT_PER_MILLION
+        + _billable_output_tokens(row) * XAI_OUTPUT_PER_MILLION
     ) / 1_000_000
     row["estimated_cost_usd"] = _format_decimal(cost)
+    row["cost_per_correct_usd"] = ""
     row["cost_source"] = XAI_COST_SOURCE
     row["cost_warnings"] = ""
+
+
+def _load_price_registry(path: Path | None) -> dict[str, dict[str, float | str]]:
+    if path is None:
+        return {}
+    if not path.exists():
+        raise FileNotFoundError(f"Price registry does not exist: {path}")
+    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    entries = raw.get("entries") or raw.get("models") or raw if isinstance(raw, dict) else raw
+    index: dict[str, dict[str, float | str]] = {}
+    for entry in entries or []:
+        if not isinstance(entry, dict):
+            continue
+        input_price = _optional_float(entry.get("input_price_per_mtok_usd"))
+        output_price = _optional_float(entry.get("output_price_per_mtok_usd"))
+        if input_price is None or output_price is None:
+            continue
+        price_entry: dict[str, float | str] = {
+            "input_price_per_mtok_usd": input_price,
+            "output_price_per_mtok_usd": output_price,
+            "source": str(entry.get("pricing_source") or "openrouter_models_api"),
+        }
+        for key in ("inspect_model", "model_id", "canonical_slug"):
+            value = str(entry.get(key) or "")
+            if value:
+                index[value] = price_entry
+                if entry.get("provider_route") == "openrouter":
+                    index[value.removeprefix("openrouter/")] = price_entry
+    return index
+
+
+def _apply_price_registry_cost(
+    row: dict[str, str],
+    price_index: dict[str, dict[str, float | str]],
+) -> None:
+    if not price_index:
+        return
+    model = row.get("model", "")
+    if not row.get("cost_warnings") and row.get("estimated_cost_usd", "") not in {"", "0"}:
+        return
+    model_id = model.removeprefix("openrouter/")
+    price = price_index.get(model) or price_index.get(model_id)
+    if price is None:
+        return
+    input_price = float(price["input_price_per_mtok_usd"])
+    output_price = float(price["output_price_per_mtok_usd"])
+    cost = (
+        _float(row.get("input_tokens")) * input_price
+        + _billable_output_tokens(row) * output_price
+    ) / 1_000_000
+    row["estimated_cost_usd"] = _format_decimal(cost)
+    row["cost_per_correct_usd"] = ""
+    row["cost_source"] = f"{price['source']}_manual_reasoning_completion_fallback"
+    row["cost_warnings"] = ""
+
+
+def _billable_output_tokens(row: dict[str, str]) -> float:
+    """Return output tokens to price without double-counting reasoning tokens."""
+    input_tokens = _float(row.get("input_tokens"))
+    output_tokens = _float(row.get("output_tokens"))
+    reasoning_tokens = _float(row.get("reasoning_tokens"))
+    total_tokens = _float(row.get("total_tokens"))
+    if reasoning_tokens <= 0:
+        return output_tokens
+    if _nearly_equal(total_tokens, input_tokens + output_tokens):
+        return output_tokens
+    if _nearly_equal(total_tokens, input_tokens + output_tokens + reasoning_tokens):
+        return output_tokens + reasoning_tokens
+    return max(output_tokens, reasoning_tokens)
+
+
+def _nearly_equal(left: float, right: float) -> bool:
+    return abs(left - right) < 1e-9
 
 
 def _delta_rows(

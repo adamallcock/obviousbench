@@ -124,6 +124,50 @@ def test_build_comparison_from_manifest_merges_summary_breakdowns_and_delta(tmp_
     assert delta_rows[0]["paired_accuracy_delta"] == "0.5"
 
 
+def test_build_comparison_infers_label_effort_and_format_only_counts(tmp_path):
+    run_dir = tmp_path / "run-a"
+    run_dir.mkdir()
+    manifest = tmp_path / "manifest.csv"
+    out_dir = tmp_path / "comparison"
+    manifest.write_text(
+        "label,summary_dir\nClaude Sonnet 4.6 max,run-a\n",
+        encoding="utf-8",
+    )
+    (run_dir / "summary.csv").write_text(
+        "model,barrage_profile,reasoning_effort,reasoning_summary,total_samples,"
+        "scored_samples,correct,failures,answer_correct,format_correct,"
+        "strict_correct,accuracy,answer_accuracy,format_accuracy,strict_accuracy,"
+        "provider_errors,timeouts,total_tokens,reasoning_tokens\n"
+        "anthropic/claude-sonnet-4-6,hard_obvious_8x10_seed_20260531,,,"
+        "80,80,56,24,70,66,56,0.7,0.875,0.825,0.7,0,0,4132,0\n",
+        encoding="utf-8",
+    )
+    (run_dir / "usage_by_family.csv").write_text(
+        "model,family,samples,correct,failures,answer_correct,format_correct,"
+        "strict_correct\n"
+        "anthropic/claude-sonnet-4-6,format,80,56,24,70,66,56\n",
+        encoding="utf-8",
+    )
+    (run_dir / "usage_by_section.csv").write_text(
+        "model,family,subfamily,samples,correct,failures,answer_correct,"
+        "format_correct,strict_correct\n"
+        "anthropic/claude-sonnet-4-6,format,json,80,56,24,70,66,56\n",
+        encoding="utf-8",
+    )
+
+    paths = build_comparison_from_manifest(
+        ComparisonBuildInputs(manifest=manifest, output_dir=out_dir)
+    )
+
+    comparison_rows = list(csv.DictReader(paths.comparison.open(encoding="utf-8")))
+    effort_rows = list(csv.DictReader(paths.effort_curve.open(encoding="utf-8")))
+
+    assert comparison_rows[0]["reasoning_effort"] == "max"
+    assert comparison_rows[0]["answer_failures"] == "10"
+    assert comparison_rows[0]["format_only_failures"] == "14"
+    assert effort_rows[0]["reasoning_effort"] == "max"
+
+
 def test_build_comparison_blanks_unassessable_metamorphic_rate(tmp_path):
     run_dir = tmp_path / "run-a"
     run_dir.mkdir()
@@ -314,18 +358,20 @@ def test_build_comparison_can_apply_manual_xai_costs(tmp_path):
         "format_correct,strict_correct,accuracy,answer_accuracy,format_accuracy,"
         "strict_accuracy,obvious_failure_rate,provider_errors,timeouts,"
         "input_tokens,output_tokens,reasoning_tokens,cache_read_tokens,"
-        "cache_write_tokens,total_tokens,estimated_cost_usd,cost_source,cost_warnings\n"
+        "cache_write_tokens,total_tokens,estimated_cost_usd,cost_per_correct_usd,"
+        "cost_source,cost_warnings\n"
         "grok/grok-4.3,1,1,1,0,1,1,1,1,1,1,1,0,0,0,"
-        "1000000,1000000,1000000,1000000,1000000,5000000,0,runcost,missing price\n",
+        "1000000,1000000,1000000,1000000,1000000,5000000,0,0,runcost,"
+        "missing price\n",
         encoding="utf-8",
     )
     (run_dir / "usage_by_family.csv").write_text(
         "model,family,samples,correct,failures,answer_correct,format_correct,"
         "strict_correct,input_tokens,output_tokens,reasoning_tokens,"
         "cache_read_tokens,cache_write_tokens,total_tokens,estimated_cost_usd,"
-        "cost_source,cost_warnings\n"
+        "cost_per_correct_usd,cost_source,cost_warnings\n"
         "grok/grok-4.3,object_choice,1,1,0,1,1,1,1000000,1000000,"
-        "1000000,1000000,1000000,5000000,0,runcost,missing price\n",
+        "1000000,1000000,1000000,5000000,0,0,runcost,missing price\n",
         encoding="utf-8",
     )
     (run_dir / "usage_by_section.csv").write_text(
@@ -347,7 +393,139 @@ def test_build_comparison_can_apply_manual_xai_costs(tmp_path):
     )
 
     comparison_rows = list(csv.DictReader(paths.comparison.open(encoding="utf-8")))
+    family_rows = list(csv.DictReader(paths.family_comparison.open(encoding="utf-8")))
 
-    assert comparison_rows[0]["estimated_cost_usd"] == "6.45"
+    assert comparison_rows[0]["estimated_cost_usd"] == "3.95"
+    assert comparison_rows[0]["cost_per_correct_usd"] == "3.95"
+    assert family_rows[0]["cost_per_correct_usd"] == "3.95"
     assert comparison_rows[0]["cost_source"] == "xai_docs_2026-05-31"
     assert comparison_rows[0]["cost_warnings"] == ""
+
+
+def test_build_comparison_can_apply_openrouter_registry_costs(tmp_path):
+    run_dir = tmp_path / "run-glm"
+    run_dir.mkdir()
+    manifest = tmp_path / "manifest.csv"
+    registry = tmp_path / "model_registry_v1.yaml"
+    out_dir = tmp_path / "comparison"
+    manifest.write_text("label,summary_dir\nGLM,run-glm\n", encoding="utf-8")
+    registry.write_text(
+        "entries:\n"
+        "  - label: Z.ai GLM\n"
+        "    provider_route: openrouter\n"
+        "    inspect_model: openrouter/z-ai/glm-4.5\n"
+        "    model_id: z-ai/glm-4.5\n"
+        "    input_price_per_mtok_usd: 0.6\n"
+        "    output_price_per_mtok_usd: 2.2\n"
+        "    pricing_source: openrouter_models_api\n",
+        encoding="utf-8",
+    )
+    (run_dir / "summary.csv").write_text(
+        "model,total_samples,scored_samples,correct,failures,answer_correct,"
+        "format_correct,strict_correct,accuracy,answer_accuracy,format_accuracy,"
+        "strict_accuracy,obvious_failure_rate,provider_errors,timeouts,"
+        "input_tokens,output_tokens,reasoning_tokens,cache_read_tokens,"
+        "cache_write_tokens,total_tokens,estimated_cost_usd,cost_source,cost_warnings\n"
+        "openrouter/z-ai/glm-4.5,1,1,1,0,1,1,1,1,1,1,1,0,0,0,"
+        "1000000,2000000,1500000,0,0,3000000,0.1,runcost,missing reasoning price\n",
+        encoding="utf-8",
+    )
+    (run_dir / "usage_by_family.csv").write_text(
+        "model,family,samples,correct,failures,answer_correct,format_correct,"
+        "strict_correct,input_tokens,output_tokens,reasoning_tokens,total_tokens,"
+        "estimated_cost_usd,cost_source,cost_warnings\n"
+        "openrouter/z-ai/glm-4.5,spelling,1,1,0,1,1,1,1000000,2000000,"
+        "1500000,3000000,0.1,runcost,missing reasoning price\n",
+        encoding="utf-8",
+    )
+    (run_dir / "usage_by_section.csv").write_text(
+        "model,family,subfamily,samples,correct,failures,answer_correct,"
+        "format_correct,strict_correct,input_tokens,output_tokens,"
+        "reasoning_tokens,total_tokens,estimated_cost_usd,cost_source,cost_warnings\n"
+        "openrouter/z-ai/glm-4.5,spelling,letters,1,1,0,1,1,1,1000000,"
+        "2000000,1500000,3000000,0.1,runcost,missing reasoning price\n",
+        encoding="utf-8",
+    )
+
+    paths = build_comparison_from_manifest(
+        ComparisonBuildInputs(
+            manifest=manifest,
+            output_dir=out_dir,
+            openrouter_price_registry=registry,
+        )
+    )
+
+    comparison_rows = list(csv.DictReader(paths.comparison.open(encoding="utf-8")))
+    family_rows = list(csv.DictReader(paths.family_comparison.open(encoding="utf-8")))
+
+    assert comparison_rows[0]["estimated_cost_usd"] == "5"
+    assert comparison_rows[0]["cost_source"] == (
+        "openrouter_models_api_manual_reasoning_completion_fallback"
+    )
+    assert comparison_rows[0]["cost_warnings"] == ""
+    assert comparison_rows[0]["cost_per_correct_usd"] == "5"
+    assert family_rows[0]["estimated_cost_usd"] == "5"
+
+
+def test_build_comparison_can_apply_direct_provider_registry_costs(tmp_path):
+    run_dir = tmp_path / "run-gemini"
+    run_dir.mkdir()
+    manifest = tmp_path / "manifest.csv"
+    registry = tmp_path / "model_registry_v1.yaml"
+    out_dir = tmp_path / "comparison"
+    manifest.write_text("label,summary_dir\nGemini,run-gemini\n", encoding="utf-8")
+    registry.write_text(
+        "entries:\n"
+        "  - label: Gemini 3.5 Flash\n"
+        "    provider_route: gemini\n"
+        "    inspect_model: google/gemini-3.5-flash\n"
+        "    model_id: gemini-3.5-flash\n"
+        "    input_price_per_mtok_usd: 1.5\n"
+        "    output_price_per_mtok_usd: 9\n"
+        "    pricing_source: runcost_default_price_cards\n",
+        encoding="utf-8",
+    )
+    (run_dir / "summary.csv").write_text(
+        "model,total_samples,scored_samples,correct,failures,answer_correct,"
+        "format_correct,strict_correct,accuracy,answer_accuracy,format_accuracy,"
+        "strict_accuracy,obvious_failure_rate,provider_errors,timeouts,"
+        "input_tokens,output_tokens,reasoning_tokens,cache_read_tokens,"
+        "cache_write_tokens,total_tokens,estimated_cost_usd,cost_source,cost_warnings\n"
+        "google/gemini-3.5-flash,1,1,1,0,1,1,1,1,1,1,1,0,0,0,"
+        "1000000,2000000,1500000,0,0,4500000,0.1,runcost,missing reasoning price\n",
+        encoding="utf-8",
+    )
+    (run_dir / "usage_by_family.csv").write_text(
+        "model,family,samples,correct,failures,answer_correct,format_correct,"
+        "strict_correct,input_tokens,output_tokens,reasoning_tokens,total_tokens,"
+        "estimated_cost_usd,cost_source,cost_warnings\n"
+        "google/gemini-3.5-flash,spelling,1,1,0,1,1,1,1000000,2000000,"
+        "1500000,4500000,0.1,runcost,missing reasoning price\n",
+        encoding="utf-8",
+    )
+    (run_dir / "usage_by_section.csv").write_text(
+        "model,family,subfamily,samples,correct,failures,answer_correct,"
+        "format_correct,strict_correct,input_tokens,output_tokens,"
+        "reasoning_tokens,total_tokens,estimated_cost_usd,cost_source,cost_warnings\n"
+        "google/gemini-3.5-flash,spelling,letters,1,1,0,1,1,1,1000000,"
+        "2000000,1500000,4500000,0.1,runcost,missing reasoning price\n",
+        encoding="utf-8",
+    )
+
+    paths = build_comparison_from_manifest(
+        ComparisonBuildInputs(
+            manifest=manifest,
+            output_dir=out_dir,
+            openrouter_price_registry=registry,
+        )
+    )
+
+    comparison_rows = list(csv.DictReader(paths.comparison.open(encoding="utf-8")))
+    family_rows = list(csv.DictReader(paths.family_comparison.open(encoding="utf-8")))
+
+    assert comparison_rows[0]["estimated_cost_usd"] == "33"
+    assert comparison_rows[0]["cost_source"] == (
+        "runcost_default_price_cards_manual_reasoning_completion_fallback"
+    )
+    assert comparison_rows[0]["cost_warnings"] == ""
+    assert family_rows[0]["estimated_cost_usd"] == "33"
