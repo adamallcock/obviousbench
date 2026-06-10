@@ -7,6 +7,12 @@ status: complete
 
 # Mega Model Sweep
 
+> Snapshot note: this records the original mega sweep before later strict
+> answer/format rescoring. Use
+> `docs/status/2026-05-31-rescore-and-hard-obvious.md` and
+> `docs/reports/2026-05-31-mega-model-sweep-rescored-v2/` for current scoring
+> claims.
+
 ## Scope
 
 Ran the `balanced_8x10` barrage across 29 clean 80-sample model rows, with no

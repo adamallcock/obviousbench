@@ -195,6 +195,11 @@ Notes:
   summarized.
 - Use `--no-cache` for fresh provider-behavior sweeps, or `--cache <duration>`
   for another expiry.
+- Use repeated `--generation-setting key=value` flags for Inspect
+  `GenerateConfig` options such as `reasoning_effort=low` and
+  `reasoning_summary=none`. These settings are written to a generated
+  config file and passed via `--generate-config`, so different thinking
+  settings produce distinct Inspect cache entries.
 - Provider safety/error strings that arrive as assistant text, for example
   `SAFETY_CHECK_TYPE_*`, are retried by default as transient provider failures.
   These retry attempts bypass the Inspect cache so a cached refusal is not
@@ -233,6 +238,8 @@ For non-OpenRouter runs, prefer the generic wrapper rather than calling
   --log-dir results/raw \
   -T profile=hard_obvious_8x10 \
   -T seed=20260531 \
+  --generation-setting reasoning_effort=low \
+  --generation-setting reasoning_summary=none \
   --inspect-arg=--no-log-model-api
 ```
 
@@ -240,6 +247,8 @@ Defaults:
 
 - `--cache 10Y`
 - `--cache-dir .cache/inspect`
+- repeated `--generation-setting key=value` values are passed to Inspect via a
+  generated `--generate-config` JSON file
 - raw Inspect flags are passed only when supplied via `--inspect-arg`
 
 Use `--no-cache` to force fresh provider calls. Use repeated `--inspect-arg`
@@ -271,9 +280,10 @@ The summarizer always writes:
 
 When evaluated samples include metamorphic metadata, the summarizer also writes
 `metamorphic_consistency.csv`. Provider errors, provider safety/error strings,
-and timeouts are counted in `samples`, but accuracy-like correctness columns
-use `scored_samples` so infrastructure failures do not become model-answer
-failures.
+and timeouts are counted in both `samples` and `scored_samples` after configured
+retries. They count as incorrect final attempts for accuracy-like correctness
+columns, while `provider_errors` and `timeouts` remain separate diagnostic
+counts.
 
 Estimated cost uses the local Node 20+ `runcost` bridge by default:
 
@@ -306,7 +316,7 @@ Summaries and rollups report three related metrics:
 
 Summaries also include Wilson 95% confidence intervals for `accuracy`,
 `answer_accuracy`, and `strict_accuracy`. Treat them as uncertainty bands over
-the scored samples, not as guarantees about future samples.
+the scored final attempts, not as guarantees about future samples.
 
 Use `build-comparison` to aggregate one-row run summaries into the model,
 family, and section CSVs consumed by reports:

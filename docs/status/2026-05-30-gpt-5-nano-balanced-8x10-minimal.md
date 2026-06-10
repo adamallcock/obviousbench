@@ -7,6 +7,10 @@ status: complete
 
 # GPT-5 Nano Balanced 8x10 Minimal Run
 
+> Snapshot note: this is a point-in-time single-model run record. The run remains
+> useful provenance for later comparisons, but current claims should cite the
+> latest generated report or shareable bundle that includes this row.
+
 ## Command
 
 ```bash

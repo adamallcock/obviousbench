@@ -7,6 +7,11 @@ status: complete
 
 # Shareable Proof Point Plan
 
+> Snapshot note: this completed plan records the original shareable proof-point
+> work. The bundle at `docs/shareable/2026-05-31-obviousbench-proof-point/` has
+> since been regenerated from the rescored V2 comparison, so inspect the bundle
+> contents directly for current shareable claims.
+
 Goal: make this checkout externally referenceable for the June 1 ClickUp intro
 call and June 5 Scale hiring-manager screen without requiring hand-edited
 result files.

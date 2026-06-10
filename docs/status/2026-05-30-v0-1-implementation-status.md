@@ -7,6 +7,12 @@ status: conditional
 
 # ObviousBench V0.1 Implementation Status
 
+> Snapshot note: this status reflects the first runnable v0.1 slice on
+> 2026-05-30. Later item-card, scorer-gold, report, metamorphic, efficiency, and
+> shareable-artifact work supersedes parts of this summary. Use
+> `docs/architecture/2026-05-31-current-architecture.md` for the current
+> architecture.
+
 > Correction: this status describes runnable v0.1 infrastructure plus generated
 > seed data. It should not be read as completion of every milestone in the
 > implementation plan. See `docs/status/2026-05-30-plan-completeness-audit.md`

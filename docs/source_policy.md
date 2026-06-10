@@ -1,3 +1,10 @@
+---
+title: Source Policy
+date: 2026-05-31
+type: policy
+status: current
+---
+
 # Source Policy
 
 Public posts, articles, papers, and repositories are source leads, not benchmark ground truth.

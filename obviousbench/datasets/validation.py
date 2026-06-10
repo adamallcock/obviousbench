@@ -60,6 +60,7 @@ def validate_dataset_paths(
     item_cards_dir: Path | str | None = None,
     require_item_cards: bool = False,
     allow_extra_item_cards: bool = False,
+    include_item_ids: set[str] | None = None,
 ) -> ValidationReport:
     """Validate benchmark JSONL files and return structured issues."""
     report = ValidationReport()
@@ -116,6 +117,8 @@ def validate_dataset_paths(
                 report.add(
                     ValidationIssue(path, line_number, None, "invalid_json", exc.msg)
                 )
+                continue
+            if include_item_ids is not None and record.get("id") not in include_item_ids:
                 continue
 
             try:

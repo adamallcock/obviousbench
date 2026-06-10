@@ -7,6 +7,10 @@ status: draft
 
 # OpenRouter Nemotron Eval Smoke
 
+> Snapshot note: this is a draft smoke-run record for an early OpenRouter wiring
+> path. Use `docs/runbook.md` for current OpenRouter runner guidance and keep
+> this file as historical troubleshooting context.
+
 ## Purpose
 
 Validate that ObviousBench can run through Inspect against an OpenRouter-hosted

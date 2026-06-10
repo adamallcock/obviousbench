@@ -7,6 +7,10 @@ status: complete
 
 # Balanced 8x10 No Thinking Model Comparison
 
+> Snapshot note: this is a point-in-time 2026-05-30 run record. Use later
+> rescored comparison outputs and generated reports for current benchmark
+> claims; keep this file as provenance for the original no-thinking panel.
+
 ## Scope
 
 Profile: `balanced_8x10`  
@@ -81,4 +85,3 @@ Raw logs:
   only scored 5 / 10 on `single_letter_count`.
 - The most surprising section failure was `gpt-4o` on
   `object_must_be_present`, where it scored 1 / 10.
-

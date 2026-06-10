@@ -1,3 +1,10 @@
+---
+title: Branding
+date: 2026-05-31
+type: reference
+status: current
+---
+
 # Branding
 
 Use:
@@ -20,4 +27,3 @@ Primary tagline:
 ```text
 Catch obvious AI mistakes before users do.
 ```
-

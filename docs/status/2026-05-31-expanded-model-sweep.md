@@ -7,6 +7,10 @@ status: complete
 
 # Expanded Model Sweep
 
+> Snapshot note: this is a point-in-time expanded sweep. The later mega sweep
+> and rescored V2 report supersede it for current model-comparison claims, while
+> this file remains useful for provider-limit and cost-history context.
+
 Run date: 2026-05-31  
 Primary profile: `balanced_8x10`  
 Free-model profile: `balanced_8x2`  

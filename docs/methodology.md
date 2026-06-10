@@ -1,3 +1,10 @@
+---
+title: ObviousBench Methodology
+date: 2026-05-31
+type: reference
+status: current
+---
+
 # ObviousBench Methodology
 
 ObviousBench v0.1 measures obvious failure rate on short, human-trivial tasks. Public examples are treated as leads and archetypes, then converted into deterministic benchmark items or generated variants.

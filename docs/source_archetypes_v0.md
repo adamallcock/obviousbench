@@ -1,3 +1,10 @@
+---
+title: Source Archetypes V0
+date: 2026-05-31
+type: reference
+status: historical
+---
+
 # Source Archetypes V0
 
 Initial archetypes:

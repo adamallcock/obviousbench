@@ -7,6 +7,10 @@ status: complete
 
 # Rescore And Hard Obvious Pass
 
+> Current-status note: this is the current status record for rescored mega-sweep
+> claims and the hard-obvious panel. Generated reports under `docs/reports/**`
+> remain the source of truth for rendered tables.
+
 ## Scope
 
 Completed work items 1, 2, 3, and 5 from the next-step list. Object-presence

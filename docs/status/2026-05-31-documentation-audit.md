@@ -47,21 +47,20 @@ cache files were not treated as authoritative documentation.
 - Updated the shareable benchmark card's dataset-vintage and public-seed-data
   caveats to match `docs/benchmark_card.md` and current data.
 
-## Deferred Larger Changes
+## Confirmed Follow-Up Applied
 
-These are significant enough to require confirmation before changing them:
+- Added frontmatter to hand-authored policy/reference docs. Generated
+  leaderboard Markdown remains frontmatter-free.
+- Marked `obviousbench_build_plan.md` as archived historical planning context.
+- Added `docs/architecture/2026-05-31-current-architecture.md` as the current
+  implementation map.
+- Regenerated the shareable proof-point bundle from the rescored V2 comparison.
+- Rebuilt generated reports from their comparison directories.
+- Added snapshot or current-status notices to historical status documents.
 
-- Normalize frontmatter across all existing documentation. Several tracked docs
-  intentionally or historically lack YAML frontmatter, including policy docs and
-  generated leaderboard Markdown.
-- Rewrite `obviousbench_build_plan.md` from a historical build plan into a
-  current architecture document. The file is useful history but contains planned
-  scaffolding that differs from the shipped code.
-- Regenerate shareable artifacts from the latest report outputs. The promoted
-  bundle is a dated 2026-05-31 proof point, while later local reports and
-  rescored comparisons exist in other directories.
-- Regenerate or rebaseline generated `docs/reports/**` files. They are already
-  modified in the worktree and should be handled as generated artifacts, not
-  hand-edited prose.
-- Decide whether historical status documents should remain point-in-time
-  snapshots or receive explicit stale/historical notices throughout.
+## Still Deferred
+
+- Whether to promote the regenerated shareable bundle as a new dated directory
+  instead of reusing `2026-05-31-obviousbench-proof-point/`.
+- Whether to add a first-class CLI option that derives `model-matrix.yaml` from
+  comparison CSVs instead of requiring a separate matrix source file.

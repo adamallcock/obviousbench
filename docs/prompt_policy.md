@@ -1,3 +1,10 @@
+---
+title: Prompt Policy
+date: 2026-05-31
+type: policy
+status: current
+---
+
 # Prompt Policy
 
 ObviousBench v0.1 uses native provider mode:
@@ -33,4 +40,3 @@ D. {choice_d}
 
 Answer:
 ```
-

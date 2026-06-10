@@ -7,6 +7,11 @@ status: conditional
 
 # ObviousBench Plan Completeness Audit
 
+> Snapshot note: this audit reflects the 2026-05-30 worktree. Dataset counts,
+> implemented modules, and report capabilities have changed since then. Use
+> `docs/architecture/2026-05-31-current-architecture.md` for the current system
+> map and this file for historical plan-completion evidence.
+
 This audit compares the current worktree against
 `docs/superpowers/plans/2026-05-30-obviousbench-v0-1-implementation.md`.
 

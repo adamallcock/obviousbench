@@ -1,4 +1,18 @@
+---
+title: ObviousBench Build Plan
+date: 2026-05-31
+type: plan
+status: archived
+---
+
 # ObviousBench Build Plan
+
+> Archived planning note: this document records the original product and
+> implementation plan. It is useful historical context, but it is not the
+> current architecture contract and may contradict shipped code, generated
+> artifacts, or later status records. Use
+> `docs/architecture/2026-05-31-current-architecture.md` for the current
+> implementation map.
 
 **Working title:** ObviousBench  
 **Internal thesis:** embarrassment-avoidance benchmark for public-facing LLM failures  

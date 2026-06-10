@@ -7,6 +7,10 @@ status: draft
 
 # OpenRouter Nemotron Batched Expansion Run
 
+> Snapshot note: this is a draft run log for one OpenRouter batching experiment.
+> Use `docs/runbook.md` for current runner guidance and treat the commands below
+> as historical evidence, not the canonical workflow.
+
 ## Run
 
 Model:
