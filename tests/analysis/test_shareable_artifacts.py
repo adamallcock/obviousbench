@@ -22,8 +22,8 @@ def test_build_shareable_artifacts_promotes_card_comparison_and_gallery(tmp_path
                 "total_tokens,estimated_cost_usd,summary_dir",
                 f"Model A,provider/model-a,,,10,8,2,0.8,0.2,100,20,0,120,0.001,{summary_dir}",
             ]
-        )
-        + "\n",
+        ).replace("\n", "\r\n")
+        + "\r\n",
         encoding="utf-8",
     )
     (comparison_dir / "family_comparison.csv").write_text(
@@ -33,8 +33,8 @@ def test_build_shareable_artifacts_promotes_card_comparison_and_gallery(tmp_path
                 "total_tokens,estimated_cost_usd",
                 "Model A,provider/model-a,character_count,5,3,2,50,10,60,0.0005",
             ]
-        )
-        + "\n",
+        ).replace("\n", "\r\n")
+        + "\r\n",
         encoding="utf-8",
     )
     (summary_dir / "failure_gallery.md").write_text(
@@ -83,6 +83,8 @@ def test_build_shareable_artifacts_promotes_card_comparison_and_gallery(tmp_path
     assert paths.family_comparison == output_dir / "family-comparison.csv"
     assert paths.model_matrix == output_dir / "model-matrix.yaml"
     assert paths.index == output_dir / "README.md"
+    assert "\r" not in paths.comparison.read_text(encoding="utf-8")
+    assert "\r" not in paths.family_comparison.read_text(encoding="utf-8")
 
     card = paths.card.read_text(encoding="utf-8")
     gallery = paths.gallery.read_text(encoding="utf-8")
@@ -91,6 +93,7 @@ def test_build_shareable_artifacts_promotes_card_comparison_and_gallery(tmp_path
     assert "80.0% accuracy" in card
     assert "20.0% obvious failure rate" in card
     assert "character_count: 2 failures" in card
+    assert "type: reference" not in card
     assert "How many r's are in strawberry?" in gallery
     assert "generated_variant" in gallery
     assert "provider/model-a" in paths.model_matrix.read_text(encoding="utf-8")

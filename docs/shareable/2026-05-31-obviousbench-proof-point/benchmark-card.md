@@ -74,14 +74,43 @@ Raw Inspect logs and provider payloads remain local and ignored by git.
 
 Generated on: 2026-05-31
 
-- gpt-4.1: 80.0% accuracy, 20.0% obvious failure rate, estimated cost $0.008474.
-- gpt-4o: 73.8% accuracy, 26.2% obvious failure rate, estimated cost $0.011052.
-- gpt-5.5 none: 91.2% accuracy, 8.8% obvious failure rate, estimated cost $0.032245.
+- GPT-5 Nano minimal: 77.5% accuracy, 22.5% obvious failure rate, estimated cost $0.000897.
+- GPT-4.1 none: 82.5% accuracy, 17.5% obvious failure rate, estimated cost $0.008474.
+- GPT-4o none: 88.8% accuracy, 11.2% obvious failure rate, estimated cost $0.011052.
+- GPT-5.2 none: 87.5% accuracy, 12.5% obvious failure rate, estimated cost $0.013134.
+- GPT-5 low: 98.8% accuracy, 1.2% obvious failure rate, estimated cost $0.067441.
+- GPT-5.4 none: 87.5% accuracy, 12.5% obvious failure rate, estimated cost $0.016063.
+- GPT-5.4 low: 97.5% accuracy, 2.5% obvious failure rate, estimated cost $0.040587.
+- GPT-5.4 medium: 97.5% accuracy, 2.5% obvious failure rate, estimated cost $0.059353.
+- GPT-5.4 high: 98.8% accuracy, 1.2% obvious failure rate, estimated cost $0.071712.
+- GPT-5.5 none: 91.2% accuracy, 8.8% obvious failure rate, estimated cost $0.032245.
+- GPT-5.5 medium: 100.0% accuracy, 0.0% obvious failure rate, estimated cost $0.110635.
+- GPT-5.5 high: 100.0% accuracy, 0.0% obvious failure rate, estimated cost $0.139195.
+- Claude Haiku 4.5: 82.5% accuracy, 17.5% obvious failure rate, estimated cost $0.006536.
+- Claude Sonnet 4.6: 77.5% accuracy, 22.5% obvious failure rate, estimated cost $0.021108.
+- Claude Opus 4.6 low: 91.2% accuracy, 8.8% obvious failure rate, estimated cost $0.033505.
+- Claude Opus 4.6 medium: 96.2% accuracy, 3.8% obvious failure rate, estimated cost $0.033880.
+- Claude Opus 4.6 high: 95.0% accuracy, 5.0% obvious failure rate, estimated cost $0.044155.
+- Claude Opus 4.7 low: 91.2% accuracy, 8.8% obvious failure rate, estimated cost $0.040605.
+- Claude Opus 4.7 medium: 93.8% accuracy, 6.2% obvious failure rate, estimated cost $0.040605.
+- Claude Opus 4.7 high: 92.5% accuracy, 7.5% obvious failure rate, estimated cost $0.040605.
+- Claude Opus 4.8 low: 92.5% accuracy, 7.5% obvious failure rate, estimated cost $0.033630.
+- Claude Opus 4.8 medium: 93.8% accuracy, 6.2% obvious failure rate, estimated cost $0.033630.
+- Claude Opus 4.8 high: 93.8% accuracy, 6.2% obvious failure rate, estimated cost $0.033630.
+- Gemini 3.1 Flash Lite OR: 81.2% accuracy, 18.8% obvious failure rate, estimated cost $0.001098.
+- Gemini 3 Flash Preview OR: 87.5% accuracy, 12.5% obvious failure rate, estimated cost $0.002180.
+- Gemini 3.1 Pro Preview OR: 100.0% accuracy, 0.0% obvious failure rate, estimated cost $0.182912.
+- Gemini 3.5 Flash OR: 100.0% accuracy, 0.0% obvious failure rate, estimated cost $0.149019.
+- Grok 4.3 xAI: 87.5% accuracy, 12.5% obvious failure rate, estimated cost $0.064638.
+- Grok 4.20 xAI: 57.5% accuracy, 42.5% obvious failure rate, estimated cost $0.149072.
 
 ## Failure Hotspots
 
-- character_count: 13 failures
-- constraint_awareness: 14 failures
-- format_compliance: 3 failures
-- negation: 7 failures
-- spelling_transform: 7 failures
+- arithmetic: 8 failures
+- character_count: 86 failures
+- constraint_awareness: 28 failures
+- format_compliance: 5 failures
+- negation: 14 failures
+- ordering: 15 failures
+- spelling_transform: 63 failures
+- word_count: 4 failures

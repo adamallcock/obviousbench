@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import csv
-import shutil
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -63,10 +62,10 @@ def build_shareable_artifacts(inputs: ShareableArtifactInputs) -> ShareableArtif
         ),
         encoding="utf-8",
     )
-    shutil.copyfile(comparison_source, paths.comparison)
-    shutil.copyfile(family_source, paths.family_comparison)
+    _copy_text_normalized(comparison_source, paths.comparison)
+    _copy_text_normalized(family_source, paths.family_comparison)
     if inputs.model_matrix_source.exists():
-        shutil.copyfile(inputs.model_matrix_source, paths.model_matrix)
+        _copy_text_normalized(inputs.model_matrix_source, paths.model_matrix)
     else:
         paths.model_matrix.write_text(
             "# Model matrix source was not found during artifact generation.\n",
@@ -75,6 +74,11 @@ def build_shareable_artifacts(inputs: ShareableArtifactInputs) -> ShareableArtif
     paths.index.write_text(_build_index(inputs.generated_on), encoding="utf-8")
 
     return paths
+
+
+def _copy_text_normalized(source: Path, destination: Path) -> None:
+    """Copy a generated text artifact with repository-standard LF newlines."""
+    destination.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:
@@ -89,7 +93,7 @@ def _build_card(
     comparison_rows: list[dict[str, str]],
     family_rows: list[dict[str, str]],
 ) -> str:
-    base = source.read_text(encoding="utf-8").rstrip()
+    base = _markdown_body(source.read_text(encoding="utf-8")).rstrip()
     lines = [
         "---",
         "title: ObviousBench Shareable Benchmark Card",
@@ -128,6 +132,17 @@ def _build_card(
             lines.append(f"- {family}: {failures} failures")
 
     return "\n".join(lines) + "\n"
+
+
+def _markdown_body(markdown: str) -> str:
+    """Return Markdown content without a leading YAML frontmatter block."""
+    lines = markdown.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return markdown
+    for index, line in enumerate(lines[1:], start=1):
+        if line.strip() == "---":
+            return "\n".join(lines[index + 1 :]).lstrip("\n")
+    return markdown
 
 
 def _build_gallery(

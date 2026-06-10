@@ -4,6 +4,7 @@ from pathlib import Path
 
 from obviousbench.analysis.benchmark_report import (
     BenchmarkReportInputs,
+    _tokens_scatter_svg,
     _uncertainty_cautions,
     build_benchmark_report,
 )
@@ -31,15 +32,15 @@ def test_build_benchmark_report_from_rich_fixture(tmp_path):
     leaderboard_md = paths.leaderboard_md.read_text(encoding="utf-8")
 
     assert [row["label"] for row in leaderboard_rows] == [
-        "Strict Model",
         "Verbose Correct Model",
+        "Strict Model",
         "Provider Flaky Model",
     ]
     assert leaderboard_rows[0]["rank"] == "1"
-    assert leaderboard_rows[1]["answer_accuracy_pct"] == "97.50"
-    assert leaderboard_rows[1]["format_accuracy_pct"] == "82.50"
-    assert leaderboard_rows[1]["strict_accuracy_pct"] == "77.50"
-    assert leaderboard_rows[1]["overthinking_index"] == "1.64"
+    assert leaderboard_rows[0]["answer_accuracy_pct"] == "97.5"
+    assert leaderboard_rows[0]["format_accuracy_pct"] == "82.5"
+    assert leaderboard_rows[0]["strict_accuracy_pct"] == "77.5"
+    assert leaderboard_rows[0]["overthinking_index"] == "1.64"
     assert leaderboard_rows[2]["rank"] == ""
     assert leaderboard_rows[2]["provider_errors"] == "12"
     assert leaderboard_rows[2]["timeouts"] == "4"
@@ -63,7 +64,10 @@ def test_build_benchmark_report_from_rich_fixture(tmp_path):
     assert "spell.remove.001;spell.remove.002" in html
     assert "Provider Flaky Model</strong>: 12 provider errors" in html
     assert "Accuracy interval cautions" in html
-    assert "| 2 | Verbose Correct Model | 87.50%" in leaderboard_md
+    assert (
+        "| 1 | Verbose Correct Model (thinking=medium/reasoning-visible) | 97.5%"
+        in leaderboard_md
+    )
 
 
 def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
@@ -167,34 +171,106 @@ def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
     heatmap = paths.family_heatmap_csv.read_text(encoding="utf-8")
 
     assert "Expanded Sweep" in html
-    assert "Accuracy vs Estimated Cost" in html
+    assert "Answer Accuracy vs Run Cost" in html
     assert "Accuracy vs tokens" in html
     assert "Overthinking index" in html
     assert "Efficiency warnings" in html
     assert "higher_cost_no_accuracy_gain" in html
     assert "Accuracy interval" in html
     assert "<svg" in html
+    assert 'class="point-label"' in html
+    assert "Model A (provider default)" in html
+    assert "Model B (provider default)" in html
+    assert 'class="point provider-provider frontier"' in html
+    assert 'class="frontier-line"' in html
+    assert 'class="grid-line"' in html
+    assert 'class="tick-label"' in html
+    assert ">50%</text>" in html
+    assert ">2</text>" in html
+    assert ">$0.020000</text>" in html
+    assert "Scatter charts omit 1 run with incomplete samples or missing chart values." in html
     assert "Family Accuracy Heatmap" in html
     assert "Metamorphic Consistency" in html
     assert "spell.reverse.001" in html
     assert "Provider Errors" in html
     assert "rate limited" in html
-    assert "rank,label,model,barrage_profile,accuracy_pct,accuracy_ci_95" in leaderboard
-    assert "1,Model A,provider/model-a,balanced_8x10,90.00,82.00% - 95.00%" in leaderboard
+    assert "rank,label,display_label,model,thinking_level,barrage_profile" in leaderboard
+    assert "1,Model A,Model A (provider default),provider/model-a" in leaderboard
+    assert "90.0,82.0-95.0%" in leaderboard
     assert "strict_accuracy_pct" in leaderboard
     assert (
-        "| Rank | Model | Accuracy | 95% CI | Answer | Format | Strict | Cost | "
+        "| Rank | Model | Answer Accuracy | 95% CI | Answer | Format | Strict | Cost | "
         "Tokens | Tokens / Correct |"
         in leaderboard_md
     )
     assert (
-        "| 1 | Model A | 90.00% | 82.00% - 95.00% | 90.00% | 95.00% | 85.00% | "
-        "$0.020000 | 150 |"
+        "| 1 | Model A (provider default) | 90.0% | 82.0-95.0% | "
+        "90.0% | 95.0% | 85.0% | $0.020000 | 0.15k |"
         in leaderboard_md
     )
     assert "Format" in html
     assert "cost_per_correct_usd" in leaderboard
     assert "Model B,spelling_transform,100.00" in heatmap
+
+
+def test_leaderboard_does_not_treat_reported_tokens_as_configured_thinking(tmp_path):
+    comparison_dir = tmp_path / "comparison"
+    comparison_dir.mkdir()
+    output_dir = tmp_path / "report"
+
+    (comparison_dir / "comparison.csv").write_text(
+        "\n".join(
+            [
+                "label,model,barrage_profile,total_samples,scored_samples,correct,"
+                "failures,answer_correct,format_correct,strict_correct,answer_accuracy,"
+                "format_accuracy,strict_accuracy,provider_errors,timeouts,total_tokens,"
+                "output_tokens,reasoning_tokens,estimated_cost_usd,cost_warnings,"
+                "summary_dir",
+                "Gemini Default,google/gemini-3.5-flash,balanced_8x10,80,80,80,"
+                "0,80,80,80,1,1,1,0,0,21000,200,17000,0.01,,results/gemini",
+                "Gemini 2.5 Flash-Lite low_budget_1024,google/gemini-2.5-flash-lite,"
+                "balanced_8x10,80,80,"
+                "76,4,76,80,76,0.95,1,0.95,0,0,17000,360,14000,0.01,,"
+                "results/gemini-budget",
+                "Gemini 3.1 Flash-Lite minimal_budget_1024,google/gemini-3.1-flash-lite,"
+                "balanced_8x10,80,80,"
+                "68,12,68,80,68,0.85,1,0.85,0,0,0,0,0,0.01,,"
+                "results/gemini-3-budget-label",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (comparison_dir / "family_comparison.csv").write_text(
+        "label,model,barrage_profile,family,samples,correct,failures,total_tokens,"
+        "estimated_cost_usd,summary_dir\n",
+        encoding="utf-8",
+    )
+
+    paths = build_benchmark_report(
+        BenchmarkReportInputs(
+            comparison_dir=comparison_dir,
+            output_dir=output_dir,
+            generated_on="2026-06-02",
+        )
+    )
+
+    leaderboard_rows = list(csv.DictReader(paths.leaderboard_csv.open(encoding="utf-8")))
+
+    assert leaderboard_rows[0]["display_label"] == "Gemini Default (provider default)"
+    assert leaderboard_rows[0]["thinking_level"] == "provider default"
+    assert leaderboard_rows[0]["reasoning_token_source"] == "reported"
+    assert (
+        leaderboard_rows[1]["display_label"]
+        == "Gemini 2.5 Flash-Lite low_budget_1024 (thinking=low budget=1024)"
+    )
+    assert leaderboard_rows[1]["thinking_level"] == "thinking=low budget=1024"
+    assert (
+        leaderboard_rows[2]["display_label"]
+        == "Gemini 3.1 Flash-Lite minimal_budget_1024 (provider default)"
+    )
+    assert leaderboard_rows[2]["thinking_level"] == "provider default"
+    assert "reported reasoning" not in paths.leaderboard_csv.read_text(encoding="utf-8")
 
 
 def test_family_heatmap_uses_scored_samples_denominator(tmp_path):
@@ -266,7 +342,7 @@ def test_build_benchmark_report_backfills_accuracy_interval(tmp_path):
     leaderboard_md = paths.leaderboard_md.read_text(encoding="utf-8")
 
     assert "accuracy_ci_95" in leaderboard
-    assert "49.02% - 94.33%" in leaderboard_md
+    assert "49.0-94.3%" in leaderboard_md
 
 
 def test_build_benchmark_report_marks_unassessable_metamorphic_groups(tmp_path):
@@ -331,3 +407,28 @@ def test_uncertainty_cautions_parse_percent_bounds_on_both_sides():
     )
 
     assert html == ""
+
+
+def test_scatter_chart_suppresses_colliding_point_labels():
+    html = _tokens_scatter_svg(
+        [
+            {
+                "rank": "1",
+                "label": "Model A",
+                "model": "openai/model-a",
+                "tokens_per_correct": "10",
+                "accuracy_pct": "90.00",
+            },
+            {
+                "rank": "2",
+                "label": "Model B",
+                "model": "anthropic/model-b",
+                "tokens_per_correct": "10",
+                "accuracy_pct": "90.00",
+            },
+        ]
+    )
+
+    assert html.count('class="point-label"') == 1
+    assert 'class="label-suppressed"' in html
+    assert "Model B label hidden to avoid overlap" in html

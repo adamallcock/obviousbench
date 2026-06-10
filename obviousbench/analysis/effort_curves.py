@@ -29,6 +29,8 @@ _EFFORT_ORDER = {
     "low": 1,
     "medium": 2,
     "high": 3,
+    "xhigh": 4,
+    "max": 5,
 }
 
 
