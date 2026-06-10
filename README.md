@@ -204,6 +204,20 @@ Any positive `XxY` shape is valid when enough public items exist, for example
 For a fuller local workflow, including the Keychain-backed OpenAI smoke command,
 see [docs/runbook.md](docs/runbook.md).
 
+## Release Evidence Bundle
+
+The v0.1 release-prep config generates a machine-readable snapshot registry,
+claim ledger, internal review artifacts, and SVG charts:
+
+```bash
+.venv/bin/python scripts/build_release_assets.py --config configs/release_v0_1_0.yaml
+.venv/bin/python scripts/audit_release_snapshot.py --config configs/release_v0_1_0.yaml --strict
+```
+
+The reader-facing entrypoint is [docs/evidence-and-claims.md](docs/evidence-and-claims.md).
+Internal review artifacts are written under `docs/internal/`; they should not
+be copied into public release surfaces.
+
 ## Current Dataset Reality
 
 The current public v0 dataset is generated seed data inspired by source

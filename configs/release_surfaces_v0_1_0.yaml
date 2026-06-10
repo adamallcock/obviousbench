@@ -1,0 +1,84 @@
+release_surfaces_id: obviousbench-v0.1.0
+generated_by: scripts/build_release_assets.py
+
+surfaces:
+  release_index:
+    path: docs/release/generated/README.md
+    public: false
+    owner: local-release-build
+  release_metadata:
+    path: docs/release/generated/release-metadata.json
+    public: false
+    owner: local-release-build
+  provenance:
+    path: docs/release/generated/provenance.json
+    public: false
+    owner: local-release-build
+  snapshot_registry:
+    path: docs/internal/release/generated/snapshot-registry.json
+    public: false
+    owner: internal-release-governance
+  release_evidence_json:
+    path: docs/internal/release/generated/release-evidence.json
+    public: false
+    owner: internal-release-governance
+  item_review_matrix_json:
+    path: docs/internal/release/generated/item-review-matrix.json
+    public: false
+    owner: internal-release-governance
+  item_review_matrix_md:
+    path: docs/internal/release/generated/item-review-matrix.md
+    public: false
+    owner: internal-release-governance
+  external_review_packet:
+    path: docs/internal/release/generated/external-review-packet.md
+    public: false
+    owner: internal-release-governance
+  evidence_chart_snapshot_status:
+    path: docs/internal/release/generated/charts/snapshot-status.svg
+    public: false
+    owner: internal-release-governance
+  evidence_chart_readiness:
+    path: docs/internal/release/generated/charts/evidence-readiness.svg
+    public: false
+    owner: internal-release-governance
+  evidence_chart_model_accuracy:
+    path: docs/internal/release/generated/charts/model-accuracy.svg
+    public: false
+    owner: internal-release-governance
+  paper_release_makefile:
+    path: paper/release.mk
+    public: false
+    owner: local-release-build
+  github_release_notes:
+    path: docs/release/generated/github-release-notes.md
+    public: true
+    owner: release-copy
+  dataset_card:
+    path: docs/release/generated/huggingface-dataset-card.md
+    public: true
+    owner: release-copy
+  project_page_draft:
+    path: docs/release/generated/project-page.md
+    public: true
+    owner: release-copy
+  launch_essay_draft:
+    path: docs/release/generated/launch-essay-draft.md
+    public: true
+    owner: release-copy
+  social_snippets:
+    path: docs/release/generated/social-snippets.md
+    public: true
+    owner: release-copy
+  arxiv_metadata_draft:
+    path: docs/release/generated/arxiv-metadata-draft.md
+    public: true
+    owner: release-copy
+  citation_cff:
+    path: CITATION.cff
+    public: true
+    owner: release-metadata
+  zenodo_metadata:
+    path: .zenodo.json
+    public: true
+    owner: release-metadata
