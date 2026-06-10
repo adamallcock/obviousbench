@@ -1,0 +1,38 @@
+label,model,summary_dir
+OpenAI GPT-5.5 none,openai/gpt-5.5,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-001-openai-gpt-5-5-none
+OpenAI GPT-5.5 low,openai/gpt-5.5,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-002-openai-gpt-5-5-low
+OpenAI GPT-5.5 medium,openai/gpt-5.5,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-003-openai-gpt-5-5-medium
+OpenAI GPT-5.5 high,openai/gpt-5.5,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-004-openai-gpt-5-5-high
+OpenAI GPT-5.5 xhigh,openai/gpt-5.5,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-005-openai-gpt-5-5-xhigh
+OpenAI GPT-5.4 none,openai/gpt-5.4,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-006-openai-gpt-5-4-none
+OpenAI GPT-5.4 low,openai/gpt-5.4,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-007-openai-gpt-5-4-low
+OpenAI GPT-5.4 medium,openai/gpt-5.4,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-008-openai-gpt-5-4-medium
+OpenAI GPT-5.4 high,openai/gpt-5.4,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-009-openai-gpt-5-4-high
+OpenAI GPT-5.4 xhigh,openai/gpt-5.4,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-010-openai-gpt-5-4-xhigh
+Claude Opus 4.8 low,anthropic/claude-opus-4-8,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-011-anthropic-claude-opus-4-8-low
+Claude Opus 4.8 medium,anthropic/claude-opus-4-8,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-012-anthropic-claude-opus-4-8-medium
+Claude Opus 4.8 high,anthropic/claude-opus-4-8,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-013-anthropic-claude-opus-4-8-high
+Claude Opus 4.8 xhigh,anthropic/claude-opus-4-8,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-014-anthropic-claude-opus-4-8-xhigh
+Claude Opus 4.8 max,anthropic/claude-opus-4-8,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-015-anthropic-claude-opus-4-8-max
+Claude Sonnet 4.6 low,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-016-anthropic-claude-sonnet-4-6-low
+Claude Sonnet 4.6 medium,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-017-anthropic-claude-sonnet-4-6-medium
+Claude Sonnet 4.6 high,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-018-anthropic-claude-sonnet-4-6-high
+Claude Sonnet 4.6 max,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-019-anthropic-claude-sonnet-4-6-max
+Grok 4.3 none,grok/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-020-grok-grok-4-3-none
+Grok 4.3 low,grok/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-021-grok-grok-4-3-low
+Grok 4.3 medium,grok/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-022-grok-grok-4-3-medium
+Grok 4.3 high,grok/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-023-grok-grok-4-3-high
+xAI: Grok 4.3 none,openrouter/x-ai/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-024-openrouter-x-ai-grok-4-3-none
+xAI: Grok 4.3 low,openrouter/x-ai/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-025-openrouter-x-ai-grok-4-3-low
+xAI: Grok 4.3 medium,openrouter/x-ai/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-026-openrouter-x-ai-grok-4-3-medium
+xAI: Grok 4.3 high,openrouter/x-ai/grok-4.3,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-027-openrouter-x-ai-grok-4-3-high
+Google: Gemini 3.5 Flash minimal,openrouter/google/gemini-3.5-flash,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-028-openrouter-google-gemini-3-5-flash-minimal
+Google: Gemini 3.5 Flash low,openrouter/google/gemini-3.5-flash,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-029-openrouter-google-gemini-3-5-flash-low
+Google: Gemini 3.5 Flash medium,openrouter/google/gemini-3.5-flash,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-030-openrouter-google-gemini-3-5-flash-medium
+Google: Gemini 3.5 Flash high,openrouter/google/gemini-3.5-flash,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-031-openrouter-google-gemini-3-5-flash-high
+Google: Gemini 3.1 Pro Preview Custom Tools low,openrouter/google/gemini-3.1-pro-preview-customtools,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-032-openrouter-google-gemini-3-1-pro-preview-customtools-low
+Google: Gemini 3.1 Pro Preview Custom Tools high,openrouter/google/gemini-3.1-pro-preview-customtools,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-033-openrouter-google-gemini-3-1-pro-preview-customtools-high
+Google: Gemini 3.1 Flash Lite minimal,openrouter/google/gemini-3.1-flash-lite,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-034-openrouter-google-gemini-3-1-flash-lite-minimal
+Google: Gemini 3.1 Flash Lite low,openrouter/google/gemini-3.1-flash-lite,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-035-openrouter-google-gemini-3-1-flash-lite-low
+Google: Gemini 3.1 Flash Lite medium,openrouter/google/gemini-3.1-flash-lite,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-036-openrouter-google-gemini-3-1-flash-lite-medium
+Google: Gemini 3.1 Flash Lite high,openrouter/google/gemini-3.1-flash-lite,results/summaries/paper-v1-top-thinking-smoke-20260602/top-thinking-037-openrouter-google-gemini-3-1-flash-lite-high

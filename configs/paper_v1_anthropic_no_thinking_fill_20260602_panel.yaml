@@ -1,0 +1,41 @@
+schema_version: paper-model-panel-v1
+created_at: "2026-06-02"
+run_status: planned
+dataset: data/barrages/hard_obvious_8x10_seed_20260531.jsonl
+profile: hard_obvious_8x10
+seed: 20260531
+defaults:
+  inspect_args:
+    - --no-log-model-api
+    - --no-log-realtime
+    - --timeout=180
+    - --max-retries=0
+entries:
+  - id: fill-anthropic-claude-opus-4-8-none
+    label: Claude Opus 4.8 none
+    provider_route: anthropic
+    upstream_provider: anthropic
+    provider_api: anthropic_messages
+    inspect_model: anthropic/claude-opus-4-8
+    model_id: claude-opus-4-8
+    profile: hard_obvious_8x10
+    seed: 20260531
+    run_status: planned
+    control_style: anthropic_no_thinking
+    thinking_depth: none
+    generation_settings:
+      max_tokens: 2000
+  - id: fill-anthropic-claude-sonnet-4-6-none
+    label: Claude Sonnet 4.6 none
+    provider_route: anthropic
+    upstream_provider: anthropic
+    provider_api: anthropic_messages
+    inspect_model: anthropic/claude-sonnet-4-6
+    model_id: claude-sonnet-4-6
+    profile: hard_obvious_8x10
+    seed: 20260531
+    run_status: planned
+    control_style: anthropic_no_thinking
+    thinking_depth: none
+    generation_settings:
+      max_tokens: 2000

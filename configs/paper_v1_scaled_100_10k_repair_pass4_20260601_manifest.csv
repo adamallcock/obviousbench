@@ -1,0 +1,6 @@
+label,model,summary_dir
+NVIDIA: Nemotron 3 Super,openrouter/nvidia/nemotron-3-super-120b-a12b,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-060-openrouter-029-nvidia-nemotron-3-super-120b-a12b
+AllenAI: Olmo 3 32B Think,openrouter/allenai/olmo-3-32b-think,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-063-openrouter-038-allenai-olmo-3-32b-think
+Qwen2.5 Coder 32B Instruct,openrouter/qwen/qwen-2.5-coder-32b-instruct,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-085-openrouter-067-qwen-qwen-2-5-coder-32b-instruct
+AionLabs: Aion-1.0-Mini,openrouter/aion-labs/aion-1.0-mini,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-091-openrouter-119-aion-labs-aion-1-0-mini
+MoonshotAI: Kimi K2 0711,openrouter/moonshotai/kimi-k2,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-099-openrouter-149-moonshotai-kimi-k2

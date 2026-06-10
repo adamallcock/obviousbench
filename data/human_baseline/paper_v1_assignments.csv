@@ -1,0 +1,2051 @@
+participant_id,sequence,item_id,family,subfamily,answer_type,scorer,prompt
+p01,1,obviousbench.char_count.en.v0.public.000040,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many a's are in alphabetical?
+Answer:"
+p01,2,obviousbench.constraint.en.v0.public.000021,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The luggage repair shop is across the street. If my suitcase zipper needs fixing, should I carry my clothes in a tote or roll or bring the suitcase?
+
+A. Carry my clothes in a tote
+B. Roll or bring the suitcase
+C. Bring only the luggage tag
+D. It is impossible
+
+Answer:"
+p01,3,obviousbench.ordering.en.v0.public.000036,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: pear, apple, banana.
+Answer:"
+p01,4,obviousbench.constraint.en.v0.public.000032,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The sunglasses repair kiosk is in the mall. If my sunglasses need a new hinge, should I wear regular glasses and leave the sunglasses behind, or bring the sunglasses?
+
+A. Wear regular glasses and leave the sunglasses behind
+B. Bring the sunglasses
+C. Bring only the case
+D. It is impossible
+
+Answer:"
+p01,5,obviousbench.char_count.en.v0.public.000057,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in terracotta?
+Answer:"
+p01,6,obviousbench.format.en.v0.public.000008,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p01,7,obviousbench.char_count.en.v0.public.000038,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many c's are in coconut?
+Answer:"
+p01,8,obviousbench.ordering.en.v0.public.000046,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 7, 2, 10, 1.
+Answer:"
+p01,9,obviousbench.format.en.v0.public.000026,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p01,10,obviousbench.spell.en.v0.public.000020,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write committee without the letter e.
+Answer:"
+p01,11,obviousbench.format.en.v0.public.000046,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""blue"".
+Answer:"
+p01,12,obviousbench.spell.en.v0.public.000008,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write the word ""sentence"" after deleting every letter ""e"".
+Answer:"
+p01,13,obviousbench.ordering.en.v0.public.000048,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: -1, 4, 0, -3.
+Answer:"
+p01,14,obviousbench.format.en.v0.public.000020,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p01,15,obviousbench.arith.en.v0.public.000007,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 9 + 14 - 1?
+Answer:"
+p01,16,obviousbench.negation.en.v0.public.000034,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the month that is not in winter in the northern hemisphere: January, July, February, December.
+Answer:"
+p01,17,obviousbench.char_count.en.v0.public.000029,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in rearrangement?
+Answer:"
+p01,18,obviousbench.word_count.en.v0.public.000015,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p01,19,obviousbench.format.en.v0.public.000048,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""cat"".
+Answer:"
+p01,20,obviousbench.word_count.en.v0.public.000051,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p01,21,obviousbench.char_count.en.v0.public.000054,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in bookkeeping?
+Answer:"
+p01,22,obviousbench.char_count.en.v0.public.000030,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many h's are in alphabetical?
+Answer:"
+p01,23,obviousbench.char_count.en.v0.public.000046,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many t's are in accessibility?
+Answer:"
+p01,24,obviousbench.arith.en.v0.public.000025,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many minutes are in 3.5 hours?
+Answer:"
+p01,25,obviousbench.spell.en.v0.public.000017,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write orange without the letter e.
+Answer:"
+p01,26,obviousbench.negation.en.v0.public.000033,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the shape that does not have corners: square, triangle, circle, rectangle.
+Answer:"
+p01,27,obviousbench.constraint.en.v0.public.000033,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The jeweler is across the hall. If my ring needs resizing, should I wear a different ring or wear or bring the ring that needs resizing?
+
+A. Wear a different ring
+B. Wear or bring the ring that needs resizing
+C. Bring only the box
+D. It is impossible
+
+Answer:"
+p01,28,obviousbench.constraint.en.v0.public.000040,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The engraving kiosk is 50 feet away. If I want my name engraved on my metal water bottle, should I drink from the fountain or bring the bottle?
+
+A. Drink from the fountain
+B. Bring the bottle
+C. Bring only my name written down
+D. It is impossible
+
+Answer:"
+p01,29,obviousbench.negation.en.v0.public.000012,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p01,30,obviousbench.format.en.v0.public.000047,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""17"".
+Answer:"
+p01,31,obviousbench.format.en.v0.public.000028,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p01,32,obviousbench.ordering.en.v0.public.000047,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 3.1, 3.01, 3.2.
+Answer:"
+p01,33,obviousbench.arith.en.v0.public.000028,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 42 + 29 - 11?
+Answer:"
+p01,34,obviousbench.format.en.v0.public.000050,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""true"".
+Answer:"
+p01,35,obviousbench.negation.en.v0.public.000035,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the number that is not greater than 10: 14, 22, 9, 18.
+Answer:"
+p01,36,obviousbench.negation.en.v0.public.000018,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which number is not even?
+
+A. 4
+B. 8
+C. 11
+D. 20
+
+Answer:"
+p01,37,obviousbench.arith.en.v0.public.000026,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 18 multiplied by 7?
+Answer:"
+p01,38,obviousbench.char_count.en.v0.public.000017,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many e's are in responsiveness?
+Answer:"
+p01,39,obviousbench.negation.en.v0.public.000032,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the item that is not made of metal: spoon, nail, paper, coin.
+Answer:"
+p01,40,obviousbench.ordering.en.v0.public.000049,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 12, 2, 21, 1.
+Answer:"
+p01,41,obviousbench.ordering.en.v0.public.000012,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: cat, car, cap.
+Answer:"
+p01,42,obviousbench.spell.en.v0.public.000014,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write planet without the letter e.
+Answer:"
+p01,43,obviousbench.negation.en.v0.public.000031,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the word without the letter e: peach, melon, plum, cherry.
+Answer:"
+p01,44,obviousbench.word_count.en.v0.public.000027,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p01,45,obviousbench.format.en.v0.public.000049,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""north"".
+Answer:"
+p01,46,obviousbench.word_count.en.v0.public.000042,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p01,47,obviousbench.arith.en.v0.public.000024,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 3 miles to kilometers using 1 mile = 1.609 km.
+Answer:"
+p01,48,obviousbench.arith.en.v0.public.000022,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 7.2 or 7.12?
+Answer:"
+p01,49,obviousbench.spell.en.v0.public.000005,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write necessary without the letter e.
+Answer:"
+p01,50,obviousbench.constraint.en.v0.public.000028,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The tailor is next door. If my pants are already pinned for hemming, should I wear shorts there or bring the pinned pants?
+
+A. Wear shorts there
+B. Bring the pinned pants
+C. Bring only a measuring tape
+D. It is impossible
+
+Answer:"
+p01,51,obviousbench.constraint.en.v0.public.000036,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The bike shop is around the corner. If my helmet needs a new buckle, should I walk over in a cap or wear or bring the helmet?
+
+A. Walk over in a cap
+B. Wear or bring the helmet
+C. Bring only the bike
+D. It is impossible
+
+Answer:"
+p01,52,obviousbench.word_count.en.v0.public.000045,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p01,53,obviousbench.negation.en.v0.public.000016,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p01,54,obviousbench.word_count.en.v0.public.000070,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: Monday, Tuesday, Wednesday, Thursday?
+Answer:"
+p01,55,obviousbench.ordering.en.v0.public.000025,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p01,56,obviousbench.constraint.en.v0.public.000038,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The embroidery booth is at the end of the hall. If I want my baseball cap embroidered, should I go bareheaded or wear or bring the cap?
+
+A. Go bareheaded
+B. Wear or bring the cap
+C. Bring only the logo idea
+D. It is impossible
+
+Answer:"
+p01,57,obviousbench.spell.en.v0.public.000022,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write parallel without the letter e.
+Answer:"
+p01,58,obviousbench.negation.en.v0.public.000020,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p01,59,obviousbench.char_count.en.v0.public.000062,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many p's are in responsiveness?
+Answer:"
+p01,60,obviousbench.ordering.en.v0.public.000045,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p01,61,obviousbench.arith.en.v0.public.000021,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 9.9 or 9.11?
+Answer:"
+p01,62,obviousbench.spell.en.v0.public.000015,spelling_transform,replace_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Replace every a in planet with @.
+Answer:"
+p01,63,obviousbench.negation.en.v0.public.000019,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which item is not a fruit?
+
+A. apple
+B. banana
+C. carrot
+D. pear
+
+Answer:"
+p01,64,obviousbench.word_count.en.v0.public.000036,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p01,65,obviousbench.arith.en.v0.public.000020,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 22 + 27 - 2?
+Answer:"
+p01,66,obviousbench.constraint.en.v0.public.000025,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The music shop is next door. If my guitar case needs a new handle, should I carry the guitar without its case or bring the guitar case?
+
+A. Carry the guitar without its case
+B. Bring the guitar case
+C. Bring only guitar picks
+D. It is impossible
+
+Answer:"
+p01,67,obviousbench.spell.en.v0.public.000002,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write strawberry without the letter e.
+Answer:"
+p01,68,obviousbench.word_count.en.v0.public.000033,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p01,69,obviousbench.ordering.en.v0.public.000050,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 5.5, 5.05, 5.15.
+Answer:"
+p01,70,obviousbench.arith.en.v0.public.000027,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 750 grams to kilograms.
+Answer:"
+p01,71,obviousbench.word_count.en.v0.public.000024,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p01,72,obviousbench.constraint.en.v0.public.000008,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The window tinting shop is 100m away. If I want the windows on my car tinted, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Bring only the appointment card
+D. It is impossible
+
+Answer:"
+p01,73,obviousbench.word_count.en.v0.public.000052,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: A, B, C, D, E?
+Answer:"
+p01,74,obviousbench.arith.en.v0.public.000023,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 3.05 or 3.5?
+Answer:"
+p01,75,obviousbench.char_count.en.v0.public.000008,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in raspberry?
+Answer:"
+p01,76,obviousbench.format.en.v0.public.000030,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p01,77,obviousbench.constraint.en.v0.public.000003,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The mechanic is two blocks away. If I want my car's oil changed, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Take the bus there
+D. It is impossible
+
+Answer:"
+p01,78,obviousbench.spell.en.v0.public.000025,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write bookkeeper without the letter e.
+Answer:"
+p01,79,obviousbench.ordering.en.v0.public.000055,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these words alphabetically: blue, black, brown, beige.
+Answer:"
+p01,80,obviousbench.spell.en.v0.public.000028,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write reliability without the letter e.
+Answer:"
+p02,1,obviousbench.arith.en.v0.public.000021,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 9.9 or 9.11?
+Answer:"
+p02,2,obviousbench.constraint.en.v0.public.000003,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The mechanic is two blocks away. If I want my car's oil changed, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Take the bus there
+D. It is impossible
+
+Answer:"
+p02,3,obviousbench.constraint.en.v0.public.000008,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The window tinting shop is 100m away. If I want the windows on my car tinted, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Bring only the appointment card
+D. It is impossible
+
+Answer:"
+p02,4,obviousbench.constraint.en.v0.public.000033,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The jeweler is across the hall. If my ring needs resizing, should I wear a different ring or wear or bring the ring that needs resizing?
+
+A. Wear a different ring
+B. Wear or bring the ring that needs resizing
+C. Bring only the box
+D. It is impossible
+
+Answer:"
+p02,5,obviousbench.word_count.en.v0.public.000033,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p02,6,obviousbench.format.en.v0.public.000048,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""cat"".
+Answer:"
+p02,7,obviousbench.char_count.en.v0.public.000030,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many h's are in alphabetical?
+Answer:"
+p02,8,obviousbench.ordering.en.v0.public.000047,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 3.1, 3.01, 3.2.
+Answer:"
+p02,9,obviousbench.format.en.v0.public.000047,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""17"".
+Answer:"
+p02,10,obviousbench.arith.en.v0.public.000022,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 7.2 or 7.12?
+Answer:"
+p02,11,obviousbench.format.en.v0.public.000050,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""true"".
+Answer:"
+p02,12,obviousbench.format.en.v0.public.000008,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p02,13,obviousbench.constraint.en.v0.public.000032,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The sunglasses repair kiosk is in the mall. If my sunglasses need a new hinge, should I wear regular glasses and leave the sunglasses behind, or bring the sunglasses?
+
+A. Wear regular glasses and leave the sunglasses behind
+B. Bring the sunglasses
+C. Bring only the case
+D. It is impossible
+
+Answer:"
+p02,14,obviousbench.arith.en.v0.public.000007,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 9 + 14 - 1?
+Answer:"
+p02,15,obviousbench.negation.en.v0.public.000018,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which number is not even?
+
+A. 4
+B. 8
+C. 11
+D. 20
+
+Answer:"
+p02,16,obviousbench.arith.en.v0.public.000025,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many minutes are in 3.5 hours?
+Answer:"
+p02,17,obviousbench.negation.en.v0.public.000033,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the shape that does not have corners: square, triangle, circle, rectangle.
+Answer:"
+p02,18,obviousbench.spell.en.v0.public.000008,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write the word ""sentence"" after deleting every letter ""e"".
+Answer:"
+p02,19,obviousbench.word_count.en.v0.public.000015,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p02,20,obviousbench.negation.en.v0.public.000035,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the number that is not greater than 10: 14, 22, 9, 18.
+Answer:"
+p02,21,obviousbench.ordering.en.v0.public.000045,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p02,22,obviousbench.spell.en.v0.public.000002,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write strawberry without the letter e.
+Answer:"
+p02,23,obviousbench.ordering.en.v0.public.000049,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 12, 2, 21, 1.
+Answer:"
+p02,24,obviousbench.ordering.en.v0.public.000046,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 7, 2, 10, 1.
+Answer:"
+p02,25,obviousbench.format.en.v0.public.000020,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p02,26,obviousbench.ordering.en.v0.public.000055,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these words alphabetically: blue, black, brown, beige.
+Answer:"
+p02,27,obviousbench.spell.en.v0.public.000015,spelling_transform,replace_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Replace every a in planet with @.
+Answer:"
+p02,28,obviousbench.constraint.en.v0.public.000021,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The luggage repair shop is across the street. If my suitcase zipper needs fixing, should I carry my clothes in a tote or roll or bring the suitcase?
+
+A. Carry my clothes in a tote
+B. Roll or bring the suitcase
+C. Bring only the luggage tag
+D. It is impossible
+
+Answer:"
+p02,29,obviousbench.arith.en.v0.public.000023,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 3.05 or 3.5?
+Answer:"
+p02,30,obviousbench.word_count.en.v0.public.000052,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: A, B, C, D, E?
+Answer:"
+p02,31,obviousbench.format.en.v0.public.000030,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p02,32,obviousbench.spell.en.v0.public.000028,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write reliability without the letter e.
+Answer:"
+p02,33,obviousbench.char_count.en.v0.public.000062,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many p's are in responsiveness?
+Answer:"
+p02,34,obviousbench.arith.en.v0.public.000028,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 42 + 29 - 11?
+Answer:"
+p02,35,obviousbench.char_count.en.v0.public.000038,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many c's are in coconut?
+Answer:"
+p02,36,obviousbench.ordering.en.v0.public.000048,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: -1, 4, 0, -3.
+Answer:"
+p02,37,obviousbench.ordering.en.v0.public.000012,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: cat, car, cap.
+Answer:"
+p02,38,obviousbench.negation.en.v0.public.000032,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the item that is not made of metal: spoon, nail, paper, coin.
+Answer:"
+p02,39,obviousbench.word_count.en.v0.public.000042,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p02,40,obviousbench.char_count.en.v0.public.000040,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many a's are in alphabetical?
+Answer:"
+p02,41,obviousbench.spell.en.v0.public.000020,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write committee without the letter e.
+Answer:"
+p02,42,obviousbench.arith.en.v0.public.000026,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 18 multiplied by 7?
+Answer:"
+p02,43,obviousbench.char_count.en.v0.public.000029,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in rearrangement?
+Answer:"
+p02,44,obviousbench.negation.en.v0.public.000031,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the word without the letter e: peach, melon, plum, cherry.
+Answer:"
+p02,45,obviousbench.arith.en.v0.public.000027,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 750 grams to kilograms.
+Answer:"
+p02,46,obviousbench.char_count.en.v0.public.000017,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many e's are in responsiveness?
+Answer:"
+p02,47,obviousbench.spell.en.v0.public.000025,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write bookkeeper without the letter e.
+Answer:"
+p02,48,obviousbench.negation.en.v0.public.000034,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the month that is not in winter in the northern hemisphere: January, July, February, December.
+Answer:"
+p02,49,obviousbench.word_count.en.v0.public.000070,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: Monday, Tuesday, Wednesday, Thursday?
+Answer:"
+p02,50,obviousbench.spell.en.v0.public.000017,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write orange without the letter e.
+Answer:"
+p02,51,obviousbench.spell.en.v0.public.000014,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write planet without the letter e.
+Answer:"
+p02,52,obviousbench.ordering.en.v0.public.000050,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 5.5, 5.05, 5.15.
+Answer:"
+p02,53,obviousbench.format.en.v0.public.000046,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""blue"".
+Answer:"
+p02,54,obviousbench.negation.en.v0.public.000012,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p02,55,obviousbench.char_count.en.v0.public.000054,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in bookkeeping?
+Answer:"
+p02,56,obviousbench.spell.en.v0.public.000005,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write necessary without the letter e.
+Answer:"
+p02,57,obviousbench.format.en.v0.public.000026,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p02,58,obviousbench.spell.en.v0.public.000022,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write parallel without the letter e.
+Answer:"
+p02,59,obviousbench.constraint.en.v0.public.000028,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The tailor is next door. If my pants are already pinned for hemming, should I wear shorts there or bring the pinned pants?
+
+A. Wear shorts there
+B. Bring the pinned pants
+C. Bring only a measuring tape
+D. It is impossible
+
+Answer:"
+p02,60,obviousbench.negation.en.v0.public.000019,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which item is not a fruit?
+
+A. apple
+B. banana
+C. carrot
+D. pear
+
+Answer:"
+p02,61,obviousbench.char_count.en.v0.public.000046,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many t's are in accessibility?
+Answer:"
+p02,62,obviousbench.format.en.v0.public.000028,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p02,63,obviousbench.constraint.en.v0.public.000040,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The engraving kiosk is 50 feet away. If I want my name engraved on my metal water bottle, should I drink from the fountain or bring the bottle?
+
+A. Drink from the fountain
+B. Bring the bottle
+C. Bring only my name written down
+D. It is impossible
+
+Answer:"
+p02,64,obviousbench.word_count.en.v0.public.000027,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p02,65,obviousbench.arith.en.v0.public.000024,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 3 miles to kilometers using 1 mile = 1.609 km.
+Answer:"
+p02,66,obviousbench.constraint.en.v0.public.000036,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The bike shop is around the corner. If my helmet needs a new buckle, should I walk over in a cap or wear or bring the helmet?
+
+A. Walk over in a cap
+B. Wear or bring the helmet
+C. Bring only the bike
+D. It is impossible
+
+Answer:"
+p02,67,obviousbench.arith.en.v0.public.000020,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 22 + 27 - 2?
+Answer:"
+p02,68,obviousbench.ordering.en.v0.public.000025,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p02,69,obviousbench.char_count.en.v0.public.000057,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in terracotta?
+Answer:"
+p02,70,obviousbench.word_count.en.v0.public.000045,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p02,71,obviousbench.ordering.en.v0.public.000036,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: pear, apple, banana.
+Answer:"
+p02,72,obviousbench.word_count.en.v0.public.000036,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p02,73,obviousbench.word_count.en.v0.public.000051,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p02,74,obviousbench.constraint.en.v0.public.000025,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The music shop is next door. If my guitar case needs a new handle, should I carry the guitar without its case or bring the guitar case?
+
+A. Carry the guitar without its case
+B. Bring the guitar case
+C. Bring only guitar picks
+D. It is impossible
+
+Answer:"
+p02,75,obviousbench.word_count.en.v0.public.000024,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p02,76,obviousbench.format.en.v0.public.000049,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""north"".
+Answer:"
+p02,77,obviousbench.negation.en.v0.public.000016,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p02,78,obviousbench.char_count.en.v0.public.000008,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in raspberry?
+Answer:"
+p02,79,obviousbench.constraint.en.v0.public.000038,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The embroidery booth is at the end of the hall. If I want my baseball cap embroidered, should I go bareheaded or wear or bring the cap?
+
+A. Go bareheaded
+B. Wear or bring the cap
+C. Bring only the logo idea
+D. It is impossible
+
+Answer:"
+p02,80,obviousbench.negation.en.v0.public.000020,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p03,1,obviousbench.char_count.en.v0.public.000030,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many h's are in alphabetical?
+Answer:"
+p03,2,obviousbench.negation.en.v0.public.000016,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p03,3,obviousbench.ordering.en.v0.public.000055,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these words alphabetically: blue, black, brown, beige.
+Answer:"
+p03,4,obviousbench.spell.en.v0.public.000028,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write reliability without the letter e.
+Answer:"
+p03,5,obviousbench.negation.en.v0.public.000020,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p03,6,obviousbench.spell.en.v0.public.000025,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write bookkeeper without the letter e.
+Answer:"
+p03,7,obviousbench.word_count.en.v0.public.000036,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p03,8,obviousbench.format.en.v0.public.000048,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""cat"".
+Answer:"
+p03,9,obviousbench.char_count.en.v0.public.000029,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in rearrangement?
+Answer:"
+p03,10,obviousbench.format.en.v0.public.000047,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""17"".
+Answer:"
+p03,11,obviousbench.char_count.en.v0.public.000040,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many a's are in alphabetical?
+Answer:"
+p03,12,obviousbench.format.en.v0.public.000046,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""blue"".
+Answer:"
+p03,13,obviousbench.char_count.en.v0.public.000008,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in raspberry?
+Answer:"
+p03,14,obviousbench.spell.en.v0.public.000005,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write necessary without the letter e.
+Answer:"
+p03,15,obviousbench.arith.en.v0.public.000023,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 3.05 or 3.5?
+Answer:"
+p03,16,obviousbench.ordering.en.v0.public.000047,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 3.1, 3.01, 3.2.
+Answer:"
+p03,17,obviousbench.ordering.en.v0.public.000012,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: cat, car, cap.
+Answer:"
+p03,18,obviousbench.ordering.en.v0.public.000045,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p03,19,obviousbench.word_count.en.v0.public.000045,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p03,20,obviousbench.negation.en.v0.public.000012,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p03,21,obviousbench.ordering.en.v0.public.000025,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p03,22,obviousbench.arith.en.v0.public.000028,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 42 + 29 - 11?
+Answer:"
+p03,23,obviousbench.constraint.en.v0.public.000038,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The embroidery booth is at the end of the hall. If I want my baseball cap embroidered, should I go bareheaded or wear or bring the cap?
+
+A. Go bareheaded
+B. Wear or bring the cap
+C. Bring only the logo idea
+D. It is impossible
+
+Answer:"
+p03,24,obviousbench.constraint.en.v0.public.000040,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The engraving kiosk is 50 feet away. If I want my name engraved on my metal water bottle, should I drink from the fountain or bring the bottle?
+
+A. Drink from the fountain
+B. Bring the bottle
+C. Bring only my name written down
+D. It is impossible
+
+Answer:"
+p03,25,obviousbench.arith.en.v0.public.000022,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 7.2 or 7.12?
+Answer:"
+p03,26,obviousbench.negation.en.v0.public.000035,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the number that is not greater than 10: 14, 22, 9, 18.
+Answer:"
+p03,27,obviousbench.arith.en.v0.public.000020,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 22 + 27 - 2?
+Answer:"
+p03,28,obviousbench.constraint.en.v0.public.000028,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The tailor is next door. If my pants are already pinned for hemming, should I wear shorts there or bring the pinned pants?
+
+A. Wear shorts there
+B. Bring the pinned pants
+C. Bring only a measuring tape
+D. It is impossible
+
+Answer:"
+p03,29,obviousbench.word_count.en.v0.public.000027,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p03,30,obviousbench.word_count.en.v0.public.000033,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p03,31,obviousbench.ordering.en.v0.public.000050,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 5.5, 5.05, 5.15.
+Answer:"
+p03,32,obviousbench.char_count.en.v0.public.000038,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many c's are in coconut?
+Answer:"
+p03,33,obviousbench.char_count.en.v0.public.000062,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many p's are in responsiveness?
+Answer:"
+p03,34,obviousbench.spell.en.v0.public.000014,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write planet without the letter e.
+Answer:"
+p03,35,obviousbench.char_count.en.v0.public.000046,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many t's are in accessibility?
+Answer:"
+p03,36,obviousbench.constraint.en.v0.public.000021,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The luggage repair shop is across the street. If my suitcase zipper needs fixing, should I carry my clothes in a tote or roll or bring the suitcase?
+
+A. Carry my clothes in a tote
+B. Roll or bring the suitcase
+C. Bring only the luggage tag
+D. It is impossible
+
+Answer:"
+p03,37,obviousbench.word_count.en.v0.public.000042,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p03,38,obviousbench.word_count.en.v0.public.000052,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: A, B, C, D, E?
+Answer:"
+p03,39,obviousbench.constraint.en.v0.public.000008,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The window tinting shop is 100m away. If I want the windows on my car tinted, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Bring only the appointment card
+D. It is impossible
+
+Answer:"
+p03,40,obviousbench.format.en.v0.public.000049,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""north"".
+Answer:"
+p03,41,obviousbench.constraint.en.v0.public.000025,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The music shop is next door. If my guitar case needs a new handle, should I carry the guitar without its case or bring the guitar case?
+
+A. Carry the guitar without its case
+B. Bring the guitar case
+C. Bring only guitar picks
+D. It is impossible
+
+Answer:"
+p03,42,obviousbench.negation.en.v0.public.000018,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which number is not even?
+
+A. 4
+B. 8
+C. 11
+D. 20
+
+Answer:"
+p03,43,obviousbench.arith.en.v0.public.000021,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 9.9 or 9.11?
+Answer:"
+p03,44,obviousbench.spell.en.v0.public.000017,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write orange without the letter e.
+Answer:"
+p03,45,obviousbench.negation.en.v0.public.000031,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the word without the letter e: peach, melon, plum, cherry.
+Answer:"
+p03,46,obviousbench.word_count.en.v0.public.000051,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p03,47,obviousbench.arith.en.v0.public.000007,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 9 + 14 - 1?
+Answer:"
+p03,48,obviousbench.word_count.en.v0.public.000070,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: Monday, Tuesday, Wednesday, Thursday?
+Answer:"
+p03,49,obviousbench.format.en.v0.public.000026,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p03,50,obviousbench.format.en.v0.public.000050,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""true"".
+Answer:"
+p03,51,obviousbench.constraint.en.v0.public.000036,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The bike shop is around the corner. If my helmet needs a new buckle, should I walk over in a cap or wear or bring the helmet?
+
+A. Walk over in a cap
+B. Wear or bring the helmet
+C. Bring only the bike
+D. It is impossible
+
+Answer:"
+p03,52,obviousbench.spell.en.v0.public.000015,spelling_transform,replace_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Replace every a in planet with @.
+Answer:"
+p03,53,obviousbench.negation.en.v0.public.000032,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the item that is not made of metal: spoon, nail, paper, coin.
+Answer:"
+p03,54,obviousbench.spell.en.v0.public.000008,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write the word ""sentence"" after deleting every letter ""e"".
+Answer:"
+p03,55,obviousbench.arith.en.v0.public.000025,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many minutes are in 3.5 hours?
+Answer:"
+p03,56,obviousbench.format.en.v0.public.000020,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p03,57,obviousbench.negation.en.v0.public.000019,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which item is not a fruit?
+
+A. apple
+B. banana
+C. carrot
+D. pear
+
+Answer:"
+p03,58,obviousbench.spell.en.v0.public.000022,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write parallel without the letter e.
+Answer:"
+p03,59,obviousbench.format.en.v0.public.000030,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p03,60,obviousbench.constraint.en.v0.public.000003,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The mechanic is two blocks away. If I want my car's oil changed, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Take the bus there
+D. It is impossible
+
+Answer:"
+p03,61,obviousbench.ordering.en.v0.public.000046,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 7, 2, 10, 1.
+Answer:"
+p03,62,obviousbench.char_count.en.v0.public.000057,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in terracotta?
+Answer:"
+p03,63,obviousbench.negation.en.v0.public.000033,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the shape that does not have corners: square, triangle, circle, rectangle.
+Answer:"
+p03,64,obviousbench.word_count.en.v0.public.000024,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p03,65,obviousbench.char_count.en.v0.public.000017,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many e's are in responsiveness?
+Answer:"
+p03,66,obviousbench.arith.en.v0.public.000026,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 18 multiplied by 7?
+Answer:"
+p03,67,obviousbench.negation.en.v0.public.000034,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the month that is not in winter in the northern hemisphere: January, July, February, December.
+Answer:"
+p03,68,obviousbench.format.en.v0.public.000028,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p03,69,obviousbench.arith.en.v0.public.000027,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 750 grams to kilograms.
+Answer:"
+p03,70,obviousbench.ordering.en.v0.public.000049,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 12, 2, 21, 1.
+Answer:"
+p03,71,obviousbench.spell.en.v0.public.000020,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write committee without the letter e.
+Answer:"
+p03,72,obviousbench.arith.en.v0.public.000024,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 3 miles to kilometers using 1 mile = 1.609 km.
+Answer:"
+p03,73,obviousbench.ordering.en.v0.public.000036,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: pear, apple, banana.
+Answer:"
+p03,74,obviousbench.constraint.en.v0.public.000033,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The jeweler is across the hall. If my ring needs resizing, should I wear a different ring or wear or bring the ring that needs resizing?
+
+A. Wear a different ring
+B. Wear or bring the ring that needs resizing
+C. Bring only the box
+D. It is impossible
+
+Answer:"
+p03,75,obviousbench.constraint.en.v0.public.000032,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The sunglasses repair kiosk is in the mall. If my sunglasses need a new hinge, should I wear regular glasses and leave the sunglasses behind, or bring the sunglasses?
+
+A. Wear regular glasses and leave the sunglasses behind
+B. Bring the sunglasses
+C. Bring only the case
+D. It is impossible
+
+Answer:"
+p03,76,obviousbench.spell.en.v0.public.000002,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write strawberry without the letter e.
+Answer:"
+p03,77,obviousbench.char_count.en.v0.public.000054,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in bookkeeping?
+Answer:"
+p03,78,obviousbench.ordering.en.v0.public.000048,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: -1, 4, 0, -3.
+Answer:"
+p03,79,obviousbench.word_count.en.v0.public.000015,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p03,80,obviousbench.format.en.v0.public.000008,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p04,1,obviousbench.negation.en.v0.public.000034,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the month that is not in winter in the northern hemisphere: January, July, February, December.
+Answer:"
+p04,2,obviousbench.constraint.en.v0.public.000036,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The bike shop is around the corner. If my helmet needs a new buckle, should I walk over in a cap or wear or bring the helmet?
+
+A. Walk over in a cap
+B. Wear or bring the helmet
+C. Bring only the bike
+D. It is impossible
+
+Answer:"
+p04,3,obviousbench.char_count.en.v0.public.000046,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many t's are in accessibility?
+Answer:"
+p04,4,obviousbench.ordering.en.v0.public.000045,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p04,5,obviousbench.word_count.en.v0.public.000024,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p04,6,obviousbench.arith.en.v0.public.000022,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 7.2 or 7.12?
+Answer:"
+p04,7,obviousbench.arith.en.v0.public.000026,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 18 multiplied by 7?
+Answer:"
+p04,8,obviousbench.spell.en.v0.public.000022,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write parallel without the letter e.
+Answer:"
+p04,9,obviousbench.format.en.v0.public.000026,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p04,10,obviousbench.char_count.en.v0.public.000057,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in terracotta?
+Answer:"
+p04,11,obviousbench.spell.en.v0.public.000005,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write necessary without the letter e.
+Answer:"
+p04,12,obviousbench.word_count.en.v0.public.000015,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p04,13,obviousbench.negation.en.v0.public.000031,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the word without the letter e: peach, melon, plum, cherry.
+Answer:"
+p04,14,obviousbench.ordering.en.v0.public.000025,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p04,15,obviousbench.arith.en.v0.public.000007,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 9 + 14 - 1?
+Answer:"
+p04,16,obviousbench.negation.en.v0.public.000032,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the item that is not made of metal: spoon, nail, paper, coin.
+Answer:"
+p04,17,obviousbench.ordering.en.v0.public.000050,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 5.5, 5.05, 5.15.
+Answer:"
+p04,18,obviousbench.format.en.v0.public.000008,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p04,19,obviousbench.word_count.en.v0.public.000070,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: Monday, Tuesday, Wednesday, Thursday?
+Answer:"
+p04,20,obviousbench.format.en.v0.public.000020,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p04,21,obviousbench.ordering.en.v0.public.000046,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 7, 2, 10, 1.
+Answer:"
+p04,22,obviousbench.word_count.en.v0.public.000036,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p04,23,obviousbench.arith.en.v0.public.000025,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many minutes are in 3.5 hours?
+Answer:"
+p04,24,obviousbench.char_count.en.v0.public.000054,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in bookkeeping?
+Answer:"
+p04,25,obviousbench.ordering.en.v0.public.000036,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: pear, apple, banana.
+Answer:"
+p04,26,obviousbench.ordering.en.v0.public.000047,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 3.1, 3.01, 3.2.
+Answer:"
+p04,27,obviousbench.negation.en.v0.public.000019,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which item is not a fruit?
+
+A. apple
+B. banana
+C. carrot
+D. pear
+
+Answer:"
+p04,28,obviousbench.ordering.en.v0.public.000012,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: cat, car, cap.
+Answer:"
+p04,29,obviousbench.constraint.en.v0.public.000038,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The embroidery booth is at the end of the hall. If I want my baseball cap embroidered, should I go bareheaded or wear or bring the cap?
+
+A. Go bareheaded
+B. Wear or bring the cap
+C. Bring only the logo idea
+D. It is impossible
+
+Answer:"
+p04,30,obviousbench.word_count.en.v0.public.000045,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p04,31,obviousbench.spell.en.v0.public.000002,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write strawberry without the letter e.
+Answer:"
+p04,32,obviousbench.format.en.v0.public.000050,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""true"".
+Answer:"
+p04,33,obviousbench.spell.en.v0.public.000017,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write orange without the letter e.
+Answer:"
+p04,34,obviousbench.char_count.en.v0.public.000040,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many a's are in alphabetical?
+Answer:"
+p04,35,obviousbench.constraint.en.v0.public.000003,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The mechanic is two blocks away. If I want my car's oil changed, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Take the bus there
+D. It is impossible
+
+Answer:"
+p04,36,obviousbench.char_count.en.v0.public.000038,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many c's are in coconut?
+Answer:"
+p04,37,obviousbench.negation.en.v0.public.000018,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which number is not even?
+
+A. 4
+B. 8
+C. 11
+D. 20
+
+Answer:"
+p04,38,obviousbench.constraint.en.v0.public.000008,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The window tinting shop is 100m away. If I want the windows on my car tinted, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Bring only the appointment card
+D. It is impossible
+
+Answer:"
+p04,39,obviousbench.negation.en.v0.public.000033,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the shape that does not have corners: square, triangle, circle, rectangle.
+Answer:"
+p04,40,obviousbench.char_count.en.v0.public.000062,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many p's are in responsiveness?
+Answer:"
+p04,41,obviousbench.negation.en.v0.public.000020,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p04,42,obviousbench.arith.en.v0.public.000021,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 9.9 or 9.11?
+Answer:"
+p04,43,obviousbench.arith.en.v0.public.000020,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 22 + 27 - 2?
+Answer:"
+p04,44,obviousbench.spell.en.v0.public.000025,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write bookkeeper without the letter e.
+Answer:"
+p04,45,obviousbench.spell.en.v0.public.000014,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write planet without the letter e.
+Answer:"
+p04,46,obviousbench.word_count.en.v0.public.000042,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p04,47,obviousbench.constraint.en.v0.public.000032,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The sunglasses repair kiosk is in the mall. If my sunglasses need a new hinge, should I wear regular glasses and leave the sunglasses behind, or bring the sunglasses?
+
+A. Wear regular glasses and leave the sunglasses behind
+B. Bring the sunglasses
+C. Bring only the case
+D. It is impossible
+
+Answer:"
+p04,48,obviousbench.word_count.en.v0.public.000033,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p04,49,obviousbench.negation.en.v0.public.000035,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the number that is not greater than 10: 14, 22, 9, 18.
+Answer:"
+p04,50,obviousbench.format.en.v0.public.000028,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p04,51,obviousbench.ordering.en.v0.public.000055,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these words alphabetically: blue, black, brown, beige.
+Answer:"
+p04,52,obviousbench.char_count.en.v0.public.000030,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many h's are in alphabetical?
+Answer:"
+p04,53,obviousbench.word_count.en.v0.public.000052,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: A, B, C, D, E?
+Answer:"
+p04,54,obviousbench.ordering.en.v0.public.000048,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: -1, 4, 0, -3.
+Answer:"
+p04,55,obviousbench.format.en.v0.public.000046,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""blue"".
+Answer:"
+p04,56,obviousbench.constraint.en.v0.public.000028,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The tailor is next door. If my pants are already pinned for hemming, should I wear shorts there or bring the pinned pants?
+
+A. Wear shorts there
+B. Bring the pinned pants
+C. Bring only a measuring tape
+D. It is impossible
+
+Answer:"
+p04,57,obviousbench.spell.en.v0.public.000015,spelling_transform,replace_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Replace every a in planet with @.
+Answer:"
+p04,58,obviousbench.constraint.en.v0.public.000033,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The jeweler is across the hall. If my ring needs resizing, should I wear a different ring or wear or bring the ring that needs resizing?
+
+A. Wear a different ring
+B. Wear or bring the ring that needs resizing
+C. Bring only the box
+D. It is impossible
+
+Answer:"
+p04,59,obviousbench.format.en.v0.public.000030,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p04,60,obviousbench.arith.en.v0.public.000024,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 3 miles to kilometers using 1 mile = 1.609 km.
+Answer:"
+p04,61,obviousbench.arith.en.v0.public.000027,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 750 grams to kilograms.
+Answer:"
+p04,62,obviousbench.arith.en.v0.public.000023,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 3.05 or 3.5?
+Answer:"
+p04,63,obviousbench.constraint.en.v0.public.000025,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The music shop is next door. If my guitar case needs a new handle, should I carry the guitar without its case or bring the guitar case?
+
+A. Carry the guitar without its case
+B. Bring the guitar case
+C. Bring only guitar picks
+D. It is impossible
+
+Answer:"
+p04,64,obviousbench.format.en.v0.public.000049,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""north"".
+Answer:"
+p04,65,obviousbench.spell.en.v0.public.000008,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write the word ""sentence"" after deleting every letter ""e"".
+Answer:"
+p04,66,obviousbench.negation.en.v0.public.000016,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p04,67,obviousbench.format.en.v0.public.000047,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""17"".
+Answer:"
+p04,68,obviousbench.word_count.en.v0.public.000027,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p04,69,obviousbench.char_count.en.v0.public.000008,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in raspberry?
+Answer:"
+p04,70,obviousbench.negation.en.v0.public.000012,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p04,71,obviousbench.ordering.en.v0.public.000049,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 12, 2, 21, 1.
+Answer:"
+p04,72,obviousbench.arith.en.v0.public.000028,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 42 + 29 - 11?
+Answer:"
+p04,73,obviousbench.spell.en.v0.public.000028,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write reliability without the letter e.
+Answer:"
+p04,74,obviousbench.char_count.en.v0.public.000029,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in rearrangement?
+Answer:"
+p04,75,obviousbench.constraint.en.v0.public.000040,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The engraving kiosk is 50 feet away. If I want my name engraved on my metal water bottle, should I drink from the fountain or bring the bottle?
+
+A. Drink from the fountain
+B. Bring the bottle
+C. Bring only my name written down
+D. It is impossible
+
+Answer:"
+p04,76,obviousbench.char_count.en.v0.public.000017,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many e's are in responsiveness?
+Answer:"
+p04,77,obviousbench.format.en.v0.public.000048,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""cat"".
+Answer:"
+p04,78,obviousbench.word_count.en.v0.public.000051,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p04,79,obviousbench.spell.en.v0.public.000020,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write committee without the letter e.
+Answer:"
+p04,80,obviousbench.constraint.en.v0.public.000021,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The luggage repair shop is across the street. If my suitcase zipper needs fixing, should I carry my clothes in a tote or roll or bring the suitcase?
+
+A. Carry my clothes in a tote
+B. Roll or bring the suitcase
+C. Bring only the luggage tag
+D. It is impossible
+
+Answer:"
+p05,1,obviousbench.format.en.v0.public.000028,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p05,2,obviousbench.format.en.v0.public.000047,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""17"".
+Answer:"
+p05,3,obviousbench.spell.en.v0.public.000002,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write strawberry without the letter e.
+Answer:"
+p05,4,obviousbench.negation.en.v0.public.000031,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the word without the letter e: peach, melon, plum, cherry.
+Answer:"
+p05,5,obviousbench.format.en.v0.public.000048,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""cat"".
+Answer:"
+p05,6,obviousbench.word_count.en.v0.public.000027,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p05,7,obviousbench.spell.en.v0.public.000028,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write reliability without the letter e.
+Answer:"
+p05,8,obviousbench.char_count.en.v0.public.000017,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many e's are in responsiveness?
+Answer:"
+p05,9,obviousbench.word_count.en.v0.public.000052,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: A, B, C, D, E?
+Answer:"
+p05,10,obviousbench.arith.en.v0.public.000026,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 18 multiplied by 7?
+Answer:"
+p05,11,obviousbench.format.en.v0.public.000030,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p05,12,obviousbench.word_count.en.v0.public.000051,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p05,13,obviousbench.spell.en.v0.public.000020,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write committee without the letter e.
+Answer:"
+p05,14,obviousbench.word_count.en.v0.public.000042,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p05,15,obviousbench.arith.en.v0.public.000007,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 9 + 14 - 1?
+Answer:"
+p05,16,obviousbench.constraint.en.v0.public.000025,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The music shop is next door. If my guitar case needs a new handle, should I carry the guitar without its case or bring the guitar case?
+
+A. Carry the guitar without its case
+B. Bring the guitar case
+C. Bring only guitar picks
+D. It is impossible
+
+Answer:"
+p05,17,obviousbench.word_count.en.v0.public.000045,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p05,18,obviousbench.word_count.en.v0.public.000024,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p05,19,obviousbench.constraint.en.v0.public.000040,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The engraving kiosk is 50 feet away. If I want my name engraved on my metal water bottle, should I drink from the fountain or bring the bottle?
+
+A. Drink from the fountain
+B. Bring the bottle
+C. Bring only my name written down
+D. It is impossible
+
+Answer:"
+p05,20,obviousbench.format.en.v0.public.000008,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p05,21,obviousbench.arith.en.v0.public.000023,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 3.05 or 3.5?
+Answer:"
+p05,22,obviousbench.constraint.en.v0.public.000021,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The luggage repair shop is across the street. If my suitcase zipper needs fixing, should I carry my clothes in a tote or roll or bring the suitcase?
+
+A. Carry my clothes in a tote
+B. Roll or bring the suitcase
+C. Bring only the luggage tag
+D. It is impossible
+
+Answer:"
+p05,23,obviousbench.spell.en.v0.public.000017,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write orange without the letter e.
+Answer:"
+p05,24,obviousbench.spell.en.v0.public.000015,spelling_transform,replace_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Replace every a in planet with @.
+Answer:"
+p05,25,obviousbench.negation.en.v0.public.000018,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which number is not even?
+
+A. 4
+B. 8
+C. 11
+D. 20
+
+Answer:"
+p05,26,obviousbench.negation.en.v0.public.000034,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the month that is not in winter in the northern hemisphere: January, July, February, December.
+Answer:"
+p05,27,obviousbench.arith.en.v0.public.000022,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 7.2 or 7.12?
+Answer:"
+p05,28,obviousbench.ordering.en.v0.public.000048,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: -1, 4, 0, -3.
+Answer:"
+p05,29,obviousbench.word_count.en.v0.public.000070,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: Monday, Tuesday, Wednesday, Thursday?
+Answer:"
+p05,30,obviousbench.constraint.en.v0.public.000003,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The mechanic is two blocks away. If I want my car's oil changed, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Take the bus there
+D. It is impossible
+
+Answer:"
+p05,31,obviousbench.spell.en.v0.public.000008,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write the word ""sentence"" after deleting every letter ""e"".
+Answer:"
+p05,32,obviousbench.ordering.en.v0.public.000055,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these words alphabetically: blue, black, brown, beige.
+Answer:"
+p05,33,obviousbench.arith.en.v0.public.000025,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many minutes are in 3.5 hours?
+Answer:"
+p05,34,obviousbench.format.en.v0.public.000020,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p05,35,obviousbench.ordering.en.v0.public.000050,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 5.5, 5.05, 5.15.
+Answer:"
+p05,36,obviousbench.spell.en.v0.public.000014,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write planet without the letter e.
+Answer:"
+p05,37,obviousbench.negation.en.v0.public.000033,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the shape that does not have corners: square, triangle, circle, rectangle.
+Answer:"
+p05,38,obviousbench.char_count.en.v0.public.000054,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in bookkeeping?
+Answer:"
+p05,39,obviousbench.constraint.en.v0.public.000033,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The jeweler is across the hall. If my ring needs resizing, should I wear a different ring or wear or bring the ring that needs resizing?
+
+A. Wear a different ring
+B. Wear or bring the ring that needs resizing
+C. Bring only the box
+D. It is impossible
+
+Answer:"
+p05,40,obviousbench.spell.en.v0.public.000022,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write parallel without the letter e.
+Answer:"
+p05,41,obviousbench.negation.en.v0.public.000012,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p05,42,obviousbench.ordering.en.v0.public.000012,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: cat, car, cap.
+Answer:"
+p05,43,obviousbench.char_count.en.v0.public.000040,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many a's are in alphabetical?
+Answer:"
+p05,44,obviousbench.format.en.v0.public.000050,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""true"".
+Answer:"
+p05,45,obviousbench.arith.en.v0.public.000021,arithmetic,numeric_comparison,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Which is larger, 9.9 or 9.11?
+Answer:"
+p05,46,obviousbench.char_count.en.v0.public.000030,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many h's are in alphabetical?
+Answer:"
+p05,47,obviousbench.word_count.en.v0.public.000033,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p05,48,obviousbench.format.en.v0.public.000026,format_compliance,json_field,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with one key, ""answer"", whose value is ""3"".
+Answer:"
+p05,49,obviousbench.negation.en.v0.public.000032,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the item that is not made of metal: spoon, nail, paper, coin.
+Answer:"
+p05,50,obviousbench.char_count.en.v0.public.000038,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many c's are in coconut?
+Answer:"
+p05,51,obviousbench.arith.en.v0.public.000028,arithmetic,unit_conversion_and_small_calc,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 42 + 29 - 11?
+Answer:"
+p05,52,obviousbench.negation.en.v0.public.000016,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p05,53,obviousbench.char_count.en.v0.public.000046,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many t's are in accessibility?
+Answer:"
+p05,54,obviousbench.ordering.en.v0.public.000045,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p05,55,obviousbench.format.en.v0.public.000046,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""blue"".
+Answer:"
+p05,56,obviousbench.ordering.en.v0.public.000046,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 7, 2, 10, 1.
+Answer:"
+p05,57,obviousbench.constraint.en.v0.public.000038,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The embroidery booth is at the end of the hall. If I want my baseball cap embroidered, should I go bareheaded or wear or bring the cap?
+
+A. Go bareheaded
+B. Wear or bring the cap
+C. Bring only the logo idea
+D. It is impossible
+
+Answer:"
+p05,58,obviousbench.ordering.en.v0.public.000025,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: red, blue, green.
+Answer:"
+p05,59,obviousbench.arith.en.v0.public.000027,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 750 grams to kilograms.
+Answer:"
+p05,60,obviousbench.negation.en.v0.public.000035,negation,without_constraint,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Choose the number that is not greater than 10: 14, 22, 9, 18.
+Answer:"
+p05,61,obviousbench.negation.en.v0.public.000019,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which item is not a fruit?
+
+A. apple
+B. banana
+C. carrot
+D. pear
+
+Answer:"
+p05,62,obviousbench.word_count.en.v0.public.000015,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: red, blue, green, yellow?
+Answer:"
+p05,63,obviousbench.negation.en.v0.public.000020,negation,not_choice,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: Which word is not lowercase?
+
+A. cat
+B. dog
+C. USA
+D. sun
+
+Answer:"
+p05,64,obviousbench.arith.en.v0.public.000024,arithmetic,unit_conversion_and_small_calc,decimal,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Convert 3 miles to kilometers using 1 mile = 1.609 km.
+Answer:"
+p05,65,obviousbench.ordering.en.v0.public.000047,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 3.1, 3.01, 3.2.
+Answer:"
+p05,66,obviousbench.char_count.en.v0.public.000062,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many p's are in responsiveness?
+Answer:"
+p05,67,obviousbench.constraint.en.v0.public.000028,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The tailor is next door. If my pants are already pinned for hemming, should I wear shorts there or bring the pinned pants?
+
+A. Wear shorts there
+B. Bring the pinned pants
+C. Bring only a measuring tape
+D. It is impossible
+
+Answer:"
+p05,68,obviousbench.word_count.en.v0.public.000036,word_count,comma_list_count,integer,word_count_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many comma-separated values are shown here: north, south, east, west?
+Answer:"
+p05,69,obviousbench.constraint.en.v0.public.000032,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The sunglasses repair kiosk is in the mall. If my sunglasses need a new hinge, should I wear regular glasses and leave the sunglasses behind, or bring the sunglasses?
+
+A. Wear regular glasses and leave the sunglasses behind
+B. Bring the sunglasses
+C. Bring only the case
+D. It is impossible
+
+Answer:"
+p05,70,obviousbench.ordering.en.v0.public.000036,ordering,alphabetical_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these items alphabetically: pear, apple, banana.
+Answer:"
+p05,71,obviousbench.spell.en.v0.public.000005,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write necessary without the letter e.
+Answer:"
+p05,72,obviousbench.char_count.en.v0.public.000008,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in raspberry?
+Answer:"
+p05,73,obviousbench.format.en.v0.public.000049,format_compliance,exact_json_schema,json,json_exact_field_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Return a JSON object with exactly one key, ""answer"", whose value is ""north"".
+Answer:"
+p05,74,obviousbench.constraint.en.v0.public.000036,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The bike shop is around the corner. If my helmet needs a new buckle, should I walk over in a cap or wear or bring the helmet?
+
+A. Walk over in a cap
+B. Wear or bring the helmet
+C. Bring only the bike
+D. It is impossible
+
+Answer:"
+p05,75,obviousbench.char_count.en.v0.public.000057,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many r's are in terracotta?
+Answer:"
+p05,76,obviousbench.spell.en.v0.public.000025,spelling_transform,remove_letter,string,exact_string_trim_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Write bookkeeper without the letter e.
+Answer:"
+p05,77,obviousbench.ordering.en.v0.public.000049,ordering,numeric_sort,list,normalized_list_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: Sort these numbers from smallest to largest: 12, 2, 21, 1.
+Answer:"
+p05,78,obviousbench.char_count.en.v0.public.000029,character_count,single_letter_count,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: How many g's are in rearrangement?
+Answer:"
+p05,79,obviousbench.arith.en.v0.public.000020,arithmetic,small_integer_arithmetic,integer,exact_integer_extract_first_v0,"Answer the question. Return only the final answer, with no explanation.
+
+Question: What is 22 + 27 - 2?
+Answer:"
+p05,80,obviousbench.constraint.en.v0.public.000008,constraint_awareness,object_must_be_present,multiple_choice,multiple_choice_letter_v0,"Answer the question. Return only the letter of the correct option.
+
+Question: The window tinting shop is 100m away. If I want the windows on my car tinted, should I walk there or drive the car there?
+
+A. Walk there
+B. Drive the car there
+C. Bring only the appointment card
+D. It is impossible
+
+Answer:"

@@ -1,0 +1,9 @@
+family,item_count,core_h0_count,borderline_count,exclude_count,no_data_count,response_count,median_accuracy,median_seconds
+arithmetic,10,0,0,0,10,0,,
+character_count,10,0,0,0,10,0,,
+constraint_awareness,10,0,0,0,10,0,,
+format_compliance,10,0,0,0,10,0,,
+negation,10,0,0,0,10,0,,
+ordering,10,0,0,0,10,0,,
+spelling_transform,10,0,0,0,10,0,,
+word_count,10,0,0,0,10,0,,

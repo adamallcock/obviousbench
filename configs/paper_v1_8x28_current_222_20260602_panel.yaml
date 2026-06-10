@@ -1,0 +1,2778 @@
+schema_version: paper-model-panel-v1
+created_at: '2026-06-02'
+run_status: planned_not_run
+source_report_context: docs/reports/2026-06-02-paper-v1-combined-234-overline/report.html
+dataset: data/barrages/hard_obvious_8x28_seed_20260531.jsonl
+profile: hard_obvious_8x28
+seed: 20260531
+selection_policy:
+  summary: Generated estimate panel for expanding the 222 full 80-sample current rows
+    to hard_obvious_8x28.
+  notes:
+  - Entries are the 222 rows in the 2026-06-02 combined overline leaderboard with
+    scored_samples=80.
+  - Defaults omit --attempt-timeout to preserve cache compatibility with the current
+    80-sample scored runs.
+  - The six already-run 8x28 pilot model/configs get entry-level --attempt-timeout=180
+    to reuse their pilot cache entries.
+totals:
+  entry_count: 222
+  pilot_cache_key_overrides: 5
+entries:
+- id: expand222-scaled-060-openrouter-029-nvidia-nemotron-3-super-120b-a12b
+  label: 'NVIDIA: Nemotron 3 Super'
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/nemotron-3-super-120b-a12b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-060-openrouter-029-nvidia-nemotron-3-super-120b-a12b
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 0.45
+  inspect_args:
+  - --attempt-timeout=180
+  cache_reuse_note: Matches the completed 8x28 pilot cache key.
+- id: expand222-overline-003-openai-gpt-5-4-nano-high
+  label: OpenAI GPT-5.4 nano high
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-nano
+  generation_settings:
+    max_tokens: 4168
+    reasoning_effort: high
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/overline-003-openai-gpt-5-4-nano-high
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.25
+- id: expand222-scaled-023-openrouter-118-qwen-qwen3-235b-a22b-thinking-2507
+  label: 'Qwen: Qwen3 235B A22B Thinking 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-235b-a22b-thinking-2507
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-023-openrouter-118-qwen-qwen3-235b-a22b-thinking-2507
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.1
+- id: expand222-scaled-038-openrouter-126-tencent-hy3-preview
+  label: 'Tencent: Hy3 preview'
+  provider_route: openrouter
+  inspect_model: openrouter/tencent/hy3-preview
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-038-openrouter-126-tencent-hy3-preview
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.063
+  output_price_per_mtok_usd: 0.21
+- id: expand222-top-thinking-036-openrouter-google-gemini-3-1-flash-lite-medium
+  label: 'Google: Gemini 3.1 Flash Lite medium'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  generation_settings:
+    max_tokens: 2120
+    reasoning_effort: medium
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-036-openrouter-google-gemini-3-1-flash-lite-medium
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-next-033-registry-openrouter-170-z-ai-glm-4-6v
+  label: 'Z.ai: GLM 4.6V'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.6v
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-033-registry-openrouter-170-z-ai-glm-4-6v
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 0.9
+- id: expand222-top-thinking-037-openrouter-google-gemini-3-1-flash-lite-high
+  label: 'Google: Gemini 3.1 Flash Lite high'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: high
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-037-openrouter-google-gemini-3-1-flash-lite-high
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-next-060-registry-gemini-3-flash-preview
+  label: Gemini 3 Flash Preview
+  provider_route: gemini
+  inspect_model: google/gemini-3-flash-preview
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-060-registry-gemini-3-flash-preview
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.5
+  output_price_per_mtok_usd: 3
+- id: expand222-next-049-registry-openrouter-169-moonshotai-kimi-k2-5
+  label: 'MoonshotAI: Kimi K2.5'
+  provider_route: openrouter
+  inspect_model: openrouter/moonshotai/kimi-k2.5
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-049-registry-openrouter-169-moonshotai-kimi-k2-5
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 1.9
+- id: expand222-next-065-registry-openrouter-164-moonshotai-kimi-k2-6
+  label: 'MoonshotAI: Kimi K2.6'
+  provider_route: openrouter
+  inspect_model: openrouter/moonshotai/kimi-k2.6
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-065-registry-openrouter-164-moonshotai-kimi-k2-6
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.684
+  output_price_per_mtok_usd: 3.42
+- id: expand222-top-thinking-002-openai-gpt-5-5-low
+  label: OpenAI GPT-5.5 low
+  provider_route: openai
+  inspect_model: openai/gpt-5.5
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-002-openai-gpt-5-5-low
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+- id: expand222-top-thinking-029-openrouter-google-gemini-3-5-flash-low
+  label: 'Google: Gemini 3.5 Flash low'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.5-flash
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-029-openrouter-google-gemini-3-5-flash-low
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+- id: expand222-next-085-registry-openai-gpt-5-5-low
+  label: OpenAI GPT-5.5 low
+  provider_route: openai
+  inspect_model: openai/gpt-5.5
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: low
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-085-registry-openai-gpt-5-5-low
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+- id: expand222-top-thinking-003-openai-gpt-5-5-medium
+  label: OpenAI GPT-5.5 medium
+  provider_route: openai
+  inspect_model: openai/gpt-5.5
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: medium
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-003-openai-gpt-5-5-medium
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+- id: expand222-next-048-registry-openrouter-166-qwen-qwen3-6-plus
+  label: 'Qwen: Qwen3.6 Plus'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.6-plus
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-048-registry-openrouter-166-qwen-qwen3-6-plus
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.325
+  output_price_per_mtok_usd: 1.95
+- id: expand222-top-thinking-004-openai-gpt-5-5-high
+  label: OpenAI GPT-5.5 high
+  provider_route: openai
+  inspect_model: openai/gpt-5.5
+  generation_settings:
+    max_tokens: 4168
+    reasoning_effort: high
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-004-openai-gpt-5-5-high
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+- id: expand222-top-thinking-032-openrouter-google-gemini-3-1-pro-preview-customtools-low
+  label: 'Google: Gemini 3.1 Pro Preview Custom Tools low'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-pro-preview-customtools
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-032-openrouter-google-gemini-3-1-pro-preview-customtools-low
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 12
+- id: expand222-top-thinking-031-openrouter-google-gemini-3-5-flash-high
+  label: 'Google: Gemini 3.5 Flash high'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.5-flash
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: high
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-031-openrouter-google-gemini-3-5-flash-high
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+- id: expand222-next-067-registry-openrouter-178-qwen-qwen3-7-max
+  label: 'Qwen: Qwen3.7 Max'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.7-max
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-067-registry-openrouter-178-qwen-qwen3-7-max
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.25
+  output_price_per_mtok_usd: 3.75
+- id: expand222-next-063-registry-openrouter-128-z-ai-glm-5-1
+  label: 'Z.ai: GLM 5.1'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-5.1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-063-registry-openrouter-128-z-ai-glm-5-1
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.98
+  output_price_per_mtok_usd: 3.08
+- id: expand222-paper-gemini-3-5-flash
+  label: Gemini 3.5 Flash
+  provider_route: gemini
+  inspect_model: google/gemini-3.5-flash
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-gemini-3-5-flash
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 2.5
+- id: expand222-top-thinking-005-openai-gpt-5-5-xhigh
+  label: OpenAI GPT-5.5 xhigh
+  provider_route: openai
+  inspect_model: openai/gpt-5.5
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: xhigh
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-005-openai-gpt-5-5-xhigh
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+- id: expand222-top-thinking-033-openrouter-google-gemini-3-1-pro-preview-customtools-high
+  label: 'Google: Gemini 3.1 Pro Preview Custom Tools high'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-pro-preview-customtools
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: high
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-033-openrouter-google-gemini-3-1-pro-preview-customtools-high
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 12
+- id: expand222-next-071-registry-openrouter-179-qwen-qwen3-6-max-preview
+  label: 'Qwen: Qwen3.6 Max Preview'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.6-max-preview
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-071-registry-openrouter-179-qwen-qwen3-6-max-preview
+  baseline_answer_accuracy_pct: '100.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.04
+  output_price_per_mtok_usd: 6.24
+- id: expand222-overline-006-openai-gpt-5-4-nano-xhigh
+  label: OpenAI GPT-5.4 nano xhigh
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-nano
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: xhigh
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/overline-006-openai-gpt-5-4-nano-xhigh
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.25
+- id: expand222-next-039-registry-openrouter-080-minimax-minimax-m3
+  label: 'MiniMax: MiniMax M3'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m3
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-039-registry-openrouter-080-minimax-minimax-m3
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 1.2
+  inspect_args:
+  - --attempt-timeout=180
+  cache_reuse_note: Matches the completed 8x28 pilot cache key.
+- id: expand222-scaled-044-openrouter-032-stepfun-step-3-5-flash
+  label: 'StepFun: Step 3.5 Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/stepfun/step-3.5-flash
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-044-openrouter-032-stepfun-step-3-5-flash
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 0.3
+- id: expand222-scaled-080-openrouter-127-xiaomi-mimo-v2-5-pro
+  label: 'Xiaomi: MiMo-V2.5-Pro'
+  provider_route: openrouter
+  inspect_model: openrouter/xiaomi/mimo-v2.5-pro
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-080-openrouter-127-xiaomi-mimo-v2-5-pro
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.435
+  output_price_per_mtok_usd: 0.87
+- id: expand222-next-056-registry-gemini-2-5-flash
+  label: Gemini 2.5 Flash
+  provider_route: gemini
+  inspect_model: google/gemini-2.5-flash
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-056-registry-gemini-2-5-flash
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 2.5
+- id: expand222-scaled-052-openrouter-117-qwen-qwen3-30b-a3b-thinking-2507
+  label: 'Qwen: Qwen3 30B A3B Thinking 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-30b-a3b-thinking-2507
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-052-openrouter-117-qwen-qwen3-30b-a3b-thinking-2507
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.4
+- id: expand222-next-098-thinking-openrouter-qwen-qwen3-6-flash-low
+  label: 'Qwen: Qwen3.6 Flash low_budget_512'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.6-flash
+  generation_settings:
+    max_tokens: 10000
+    reasoning_tokens: 512
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-098-thinking-openrouter-qwen-qwen3-6-flash-low
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1875
+  output_price_per_mtok_usd: 1.125
+- id: expand222-next-064-registry-openrouter-161-moonshotai-kimi-latest
+  label: MoonshotAI Kimi Latest
+  provider_route: openrouter
+  inspect_model: openrouter/~moonshotai/kimi-latest
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-064-registry-openrouter-161-moonshotai-kimi-latest
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.684
+  output_price_per_mtok_usd: 3.42
+- id: expand222-top-thinking-010-openai-gpt-5-4-xhigh
+  label: OpenAI GPT-5.4 xhigh
+  provider_route: openai
+  inspect_model: openai/gpt-5.4
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: xhigh
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-010-openai-gpt-5-4-xhigh
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+- id: expand222-scaled-071-openrouter-116-qwen-qwen3-next-80b-a3b-thinking
+  label: 'Qwen: Qwen3 Next 80B A3B Thinking'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-next-80b-a3b-thinking
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-071-openrouter-116-qwen-qwen3-next-80b-a3b-thinking
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.0975
+  output_price_per_mtok_usd: 0.78
+- id: expand222-next-046-registry-openrouter-162-qwen-qwen3-5-plus-20260420
+  label: 'Qwen: Qwen3.5 Plus 2026-04-20'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.5-plus-20260420
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-046-registry-openrouter-162-qwen-qwen3-5-plus-20260420
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 1.8
+- id: expand222-top-thinking-030-openrouter-google-gemini-3-5-flash-medium
+  label: 'Google: Gemini 3.5 Flash medium'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.5-flash
+  generation_settings:
+    max_tokens: 2120
+    reasoning_effort: medium
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-030-openrouter-google-gemini-3-5-flash-medium
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+- id: expand222-next-055-registry-openrouter-091-qwen-qwen3-5-397b-a17b
+  label: 'Qwen: Qwen3.5 397B A17B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.5-397b-a17b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-055-registry-openrouter-091-qwen-qwen3-5-397b-a17b
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.39
+  output_price_per_mtok_usd: 2.34
+- id: expand222-next-057-registry-openrouter-124-qwen-qwen3-vl-235b-a22b-thinking
+  label: 'Qwen: Qwen3 VL 235B A22B Thinking'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-vl-235b-a22b-thinking
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-057-registry-openrouter-124-qwen-qwen3-vl-235b-a22b-thinking
+  baseline_answer_accuracy_pct: '98.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 2.6
+- id: expand222-scaled-034-openrouter-048-openai-gpt-oss-120b
+  label: 'OpenAI: gpt-oss-120b'
+  provider_route: openrouter
+  inspect_model: openrouter/openai/gpt-oss-120b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-034-openrouter-048-openai-gpt-oss-120b
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.039
+  output_price_per_mtok_usd: 0.18
+- id: expand222-paper-openrouter-gpt-oss-20b
+  label: OpenAI GPT-OSS 20B
+  provider_route: openrouter
+  inspect_model: openrouter/openai/gpt-oss-20b
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-openrouter-gpt-oss-20b
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.029
+  output_price_per_mtok_usd: 0.14
+- id: expand222-next-088-thinking-openai-gpt-5-nano-low
+  label: OpenAI GPT-5 nano low
+  provider_route: openai
+  inspect_model: openai/gpt-5-nano
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-088-thinking-openai-gpt-5-nano-low
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+- id: expand222-next-090-thinking-openai-gpt-5-nano-medium
+  label: OpenAI GPT-5 nano medium
+  provider_route: openai
+  inspect_model: openai/gpt-5-nano
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: medium
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-090-thinking-openai-gpt-5-nano-medium
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-039-openrouter-059-qwen-qwen3-14b
+  label: 'Qwen: Qwen3 14B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-14b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-039-openrouter-059-qwen-qwen3-14b
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.24
+- id: expand222-next-016-registry-openrouter-163-xiaomi-mimo-v2-5
+  label: 'Xiaomi: MiMo-V2.5'
+  provider_route: openrouter
+  inspect_model: openrouter/xiaomi/mimo-v2.5
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-016-registry-openrouter-163-xiaomi-mimo-v2-5
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 0.28
+- id: expand222-overline-004-openai-gpt-5-4-mini-medium
+  label: OpenAI GPT-5.4 mini medium
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: medium
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/overline-004-openai-gpt-5-4-mini-medium
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.75
+  output_price_per_mtok_usd: 4.5
+- id: expand222-scaled-061-openrouter-057-qwen-qwen3-30b-a3b
+  label: 'Qwen: Qwen3 30B A3B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-30b-a3b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-061-openrouter-057-qwen-qwen3-30b-a3b
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 0.45
+- id: expand222-scaled-084-openrouter-040-minimax-minimax-m2
+  label: 'MiniMax: MiniMax M2'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-084-openrouter-040-minimax-minimax-m2
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.255
+  output_price_per_mtok_usd: 1
+- id: expand222-top-thinking-008-openai-gpt-5-4-medium
+  label: OpenAI GPT-5.4 medium
+  provider_route: openai
+  inspect_model: openai/gpt-5.4
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: medium
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-008-openai-gpt-5-4-medium
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+- id: expand222-top-thinking-009-openai-gpt-5-4-high
+  label: OpenAI GPT-5.4 high
+  provider_route: openai
+  inspect_model: openai/gpt-5.4
+  generation_settings:
+    max_tokens: 4168
+    reasoning_effort: high
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-009-openai-gpt-5-4-high
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+- id: expand222-next-068-registry-openrouter-180-z-ai-glm-5-turbo
+  label: 'Z.ai: GLM 5 Turbo'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-5-turbo
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-068-registry-openrouter-180-z-ai-glm-5-turbo
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 1.2
+  output_price_per_mtok_usd: 4
+- id: expand222-scaled-097-openrouter-129-z-ai-glm-5
+  label: 'Z.ai: GLM 5'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-5
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-097-openrouter-129-z-ai-glm-5
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.6
+  output_price_per_mtok_usd: 2.08
+- id: expand222-scaled-093-openrouter-136-z-ai-glm-4-6
+  label: 'Z.ai: GLM 4.6'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.6
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-093-openrouter-136-z-ai-glm-4-6
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.43
+  output_price_per_mtok_usd: 1.74
+- id: expand222-next-043-registry-openrouter-088-qwen-qwen3-5-27b
+  label: 'Qwen: Qwen3.5-27B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.5-27b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-043-registry-openrouter-088-qwen-qwen3-5-27b
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.195
+  output_price_per_mtok_usd: 1.56
+- id: expand222-next-069-registry-openrouter-184-z-ai-glm-5v-turbo
+  label: 'Z.ai: GLM 5V Turbo'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-5v-turbo
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-069-registry-openrouter-184-z-ai-glm-5v-turbo
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 1.2
+  output_price_per_mtok_usd: 4
+- id: expand222-scaled-087-openrouter-135-prime-intellect-intellect-3
+  label: 'Prime Intellect: INTELLECT-3'
+  provider_route: openrouter
+  inspect_model: openrouter/prime-intellect/intellect-3
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-087-openrouter-135-prime-intellect-intellect-3
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.1
+- id: expand222-scaled-098-openrouter-146-z-ai-glm-4-5
+  label: 'Z.ai: GLM 4.5'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.5
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-098-openrouter-146-z-ai-glm-4-5
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.6
+  output_price_per_mtok_usd: 2.2
+- id: expand222-next-050-registry-openrouter-089-qwen-qwen3-5-122b-a10b
+  label: 'Qwen: Qwen3.5-122B-A10B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.5-122b-a10b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-050-registry-openrouter-089-qwen-qwen3-5-122b-a10b
+  baseline_answer_accuracy_pct: '97.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 2.08
+- id: expand222-scaled-035-openrouter-027-deepseek-deepseek-v4-flash
+  label: 'DeepSeek: DeepSeek V4 Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v4-flash
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-035-openrouter-027-deepseek-deepseek-v4-flash
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.0983
+  output_price_per_mtok_usd: 0.1966
+  inspect_args:
+  - --attempt-timeout=180
+  cache_reuse_note: Matches the completed 8x28 pilot cache key.
+- id: expand222-overline-002-openai-gpt-5-4-nano-medium
+  label: OpenAI GPT-5.4 nano medium
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-nano
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: medium
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/overline-002-openai-gpt-5-4-nano-medium
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.25
+- id: expand222-paper-openrouter-nemotron-3-nano
+  label: NVIDIA Nemotron 3 Nano 30B A3B
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/nemotron-3-nano-30b-a3b
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-openrouter-nemotron-3-nano
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.2
+- id: expand222-overline-001-openrouter-nvidia-llama-3-3-nemotron-super-49b-v1-5
+  label: 'NVIDIA: Llama 3.3 Nemotron Super 49B V1.5'
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/llama-3.3-nemotron-super-49b-v1.5
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/overline-001-openrouter-nvidia-llama-3-3-nemotron-super-49b-v1-5
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+- id: expand222-top-thinking-035-openrouter-google-gemini-3-1-flash-lite-low
+  label: 'Google: Gemini 3.1 Flash Lite low'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-035-openrouter-google-gemini-3-1-flash-lite-low
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-scaled-079-openrouter-125-deepseek-deepseek-v4-pro
+  label: 'DeepSeek: DeepSeek V4 Pro'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v4-pro
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-079-openrouter-125-deepseek-deepseek-v4-pro
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.435
+  output_price_per_mtok_usd: 0.87
+- id: expand222-overline-005-openai-gpt-5-4-mini-high
+  label: OpenAI GPT-5.4 mini high
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  generation_settings:
+    max_tokens: 4168
+    reasoning_effort: high
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/overline-005-openai-gpt-5-4-mini-high
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.75
+  output_price_per_mtok_usd: 4.5
+- id: expand222-next-010-registry-openrouter-090-qwen-qwen3-5-flash-02-23
+  label: 'Qwen: Qwen3.5-Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.5-flash-02-23
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-010-registry-openrouter-090-qwen-qwen3-5-flash-02-23
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.065
+  output_price_per_mtok_usd: 0.26
+- id: expand222-top-thinking-007-openai-gpt-5-4-low
+  label: OpenAI GPT-5.4 low
+  provider_route: openai
+  inspect_model: openai/gpt-5.4
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-007-openai-gpt-5-4-low
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+- id: expand222-scaled-094-openrouter-131-z-ai-glm-4-7
+  label: 'Z.ai: GLM 4.7'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.7
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-094-openrouter-131-z-ai-glm-4-7
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 1.75
+- id: expand222-next-036-registry-openrouter-081-qwen-qwen3-6-flash
+  label: 'Qwen: Qwen3.6 Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.6-flash
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-036-registry-openrouter-081-qwen-qwen3-6-flash
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1875
+  output_price_per_mtok_usd: 1.125
+- id: expand222-next-096-thinking-openrouter-qwen-qwen3-6-35b-a3b-low
+  label: 'Qwen: Qwen3.6 35B A3B low_budget_512'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.6-35b-a3b
+  generation_settings:
+    max_tokens: 10000
+    reasoning_tokens: 512
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-096-thinking-openrouter-qwen-qwen3-6-35b-a3b-low
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 1
+- id: expand222-scaled-096-openrouter-061-qwen-qwen3-235b-a22b
+  label: 'Qwen: Qwen3 235B A22B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-235b-a22b
+  generation_settings:
+    max_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-096-openrouter-061-qwen-qwen3-235b-a22b
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.455
+  output_price_per_mtok_usd: 1.82
+- id: expand222-next-058-registry-grok-build-0-1
+  label: Grok Build 0.1
+  provider_route: grok
+  inspect_model: grok/grok-build-0.1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-058-registry-grok-build-0-1
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 1
+  output_price_per_mtok_usd: 2
+- id: expand222-next-089-thinking-gemini-gemini-2-5-flash-lite-low
+  label: Gemini 2.5 Flash-Lite low_budget_1024
+  provider_route: gemini
+  inspect_model: google/gemini-2.5-flash-lite
+  generation_settings:
+    max_tokens: 10000
+    reasoning_tokens: 1024
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-089-thinking-gemini-gemini-2-5-flash-lite-low
+  baseline_answer_accuracy_pct: '95.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-082-openrouter-034-minimax-minimax-m2-1
+  label: 'MiniMax: MiniMax M2.1'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2.1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-082-openrouter-034-minimax-minimax-m2-1
+  baseline_answer_accuracy_pct: '95.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.29
+  output_price_per_mtok_usd: 0.95
+- id: expand222-overline-007-openai-gpt-5-4-mini-xhigh
+  label: OpenAI GPT-5.4 mini xhigh
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: xhigh
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/overline-007-openai-gpt-5-4-mini-xhigh
+  baseline_answer_accuracy_pct: '95.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.75
+  output_price_per_mtok_usd: 4.5
+- id: expand222-next-031-registry-openrouter-082-qwen-qwen3-6-35b-a3b
+  label: 'Qwen: Qwen3.6 35B A3B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.6-35b-a3b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-031-registry-openrouter-082-qwen-qwen3-6-35b-a3b
+  baseline_answer_accuracy_pct: '95.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 1
+- id: expand222-paper-grok-4-3
+  label: Grok 4.3
+  provider_route: grok
+  inspect_model: grok/grok-4.3
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-grok-4-3
+  baseline_answer_accuracy_pct: '95.0'
+  run_status: planned
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+- id: expand222-next-017-registry-openrouter-165-google-gemma-4-31b-it
+  label: 'Google: Gemma 4 31B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-4-31b-it
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-017-registry-openrouter-165-google-gemma-4-31b-it
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.12
+  output_price_per_mtok_usd: 0.37
+- id: expand222-paper-openai-gpt-4-1
+  label: OpenAI GPT-4.1
+  provider_route: openai
+  inspect_model: openai/gpt-4.1
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-openai-gpt-4-1
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 8
+- id: expand222-next-044-registry-openrouter-168-qwen-qwen3-5-plus-02-15
+  label: 'Qwen: Qwen3.5 Plus 2026-02-15'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.5-plus-02-15
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-044-registry-openrouter-168-qwen-qwen3-5-plus-02-15
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 1.56
+- id: expand222-next-083-registry-anthropic-claude-opus-4-7
+  label: Anthropic Claude Opus 4.7
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-7
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-083-registry-anthropic-claude-opus-4-7
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-next-082-registry-anthropic-claude-opus-4-6
+  label: Anthropic Claude Opus 4.6
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-6
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-082-registry-anthropic-claude-opus-4-6
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-next-059-registry-openrouter-083-qwen-qwen3-6-27b
+  label: 'Qwen: Qwen3.6 27B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.6-27b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-059-registry-openrouter-083-qwen-qwen3-6-27b
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.29
+  output_price_per_mtok_usd: 3.2
+- id: expand222-next-038-registry-openrouter-122-qwen-qwen3-vl-8b-thinking
+  label: 'Qwen: Qwen3 VL 8B Thinking'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-vl-8b-thinking
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-038-registry-openrouter-122-qwen-qwen3-vl-8b-thinking
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.117
+  output_price_per_mtok_usd: 1.365
+- id: expand222-next-041-registry-openrouter-123-qwen-qwen3-vl-30b-a3b-thinking
+  label: 'Qwen: Qwen3 VL 30B A3B Thinking'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-vl-30b-a3b-thinking
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-041-registry-openrouter-123-qwen-qwen3-vl-30b-a3b-thinking
+  baseline_answer_accuracy_pct: '93.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.13
+  output_price_per_mtok_usd: 1.56
+- id: expand222-scaled-100-openrouter-142-moonshotai-kimi-k2-0905
+  label: 'MoonshotAI: Kimi K2 0905'
+  provider_route: openrouter
+  inspect_model: openrouter/moonshotai/kimi-k2-0905
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-100-openrouter-142-moonshotai-kimi-k2-0905
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.6
+  output_price_per_mtok_usd: 2.5
+- id: expand222-next-078-registry-openai-gpt-4o
+  label: OpenAI GPT-4o
+  provider_route: openai
+  inspect_model: openai/gpt-4o
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-078-registry-openai-gpt-4o
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 10
+- id: expand222-scaled-041-openrouter-060-qwen-qwen3-32b
+  label: 'Qwen: Qwen3 32B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-32b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-041-openrouter-060-qwen-qwen3-32b
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.28
+- id: expand222-next-097-thinking-gemini-gemini-2-5-flash-lite-medium
+  label: Gemini 2.5 Flash-Lite medium_budget_8192
+  provider_route: gemini
+  inspect_model: google/gemini-2.5-flash-lite
+  generation_settings:
+    max_tokens: 10000
+    reasoning_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-097-thinking-gemini-gemini-2-5-flash-lite-medium
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+- id: expand222-next-086-registry-openai-gpt-5-5-none
+  label: OpenAI GPT-5.5 no thinking
+  provider_route: openai
+  inspect_model: openai/gpt-5.5
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-086-registry-openai-gpt-5-5-none
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+- id: expand222-top-thinking-013-anthropic-claude-opus-4-8-high
+  label: Claude Opus 4.8 high
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-8
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: high
+    max_tokens: 8264
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-013-anthropic-claude-opus-4-8-high
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-top-thinking-011-anthropic-claude-opus-4-8-low
+  label: Claude Opus 4.8 low
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-8
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: low
+    max_tokens: 2000
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-011-anthropic-claude-opus-4-8-low
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-top-thinking-012-anthropic-claude-opus-4-8-medium
+  label: Claude Opus 4.8 medium
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-8
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: medium
+    max_tokens: 2120
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-012-anthropic-claude-opus-4-8-medium
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-top-thinking-014-anthropic-claude-opus-4-8-xhigh
+  label: Claude Opus 4.8 xhigh
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-8
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: xhigh
+    max_tokens: 16456
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-014-anthropic-claude-opus-4-8-xhigh
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-next-084-registry-anthropic-claude-opus-4-8
+  label: Anthropic Claude Opus 4.8
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-8
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-084-registry-anthropic-claude-opus-4-8
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-scaled-089-openrouter-031-minimax-minimax-m2-5
+  label: 'MiniMax: MiniMax M2.5'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2.5
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-089-openrouter-031-minimax-minimax-m2-5
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 1.15
+- id: expand222-next-032-registry-openrouter-087-qwen-qwen3-5-35b-a3b
+  label: 'Qwen: Qwen3.5-35B-A3B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3.5-35b-a3b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-032-registry-openrouter-087-qwen-qwen3-5-35b-a3b
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 1
+- id: expand222-paper-openrouter-xiaomi-mimo-v2-flash
+  label: Xiaomi MiMo-V2-Flash
+  provider_route: openrouter
+  inspect_model: openrouter/xiaomi/mimo-v2-flash
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-openrouter-xiaomi-mimo-v2-flash
+  baseline_answer_accuracy_pct: '91.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.3
+- id: expand222-scaled-075-openrouter-130-qwen-qwen3-coder-next
+  label: 'Qwen: Qwen3 Coder Next'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder-next
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-075-openrouter-130-qwen-qwen3-coder-next
+  baseline_answer_accuracy_pct: '91.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.11
+  output_price_per_mtok_usd: 0.8
+- id: expand222-top-thinking-016-anthropic-claude-sonnet-4-6-low
+  label: Claude Sonnet 4.6 low
+  provider_route: anthropic
+  inspect_model: anthropic/claude-sonnet-4-6
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: low
+    max_tokens: 2000
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-016-anthropic-claude-sonnet-4-6-low
+  baseline_answer_accuracy_pct: '91.2'
+  run_status: planned
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+- id: expand222-top-thinking-001-openai-gpt-5-5-none
+  label: OpenAI GPT-5.5 none
+  provider_route: openai
+  inspect_model: openai/gpt-5.5
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: none
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-001-openai-gpt-5-5-none
+  baseline_answer_accuracy_pct: '91.2'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+- id: expand222-top-thinking-015-anthropic-claude-opus-4-8-max
+  label: Claude Opus 4.8 max
+  provider_route: anthropic
+  inspect_model: anthropic/claude-opus-4-8
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: max
+    max_tokens: 32840
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-015-anthropic-claude-opus-4-8-max
+  baseline_answer_accuracy_pct: '91.2'
+  run_status: planned
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+- id: expand222-next-013-registry-openrouter-084-google-gemma-4-26b-a4b-it
+  label: 'Google: Gemma 4 26B A4B '
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-4-26b-a4b-it
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-013-registry-openrouter-084-google-gemma-4-26b-a4b-it
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.06
+  output_price_per_mtok_usd: 0.33
+- id: expand222-next-100-thinking-openrouter-openai-gpt-5-4-nano-low
+  label: 'OpenAI: GPT-5.4 Nano low'
+  provider_route: openrouter
+  inspect_model: openrouter/openai/gpt-5.4-nano
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-100-thinking-openrouter-openai-gpt-5-4-nano-low
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.25
+- id: expand222-top-thinking-028-openrouter-google-gemini-3-5-flash-minimal
+  label: 'Google: Gemini 3.5 Flash minimal'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.5-flash
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: minimal
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-028-openrouter-google-gemini-3-5-flash-minimal
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+- id: expand222-next-081-registry-openai-gpt-5-4-none
+  label: OpenAI GPT-5.4 no thinking
+  provider_route: openai
+  inspect_model: openai/gpt-5.4
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-081-registry-openai-gpt-5-4-none
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+- id: expand222-top-thinking-017-anthropic-claude-sonnet-4-6-medium
+  label: Claude Sonnet 4.6 medium
+  provider_route: anthropic
+  inspect_model: anthropic/claude-sonnet-4-6
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: medium
+    max_tokens: 2120
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-017-anthropic-claude-sonnet-4-6-medium
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+- id: expand222-next-077-registry-openai-gpt-5-minimal
+  label: OpenAI GPT-5 minimal
+  provider_route: openai
+  inspect_model: openai/gpt-5
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: minimal
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-077-registry-openai-gpt-5-minimal
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.25
+  output_price_per_mtok_usd: 10
+- id: expand222-top-thinking-018-anthropic-claude-sonnet-4-6-high
+  label: Claude Sonnet 4.6 high
+  provider_route: anthropic
+  inspect_model: anthropic/claude-sonnet-4-6
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: high
+    max_tokens: 8264
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-018-anthropic-claude-sonnet-4-6-high
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+- id: expand222-paper-anthropic-claude-sonnet-4-6
+  label: Anthropic Claude Sonnet 4.6
+  provider_route: anthropic
+  inspect_model: anthropic/claude-sonnet-4-6
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-anthropic-claude-sonnet-4-6
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.25
+  output_price_per_mtok_usd: 2.5
+- id: expand222-next-053-registry-openrouter-173-z-ai-glm-4-5v
+  label: 'Z.ai: GLM 4.5V'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.5v
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-053-registry-openrouter-173-z-ai-glm-4-5v
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.6
+  output_price_per_mtok_usd: 1.8
+- id: expand222-scaled-051-openrouter-033-z-ai-glm-4-7-flash
+  label: 'Z.ai: GLM 4.7 Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.7-flash
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-051-openrouter-033-z-ai-glm-4-7-flash
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.06
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-090-openrouter-028-minimax-minimax-m2-7
+  label: 'MiniMax: MiniMax M2.7'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2.7
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-090-openrouter-028-minimax-minimax-m2-7
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.279
+  output_price_per_mtok_usd: 1.2
+- id: expand222-scaled-078-openrouter-147-z-ai-glm-4-5-air
+  label: 'Z.ai: GLM 4.5 Air'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.5-air
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-078-openrouter-147-z-ai-glm-4-5-air
+  baseline_answer_accuracy_pct: '90.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.125
+  output_price_per_mtok_usd: 0.85
+- id: expand222-paper-openai-gpt-4-1-mini
+  label: OpenAI GPT-4.1 mini
+  provider_route: openai
+  inspect_model: openai/gpt-4.1-mini
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-openai-gpt-4-1-mini
+  baseline_answer_accuracy_pct: '88.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 1.6
+- id: expand222-scaled-062-openrouter-132-nex-agi-deepseek-v3-1-nex-n1
+  label: 'Nex AGI: DeepSeek V3.1 Nex N1'
+  provider_route: openrouter
+  inspect_model: openrouter/nex-agi/deepseek-v3.1-nex-n1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-062-openrouter-132-nex-agi-deepseek-v3-1-nex-n1
+  baseline_answer_accuracy_pct: '88.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.135
+  output_price_per_mtok_usd: 0.5
+- id: expand222-scaled-022-openrouter-053-qwen-qwen3-235b-a22b-2507
+  label: 'Qwen: Qwen3 235B A22B Instruct 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-235b-a22b-2507
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-022-openrouter-053-qwen-qwen3-235b-a22b-2507
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.071
+  output_price_per_mtok_usd: 0.1
+- id: expand222-next-025-registry-openrouter-085-mistralai-mistral-small-2603
+  label: 'Mistral: Mistral Small 4'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-small-2603
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-025-registry-openrouter-085-mistralai-mistral-small-2603
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 0.6
+- id: expand222-paper-openrouter-qwen3-next
+  label: Qwen3 Next 80B A3B Instruct
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-next-80b-a3b-instruct
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-openrouter-qwen3-next
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 1.1
+- id: expand222-scaled-099-openrouter-149-moonshotai-kimi-k2
+  label: 'MoonshotAI: Kimi K2 0711'
+  provider_route: openrouter
+  inspect_model: openrouter/moonshotai/kimi-k2
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-099-openrouter-149-moonshotai-kimi-k2
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.57
+  output_price_per_mtok_usd: 2.3
+- id: expand222-next-062-registry-openrouter-144-nousresearch-hermes-4-405b
+  label: 'Nous: Hermes 4 405B'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-4-405b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-062-registry-openrouter-144-nousresearch-hermes-4-405b
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 1
+  output_price_per_mtok_usd: 3
+- id: expand222-paper-anthropic-claude-haiku-4-5
+  label: Anthropic Claude Haiku 4.5
+  provider_route: anthropic
+  inspect_model: anthropic/claude-haiku-4-5
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-anthropic-claude-haiku-4-5
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 1
+  output_price_per_mtok_usd: 5
+- id: expand222-next-076-registry-openrouter-181-ai21-jamba-large-1-7
+  label: 'AI21: Jamba Large 1.7'
+  provider_route: openrouter
+  inspect_model: openrouter/ai21/jamba-large-1.7
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-076-registry-openrouter-181-ai21-jamba-large-1-7
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 8
+- id: expand222-next-040-registry-openrouter-103-baidu-ernie-4-5-vl-424b-a47b
+  label: 'Baidu: ERNIE 4.5 VL 424B A47B '
+  provider_route: openrouter
+  inspect_model: openrouter/baidu/ernie-4.5-vl-424b-a47b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-040-registry-openrouter-103-baidu-ernie-4-5-vl-424b-a47b
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.42
+  output_price_per_mtok_usd: 1.25
+- id: expand222-top-thinking-019-anthropic-claude-sonnet-4-6-max
+  label: Claude Sonnet 4.6 max
+  provider_route: anthropic
+  inspect_model: anthropic/claude-sonnet-4-6
+  control_style: anthropic_adaptive_thinking_effort
+  generation_settings:
+    effort: max
+    max_tokens: 32840
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-019-anthropic-claude-sonnet-4-6-max
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+- id: expand222-paper-gemini-2-5-flash-lite
+  label: Gemini 2.5 Flash-Lite
+  provider_route: gemini
+  inspect_model: google/gemini-2.5-flash-lite
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-gemini-2-5-flash-lite
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-072-openrouter-152-qwen-qwen-plus
+  label: 'Qwen: Qwen-Plus'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-plus
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-072-openrouter-152-qwen-qwen-plus
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 0.78
+- id: expand222-next-051-registry-openrouter-092-mistralai-devstral-2512
+  label: 'Mistral: Devstral 2 2512'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/devstral-2512
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-051-registry-openrouter-092-mistralai-devstral-2512
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 2
+- id: expand222-next-099-thinking-openai-gpt-5-4-nano-low
+  label: OpenAI GPT-5.4 nano low
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-nano
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: low
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-099-thinking-openai-gpt-5-4-nano-low
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.25
+- id: expand222-next-092-thinking-openai-gpt-5-mini-minimal
+  label: OpenAI GPT-5 mini minimal
+  provider_route: openai
+  inspect_model: openai/gpt-5-mini
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: minimal
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-092-thinking-openai-gpt-5-mini-minimal
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 2
+- id: expand222-scaled-086-openrouter-157-nousresearch-hermes-3-llama-3-1-405b
+  label: 'Nous: Hermes 3 405B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-3-llama-3.1-405b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-086-openrouter-157-nousresearch-hermes-3-llama-3-1-405b
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 1
+  output_price_per_mtok_usd: 1
+- id: expand222-next-035-registry-openrouter-113-minimax-minimax-01
+  label: 'MiniMax: MiniMax-01'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-01
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-035-registry-openrouter-113-minimax-minimax-01
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.1
+- id: expand222-next-080-registry-openai-gpt-5-2-none
+  label: OpenAI GPT-5.2 no thinking
+  provider_route: openai
+  inspect_model: openai/gpt-5.2
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-080-registry-openai-gpt-5-2-none
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 1.75
+  output_price_per_mtok_usd: 14
+- id: expand222-scaled-050-openrouter-058-qwen-qwen3-8b
+  label: 'Qwen: Qwen3 8B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-8b
+  generation_settings:
+    max_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-050-openrouter-058-qwen-qwen3-8b
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+- id: expand222-top-thinking-006-openai-gpt-5-4-none
+  label: OpenAI GPT-5.4 none
+  provider_route: openai
+  inspect_model: openai/gpt-5.4
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: none
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-006-openai-gpt-5-4-none
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+- id: expand222-next-045-registry-openrouter-171-mistralai-mistral-large-2512
+  label: 'Mistral: Mistral Large 3 2512'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-large-2512
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-045-registry-openrouter-171-mistralai-mistral-large-2512
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.5
+  output_price_per_mtok_usd: 1.5
+- id: expand222-next-093-thinking-gemini-gemini-3-1-flash-lite-minimal
+  label: Gemini 3.1 Flash-Lite minimal_budget_1024
+  provider_route: gemini
+  inspect_model: google/gemini-3.1-flash-lite
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-093-thinking-gemini-gemini-3-1-flash-lite-minimal
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-next-002-registry-openrouter-110-google-gemma-3-12b-it
+  label: 'Google: Gemma 3 12B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-3-12b-it
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-002-registry-openrouter-110-google-gemma-3-12b-it
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.13
+- id: expand222-scaled-046-openrouter-154-meta-llama-llama-3-3-70b-instruct
+  label: 'Meta: Llama 3.3 70B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.3-70b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-046-openrouter-154-meta-llama-llama-3-3-70b-instruct
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.32
+- id: expand222-paper-openai-gpt-5-nano-minimal
+  label: OpenAI GPT-5 nano minimal
+  provider_route: openai
+  inspect_model: openai/gpt-5-nano
+  generation_settings:
+    max_tokens: 64
+    reasoning_effort: minimal
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-openai-gpt-5-nano-minimal
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+- id: expand222-next-030-registry-openrouter-100-qwen-qwen3-vl-235b-a22b-instruct
+  label: 'Qwen: Qwen3 VL 235B A22B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-vl-235b-a22b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-030-registry-openrouter-100-qwen-qwen3-vl-235b-a22b-instruct
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 0.88
+- id: expand222-top-thinking-034-openrouter-google-gemini-3-1-flash-lite-minimal
+  label: 'Google: Gemini 3.1 Flash Lite minimal'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: minimal
+    seed: 20260531
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/top-thinking-034-openrouter-google-gemini-3-1-flash-lite-minimal
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-next-094-thinking-openrouter-google-gemini-3-1-flash-lite-minimal
+  label: 'Google: Gemini 3.1 Flash Lite minimal'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: minimal
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-094-thinking-openrouter-google-gemini-3-1-flash-lite-minimal
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-next-095-thinking-openrouter-google-gemini-3-1-flash-lite-preview-minimal
+  label: 'Google: Gemini 3.1 Flash Lite Preview minimal'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemini-3.1-flash-lite-preview
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: minimal
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-095-thinking-openrouter-google-gemini-3-1-flash-lite-preview-minimal
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-next-042-registry-gemini-3-1-flash-lite
+  label: Gemini 3.1 Flash-Lite
+  provider_route: gemini
+  inspect_model: google/gemini-3.1-flash-lite
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-042-registry-gemini-3-1-flash-lite
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+- id: expand222-scaled-073-openrouter-141-qwen-qwen-plus-2025-07-28
+  label: 'Qwen: Qwen Plus 0728'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-plus-2025-07-28
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-073-openrouter-141-qwen-qwen-plus-2025-07-28
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 0.78
+- id: expand222-scaled-095-openrouter-148-qwen-qwen3-coder
+  label: 'Qwen: Qwen3 Coder 480B A35B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-095-openrouter-148-qwen-qwen3-coder
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.22
+  output_price_per_mtok_usd: 1.8
+- id: expand222-next-029-registry-openrouter-112-qwen-qwen2-5-vl-72b-instruct
+  label: 'Qwen: Qwen2.5 VL 72B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen2.5-vl-72b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-029-registry-openrouter-112-qwen-qwen2-5-vl-72b-instruct
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 0.75
+- id: expand222-scaled-057-openrouter-158-meta-llama-llama-3-1-70b-instruct
+  label: 'Meta: Llama 3.1 70B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.1-70b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-057-openrouter-158-meta-llama-llama-3-1-70b-instruct
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 0.4
+- id: expand222-next-061-registry-openrouter-139-qwen-qwen3-coder-plus
+  label: 'Qwen: Qwen3 Coder Plus'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder-plus
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-061-registry-openrouter-139-qwen-qwen3-coder-plus
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.65
+  output_price_per_mtok_usd: 3.25
+- id: expand222-next-047-registry-openai-gpt-5-mini-minimal
+  label: OpenAI GPT-5 mini minimal
+  provider_route: openai
+  inspect_model: openai/gpt-5-mini
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: minimal
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-047-registry-openai-gpt-5-mini-minimal
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 2
+- id: expand222-next-073-registry-openrouter-115-mistralai-mixtral-8x22b-instruct
+  label: 'Mistral: Mixtral 8x22B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mixtral-8x22b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-073-registry-openrouter-115-mistralai-mixtral-8x22b-instruct
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 6
+- id: expand222-next-072-registry-openrouter-114-anthracite-org-magnum-v4-72b
+  label: Magnum v4 72B
+  provider_route: openrouter
+  inspect_model: openrouter/anthracite-org/magnum-v4-72b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-072-registry-openrouter-114-anthracite-org-magnum-v4-72b
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 5
+- id: expand222-scaled-030-openrouter-037-arcee-ai-trinity-mini
+  label: 'Arcee AI: Trinity Mini'
+  provider_route: openrouter
+  inspect_model: openrouter/arcee-ai/trinity-mini
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-030-openrouter-037-arcee-ai-trinity-mini
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.045
+  output_price_per_mtok_usd: 0.15
+- id: expand222-next-074-registry-openrouter-185-mistralai-mistral-large-2407
+  label: Mistral Large 2407
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-large-2407
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-074-registry-openrouter-185-mistralai-mistral-large-2407
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 6
+- id: expand222-scaled-024-openrouter-052-z-ai-glm-4-32b
+  label: 'Z.ai: GLM 4 32B '
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4-32b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-024-openrouter-052-z-ai-glm-4-32b
+  baseline_answer_accuracy_pct: '83.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.1
+- id: expand222-scaled-054-openrouter-143-nousresearch-hermes-4-70b
+  label: 'Nous: Hermes 4 70B'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-4-70b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-054-openrouter-143-nousresearch-hermes-4-70b
+  baseline_answer_accuracy_pct: '83.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.13
+  output_price_per_mtok_usd: 0.4
+- id: expand222-next-027-registry-openrouter-176-mistralai-mistral-saba
+  label: 'Mistral: Saba'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-saba
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-027-registry-openrouter-176-mistralai-mistral-saba
+  baseline_answer_accuracy_pct: '83.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 0.6
+- id: expand222-next-052-registry-openrouter-172-mistralai-mistral-medium-3-1
+  label: 'Mistral: Mistral Medium 3.1'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-medium-3.1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-052-registry-openrouter-172-mistralai-mistral-medium-3-1
+  baseline_answer_accuracy_pct: '83.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 2
+- id: expand222-next-054-registry-openrouter-175-mistralai-mistral-medium-3
+  label: 'Mistral: Mistral Medium 3'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-medium-3
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-054-registry-openrouter-175-mistralai-mistral-medium-3
+  baseline_answer_accuracy_pct: '83.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 2
+- id: expand222-next-079-registry-openrouter-182-cohere-command-a
+  label: 'Cohere: Command A'
+  provider_route: openrouter
+  inspect_model: openrouter/cohere/command-a
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-079-registry-openrouter-182-cohere-command-a
+  baseline_answer_accuracy_pct: '83.8'
+  run_status: planned
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 10
+- id: expand222-scaled-021-openrouter-026-ibm-granite-granite-4-1-8b
+  label: 'IBM: Granite 4.1 8B'
+  provider_route: openrouter
+  inspect_model: openrouter/ibm-granite/granite-4.1-8b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-021-openrouter-026-ibm-granite-granite-4-1-8b
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.1
+- id: expand222-scaled-027-openrouter-056-google-gemma-3n-e4b-it
+  label: 'Google: Gemma 3n 4B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-3n-e4b-it
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-027-openrouter-056-google-gemma-3n-e4b-it
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.06
+  output_price_per_mtok_usd: 0.12
+- id: expand222-next-019-registry-openai-gpt-4-1-nano
+  label: OpenAI GPT-4.1 nano
+  provider_route: openai
+  inspect_model: openai/gpt-4.1-nano
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-019-registry-openai-gpt-4-1-nano
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+- id: expand222-next-026-registry-openrouter-106-meta-llama-llama-4-maverick
+  label: 'Meta: Llama 4 Maverick'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-4-maverick
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-026-registry-openrouter-106-meta-llama-llama-4-maverick
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 0.6
+- id: expand222-scaled-074-openrouter-145-deepseek-deepseek-chat-v3-1
+  label: 'DeepSeek: DeepSeek V3.1'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-chat-v3.1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-074-openrouter-145-deepseek-deepseek-chat-v3-1
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.21
+  output_price_per_mtok_usd: 0.79
+- id: expand222-scaled-081-openrouter-140-deepseek-deepseek-v3-1-terminus
+  label: 'DeepSeek: DeepSeek V3.1 Terminus'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v3.1-terminus
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-081-openrouter-140-deepseek-deepseek-v3-1-terminus
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.27
+  output_price_per_mtok_usd: 0.95
+- id: expand222-next-034-registry-openrouter-174-mistralai-codestral-2508
+  label: 'Mistral: Codestral 2508'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/codestral-2508
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-034-registry-openrouter-174-mistralai-codestral-2508
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 0.9
+- id: expand222-scaled-055-openrouter-072-qwen-qwen-2-5-72b-instruct
+  label: Qwen2.5 72B Instruct
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-2.5-72b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-055-openrouter-072-qwen-qwen-2-5-72b-instruct
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.36
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-088-openrouter-055-baidu-ernie-4-5-300b-a47b
+  label: 'Baidu: ERNIE 4.5 300B A47B '
+  provider_route: openrouter
+  inspect_model: openrouter/baidu/ernie-4.5-300b-a47b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-088-openrouter-055-baidu-ernie-4-5-300b-a47b
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.28
+  output_price_per_mtok_usd: 1.1
+- id: expand222-scaled-069-openrouter-160-meta-llama-llama-3-70b-instruct
+  label: 'Meta: Llama 3 70B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3-70b-instruct
+  generation_settings:
+    max_tokens: 8000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-069-openrouter-160-meta-llama-llama-3-70b-instruct
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.51
+  output_price_per_mtok_usd: 0.74
+- id: expand222-scaled-064-openrouter-044-thedrummer-cydonia-24b-v4-1
+  label: 'TheDrummer: Cydonia 24B V4.1'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/cydonia-24b-v4.1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-064-openrouter-044-thedrummer-cydonia-24b-v4-1
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 0.5
+- id: expand222-scaled-076-openrouter-151-thedrummer-skyfall-36b-v2
+  label: 'TheDrummer: Skyfall 36B V2'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/skyfall-36b-v2
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-076-openrouter-151-thedrummer-skyfall-36b-v2
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.55
+  output_price_per_mtok_usd: 0.8
+- id: expand222-next-070-registry-openai-gpt-5-4-mini-none
+  label: OpenAI GPT-5.4 mini no thinking
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-070-registry-openai-gpt-5-4-mini-none
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.75
+  output_price_per_mtok_usd: 4.5
+- id: expand222-scaled-032-openrouter-047-nvidia-nemotron-nano-9b-v2
+  label: 'NVIDIA: Nemotron Nano 9B V2'
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/nemotron-nano-9b-v2
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-032-openrouter-047-nvidia-nemotron-nano-9b-v2
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.16
+- id: expand222-scaled-025-openrouter-041-ibm-granite-granite-4-0-h-micro
+  label: 'IBM: Granite 4.0 Micro'
+  provider_route: openrouter
+  inspect_model: openrouter/ibm-granite/granite-4.0-h-micro
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-025-openrouter-041-ibm-granite-granite-4-0-h-micro
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.017
+  output_price_per_mtok_usd: 0.112
+- id: expand222-next-006-registry-openrouter-111-google-gemma-3-27b-it
+  label: 'Google: Gemma 3 27B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-3-27b-it
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-006-registry-openrouter-111-google-gemma-3-27b-it
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.16
+  inspect_args:
+  - --attempt-timeout=180
+  cache_reuse_note: Matches the completed 8x28 pilot cache key.
+- id: expand222-next-024-registry-openai-gpt-4o-mini
+  label: OpenAI GPT-4o mini
+  provider_route: openai
+  inspect_model: openai/gpt-4o-mini
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-024-registry-openai-gpt-4o-mini
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 0.6
+- id: expand222-next-014-registry-openrouter-093-mistralai-ministral-14b-2512
+  label: 'Mistral: Ministral 3 14B 2512'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/ministral-14b-2512
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-014-registry-openrouter-093-mistralai-ministral-14b-2512
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 0.2
+- id: expand222-scaled-048-openrouter-134-deepseek-deepseek-v3-2
+  label: 'DeepSeek: DeepSeek V3.2'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v3.2
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-048-openrouter-134-deepseek-deepseek-v3-2
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2288
+  output_price_per_mtok_usd: 0.3432
+- id: expand222-scaled-019-openrouter-065-mistralai-mistral-small-24b-instruct-2501
+  label: 'Mistral: Mistral Small 3'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-small-24b-instruct-2501
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-019-openrouter-065-mistralai-mistral-small-24b-instruct-2501
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.08
+- id: expand222-next-087-thinking-openai-gpt-5-nano-minimal
+  label: OpenAI GPT-5 nano minimal
+  provider_route: openai
+  inspect_model: openai/gpt-5-nano
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: minimal
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-087-thinking-openai-gpt-5-nano-minimal
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-058-openrouter-137-deepseek-deepseek-v3-2-exp
+  label: 'DeepSeek: DeepSeek V3.2 Exp'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v3.2-exp
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-058-openrouter-137-deepseek-deepseek-v3-2-exp
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.27
+  output_price_per_mtok_usd: 0.41
+- id: expand222-scaled-066-openrouter-077-microsoft-wizardlm-2-8x22b
+  label: WizardLM-2 8x22B
+  provider_route: openrouter
+  inspect_model: openrouter/microsoft/wizardlm-2-8x22b
+  generation_settings:
+    max_tokens: 8000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-066-openrouter-077-microsoft-wizardlm-2-8x22b
+  baseline_answer_accuracy_pct: '81.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.62
+  output_price_per_mtok_usd: 0.62
+- id: expand222-next-008-registry-openrouter-094-mistralai-ministral-8b-2512
+  label: 'Mistral: Ministral 3 8B 2512'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/ministral-8b-2512
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-008-registry-openrouter-094-mistralai-ministral-8b-2512
+  baseline_answer_accuracy_pct: '80.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 0.15
+- id: expand222-next-022-registry-openrouter-099-qwen-qwen3-vl-30b-a3b-instruct
+  label: 'Qwen: Qwen3 VL 30B A3B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-vl-30b-a3b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-022-registry-openrouter-099-qwen-qwen3-vl-30b-a3b-instruct
+  baseline_answer_accuracy_pct: '80.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.13
+  output_price_per_mtok_usd: 0.52
+- id: expand222-next-037-registry-openai-gpt-5-4-nano-none
+  label: OpenAI GPT-5.4 nano no thinking
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-nano
+  generation_settings:
+    max_tokens: 10000
+    reasoning_effort: none
+    reasoning_summary: none
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-037-registry-openai-gpt-5-4-nano-none
+  baseline_answer_accuracy_pct: '80.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.25
+- id: expand222-next-075-registry-openrouter-183-mistralai-mistral-medium-3-5
+  label: 'Mistral: Mistral Medium 3.5'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-medium-3-5
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-075-registry-openrouter-183-mistralai-mistral-medium-3-5
+  baseline_answer_accuracy_pct: '80.0'
+  run_status: planned
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 7.5
+- id: expand222-scaled-033-openrouter-051-qwen-qwen3-30b-a3b-instruct-2507
+  label: 'Qwen: Qwen3 30B A3B Instruct 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-033-openrouter-051-qwen-qwen3-30b-a3b-instruct-2507
+  baseline_answer_accuracy_pct: '78.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.0428
+  output_price_per_mtok_usd: 0.1716
+- id: expand222-scaled-026-openrouter-030-liquid-lfm-2-24b-a2b
+  label: 'LiquidAI: LFM2-24B-A2B'
+  provider_route: openrouter
+  inspect_model: openrouter/liquid/lfm-2-24b-a2b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-026-openrouter-030-liquid-lfm-2-24b-a2b
+  baseline_answer_accuracy_pct: '77.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.03
+  output_price_per_mtok_usd: 0.12
+- id: expand222-scaled-017-openrouter-121-sao10k-l3-lunaris-8b
+  label: 'Sao10K: Llama 3 8B Lunaris'
+  provider_route: openrouter
+  inspect_model: openrouter/sao10k/l3-lunaris-8b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-017-openrouter-121-sao10k-l3-lunaris-8b
+  baseline_answer_accuracy_pct: '77.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.05
+- id: expand222-next-007-registry-openrouter-104-mistralai-mistral-small-3-2-24b-instruct
+  label: 'Mistral: Mistral Small 3.2 24B'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-small-3.2-24b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-007-registry-openrouter-104-mistralai-mistral-small-3-2-24b-instruct
+  baseline_answer_accuracy_pct: '77.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.075
+  output_price_per_mtok_usd: 0.2
+- id: expand222-next-018-registry-openrouter-177-meta-llama-llama-3-2-11b-vision-instruct
+  label: 'Meta: Llama 3.2 11B Vision Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.2-11b-vision-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-018-registry-openrouter-177-meta-llama-llama-3-2-11b-vision-instruct
+  baseline_answer_accuracy_pct: '77.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.245
+  output_price_per_mtok_usd: 0.245
+- id: expand222-scaled-068-openrouter-074-google-gemma-2-27b-it
+  label: 'Google: Gemma 2 27B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-2-27b-it
+  generation_settings:
+    max_tokens: 2048
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-068-openrouter-074-google-gemma-2-27b-it
+  baseline_answer_accuracy_pct: '77.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.65
+  output_price_per_mtok_usd: 0.65
+- id: expand222-next-015-registry-openrouter-096-mistralai-voxtral-small-24b-2507
+  label: 'Mistral: Voxtral Small 24B 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/voxtral-small-24b-2507
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-015-registry-openrouter-096-mistralai-voxtral-small-24b-2507
+  baseline_answer_accuracy_pct: '76.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.3
+- id: expand222-next-012-registry-openrouter-107-meta-llama-llama-4-scout
+  label: 'Meta: Llama 4 Scout'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-4-scout
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-012-registry-openrouter-107-meta-llama-llama-4-scout
+  baseline_answer_accuracy_pct: '76.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.3
+- id: expand222-next-021-registry-openrouter-098-qwen-qwen3-vl-8b-instruct
+  label: 'Qwen: Qwen3 VL 8B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-vl-8b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-021-registry-openrouter-098-qwen-qwen3-vl-8b-instruct
+  baseline_answer_accuracy_pct: '76.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.5
+- id: expand222-scaled-020-openrouter-069-qwen-qwen-2-5-7b-instruct
+  label: 'Qwen: Qwen2.5 7B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-2.5-7b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-020-openrouter-069-qwen-qwen-2-5-7b-instruct
+  baseline_answer_accuracy_pct: '75.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.1
+- id: expand222-scaled-065-openrouter-054-tencent-hunyuan-a13b-instruct
+  label: 'Tencent: Hunyuan A13B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/tencent/hunyuan-a13b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-065-openrouter-054-tencent-hunyuan-a13b-instruct
+  baseline_answer_accuracy_pct: '75.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 0.57
+- id: expand222-scaled-031-openrouter-133-essentialai-rnj-1-instruct
+  label: 'EssentialAI: Rnj 1 Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/essentialai/rnj-1-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-031-openrouter-133-essentialai-rnj-1-instruct
+  baseline_answer_accuracy_pct: '75.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 0.15
+- id: expand222-scaled-070-openrouter-150-deepseek-deepseek-chat-v3-0324
+  label: 'DeepSeek: DeepSeek V3 0324'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-chat-v3-0324
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-070-openrouter-150-deepseek-deepseek-chat-v3-0324
+  baseline_answer_accuracy_pct: '75.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 0.77
+- id: expand222-scaled-077-openrouter-153-deepseek-deepseek-chat
+  label: 'DeepSeek: DeepSeek V3'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-chat
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-077-openrouter-153-deepseek-deepseek-chat
+  baseline_answer_accuracy_pct: '75.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.2002
+  output_price_per_mtok_usd: 0.8001
+- id: expand222-scaled-056-openrouter-068-thedrummer-unslopnemo-12b
+  label: 'TheDrummer: UnslopNemo 12B'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/unslopnemo-12b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-056-openrouter-068-thedrummer-unslopnemo-12b
+  baseline_answer_accuracy_pct: '75.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-016-openrouter-073-meta-llama-llama-3-1-8b-instruct
+  label: 'Meta: Llama 3.1 8B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.1-8b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-016-openrouter-073-meta-llama-llama-3-1-8b-instruct
+  baseline_answer_accuracy_pct: '73.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.02
+  output_price_per_mtok_usd: 0.05
+- id: expand222-next-001-registry-openrouter-109-google-gemma-3-4b-it
+  label: 'Google: Gemma 3 4B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-3-4b-it
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-001-registry-openrouter-109-google-gemma-3-4b-it
+  baseline_answer_accuracy_pct: '73.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.08
+- id: expand222-next-004-registry-openrouter-095-mistralai-ministral-3b-2512
+  label: 'Mistral: Ministral 3 3B 2512'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/ministral-3b-2512
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-004-registry-openrouter-095-mistralai-ministral-3b-2512
+  baseline_answer_accuracy_pct: '73.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.1
+- id: expand222-scaled-059-openrouter-070-thedrummer-rocinante-12b
+  label: 'TheDrummer: Rocinante 12B'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/rocinante-12b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-059-openrouter-070-thedrummer-rocinante-12b
+  baseline_answer_accuracy_pct: '73.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.17
+  output_price_per_mtok_usd: 0.43
+- id: expand222-scaled-049-openrouter-042-microsoft-phi-4-mini-instruct
+  label: 'Microsoft: Phi 4 Mini Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/microsoft/phi-4-mini-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-049-openrouter-042-microsoft-phi-4-mini-instruct
+  baseline_answer_accuracy_pct: '73.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.35
+- id: expand222-next-009-registry-openrouter-102-bytedance-ui-tars-1-5-7b
+  label: 'ByteDance: UI-TARS 7B '
+  provider_route: openrouter
+  inspect_model: openrouter/bytedance/ui-tars-1.5-7b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-009-registry-openrouter-102-bytedance-ui-tars-1-5-7b
+  baseline_answer_accuracy_pct: '72.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.2
+- id: expand222-scaled-018-openrouter-079-gryphe-mythomax-l2-13b
+  label: MythoMax 13B
+  provider_route: openrouter
+  inspect_model: openrouter/gryphe/mythomax-l2-13b
+  generation_settings:
+    max_tokens: 4096
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-018-openrouter-079-gryphe-mythomax-l2-13b
+  baseline_answer_accuracy_pct: '72.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.06
+  output_price_per_mtok_usd: 0.06
+- id: expand222-scaled-029-openrouter-075-nousresearch-hermes-2-pro-llama-3-8b
+  label: 'NousResearch: Hermes 2 Pro - Llama-3 8B'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-2-pro-llama-3-8b
+  generation_settings:
+    max_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-029-openrouter-075-nousresearch-hermes-2-pro-llama-3-8b
+  baseline_answer_accuracy_pct: '72.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 0.14
+- id: expand222-scaled-013-openrouter-159-mistralai-mistral-nemo
+  label: 'Mistral: Mistral Nemo'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-nemo
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-013-openrouter-159-mistralai-mistral-nemo
+  baseline_answer_accuracy_pct: '71.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.02
+  output_price_per_mtok_usd: 0.03
+- id: expand222-scaled-015-openrouter-076-meta-llama-llama-3-8b-instruct
+  label: 'Meta: Llama 3 8B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3-8b-instruct
+  generation_settings:
+    max_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-015-openrouter-076-meta-llama-llama-3-8b-instruct
+  baseline_answer_accuracy_pct: '70.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.04
+- id: expand222-scaled-028-openrouter-066-microsoft-phi-4
+  label: 'Microsoft: Phi 4'
+  provider_route: openrouter
+  inspect_model: openrouter/microsoft/phi-4
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-028-openrouter-066-microsoft-phi-4
+  baseline_answer_accuracy_pct: '70.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.065
+  output_price_per_mtok_usd: 0.14
+- id: expand222-scaled-067-openrouter-078-undi95-remm-slerp-l2-13b
+  label: ReMM SLERP 13B
+  provider_route: openrouter
+  inspect_model: openrouter/undi95/remm-slerp-l2-13b
+  generation_settings:
+    max_tokens: 4096
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-067-openrouter-078-undi95-remm-slerp-l2-13b
+  baseline_answer_accuracy_pct: '70.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.45
+  output_price_per_mtok_usd: 0.65
+- id: expand222-scaled-083-openrouter-045-qwen-qwen3-coder-flash
+  label: 'Qwen: Qwen3 Coder Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder-flash
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-083-openrouter-045-qwen-qwen3-coder-flash
+  baseline_answer_accuracy_pct: '68.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.195
+  output_price_per_mtok_usd: 0.975
+  inspect_args:
+  - --attempt-timeout=180
+  cache_reuse_note: Matches the completed 8x28 pilot cache key.
+- id: expand222-scaled-040-openrouter-050-qwen-qwen3-coder-30b-a3b-instruct
+  label: 'Qwen: Qwen3 Coder 30B A3B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder-30b-a3b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-040-openrouter-050-qwen-qwen3-coder-30b-a3b-instruct
+  baseline_answer_accuracy_pct: '67.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.07
+  output_price_per_mtok_usd: 0.27
+- id: expand222-next-005-registry-openrouter-167-rekaai-reka-edge
+  label: Reka Edge
+  provider_route: openrouter
+  inspect_model: openrouter/rekaai/reka-edge
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-005-registry-openrouter-167-rekaai-reka-edge
+  baseline_answer_accuracy_pct: '57.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.1
+- id: expand222-scaled-092-openrouter-064-aion-labs-aion-rp-llama-3-1-8b
+  label: 'AionLabs: Aion-RP 1.0 (8B)'
+  provider_route: openrouter
+  inspect_model: openrouter/aion-labs/aion-rp-llama-3.1-8b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-092-openrouter-064-aion-labs-aion-rp-llama-3-1-8b
+  baseline_answer_accuracy_pct: '53.8'
+  run_status: planned
+  input_price_per_mtok_usd: 0.8
+  output_price_per_mtok_usd: 1.6
+- id: expand222-next-066-registry-openrouter-138-qwen-qwen3-max
+  label: 'Qwen: Qwen3 Max'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-max
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-066-registry-openrouter-138-qwen-qwen3-max
+  baseline_answer_accuracy_pct: '47.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.78
+  output_price_per_mtok_usd: 3.9
+- id: expand222-scaled-042-openrouter-120-deepseek-deepseek-r1-distill-qwen-32b
+  label: 'DeepSeek: R1 Distill Qwen 32B'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-r1-distill-qwen-32b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-042-openrouter-120-deepseek-deepseek-r1-distill-qwen-32b
+  baseline_answer_accuracy_pct: '42.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.29
+  output_price_per_mtok_usd: 0.29
+- id: expand222-scaled-037-openrouter-155-meta-llama-llama-3-2-1b-instruct
+  label: 'Meta: Llama 3.2 1B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.2-1b-instruct
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-037-openrouter-155-meta-llama-llama-3-2-1b-instruct
+  baseline_answer_accuracy_pct: '37.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.027
+  output_price_per_mtok_usd: 0.201
+- id: expand222-next-011-registry-openrouter-105-meta-llama-llama-guard-4-12b
+  label: 'Meta: Llama Guard 4 12B'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-guard-4-12b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-011-registry-openrouter-105-meta-llama-llama-guard-4-12b
+  baseline_answer_accuracy_pct: '0.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.18
+  output_price_per_mtok_usd: 0.18
+source_cost_estimate: docs/research/2026-06-02-paper-v1-8x28-current-222-cost-estimate.csv
+defaults:
+  inspect_args:
+  - --no-log-model-api
+  - --no-log-realtime
+  - --max-connections=4
+  - --timeout=900
+  - --max-retries=1
+  - --no-fail-on-error
+  - --continue-on-fail
+  - --score-on-error

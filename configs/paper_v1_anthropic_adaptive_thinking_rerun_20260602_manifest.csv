@@ -1,0 +1,10 @@
+label,model,summary_dir
+Claude Opus 4.8 low,anthropic/claude-opus-4-8,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-011-anthropic-claude-opus-4-8-low
+Claude Opus 4.8 medium,anthropic/claude-opus-4-8,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-012-anthropic-claude-opus-4-8-medium
+Claude Opus 4.8 high,anthropic/claude-opus-4-8,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-013-anthropic-claude-opus-4-8-high
+Claude Opus 4.8 xhigh,anthropic/claude-opus-4-8,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-014-anthropic-claude-opus-4-8-xhigh
+Claude Opus 4.8 max,anthropic/claude-opus-4-8,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-015-anthropic-claude-opus-4-8-max
+Claude Sonnet 4.6 low,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-016-anthropic-claude-sonnet-4-6-low
+Claude Sonnet 4.6 medium,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-017-anthropic-claude-sonnet-4-6-medium
+Claude Sonnet 4.6 high,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-018-anthropic-claude-sonnet-4-6-high
+Claude Sonnet 4.6 max,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-anthropic-adaptive-thinking-rerun-20260602/top-thinking-019-anthropic-claude-sonnet-4-6-max

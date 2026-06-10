@@ -1,0 +1,1867 @@
+schema_version: paper-model-panel-v1
+created_at: '2026-06-02'
+run_status: planned_not_run
+dataset_manifest: data/splits/paper_v1_manifest.jsonl
+dataset: data/barrages/hard_obvious_8x10_seed_20260531.jsonl
+source_registry: configs/model_registry_v1.yaml
+source_thinking_settings: configs/model_thinking_settings_v1.yaml
+source_report_context: docs/reports/2026-06-02-paper-v1-scaled-199-10k/report.html
+profile: hard_obvious_8x10
+seed: 20260531
+defaults:
+  inspect_args:
+  - --no-log-model-api
+  - --no-log-realtime
+  - --timeout=180
+  - --max-retries=0
+selection_policy:
+  summary: Smoke-passed clean subset of the focused flagship/top-model sweep.
+  target_setting_count: 37
+  rules:
+  - Prefer current/latest frontier model families already represented in model_thinking_settings_v1.
+  - Use explicit provider thinking controls where the runner can actually pass them through.
+  - Use OpenRouter for Gemini 3 thinking levels because OpenRouter maps reasoning.effort to Google thinkingLevel.
+  - Do not force temperature=0; leave provider/model default randomness unless an entry explicitly sets
+    it.
+  - Raise small output caps to at least 2000 tokens so truncation is not confused with benchmark failure.
+  - Exclude Grok 4.3 direct and OpenRouter settings from the clean full run because smoke hit provider
+    content_filter on the JSON true item.
+  research_question: When top models reach 100% answer accuracy, do explicit higher thinking modes add
+    cost/tokens without measurable accuracy gains?
+  excluded_after_smoke:
+  - entry_id: top-thinking-020-grok-grok-4-3-none
+    label: Grok 4.3 none
+    model: grok/grok-4.3
+    status: failed_inspect
+    error: ''
+  - entry_id: top-thinking-021-grok-grok-4-3-low
+    label: Grok 4.3 low
+    model: grok/grok-4.3
+    status: failed_inspect
+    error: ''
+  - entry_id: top-thinking-022-grok-grok-4-3-medium
+    label: Grok 4.3 medium
+    model: grok/grok-4.3
+    status: failed_inspect
+    error: ''
+  - entry_id: top-thinking-023-grok-grok-4-3-high
+    label: Grok 4.3 high
+    model: grok/grok-4.3
+    status: failed_inspect
+    error: ''
+  - entry_id: top-thinking-024-openrouter-x-ai-grok-4-3-none
+    label: 'xAI: Grok 4.3 none'
+    model: openrouter/x-ai/grok-4.3
+    status: failed_summary_validation
+    error: summary has total_samples=3 and scored_samples=2; expected 3 total samples and expected 3 scored
+      samples; provider_errors=1
+  - entry_id: top-thinking-025-openrouter-x-ai-grok-4-3-low
+    label: 'xAI: Grok 4.3 low'
+    model: openrouter/x-ai/grok-4.3
+    status: failed_summary_validation
+    error: summary has total_samples=3 and scored_samples=2; expected 3 total samples and expected 3 scored
+      samples; provider_errors=1
+  - entry_id: top-thinking-026-openrouter-x-ai-grok-4-3-medium
+    label: 'xAI: Grok 4.3 medium'
+    model: openrouter/x-ai/grok-4.3
+    status: failed_summary_validation
+    error: summary has total_samples=3 and scored_samples=2; expected 3 total samples and expected 3 scored
+      samples; provider_errors=1
+  - entry_id: top-thinking-027-openrouter-x-ai-grok-4-3-high
+    label: 'xAI: Grok 4.3 high'
+    model: openrouter/x-ai/grok-4.3
+    status: failed_summary_validation
+    error: summary has total_samples=3 and scored_samples=2; expected 3 total samples and expected 3 scored
+      samples; provider_errors=1
+estimation_profile:
+  method: Sum of calibrated model_thinking_settings_v1 estimates; output caps may be higher in this sweep
+    but expected short-answer usage remains calibrated.
+  cost_budget_usd: 10
+totals:
+  entry_count: 29
+  provider_route_counts:
+    openai: 10
+    anthropic: 9
+    openrouter: 10
+  thinking_depth_counts:
+    none: 2
+    low: 7
+    medium: 6
+    high: 7
+    xhigh: 3
+    max: 2
+    minimal: 2
+  control_style_counts:
+    openai_reasoning_effort: 10
+    anthropic_adaptive_thinking_effort: 9
+    openrouter_reasoning_effort: 10
+  estimated_cost_usd: 6.2413195
+  smoke_failed_excluded_count: 8
+entries:
+- id: top-thinking-001-openai-gpt-5-5-none
+  label: OpenAI GPT-5.5 none
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.5
+  model_id: gpt-5.5
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: none
+  configured_reasoning_tokens_per_sample: 0
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: none
+  provider_request_settings:
+    max_output_tokens: 2000
+    reasoning:
+      effort: none
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 0
+    output_tokens_billed: 640
+    total_tokens: 3949
+    reasoning_tokens_per_sample: 0
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - none
+  - reasoning-disabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+  reasoning_price_per_mtok_usd: 30
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.5:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.035745
+  estimated_cost_per_sample_usd: 0.00044681
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-5-none
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-002-openai-gpt-5-5-low
+  label: OpenAI GPT-5.5 low
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.5
+  model_id: gpt-5.5
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 256
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+  provider_request_settings:
+    max_output_tokens: 2000
+    reasoning:
+      effort: low
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 5120
+    output_tokens_billed: 5760
+    total_tokens: 9069
+    reasoning_tokens_per_sample: 64
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - low
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+  reasoning_price_per_mtok_usd: 30
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.5:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.189345
+  estimated_cost_per_sample_usd: 0.00236681
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-5-low
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-003-openai-gpt-5-5-medium
+  label: OpenAI GPT-5.5 medium
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.5
+  model_id: gpt-5.5
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: medium
+  provider_request_settings:
+    max_output_tokens: 2000
+    reasoning:
+      effort: medium
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 7680
+    output_tokens_billed: 8320
+    total_tokens: 11629
+    reasoning_tokens_per_sample: 96
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - medium
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+  reasoning_price_per_mtok_usd: 30
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.5:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.266145
+  estimated_cost_per_sample_usd: 0.00332681
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-5-medium
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-004-openai-gpt-5-5-high
+  label: OpenAI GPT-5.5 high
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.5
+  model_id: gpt-5.5
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 4096
+  generation_settings:
+    max_tokens: 4168
+    reasoning_effort: high
+  provider_request_settings:
+    max_output_tokens: 4168
+    reasoning:
+      effort: high
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 12800
+    output_tokens_billed: 13440
+    total_tokens: 16749
+    reasoning_tokens_per_sample: 160
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - high
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+  reasoning_price_per_mtok_usd: 30
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.5:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.419745
+  estimated_cost_per_sample_usd: 0.00524681
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-5-high
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-005-openai-gpt-5-5-xhigh
+  label: OpenAI GPT-5.5 xhigh
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.5
+  model_id: gpt-5.5
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: xhigh
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: xhigh
+  provider_request_settings:
+    max_output_tokens: 8264
+    reasoning:
+      effort: xhigh
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 25600
+    output_tokens_billed: 26240
+    total_tokens: 29549
+    reasoning_tokens_per_sample: 320
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - xhigh
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 30
+  reasoning_price_per_mtok_usd: 30
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.5:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.803745
+  estimated_cost_per_sample_usd: 0.01004681
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-5-xhigh
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-006-openai-gpt-5-4-none
+  label: OpenAI GPT-5.4 none
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.4
+  model_id: gpt-5.4
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: none
+  configured_reasoning_tokens_per_sample: 0
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: none
+  provider_request_settings:
+    max_output_tokens: 2000
+    reasoning:
+      effort: none
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 0
+    output_tokens_billed: 640
+    total_tokens: 3949
+    reasoning_tokens_per_sample: 0
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - none
+  - reasoning-disabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.4:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.0178725
+  estimated_cost_per_sample_usd: 0.00022341
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-4-none
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-007-openai-gpt-5-4-low
+  label: OpenAI GPT-5.4 low
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.4
+  model_id: gpt-5.4
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 256
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+  provider_request_settings:
+    max_output_tokens: 2000
+    reasoning:
+      effort: low
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 5120
+    output_tokens_billed: 5760
+    total_tokens: 9069
+    reasoning_tokens_per_sample: 64
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - low
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.4:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.0946725
+  estimated_cost_per_sample_usd: 0.00118341
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-4-low
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-008-openai-gpt-5-4-medium
+  label: OpenAI GPT-5.4 medium
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.4
+  model_id: gpt-5.4
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 1024
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: medium
+  provider_request_settings:
+    max_output_tokens: 2000
+    reasoning:
+      effort: medium
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 7680
+    output_tokens_billed: 8320
+    total_tokens: 11629
+    reasoning_tokens_per_sample: 96
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - medium
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.4:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.1330725
+  estimated_cost_per_sample_usd: 0.00166341
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-4-medium
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-009-openai-gpt-5-4-high
+  label: OpenAI GPT-5.4 high
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.4
+  model_id: gpt-5.4
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 4096
+  generation_settings:
+    max_tokens: 4168
+    reasoning_effort: high
+  provider_request_settings:
+    max_output_tokens: 4168
+    reasoning:
+      effort: high
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 12800
+    output_tokens_billed: 13440
+    total_tokens: 16749
+    reasoning_tokens_per_sample: 160
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - high
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.4:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.2098725
+  estimated_cost_per_sample_usd: 0.00262341
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-4-high
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-010-openai-gpt-5-4-xhigh
+  label: OpenAI GPT-5.4 xhigh
+  provider_route: openai
+  upstream_provider: openai
+  provider_api: openai_responses
+  inspect_model: openai/gpt-5.4
+  model_id: gpt-5.4
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openai_reasoning_effort
+  thinking_depth: xhigh
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: xhigh
+  provider_request_settings:
+    max_output_tokens: 8264
+    reasoning:
+      effort: xhigh
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 25600
+    output_tokens_billed: 26240
+    total_tokens: 29549
+    reasoning_tokens_per_sample: 320
+    calibration_source: measured_usage_with_conservative_buffer:openai
+  source_refs:
+  - https://developers.openai.com/api/docs/models
+  - https://developers.openai.com/api/docs/guides/reasoning
+  - https://developers.openai.com/api/docs/pricing
+  tags:
+  - direct-provider
+  - frontier
+  - openai
+  - thinking
+  - xhigh
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 2.5
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: openai:gpt-5.4:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.4018725
+  estimated_cost_per_sample_usd: 0.00502341
+  cost_warnings: []
+  source_thinking_entry_id: openai-gpt-5-4-xhigh
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-011-anthropic-claude-opus-4-8-low
+  label: Claude Opus 4.8 low
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-opus-4-8
+  model_id: claude-opus-4-8
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 512
+  generation_settings:
+    max_tokens: 2000
+    effort: low
+  provider_request_settings:
+    max_tokens: 2000
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: low
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 1280
+    output_tokens_billed: 1920
+    total_tokens: 5229
+    reasoning_tokens_per_sample: 16
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - low
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+  reasoning_price_per_mtok_usd: 25
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-opus-4-8:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.064545
+  estimated_cost_per_sample_usd: 0.00080681
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-opus-4-8-low
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-012-anthropic-claude-opus-4-8-medium
+  label: Claude Opus 4.8 medium
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-opus-4-8
+  model_id: claude-opus-4-8
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 2048
+  generation_settings:
+    max_tokens: 2120
+    effort: medium
+  provider_request_settings:
+    max_tokens: 2120
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: medium
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 3840
+    output_tokens_billed: 4480
+    total_tokens: 7789
+    reasoning_tokens_per_sample: 48
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - medium
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+  reasoning_price_per_mtok_usd: 25
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-opus-4-8:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.128545
+  estimated_cost_per_sample_usd: 0.00160681
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-opus-4-8-medium
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-013-anthropic-claude-opus-4-8-high
+  label: Claude Opus 4.8 high
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-opus-4-8
+  model_id: claude-opus-4-8
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    effort: high
+  provider_request_settings:
+    max_tokens: 8264
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: high
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 10240
+    output_tokens_billed: 10880
+    total_tokens: 14189
+    reasoning_tokens_per_sample: 128
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - high
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+  reasoning_price_per_mtok_usd: 25
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-opus-4-8:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.288545
+  estimated_cost_per_sample_usd: 0.00360681
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-opus-4-8-high
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-014-anthropic-claude-opus-4-8-xhigh
+  label: Claude Opus 4.8 xhigh
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-opus-4-8
+  model_id: claude-opus-4-8
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: xhigh
+  configured_reasoning_tokens_per_sample: 16384
+  generation_settings:
+    max_tokens: 16456
+    effort: xhigh
+  provider_request_settings:
+    max_tokens: 16456
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: xhigh
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 20480
+    output_tokens_billed: 21120
+    total_tokens: 24429
+    reasoning_tokens_per_sample: 256
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - xhigh
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+  reasoning_price_per_mtok_usd: 25
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-opus-4-8:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.544545
+  estimated_cost_per_sample_usd: 0.00680681
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-opus-4-8-xhigh
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-015-anthropic-claude-opus-4-8-max
+  label: Claude Opus 4.8 max
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-opus-4-8
+  model_id: claude-opus-4-8
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: max
+  configured_reasoning_tokens_per_sample: 32768
+  generation_settings:
+    max_tokens: 32840
+    effort: max
+  provider_request_settings:
+    max_tokens: 32840
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: max
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 30720
+    output_tokens_billed: 31360
+    total_tokens: 34669
+    reasoning_tokens_per_sample: 384
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - max
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 5
+  output_price_per_mtok_usd: 25
+  reasoning_price_per_mtok_usd: 25
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-opus-4-8:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.800545
+  estimated_cost_per_sample_usd: 0.01000681
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-opus-4-8-max
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-016-anthropic-claude-sonnet-4-6-low
+  label: Claude Sonnet 4.6 low
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-sonnet-4-6
+  model_id: claude-sonnet-4-6
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 512
+  generation_settings:
+    max_tokens: 2000
+    effort: low
+  provider_request_settings:
+    max_tokens: 2000
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: low
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 1280
+    output_tokens_billed: 1920
+    total_tokens: 5229
+    reasoning_tokens_per_sample: 16
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - low
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-sonnet-4-6:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.038727
+  estimated_cost_per_sample_usd: 0.00048409
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-sonnet-4-6-low
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-017-anthropic-claude-sonnet-4-6-medium
+  label: Claude Sonnet 4.6 medium
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-sonnet-4-6
+  model_id: claude-sonnet-4-6
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 2048
+  generation_settings:
+    max_tokens: 2120
+    effort: medium
+  provider_request_settings:
+    max_tokens: 2120
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: medium
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 3840
+    output_tokens_billed: 4480
+    total_tokens: 7789
+    reasoning_tokens_per_sample: 48
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - medium
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-sonnet-4-6:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.077127
+  estimated_cost_per_sample_usd: 0.00096409
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-sonnet-4-6-medium
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-018-anthropic-claude-sonnet-4-6-high
+  label: Claude Sonnet 4.6 high
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-sonnet-4-6
+  model_id: claude-sonnet-4-6
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    effort: high
+  provider_request_settings:
+    max_tokens: 8264
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: high
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 10240
+    output_tokens_billed: 10880
+    total_tokens: 14189
+    reasoning_tokens_per_sample: 128
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - high
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-sonnet-4-6:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.173127
+  estimated_cost_per_sample_usd: 0.00216409
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-sonnet-4-6-high
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-019-anthropic-claude-sonnet-4-6-max
+  label: Claude Sonnet 4.6 max
+  provider_route: anthropic
+  upstream_provider: anthropic
+  provider_api: anthropic_messages
+  inspect_model: anthropic/claude-sonnet-4-6
+  model_id: claude-sonnet-4-6
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: anthropic_adaptive_thinking_effort
+  thinking_depth: max
+  configured_reasoning_tokens_per_sample: 32768
+  generation_settings:
+    max_tokens: 32840
+    effort: max
+  provider_request_settings:
+    max_tokens: 32840
+    thinking:
+      type: adaptive
+      display: summarized
+    output_config:
+      effort: max
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 30720
+    output_tokens_billed: 31360
+    total_tokens: 34669
+    reasoning_tokens_per_sample: 384
+    calibration_source: measured_usage_with_conservative_buffer:anthropic
+  source_refs:
+  - https://platform.claude.com/docs/en/build-with-claude/extended-thinking
+  - https://platform.claude.com/docs/en/build-with-claude/effort
+  tags:
+  - direct-provider
+  - frontier
+  - anthropic
+  - thinking
+  - max
+  - reasoning-enabled
+  context_window_tokens: null
+  max_output_tokens: null
+  supported_parameters: null
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+  reasoning_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  runcost_price_card_id: anthropic:claude-sonnet-4-6:models-dev
+  runcost_price_source: models.dev
+  estimated_cost_usd: 0.480327
+  estimated_cost_per_sample_usd: 0.00600409
+  cost_warnings: []
+  source_thinking_entry_id: anthropic-claude-sonnet-4-6-max
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-028-openrouter-google-gemini-3-5-flash-minimal
+  label: 'Google: Gemini 3.5 Flash minimal'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.5-flash
+  model_id: google/gemini-3.5-flash
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 64
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: minimal
+  provider_request_settings:
+    max_tokens: 2000
+    include_reasoning: false
+    reasoning:
+      effort: minimal
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 2560
+    output_tokens_billed: 3200
+    total_tokens: 6509
+    reasoning_tokens_per_sample: 32
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - minimal
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+  reasoning_price_per_mtok_usd: 9
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.0337635
+  estimated_cost_per_sample_usd: 0.00042204
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-5-flash-minimal
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-029-openrouter-google-gemini-3-5-flash-low
+  label: 'Google: Gemini 3.5 Flash low'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.5-flash
+  model_id: google/gemini-3.5-flash
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 512
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+  provider_request_settings:
+    max_tokens: 2000
+    include_reasoning: false
+    reasoning:
+      effort: low
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 5120
+    output_tokens_billed: 5760
+    total_tokens: 9069
+    reasoning_tokens_per_sample: 64
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - low
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+  reasoning_price_per_mtok_usd: 9
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.0568035
+  estimated_cost_per_sample_usd: 0.00071004
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-5-flash-low
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-030-openrouter-google-gemini-3-5-flash-medium
+  label: 'Google: Gemini 3.5 Flash medium'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.5-flash
+  model_id: google/gemini-3.5-flash
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 2048
+  generation_settings:
+    max_tokens: 2120
+    reasoning_effort: medium
+  provider_request_settings:
+    max_tokens: 2120
+    include_reasoning: false
+    reasoning:
+      effort: medium
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 15360
+    output_tokens_billed: 16000
+    total_tokens: 19309
+    reasoning_tokens_per_sample: 192
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - medium
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+  reasoning_price_per_mtok_usd: 9
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.1489635
+  estimated_cost_per_sample_usd: 0.00186204
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-5-flash-medium
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-031-openrouter-google-gemini-3-5-flash-high
+  label: 'Google: Gemini 3.5 Flash high'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.5-flash
+  model_id: google/gemini-3.5-flash
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: high
+  provider_request_settings:
+    max_tokens: 8264
+    include_reasoning: false
+    reasoning:
+      effort: high
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 30720
+    output_tokens_billed: 31360
+    total_tokens: 34669
+    reasoning_tokens_per_sample: 384
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - high
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 1.5
+  output_price_per_mtok_usd: 9
+  reasoning_price_per_mtok_usd: 9
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.2872035
+  estimated_cost_per_sample_usd: 0.00359004
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-5-flash-high
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-032-openrouter-google-gemini-3-1-pro-preview-customtools-low
+  label: 'Google: Gemini 3.1 Pro Preview Custom Tools low'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.1-pro-preview-customtools
+  model_id: google/gemini-3.1-pro-preview-customtools
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 512
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+  provider_request_settings:
+    max_tokens: 2000
+    include_reasoning: false
+    reasoning:
+      effort: low
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 5120
+    output_tokens_billed: 5760
+    total_tokens: 9069
+    reasoning_tokens_per_sample: 64
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - low
+  - reasoning-enabled
+  context_window_tokens: 1048756
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 12
+  reasoning_price_per_mtok_usd: 12
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.075738
+  estimated_cost_per_sample_usd: 0.00094673
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-1-pro-preview-customtools-low
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-033-openrouter-google-gemini-3-1-pro-preview-customtools-high
+  label: 'Google: Gemini 3.1 Pro Preview Custom Tools high'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.1-pro-preview-customtools
+  model_id: google/gemini-3.1-pro-preview-customtools
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: high
+  provider_request_settings:
+    max_tokens: 8264
+    include_reasoning: false
+    reasoning:
+      effort: high
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 30720
+    output_tokens_billed: 31360
+    total_tokens: 34669
+    reasoning_tokens_per_sample: 384
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - high
+  - reasoning-enabled
+  context_window_tokens: 1048756
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 12
+  reasoning_price_per_mtok_usd: 12
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.382938
+  estimated_cost_per_sample_usd: 0.00478673
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-1-pro-preview-customtools-high
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-034-openrouter-google-gemini-3-1-flash-lite-minimal
+  label: 'Google: Gemini 3.1 Flash Lite minimal'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  model_id: google/gemini-3.1-flash-lite
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: minimal
+  configured_reasoning_tokens_per_sample: 64
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: minimal
+  provider_request_settings:
+    max_tokens: 2000
+    include_reasoning: false
+    reasoning:
+      effort: minimal
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 2560
+    output_tokens_billed: 3200
+    total_tokens: 6509
+    reasoning_tokens_per_sample: 32
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - minimal
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+  reasoning_price_per_mtok_usd: 1.5
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.00562725
+  estimated_cost_per_sample_usd: 7.034e-05
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-1-flash-lite-minimal
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-035-openrouter-google-gemini-3-1-flash-lite-low
+  label: 'Google: Gemini 3.1 Flash Lite low'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  model_id: google/gemini-3.1-flash-lite
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: low
+  configured_reasoning_tokens_per_sample: 512
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+  provider_request_settings:
+    max_tokens: 2000
+    include_reasoning: false
+    reasoning:
+      effort: low
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 5120
+    output_tokens_billed: 5760
+    total_tokens: 9069
+    reasoning_tokens_per_sample: 64
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - low
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+  reasoning_price_per_mtok_usd: 1.5
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.00946725
+  estimated_cost_per_sample_usd: 0.00011834
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-1-flash-lite-low
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+  output_cap_note: Raised to 2000 for this sweep to avoid truncation-as-failure.
+- id: top-thinking-036-openrouter-google-gemini-3-1-flash-lite-medium
+  label: 'Google: Gemini 3.1 Flash Lite medium'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  model_id: google/gemini-3.1-flash-lite
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: medium
+  configured_reasoning_tokens_per_sample: 2048
+  generation_settings:
+    max_tokens: 2120
+    reasoning_effort: medium
+  provider_request_settings:
+    max_tokens: 2120
+    include_reasoning: false
+    reasoning:
+      effort: medium
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 15360
+    output_tokens_billed: 16000
+    total_tokens: 19309
+    reasoning_tokens_per_sample: 192
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - medium
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+  reasoning_price_per_mtok_usd: 1.5
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.02482725
+  estimated_cost_per_sample_usd: 0.00031034
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-1-flash-lite-medium
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+- id: top-thinking-037-openrouter-google-gemini-3-1-flash-lite-high
+  label: 'Google: Gemini 3.1 Flash Lite high'
+  provider_route: openrouter
+  upstream_provider: google
+  provider_api: openrouter_chat_completions
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  model_id: google/gemini-3.1-flash-lite
+  profile: hard_obvious_8x10
+  seed: 20260531
+  run_status: planned
+  control_style: openrouter_reasoning_effort
+  thinking_depth: high
+  configured_reasoning_tokens_per_sample: 8192
+  generation_settings:
+    max_tokens: 8264
+    reasoning_effort: high
+  provider_request_settings:
+    max_tokens: 8264
+    include_reasoning: false
+    reasoning:
+      effort: high
+      exclude: true
+  estimated_usage:
+    sample_count: 80
+    input_tokens: 3309
+    visible_output_tokens: 640
+    reasoning_tokens: 30720
+    output_tokens_billed: 31360
+    total_tokens: 34669
+    reasoning_tokens_per_sample: 384
+    calibration_source: measured_usage_with_conservative_buffer:gemini
+  source_refs:
+  - https://openrouter.ai/api/v1/models
+  - https://openrouter.ai/docs/guides/best-practices/reasoning-tokens
+  tags:
+  - openrouter
+  - thinking
+  - frontier-or-benchmark-regular
+  - high
+  - reasoning-enabled
+  context_window_tokens: 1048576
+  max_output_tokens: 65536
+  supported_parameters:
+  - include_reasoning
+  - max_tokens
+  - reasoning
+  - response_format
+  - seed
+  - stop
+  - structured_outputs
+  - temperature
+  - tool_choice
+  - tools
+  - top_p
+  input_price_per_mtok_usd: 0.25
+  output_price_per_mtok_usd: 1.5
+  reasoning_price_per_mtok_usd: 1.5
+  pricing_source: openrouter_models_api
+  runcost_price_card_id: null
+  runcost_price_source: null
+  estimated_cost_usd: 0.04786725
+  estimated_cost_per_sample_usd: 0.00059834
+  cost_warnings: []
+  source_thinking_entry_id: openrouter-google-gemini-3-1-flash-lite-high
+  role: top model explicit thinking sweep
+  selection_rationale: Selected to compare current flagship/default and explicit thinking controls on
+    paper_v1.
+source_panel: configs/paper_v1_top_thinking_20260602_panel.yaml
+source_smoke_status: results/summaries/paper-v1-top-thinking-smoke-20260602/status.jsonl

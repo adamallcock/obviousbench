@@ -1,0 +1,153 @@
+schema_version: paper-model-panel-v1
+created_at: '2026-06-02'
+run_status: planned_not_run
+source_report_context: docs/reports/2026-06-02-paper-v1-combined-234-overline/report.html
+dataset: data/barrages/hard_obvious_8x28_seed_20260531.jsonl
+profile: hard_obvious_8x28
+seed: 20260531
+selection_policy:
+  summary: Generated estimate panel for expanding the 222 full 80-sample current rows
+    to hard_obvious_8x28.
+  notes:
+  - Entries are the 222 rows in the 2026-06-02 combined overline leaderboard with
+    scored_samples=80.
+  - Defaults omit --attempt-timeout to preserve cache compatibility with the current
+    80-sample scored runs.
+  - The six already-run 8x28 pilot model/configs get entry-level --attempt-timeout=180
+    to reuse their pilot cache entries.
+totals:
+  entry_count: 222
+  pilot_cache_key_overrides: 5
+entries:
+- id: expand222-scaled-096-openrouter-061-qwen-qwen3-235b-a22b
+  label: 'Qwen: Qwen3 235B A22B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-235b-a22b
+  generation_settings:
+    max_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-096-openrouter-061-qwen-qwen3-235b-a22b
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.455
+  output_price_per_mtok_usd: 1.82
+- id: expand222-next-058-registry-grok-build-0-1
+  label: Grok Build 0.1
+  provider_route: grok
+  inspect_model: grok/grok-build-0.1
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-058-registry-grok-build-0-1
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 1
+  output_price_per_mtok_usd: 2
+- id: expand222-paper-grok-4-3
+  label: Grok 4.3
+  provider_route: grok
+  inspect_model: grok/grok-4.3
+  generation_settings:
+    max_tokens: 64
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/paper-grok-4-3
+  baseline_answer_accuracy_pct: '95.0'
+  run_status: planned
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+- id: expand222-next-097-thinking-gemini-gemini-2-5-flash-lite-medium
+  label: Gemini 2.5 Flash-Lite medium_budget_8192
+  provider_route: gemini
+  inspect_model: google/gemini-2.5-flash-lite
+  generation_settings:
+    max_tokens: 10000
+    reasoning_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-097-thinking-gemini-gemini-2-5-flash-lite-medium
+  baseline_answer_accuracy_pct: '92.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-099-openrouter-149-moonshotai-kimi-k2
+  label: 'MoonshotAI: Kimi K2 0711'
+  provider_route: openrouter
+  inspect_model: openrouter/moonshotai/kimi-k2
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-099-openrouter-149-moonshotai-kimi-k2
+  baseline_answer_accuracy_pct: '87.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.57
+  output_price_per_mtok_usd: 2.3
+- id: expand222-scaled-050-openrouter-058-qwen-qwen3-8b
+  label: 'Qwen: Qwen3 8B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-8b
+  generation_settings:
+    max_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-050-openrouter-058-qwen-qwen3-8b
+  baseline_answer_accuracy_pct: '86.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+- id: expand222-scaled-073-openrouter-141-qwen-qwen-plus-2025-07-28
+  label: 'Qwen: Qwen Plus 0728'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-plus-2025-07-28
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-073-openrouter-141-qwen-qwen-plus-2025-07-28
+  baseline_answer_accuracy_pct: '85.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 0.78
+- id: expand222-scaled-088-openrouter-055-baidu-ernie-4-5-300b-a47b
+  label: 'Baidu: ERNIE 4.5 300B A47B '
+  provider_route: openrouter
+  inspect_model: openrouter/baidu/ernie-4.5-300b-a47b
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-088-openrouter-055-baidu-ernie-4-5-300b-a47b
+  baseline_answer_accuracy_pct: '82.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.28
+  output_price_per_mtok_usd: 1.1
+- id: expand222-scaled-015-openrouter-076-meta-llama-llama-3-8b-instruct
+  label: 'Meta: Llama 3 8B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3-8b-instruct
+  generation_settings:
+    max_tokens: 8192
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/scaled-015-openrouter-076-meta-llama-llama-3-8b-instruct
+  baseline_answer_accuracy_pct: '70.0'
+  run_status: planned
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.04
+- id: expand222-next-066-registry-openrouter-138-qwen-qwen3-max
+  label: 'Qwen: Qwen3 Max'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-max
+  generation_settings:
+    max_tokens: 10000
+    temperature: 0
+  baseline_summary_dir: results/summaries/paper-v1-combined-234-overline-attempt-scored-20260602/runs/next-066-registry-openrouter-138-qwen-qwen3-max
+  baseline_answer_accuracy_pct: '47.5'
+  run_status: planned
+  input_price_per_mtok_usd: 0.78
+  output_price_per_mtok_usd: 3.9
+source_cost_estimate: docs/research/2026-06-02-paper-v1-8x28-current-222-cost-estimate.csv
+defaults:
+  inspect_args:
+  - --no-log-model-api
+  - --no-log-realtime
+  - --timeout=900
+  - --no-fail-on-error
+  - --continue-on-fail
+  - --score-on-error
+  - --max-connections=1
+  - --max-retries=2

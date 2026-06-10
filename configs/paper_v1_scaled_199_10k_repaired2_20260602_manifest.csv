@@ -1,0 +1,200 @@
+label,model,summary_dir
+OpenAI GPT-5 nano minimal,openai/gpt-5-nano,results/summaries/paper-v1-scaled-100-10k-20260601/paper-openai-gpt-5-nano-minimal
+OpenAI GPT-4.1,openai/gpt-4.1,results/summaries/paper-v1-scaled-100-10k-20260601/paper-openai-gpt-4-1
+OpenAI GPT-4.1 mini,openai/gpt-4.1-mini,results/summaries/paper-v1-scaled-100-10k-20260601/paper-openai-gpt-4-1-mini
+Anthropic Claude Sonnet 4.6,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-scaled-100-10k-20260601/paper-anthropic-claude-sonnet-4-6
+Anthropic Claude Haiku 4.5,anthropic/claude-haiku-4-5,results/summaries/paper-v1-scaled-100-10k-20260601/paper-anthropic-claude-haiku-4-5
+Gemini 3.5 Flash,google/gemini-3.5-flash,results/summaries/paper-v1-scaled-100-10k-20260601/paper-gemini-3-5-flash
+Gemini 2.5 Flash-Lite,google/gemini-2.5-flash-lite,results/summaries/paper-v1-scaled-100-10k-20260601/paper-gemini-2-5-flash-lite
+Grok 4.3,grok/grok-4.3,results/summaries/paper-v1-scaled-100-10k-repair-20260601/paper-grok-4-3
+Xiaomi MiMo-V2-Flash,openrouter/xiaomi/mimo-v2-flash,results/summaries/paper-v1-scaled-100-10k-20260601/paper-openrouter-xiaomi-mimo-v2-flash
+NVIDIA Nemotron 3 Nano 30B A3B,openrouter/nvidia/nemotron-3-nano-30b-a3b,results/summaries/paper-v1-scaled-100-10k-20260601/paper-openrouter-nemotron-3-nano
+OpenAI GPT-OSS 20B,openrouter/openai/gpt-oss-20b,results/summaries/paper-v1-scaled-100-10k-repair-20260601/paper-openrouter-gpt-oss-20b
+Qwen3 Next 80B A3B Instruct,openrouter/qwen/qwen3-next-80b-a3b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/paper-openrouter-qwen3-next
+Mistral: Mistral Nemo,openrouter/mistralai/mistral-nemo,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-013-openrouter-159-mistralai-mistral-nemo
+Llama Guard 3 8B,openrouter/meta-llama/llama-guard-3-8b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-014-openrouter-063-meta-llama-llama-guard-3-8b
+Meta: Llama 3 8B Instruct,openrouter/meta-llama/llama-3-8b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-015-openrouter-076-meta-llama-llama-3-8b-instruct
+Meta: Llama 3.1 8B Instruct,openrouter/meta-llama/llama-3.1-8b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-016-openrouter-073-meta-llama-llama-3-1-8b-instruct
+Sao10K: Llama 3 8B Lunaris,openrouter/sao10k/l3-lunaris-8b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-017-openrouter-121-sao10k-l3-lunaris-8b
+MythoMax 13B,openrouter/gryphe/mythomax-l2-13b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-018-openrouter-079-gryphe-mythomax-l2-13b
+Mistral: Mistral Small 3,openrouter/mistralai/mistral-small-24b-instruct-2501,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-019-openrouter-065-mistralai-mistral-small-24b-instruct-2501
+Qwen: Qwen2.5 7B Instruct,openrouter/qwen/qwen-2.5-7b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-020-openrouter-069-qwen-qwen-2-5-7b-instruct
+IBM: Granite 4.1 8B,openrouter/ibm-granite/granite-4.1-8b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-021-openrouter-026-ibm-granite-granite-4-1-8b
+Qwen: Qwen3 235B A22B Instruct 2507,openrouter/qwen/qwen3-235b-a22b-2507,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-022-openrouter-053-qwen-qwen3-235b-a22b-2507
+Qwen: Qwen3 235B A22B Thinking 2507,openrouter/qwen/qwen3-235b-a22b-thinking-2507,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-023-openrouter-118-qwen-qwen3-235b-a22b-thinking-2507
+Z.ai: GLM 4 32B ,openrouter/z-ai/glm-4-32b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-024-openrouter-052-z-ai-glm-4-32b
+IBM: Granite 4.0 Micro,openrouter/ibm-granite/granite-4.0-h-micro,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-025-openrouter-041-ibm-granite-granite-4-0-h-micro
+LiquidAI: LFM2-24B-A2B,openrouter/liquid/lfm-2-24b-a2b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-026-openrouter-030-liquid-lfm-2-24b-a2b
+Google: Gemma 3n 4B,openrouter/google/gemma-3n-e4b-it,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-027-openrouter-056-google-gemma-3n-e4b-it
+Microsoft: Phi 4,openrouter/microsoft/phi-4,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-028-openrouter-066-microsoft-phi-4
+NousResearch: Hermes 2 Pro - Llama-3 8B,openrouter/nousresearch/hermes-2-pro-llama-3-8b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-029-openrouter-075-nousresearch-hermes-2-pro-llama-3-8b
+Arcee AI: Trinity Mini,openrouter/arcee-ai/trinity-mini,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-030-openrouter-037-arcee-ai-trinity-mini
+EssentialAI: Rnj 1 Instruct,openrouter/essentialai/rnj-1-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-031-openrouter-133-essentialai-rnj-1-instruct
+NVIDIA: Nemotron Nano 9B V2,openrouter/nvidia/nemotron-nano-9b-v2,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-032-openrouter-047-nvidia-nemotron-nano-9b-v2
+Qwen: Qwen3 30B A3B Instruct 2507,openrouter/qwen/qwen3-30b-a3b-instruct-2507,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-033-openrouter-051-qwen-qwen3-30b-a3b-instruct-2507
+OpenAI: gpt-oss-120b,openrouter/openai/gpt-oss-120b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-034-openrouter-048-openai-gpt-oss-120b
+DeepSeek: DeepSeek V4 Flash,openrouter/deepseek/deepseek-v4-flash,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-035-openrouter-027-deepseek-deepseek-v4-flash
+Meta: Llama 3.2 1B Instruct,openrouter/meta-llama/llama-3.2-1b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-037-openrouter-155-meta-llama-llama-3-2-1b-instruct
+Tencent: Hy3 preview,openrouter/tencent/hy3-preview,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-038-openrouter-126-tencent-hy3-preview
+Qwen: Qwen3 14B,openrouter/qwen/qwen3-14b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-039-openrouter-059-qwen-qwen3-14b
+Qwen: Qwen3 Coder 30B A3B Instruct,openrouter/qwen/qwen3-coder-30b-a3b-instruct,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-040-openrouter-050-qwen-qwen3-coder-30b-a3b-instruct
+Qwen: Qwen3 32B,openrouter/qwen/qwen3-32b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-041-openrouter-060-qwen-qwen3-32b
+DeepSeek: R1 Distill Qwen 32B,openrouter/deepseek/deepseek-r1-distill-qwen-32b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-042-openrouter-120-deepseek-deepseek-r1-distill-qwen-32b
+OpenAI: gpt-oss-safeguard-20b,openrouter/openai/gpt-oss-safeguard-20b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-043-openrouter-039-openai-gpt-oss-safeguard-20b
+StepFun: Step 3.5 Flash,openrouter/stepfun/step-3.5-flash,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-044-openrouter-032-stepfun-step-3-5-flash
+Nous: Hermes 3 70B Instruct,openrouter/nousresearch/hermes-3-llama-3.1-70b,results/summaries/paper-v1-scaled-100-10k-repair2-20260602/scaled-045-openrouter-156-nousresearch-hermes-3-llama-3-1-70b
+Meta: Llama 3.3 70B Instruct,openrouter/meta-llama/llama-3.3-70b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-046-openrouter-154-meta-llama-llama-3-3-70b-instruct
+Meta: Llama 3.2 3B Instruct,openrouter/meta-llama/llama-3.2-3b-instruct,results/summaries/paper-v1-scaled-100-10k-repair2-20260602/scaled-047-openrouter-071-meta-llama-llama-3-2-3b-instruct
+DeepSeek: DeepSeek V3.2,openrouter/deepseek/deepseek-v3.2,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-048-openrouter-134-deepseek-deepseek-v3-2
+Microsoft: Phi 4 Mini Instruct,openrouter/microsoft/phi-4-mini-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-049-openrouter-042-microsoft-phi-4-mini-instruct
+Qwen: Qwen3 8B,openrouter/qwen/qwen3-8b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-050-openrouter-058-qwen-qwen3-8b
+Z.ai: GLM 4.7 Flash,openrouter/z-ai/glm-4.7-flash,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-051-openrouter-033-z-ai-glm-4-7-flash
+Qwen: Qwen3 30B A3B Thinking 2507,openrouter/qwen/qwen3-30b-a3b-thinking-2507,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-052-openrouter-117-qwen-qwen3-30b-a3b-thinking-2507
+NVIDIA: Llama 3.3 Nemotron Super 49B V1.5,openrouter/nvidia/llama-3.3-nemotron-super-49b-v1.5,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-053-openrouter-043-nvidia-llama-3-3-nemotron-super-49b-v1-5
+Nous: Hermes 4 70B,openrouter/nousresearch/hermes-4-70b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-054-openrouter-143-nousresearch-hermes-4-70b
+Qwen2.5 72B Instruct,openrouter/qwen/qwen-2.5-72b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-055-openrouter-072-qwen-qwen-2-5-72b-instruct
+TheDrummer: UnslopNemo 12B,openrouter/thedrummer/unslopnemo-12b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-056-openrouter-068-thedrummer-unslopnemo-12b
+Meta: Llama 3.1 70B Instruct,openrouter/meta-llama/llama-3.1-70b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-057-openrouter-158-meta-llama-llama-3-1-70b-instruct
+DeepSeek: DeepSeek V3.2 Exp,openrouter/deepseek/deepseek-v3.2-exp,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-058-openrouter-137-deepseek-deepseek-v3-2-exp
+TheDrummer: Rocinante 12B,openrouter/thedrummer/rocinante-12b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-059-openrouter-070-thedrummer-rocinante-12b
+NVIDIA: Nemotron 3 Super,openrouter/nvidia/nemotron-3-super-120b-a12b,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-060-openrouter-029-nvidia-nemotron-3-super-120b-a12b
+Qwen: Qwen3 30B A3B,openrouter/qwen/qwen3-30b-a3b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-061-openrouter-057-qwen-qwen3-30b-a3b
+Nex AGI: DeepSeek V3.1 Nex N1,openrouter/nex-agi/deepseek-v3.1-nex-n1,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-062-openrouter-132-nex-agi-deepseek-v3-1-nex-n1
+AllenAI: Olmo 3 32B Think,openrouter/allenai/olmo-3-32b-think,results/summaries/paper-v1-scaled-100-10k-repair-20260601/scaled-063-openrouter-038-allenai-olmo-3-32b-think
+TheDrummer: Cydonia 24B V4.1,openrouter/thedrummer/cydonia-24b-v4.1,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-064-openrouter-044-thedrummer-cydonia-24b-v4-1
+Tencent: Hunyuan A13B Instruct,openrouter/tencent/hunyuan-a13b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-065-openrouter-054-tencent-hunyuan-a13b-instruct
+WizardLM-2 8x22B,openrouter/microsoft/wizardlm-2-8x22b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-066-openrouter-077-microsoft-wizardlm-2-8x22b
+ReMM SLERP 13B,openrouter/undi95/remm-slerp-l2-13b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-067-openrouter-078-undi95-remm-slerp-l2-13b
+Google: Gemma 2 27B,openrouter/google/gemma-2-27b-it,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-068-openrouter-074-google-gemma-2-27b-it
+Meta: Llama 3 70B Instruct,openrouter/meta-llama/llama-3-70b-instruct,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-069-openrouter-160-meta-llama-llama-3-70b-instruct
+DeepSeek: DeepSeek V3 0324,openrouter/deepseek/deepseek-chat-v3-0324,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-070-openrouter-150-deepseek-deepseek-chat-v3-0324
+Qwen: Qwen3 Next 80B A3B Thinking,openrouter/qwen/qwen3-next-80b-a3b-thinking,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-071-openrouter-116-qwen-qwen3-next-80b-a3b-thinking
+Qwen: Qwen-Plus,openrouter/qwen/qwen-plus,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-072-openrouter-152-qwen-qwen-plus
+Qwen: Qwen Plus 0728,openrouter/qwen/qwen-plus-2025-07-28,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-073-openrouter-141-qwen-qwen-plus-2025-07-28
+DeepSeek: DeepSeek V3.1,openrouter/deepseek/deepseek-chat-v3.1,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-074-openrouter-145-deepseek-deepseek-chat-v3-1
+Qwen: Qwen3 Coder Next,openrouter/qwen/qwen3-coder-next,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-075-openrouter-130-qwen-qwen3-coder-next
+TheDrummer: Skyfall 36B V2,openrouter/thedrummer/skyfall-36b-v2,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-076-openrouter-151-thedrummer-skyfall-36b-v2
+DeepSeek: DeepSeek V3,openrouter/deepseek/deepseek-chat,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-077-openrouter-153-deepseek-deepseek-chat
+Z.ai: GLM 4.5 Air,openrouter/z-ai/glm-4.5-air,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-078-openrouter-147-z-ai-glm-4-5-air
+DeepSeek: DeepSeek V4 Pro,openrouter/deepseek/deepseek-v4-pro,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-079-openrouter-125-deepseek-deepseek-v4-pro
+Xiaomi: MiMo-V2.5-Pro,openrouter/xiaomi/mimo-v2.5-pro,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-080-openrouter-127-xiaomi-mimo-v2-5-pro
+DeepSeek: DeepSeek V3.1 Terminus,openrouter/deepseek/deepseek-v3.1-terminus,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-081-openrouter-140-deepseek-deepseek-v3-1-terminus
+MiniMax: MiniMax M2.1,openrouter/minimax/minimax-m2.1,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-082-openrouter-034-minimax-minimax-m2-1
+Qwen: Qwen3 Coder Flash,openrouter/qwen/qwen3-coder-flash,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-083-openrouter-045-qwen-qwen3-coder-flash
+MiniMax: MiniMax M2,openrouter/minimax/minimax-m2,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-084-openrouter-040-minimax-minimax-m2
+Qwen2.5 Coder 32B Instruct,openrouter/qwen/qwen-2.5-coder-32b-instruct,results/summaries/paper-v1-scaled-100-10k-repair2-20260602/scaled-085-openrouter-067-qwen-qwen-2-5-coder-32b-instruct
+Nous: Hermes 3 405B Instruct,openrouter/nousresearch/hermes-3-llama-3.1-405b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-086-openrouter-157-nousresearch-hermes-3-llama-3-1-405b
+Prime Intellect: INTELLECT-3,openrouter/prime-intellect/intellect-3,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-087-openrouter-135-prime-intellect-intellect-3
+Baidu: ERNIE 4.5 300B A47B ,openrouter/baidu/ernie-4.5-300b-a47b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-088-openrouter-055-baidu-ernie-4-5-300b-a47b
+MiniMax: MiniMax M2.5,openrouter/minimax/minimax-m2.5,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-089-openrouter-031-minimax-minimax-m2-5
+MiniMax: MiniMax M2.7,openrouter/minimax/minimax-m2.7,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-090-openrouter-028-minimax-minimax-m2-7
+AionLabs: Aion-1.0-Mini,openrouter/aion-labs/aion-1.0-mini,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-091-openrouter-119-aion-labs-aion-1-0-mini
+AionLabs: Aion-RP 1.0 (8B),openrouter/aion-labs/aion-rp-llama-3.1-8b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-092-openrouter-064-aion-labs-aion-rp-llama-3-1-8b
+Z.ai: GLM 4.6,openrouter/z-ai/glm-4.6,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-093-openrouter-136-z-ai-glm-4-6
+Z.ai: GLM 4.7,openrouter/z-ai/glm-4.7,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-094-openrouter-131-z-ai-glm-4-7
+Qwen: Qwen3 Coder 480B A35B,openrouter/qwen/qwen3-coder,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-095-openrouter-148-qwen-qwen3-coder
+Qwen: Qwen3 235B A22B,openrouter/qwen/qwen3-235b-a22b,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-096-openrouter-061-qwen-qwen3-235b-a22b
+Z.ai: GLM 5,openrouter/z-ai/glm-5,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-097-openrouter-129-z-ai-glm-5
+Z.ai: GLM 4.5,openrouter/z-ai/glm-4.5,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-098-openrouter-146-z-ai-glm-4-5
+MoonshotAI: Kimi K2 0711,openrouter/moonshotai/kimi-k2,results/summaries/paper-v1-scaled-100-10k-repair2-20260602/scaled-099-openrouter-149-moonshotai-kimi-k2
+MoonshotAI: Kimi K2 0905,openrouter/moonshotai/kimi-k2-0905,results/summaries/paper-v1-scaled-100-10k-20260601/scaled-100-openrouter-142-moonshotai-kimi-k2-0905
+Google: Gemma 3 4B,openrouter/google/gemma-3-4b-it,results/summaries/paper-v1-scaled-next100-10k-20260601/next-001-registry-openrouter-109-google-gemma-3-4b-it
+Google: Gemma 3 12B,openrouter/google/gemma-3-12b-it,results/summaries/paper-v1-scaled-next100-10k-20260601/next-002-registry-openrouter-110-google-gemma-3-12b-it
+Qwen: Qwen3.5-9B,openrouter/qwen/qwen3.5-9b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-003-registry-openrouter-086-qwen-qwen3-5-9b
+Mistral: Ministral 3 3B 2512,openrouter/mistralai/ministral-3b-2512,results/summaries/paper-v1-scaled-next100-10k-20260601/next-004-registry-openrouter-095-mistralai-ministral-3b-2512
+Reka Edge,openrouter/rekaai/reka-edge,results/summaries/paper-v1-scaled-next100-10k-20260601/next-005-registry-openrouter-167-rekaai-reka-edge
+Google: Gemma 3 27B,openrouter/google/gemma-3-27b-it,results/summaries/paper-v1-scaled-next100-10k-20260601/next-006-registry-openrouter-111-google-gemma-3-27b-it
+Mistral: Mistral Small 3.2 24B,openrouter/mistralai/mistral-small-3.2-24b-instruct,results/summaries/paper-v1-scaled-next100-10k-20260601/next-007-registry-openrouter-104-mistralai-mistral-small-3-2-24b-instruct
+Mistral: Ministral 3 8B 2512,openrouter/mistralai/ministral-8b-2512,results/summaries/paper-v1-scaled-next100-10k-20260601/next-008-registry-openrouter-094-mistralai-ministral-8b-2512
+ByteDance: UI-TARS 7B ,openrouter/bytedance/ui-tars-1.5-7b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-009-registry-openrouter-102-bytedance-ui-tars-1-5-7b
+Qwen: Qwen3.5-Flash,openrouter/qwen/qwen3.5-flash-02-23,results/summaries/paper-v1-scaled-next100-10k-20260601/next-010-registry-openrouter-090-qwen-qwen3-5-flash-02-23
+Meta: Llama Guard 4 12B,openrouter/meta-llama/llama-guard-4-12b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-011-registry-openrouter-105-meta-llama-llama-guard-4-12b
+Meta: Llama 4 Scout,openrouter/meta-llama/llama-4-scout,results/summaries/paper-v1-scaled-next100-10k-20260601/next-012-registry-openrouter-107-meta-llama-llama-4-scout
+Google: Gemma 4 26B A4B ,openrouter/google/gemma-4-26b-a4b-it,results/summaries/paper-v1-scaled-next100-10k-20260601/next-013-registry-openrouter-084-google-gemma-4-26b-a4b-it
+Mistral: Ministral 3 14B 2512,openrouter/mistralai/ministral-14b-2512,results/summaries/paper-v1-scaled-next100-10k-20260601/next-014-registry-openrouter-093-mistralai-ministral-14b-2512
+Mistral: Voxtral Small 24B 2507,openrouter/mistralai/voxtral-small-24b-2507,results/summaries/paper-v1-scaled-next100-10k-20260601/next-015-registry-openrouter-096-mistralai-voxtral-small-24b-2507
+Xiaomi: MiMo-V2.5,openrouter/xiaomi/mimo-v2.5,results/summaries/paper-v1-scaled-next100-10k-20260601/next-016-registry-openrouter-163-xiaomi-mimo-v2-5
+Google: Gemma 4 31B,openrouter/google/gemma-4-31b-it,results/summaries/paper-v1-scaled-next100-10k-20260601/next-017-registry-openrouter-165-google-gemma-4-31b-it
+Meta: Llama 3.2 11B Vision Instruct,openrouter/meta-llama/llama-3.2-11b-vision-instruct,results/summaries/paper-v1-scaled-next100-10k-20260601/next-018-registry-openrouter-177-meta-llama-llama-3-2-11b-vision-instruct
+OpenAI GPT-4.1 nano,openai/gpt-4.1-nano,results/summaries/paper-v1-scaled-next100-10k-20260601/next-019-registry-openai-gpt-4-1-nano
+Qwen: Qwen3 VL 32B Instruct,openrouter/qwen/qwen3-vl-32b-instruct,results/summaries/paper-v1-scaled-next100-10k-repair2-20260602/next-020-registry-openrouter-097-qwen-qwen3-vl-32b-instruct
+Qwen: Qwen3 VL 8B Instruct,openrouter/qwen/qwen3-vl-8b-instruct,results/summaries/paper-v1-scaled-next100-10k-20260601/next-021-registry-openrouter-098-qwen-qwen3-vl-8b-instruct
+Qwen: Qwen3 VL 30B A3B Instruct,openrouter/qwen/qwen3-vl-30b-a3b-instruct,results/summaries/paper-v1-scaled-next100-10k-20260601/next-022-registry-openrouter-099-qwen-qwen3-vl-30b-a3b-instruct
+Baidu: ERNIE 4.5 VL 28B A3B,openrouter/baidu/ernie-4.5-vl-28b-a3b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-023-registry-openrouter-101-baidu-ernie-4-5-vl-28b-a3b
+OpenAI GPT-4o mini,openai/gpt-4o-mini,results/summaries/paper-v1-scaled-next100-10k-20260601/next-024-registry-openai-gpt-4o-mini
+Mistral: Mistral Small 4,openrouter/mistralai/mistral-small-2603,results/summaries/paper-v1-scaled-next100-10k-20260601/next-025-registry-openrouter-085-mistralai-mistral-small-2603
+Meta: Llama 4 Maverick,openrouter/meta-llama/llama-4-maverick,results/summaries/paper-v1-scaled-next100-10k-20260601/next-026-registry-openrouter-106-meta-llama-llama-4-maverick
+Mistral: Saba,openrouter/mistralai/mistral-saba,results/summaries/paper-v1-scaled-next100-10k-20260601/next-027-registry-openrouter-176-mistralai-mistral-saba
+Mistral: Mistral Small 3.1 24B,openrouter/mistralai/mistral-small-3.1-24b-instruct,results/summaries/paper-v1-scaled-next100-10k-repair2-20260602/next-028-registry-openrouter-108-mistralai-mistral-small-3-1-24b-instruct
+Qwen: Qwen2.5 VL 72B Instruct,openrouter/qwen/qwen2.5-vl-72b-instruct,results/summaries/paper-v1-scaled-next100-10k-20260601/next-029-registry-openrouter-112-qwen-qwen2-5-vl-72b-instruct
+Qwen: Qwen3 VL 235B A22B Instruct,openrouter/qwen/qwen3-vl-235b-a22b-instruct,results/summaries/paper-v1-scaled-next100-10k-20260601/next-030-registry-openrouter-100-qwen-qwen3-vl-235b-a22b-instruct
+Qwen: Qwen3.6 35B A3B,openrouter/qwen/qwen3.6-35b-a3b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-031-registry-openrouter-082-qwen-qwen3-6-35b-a3b
+Qwen: Qwen3.5-35B-A3B,openrouter/qwen/qwen3.5-35b-a3b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-032-registry-openrouter-087-qwen-qwen3-5-35b-a3b
+Z.ai: GLM 4.6V,openrouter/z-ai/glm-4.6v,results/summaries/paper-v1-scaled-next100-10k-20260601/next-033-registry-openrouter-170-z-ai-glm-4-6v
+Mistral: Codestral 2508,openrouter/mistralai/codestral-2508,results/summaries/paper-v1-scaled-next100-10k-20260601/next-034-registry-openrouter-174-mistralai-codestral-2508
+MiniMax: MiniMax-01,openrouter/minimax/minimax-01,results/summaries/paper-v1-scaled-next100-10k-20260601/next-035-registry-openrouter-113-minimax-minimax-01
+Qwen: Qwen3.6 Flash,openrouter/qwen/qwen3.6-flash,results/summaries/paper-v1-scaled-next100-10k-20260601/next-036-registry-openrouter-081-qwen-qwen3-6-flash
+OpenAI GPT-5.4 nano no thinking,openai/gpt-5.4-nano,results/summaries/paper-v1-scaled-next100-10k-20260601/next-037-registry-openai-gpt-5-4-nano-none
+Qwen: Qwen3 VL 8B Thinking,openrouter/qwen/qwen3-vl-8b-thinking,results/summaries/paper-v1-scaled-next100-10k-20260601/next-038-registry-openrouter-122-qwen-qwen3-vl-8b-thinking
+MiniMax: MiniMax M3,openrouter/minimax/minimax-m3,results/summaries/paper-v1-scaled-next100-10k-20260601/next-039-registry-openrouter-080-minimax-minimax-m3
+Baidu: ERNIE 4.5 VL 424B A47B ,openrouter/baidu/ernie-4.5-vl-424b-a47b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-040-registry-openrouter-103-baidu-ernie-4-5-vl-424b-a47b
+Qwen: Qwen3 VL 30B A3B Thinking,openrouter/qwen/qwen3-vl-30b-a3b-thinking,results/summaries/paper-v1-scaled-next100-10k-20260601/next-041-registry-openrouter-123-qwen-qwen3-vl-30b-a3b-thinking
+Gemini 3.1 Flash-Lite,google/gemini-3.1-flash-lite,results/summaries/paper-v1-scaled-next100-10k-20260601/next-042-registry-gemini-3-1-flash-lite
+Qwen: Qwen3.5-27B,openrouter/qwen/qwen3.5-27b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-043-registry-openrouter-088-qwen-qwen3-5-27b
+Qwen: Qwen3.5 Plus 2026-02-15,openrouter/qwen/qwen3.5-plus-02-15,results/summaries/paper-v1-scaled-next100-10k-repair2-20260602/next-044-registry-openrouter-168-qwen-qwen3-5-plus-02-15
+Mistral: Mistral Large 3 2512,openrouter/mistralai/mistral-large-2512,results/summaries/paper-v1-scaled-next100-10k-20260601/next-045-registry-openrouter-171-mistralai-mistral-large-2512
+Qwen: Qwen3.5 Plus 2026-04-20,openrouter/qwen/qwen3.5-plus-20260420,results/summaries/paper-v1-scaled-next100-10k-repair2-20260602/next-046-registry-openrouter-162-qwen-qwen3-5-plus-20260420
+OpenAI GPT-5 mini minimal,openai/gpt-5-mini,results/summaries/paper-v1-scaled-next100-10k-20260601/next-047-registry-openai-gpt-5-mini-minimal
+Qwen: Qwen3.6 Plus,openrouter/qwen/qwen3.6-plus,results/summaries/paper-v1-scaled-next100-10k-20260601/next-048-registry-openrouter-166-qwen-qwen3-6-plus
+MoonshotAI: Kimi K2.5,openrouter/moonshotai/kimi-k2.5,results/summaries/paper-v1-scaled-next100-10k-20260601/next-049-registry-openrouter-169-moonshotai-kimi-k2-5
+Qwen: Qwen3.5-122B-A10B,openrouter/qwen/qwen3.5-122b-a10b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-050-registry-openrouter-089-qwen-qwen3-5-122b-a10b
+Mistral: Devstral 2 2512,openrouter/mistralai/devstral-2512,results/summaries/paper-v1-scaled-next100-10k-20260601/next-051-registry-openrouter-092-mistralai-devstral-2512
+Mistral: Mistral Medium 3.1,openrouter/mistralai/mistral-medium-3.1,results/summaries/paper-v1-scaled-next100-10k-20260601/next-052-registry-openrouter-172-mistralai-mistral-medium-3-1
+Z.ai: GLM 4.5V,openrouter/z-ai/glm-4.5v,results/summaries/paper-v1-scaled-next100-10k-20260601/next-053-registry-openrouter-173-z-ai-glm-4-5v
+Mistral: Mistral Medium 3,openrouter/mistralai/mistral-medium-3,results/summaries/paper-v1-scaled-next100-10k-20260601/next-054-registry-openrouter-175-mistralai-mistral-medium-3
+Qwen: Qwen3.5 397B A17B,openrouter/qwen/qwen3.5-397b-a17b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-055-registry-openrouter-091-qwen-qwen3-5-397b-a17b
+Gemini 2.5 Flash,google/gemini-2.5-flash,results/summaries/paper-v1-scaled-next100-10k-20260601/next-056-registry-gemini-2-5-flash
+Qwen: Qwen3 VL 235B A22B Thinking,openrouter/qwen/qwen3-vl-235b-a22b-thinking,results/summaries/paper-v1-scaled-next100-10k-20260601/next-057-registry-openrouter-124-qwen-qwen3-vl-235b-a22b-thinking
+Grok Build 0.1,grok/grok-build-0.1,results/summaries/paper-v1-scaled-next100-10k-20260601/next-058-registry-grok-build-0-1
+Qwen: Qwen3.6 27B,openrouter/qwen/qwen3.6-27b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-059-registry-openrouter-083-qwen-qwen3-6-27b
+Gemini 3 Flash Preview,google/gemini-3-flash-preview,results/summaries/paper-v1-scaled-next100-10k-20260601/next-060-registry-gemini-3-flash-preview
+Qwen: Qwen3 Coder Plus,openrouter/qwen/qwen3-coder-plus,results/summaries/paper-v1-scaled-next100-10k-20260601/next-061-registry-openrouter-139-qwen-qwen3-coder-plus
+Nous: Hermes 4 405B,openrouter/nousresearch/hermes-4-405b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-062-registry-openrouter-144-nousresearch-hermes-4-405b
+Z.ai: GLM 5.1,openrouter/z-ai/glm-5.1,results/summaries/paper-v1-scaled-next100-10k-20260601/next-063-registry-openrouter-128-z-ai-glm-5-1
+MoonshotAI Kimi Latest,openrouter/~moonshotai/kimi-latest,results/summaries/paper-v1-scaled-next100-10k-20260601/next-064-registry-openrouter-161-moonshotai-kimi-latest
+MoonshotAI: Kimi K2.6,openrouter/moonshotai/kimi-k2.6,results/summaries/paper-v1-scaled-next100-10k-20260601/next-065-registry-openrouter-164-moonshotai-kimi-k2-6
+Qwen: Qwen3 Max,openrouter/qwen/qwen3-max,results/summaries/paper-v1-scaled-next100-10k-repair2-20260602/next-066-registry-openrouter-138-qwen-qwen3-max
+Qwen: Qwen3.7 Max,openrouter/qwen/qwen3.7-max,results/summaries/paper-v1-scaled-next100-10k-20260601/next-067-registry-openrouter-178-qwen-qwen3-7-max
+Z.ai: GLM 5 Turbo,openrouter/z-ai/glm-5-turbo,results/summaries/paper-v1-scaled-next100-10k-20260601/next-068-registry-openrouter-180-z-ai-glm-5-turbo
+Z.ai: GLM 5V Turbo,openrouter/z-ai/glm-5v-turbo,results/summaries/paper-v1-scaled-next100-10k-20260601/next-069-registry-openrouter-184-z-ai-glm-5v-turbo
+OpenAI GPT-5.4 mini no thinking,openai/gpt-5.4-mini,results/summaries/paper-v1-scaled-next100-10k-20260601/next-070-registry-openai-gpt-5-4-mini-none
+Qwen: Qwen3.6 Max Preview,openrouter/qwen/qwen3.6-max-preview,results/summaries/paper-v1-scaled-next100-10k-20260601/next-071-registry-openrouter-179-qwen-qwen3-6-max-preview
+Magnum v4 72B,openrouter/anthracite-org/magnum-v4-72b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-072-registry-openrouter-114-anthracite-org-magnum-v4-72b
+Mistral: Mixtral 8x22B Instruct,openrouter/mistralai/mixtral-8x22b-instruct,results/summaries/paper-v1-scaled-next100-10k-20260601/next-073-registry-openrouter-115-mistralai-mixtral-8x22b-instruct
+Mistral Large 2407,openrouter/mistralai/mistral-large-2407,results/summaries/paper-v1-scaled-next100-10k-20260601/next-074-registry-openrouter-185-mistralai-mistral-large-2407
+Mistral: Mistral Medium 3.5,openrouter/mistralai/mistral-medium-3-5,results/summaries/paper-v1-scaled-next100-10k-20260601/next-075-registry-openrouter-183-mistralai-mistral-medium-3-5
+AI21: Jamba Large 1.7,openrouter/ai21/jamba-large-1.7,results/summaries/paper-v1-scaled-next100-10k-20260601/next-076-registry-openrouter-181-ai21-jamba-large-1-7
+OpenAI GPT-5 minimal,openai/gpt-5,results/summaries/paper-v1-scaled-next100-10k-20260601/next-077-registry-openai-gpt-5-minimal
+OpenAI GPT-4o,openai/gpt-4o,results/summaries/paper-v1-scaled-next100-10k-20260601/next-078-registry-openai-gpt-4o
+Cohere: Command A,openrouter/cohere/command-a,results/summaries/paper-v1-scaled-next100-10k-20260601/next-079-registry-openrouter-182-cohere-command-a
+OpenAI GPT-5.2 no thinking,openai/gpt-5.2,results/summaries/paper-v1-scaled-next100-10k-20260601/next-080-registry-openai-gpt-5-2-none
+OpenAI GPT-5.4 no thinking,openai/gpt-5.4,results/summaries/paper-v1-scaled-next100-10k-20260601/next-081-registry-openai-gpt-5-4-none
+Anthropic Claude Opus 4.6,anthropic/claude-opus-4-6,results/summaries/paper-v1-scaled-next100-10k-20260601/next-082-registry-anthropic-claude-opus-4-6
+Anthropic Claude Opus 4.7,anthropic/claude-opus-4-7,results/summaries/paper-v1-scaled-next100-10k-20260601/next-083-registry-anthropic-claude-opus-4-7
+Anthropic Claude Opus 4.8,anthropic/claude-opus-4-8,results/summaries/paper-v1-scaled-next100-10k-20260601/next-084-registry-anthropic-claude-opus-4-8
+OpenAI GPT-5.5 low,openai/gpt-5.5,results/summaries/paper-v1-scaled-next100-10k-20260601/next-085-registry-openai-gpt-5-5-low
+OpenAI GPT-5.5 no thinking,openai/gpt-5.5,results/summaries/paper-v1-scaled-next100-10k-20260601/next-086-registry-openai-gpt-5-5-none
+OpenAI GPT-5 nano minimal,openai/gpt-5-nano,results/summaries/paper-v1-scaled-next100-10k-20260601/next-087-thinking-openai-gpt-5-nano-minimal
+OpenAI GPT-5 nano low,openai/gpt-5-nano,results/summaries/paper-v1-scaled-next100-10k-20260601/next-088-thinking-openai-gpt-5-nano-low
+Gemini 2.5 Flash-Lite low_budget_1024,google/gemini-2.5-flash-lite,results/summaries/paper-v1-scaled-next100-10k-20260601/next-089-thinking-gemini-gemini-2-5-flash-lite-low
+OpenAI GPT-5 nano medium,openai/gpt-5-nano,results/summaries/paper-v1-scaled-next100-10k-20260601/next-090-thinking-openai-gpt-5-nano-medium
+DeepSeek: R1 Distill Qwen 32B low_budget_512,openrouter/deepseek/deepseek-r1-distill-qwen-32b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-091-thinking-openrouter-deepseek-deepseek-r1-distill-qwen-32b-low
+OpenAI GPT-5 mini minimal,openai/gpt-5-mini,results/summaries/paper-v1-scaled-next100-10k-20260601/next-092-thinking-openai-gpt-5-mini-minimal
+Gemini 3.1 Flash-Lite minimal_budget_1024,google/gemini-3.1-flash-lite,results/summaries/paper-v1-scaled-next100-10k-20260601/next-093-thinking-gemini-gemini-3-1-flash-lite-minimal
+Google: Gemini 3.1 Flash Lite minimal,openrouter/google/gemini-3.1-flash-lite,results/summaries/paper-v1-scaled-next100-10k-20260601/next-094-thinking-openrouter-google-gemini-3-1-flash-lite-minimal
+Google: Gemini 3.1 Flash Lite Preview minimal,openrouter/google/gemini-3.1-flash-lite-preview,results/summaries/paper-v1-scaled-next100-10k-20260601/next-095-thinking-openrouter-google-gemini-3-1-flash-lite-preview-minimal
+Qwen: Qwen3.6 35B A3B low_budget_512,openrouter/qwen/qwen3.6-35b-a3b,results/summaries/paper-v1-scaled-next100-10k-20260601/next-096-thinking-openrouter-qwen-qwen3-6-35b-a3b-low
+Gemini 2.5 Flash-Lite medium_budget_8192,google/gemini-2.5-flash-lite,results/summaries/paper-v1-scaled-next100-10k-20260601/next-097-thinking-gemini-gemini-2-5-flash-lite-medium
+Qwen: Qwen3.6 Flash low_budget_512,openrouter/qwen/qwen3.6-flash,results/summaries/paper-v1-scaled-next100-10k-20260601/next-098-thinking-openrouter-qwen-qwen3-6-flash-low
+OpenAI GPT-5.4 nano low,openai/gpt-5.4-nano,results/summaries/paper-v1-scaled-next100-10k-20260601/next-099-thinking-openai-gpt-5-4-nano-low
+OpenAI: GPT-5.4 Nano low,openrouter/openai/gpt-5.4-nano,results/summaries/paper-v1-scaled-next100-10k-20260601/next-100-thinking-openrouter-openai-gpt-5-4-nano-low

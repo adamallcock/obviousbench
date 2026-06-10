@@ -1,0 +1,69 @@
+schema_version: "paper-model-panel-v1"
+created_at: "2026-06-02"
+run_status: "planned_not_run"
+dataset: "data/barrages/hard_obvious_8x28_seed_20260531.jsonl"
+source_report_context: "docs/reports/2026-06-02-paper-v1-combined-234-overline/report.html"
+profile: "hard_obvious_8x28"
+seed: 20260531
+defaults:
+  temperature: 0
+  max_tokens: 10000
+  inspect_args:
+    - "--no-log-model-api"
+    - "--no-log-realtime"
+    - "--max-connections=4"
+    - "--timeout=900"
+    - "--attempt-timeout=180"
+    - "--max-retries=1"
+    - "--no-fail-on-error"
+    - "--continue-on-fail"
+    - "--score-on-error"
+selection_policy:
+  summary: "Small 8x28 pilot to compare current 80-sample leaderboard rows against a larger balanced hard-obvious slice."
+  rules:
+    - "Use OpenRouter-only models to keep provider plumbing and pricing comparable."
+    - "Cover the current 100%, 98.8%, 97.5%, 96.2%, low-80%, and high-60% accuracy bands."
+    - "Reuse deterministic generation settings from scaled paper-panel runs where possible."
+entries:
+  - id: "pilot8x28-openrouter-nvidia-nemotron-3-super"
+    label: "NVIDIA: Nemotron 3 Super"
+    provider_route: "openrouter"
+    inspect_model: "openrouter/nvidia/nemotron-3-super-120b-a12b"
+    baseline_report_rank: 1
+    baseline_answer_accuracy_pct: 100.0
+    run_status: "planned"
+  - id: "pilot8x28-openrouter-minimax-m3"
+    label: "MiniMax: MiniMax M3"
+    provider_route: "openrouter"
+    inspect_model: "openrouter/minimax/minimax-m3"
+    baseline_report_rank: 26
+    baseline_answer_accuracy_pct: 98.8
+    run_status: "planned"
+  - id: "pilot8x28-openrouter-gpt-oss-20b"
+    label: "OpenAI GPT-OSS 20B"
+    provider_route: "openrouter"
+    inspect_model: "openrouter/openai/gpt-oss-20b"
+    baseline_report_rank: 40
+    baseline_answer_accuracy_pct: 97.5
+    run_status: "planned"
+  - id: "pilot8x28-openrouter-deepseek-v4-flash"
+    label: "DeepSeek: DeepSeek V4 Flash"
+    provider_route: "openrouter"
+    inspect_model: "openrouter/deepseek/deepseek-v4-flash"
+    baseline_report_rank: 58
+    baseline_answer_accuracy_pct: 96.2
+    run_status: "planned"
+  - id: "pilot8x28-openrouter-google-gemma-3-27b"
+    label: "Google: Gemma 3 27B"
+    provider_route: "openrouter"
+    inspect_model: "openrouter/google/gemma-3-27b-it"
+    baseline_report_rank: 176
+    baseline_answer_accuracy_pct: 81.2
+    run_status: "planned"
+  - id: "pilot8x28-openrouter-qwen3-coder-flash"
+    label: "Qwen: Qwen3 Coder Flash"
+    provider_route: "openrouter"
+    inspect_model: "openrouter/qwen/qwen3-coder-flash"
+    baseline_report_rank: 215
+    baseline_answer_accuracy_pct: 68.8
+    run_status: "planned"

@@ -1,0 +1,1437 @@
+schema_version: paper-model-panel-v1
+created_at: '2026-06-01'
+run_status: planned_not_run
+dataset_manifest: data/splits/paper_v1_manifest.jsonl
+source_registry: configs/model_registry_v1.yaml
+source_registry_generated_at: '2026-06-01T21:53:22.467Z'
+source_paper_panel: configs/paper_v1_model_panel.yaml
+profile: hard_obvious_8x10
+seed: 20260531
+defaults:
+  temperature: 0
+  max_tokens: 10000
+  inspect_args:
+  - --no-log-model-api
+  - --no-log-realtime
+  - --timeout=60
+  - --max-retries=0
+selection_policy:
+  summary: Scaled 100-setting ObviousBench run planned after fixing the 64-token cap/scorer
+    issue.
+  target_setting_count: 100
+  budget_target_usd: 10
+  rules:
+  - Preserve the 12 core paper-panel baselines for continuity.
+  - Fill the remaining slots with paid, text-only, low-cost OpenRouter entries.
+  - Exclude zero-price/free OpenRouter routes from the scaled run to reduce rate-limit
+    and provider-spend-limit failures.
+  - Avoid duplicate inspect_model plus generation-setting pairs.
+  - Use max_tokens=10000 as a safety cap and temperature=0 where supported.
+  - Run with --no-cache for fresh comparable generations after estimating uncached
+    cost.
+totals:
+  entry_count: 100
+  core_paper_baseline_count: 12
+  additional_scaled_openrouter_count: 88
+entries:
+- id: paper-openai-gpt-5-nano-minimal
+  registry_id: openai-gpt-5-nano-minimal
+  label: OpenAI GPT-5 nano minimal
+  provider_route: openai
+  inspect_model: openai/gpt-5-nano
+  role: small direct-provider baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+  reasoning_effort: minimal
+- id: paper-openai-gpt-4-1
+  registry_id: openai-gpt-4-1
+  label: OpenAI GPT-4.1
+  provider_route: openai
+  inspect_model: openai/gpt-4.1
+  role: direct frontier non-reasoning baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 2
+  output_price_per_mtok_usd: 8
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-openai-gpt-4-1-mini
+  registry_id: openai-gpt-4-1-mini
+  label: OpenAI GPT-4.1 mini
+  provider_route: openai
+  inspect_model: openai/gpt-4.1-mini
+  role: small direct-provider baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 1.6
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-anthropic-claude-sonnet-4-6
+  registry_id: anthropic-claude-sonnet-4-6
+  label: Anthropic Claude Sonnet 4.6
+  provider_route: anthropic
+  inspect_model: anthropic/claude-sonnet-4-6
+  role: direct frontier baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 1.25
+  output_price_per_mtok_usd: 2.5
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-anthropic-claude-haiku-4-5
+  registry_id: anthropic-claude-haiku-4-5
+  label: Anthropic Claude Haiku 4.5
+  provider_route: anthropic
+  inspect_model: anthropic/claude-haiku-4-5
+  role: small direct-provider baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 1
+  output_price_per_mtok_usd: 5
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-gemini-3-5-flash
+  registry_id: gemini-3-5-flash
+  label: Gemini 3.5 Flash
+  provider_route: gemini
+  inspect_model: google/gemini-3.5-flash
+  role: fast direct-provider baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 2.5
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-gemini-2-5-flash-lite
+  registry_id: gemini-2-5-flash-lite
+  label: Gemini 2.5 Flash-Lite
+  provider_route: gemini
+  inspect_model: google/gemini-2.5-flash-lite
+  role: small direct-provider baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-grok-4-3
+  registry_id: grok-4-3
+  label: Grok 4.3
+  provider_route: grok
+  inspect_model: grok/grok-4.3
+  role: direct provider baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 3
+  output_price_per_mtok_usd: 15
+  pricing_source: runcost_default_price_cards
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-openrouter-xiaomi-mimo-v2-flash
+  registry_id: openrouter-035-xiaomi-mimo-v2-flash
+  label: Xiaomi MiMo-V2-Flash
+  provider_route: openrouter
+  inspect_model: openrouter/xiaomi/mimo-v2-flash
+  role: paid OpenRouter small/open-weight baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.3
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-openrouter-nemotron-3-nano
+  registry_id: openrouter-036-nvidia-nemotron-3-nano-30b-a3b
+  label: NVIDIA Nemotron 3 Nano 30B A3B
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/nemotron-3-nano-30b-a3b
+  role: paid OpenRouter small/open-weight baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.2
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-openrouter-gpt-oss-20b
+  registry_id: openrouter-049-openai-gpt-oss-20b
+  label: OpenAI GPT-OSS 20B
+  provider_route: openrouter
+  inspect_model: openrouter/openai/gpt-oss-20b
+  role: paid OpenRouter open-weight baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.029
+  output_price_per_mtok_usd: 0.14
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: paper-openrouter-qwen3-next
+  registry_id: openrouter-046-qwen-qwen3-next-80b-a3b-instruct
+  label: Qwen3 Next 80B A3B Instruct
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-next-80b-a3b-instruct
+  role: paid OpenRouter open-weight baseline
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 1.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Included from the 12-setting paper panel for continuity with
+    the draft paper run.
+- id: scaled-013-openrouter-159-mistralai-mistral-nemo
+  registry_id: openrouter-159-mistralai-mistral-nemo
+  label: 'Mistral: Mistral Nemo'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-nemo
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.02
+  output_price_per_mtok_usd: 0.03
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-014-openrouter-063-meta-llama-llama-guard-3-8b
+  registry_id: openrouter-063-meta-llama-llama-guard-3-8b
+  label: Llama Guard 3 8B
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-guard-3-8b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.484
+  output_price_per_mtok_usd: 0.03
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-015-openrouter-076-meta-llama-llama-3-8b-instruct
+  registry_id: openrouter-076-meta-llama-llama-3-8b-instruct
+  label: 'Meta: Llama 3 8B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3-8b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 8192
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.04
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-016-openrouter-073-meta-llama-llama-3-1-8b-instruct
+  registry_id: openrouter-073-meta-llama-llama-3-1-8b-instruct
+  label: 'Meta: Llama 3.1 8B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.1-8b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.02
+  output_price_per_mtok_usd: 0.05
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-017-openrouter-121-sao10k-l3-lunaris-8b
+  registry_id: openrouter-121-sao10k-l3-lunaris-8b
+  label: 'Sao10K: Llama 3 8B Lunaris'
+  provider_route: openrouter
+  inspect_model: openrouter/sao10k/l3-lunaris-8b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.05
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-018-openrouter-079-gryphe-mythomax-l2-13b
+  registry_id: openrouter-079-gryphe-mythomax-l2-13b
+  label: MythoMax 13B
+  provider_route: openrouter
+  inspect_model: openrouter/gryphe/mythomax-l2-13b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 4096
+  input_price_per_mtok_usd: 0.06
+  output_price_per_mtok_usd: 0.06
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-019-openrouter-065-mistralai-mistral-small-24b-instruct-2501
+  registry_id: openrouter-065-mistralai-mistral-small-24b-instruct-2501
+  label: 'Mistral: Mistral Small 3'
+  provider_route: openrouter
+  inspect_model: openrouter/mistralai/mistral-small-24b-instruct-2501
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.08
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-020-openrouter-069-qwen-qwen-2-5-7b-instruct
+  registry_id: openrouter-069-qwen-qwen-2-5-7b-instruct
+  label: 'Qwen: Qwen2.5 7B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-2.5-7b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-021-openrouter-026-ibm-granite-granite-4-1-8b
+  registry_id: openrouter-026-ibm-granite-granite-4-1-8b
+  label: 'IBM: Granite 4.1 8B'
+  provider_route: openrouter
+  inspect_model: openrouter/ibm-granite/granite-4.1-8b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-022-openrouter-053-qwen-qwen3-235b-a22b-2507
+  registry_id: openrouter-053-qwen-qwen3-235b-a22b-2507
+  label: 'Qwen: Qwen3 235B A22B Instruct 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-235b-a22b-2507
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.071
+  output_price_per_mtok_usd: 0.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-023-openrouter-118-qwen-qwen3-235b-a22b-thinking-2507
+  registry_id: openrouter-118-qwen-qwen3-235b-a22b-thinking-2507
+  label: 'Qwen: Qwen3 235B A22B Thinking 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-235b-a22b-thinking-2507
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-024-openrouter-052-z-ai-glm-4-32b
+  registry_id: openrouter-052-z-ai-glm-4-32b
+  label: 'Z.ai: GLM 4 32B '
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4-32b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-025-openrouter-041-ibm-granite-granite-4-0-h-micro
+  registry_id: openrouter-041-ibm-granite-granite-4-0-h-micro
+  label: 'IBM: Granite 4.0 Micro'
+  provider_route: openrouter
+  inspect_model: openrouter/ibm-granite/granite-4.0-h-micro
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.017
+  output_price_per_mtok_usd: 0.112
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-026-openrouter-030-liquid-lfm-2-24b-a2b
+  registry_id: openrouter-030-liquid-lfm-2-24b-a2b
+  label: 'LiquidAI: LFM2-24B-A2B'
+  provider_route: openrouter
+  inspect_model: openrouter/liquid/lfm-2-24b-a2b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.03
+  output_price_per_mtok_usd: 0.12
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-027-openrouter-056-google-gemma-3n-e4b-it
+  registry_id: openrouter-056-google-gemma-3n-e4b-it
+  label: 'Google: Gemma 3n 4B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-3n-e4b-it
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.06
+  output_price_per_mtok_usd: 0.12
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-028-openrouter-066-microsoft-phi-4
+  registry_id: openrouter-066-microsoft-phi-4
+  label: 'Microsoft: Phi 4'
+  provider_route: openrouter
+  inspect_model: openrouter/microsoft/phi-4
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.065
+  output_price_per_mtok_usd: 0.14
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-029-openrouter-075-nousresearch-hermes-2-pro-llama-3-8b
+  registry_id: openrouter-075-nousresearch-hermes-2-pro-llama-3-8b
+  label: 'NousResearch: Hermes 2 Pro - Llama-3 8B'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-2-pro-llama-3-8b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 8192
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 0.14
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-030-openrouter-037-arcee-ai-trinity-mini
+  registry_id: openrouter-037-arcee-ai-trinity-mini
+  label: 'Arcee AI: Trinity Mini'
+  provider_route: openrouter
+  inspect_model: openrouter/arcee-ai/trinity-mini
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.045
+  output_price_per_mtok_usd: 0.15
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-031-openrouter-133-essentialai-rnj-1-instruct
+  registry_id: openrouter-133-essentialai-rnj-1-instruct
+  label: 'EssentialAI: Rnj 1 Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/essentialai/rnj-1-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 0.15
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-032-openrouter-047-nvidia-nemotron-nano-9b-v2
+  registry_id: openrouter-047-nvidia-nemotron-nano-9b-v2
+  label: 'NVIDIA: Nemotron Nano 9B V2'
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/nemotron-nano-9b-v2
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.04
+  output_price_per_mtok_usd: 0.16
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-033-openrouter-051-qwen-qwen3-30b-a3b-instruct-2507
+  registry_id: openrouter-051-qwen-qwen3-30b-a3b-instruct-2507
+  label: 'Qwen: Qwen3 30B A3B Instruct 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.0428
+  output_price_per_mtok_usd: 0.1716
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-034-openrouter-048-openai-gpt-oss-120b
+  registry_id: openrouter-048-openai-gpt-oss-120b
+  label: 'OpenAI: gpt-oss-120b'
+  provider_route: openrouter
+  inspect_model: openrouter/openai/gpt-oss-120b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.039
+  output_price_per_mtok_usd: 0.18
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-035-openrouter-027-deepseek-deepseek-v4-flash
+  registry_id: openrouter-027-deepseek-deepseek-v4-flash
+  label: 'DeepSeek: DeepSeek V4 Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v4-flash
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.0983
+  output_price_per_mtok_usd: 0.1966
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-036-openrouter-062-rekaai-reka-flash-3
+  registry_id: openrouter-062-rekaai-reka-flash-3
+  label: Reka Flash 3
+  provider_route: openrouter
+  inspect_model: openrouter/rekaai/reka-flash-3
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.2
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-037-openrouter-155-meta-llama-llama-3-2-1b-instruct
+  registry_id: openrouter-155-meta-llama-llama-3-2-1b-instruct
+  label: 'Meta: Llama 3.2 1B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.2-1b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.027
+  output_price_per_mtok_usd: 0.201
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-038-openrouter-126-tencent-hy3-preview
+  registry_id: openrouter-126-tencent-hy3-preview
+  label: 'Tencent: Hy3 preview'
+  provider_route: openrouter
+  inspect_model: openrouter/tencent/hy3-preview
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.063
+  output_price_per_mtok_usd: 0.21
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-039-openrouter-059-qwen-qwen3-14b
+  registry_id: openrouter-059-qwen-qwen3-14b
+  label: 'Qwen: Qwen3 14B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-14b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.24
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-040-openrouter-050-qwen-qwen3-coder-30b-a3b-instruct
+  registry_id: openrouter-050-qwen-qwen3-coder-30b-a3b-instruct
+  label: 'Qwen: Qwen3 Coder 30B A3B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder-30b-a3b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.07
+  output_price_per_mtok_usd: 0.27
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-041-openrouter-060-qwen-qwen3-32b
+  registry_id: openrouter-060-qwen-qwen3-32b
+  label: 'Qwen: Qwen3 32B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-32b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.28
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-042-openrouter-120-deepseek-deepseek-r1-distill-qwen-32b
+  registry_id: openrouter-120-deepseek-deepseek-r1-distill-qwen-32b
+  label: 'DeepSeek: R1 Distill Qwen 32B'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-r1-distill-qwen-32b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.29
+  output_price_per_mtok_usd: 0.29
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-043-openrouter-039-openai-gpt-oss-safeguard-20b
+  registry_id: openrouter-039-openai-gpt-oss-safeguard-20b
+  label: 'OpenAI: gpt-oss-safeguard-20b'
+  provider_route: openrouter
+  inspect_model: openrouter/openai/gpt-oss-safeguard-20b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.075
+  output_price_per_mtok_usd: 0.3
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-044-openrouter-032-stepfun-step-3-5-flash
+  registry_id: openrouter-032-stepfun-step-3-5-flash
+  label: 'StepFun: Step 3.5 Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/stepfun/step-3.5-flash
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 0.3
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-045-openrouter-156-nousresearch-hermes-3-llama-3-1-70b
+  registry_id: openrouter-156-nousresearch-hermes-3-llama-3-1-70b
+  label: 'Nous: Hermes 3 70B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-3-llama-3.1-70b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 0.3
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-046-openrouter-154-meta-llama-llama-3-3-70b-instruct
+  registry_id: openrouter-154-meta-llama-llama-3-3-70b-instruct
+  label: 'Meta: Llama 3.3 70B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.3-70b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.32
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-047-openrouter-071-meta-llama-llama-3-2-3b-instruct
+  registry_id: openrouter-071-meta-llama-llama-3-2-3b-instruct
+  label: 'Meta: Llama 3.2 3B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.2-3b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.0509
+  output_price_per_mtok_usd: 0.335
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-048-openrouter-134-deepseek-deepseek-v3-2
+  registry_id: openrouter-134-deepseek-deepseek-v3-2
+  label: 'DeepSeek: DeepSeek V3.2'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v3.2
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.2288
+  output_price_per_mtok_usd: 0.3432
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-049-openrouter-042-microsoft-phi-4-mini-instruct
+  registry_id: openrouter-042-microsoft-phi-4-mini-instruct
+  label: 'Microsoft: Phi 4 Mini Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/microsoft/phi-4-mini-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.35
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-050-openrouter-058-qwen-qwen3-8b
+  registry_id: openrouter-058-qwen-qwen3-8b
+  label: 'Qwen: Qwen3 8B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-8b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 8192
+  input_price_per_mtok_usd: 0.05
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-051-openrouter-033-z-ai-glm-4-7-flash
+  registry_id: openrouter-033-z-ai-glm-4-7-flash
+  label: 'Z.ai: GLM 4.7 Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.7-flash
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.06
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-052-openrouter-117-qwen-qwen3-30b-a3b-thinking-2507
+  registry_id: openrouter-117-qwen-qwen3-30b-a3b-thinking-2507
+  label: 'Qwen: Qwen3 30B A3B Thinking 2507'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-30b-a3b-thinking-2507
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.08
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-053-openrouter-043-nvidia-llama-3-3-nemotron-super-49b-v1-5
+  registry_id: openrouter-043-nvidia-llama-3-3-nemotron-super-49b-v1-5
+  label: 'NVIDIA: Llama 3.3 Nemotron Super 49B V1.5'
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/llama-3.3-nemotron-super-49b-v1.5
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.1
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-054-openrouter-143-nousresearch-hermes-4-70b
+  registry_id: openrouter-143-nousresearch-hermes-4-70b
+  label: 'Nous: Hermes 4 70B'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-4-70b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.13
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-055-openrouter-072-qwen-qwen-2-5-72b-instruct
+  registry_id: openrouter-072-qwen-qwen-2-5-72b-instruct
+  label: Qwen2.5 72B Instruct
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-2.5-72b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.36
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-056-openrouter-068-thedrummer-unslopnemo-12b
+  registry_id: openrouter-068-thedrummer-unslopnemo-12b
+  label: 'TheDrummer: UnslopNemo 12B'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/unslopnemo-12b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-057-openrouter-158-meta-llama-llama-3-1-70b-instruct
+  registry_id: openrouter-158-meta-llama-llama-3-1-70b-instruct
+  label: 'Meta: Llama 3.1 70B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3.1-70b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 0.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-058-openrouter-137-deepseek-deepseek-v3-2-exp
+  registry_id: openrouter-137-deepseek-deepseek-v3-2-exp
+  label: 'DeepSeek: DeepSeek V3.2 Exp'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v3.2-exp
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.27
+  output_price_per_mtok_usd: 0.41
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-059-openrouter-070-thedrummer-rocinante-12b
+  registry_id: openrouter-070-thedrummer-rocinante-12b
+  label: 'TheDrummer: Rocinante 12B'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/rocinante-12b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.17
+  output_price_per_mtok_usd: 0.43
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-060-openrouter-029-nvidia-nemotron-3-super-120b-a12b
+  registry_id: openrouter-029-nvidia-nemotron-3-super-120b-a12b
+  label: 'NVIDIA: Nemotron 3 Super'
+  provider_route: openrouter
+  inspect_model: openrouter/nvidia/nemotron-3-super-120b-a12b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 0.45
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-061-openrouter-057-qwen-qwen3-30b-a3b
+  registry_id: openrouter-057-qwen-qwen3-30b-a3b
+  label: 'Qwen: Qwen3 30B A3B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-30b-a3b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.09
+  output_price_per_mtok_usd: 0.45
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-062-openrouter-132-nex-agi-deepseek-v3-1-nex-n1
+  registry_id: openrouter-132-nex-agi-deepseek-v3-1-nex-n1
+  label: 'Nex AGI: DeepSeek V3.1 Nex N1'
+  provider_route: openrouter
+  inspect_model: openrouter/nex-agi/deepseek-v3.1-nex-n1
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.135
+  output_price_per_mtok_usd: 0.5
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-063-openrouter-038-allenai-olmo-3-32b-think
+  registry_id: openrouter-038-allenai-olmo-3-32b-think
+  label: 'AllenAI: Olmo 3 32B Think'
+  provider_route: openrouter
+  inspect_model: openrouter/allenai/olmo-3-32b-think
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 0.5
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-064-openrouter-044-thedrummer-cydonia-24b-v4-1
+  registry_id: openrouter-044-thedrummer-cydonia-24b-v4-1
+  label: 'TheDrummer: Cydonia 24B V4.1'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/cydonia-24b-v4.1
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.3
+  output_price_per_mtok_usd: 0.5
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-065-openrouter-054-tencent-hunyuan-a13b-instruct
+  registry_id: openrouter-054-tencent-hunyuan-a13b-instruct
+  label: 'Tencent: Hunyuan A13B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/tencent/hunyuan-a13b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.14
+  output_price_per_mtok_usd: 0.57
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-066-openrouter-077-microsoft-wizardlm-2-8x22b
+  registry_id: openrouter-077-microsoft-wizardlm-2-8x22b
+  label: WizardLM-2 8x22B
+  provider_route: openrouter
+  inspect_model: openrouter/microsoft/wizardlm-2-8x22b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 8000
+  input_price_per_mtok_usd: 0.62
+  output_price_per_mtok_usd: 0.62
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-067-openrouter-078-undi95-remm-slerp-l2-13b
+  registry_id: openrouter-078-undi95-remm-slerp-l2-13b
+  label: ReMM SLERP 13B
+  provider_route: openrouter
+  inspect_model: openrouter/undi95/remm-slerp-l2-13b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 4096
+  input_price_per_mtok_usd: 0.45
+  output_price_per_mtok_usd: 0.65
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-068-openrouter-074-google-gemma-2-27b-it
+  registry_id: openrouter-074-google-gemma-2-27b-it
+  label: 'Google: Gemma 2 27B'
+  provider_route: openrouter
+  inspect_model: openrouter/google/gemma-2-27b-it
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 2048
+  input_price_per_mtok_usd: 0.65
+  output_price_per_mtok_usd: 0.65
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-069-openrouter-160-meta-llama-llama-3-70b-instruct
+  registry_id: openrouter-160-meta-llama-llama-3-70b-instruct
+  label: 'Meta: Llama 3 70B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/meta-llama/llama-3-70b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 8000
+  input_price_per_mtok_usd: 0.51
+  output_price_per_mtok_usd: 0.74
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-070-openrouter-150-deepseek-deepseek-chat-v3-0324
+  registry_id: openrouter-150-deepseek-deepseek-chat-v3-0324
+  label: 'DeepSeek: DeepSeek V3 0324'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-chat-v3-0324
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 0.77
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-071-openrouter-116-qwen-qwen3-next-80b-a3b-thinking
+  registry_id: openrouter-116-qwen-qwen3-next-80b-a3b-thinking
+  label: 'Qwen: Qwen3 Next 80B A3B Thinking'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-next-80b-a3b-thinking
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.0975
+  output_price_per_mtok_usd: 0.78
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-072-openrouter-152-qwen-qwen-plus
+  registry_id: openrouter-152-qwen-qwen-plus
+  label: 'Qwen: Qwen-Plus'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-plus
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 0.78
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-073-openrouter-141-qwen-qwen-plus-2025-07-28
+  registry_id: openrouter-141-qwen-qwen-plus-2025-07-28
+  label: 'Qwen: Qwen Plus 0728'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-plus-2025-07-28
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.26
+  output_price_per_mtok_usd: 0.78
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-074-openrouter-145-deepseek-deepseek-chat-v3-1
+  registry_id: openrouter-145-deepseek-deepseek-chat-v3-1
+  label: 'DeepSeek: DeepSeek V3.1'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-chat-v3.1
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.21
+  output_price_per_mtok_usd: 0.79
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-075-openrouter-130-qwen-qwen3-coder-next
+  registry_id: openrouter-130-qwen-qwen3-coder-next
+  label: 'Qwen: Qwen3 Coder Next'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder-next
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.11
+  output_price_per_mtok_usd: 0.8
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-076-openrouter-151-thedrummer-skyfall-36b-v2
+  registry_id: openrouter-151-thedrummer-skyfall-36b-v2
+  label: 'TheDrummer: Skyfall 36B V2'
+  provider_route: openrouter
+  inspect_model: openrouter/thedrummer/skyfall-36b-v2
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.55
+  output_price_per_mtok_usd: 0.8
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-077-openrouter-153-deepseek-deepseek-chat
+  registry_id: openrouter-153-deepseek-deepseek-chat
+  label: 'DeepSeek: DeepSeek V3'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-chat
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.2002
+  output_price_per_mtok_usd: 0.8001
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-078-openrouter-147-z-ai-glm-4-5-air
+  registry_id: openrouter-147-z-ai-glm-4-5-air
+  label: 'Z.ai: GLM 4.5 Air'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.5-air
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.125
+  output_price_per_mtok_usd: 0.85
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-079-openrouter-125-deepseek-deepseek-v4-pro
+  registry_id: openrouter-125-deepseek-deepseek-v4-pro
+  label: 'DeepSeek: DeepSeek V4 Pro'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v4-pro
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.435
+  output_price_per_mtok_usd: 0.87
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-080-openrouter-127-xiaomi-mimo-v2-5-pro
+  registry_id: openrouter-127-xiaomi-mimo-v2-5-pro
+  label: 'Xiaomi: MiMo-V2.5-Pro'
+  provider_route: openrouter
+  inspect_model: openrouter/xiaomi/mimo-v2.5-pro
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.435
+  output_price_per_mtok_usd: 0.87
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-081-openrouter-140-deepseek-deepseek-v3-1-terminus
+  registry_id: openrouter-140-deepseek-deepseek-v3-1-terminus
+  label: 'DeepSeek: DeepSeek V3.1 Terminus'
+  provider_route: openrouter
+  inspect_model: openrouter/deepseek/deepseek-v3.1-terminus
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.27
+  output_price_per_mtok_usd: 0.95
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-082-openrouter-034-minimax-minimax-m2-1
+  registry_id: openrouter-034-minimax-minimax-m2-1
+  label: 'MiniMax: MiniMax M2.1'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2.1
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.29
+  output_price_per_mtok_usd: 0.95
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-083-openrouter-045-qwen-qwen3-coder-flash
+  registry_id: openrouter-045-qwen-qwen3-coder-flash
+  label: 'Qwen: Qwen3 Coder Flash'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder-flash
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.195
+  output_price_per_mtok_usd: 0.975
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-084-openrouter-040-minimax-minimax-m2
+  registry_id: openrouter-040-minimax-minimax-m2
+  label: 'MiniMax: MiniMax M2'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.255
+  output_price_per_mtok_usd: 1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-085-openrouter-067-qwen-qwen-2-5-coder-32b-instruct
+  registry_id: openrouter-067-qwen-qwen-2-5-coder-32b-instruct
+  label: Qwen2.5 Coder 32B Instruct
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen-2.5-coder-32b-instruct
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.66
+  output_price_per_mtok_usd: 1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-086-openrouter-157-nousresearch-hermes-3-llama-3-1-405b
+  registry_id: openrouter-157-nousresearch-hermes-3-llama-3-1-405b
+  label: 'Nous: Hermes 3 405B Instruct'
+  provider_route: openrouter
+  inspect_model: openrouter/nousresearch/hermes-3-llama-3.1-405b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 1
+  output_price_per_mtok_usd: 1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-087-openrouter-135-prime-intellect-intellect-3
+  registry_id: openrouter-135-prime-intellect-intellect-3
+  label: 'Prime Intellect: INTELLECT-3'
+  provider_route: openrouter
+  inspect_model: openrouter/prime-intellect/intellect-3
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.2
+  output_price_per_mtok_usd: 1.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-088-openrouter-055-baidu-ernie-4-5-300b-a47b
+  registry_id: openrouter-055-baidu-ernie-4-5-300b-a47b
+  label: 'Baidu: ERNIE 4.5 300B A47B '
+  provider_route: openrouter
+  inspect_model: openrouter/baidu/ernie-4.5-300b-a47b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.28
+  output_price_per_mtok_usd: 1.1
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-089-openrouter-031-minimax-minimax-m2-5
+  registry_id: openrouter-031-minimax-minimax-m2-5
+  label: 'MiniMax: MiniMax M2.5'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2.5
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.15
+  output_price_per_mtok_usd: 1.15
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-090-openrouter-028-minimax-minimax-m2-7
+  registry_id: openrouter-028-minimax-minimax-m2-7
+  label: 'MiniMax: MiniMax M2.7'
+  provider_route: openrouter
+  inspect_model: openrouter/minimax/minimax-m2.7
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.279
+  output_price_per_mtok_usd: 1.2
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-091-openrouter-119-aion-labs-aion-1-0-mini
+  registry_id: openrouter-119-aion-labs-aion-1-0-mini
+  label: 'AionLabs: Aion-1.0-Mini'
+  provider_route: openrouter
+  inspect_model: openrouter/aion-labs/aion-1.0-mini
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.7
+  output_price_per_mtok_usd: 1.4
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-092-openrouter-064-aion-labs-aion-rp-llama-3-1-8b
+  registry_id: openrouter-064-aion-labs-aion-rp-llama-3-1-8b
+  label: 'AionLabs: Aion-RP 1.0 (8B)'
+  provider_route: openrouter
+  inspect_model: openrouter/aion-labs/aion-rp-llama-3.1-8b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.8
+  output_price_per_mtok_usd: 1.6
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-093-openrouter-136-z-ai-glm-4-6
+  registry_id: openrouter-136-z-ai-glm-4-6
+  label: 'Z.ai: GLM 4.6'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.6
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.43
+  output_price_per_mtok_usd: 1.74
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-094-openrouter-131-z-ai-glm-4-7
+  registry_id: openrouter-131-z-ai-glm-4-7
+  label: 'Z.ai: GLM 4.7'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.7
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.4
+  output_price_per_mtok_usd: 1.75
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-095-openrouter-148-qwen-qwen3-coder
+  registry_id: openrouter-148-qwen-qwen3-coder
+  label: 'Qwen: Qwen3 Coder 480B A35B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-coder
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.22
+  output_price_per_mtok_usd: 1.8
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-096-openrouter-061-qwen-qwen3-235b-a22b
+  registry_id: openrouter-061-qwen-qwen3-235b-a22b
+  label: 'Qwen: Qwen3 235B A22B'
+  provider_route: openrouter
+  inspect_model: openrouter/qwen/qwen3-235b-a22b
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 8192
+  input_price_per_mtok_usd: 0.455
+  output_price_per_mtok_usd: 1.82
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-097-openrouter-129-z-ai-glm-5
+  registry_id: openrouter-129-z-ai-glm-5
+  label: 'Z.ai: GLM 5'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-5
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.6
+  output_price_per_mtok_usd: 2.08
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-098-openrouter-146-z-ai-glm-4-5
+  registry_id: openrouter-146-z-ai-glm-4-5
+  label: 'Z.ai: GLM 4.5'
+  provider_route: openrouter
+  inspect_model: openrouter/z-ai/glm-4.5
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.6
+  output_price_per_mtok_usd: 2.2
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-099-openrouter-149-moonshotai-kimi-k2
+  registry_id: openrouter-149-moonshotai-kimi-k2
+  label: 'MoonshotAI: Kimi K2 0711'
+  provider_route: openrouter
+  inspect_model: openrouter/moonshotai/kimi-k2
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.57
+  output_price_per_mtok_usd: 2.3
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.
+- id: scaled-100-openrouter-142-moonshotai-kimi-k2-0905
+  registry_id: openrouter-142-moonshotai-kimi-k2-0905
+  label: 'MoonshotAI: Kimi K2 0905'
+  provider_route: openrouter
+  inspect_model: openrouter/moonshotai/kimi-k2-0905
+  role: scaled cheap OpenRouter coverage
+  temperature: 0
+  max_tokens: 10000
+  input_price_per_mtok_usd: 0.6
+  output_price_per_mtok_usd: 2.5
+  pricing_source: openrouter_models_api
+  run_status: planned
+  selection_rationale: Selected as a paid, text-only, low-cost OpenRouter model for
+    the <$10 scaled sweep.

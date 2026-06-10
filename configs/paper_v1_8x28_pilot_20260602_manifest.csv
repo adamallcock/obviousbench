@@ -1,0 +1,7 @@
+label,model,summary_dir
+NVIDIA: Nemotron 3 Super,openrouter/nvidia/nemotron-3-super-120b-a12b,results/summaries/paper-v1-8x28-pilot-20260602/runs/pilot8x28-openrouter-nvidia-nemotron-3-super
+MiniMax: MiniMax M3,openrouter/minimax/minimax-m3,results/summaries/paper-v1-8x28-pilot-20260602/runs/pilot8x28-openrouter-minimax-m3
+OpenAI GPT-OSS 20B,openrouter/openai/gpt-oss-20b,results/summaries/paper-v1-8x28-pilot-20260602/runs/pilot8x28-openrouter-gpt-oss-20b
+DeepSeek: DeepSeek V4 Flash,openrouter/deepseek/deepseek-v4-flash,results/summaries/paper-v1-8x28-pilot-20260602/runs/pilot8x28-openrouter-deepseek-v4-flash
+Google: Gemma 3 27B,openrouter/google/gemma-3-27b-it,results/summaries/paper-v1-8x28-pilot-20260602/runs/pilot8x28-openrouter-google-gemma-3-27b
+Qwen: Qwen3 Coder Flash,openrouter/qwen/qwen3-coder-flash,results/summaries/paper-v1-8x28-pilot-20260602/runs/pilot8x28-openrouter-qwen3-coder-flash

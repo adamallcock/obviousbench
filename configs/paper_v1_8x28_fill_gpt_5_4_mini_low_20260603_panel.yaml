@@ -1,0 +1,35 @@
+schema_version: paper-model-panel-v1
+created_at: '2026-06-03'
+run_status: planned
+source_report_context: docs/reports/2026-06-02-paper-v1-8x28-current-222-final/report.html
+dataset: data/barrages/hard_obvious_8x28_seed_20260531.jsonl
+profile: hard_obvious_8x28
+seed: 20260531
+selection_policy:
+  summary: Fill the missing OpenAI GPT-5.4 mini low row for the 224-question effort-cost curves.
+  notes:
+  - The prior completed GPT-5.4 mini low fill used hard_obvious_8x10 with 80 samples.
+  - This panel is intentionally a one-row 8x28 fill so it can be merged with the 224-question final leaderboard without mixing panel shapes.
+entries:
+- id: expand222-fill-openai-gpt-5-4-mini-low
+  label: OpenAI GPT-5.4 mini low
+  provider_route: openai
+  inspect_model: openai/gpt-5.4-mini
+  generation_settings:
+    max_tokens: 2000
+    reasoning_effort: low
+  baseline_summary_dir: results/summaries/paper-v1-fill-gpt-5-4-mini-low-20260602/openai-gpt-5-4-mini-low
+  baseline_answer_accuracy_pct: '96.2'
+  run_status: planned
+  input_price_per_mtok_usd: 0.75
+  output_price_per_mtok_usd: 4.5
+defaults:
+  inspect_args:
+  - --no-log-model-api
+  - --no-log-realtime
+  - --max-connections=4
+  - --timeout=900
+  - --max-retries=1
+  - --no-fail-on-error
+  - --continue-on-fail
+  - --score-on-error

@@ -1,0 +1,8 @@
+label,model,summary_dir
+NVIDIA: Llama 3.3 Nemotron Super 49B V1.5,openrouter/nvidia/llama-3.3-nemotron-super-49b-v1.5,results/summaries/paper-v1-overline-20260602/overline-001-openrouter-nvidia-llama-3-3-nemotron-super-49b-v1-5
+OpenAI GPT-5.4 nano medium,openai/gpt-5.4-nano,results/summaries/paper-v1-overline-20260602/overline-002-openai-gpt-5-4-nano-medium
+OpenAI GPT-5.4 nano high,openai/gpt-5.4-nano,results/summaries/paper-v1-overline-20260602/overline-003-openai-gpt-5-4-nano-high
+OpenAI GPT-5.4 mini medium,openai/gpt-5.4-mini,results/summaries/paper-v1-overline-20260602/overline-004-openai-gpt-5-4-mini-medium
+OpenAI GPT-5.4 mini high,openai/gpt-5.4-mini,results/summaries/paper-v1-overline-20260602/overline-005-openai-gpt-5-4-mini-high
+OpenAI GPT-5.4 nano xhigh,openai/gpt-5.4-nano,results/summaries/paper-v1-overline-20260602/overline-006-openai-gpt-5-4-nano-xhigh
+OpenAI GPT-5.4 mini xhigh,openai/gpt-5.4-mini,results/summaries/paper-v1-overline-20260602/overline-007-openai-gpt-5-4-mini-xhigh
