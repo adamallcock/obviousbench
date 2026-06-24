@@ -15,6 +15,13 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG = ROOT / "configs/releases/release_v0_2_0.yaml"
+PUBLIC_OUTPUT_ALLOWLIST = {
+    "README.md",
+    "github-release-notes.md",
+    "huggingface-dataset-card.md",
+    "provenance.json",
+    "release-metadata.json",
+}
 
 
 @dataclass(frozen=True)
@@ -229,13 +236,24 @@ def build_release_assets(
 ) -> ReleaseAssetResult:
     config = read_yaml(config_path)
     assert_public_safe_config(config)
-    release = config["release"]
+    release_config = config.get("release") or {}
+    release = {
+        "date": str(release_config.get("date", "unknown")),
+        "id": str(release_config.get("id", "obviousbench-v0.2.0-public-aggregate")),
+        "publication_intent": release_config.get(
+            "publication_intent", "non_arxiv_public_release"
+        ),
+        "status": str(release_config.get("status", "local-publication-prep")),
+        "version": str(release_config.get("version", "0.2.0")),
+    }
     snapshot = config["snapshot"]
-    generated = config["generated"]
-    source_docs = config["source_docs"]
+    generated = config.get("generated") or {}
+    source_docs = config.get("source_docs") or {}
 
     output_dir = (ROOT / generated["output_dir"]).resolve()
-    internal_output_dir = (ROOT / generated["internal_output_dir"]).resolve()
+    internal_output_dir = (
+        ROOT / generated.get("internal_output_dir", "docs/internal/release/v0_2/generated")
+    ).resolve()
     if clean:
         shutil.rmtree(output_dir, ignore_errors=True)
         shutil.rmtree(internal_output_dir, ignore_errors=True)
@@ -243,14 +261,37 @@ def build_release_assets(
     internal_output_dir.mkdir(parents=True, exist_ok=True)
 
     summary_csv = ROOT / snapshot["summary_csv"]
-    report_summary_path = ROOT / snapshot["report_summary"]
-    review_summary_path = ROOT / snapshot["review_summary"]
     rows = read_csv_rows(summary_csv)
     complete = complete_rows(rows)
     incomplete = [row for row in rows if row not in complete]
     total_cost = sum(as_float(row, "estimated_cost_usd") for row in rows)
-    report_summary = read_json(report_summary_path)
-    review_summary = read_json(review_summary_path)
+    report_summary_path = snapshot.get("report_summary")
+    review_summary_path = snapshot.get("review_summary")
+    report_summary = (
+        read_json(ROOT / report_summary_path)
+        if isinstance(report_summary_path, str) and (ROOT / report_summary_path).exists()
+        else {}
+    )
+    review_summary = (
+        read_json(ROOT / review_summary_path)
+        if isinstance(review_summary_path, str) and (ROOT / review_summary_path).exists()
+        else {}
+    )
+    attempt_rows = int(
+        snapshot.get(
+            "attempt_count",
+            report_summary.get("attempt_rows", report_summary.get("scored_attempt_rows", 0)),
+        )
+    )
+    scored_attempts = int(
+        snapshot.get(
+            "scored_attempt_count",
+            report_summary.get("scored_attempt_rows", report_summary.get("attempt_rows", 0)),
+        )
+    )
+    private_item_count = int(snapshot.get("private_item_count", 144))
+    primary_metric_label = snapshot.get("primary_metric_label", "non-strict answer pass^3")
+    snapshot_name = snapshot.get("name", "v0.2 public aggregate")
     saturated = top_saturated_rows(rows, limit=10)
     risky = high_risk_rows(rows, limit=10)
     cost_outliers = cost_outlier_rows(rows, limit=10)
@@ -264,13 +305,8 @@ def build_release_assets(
             "model_setting_rows": len(rows),
             "complete_model_setting_rows": len(complete),
             "incomplete_model_setting_rows": len(incomplete),
-            "attempt_rows": int(report_summary.get("attempt_rows", 0)),
-            "scored_attempts": int(
-                report_summary.get(
-                    "scored_attempt_rows",
-                    report_summary.get("attempt_rows", 0),
-                )
-            ),
+            "attempt_rows": attempt_rows,
+            "scored_attempts": scored_attempts,
             "provider_error_attempts": int(
                 report_summary.get("provider_error_attempt_rows", 0)
             ),
@@ -288,14 +324,16 @@ def build_release_assets(
         "high_failure_risk_rows": [row_for_metadata(row) for row in risky],
         "cost_outlier_rows": [row_for_metadata(row) for row in cost_outliers],
         "thinking_depth_deltas": deltas,
-        "public_safety": config["public_safety"],
-        "public_links": config["public_links"],
-        "claim_limits": config["claim_limits"],
+        "public_safety": config.get("public_safety") or {},
+        "public_links": config.get("public_links") or {},
+        "claim_limits": config.get("claim_limits") or {},
     }
 
     written: list[Path] = []
 
     def write_output(relative_path: str, text: str) -> None:
+        if relative_path not in PUBLIC_OUTPUT_ALLOWLIST:
+            return
         path = output_dir / relative_path
         path.parent.mkdir(parents=True, exist_ok=True)
         if path.suffix == ".md":
@@ -315,13 +353,13 @@ def build_release_assets(
         "status": release["status"],
         "publication_intent": release["publication_intent"],
         "generated_on": release["date"],
-        "snapshot_name": snapshot["name"],
-        "primary_metric": snapshot["primary_metric_label"],
+        "snapshot_name": snapshot_name,
+        "primary_metric": primary_metric_label,
         "model_setting_rows": len(rows),
         "complete_model_setting_rows": len(complete),
-        "attempt_rows": int(report_summary.get("attempt_rows", 0)),
-        "estimated_cost_usd": round(total_cost, 6),
-        "public_links": config["public_links"],
+        "attempt_rows": attempt_rows,
+        "estimated_cost_usd": round(snapshot.get("estimated_cost_usd", total_cost), 6),
+        "public_links": config.get("public_links") or {},
         "source_config": rel(config_path),
     }
     write_output("release-metadata.json", json.dumps(metadata, indent=2, sort_keys=True))
@@ -370,33 +408,50 @@ def build_release_assets(
                 *markdown_table(
                     ["Field", "Value"],
                     [
-                        ["Private items", str(snapshot["private_item_count"])],
+                        ["Private items", str(private_item_count)],
                         ["Model/config rows", str(len(rows))],
                         ["Complete rows", str(len(complete))],
-                        ["Attempts", str(report_summary.get("attempt_rows"))],
-                        ["Scored attempts", str(evidence["summary"]["scored_attempts"])],
+                        ["Attempts", str(attempt_rows)],
+                        ["Scored attempts", str(scored_attempts)],
                         ["Estimated cost", money(total_cost)],
-                        ["Primary metric", snapshot["primary_metric_label"]],
+                        ["Primary metric", primary_metric_label],
                     ],
                 ),
                 "",
+                "Canonical public launch site:",
+                "[https://obviousbench.com](https://obviousbench.com)",
+                "",
                 "## Generated Files",
                 "",
+                "- `README.md`",
                 "- `release-metadata.json`",
                 "- `github-release-notes.md`",
                 "- `huggingface-dataset-card.md`",
-                "- `project-page.md`",
-                "- `launch-essay-draft.md`",
-                "- `background-and-rhetoric.md`",
-                "- `social-snippets.md`",
-                "- `public-release-checklist.md`",
                 "- `provenance.json`",
+                "",
+                "The launch-site narrative and interactive charts live at",
+                "[https://obviousbench.com](https://obviousbench.com). This repository",
+                "keeps the public-safe source data, configs, aggregate CSVs, and",
+                "reproducibility materials rather than duplicating the deployable website",
+                "source.",
                 "",
                 "## Source Evidence",
                 "",
-                f"- Results memo: `{source_docs['results_memo']}`",
-                f"- Evidence packet: `{source_docs['evidence_packet']}`",
-                f"- Sanity supplement: `{source_docs['sanity_supplement']}`",
+                *(
+                    [f"- Results memo: `{source_docs['results_memo']}`"]
+                    if source_docs.get("results_memo")
+                    else []
+                ),
+                *(
+                    [f"- Evidence packet: `{source_docs['evidence_packet']}`"]
+                    if source_docs.get("evidence_packet")
+                    else []
+                ),
+                *(
+                    [f"- Sanity supplement: `{source_docs['sanity_supplement']}`"]
+                    if source_docs.get("sanity_supplement")
+                    else []
+                ),
                 *(
                     [f"- Split inventory: `{source_docs['split_inventory']}`"]
                     if source_docs.get("split_inventory")
@@ -414,8 +469,9 @@ def build_release_assets(
             [
                 "# ObviousBench v0.2.0 Draft Release Notes",
                 "",
-                "Status: local prep only. Do not publish until repository, dataset,",
-                "project-page, and bundle-audit gates are complete.",
+                "Status: local prep only. Do not publish until repository visibility,",
+                "dataset publication, website link checks, and bundle-audit gates are",
+                "complete.",
                 "",
                 "## What Is ObviousBench?",
                 "",
@@ -443,11 +499,11 @@ def build_release_assets(
                 *markdown_table(
                     ["Metric", "Value"],
                     [
-                        ["Private held-out items", str(snapshot["private_item_count"])],
+                        ["Private held-out items", str(private_item_count)],
                         ["Model/config rows", str(len(rows))],
                         ["Included headline rows", str(len(complete))],
-                        ["Attempt rows", str(report_summary.get("attempt_rows"))],
-                        ["Scored attempts", str(evidence["summary"]["scored_attempts"])],
+                        ["Attempt rows", str(attempt_rows)],
+                        ["Scored attempts", str(scored_attempts)],
                         ["Estimated cost", money(total_cost)],
                     ],
                 ),
@@ -455,6 +511,10 @@ def build_release_assets(
                 "Rows affected by provider unavailability or route-level blank-output",
                 "failures are excluded from headline comparisons rather than treated",
                 "as model-quality evidence.",
+                "",
+                "The canonical public narrative and interactive charts are on",
+                "[obviousbench.com](https://obviousbench.com). This repository is the",
+                "public source/data companion for those results.",
                 "",
                 "## What Changed Since v0.1",
                 "",
@@ -525,10 +585,10 @@ def build_release_assets(
                 *markdown_table(
                     ["Metric", "Value"],
                     [
-                        ["Private items", str(snapshot["private_item_count"])],
+                        ["Private items", str(private_item_count)],
                         ["Model/config rows", str(len(rows))],
-                        ["Attempts", str(report_summary.get("attempt_rows"))],
-                        ["Primary metric", snapshot["primary_metric_label"]],
+                        ["Attempts", str(attempt_rows)],
+                        ["Primary metric", primary_metric_label],
                         ["Estimated cost", money(total_cost)],
                     ],
                 ),
@@ -544,229 +604,6 @@ def build_release_assets(
                 "for v0.2 is non-strict answer pass^3: all three attempts for an",
                 "item/model/config must be answer-correct. Strict and format",
                 "correctness remain available as diagnostics.",
-            ]
-        ),
-    )
-
-    write_output(
-        "project-page.md",
-        "\n".join(
-            [
-                "# ObviousBench v0.2 Project Page Draft",
-                "",
-                "ObviousBench catches obvious AI mistakes before users do.",
-                "",
-                "It asks models questions that look too simple to miss: literal",
-                "counting, spelling transforms, ordering, negation, formatting,",
-                "arithmetic, word counting, and basic constraint awareness.",
-                "",
-                "The v0.2 private pass^3 run shows the desired shape. The strongest",
-                "models and highest test-time-compute settings can saturate the",
-                "benchmark, which is evidence that the questions are solvable rather",
-                "than broken. Lower-compute, smaller, or no-thinking rows still fail",
-                "often enough to expose the practical risk: a model can look capable",
-                "and still make obvious mistakes.",
-                "",
-                "## Why This Exists",
-                "",
-                "Modern models can summarize long documents, write code, and operate",
-                "tools, yet still stumble on small literal tasks users instantly",
-                "recognize. These failures are not always catastrophic, but they are",
-                "embarrassing, trust-eroding, and often avoidable with the right",
-                "model/configuration tradeoff.",
-                "",
-                "ObviousBench turns that failure mode into a small, reproducible",
-                "preflight check.",
-                "",
-                "## How Product Teams Should Use It",
-                "",
-                "- Compare candidate models and thinking settings before launch.",
-                "- Track regressions when changing providers, prompts, or routing.",
-                "- Inspect failure examples to decide whether a cheap/small model is",
-                "  acceptable for a workflow.",
-                "- Keep answer correctness separate from format compliance so product",
-                "  teams can see both reasoning failures and interface failures.",
-                "",
-                "## Top Saturated Rows",
-                "",
-                *model_rows_table(saturated[:8]),
-                "",
-                "## High Failure-Risk Rows",
-                "",
-                *model_rows_table(risky[:8]),
-                "",
-                "## Public Boundary",
-                "",
-                "The project page can show aggregate private results and public example",
-                "questions. It must not show private held-out questions, raw private",
-                "outputs, item-level private outcomes, or private review HTML.",
-                "",
-                "## What Not To Claim",
-                "",
-                "Do not use ObviousBench as a global ranking, a general intelligence",
-                "measure, a human-baseline claim, or a permanent statement about a",
-                "provider. It is a frozen reliability snapshot for a deliberately",
-                "narrow class of visible mistakes.",
-            ]
-        ),
-    )
-
-    write_output(
-        "launch-essay-draft.md",
-        "\n".join(
-            [
-                "# ObviousBench v0.2 Launch Essay Draft",
-                "",
-                "Large language models can do work that would have sounded impossible",
-                "a few years ago. They can summarize thousands of pages, write code,",
-                "use tools, and carry a conversation across domains.",
-                "",
-                "And then, sometimes, they miss something a careful person would catch",
-                "immediately: a letter count, a spelling transform, a reversed list,",
-                "or the exact format the user asked for.",
-                "",
-                "That gap is what ObviousBench is for.",
-                "",
-                "The point is not that simple questions are hard for everyone. The",
-                "point is that simple questions are still an excellent way to see",
-                "where capability, model size, and test-time compute stop protecting",
-                "a system from looking foolish.",
-                "",
-                "In v0.2, the top end saturates: the strongest configurations can reach",
-                "100% non-strict answer pass^3 across the private set. That is good. A",
-                "benchmark of obvious tasks should be solvable by sufficiently capable",
-                "systems. The useful signal is what happens below that ceiling.",
-                "",
-                "The lower rows still miss literal spelling, counting, ordering, and",
-                "format constraints. The benchmark therefore gives a concrete way to",
-                "compare how much obvious-mistake risk remains when you reduce model",
-                "size, disable thinking, or lower test-time compute.",
-                "",
-                "This is the useful product question: how much risk are you accepting",
-                "when you choose a cheaper, faster, smaller, or lower-compute route?",
-                "Sometimes that tradeoff is worth it. ObviousBench helps make the",
-                "tradeoff explicit.",
-                "",
-                "It is not a shame board. It is not a claim that one visible miss makes",
-                "a model bad. It is not a replacement for broad evaluations. It is a",
-                "small, deterministic preflight for a class of failures users notice",
-                "immediately.",
-                "",
-                "This draft is not public copy yet. Before launch, replace local paths",
-                "with public repository, dataset, and project URLs and rerun the",
-                "public-bundle audit.",
-            ]
-        ),
-    )
-
-    write_output(
-        "background-and-rhetoric.md",
-        "\n".join(
-            [
-                "# ObviousBench v0.2 Background And Rhetoric",
-                "",
-                "## Core Positioning",
-                "",
-                "ObviousBench is about high-visibility mistakes, not exotic",
-                "capability. It tests tasks that should feel mundane: count letters,",
-                "edit a word, reverse a list, answer yes or no, choose the object that",
-                "must be brought to a service.",
-                "",
-                "The public story should be practical: if an AI system is going to",
-                "face users, product teams should know whether it is likely to make",
-                "these obvious mistakes under the exact model and thinking setting",
-                "they plan to ship.",
-                "",
-                "## Tone",
-                "",
-                "- Serious, but not scolding.",
-                "- Concrete, not abstract benchmark theater.",
-                "- Useful to product and model teams.",
-                "- Explicit that top models can solve the benchmark.",
-                "- Clear that lower rows reveal tradeoffs, not moral failure.",
-                "",
-                "## Messages To Reuse",
-                "",
-                "- Catch obvious AI mistakes before users do.",
-                "- Simple tasks are not a full intelligence test, but they are a",
-                "  strong trust test.",
-                "- A saturatable benchmark can still be useful: the ceiling proves the",
-                "  questions are solvable; the spread shows where risk remains.",
-                "- Thinking/test-time compute is often an antidote to these mistakes,",
-                "  but it has latency and cost tradeoffs.",
-                "- ObviousBench separates answer correctness from format compliance.",
-                "",
-                "## Claims To Avoid",
-                "",
-                "- Do not say ObviousBench ranks all models globally.",
-                "- Do not say humans were measured at 100%.",
-                "- Do not publish private prompts or raw private completions.",
-                "- Do not over-explain failures as a single mechanistic cause.",
-                "- Do not imply provider/route-unavailable rows are model-quality",
-                "  failures; exclude them from headline comparisons.",
-            ]
-        ),
-    )
-
-    write_output(
-        "social-snippets.md",
-        "\n".join(
-            [
-                "# ObviousBench v0.2 Social Snippets",
-                "",
-                "Status: draft local copy only.",
-                "",
-                "1. ObviousBench v0.2 is designed to be saturatable at the top end: the",
-                "best model/config rows can reach 100% answer pass^3. The signal is how",
-                "quickly that falls apart when models are smaller or thinking is off.",
-                "",
-                "2. Simple tasks are not trivial for deployment. Literal counting,",
-                "ordering, spelling transforms, negation, and format constraints still",
-                "separate model families and thinking settings.",
-                "",
-                "3. The v0.2 public bundle will publish aggregate private results and",
-                "public examples, while keeping the private held-out prompts and raw",
-                "model outputs private.",
-                "",
-                "4. This is not a model shame board. It is a preflight check for the",
-                "kind of obvious mistake users remember.",
-                "",
-                "5. The practical question is not only which model is best. It is how",
-                "much visible failure risk you accept when you choose a cheaper,",
-                "faster, smaller, or lower-thinking configuration.",
-            ]
-        ),
-    )
-
-    write_output(
-        "public-release-checklist.md",
-        "\n".join(
-            [
-                "# ObviousBench v0.2 Public Release Checklist",
-                "",
-                "## Local Gates",
-                "",
-                "- [x] Final v0.2 private pass^3 evidence selected.",
-                "- [x] Aggregate report and review summaries built.",
-                "- [x] Public-safe release surfaces generated locally.",
-                "- [x] Public bundle script/audit available for v0.2 aggregate release.",
-                "- [!] Public examples are currently a filtered safe placeholder;",
-                "  materialize a v0.2 public example manifest before final launch",
-                "  if the release should include a polished 64-row public split.",
-                "",
-                "## Public Gates Still Pending",
-                "",
-                "- [ ] Materialize and audit v0.2 public/dev/reserve split policy,",
-                "  or explicitly publish with aggregate-only private results plus",
-                "  filtered public examples.",
-                "- [ ] Publish or update the public repository target.",
-                "- [ ] Publish or update the dataset page with public examples",
-                "  and aggregate results.",
-                "- [ ] Publish project page URL.",
-                "- [ ] Replace local paths with public URLs in release copy.",
-                "- [ ] Rerun strict public bundle audit after final URL substitution.",
-                "",
-                "No public launch copy should be posted before the pending gates are done.",
             ]
         ),
     )

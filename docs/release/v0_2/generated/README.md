@@ -33,23 +33,24 @@ outputs, item-level private outcomes, and private review HTML.
 | Estimated cost | $131.00 |
 | Primary metric | non-strict answer pass^3 |
 
+Canonical public launch site:
+[https://obviousbench.com](https://obviousbench.com)
+
 ## Generated Files
 
+- `README.md`
 - `release-metadata.json`
 - `github-release-notes.md`
 - `huggingface-dataset-card.md`
-- `project-page.md`
-- `launch-essay-draft.md`
-- `background-and-rhetoric.md`
-- `social-snippets.md`
-- `public-release-checklist.md`
 - `provenance.json`
+
+The launch-site narrative and interactive charts live at
+[https://obviousbench.com](https://obviousbench.com). This repository
+keeps the public-safe source data, configs, aggregate CSVs, and
+reproducibility materials rather than duplicating the deployable website
+source.
 
 ## Source Evidence
 
-- Results memo: `docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-rhetoric-packet.md`
-- Evidence packet: `docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-evidence-packet.md`
-- Sanity supplement: `docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-sanity-supplement.md`
-- Split inventory: `docs/research/2026-06-15-obviousbench-v0-2-split-inventory-and-question-supply.md`
 - Aggregate report: copied into the public bundle under
   `reports/v0_2/aggregate/report.md` after bundle build.

@@ -17,7 +17,6 @@ in the internal repository and are intentionally not part of this export.
 | Script | Purpose |
 |---|---|
 | `scripts/datasets/validate_dataset.py` | Validate public example item schema and scorer metadata. |
-| `scripts/datasets/generate_public_v0.py` | Historical public-example generator retained for reproducibility of the public example lane. |
 | `scripts/datasets/generate_item_card_stubs.py` | Generate review-card stubs for public example curation. |
 
 ## Runner Scripts

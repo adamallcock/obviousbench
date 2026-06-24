@@ -1,0 +1,26 @@
+---
+release:
+  id: obviousbench-v0.2.0-public-aggregate
+  version: 0.2.0
+  date: 2026-06-18
+generated:
+  output_dir: docs/release/v0_2/generated
+public_safety:
+  public_examples_source: data/public_examples
+  private_prompts_in_public_bundle: false
+  private_raw_logs_in_public_bundle: false
+  private_review_html_in_public_bundle: false
+  private_row_level_outcomes_in_public_bundle: false
+  bundle_policy: aggregate_private_results_plus_public_examples
+public_links:
+  launch_site: https://obviousbench.com
+  repository: https://github.com/adamallcock/obviousbench
+snapshot:
+  summary_csv: reports/v0_2/aggregate/summary.csv
+  report_markdown: reports/v0_2/aggregate/report.md
+  attempt_count: 126576
+  scored_attempt_count: 126576
+  model_setting_count: 293
+  complete_model_setting_count: 293
+  private_item_count: 144
+  estimated_cost_usd: 130.995525

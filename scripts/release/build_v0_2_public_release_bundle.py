@@ -27,21 +27,28 @@ SAFE_ROOT_DOCS = (
     "docs/reference/benchmark-card.md",
     "docs/reference/source-policy.md",
     "docs/reference/scoring-policy.md",
+    "docs/reference/website.md",
     "docs/positioning/background-and-rhetoric.md",
 )
 
 SAFE_CONFIGS = (
+    "configs/releases/release_v0_2_0.yaml",
+    "configs/model_panels/models_v0_2_public.yaml",
     "configs/registries/model_registry_v1.yaml",
     "configs/registries/model_thinking_settings_v1.yaml",
 )
 
+SAFE_GENERATED_SURFACES = (
+    "README.md",
+    "github-release-notes.md",
+    "huggingface-dataset-card.md",
+    "provenance.json",
+    "release-metadata.json",
+)
+
 SAFE_AGGREGATE_REPORT_KEYS = (
     "summary_csv",
-    "effort_curve_csv",
-    "effort_curve_svg",
     "report_markdown",
-    "answer_cost_curve_csv",
-    "answer_cost_curve_svg",
 )
 
 
@@ -191,12 +198,14 @@ def copy_generated_surfaces(
         skipped.append(rel(generated_dir, root=root))
         return
     for source in sorted(path for path in generated_dir.rglob("*") if path.is_file()):
+        relative = str(source.relative_to(generated_dir))
         if source.name == "public-bundle-audit.json":
             skipped.append(str(source.relative_to(root)))
             continue
-        destination = output_dir / "docs/release/v0_2/generated" / source.relative_to(
-            generated_dir
-        )
+        if relative not in SAFE_GENERATED_SURFACES:
+            skipped.append(str(source.relative_to(root)))
+            continue
+        destination = output_dir / "docs/release/v0_2/generated" / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, destination)
         included.append(str(destination.relative_to(output_dir)))
@@ -261,6 +270,10 @@ def write_bundle_readme(
         "This bundle is allowlisted for public review but has not been published.",
         "It contains public examples and aggregate v0.2 private benchmark results.",
         "",
+        "The canonical public narrative and interactive charts live at",
+        "[obviousbench.com](https://obviousbench.com). This repository is the",
+        "source/data companion rather than a duplicate website deploy tree.",
+        "",
         "It intentionally excludes private held-out prompts, raw logs, raw model",
         "outputs, private review HTML, private item-level outcomes, and private",
         "attempt-level outcomes.",
@@ -296,8 +309,8 @@ def write_manifest(
         included.append("bundle_manifest.json")
     manifest = {
         "bundle": "obviousbench-v0.2-public-local",
-        "generated_on": release["date"],
-        "release_id": release["id"],
+        "generated_on": str(release["date"]),
+        "release_id": str(release["id"]),
         "included_files": sorted(included),
         "skipped_public_examples_count": len(skipped_public_examples),
         "skipped_optional_paths": sorted(skipped),

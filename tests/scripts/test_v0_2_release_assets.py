@@ -127,6 +127,14 @@ def test_build_v0_2_release_assets_writes_public_safe_surfaces(tmp_path: Path) -
     readme = (out_dir / "README.md").read_text(encoding="utf-8")
     assert "## Generated Artifact Notice" in readme
     assert "Source config:" in readme
+    assert "https://obviousbench.com" in readme
+    assert "project-page.md" not in readme
+    assert "launch-essay-draft.md" not in readme
+    assert not (out_dir / "project-page.md").exists()
+    assert not (out_dir / "launch-essay-draft.md").exists()
+    assert not (out_dir / "background-and-rhetoric.md").exists()
+    assert not (out_dir / "social-snippets.md").exists()
+    assert not (out_dir / "public-release-checklist.md").exists()
     metadata = json.loads((out_dir / "release-metadata.json").read_text(encoding="utf-8"))
     assert metadata["version"] == "0.2.0"
     provenance = json.loads((out_dir / "provenance.json").read_text(encoding="utf-8"))

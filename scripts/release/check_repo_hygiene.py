@@ -83,7 +83,9 @@ REQUIRED_IGNORE_PATTERNS = (
 REQUIRED_REPO_FILES = (
     "README.md",
     "configs/README.md",
+    "configs/releases/release_v0_2_0.yaml",
     "configs/model_panels/models_v0.example.yaml",
+    "configs/model_panels/models_v0_2_public.yaml",
     "configs/registries/model_registry_v1.yaml",
     "configs/registries/model_thinking_settings_v1.yaml",
     "docs/positioning/background-and-rhetoric.md",
@@ -91,6 +93,7 @@ REQUIRED_REPO_FILES = (
     "docs/reference/methodology.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/source-policy.md",
+    "docs/reference/website.md",
     "docs/release/v0_2/generated/README.md",
     "reports/v0_2/aggregate/report.md",
     "reports/v0_2/aggregate/summary.csv",
@@ -105,6 +108,7 @@ ACTIVE_TEXT_FILES = (
     "docs/reference/methodology.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/source-policy.md",
+    "docs/reference/website.md",
     "docs/release/v0_2/generated/README.md",
     "scripts/README.md",
 )

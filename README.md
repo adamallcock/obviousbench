@@ -3,6 +3,11 @@
 ObviousBench is a benchmark for visible, user-recognizable mistakes in language
 models: short prompts, objective answers, and repeated reliability checks.
 
+**Launch site:** [obviousbench.com](https://obviousbench.com) is the canonical
+public narrative, interactive results, and chart surface for the v0.2 release.
+This repository is the source, public examples, release data, and reproducible
+code companion to that site.
+
 The public repository contains the runnable benchmark code, public examples,
 model metadata, scoring logic, release aggregate results, and documentation
 needed to inspect the public release surface. It intentionally does not include
@@ -17,6 +22,8 @@ private outcomes used for final private evaluation.
   and contributor orientation.
 - `configs/registries/`: public model registry and reasoning-setting metadata.
 - `configs/model_panels/models_v0.example.yaml`: a small example model panel.
+- `configs/model_panels/models_v0_2_public.yaml`: the public v0.2
+  model/config panel used by the aggregate release surface.
 - `reports/v0_2/aggregate/`: public-safe v0.2 aggregate result tables.
 - `docs/reference/` and `docs/positioning/`: public benchmark reference docs.
 - `scripts/`: public dataset, model-registry, runner, and release helpers.
@@ -60,17 +67,23 @@ uv run --extra dev python scripts/release/check_repo_hygiene.py
 
 ## Public Results
 
+The most readable public results are on the launch site:
+
+- [https://obviousbench.com](https://obviousbench.com)
+
 The v0.2 public aggregate release data lives in:
 
 - `reports/v0_2/aggregate/summary.csv`
 - `reports/v0_2/aggregate/report.md`
-- `reports/v0_2/aggregate/answer_pass3_cost_curve.csv`
 - `docs/release/v0_2/generated/`
 
 The headline public metric is `answer pass^3`: all three sampled attempts for an
 item must contain the correct answer. Strict formatting metrics remain useful
 diagnostically, but the public release emphasizes non-strict answer correctness
 because product-visible failure and format adherence are different signals.
+
+The launch site itself is not duplicated in this repository. See
+`docs/reference/website.md` for the public repo / website boundary.
 
 ## License
 

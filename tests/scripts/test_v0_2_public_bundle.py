@@ -35,6 +35,7 @@ def _root_docs(root: Path) -> None:
         "docs/reference/benchmark-card.md",
         "docs/reference/source-policy.md",
         "docs/reference/scoring-policy.md",
+        "docs/reference/website.md",
         "docs/positioning/background-and-rhetoric.md",
     ):
         _write(root / relative, f"# {relative}\n")
@@ -70,11 +71,7 @@ def _public_example(root: Path) -> None:
 def _aggregate_files(root: Path) -> dict[str, str]:
     files = {
         "summary_csv": "reports/final/summary.csv",
-        "effort_curve_csv": "reports/final/effort_curve.csv",
-        "effort_curve_svg": "reports/final/effort_curve.svg",
         "report_markdown": "reports/final/report.md",
-        "answer_cost_curve_csv": "reports/review/answer_pass3_cost_curve.csv",
-        "answer_cost_curve_svg": "reports/review/answer_pass3_cost_curve.svg",
     }
     for key, relative in files.items():
         text = "aggregate only\n"
@@ -127,6 +124,18 @@ def _config(root: Path, aggregate_files: dict[str, str]) -> Path:
                 "scored_attempt_count": 128172,
             },
         },
+    )
+    _write_yaml(
+        root / "configs/model_panels/models_v0_2_public.yaml",
+        {"release_panel": [{"label": "mock", "inspect_model": "mockllm/model"}]},
+    )
+    _write_yaml(
+        root / "configs/registries/model_registry_v1.yaml",
+        {"models": []},
+    )
+    _write_yaml(
+        root / "configs/registries/model_thinking_settings_v1.yaml",
+        {"models": []},
     )
     return config
 

@@ -6,26 +6,12 @@
   "model_setting_rows": 293,
   "primary_metric": "non-strict answer pass^3",
   "public_links": {
-    "dataset_url": {
-      "status": "pending",
-      "value": "https://huggingface.co/datasets/adamallcock/obviousbench"
-    },
-    "doi": {
-      "status": "pending",
-      "value": ""
-    },
-    "project_url": {
-      "status": "planned",
-      "value": "https://obviousbench.com"
-    },
-    "repository_url": {
-      "status": "planned",
-      "value": "https://github.com/adamallcock/obviousbench"
-    }
+    "launch_site": "https://obviousbench.com",
+    "repository": "https://github.com/adamallcock/obviousbench"
   },
   "publication_intent": "non_arxiv_public_release",
-  "release_id": "obviousbench-v0.2.0-public-aggregate-v1",
-  "snapshot_name": "v0_2_public_aggregate_no_minimaxm1_20260618T1735Z",
+  "release_id": "obviousbench-v0.2.0-public-aggregate",
+  "snapshot_name": "v0.2 public aggregate",
   "source_config": "configs/releases/release_v0_2_0.yaml",
   "status": "local-publication-prep",
   "version": "0.2.0"

@@ -10,8 +10,9 @@
   item-level private outcomes, private review HTML, and attempt-level outcomes.
 
 
-Status: local prep only. Do not publish until repository, dataset,
-project-page, and bundle-audit gates are complete.
+Status: local prep only. Do not publish until repository visibility,
+dataset publication, website link checks, and bundle-audit gates are
+complete.
 
 ## What Is ObviousBench?
 
@@ -48,6 +49,10 @@ the top end.
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated
 as model-quality evidence.
+
+The canonical public narrative and interactive charts are on
+[obviousbench.com](https://obviousbench.com). This repository is the
+public source/data companion for those results.
 
 ## What Changed Since v0.1
 

@@ -4,8 +4,10 @@
   "included_files": [
     "README.md",
     "bundle_manifest.json",
+    "configs/model_panels/models_v0_2_public.yaml",
     "configs/registries/model_registry_v1.yaml",
     "configs/registries/model_thinking_settings_v1.yaml",
+    "configs/releases/release_v0_2_0.yaml",
     "data/public_examples/arithmetic.jsonl",
     "data/public_examples/character_count.jsonl",
     "data/public_examples/constraint_awareness.jsonl",
@@ -19,20 +21,12 @@
     "docs/reference/methodology.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/source-policy.md",
+    "docs/reference/website.md",
     "docs/release/v0_2/generated/README.md",
-    "docs/release/v0_2/generated/background-and-rhetoric.md",
     "docs/release/v0_2/generated/github-release-notes.md",
     "docs/release/v0_2/generated/huggingface-dataset-card.md",
-    "docs/release/v0_2/generated/launch-essay-draft.md",
-    "docs/release/v0_2/generated/project-page.md",
     "docs/release/v0_2/generated/provenance.json",
-    "docs/release/v0_2/generated/public-release-checklist.md",
     "docs/release/v0_2/generated/release-metadata.json",
-    "docs/release/v0_2/generated/social-snippets.md",
-    "reports/v0_2/aggregate/answer_pass3_cost_curve.csv",
-    "reports/v0_2/aggregate/answer_pass3_cost_curve.svg",
-    "reports/v0_2/aggregate/effort_curve.csv",
-    "reports/v0_2/aggregate/effort_curve.svg",
     "reports/v0_2/aggregate/report.md",
     "reports/v0_2/aggregate/summary.csv"
   ],
@@ -44,9 +38,7 @@
     "private_row_level_outcomes_included": false,
     "public_examples_included": true
   },
-  "release_id": "obviousbench-v0.2.0-private-pass3-v1",
-  "skipped_optional_paths": [
-    "docs/release/v0_2/generated/public-bundle-audit.json"
-  ],
-  "skipped_public_examples_count": 14
+  "release_id": "obviousbench-v0.2.0-public-aggregate",
+  "skipped_optional_paths": [],
+  "skipped_public_examples_count": 0
 }
