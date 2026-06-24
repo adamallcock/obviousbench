@@ -10,6 +10,7 @@ from obviousbench.scorers.multiple_choice import multiple_choice_letter
 from obviousbench.scorers.normalized_list import normalized_list_scorer
 from obviousbench.scorers.regex_match import regex_match_scorer
 from obviousbench.scorers.word_count import word_count_scorer
+from obviousbench.scorers.yes_no import yes_no_scorer
 
 
 def get_scorer(name: str) -> Scorer:
@@ -23,6 +24,7 @@ def get_scorer(name: str) -> Scorer:
         "regex_match_v0": regex_match_scorer,
         "json_exact_field_v0": json_exact_field,
         "word_count_v0": word_count_scorer,
+        "yes_no_v0": yes_no_scorer,
     }
     try:
         return registry[name]()

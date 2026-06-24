@@ -20,7 +20,7 @@ def price_records_with_runcost(
     """Price normalized usage via the local Node runcost bridge."""
     payload = build_cost_input(records)
     result = subprocess.run(
-        ["node", str(PROJECT_ROOT / "scripts" / "price_usage_with_runcost.mjs")],
+        ["node", str(PROJECT_ROOT / "scripts" / "runners" / "price_usage_with_runcost.mjs")],
         input=json.dumps(payload),
         capture_output=True,
         text=True,

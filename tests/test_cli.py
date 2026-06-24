@@ -356,8 +356,8 @@ def test_cli_build_shareable_passes_paths(monkeypatch, tmp_path, capsys):
     assert calls["comparison_dir"].as_posix() == "results/summaries/comparison"
     assert calls["output_dir"] == tmp_path / "shareable"
     assert calls["generated_on"] == "2026-05-31"
-    assert calls["benchmark_card_source"] == Path("docs/benchmark_card.md")
-    assert calls["model_matrix_source"] == Path("configs/models_v0.example.yaml")
+    assert calls["benchmark_card_source"] == Path("docs/reference/benchmark-card.md")
+    assert calls["model_matrix_source"] == Path("configs/model_panels/models_v0.example.yaml")
     assert "benchmark-card.md" in capsys.readouterr().out
 
 
@@ -401,6 +401,50 @@ def test_cli_build_report_passes_paths(monkeypatch, tmp_path, capsys):
     assert "report.html" in capsys.readouterr().out
 
 
+def test_cli_build_site_passes_paths(monkeypatch, tmp_path, capsys):
+    calls = {}
+
+    class FakePaths:
+        index = tmp_path / "site" / "index.html"
+        leaderboard_csv = tmp_path / "site" / "leaderboard.csv"
+        family_heatmap_csv = tmp_path / "site" / "family-heatmap.csv"
+        data_json = tmp_path / "site" / "site-data.json"
+
+    def fake_build_site(inputs):
+        calls["comparison_dir"] = inputs.comparison_dir
+        calls["output_dir"] = inputs.output_dir
+        calls["generated_on"] = inputs.generated_on
+        calls["title"] = inputs.title
+        calls["report_href"] = inputs.report_href
+        return FakePaths()
+
+    monkeypatch.setattr("obviousbench.cli.build_benchmark_site", fake_build_site)
+
+    exit_code = main(
+        [
+            "build-site",
+            "--comparison-dir",
+            "results/summaries/comparison",
+            "--out",
+            str(tmp_path / "site"),
+            "--generated-on",
+            "2026-06-14",
+            "--title",
+            "ObviousBench v0.1",
+            "--report-href",
+            "../archive/reports/report.html",
+        ]
+    )
+
+    assert exit_code == 0
+    assert calls["comparison_dir"].as_posix() == "results/summaries/comparison"
+    assert calls["output_dir"] == tmp_path / "site"
+    assert calls["generated_on"] == "2026-06-14"
+    assert calls["title"] == "ObviousBench v0.1"
+    assert calls["report_href"] == "../archive/reports/report.html"
+    assert "index.html" in capsys.readouterr().out
+
+
 def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, capsys):
     calls = {}
 
@@ -437,7 +481,7 @@ def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, cap
             "results/summaries/original/comparison.csv",
             "--manual-xai-costs",
             "--openrouter-price-registry",
-            "configs/model_registry_v1.yaml",
+            "configs/registries/model_registry_v1.yaml",
             "--out",
             str(tmp_path / "comparison"),
         ]
@@ -450,5 +494,8 @@ def test_cli_build_comparison_passes_manifest_options(monkeypatch, tmp_path, cap
         "results/summaries/original/comparison.csv"
     )
     assert calls["manual_xai_costs"]
-    assert calls["openrouter_price_registry"].as_posix() == "configs/model_registry_v1.yaml"
+    assert (
+        calls["openrouter_price_registry"].as_posix()
+        == "configs/registries/model_registry_v1.yaml"
+    )
     assert "comparison.csv" in capsys.readouterr().out

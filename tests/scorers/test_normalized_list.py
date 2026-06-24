@@ -46,6 +46,44 @@ def test_normalized_list_accepts_leading_list_with_explanation_as_wrong_format()
     assert not decision.resolved_format_correct
 
 
+def test_normalized_list_accepts_leading_list_then_explanation_as_wrong_format():
+    decision = score_normalized_list(
+        "canoe, leaf, twig, drum \n\n"
+        "The words sorted by their ending letters in alphabetical order "
+        "(e, f, g, m) are canoe (e), leaf (f), twig (g), drum (m).",
+        "canoe, leaf, twig, drum",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "canoe, leaf, twig, drum"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_normalized_list_accepts_exact_list_with_trailing_escape_artifact():
+    decision = score_normalized_list(
+        "-0.4, -0.04, 0.04, 0.4\n\\",
+        "-0.4, -0.04, 0.04, 0.4",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "-0.4, -0.04, 0.04, 0.4"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_normalized_list_accepts_exact_list_with_same_line_escape_artifact():
+    decision = score_normalized_list(
+        '-0.4, -0.04, 0.04, 0.4\\"',
+        "-0.4, -0.04, 0.04, 0.4",
+    )
+
+    assert decision.correct
+    assert decision.extracted == "-0.4, -0.04, 0.04, 0.4"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
 def test_normalized_list_accepts_colon_prefixed_sorted_list_as_wrong_format():
     decision = score_normalized_list(
         "The items sorted alphabetically: cap, car, cat",
@@ -81,6 +119,56 @@ def test_normalized_list_accepts_numeric_colon_prefixed_list_as_wrong_format():
 
 def test_normalized_list_rejects_wrong_order():
     decision = score_normalized_list("9, 3, 12", "3, 9, 12")
+
+    assert not decision.correct
+    assert decision.failure_type == "ordering_error"
+
+
+def test_normalized_list_rejects_wrong_leading_list_that_mentions_target_later():
+    decision = score_normalized_list(
+        "leaf, canoe, twig, drum\n\n"
+        "The correct order would have been canoe, leaf, twig, drum.",
+        "canoe, leaf, twig, drum",
+    )
+
+    assert not decision.correct
+    assert decision.failure_type == "ordering_error"
+
+
+def test_normalized_list_rejects_target_prefix_inside_longer_item():
+    decision = score_normalized_list("1, 23\nextra text", "1, 2")
+
+    assert not decision.correct
+    assert decision.failure_type == "ordering_error"
+
+
+def test_normalized_list_accepts_compact_punctuation_symbol_sequence():
+    decision = score_normalized_list("@#?!", "@, #, ?, !")
+
+    assert decision.correct
+    assert decision.extracted == "@, #, ?, !"
+
+
+def test_normalized_list_accepts_comma_separated_punctuation_symbols():
+    decision = score_normalized_list("@, #, ?, !", "@, #, ?, !")
+
+    assert decision.correct
+    assert decision.extracted == "@, #, ?, !"
+    assert decision.failure_type == "none"
+    assert decision.strict_correct
+
+
+def test_normalized_list_accepts_comma_separated_punctuation_symbol_alternate():
+    decision = score_normalized_list("., @, #, ?, !", "., @, #, ?, !")
+
+    assert decision.correct
+    assert decision.extracted == "., @, #, ?, !"
+    assert decision.failure_type == "none"
+    assert decision.strict_correct
+
+
+def test_normalized_list_does_not_compact_alphanumeric_sequence():
+    decision = score_normalized_list("abc", "a, b, c")
 
     assert not decision.correct
     assert decision.failure_type == "ordering_error"

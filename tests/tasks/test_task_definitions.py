@@ -18,8 +18,8 @@ def test_character_count_task_instantiates_without_model_call():
 
 
 def test_barrage_task_instantiates_without_model_call():
-    task = barrage(profile="balanced_8x10", seed=20260531)
+    task = barrage(profile="balanced_8x5", seed=20260531)
 
-    assert len(task.dataset) == 80
+    assert len(task.dataset) == 40
     assert task.scorer
-    assert task.metadata["barrage_profile"] == "balanced_8x10"
+    assert task.metadata["barrage_profile"] == "balanced_8x5"

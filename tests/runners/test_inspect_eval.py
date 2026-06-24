@@ -17,7 +17,7 @@ def test_generic_runner_adds_cache_by_default(tmp_path):
         task="obviousbench/tasks/barrage.py",
         model="openai/gpt-5.4",
         log_dir=tmp_path / "logs",
-        task_args=("profile=hard_obvious_8x10", "seed=20260531"),
+        task_args=("profile=balanced_8x5", "seed=20260531"),
         inspect_args=("--no-log-model-api",),
         cache_dir=tmp_path / "cache",
     )
@@ -28,7 +28,7 @@ def test_generic_runner_adds_cache_by_default(tmp_path):
     assert command[command.index("--cache") + 1] == "10Y"
     assert command[command.index("-T") : command.index("-T") + 2] == [
         "-T",
-        "profile=hard_obvious_8x10",
+        "profile=balanced_8x5",
     ]
     assert "--no-log-model-api" in command
 
@@ -77,14 +77,14 @@ def test_parse_args_uses_default_cache_and_accepts_raw_inspect_args():
             "--model",
             "openai/gpt-5.4",
             "-T",
-            "profile=hard_obvious_8x10",
+            "profile=balanced_8x5",
             "--inspect-arg=--no-log-model-api",
         ]
     )
 
     assert config.cache == "10Y"
     assert config.cache_dir == Path.cwd() / ".cache" / "inspect"
-    assert config.task_args == ("profile=hard_obvious_8x10",)
+    assert config.task_args == ("profile=balanced_8x5",)
     assert config.inspect_args == ("--no-log-model-api",)
 
 

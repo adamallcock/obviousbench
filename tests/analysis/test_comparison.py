@@ -138,7 +138,7 @@ def test_build_comparison_infers_label_effort_and_format_only_counts(tmp_path):
         "scored_samples,correct,failures,answer_correct,format_correct,"
         "strict_correct,accuracy,answer_accuracy,format_accuracy,strict_accuracy,"
         "provider_errors,timeouts,total_tokens,reasoning_tokens\n"
-        "anthropic/claude-sonnet-4-6,hard_obvious_8x10_seed_20260531,,,"
+        "anthropic/claude-sonnet-4-6,balanced_8x5_seed_20260531,,,"
         "80,80,56,24,70,66,56,0.7,0.875,0.825,0.7,0,0,4132,0\n",
         encoding="utf-8",
     )

@@ -27,8 +27,8 @@ examples:
     scorer: regex_match_v0
     target: '[A-Z]{3}-\d{3}'
     output: ""
-    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
-    notes: Empty regex output is a non-answer.
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty regex output is a non-answer and not valid regex format.
   - id: regex.two_digits.correct
     scorer: regex_match_v0
     target: '\d{2}'

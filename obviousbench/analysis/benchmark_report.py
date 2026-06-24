@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import html
+import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -265,8 +266,11 @@ def _html_report(
             f"<h1>{html.escape(title)}</h1>",
             f'<p class="meta">Generated on {html.escape(generated_on)}</p>',
             _summary_cards(leaderboard),
-            "<h2>Leaderboard</h2>",
+            _report_controls(leaderboard),
+            '<section class="chart-block" id="leaderboard">',
+            '<h2 class="ob-chart-title">Leaderboard</h2>',
             _leaderboard_table(leaderboard),
+            "</section>",
             _scoring_coverage_note(leaderboard),
             '<p class="note">Intervals are Wilson 95% confidence intervals over '
             "scored final attempts. Provider errors, refusals, and timeouts count "
@@ -275,21 +279,37 @@ def _html_report(
             "than decisive.</p>",
             _uncertainty_cautions(leaderboard),
             _effort_warnings(effort_rows),
-            "<h2>Accuracy vs tokens</h2>",
+            '<section class="chart-block" id="tokens-frontier">',
+            '<h2 class="ob-chart-title">Accuracy vs tokens</h2>',
+            '<p class="chart-mode">Mode: Answer</p>',
             _tokens_scatter_svg(leaderboard),
             _scatter_omission_note(leaderboard, "tokens_per_correct"),
-            "<h2>Answer Accuracy vs Run Cost</h2>",
+            "</section>",
+            '<section class="chart-block" id="cost-frontier">',
+            '<h2 class="ob-chart-title">Answer Accuracy vs Run Cost</h2>',
+            '<p class="chart-mode">Mode: Answer</p>',
             _scatter_svg(leaderboard),
             _scatter_omission_note(leaderboard, "estimated_cost_usd"),
-            "<h2>Accuracy Leaderboard</h2>",
+            "</section>",
+            '<section class="chart-block" id="accuracy-bars">',
+            '<h2 class="ob-chart-title">Accuracy Leaderboard</h2>',
+            '<p class="chart-mode">Mode: Answer</p>',
             _bar_svg(leaderboard),
-            "<h2>Family Accuracy Heatmap</h2>",
+            "</section>",
+            '<section class="chart-block" id="family-accuracy">',
+            '<h2 class="ob-chart-title">Family Accuracy Heatmap</h2>',
             _heatmap_table(family_heatmap),
-            "<h2>Metamorphic Consistency</h2>",
+            "</section>",
+            '<section class="chart-block" id="metamorphic-consistency">',
+            '<h2 class="ob-chart-title">Metamorphic Consistency</h2>',
             _metamorphic_consistency_table(metamorphic_rows),
-            "<h2>Provider Errors</h2>",
+            "</section>",
+            '<section class="chart-block" id="provider-errors">',
+            '<h2 class="ob-chart-title">Provider Errors</h2>',
             _provider_errors(leaderboard),
-            "<h2>Reading Notes</h2>",
+            "</section>",
+            '<section class="chart-block" id="reading-notes">',
+            '<h2 class="ob-chart-title">Reading Notes</h2>',
             "<ul>",
             "<li>Rank scored runs by accuracy, while keeping provider-error rows visible.</li>",
             "<li>Show cost, token, cost-per-correct, and overthinking tradeoffs "
@@ -302,10 +322,149 @@ def _html_report(
             "per visible token. Missing reasoning tokens are provider-dependent.</li>",
             "<li>Use family slices to reveal where aggregate scores hide weak spots.</li>",
             "</ul>",
+            "</section>",
+            _leaderboard_json_script(leaderboard),
+            _interaction_script(),
             "</main>",
             "</body>",
             "</html>",
         ]
+    )
+
+
+def _report_controls(rows: list[dict[str, str]]) -> str:
+    selected = _selected_row(rows)
+    provider_options = [
+        '<option value="all">All providers</option>',
+        *[
+            f'<option value="{html.escape(provider, quote=True)}">'
+            f"{html.escape(provider)}</option>"
+            for provider in sorted({_provider_name(row["model"]) for row in rows})
+        ],
+    ]
+    selected_label = html.escape(selected.get("display_label", "No scored rows"))
+    selected_accuracy = html.escape(selected.get("answer_accuracy_pct", "n/a"))
+    selected_cost = html.escape(_display_money(selected.get("estimated_cost_usd", "")))
+    selected_tokens = html.escape(selected.get("tokens_per_correct", "n/a") or "n/a")
+    return (
+        '<section class="report-controls" aria-label="Report controls">'
+        '<div class="control-group">'
+        '<span class="control-label">Metric</span>'
+        '<div class="metric-toggle" role="group" aria-label="Leaderboard metric">'
+        '<button type="button" data-metric="answer" aria-pressed="true">Answer</button>'
+        '<button type="button" data-metric="format" aria-pressed="false">Format</button>'
+        '<button type="button" data-metric="strict" aria-pressed="false">Strict</button>'
+        "</div>"
+        "</div>"
+        '<label class="control-inline">'
+        '<input type="checkbox" id="comparable-only" checked> Comparable only'
+        "</label>"
+        '<label class="control-select">'
+        '<span class="control-label">Provider</span>'
+        f'<select id="provider-filter">{"".join(provider_options)}</select>'
+        "</label>"
+        '<aside id="selected-model-panel" class="selected-model-panel" aria-live="polite">'
+        "<span>Why this row matters</span>"
+        f"<strong>{selected_label}</strong>"
+        f"<p>Answer {selected_accuracy}% with {selected_cost} run cost and "
+        f"{selected_tokens} tokens per correct answer.</p>"
+        "</aside>"
+        "</section>"
+        "<noscript>"
+        '<p class="note">Interactive controls are optional; the full static tables '
+        "and charts are available without JavaScript.</p>"
+        "</noscript>"
+    )
+
+
+def _selected_row(rows: list[dict[str, str]]) -> dict[str, str]:
+    return next((row for row in rows if row["rank"]), rows[0] if rows else {})
+
+
+def _leaderboard_json_script(rows: list[dict[str, str]]) -> str:
+    data = [
+        {
+            **row,
+            "provider": _provider_name(row["model"]),
+            "comparable": bool(row["rank"]),
+        }
+        for row in rows
+    ]
+    payload = json.dumps(data, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    return f'<script type="application/json" id="leaderboard-data">{payload}</script>'
+
+
+def _interaction_script() -> str:
+    return (
+        "<script>"
+        "const leaderboardDataNode = document.getElementById('leaderboard-data');"
+        "const leaderboard = leaderboardDataNode ? "
+        "JSON.parse(leaderboardDataNode.textContent) : [];"
+        "const metricButtons = document.querySelectorAll('[data-metric]');"
+        "const comparableOnly = document.getElementById('comparable-only');"
+        "const providerFilter = document.getElementById('provider-filter');"
+        "const panel = document.getElementById('selected-model-panel');"
+        "const metricDatasetKeys = {answer: 'metricAnswer', "
+        "format: 'metricFormat', strict: 'metricStrict'};"
+        "let activeMetric = 'answer';"
+        "function setMetric(metric) {"
+        "activeMetric = metric;"
+        "document.body.dataset.metric = metric;"
+        "metricButtons.forEach((button) => {"
+        "button.setAttribute('aria-pressed', button.dataset.metric === metric ? 'true' : 'false');"
+        "});"
+        "document.querySelectorAll('#leaderboard-table tbody tr').forEach((row) => {"
+        "const value = row.dataset[metricDatasetKeys[metric]];"
+        "const target = row.querySelector('[data-metric-value]');"
+        "if (target && value) target.textContent = `${value}%`;"
+        "});"
+        "const selected = document.querySelector("
+        "'#leaderboard-table tbody tr.selected-row:not([hidden])') || "
+        "document.querySelector('#leaderboard-table tbody tr:not([hidden])');"
+        "if (selected) selectModel(selected.dataset.label);"
+        "}"
+        "function selectModel(label) {"
+        "const row = leaderboard.find((item) => "
+        "item.display_label === label || item.label === label);"
+        "if (!row) return;"
+        "document.querySelectorAll('#leaderboard-table tbody tr').forEach((tableRow) => {"
+        "tableRow.classList.toggle('selected-row', tableRow.dataset.label === row.display_label);"
+        "});"
+        "if (!panel) return;"
+        "const value = activeMetric === 'format' ? row.format_accuracy_pct : "
+        "activeMetric === 'strict' ? row.strict_accuracy_pct : row.answer_accuracy_pct;"
+        "panel.replaceChildren();"
+        "const eyebrow = document.createElement('span');"
+        "eyebrow.textContent = 'Why this row matters';"
+        "const title = document.createElement('strong');"
+        "title.textContent = row.display_label;"
+        "const body = document.createElement('p');"
+        "body.textContent = `${value}% ${activeMetric} accuracy; "
+        "${row.cost_per_correct_usd ? '$' + Number(row.cost_per_correct_usd).toFixed(6) : 'n/a'} "
+        "per correct answer; ${row.provider_errors} provider errors.`;"
+        "panel.append(eyebrow, title, body);"
+        "}"
+        "function applyFilters() {"
+        "const comparable = comparableOnly ? comparableOnly.checked : false;"
+        "const provider = providerFilter ? providerFilter.value : 'all';"
+        "document.querySelectorAll('#leaderboard-table tbody tr').forEach((row) => {"
+        "const hiddenByComparable = comparable && row.dataset.comparable !== 'true';"
+        "const hiddenByProvider = provider !== 'all' && row.dataset.provider !== provider;"
+        "row.hidden = hiddenByComparable || hiddenByProvider;"
+        "});"
+        "const visible = document.querySelector('#leaderboard-table tbody tr:not([hidden])');"
+        "if (visible) selectModel(visible.dataset.label);"
+        "}"
+        "metricButtons.forEach((button) => "
+        "button.addEventListener('click', () => setMetric(button.dataset.metric)));"
+        "if (comparableOnly) comparableOnly.addEventListener('change', applyFilters);"
+        "if (providerFilter) providerFilter.addEventListener('change', applyFilters);"
+        "document.querySelectorAll('#leaderboard-table tbody tr').forEach((row) => {"
+        "row.addEventListener('click', () => selectModel(row.dataset.label));"
+        "});"
+        "applyFilters();"
+        "setMetric('answer');"
+        "</script>"
     )
 
 
@@ -364,12 +523,28 @@ def _leaderboard_table(rows: list[dict[str, str]]) -> str:
         "Provider Errors",
     ]
     body = []
+    selected = _selected_row(rows)
     for row in rows:
+        provider = _provider_name(row["model"])
+        selected_class = (
+            ' class="selected-row"'
+            if row.get("display_label") == selected.get("display_label")
+            else ""
+        )
+        row_attrs = (
+            selected_class
+            + f' data-label="{html.escape(row["display_label"], quote=True)}"'
+            + f' data-provider="{html.escape(provider, quote=True)}"'
+            + f' data-comparable="{str(bool(row["rank"])).lower()}"'
+            + f' data-metric-answer="{html.escape(row["answer_accuracy_pct"], quote=True)}"'
+            + f' data-metric-format="{html.escape(row["format_accuracy_pct"], quote=True)}"'
+            + f' data-metric-strict="{html.escape(row["strict_accuracy_pct"], quote=True)}"'
+        )
         body.append(
-            "<tr>"
+            f"<tr{row_attrs}>"
             f"<td>{html.escape(row['rank'] or 'n/a')}</td>"
             f"<td>{html.escape(row['display_label'])}<br><code>{html.escape(row['model'])}</code></td>"
-            f"<td>{html.escape(row['accuracy_pct'])}%</td>"
+            f'<td data-metric-value>{html.escape(row["answer_accuracy_pct"])}%</td>'
             f"<td>{html.escape(row['accuracy_ci_95'] or 'n/a')}</td>"
             f"<td>{html.escape(row['answer_accuracy_pct'])}%</td>"
             f"<td>{html.escape(row['format_accuracy_pct'])}%</td>"
@@ -383,7 +558,11 @@ def _leaderboard_table(rows: list[dict[str, str]]) -> str:
             f"<td>{html.escape(row['provider_errors'])}</td>"
             "</tr>"
         )
-    return _table(headers, body)
+    return _table(headers, body).replace(
+        "<table>",
+        '<table id="leaderboard-table" class="leaderboard-table">',
+        1,
+    )
 
 
 def _scoring_coverage_note(rows: list[dict[str, str]]) -> str:
@@ -532,7 +711,7 @@ def _scatter_plot_svg(
             + label_text
         )
     return (
-        f'<svg viewBox="0 0 {width} {height}" role="img" '
+        f'<svg class="ob-report-chart ob-frontier-chart" viewBox="0 0 {width} {height}" role="img" '
         f'aria-label="{aria_label}">'
         + _scatter_axes_svg(
             width=width,
@@ -546,7 +725,9 @@ def _scatter_plot_svg(
             x_formatter=x_formatter,
         )
         + frontier_line
+        + '<g class="ob-direct-label">'
         + "".join(marks)
+        + "</g>"
         + "</svg>"
     )
 
@@ -639,6 +820,12 @@ def _provider_class(model: str) -> str:
     return f"provider-{safe.lower() or 'unknown'}"
 
 
+def _provider_name(model: str) -> str:
+    provider = model.split("/", maxsplit=1)[0] if model else "unknown"
+    safe = "".join(character if character.isalnum() else "-" for character in provider)
+    return safe.lower() or "unknown"
+
+
 def _boxes_overlap(
     left: tuple[float, float, float, float], right: tuple[float, float, float, float]
 ) -> bool:
@@ -691,7 +878,7 @@ def _bar_svg(rows: list[dict[str, str]]) -> str:
             f'<text x="{378 + bar_width:.1f}" y="{y + 14}">{value:.1f}%</text>'
         )
     return (
-        f'<svg viewBox="0 0 {width} {height}" role="img" '
+        f'<svg class="ob-report-chart ob-range-bar" viewBox="0 0 {width} {height}" role="img" '
         'aria-label="Accuracy leaderboard bar chart">'
         + "".join(bars)
         + "</svg>"
@@ -713,7 +900,7 @@ def _heatmap_table(rows: list[dict[str, str]]) -> str:
             f"<td>{html.escape(row['samples'])}</td>"
             "</tr>"
         )
-    return _table(headers, body)
+    return '<div class="ob-segmented-bar">' + _table(headers, body) + "</div>"
 
 
 def _provider_errors(rows: list[dict[str, str]]) -> str:
@@ -806,36 +993,68 @@ def _table(headers: list[str], body_rows: list[str]) -> str:
 def _css() -> str:
     return "\n".join(
         [
+            ":root { --ink: #171b1f; --muted: #5e6673; --line: #d7dde5; "
+            "--paper: #ffffff; --wash: #f4f2ed; --accent: #106a63; "
+            "--accent-2: #c25a2a; --gold: #e7b84b; --rose: #b4475f; }",
             "body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, "
-            "sans-serif; color: #18202a; background: #f7f8fa; }",
-            "main { max-width: 1180px; margin: 0 auto; padding: 32px 24px 64px; }",
-            "h1 { margin: 0 0 4px; font-size: 32px; }",
-            "h2 { margin-top: 34px; font-size: 21px; }",
-            ".meta { color: #667085; margin-top: 0; }",
+            "sans-serif; color: var(--ink); background: var(--wash); }",
+            "main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 72px; }",
+            "h1 { margin: 0 0 4px; font-size: 36px; line-height: 1.05; }",
+            "h2 { margin: 0; font-size: 20px; line-height: 1.2; }",
+            ".meta { color: var(--muted); margin-top: 0; }",
             ".cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); "
             "gap: 12px; margin: 24px 0; }",
-            ".cards div { background: #fff; border: 1px solid #d9dee7; "
-            "border-radius: 8px; padding: 14px 16px; }",
-            ".cards span { display: block; color: #667085; font-size: 13px; }",
-            ".cards strong { display: block; margin-top: 6px; }",
-            ".cards em { display: block; margin-top: 4px; color: #475467; "
+            ".cards div { background: var(--paper); border: 1px solid var(--line); "
+            "border-radius: 8px; padding: 14px 16px; box-shadow: 0 1px 0 #ebe7dd; }",
+            ".cards span, .control-label, .selected-model-panel span { display: block; "
+            "color: var(--muted); font-size: 12px; font-weight: 650; }",
+            ".cards strong { display: block; margin-top: 6px; line-height: 1.25; }",
+            ".cards em { display: block; margin-top: 4px; color: var(--muted); "
             "font-style: normal; }",
-            "table { width: 100%; border-collapse: collapse; background: #fff; "
-            "border: 1px solid #d9dee7; }",
-            "th, td { padding: 9px 10px; border-bottom: 1px solid #e7eaf0; "
+            ".report-controls { display: grid; grid-template-columns: minmax(220px, 1fr) "
+            "minmax(170px, auto) minmax(180px, auto) minmax(260px, 1.1fr); gap: 12px; "
+            "align-items: stretch; margin: 28px 0; }",
+            ".control-group, .control-inline, .control-select, .selected-model-panel { "
+            "background: var(--paper); border: 1px solid var(--line); border-radius: 8px; "
+            "padding: 12px; }",
+            ".metric-toggle { display: inline-grid; grid-template-columns: repeat(3, 1fr); "
+            "gap: 4px; margin-top: 8px; width: 100%; }",
+            ".metric-toggle button { appearance: none; border: 1px solid var(--line); "
+            "background: #f9faf8; border-radius: 6px; color: var(--ink); cursor: pointer; "
+            "font: inherit; font-size: 13px; padding: 7px 8px; }",
+            ".metric-toggle button[aria-pressed='true'] { background: var(--accent); "
+            "border-color: var(--accent); color: #fff; }",
+            ".control-inline { display: flex; align-items: center; gap: 8px; "
+            "font-size: 13px; font-weight: 650; }",
+            ".control-select select { width: 100%; margin-top: 8px; border: 1px solid "
+            "var(--line); border-radius: 6px; background: #fff; color: var(--ink); "
+            "font: inherit; padding: 7px 8px; }",
+            ".selected-model-panel strong { display: block; margin-top: 5px; line-height: 1.25; }",
+            ".selected-model-panel p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }",
+            ".chart-block { margin-top: 26px; padding-top: 18px; border-top: 1px solid "
+            "#ddd4c7; }",
+            ".ob-chart-title { margin-bottom: 10px; }",
+            ".chart-mode { display: inline-block; margin: 0 0 10px; color: var(--muted); "
+            "font-size: 12px; font-weight: 650; }",
+            "table { width: 100%; border-collapse: collapse; background: var(--paper); "
+            "border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }",
+            "th, td { padding: 9px 10px; border-bottom: 1px solid #e8ebef; "
             "text-align: left; vertical-align: top; font-size: 13px; }",
-            "th { background: #eef1f6; font-weight: 650; }",
-            "code { color: #475467; font-size: 12px; }",
-            "svg { width: 100%; height: auto; background: #fff; "
-            "border: 1px solid #d9dee7; border-radius: 8px; padding: 12px; "
+            "th { background: #ece7dd; font-weight: 650; }",
+            "tr.selected-row { background: #fff8df; box-shadow: inset 3px 0 0 var(--gold); }",
+            "tr[hidden] { display: none; }",
+            "code { color: var(--muted); font-size: 12px; }",
+            "svg { width: 100%; height: auto; background: var(--paper); "
+            "border: 1px solid var(--line); border-radius: 8px; padding: 12px; "
             "box-sizing: border-box; }",
-            "svg rect { fill: #4062bb; }",
-            "svg circle { fill: #667085; stroke: #fff; stroke-width: 1.5; }",
-            "svg .provider-openai { fill: #1f77b4; }",
-            "svg .provider-anthropic { fill: #9467bd; }",
-            "svg .provider-google { fill: #2ca02c; }",
-            "svg .provider-openrouter { fill: #ff7f0e; }",
-            "svg .provider-grok { fill: #d62728; }",
+            "svg rect { fill: var(--accent); }",
+            "svg.ob-range-bar rect:nth-of-type(2n) { fill: var(--accent-2); }",
+            "svg circle { fill: var(--muted); stroke: #fff; stroke-width: 1.5; }",
+            "svg .provider-openai { fill: #1874a5; }",
+            "svg .provider-anthropic { fill: #8b5e3c; }",
+            "svg .provider-google { fill: #278656; }",
+            "svg .provider-openrouter { fill: #c25a2a; }",
+            "svg .provider-grok { fill: #b4475f; }",
             "svg .frontier { stroke: #111827; stroke-width: 2; }",
             "svg .frontier-line { fill: none; stroke: #111827; stroke-width: 2; "
             "stroke-dasharray: 5 4; }",
@@ -843,9 +1062,10 @@ def _css() -> str:
             "svg line { stroke: #98a2b3; stroke-width: 1; }",
             "svg text { fill: #344054; font-size: 12px; }",
             "svg .point-label { font-size: 11px; }",
-            ".chart-note { color: #667085; font-size: 13px; margin-top: 8px; }",
-            "@media (max-width: 720px) { .cards { grid-template-columns: 1fr; } "
-            "table { display: block; overflow-x: auto; } }",
+            ".ob-segmented-bar table td:nth-child(3) { font-weight: 650; }",
+            ".chart-note, .note { color: var(--muted); font-size: 13px; margin-top: 8px; }",
+            "@media (max-width: 900px) { .cards, .report-controls { grid-template-columns: 1fr; } "
+            "table { display: block; overflow-x: auto; } h1 { font-size: 30px; } }",
         ]
     )
 

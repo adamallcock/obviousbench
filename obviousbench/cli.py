@@ -12,6 +12,10 @@ from obviousbench.analysis.benchmark_report import (
     BenchmarkReportInputs,
     build_benchmark_report,
 )
+from obviousbench.analysis.benchmark_site import (
+    BenchmarkSiteInputs,
+    build_benchmark_site,
+)
 from obviousbench.analysis.comparison import (
     ComparisonBuildInputs,
     build_comparison_from_manifest,
@@ -27,16 +31,8 @@ from obviousbench.barrage import (
     load_split_items,
     write_barrage_jsonl,
 )
+from obviousbench.costing.estimate import CostEstimateInputs, estimate_benchmark_cost
 from obviousbench.datasets.validation import validate_dataset_paths
-from obviousbench.estimation.cost import CostEstimateInputs, estimate_benchmark_cost
-from obviousbench.evolver_prompt_eval import (
-    OpenAIResponsesCompletionProvider,
-    PromptEvalBudget,
-    TokenCostRates,
-    evaluate_prompt_eval_request,
-    write_evolver_manifest,
-)
-from obviousbench.runners.generation_config import parse_generation_settings
 
 
 def _validate(args: argparse.Namespace) -> int:
@@ -131,53 +127,6 @@ def _estimate_cost(args: argparse.Namespace) -> int:
     return 0
 
 
-def _prompt_eval(args: argparse.Namespace) -> int:
-    try:
-        provider = None
-        mode = "mock"
-        model_settings_override = parse_generation_settings(args.generation_setting)
-        if args.model is not None:
-            model_settings_override["model"] = args.model
-        if args.mode == "openai":
-            if args.max_provider_requests is None:
-                raise ValueError("--max-provider-requests is required for --mode openai.")
-            if args.model is None:
-                raise ValueError("--model is required for --mode openai.")
-            provider = OpenAIResponsesCompletionProvider(model=args.model)
-            mode = "provider"
-        budget = _prompt_eval_budget(args)
-        evaluate_prompt_eval_request(
-            Path(args.request),
-            Path(args.response),
-            mode=mode,
-            completion_provider=provider,
-            model_settings_override=model_settings_override,
-            budget=budget,
-        )
-    except Exception as exc:
-        print(str(exc), file=sys.stderr)
-        return 1
-    print(f"Wrote {args.response}")
-    return 0
-
-
-def _export_evolver_manifest(args: argparse.Namespace) -> int:
-    try:
-        count = write_evolver_manifest(
-            dataset_paths=[Path(path) for path in args.dataset],
-            output_path=Path(args.out),
-            train_count=args.train_count,
-            validation_count=args.validation_count,
-            holdout_count=args.holdout_count,
-            families=args.family,
-        )
-    except Exception as exc:
-        print(str(exc), file=sys.stderr)
-        return 1
-    print(f"Wrote {count} Evolver item(s) to {args.out}")
-    return 0
-
-
 def _build_shareable(args: argparse.Namespace) -> int:
     try:
         output_paths = build_shareable_artifacts(
@@ -220,6 +169,25 @@ def _build_report(args: argparse.Namespace) -> int:
         print(str(exc), file=sys.stderr)
         return 1
     for attr in ("html", "leaderboard_csv", "leaderboard_md", "family_heatmap_csv"):
+        print(f"Wrote {getattr(output_paths, attr)}")
+    return 0
+
+
+def _build_site(args: argparse.Namespace) -> int:
+    try:
+        output_paths = build_benchmark_site(
+            BenchmarkSiteInputs(
+                comparison_dir=Path(args.comparison_dir),
+                output_dir=Path(args.out),
+                generated_on=args.generated_on,
+                title=args.title,
+                report_href=args.report_href,
+            )
+        )
+    except Exception as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    for attr in ("index", "leaderboard_csv", "family_heatmap_csv", "data_json"):
         print(f"Wrote {getattr(output_paths, attr)}")
     return 0
 
@@ -294,7 +262,7 @@ def build_parser() -> argparse.ArgumentParser:
         "make-barrage",
         help="Materialize a deterministic balanced barrage JSONL file",
     )
-    make_barrage.add_argument("--profile", default="balanced_8x10")
+    make_barrage.add_argument("--profile", default="balanced_8x5")
     make_barrage.add_argument("--split", default="public_v0")
     make_barrage.add_argument("--seed", default=20260531, type=int)
     make_barrage.add_argument("--data-dir", default="data")
@@ -309,8 +277,11 @@ def build_parser() -> argparse.ArgumentParser:
     shareable.add_argument("--comparison-dir", required=True)
     shareable.add_argument("--out", required=True)
     shareable.add_argument("--generated-on", required=True)
-    shareable.add_argument("--benchmark-card-source", default="docs/benchmark_card.md")
-    shareable.add_argument("--model-matrix-source", default="configs/models_v0.example.yaml")
+    shareable.add_argument("--benchmark-card-source", default="docs/reference/benchmark-card.md")
+    shareable.add_argument(
+        "--model-matrix-source",
+        default="configs/model_panels/models_v0.example.yaml",
+    )
     shareable.add_argument("--max-failures", default=8, type=int)
     shareable.set_defaults(func=_build_shareable)
 
@@ -323,6 +294,17 @@ def build_parser() -> argparse.ArgumentParser:
     report.add_argument("--generated-on", required=True)
     report.add_argument("--title", default="ObviousBench Report")
     report.set_defaults(func=_build_report)
+
+    site = subparsers.add_parser(
+        "build-site",
+        help="Build a static ObviousBench website shell from comparison artifacts",
+    )
+    site.add_argument("--comparison-dir", required=True)
+    site.add_argument("--out", required=True)
+    site.add_argument("--generated-on", required=True)
+    site.add_argument("--title", default="ObviousBench")
+    site.add_argument("--report-href", default="report.html")
+    site.set_defaults(func=_build_site)
 
     comparison = subparsers.add_parser(
         "build-comparison",
@@ -357,7 +339,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Dry-run benchmark cost using historical usage, runcost, and cache hits",
     )
     estimate.add_argument("--model", required=True)
-    estimate.add_argument("--profile", default="balanced_8x10")
+    estimate.add_argument("--profile", default="balanced_8x5")
     estimate.add_argument("--seed", default=20260531, type=int)
     estimate.add_argument("--split", default="public_v0")
     estimate.add_argument("--data-dir", default="data")
@@ -374,49 +356,6 @@ def build_parser() -> argparse.ArgumentParser:
     estimate.add_argument("--max-metamorphic-siblings-per-group", default=1, type=int)
     estimate.add_argument("--json", action="store_true")
     estimate.set_defaults(func=_estimate_cost)
-
-    prompt_eval = subparsers.add_parser(
-        "prompt-eval",
-        help="Evaluate an Evolver prompt-eval request with no-cost mock completions",
-    )
-    prompt_eval.add_argument("--mode", choices=["mock", "openai"], default="mock")
-    prompt_eval.add_argument("--request", required=True)
-    prompt_eval.add_argument("--response", required=True)
-    prompt_eval.add_argument("--model")
-    prompt_eval.add_argument("--max-provider-requests", type=int)
-    prompt_eval.add_argument("--max-total-cost-usd", type=float)
-    prompt_eval.add_argument("--input-price-per-million", type=float)
-    prompt_eval.add_argument("--output-price-per-million", type=float)
-    prompt_eval.add_argument("--reasoning-price-per-million", type=float)
-    prompt_eval.add_argument(
-        "--generation-setting",
-        action="append",
-        default=[],
-        help="Model generation setting as key=value, e.g. reasoning_effort=low.",
-    )
-    prompt_eval.set_defaults(func=_prompt_eval)
-
-    export_evolver = subparsers.add_parser(
-        "export-evolver-manifest",
-        help="Export real benchmark rows into Evolver's external item manifest shape",
-    )
-    export_evolver.add_argument(
-        "--dataset",
-        action="append",
-        required=True,
-        help="Benchmark JSONL path. May be repeated.",
-    )
-    export_evolver.add_argument("--out", required=True)
-    export_evolver.add_argument("--train-count", required=True, type=int)
-    export_evolver.add_argument("--validation-count", required=True, type=int)
-    export_evolver.add_argument("--holdout-count", default=0, type=int)
-    export_evolver.add_argument(
-        "--family",
-        action="append",
-        default=[],
-        help="Optional family filter. May be repeated.",
-    )
-    export_evolver.set_defaults(func=_export_evolver_manifest)
 
     return parser
 
@@ -444,30 +383,6 @@ def _format_money(value: float | None) -> str:
     if value is None:
         return "unknown"
     return f"${value:.6f}"
-
-
-def _prompt_eval_budget(args: argparse.Namespace) -> PromptEvalBudget | None:
-    rates = TokenCostRates(
-        input_per_million=args.input_price_per_million,
-        output_per_million=args.output_price_per_million,
-        reasoning_per_million=args.reasoning_price_per_million,
-    )
-    if not any(
-        value is not None
-        for value in (
-            args.max_provider_requests,
-            args.max_total_cost_usd,
-            rates.input_per_million,
-            rates.output_per_million,
-            rates.reasoning_per_million,
-        )
-    ):
-        return None
-    return PromptEvalBudget(
-        max_provider_requests=args.max_provider_requests,
-        max_total_cost_usd=args.max_total_cost_usd,
-        token_cost_rates=rates,
-    )
 
 
 if __name__ == "__main__":

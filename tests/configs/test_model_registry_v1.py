@@ -4,7 +4,7 @@ from typing import Any
 
 import yaml
 
-REGISTRY_PATH = Path("configs/model_registry_v1.yaml")
+REGISTRY_PATH = Path("configs/registries/model_registry_v1.yaml")
 OUTPUT_SAFETY_MAX_TOKENS = 10_000
 
 
@@ -22,7 +22,7 @@ def test_model_registry_v1_has_comprehensive_coverage():
     route_counts = Counter(entry["provider_route"] for entry in entries)
 
     assert registry["schema_version"] == "model-registry-v1"
-    assert registry["defaults"]["profile"] == "hard_obvious_8x10"
+    assert registry["defaults"]["profile"] == "balanced_8x5"
     assert registry["defaults"]["seed"] == 20260531
     assert 190 <= len(entries) <= 230
     assert route_counts["openrouter"] >= 180
@@ -46,7 +46,7 @@ def test_model_registry_entries_are_unique_and_runnable():
 
     for entry in entries:
         settings = entry["generation_settings"]
-        assert entry["profile"] == "hard_obvious_8x10"
+        assert entry["profile"] == "balanced_8x5"
         assert entry["seed"] == 20260531
         assert entry["inspect_model"].count("/") >= 1
         assert settings["temperature"] == 0

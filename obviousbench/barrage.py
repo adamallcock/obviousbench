@@ -10,9 +10,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from obviousbench.datasets.load import load_benchmark_jsonl
+from obviousbench.datasets.paths import split_dir_path
 from obviousbench.datasets.schemas import BenchmarkItem, Family
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROFILE_RE = re.compile(
     r"^(?P<strategy>balanced|hard_obvious)_(?P<families>\d+)x(?P<per_family>\d+)$"
 )
@@ -52,8 +52,8 @@ class BarrageProfile:
         match = PROFILE_RE.fullmatch(value)
         if not match:
             raise ValueError(
-                "Unknown barrage profile. Expected a name like balanced_8x10 "
-                "or hard_obvious_8x10."
+                "Unknown barrage profile. Expected a name like balanced_8x5 "
+                "or hard_obvious_8x5."
             )
         strategy = match.group("strategy")
         family_count = int(match.group("families"))
@@ -74,8 +74,7 @@ class BarrageProfile:
 
 def load_split_items(split: str, *, data_dir: Path | str | None = None) -> list[BenchmarkItem]:
     """Load every JSONL dataset file in a split directory."""
-    root = Path(data_dir) if data_dir is not None else PROJECT_ROOT / "data"
-    split_dir = root / split
+    split_dir = split_dir_path(split, data_dir=data_dir)
     if not split_dir.exists():
         raise FileNotFoundError(f"Split directory does not exist: {split_dir}")
 

@@ -6,7 +6,7 @@ from typing import Any
 
 import yaml
 
-PANEL_PATH = Path("configs/model_thinking_settings_v1.yaml")
+PANEL_PATH = Path("configs/registries/model_thinking_settings_v1.yaml")
 
 
 def _panel() -> dict[str, Any]:
@@ -25,7 +25,7 @@ def test_thinking_settings_panel_has_frontier_coverage():
 
     assert panel["schema_version"] == "model-thinking-settings-v1"
     assert panel["run_status"] == "planned_not_run"
-    assert panel["defaults"]["profile"] == "hard_obvious_8x10"
+    assert panel["defaults"]["profile"] == "balanced_8x5"
     assert panel["defaults"]["seed"] == 20260531
     assert 200 <= len(entries) <= 260
     assert {"openai", "anthropic", "gemini", "grok", "openrouter"}.issubset(
@@ -61,7 +61,7 @@ def test_thinking_settings_entries_are_unique_priced_and_runnable():
         usage = entry["estimated_usage"]
         settings = entry["generation_settings"]
 
-        assert entry["profile"] == "hard_obvious_8x10"
+        assert entry["profile"] == "balanced_8x5"
         assert entry["seed"] == 20260531
         assert entry["run_status"] == "planned"
         assert entry["inspect_model"].count("/") >= 1

@@ -41,6 +41,7 @@ class ScorerName(StrEnum):
     REGEX_MATCH = "regex_match_v0"
     JSON_EXACT_FIELD = "json_exact_field_v0"
     WORD_COUNT = "word_count_v0"
+    YES_NO = "yes_no_v0"
 
 
 class ReviewStatus(StrEnum):
@@ -106,9 +107,9 @@ FAMILY_SHORT_NAMES: dict[str, str] = {
 SHORT_NAME_FAMILIES = {value: key for key, value in FAMILY_SHORT_NAMES.items()}
 SPLIT_SHORT_NAMES = {
     "public_v0": "public",
+    "public_examples_v0_1": "public_ex",
+    "dev_regression_v0_1": "dev_reg",
     "calibration_v0": "calibration",
-    "private_v0": "private",
-    "retired_v0": "retired",
 }
 SHORT_NAME_SPLITS = {value: key for key, value in SPLIT_SHORT_NAMES.items()}
 

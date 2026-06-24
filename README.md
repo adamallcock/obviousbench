@@ -1,245 +1,78 @@
 # ObviousBench
 
-ObviousBench is a lightweight reliability benchmark for public-facing AI systems. It tests short, human-trivial questions that users expect models to answer correctly every time: letter counting, spelling transforms, simple arithmetic, list counting, ordering, format compliance, negation, and simple constraint-awareness tasks.
+ObviousBench is a benchmark for visible, user-recognizable mistakes in language
+models: short prompts, objective answers, and repeated reliability checks.
 
-The goal is not to prove that models are bad. The goal is to catch obvious AI mistakes before users do.
+The public repository contains the runnable benchmark code, public examples,
+model metadata, scoring logic, release aggregate results, and documentation
+needed to inspect the public release surface. It intentionally does not include
+the private held-out prompts, raw completions, provider logs, or item-level
+private outcomes used for final private evaluation.
 
-ObviousBench is built on Inspect AI, uses local JSONL datasets, runs in native provider mode with no explicit system prompt, and uses deterministic Python scorers.
+## What Is Included
 
-## Install
+- `obviousbench/`: dataset loading, task definitions, scorers, prompt helpers,
+  runner utilities, costing helpers, and public release support code.
+- `data/public_examples/`: public example items for documentation, smoke tests,
+  and contributor orientation.
+- `configs/registries/`: public model registry and reasoning-setting metadata.
+- `configs/model_panels/models_v0.example.yaml`: a small example model panel.
+- `reports/v0_2/aggregate/`: public-safe v0.2 aggregate result tables.
+- `docs/reference/` and `docs/positioning/`: public benchmark reference docs.
+- `scripts/`: public dataset, model-registry, runner, and release helpers.
+- `tests/`: public test coverage for the package and public release artifacts.
 
-```bash
-python -m venv .venv
-.venv/bin/python -m pip install -e ".[dev]"
-```
+## What Is Not Included
 
-## Validate Datasets
+The v0.2 private held-out set remains private. This repository does not publish
+private prompts, raw model completions, private review HTML, provider residual
+details, private manifests, local cache artifacts, or per-item private outcomes.
 
-```bash
-.venv/bin/python scripts/validate_dataset.py data/public_v0/*.jsonl data/calibration_v0/smoke_test.jsonl
-```
+The public aggregate result files are intended to support comparison at the
+model/configuration level without exposing private benchmark items.
 
-Expected:
+## Quickstart
 
-```text
-Validation passed.
-```
-
-To include the current draft item-card layer in validation:
-
-```bash
-.venv/bin/python scripts/validate_dataset.py \
-  data/public_v0/*.jsonl \
-  --item-cards-dir data/item_cards \
-  --allow-extra-item-cards
-```
-
-The current `public_v0` snapshot has 401 items across 8 task families, including
-399 generated variants, 2 public archetype items, and 3 items with metamorphic
-group metadata. Its item cards are generated draft review scaffolding, not a
-claim that every public seed item has been human-reviewed for trusted benchmark
-release.
-
-## Run A Smoke Eval
-
-For a local plumbing check that does not call a real provider, use Inspect's
-mock model:
+Install dependencies:
 
 ```bash
-.venv/bin/inspect eval obviousbench/tasks/smoke.py \
-  --model mockllm/model \
-  --log-dir results/raw \
-  --limit 3 \
-  --no-log-realtime
+uv sync --extra dev
 ```
 
-Then summarize the smoke log:
+Run the public test suite:
 
 ```bash
-.venv/bin/obviousbench summarize \
-  --logs results/raw \
-  --out results/summaries \
-  --cost none
+uv run --extra dev python -m pytest tests -q
 ```
 
-The mock model returns default text, so the summary is expected to show model
-failures while proving that task loading, scoring, logging, and reporting run
-cleanly.
-
-## Summarize Logs
+Run static checks:
 
 ```bash
-.venv/bin/obviousbench summarize --logs results/raw --out results/summaries
+uv run --extra dev python -m ruff check .
+uv run --extra dev python -m compileall -q obviousbench
 ```
 
-The summary command emits run, sample, family, section, and question-level CSVs.
-Costing with `runcost` is enabled by default and writes estimated cost columns
-plus a `cost_ledger.json` artifact. The Node bridge supports Node 20 and newer.
-Run `npm install` before summarizing in a fresh checkout:
+Audit the public bundle:
 
 ```bash
-npm install
-.venv/bin/obviousbench summarize \
-  --logs results/raw \
-  --out results/summaries
+uv run --extra dev python scripts/release/check_repo_hygiene.py
 ```
 
-Use `--cost none` to skip pricing.
+## Public Results
 
-Use `rescore` when scorer logic changes and you want to re-evaluate existing
-raw model completions without making new provider calls:
+The v0.2 public aggregate release data lives in:
 
-```bash
-.venv/bin/obviousbench rescore \
-  --logs results/raw/<run-dir> \
-  --out results/summaries/<run-dir>-rescored
-```
+- `reports/v0_2/aggregate/summary.csv`
+- `reports/v0_2/aggregate/report.md`
+- `reports/v0_2/aggregate/answer_pass3_cost_curve.csv`
+- `docs/release/v0_2/generated/`
 
-`summary.csv` and all usage rollups include three score views:
+The headline public metric is `answer pass^3`: all three sampled attempts for an
+item must contain the correct answer. Strict formatting metrics remain useful
+diagnostically, but the public release emphasizes non-strict answer correctness
+because product-visible failure and format adherence are different signals.
 
-- `answer_accuracy`: whether the answer content is correct.
-- `format_accuracy`: whether the response obeyed the expected output format.
-- `strict_accuracy`: answer and format both correct.
+## License
 
-Summaries also include Wilson 95% confidence intervals for accuracy-like
-metrics. Provider errors and timeouts remain visible in sample counts, but
-accuracy denominators use scored samples so infrastructure failures do not get
-reported as wrong model answers.
-
-Aggregate per-run summaries into comparison inputs for reports:
-
-```bash
-.venv/bin/obviousbench build-comparison \
-  --manifest results/summaries/hard-obvious-panel-20260531/manifest.csv \
-  --out results/summaries/hard-obvious-panel-20260531
-```
-
-## Build A Benchmark Report
-
-Turn a comparison directory into a static HTML report with leaderboard tables,
-cost-efficiency columns, provider-error caveats, and inline SVG charts:
-
-```bash
-.venv/bin/obviousbench build-report \
-  --comparison-dir results/summaries/expanded-model-sweep-20260531-0028 \
-  --out docs/reports/2026-05-31-expanded-model-sweep \
-  --generated-on 2026-05-31 \
-  --title "ObviousBench Expanded Model Sweep"
-```
-
-The report assigns ranks only within the largest scored sample cohort so short
-smoke/free-model runs stay visible without being ranked against full runs.
-
-## Build Shareable Artifacts
-
-Promote a selected comparison summary into a tracked recruiter-safe bundle:
-
-```bash
-.venv/bin/obviousbench build-shareable \
-  --comparison-dir results/summaries/model-comparison-balanced-8x10-nothinking-20260530-2136 \
-  --out docs/shareable/2026-05-31-obviousbench-proof-point \
-  --generated-on 2026-05-31
-```
-
-The bundle contains a benchmark card, curated failure gallery, model/family CSVs,
-and the exact model matrix. Raw Inspect logs stay ignored under `results/raw/`.
-
-## Build A Balanced Barrage
-
-Create an 80-sample barrage with 10 samples from each of the 8 families:
-
-```bash
-.venv/bin/obviousbench make-barrage \
-  --profile balanced_8x10 \
-  --seed 20260531 \
-  --out data/barrages/balanced_8x10_seed_20260531.jsonl
-```
-
-Or run the barrage task directly:
-
-```bash
-.venv/bin/inspect eval obviousbench/tasks/barrage.py \
-  --model <provider/model> \
-  --cache 10Y \
-  --log-dir results/raw \
-  -T profile=balanced_8x10 \
-  -T seed=20260531
-```
-
-For local development, prefer the generic runner. It keeps Inspect's response
-cache in the repo-local ignored cache directory, uses a 10-year cache expiry by
-default, and still reruns parsing, scoring, and summaries:
-
-```bash
-.venv/bin/python scripts/run_inspect_eval.py \
-  --task obviousbench/tasks/barrage.py \
-  --model <provider/model> \
-  --log-dir results/raw \
-  -T profile=hard_obvious_8x10 \
-  -T seed=20260531 \
-  --inspect-arg=--no-log-model-api
-```
-
-Use `--no-cache` for fresh published sweeps where current provider behavior
-matters more than iteration speed. The cache stores model generations, not
-parsed scores.
-
-Before making provider calls, estimate the dry-run cost from saved usage
-history, `runcost` price cards, and any exact Inspect cache hits the estimator
-can prove:
-
-```bash
-.venv/bin/obviousbench estimate-cost \
-  --model openai/gpt-5-nano \
-  --profile hard_obvious_8x10 \
-  --seed 20260531 \
-  --setting reasoning_effort=minimal
-```
-
-Use `--json` for a per-sample estimate. Cache hits are counted as free; misses
-are approximate and use matching historical samples or model averages when
-available.
-
-For a more discriminative stress run, use the hard-obvious profile. It keeps the
-same `XxY` shape but prioritizes subfamilies that separated models in the
-expanded sweeps, such as character counting, remove-letter transforms, object
-presence, numeric comparison, and JSON/fenced-output handling:
-
-```bash
-.venv/bin/obviousbench make-barrage \
-  --profile hard_obvious_8x10 \
-  --seed 20260531 \
-  --out data/barrages/hard_obvious_8x10_seed_20260531.jsonl
-```
-
-Any positive `XxY` shape is valid when enough public items exist, for example
-`hard_obvious_8x5` for a faster 40-sample pass.
-
-## Runbook
-
-For a fuller local workflow, including the Keychain-backed OpenAI smoke command,
-see [docs/runbook.md](docs/runbook.md).
-
-## Release Evidence Bundle
-
-The v0.1 release-prep config generates a machine-readable snapshot registry,
-claim ledger, internal review artifacts, and SVG charts:
-
-```bash
-.venv/bin/python scripts/build_release_assets.py --config configs/release_v0_1_0.yaml
-.venv/bin/python scripts/audit_release_snapshot.py --config configs/release_v0_1_0.yaml --strict
-```
-
-The reader-facing entrypoint is [docs/evidence-and-claims.md](docs/evidence-and-claims.md).
-Internal review artifacts are written under `docs/internal/`; they should not
-be copied into public release surfaces.
-
-## Current Dataset Reality
-
-The current public v0 dataset is generated seed data inspired by source
-archetypes. It is not yet a fully mined, item-by-item corpus of public online
-examples.
-
-## V0 Non-Goals
-
-ObviousBench v0.1 does not include a hosted leaderboard, web dashboard, user accounts, Hugging Face hosting, OpenAI Evals adapter, LLM-as-judge scoring, tool-use evals, RAG evals, long-context evals, or multi-turn agent tasks.
+Code is licensed under Apache-2.0. Data and documentation are licensed under
+CC BY 4.0 unless otherwise noted. See `LICENSE` and `LICENSE-DATA-DOCS.md`.

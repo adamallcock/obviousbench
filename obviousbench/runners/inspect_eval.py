@@ -142,7 +142,7 @@ def parse_args(argv: Sequence[str] | None = None) -> InspectEvalConfig:
         "--task-arg",
         action="append",
         default=[],
-        help="Task argument, e.g. profile=hard_obvious_8x10. May be repeated.",
+        help="Task argument, e.g. profile=balanced_8x5. May be repeated.",
     )
     parser.add_argument(
         "--inspect-arg",

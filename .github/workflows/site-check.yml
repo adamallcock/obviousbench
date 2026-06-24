@@ -40,10 +40,13 @@ jobs:
         run: python -m ruff check .
 
       - name: Compile package
-        run: python -m compileall obviousbench
+        run: python -m compileall obviousbench scripts
 
       - name: Validate datasets
-        run: python scripts/validate_dataset.py data/public_v0/*.jsonl data/calibration_v0/smoke_test.jsonl
+        run: python scripts/datasets/validate_dataset.py data/public_examples/*.jsonl
+
+      - name: Check repo hygiene
+        run: python scripts/release/check_repo_hygiene.py
 
       - name: Test
         run: python -m pytest tests -q

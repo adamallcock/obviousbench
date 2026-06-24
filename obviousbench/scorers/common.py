@@ -84,7 +84,7 @@ def normalize_token_artifacts(value: str) -> str:
     return value.replace("\u010a", "\n").replace("\u0120", " ")
 
 
-_INTEGER_RE = re.compile(r"(?<![\w.])-?\d+(?![\w])")
+_INTEGER_RE = re.compile(r"(?<![\w.])-?(?:\d{1,3}(?:,\d{3})+|\d+)(?![\w]|\.\d)")
 _INTEGER_WORDS = {
     "zero": "0",
     "one": "1",
@@ -115,7 +115,7 @@ _INTEGER_WORD_RE = re.compile(
 
 
 def extract_integer_candidates(output: str) -> list[str]:
-    digit_candidates = _INTEGER_RE.findall(output)
+    digit_candidates = [candidate.replace(",", "") for candidate in _INTEGER_RE.findall(output)]
     word_candidates = [
         _INTEGER_WORDS[match.group(1).casefold()]
         for match in _INTEGER_WORD_RE.finditer(output)
@@ -154,10 +154,17 @@ def _strip_enclosing_list_markup(value: str) -> str:
 
 
 def _normalize_list_part(value: str) -> str:
-    normalized = value.strip().rstrip(".!?")
+    normalized = value.strip()
     if len(normalized) >= 2 and normalized[0] == normalized[-1] and normalized[0] in {
         '"',
         "'",
     }:
         normalized = normalized[1:-1].strip()
+    if _is_single_symbol_list_item(normalized):
+        return normalized.casefold()
+    normalized = normalized.rstrip(".!?")
     return normalized.casefold()
+
+
+def _is_single_symbol_list_item(value: str) -> bool:
+    return len(value) == 1 and not value.isalnum()

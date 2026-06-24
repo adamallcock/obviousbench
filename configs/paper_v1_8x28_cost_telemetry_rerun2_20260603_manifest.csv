@@ -1,6 +1,0 @@
-label,model,summary_dir
-MiniMax: MiniMax M3,openrouter/minimax/minimax-m3,results/summaries/paper-v1-8x28-cost-telemetry-rerun2-20260603/runs/expand222-next-039-registry-openrouter-080-minimax-minimax-m3
-DeepSeek: DeepSeek V4 Flash,openrouter/deepseek/deepseek-v4-flash,results/summaries/paper-v1-8x28-cost-telemetry-rerun2-20260603/runs/expand222-scaled-035-openrouter-027-deepseek-deepseek-v4-flash
-Gemini 3.1 Flash-Lite,google/gemini-3.1-flash-lite,results/summaries/paper-v1-8x28-cost-telemetry-rerun2-20260603/runs/expand222-next-042-registry-gemini-3-1-flash-lite
-Google: Gemma 3 27B,openrouter/google/gemma-3-27b-it,results/summaries/paper-v1-8x28-cost-telemetry-rerun2-20260603/runs/expand222-next-006-registry-openrouter-111-google-gemma-3-27b-it
-Qwen: Qwen3 Coder Flash,openrouter/qwen/qwen3-coder-flash,results/summaries/paper-v1-8x28-cost-telemetry-rerun2-20260603/runs/expand222-scaled-083-openrouter-045-qwen-qwen3-coder-flash

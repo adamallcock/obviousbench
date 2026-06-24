@@ -32,6 +32,7 @@ class EvalRecord:
     barrage_seed: int | None = None
     reasoning_effort: str | None = None
     reasoning_summary: str | None = None
+    service_tier: str = ""
     input_tokens: int = 0
     output_tokens: int = 0
     reasoning_tokens: int = 0

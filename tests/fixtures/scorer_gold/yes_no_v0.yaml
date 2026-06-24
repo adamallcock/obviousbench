@@ -1,0 +1,121 @@
+examples:
+  - id: yes_no.exact_yes.correct
+    scorer: yes_no_v0
+    target: "yes"
+    output: "Yes"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "Yes", failure_type: none}
+    notes: Exact yes is answer-correct and format-correct.
+  - id: yes_no.exact_no.wrong_format_ok
+    scorer: yes_no_v0
+    target: "yes"
+    output: "No"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "No", failure_type: wrong_letter_or_substring}
+    notes: Exact wrong yes/no token is still valid answer format.
+  - id: yes_no.lowercase_no.wrong_format_ok
+    scorer: yes_no_v0
+    target: "yes"
+    output: "no"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "no", failure_type: wrong_letter_or_substring}
+    notes: Lowercase exact wrong token remains valid format.
+  - id: yes_no.lowercase_yes.correct
+    scorer: yes_no_v0
+    target: "yes"
+    output: "yes"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "yes", failure_type: none}
+    notes: Lowercase exact correct token is accepted.
+  - id: yes_no.target_no.correct
+    scorer: yes_no_v0
+    target: "no"
+    output: "NO"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "NO", failure_type: none}
+    notes: Target no accepts exact no case-insensitively.
+  - id: yes_no.target_no.yes_wrong_format_ok
+    scorer: yes_no_v0
+    target: "no"
+    output: "yes"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "yes", failure_type: wrong_letter_or_substring}
+    notes: Exact yes is valid format but wrong answer for target no.
+  - id: yes_no.answer_prefix.correct_wrong_format
+    scorer: yes_no_v0
+    target: "yes"
+    output: "Answer: yes"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "yes", failure_type: verbose_noncompliance}
+    notes: Answer prefix provides answer correctness but violates strict output format.
+  - id: yes_no.final_answer.correct_wrong_format
+    scorer: yes_no_v0
+    target: "yes"
+    output: "Final answer: yes"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "yes", failure_type: verbose_noncompliance}
+    notes: Final-answer cue is extracted but not format-correct.
+  - id: yes_no.the_answer_is.correct_wrong_format
+    scorer: yes_no_v0
+    target: "no"
+    output: "The answer is no."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "no", failure_type: verbose_noncompliance}
+    notes: Natural-language answer cue is answer-correct only.
+  - id: yes_no.trailing_period.correct_wrong_format
+    scorer: yes_no_v0
+    target: "yes"
+    output: "Yes."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "Yes", failure_type: verbose_noncompliance}
+    notes: Terminal punctuation violates strict format but preserves answer correctness.
+  - id: yes_no.leading_verbose.correct_wrong_format
+    scorer: yes_no_v0
+    target: "yes"
+    output: "Yes, because the decimals are equal."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "Yes", failure_type: verbose_noncompliance}
+    notes: Leading correct yes token is answer-correct but verbose.
+  - id: yes_no.leading_verbose_wrong.wrong_format
+    scorer: yes_no_v0
+    target: "yes"
+    output: "No, because the decimals are not equal."
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "No", failure_type: wrong_letter_or_substring}
+    notes: Leading wrong token with extra text is both answer-wrong and format-wrong.
+  - id: yes_no.multiline_final_line.correct_wrong_format
+    scorer: yes_no_v0
+    target: "yes"
+    output: "Trailing zeros do not change value.\nYes"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "Yes", failure_type: verbose_noncompliance}
+    notes: Last answer-only line is extracted while preserving strict-format failure.
+  - id: yes_no.conflicting_tokens.ambiguous
+    scorer: yes_no_v0
+    target: "yes"
+    output: "yes. no."
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "yes", failure_type: ambiguous_output}
+    notes: Conflicting yes/no tokens are ambiguous.
+  - id: yes_no.yes_or_no.ambiguous
+    scorer: yes_no_v0
+    target: "yes"
+    output: "yes or no"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "yes", failure_type: ambiguous_output}
+    notes: The phrase yes or no is not a final answer.
+  - id: yes_no.final_supersedes_reasoning.correct_wrong_format
+    scorer: yes_no_v0
+    target: "yes"
+    output: "At first I considered no.\nFinal answer: yes"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "yes", failure_type: verbose_noncompliance}
+    notes: A single final-answer cue can supersede earlier reasoning tokens.
+  - id: yes_no.conflicting_final_cues.ambiguous
+    scorer: yes_no_v0
+    target: "yes"
+    output: "Answer: no. Final answer: yes"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "yes", failure_type: ambiguous_output}
+    notes: Conflicting final cues remain ambiguous.
+  - id: yes_no.synonym_not_accepted
+    scorer: yes_no_v0
+    target: "yes"
+    output: "yeah"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: format_noncompliance}
+    notes: Synonyms are not accepted for yes/no format tasks.
+  - id: yes_no.embedded_word_not_accepted
+    scorer: yes_no_v0
+    target: "yes"
+    output: "yesterday"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: format_noncompliance}
+    notes: Embedded yes substrings do not count as independent tokens.
+  - id: yes_no.empty.non_answer
+    scorer: yes_no_v0
+    target: "yes"
+    output: ""
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty output is a non-answer and not valid yes/no format.

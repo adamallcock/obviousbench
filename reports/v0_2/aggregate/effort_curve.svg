@@ -1,0 +1,920 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360">
+<rect width="100%" height="100%" fill="white"/>
+<line x1="48" y1="312" x2="712" y2="312" stroke="#222"/>
+<line x1="48" y1="48" x2="48" y2="312" stroke="#222"/>
+<text x="48" y="24" font-size="16" font-family="sans-serif">Private answer pass^3 effort curve</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,194.7"/>
+<circle cx="54.7" cy="194.7" r="4" fill="#1f77b4"/>
+<text x="60.7" y="188.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="48" font-size="12" font-family="sans-serif" fill="#1f77b4">anthropic/claude-3-haiku</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,156.2"/>
+<circle cx="54.7" cy="156.2" r="4" fill="#d62728"/>
+<text x="60.7" y="150.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="66" font-size="12" font-family="sans-serif" fill="#d62728">anthropic/claude-3.5-haiku</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,139.7 712.0,73.7 712.0,70.0 712.0,68.2 712.0,66.3"/>
+<circle cx="54.7" cy="139.7" r="4" fill="#2ca02c"/>
+<text x="60.7" y="133.7" font-size="11" font-family="sans-serif">default</text>
+<circle cx="712.0" cy="73.7" r="4" fill="#2ca02c"/>
+<text x="718.0" y="67.7" font-size="11" font-family="sans-serif">high_budget_8192</text>
+<circle cx="712.0" cy="70.0" r="4" fill="#2ca02c"/>
+<text x="718.0" y="64.0" font-size="11" font-family="sans-serif">low_budget_1024</text>
+<circle cx="712.0" cy="68.2" r="4" fill="#2ca02c"/>
+<text x="718.0" y="62.2" font-size="11" font-family="sans-serif">medium_budget_2048</text>
+<circle cx="712.0" cy="66.3" r="4" fill="#2ca02c"/>
+<text x="718.0" y="60.3" font-size="11" font-family="sans-serif">xhigh_budget_16384</text>
+<text x="530" y="84" font-size="12" font-family="sans-serif" fill="#2ca02c">anthropic/claude-haiku-4.5</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="61.4,73.7 68.1,75.5 74.8,53.5 81.5,53.5 88.2,55.3"/>
+<circle cx="61.4" cy="73.7" r="4" fill="#9467bd"/>
+<text x="67.4" y="67.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="75.5" r="4" fill="#9467bd"/>
+<text x="74.1" y="69.5" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="53.5" r="4" fill="#9467bd"/>
+<text x="80.8" y="47.5" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="53.5" r="4" fill="#9467bd"/>
+<text x="87.5" y="47.5" font-size="11" font-family="sans-serif">xhigh</text>
+<circle cx="88.2" cy="55.3" r="4" fill="#9467bd"/>
+<text x="94.2" y="49.3" font-size="11" font-family="sans-serif">max</text>
+<text x="530" y="102" font-size="12" font-family="sans-serif" fill="#9467bd">anthropic/claude-opus-4-6</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="61.4,90.2 68.1,86.5 74.8,82.8 81.5,70.0 88.2,82.8"/>
+<circle cx="61.4" cy="90.2" r="4" fill="#ff7f0e"/>
+<text x="67.4" y="84.2" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="86.5" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="80.5" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="82.8" r="4" fill="#ff7f0e"/>
+<text x="80.8" y="76.8" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="70.0" r="4" fill="#ff7f0e"/>
+<text x="87.5" y="64.0" font-size="11" font-family="sans-serif">xhigh</text>
+<circle cx="88.2" cy="82.8" r="4" fill="#ff7f0e"/>
+<text x="94.2" y="76.8" font-size="11" font-family="sans-serif">max</text>
+<text x="530" y="120" font-size="12" font-family="sans-serif" fill="#ff7f0e">anthropic/claude-opus-4-7</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,95.7 712.0,49.8 712.0,49.8 712.0,49.8 712.0,51.7"/>
+<circle cx="48.0" cy="95.7" r="4" fill="#1f77b4"/>
+<text x="54.0" y="89.7" font-size="11" font-family="sans-serif">none</text>
+<circle cx="712.0" cy="49.8" r="4" fill="#1f77b4"/>
+<text x="718.0" y="43.8" font-size="11" font-family="sans-serif">low_budget_1024</text>
+<circle cx="712.0" cy="49.8" r="4" fill="#1f77b4"/>
+<text x="718.0" y="43.8" font-size="11" font-family="sans-serif">medium_budget_2048</text>
+<circle cx="712.0" cy="49.8" r="4" fill="#1f77b4"/>
+<text x="718.0" y="43.8" font-size="11" font-family="sans-serif">high_budget_8192</text>
+<circle cx="712.0" cy="51.7" r="4" fill="#1f77b4"/>
+<text x="718.0" y="45.7" font-size="11" font-family="sans-serif">xhigh_budget_16384</text>
+<text x="530" y="138" font-size="12" font-family="sans-serif" fill="#1f77b4">anthropic/claude-opus-4.5</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,88.3 61.4,60.8 68.1,66.3 74.8,62.7 81.5,57.2 88.2,49.8"/>
+<circle cx="48.0" cy="88.3" r="4" fill="#d62728"/>
+<text x="54.0" y="82.3" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="60.8" r="4" fill="#d62728"/>
+<text x="67.4" y="54.8" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="66.3" r="4" fill="#d62728"/>
+<text x="74.1" y="60.3" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="62.7" r="4" fill="#d62728"/>
+<text x="80.8" y="56.7" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="57.2" r="4" fill="#d62728"/>
+<text x="87.5" y="51.2" font-size="11" font-family="sans-serif">xhigh</text>
+<circle cx="88.2" cy="49.8" r="4" fill="#d62728"/>
+<text x="94.2" y="43.8" font-size="11" font-family="sans-serif">max</text>
+<text x="530" y="156" font-size="12" font-family="sans-serif" fill="#d62728">anthropic/claude-opus-4.8</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,159.8 61.4,62.7 68.1,60.8 74.8,59.0 81.5,59.0"/>
+<circle cx="48.0" cy="159.8" r="4" fill="#2ca02c"/>
+<text x="54.0" y="153.8" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="62.7" r="4" fill="#2ca02c"/>
+<text x="67.4" y="56.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="60.8" r="4" fill="#2ca02c"/>
+<text x="74.1" y="54.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="59.0" r="4" fill="#2ca02c"/>
+<text x="80.8" y="53.0" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="59.0" r="4" fill="#2ca02c"/>
+<text x="87.5" y="53.0" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="174" font-size="12" font-family="sans-serif" fill="#2ca02c">anthropic/claude-sonnet-4</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,132.3 61.4,59.0 68.1,57.2 74.8,55.3 81.5,55.3"/>
+<circle cx="48.0" cy="132.3" r="4" fill="#9467bd"/>
+<text x="54.0" y="126.3" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="59.0" r="4" fill="#9467bd"/>
+<text x="67.4" y="53.0" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="57.2" r="4" fill="#9467bd"/>
+<text x="74.1" y="51.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="55.3" r="4" fill="#9467bd"/>
+<text x="80.8" y="49.3" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="55.3" r="4" fill="#9467bd"/>
+<text x="87.5" y="49.3" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="192" font-size="12" font-family="sans-serif" fill="#9467bd">anthropic/claude-sonnet-4.5</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,101.2 54.7,106.7 61.4,103.0 68.1,79.2 74.8,57.2 88.2,57.2"/>
+<circle cx="48.0" cy="101.2" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="95.2" font-size="11" font-family="sans-serif">none</text>
+<circle cx="54.7" cy="106.7" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="100.7" font-size="11" font-family="sans-serif">default</text>
+<circle cx="61.4" cy="103.0" r="4" fill="#ff7f0e"/>
+<text x="67.4" y="97.0" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="79.2" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="73.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="57.2" r="4" fill="#ff7f0e"/>
+<text x="80.8" y="51.2" font-size="11" font-family="sans-serif">high</text>
+<circle cx="88.2" cy="57.2" r="4" fill="#ff7f0e"/>
+<text x="94.2" y="51.2" font-size="11" font-family="sans-serif">max</text>
+<text x="530" y="210" font-size="12" font-family="sans-serif" fill="#ff7f0e">anthropic/claude-sonnet-4.6</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,200.2"/>
+<circle cx="54.7" cy="200.2" r="4" fill="#1f77b4"/>
+<text x="60.7" y="194.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="228" font-size="12" font-family="sans-serif" fill="#1f77b4">deepseek/deepseek-chat</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,183.7"/>
+<circle cx="54.7" cy="183.7" r="4" fill="#d62728"/>
+<text x="60.7" y="177.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="246" font-size="12" font-family="sans-serif" fill="#d62728">deepseek/deepseek-chat-v3-0324</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,167.2"/>
+<circle cx="54.7" cy="167.2" r="4" fill="#2ca02c"/>
+<text x="60.7" y="161.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="264" font-size="12" font-family="sans-serif" fill="#2ca02c">deepseek/deepseek-chat-v3.1</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,158.0"/>
+<circle cx="54.7" cy="158.0" r="4" fill="#9467bd"/>
+<text x="60.7" y="152.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="282" font-size="12" font-family="sans-serif" fill="#9467bd">deepseek/deepseek-v3.1-terminus</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,178.2"/>
+<circle cx="54.7" cy="178.2" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="172.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="300" font-size="12" font-family="sans-serif" fill="#ff7f0e">deepseek/deepseek-v3.2</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,150.7"/>
+<circle cx="54.7" cy="150.7" r="4" fill="#1f77b4"/>
+<text x="60.7" y="144.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="318" font-size="12" font-family="sans-serif" fill="#1f77b4">deepseek/deepseek-v3.2-exp</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,117.7"/>
+<circle cx="54.7" cy="117.7" r="4" fill="#d62728"/>
+<text x="60.7" y="111.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="336" font-size="12" font-family="sans-serif" fill="#d62728">deepseek/deepseek-v4-flash</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,101.2"/>
+<circle cx="54.7" cy="101.2" r="4" fill="#2ca02c"/>
+<text x="60.7" y="95.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="354" font-size="12" font-family="sans-serif" fill="#2ca02c">deepseek/deepseek-v4-pro</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,139.7 61.4,68.2 68.1,62.7 74.8,66.3"/>
+<circle cx="48.0" cy="139.7" r="4" fill="#9467bd"/>
+<text x="54.0" y="133.7" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="68.2" r="4" fill="#9467bd"/>
+<text x="67.4" y="62.2" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="62.7" r="4" fill="#9467bd"/>
+<text x="74.1" y="56.7" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="66.3" r="4" fill="#9467bd"/>
+<text x="80.8" y="60.3" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="372" font-size="12" font-family="sans-serif" fill="#9467bd">google/gemini-2.5-flash</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,159.8 61.4,79.2 68.1,84.7 74.8,84.7"/>
+<circle cx="48.0" cy="159.8" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="153.8" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="79.2" r="4" fill="#ff7f0e"/>
+<text x="67.4" y="73.2" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="84.7" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="78.7" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="84.7" r="4" fill="#ff7f0e"/>
+<text x="80.8" y="78.7" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="390" font-size="12" font-family="sans-serif" fill="#ff7f0e">google/gemini-2.5-flash-lite</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="61.4,59.0 68.1,55.3 68.1,57.2 74.8,57.2 81.5,59.0"/>
+<circle cx="61.4" cy="59.0" r="4" fill="#1f77b4"/>
+<text x="67.4" y="53.0" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="55.3" r="4" fill="#1f77b4"/>
+<text x="74.1" y="49.3" font-size="11" font-family="sans-serif">dynamic</text>
+<circle cx="68.1" cy="57.2" r="4" fill="#1f77b4"/>
+<text x="74.1" y="51.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="57.2" r="4" fill="#1f77b4"/>
+<text x="80.8" y="51.2" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="59.0" r="4" fill="#1f77b4"/>
+<text x="87.5" y="53.0" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="408" font-size="12" font-family="sans-serif" fill="#1f77b4">google/gemini-2.5-pro</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,84.7 54.7,92.0 61.4,51.7 68.1,49.8 74.8,55.3"/>
+<circle cx="48.0" cy="84.7" r="4" fill="#d62728"/>
+<text x="54.0" y="78.7" font-size="11" font-family="sans-serif">minimal</text>
+<circle cx="54.7" cy="92.0" r="4" fill="#d62728"/>
+<text x="60.7" y="86.0" font-size="11" font-family="sans-serif">default</text>
+<circle cx="61.4" cy="51.7" r="4" fill="#d62728"/>
+<text x="67.4" y="45.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="49.8" r="4" fill="#d62728"/>
+<text x="74.1" y="43.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="55.3" r="4" fill="#d62728"/>
+<text x="80.8" y="49.3" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="426" font-size="12" font-family="sans-serif" fill="#d62728">google/gemini-3-flash-preview</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,101.2 54.7,97.5 61.4,92.0 68.1,59.0 74.8,53.5"/>
+<circle cx="48.0" cy="101.2" r="4" fill="#2ca02c"/>
+<text x="54.0" y="95.2" font-size="11" font-family="sans-serif">minimal</text>
+<circle cx="54.7" cy="97.5" r="4" fill="#2ca02c"/>
+<text x="60.7" y="91.5" font-size="11" font-family="sans-serif">default</text>
+<circle cx="61.4" cy="92.0" r="4" fill="#2ca02c"/>
+<text x="67.4" y="86.0" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="59.0" r="4" fill="#2ca02c"/>
+<text x="74.1" y="53.0" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="53.5" r="4" fill="#2ca02c"/>
+<text x="80.8" y="47.5" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="444" font-size="12" font-family="sans-serif" fill="#2ca02c">google/gemini-3.1-flash-lite</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,92.0 54.7,49.8 61.4,49.8 68.1,49.8 74.8,48.0"/>
+<circle cx="48.0" cy="92.0" r="4" fill="#9467bd"/>
+<text x="54.0" y="86.0" font-size="11" font-family="sans-serif">minimal</text>
+<circle cx="54.7" cy="49.8" r="4" fill="#9467bd"/>
+<text x="60.7" y="43.8" font-size="11" font-family="sans-serif">default</text>
+<circle cx="61.4" cy="49.8" r="4" fill="#9467bd"/>
+<text x="67.4" y="43.8" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="49.8" r="4" fill="#9467bd"/>
+<text x="74.1" y="43.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="48.0" r="4" fill="#9467bd"/>
+<text x="80.8" y="42.0" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="462" font-size="12" font-family="sans-serif" fill="#9467bd">google/gemini-3.5-flash</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,192.8"/>
+<circle cx="48.0" cy="192.8" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="186.8" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="480" font-size="12" font-family="sans-serif" fill="#ff7f0e">google/gemma-2-27b-it</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,159.8"/>
+<circle cx="48.0" cy="159.8" r="4" fill="#1f77b4"/>
+<text x="54.0" y="153.8" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="498" font-size="12" font-family="sans-serif" fill="#1f77b4">google/gemma-3-12b-it</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,178.2"/>
+<circle cx="48.0" cy="178.2" r="4" fill="#d62728"/>
+<text x="54.0" y="172.2" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="516" font-size="12" font-family="sans-serif" fill="#d62728">google/gemma-3-27b-it</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,216.7"/>
+<circle cx="48.0" cy="216.7" r="4" fill="#2ca02c"/>
+<text x="54.0" y="210.7" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="534" font-size="12" font-family="sans-serif" fill="#2ca02c">google/gemma-3-4b-it</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,194.7"/>
+<circle cx="48.0" cy="194.7" r="4" fill="#9467bd"/>
+<text x="54.0" y="188.7" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="552" font-size="12" font-family="sans-serif" fill="#9467bd">google/gemma-3n-e4b-it</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,130.5 61.4,57.2 68.1,57.2 74.8,59.0"/>
+<circle cx="48.0" cy="130.5" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="124.5" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="57.2" r="4" fill="#ff7f0e"/>
+<text x="67.4" y="51.2" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="57.2" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="51.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="59.0" r="4" fill="#ff7f0e"/>
+<text x="80.8" y="53.0" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="570" font-size="12" font-family="sans-serif" fill="#ff7f0e">google/gemma-4-26b-a4b-it</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,88.3 61.4,48.0 68.1,49.8 74.8,48.0"/>
+<circle cx="48.0" cy="88.3" r="4" fill="#1f77b4"/>
+<text x="54.0" y="82.3" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="48.0" r="4" fill="#1f77b4"/>
+<text x="67.4" y="42.0" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="49.8" r="4" fill="#1f77b4"/>
+<text x="74.1" y="43.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="48.0" r="4" fill="#1f77b4"/>
+<text x="80.8" y="42.0" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="588" font-size="12" font-family="sans-serif" fill="#1f77b4">google/gemma-4-31b-it</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,161.7"/>
+<circle cx="48.0" cy="161.7" r="4" fill="#d62728"/>
+<text x="54.0" y="155.7" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="606" font-size="12" font-family="sans-serif" fill="#d62728">meta-llama/llama-3-70b-instruct</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,207.5"/>
+<circle cx="48.0" cy="207.5" r="4" fill="#2ca02c"/>
+<text x="54.0" y="201.5" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="624" font-size="12" font-family="sans-serif" fill="#2ca02c">meta-llama/llama-3-8b-instruct</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,192.8"/>
+<circle cx="48.0" cy="192.8" r="4" fill="#9467bd"/>
+<text x="54.0" y="186.8" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="642" font-size="12" font-family="sans-serif" fill="#9467bd">meta-llama/llama-3.1-70b-instruct</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,257.0"/>
+<circle cx="48.0" cy="257.0" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="251.0" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="660" font-size="12" font-family="sans-serif" fill="#ff7f0e">meta-llama/llama-3.1-8b-instruct</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,249.7"/>
+<circle cx="48.0" cy="249.7" r="4" fill="#1f77b4"/>
+<text x="54.0" y="243.7" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="678" font-size="12" font-family="sans-serif" fill="#1f77b4">meta-llama/llama-3.2-11b-vision-instruct</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,247.8"/>
+<circle cx="48.0" cy="247.8" r="4" fill="#d62728"/>
+<text x="54.0" y="241.8" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="696" font-size="12" font-family="sans-serif" fill="#d62728">meta-llama/llama-3.2-1b-instruct</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,161.7"/>
+<circle cx="48.0" cy="161.7" r="4" fill="#2ca02c"/>
+<text x="54.0" y="155.7" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="714" font-size="12" font-family="sans-serif" fill="#2ca02c">meta-llama/llama-3.3-70b-instruct</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,143.3"/>
+<circle cx="48.0" cy="143.3" r="4" fill="#9467bd"/>
+<text x="54.0" y="137.3" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="732" font-size="12" font-family="sans-serif" fill="#9467bd">meta-llama/llama-4-maverick</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,178.2"/>
+<circle cx="48.0" cy="178.2" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="172.2" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="750" font-size="12" font-family="sans-serif" fill="#ff7f0e">meta-llama/llama-4-scout</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,198.3"/>
+<circle cx="54.7" cy="198.3" r="4" fill="#1f77b4"/>
+<text x="60.7" y="192.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="768" font-size="12" font-family="sans-serif" fill="#1f77b4">minimax/minimax-01</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,79.2"/>
+<circle cx="54.7" cy="79.2" r="4" fill="#d62728"/>
+<text x="60.7" y="73.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="786" font-size="12" font-family="sans-serif" fill="#d62728">minimax/minimax-m2</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,132.3"/>
+<circle cx="54.7" cy="132.3" r="4" fill="#2ca02c"/>
+<text x="60.7" y="126.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="804" font-size="12" font-family="sans-serif" fill="#2ca02c">minimax/minimax-m2.1</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,81.0"/>
+<circle cx="54.7" cy="81.0" r="4" fill="#9467bd"/>
+<text x="60.7" y="75.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="822" font-size="12" font-family="sans-serif" fill="#9467bd">minimax/minimax-m2.5</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,92.0"/>
+<circle cx="54.7" cy="92.0" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="86.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="840" font-size="12" font-family="sans-serif" fill="#ff7f0e">minimax/minimax-m2.7</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,82.8"/>
+<circle cx="54.7" cy="82.8" r="4" fill="#1f77b4"/>
+<text x="60.7" y="76.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="858" font-size="12" font-family="sans-serif" fill="#1f77b4">minimax/minimax-m3</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,203.8"/>
+<circle cx="54.7" cy="203.8" r="4" fill="#d62728"/>
+<text x="60.7" y="197.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="876" font-size="12" font-family="sans-serif" fill="#d62728">mistralai/codestral-2508</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,139.7"/>
+<circle cx="54.7" cy="139.7" r="4" fill="#2ca02c"/>
+<text x="60.7" y="133.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="894" font-size="12" font-family="sans-serif" fill="#2ca02c">mistralai/devstral-2512</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,203.8"/>
+<circle cx="54.7" cy="203.8" r="4" fill="#9467bd"/>
+<text x="60.7" y="197.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="912" font-size="12" font-family="sans-serif" fill="#9467bd">mistralai/ministral-14b-2512</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,246.0"/>
+<circle cx="54.7" cy="246.0" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="240.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="930" font-size="12" font-family="sans-serif" fill="#ff7f0e">mistralai/ministral-3b-2512</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,202.0"/>
+<circle cx="54.7" cy="202.0" r="4" fill="#1f77b4"/>
+<text x="60.7" y="196.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="948" font-size="12" font-family="sans-serif" fill="#1f77b4">mistralai/ministral-8b-2512</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,150.7"/>
+<circle cx="54.7" cy="150.7" r="4" fill="#d62728"/>
+<text x="60.7" y="144.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="966" font-size="12" font-family="sans-serif" fill="#d62728">mistralai/mistral-large</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,152.5"/>
+<circle cx="54.7" cy="152.5" r="4" fill="#2ca02c"/>
+<text x="60.7" y="146.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="984" font-size="12" font-family="sans-serif" fill="#2ca02c">mistralai/mistral-large-2407</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,152.5"/>
+<circle cx="54.7" cy="152.5" r="4" fill="#9467bd"/>
+<text x="60.7" y="146.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1002" font-size="12" font-family="sans-serif" fill="#9467bd">mistralai/mistral-large-2512</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="68.1,141.5"/>
+<circle cx="68.1" cy="141.5" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="135.5" font-size="11" font-family="sans-serif">medium</text>
+<text x="530" y="1020" font-size="12" font-family="sans-serif" fill="#ff7f0e">mistralai/mistral-medium-3</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,176.3 61.4,73.7 68.1,79.2 74.8,71.8"/>
+<circle cx="48.0" cy="176.3" r="4" fill="#1f77b4"/>
+<text x="54.0" y="170.3" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="61.4" cy="73.7" r="4" fill="#1f77b4"/>
+<text x="67.4" y="67.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="79.2" r="4" fill="#1f77b4"/>
+<text x="74.1" y="73.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="71.8" r="4" fill="#1f77b4"/>
+<text x="80.8" y="65.8" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1038" font-size="12" font-family="sans-serif" fill="#1f77b4">mistralai/mistral-medium-3-5</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="68.1,132.3"/>
+<circle cx="68.1" cy="132.3" r="4" fill="#d62728"/>
+<text x="74.1" y="126.3" font-size="11" font-family="sans-serif">medium</text>
+<text x="530" y="1056" font-size="12" font-family="sans-serif" fill="#d62728">mistralai/mistral-medium-3.1</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,209.3"/>
+<circle cx="54.7" cy="209.3" r="4" fill="#2ca02c"/>
+<text x="60.7" y="203.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1074" font-size="12" font-family="sans-serif" fill="#2ca02c">mistralai/mistral-nemo</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,180.0"/>
+<circle cx="54.7" cy="180.0" r="4" fill="#9467bd"/>
+<text x="60.7" y="174.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1092" font-size="12" font-family="sans-serif" fill="#9467bd">mistralai/mistral-saba</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,227.7"/>
+<circle cx="54.7" cy="227.7" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="221.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1110" font-size="12" font-family="sans-serif" fill="#ff7f0e">mistralai/mistral-small-24b-instruct-2501</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,213.0"/>
+<circle cx="54.7" cy="213.0" r="4" fill="#1f77b4"/>
+<text x="60.7" y="207.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1128" font-size="12" font-family="sans-serif" fill="#1f77b4">mistralai/mistral-small-2603</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,202.0"/>
+<circle cx="54.7" cy="202.0" r="4" fill="#d62728"/>
+<text x="60.7" y="196.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1146" font-size="12" font-family="sans-serif" fill="#d62728">mistralai/mistral-small-3.2-24b-instruct</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,174.5"/>
+<circle cx="54.7" cy="174.5" r="4" fill="#2ca02c"/>
+<text x="60.7" y="168.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1164" font-size="12" font-family="sans-serif" fill="#2ca02c">mistralai/mixtral-8x22b-instruct</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,196.5"/>
+<circle cx="54.7" cy="196.5" r="4" fill="#9467bd"/>
+<text x="60.7" y="190.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1182" font-size="12" font-family="sans-serif" fill="#9467bd">mistralai/voxtral-small-24b-2507</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,152.5"/>
+<circle cx="54.7" cy="152.5" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="146.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1200" font-size="12" font-family="sans-serif" fill="#ff7f0e">moonshotai/kimi-k2</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,154.3"/>
+<circle cx="54.7" cy="154.3" r="4" fill="#1f77b4"/>
+<text x="60.7" y="148.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1218" font-size="12" font-family="sans-serif" fill="#1f77b4">moonshotai/kimi-k2-0905</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,55.3"/>
+<circle cx="54.7" cy="55.3" r="4" fill="#d62728"/>
+<text x="60.7" y="49.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1236" font-size="12" font-family="sans-serif" fill="#d62728">moonshotai/kimi-k2-thinking</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,154.3 54.7,55.3"/>
+<circle cx="48.0" cy="154.3" r="4" fill="#2ca02c"/>
+<text x="54.0" y="148.3" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="55.3" r="4" fill="#2ca02c"/>
+<text x="60.7" y="49.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1254" font-size="12" font-family="sans-serif" fill="#2ca02c">moonshotai/kimi-k2.5</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,143.3 54.7,60.8"/>
+<circle cx="48.0" cy="143.3" r="4" fill="#9467bd"/>
+<text x="54.0" y="137.3" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="60.8" r="4" fill="#9467bd"/>
+<text x="60.7" y="54.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1272" font-size="12" font-family="sans-serif" fill="#9467bd">moonshotai/kimi-k2.6</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,59.0"/>
+<circle cx="54.7" cy="59.0" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="53.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1290" font-size="12" font-family="sans-serif" fill="#ff7f0e">moonshotai/kimi-k2.7-code</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,75.5"/>
+<circle cx="54.7" cy="75.5" r="4" fill="#1f77b4"/>
+<text x="60.7" y="69.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1308" font-size="12" font-family="sans-serif" fill="#1f77b4">nvidia/nemotron-3-nano-30b-a3b</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,79.2"/>
+<circle cx="54.7" cy="79.2" r="4" fill="#d62728"/>
+<text x="60.7" y="73.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1326" font-size="12" font-family="sans-serif" fill="#d62728">nvidia/nemotron-3-super-120b-a12b</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,57.2"/>
+<circle cx="54.7" cy="57.2" r="4" fill="#2ca02c"/>
+<text x="60.7" y="51.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1344" font-size="12" font-family="sans-serif" fill="#2ca02c">nvidia/nemotron-3-ultra-550b-a55b</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,192.8"/>
+<circle cx="48.0" cy="192.8" r="4" fill="#9467bd"/>
+<text x="54.0" y="186.8" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1362" font-size="12" font-family="sans-serif" fill="#9467bd">openai/gpt-3.5-turbo</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,143.3"/>
+<circle cx="48.0" cy="143.3" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="137.3" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1380" font-size="12" font-family="sans-serif" fill="#ff7f0e">openai/gpt-3.5-turbo-0613</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,178.2"/>
+<circle cx="48.0" cy="178.2" r="4" fill="#1f77b4"/>
+<text x="54.0" y="172.2" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1398" font-size="12" font-family="sans-serif" fill="#1f77b4">openai/gpt-3.5-turbo-16k</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,266.2"/>
+<circle cx="48.0" cy="266.2" r="4" fill="#d62728"/>
+<text x="54.0" y="260.2" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1416" font-size="12" font-family="sans-serif" fill="#d62728">openai/gpt-3.5-turbo-instruct</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,119.5"/>
+<circle cx="48.0" cy="119.5" r="4" fill="#2ca02c"/>
+<text x="54.0" y="113.5" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1434" font-size="12" font-family="sans-serif" fill="#2ca02c">openai/gpt-4</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,126.8"/>
+<circle cx="48.0" cy="126.8" r="4" fill="#9467bd"/>
+<text x="54.0" y="120.8" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1452" font-size="12" font-family="sans-serif" fill="#9467bd">openai/gpt-4-turbo</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,112.2"/>
+<circle cx="48.0" cy="112.2" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="106.2" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1470" font-size="12" font-family="sans-serif" fill="#ff7f0e">openai/gpt-4.1</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,141.5"/>
+<circle cx="48.0" cy="141.5" r="4" fill="#1f77b4"/>
+<text x="54.0" y="135.5" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1488" font-size="12" font-family="sans-serif" fill="#1f77b4">openai/gpt-4.1-mini</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,174.5"/>
+<circle cx="48.0" cy="174.5" r="4" fill="#d62728"/>
+<text x="54.0" y="168.5" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1506" font-size="12" font-family="sans-serif" fill="#d62728">openai/gpt-4.1-nano</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,112.2"/>
+<circle cx="48.0" cy="112.2" r="4" fill="#2ca02c"/>
+<text x="54.0" y="106.2" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1524" font-size="12" font-family="sans-serif" fill="#2ca02c">openai/gpt-4o</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,125.0"/>
+<circle cx="48.0" cy="125.0" r="4" fill="#9467bd"/>
+<text x="54.0" y="119.0" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1542" font-size="12" font-family="sans-serif" fill="#9467bd">openai/gpt-4o-2024-05-13</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,114.0"/>
+<circle cx="48.0" cy="114.0" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="108.0" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1560" font-size="12" font-family="sans-serif" fill="#ff7f0e">openai/gpt-4o-2024-08-06</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,108.5"/>
+<circle cx="48.0" cy="108.5" r="4" fill="#1f77b4"/>
+<text x="54.0" y="102.5" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1578" font-size="12" font-family="sans-serif" fill="#1f77b4">openai/gpt-4o-2024-11-20</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,163.5"/>
+<circle cx="48.0" cy="163.5" r="4" fill="#d62728"/>
+<text x="54.0" y="157.5" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1596" font-size="12" font-family="sans-serif" fill="#d62728">openai/gpt-4o-mini</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,156.2"/>
+<circle cx="48.0" cy="156.2" r="4" fill="#2ca02c"/>
+<text x="54.0" y="150.2" font-size="11" font-family="sans-serif">none</text>
+<text x="530" y="1614" font-size="12" font-family="sans-serif" fill="#2ca02c">openai/gpt-4o-mini-2024-07-18</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,121.3 61.4,51.7 68.1,48.0 74.8,48.0"/>
+<circle cx="48.0" cy="121.3" r="4" fill="#9467bd"/>
+<text x="54.0" y="115.3" font-size="11" font-family="sans-serif">minimal</text>
+<circle cx="61.4" cy="51.7" r="4" fill="#9467bd"/>
+<text x="67.4" y="45.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="48.0" r="4" fill="#9467bd"/>
+<text x="74.1" y="42.0" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="48.0" r="4" fill="#9467bd"/>
+<text x="80.8" y="42.0" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1632" font-size="12" font-family="sans-serif" fill="#9467bd">openai/gpt-5</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,147.0 61.4,64.5 68.1,60.8 74.8,59.0"/>
+<circle cx="48.0" cy="147.0" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="141.0" font-size="11" font-family="sans-serif">minimal</text>
+<circle cx="61.4" cy="64.5" r="4" fill="#ff7f0e"/>
+<text x="67.4" y="58.5" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="60.8" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="54.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="59.0" r="4" fill="#ff7f0e"/>
+<text x="80.8" y="53.0" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1650" font-size="12" font-family="sans-serif" fill="#ff7f0e">openai/gpt-5-mini</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,213.0 61.4,71.8 68.1,60.8 74.8,55.3"/>
+<circle cx="48.0" cy="213.0" r="4" fill="#1f77b4"/>
+<text x="54.0" y="207.0" font-size="11" font-family="sans-serif">minimal</text>
+<circle cx="61.4" cy="71.8" r="4" fill="#1f77b4"/>
+<text x="67.4" y="65.8" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="60.8" r="4" fill="#1f77b4"/>
+<text x="74.1" y="54.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="55.3" r="4" fill="#1f77b4"/>
+<text x="80.8" y="49.3" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1668" font-size="12" font-family="sans-serif" fill="#1f77b4">openai/gpt-5-nano</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,134.2 61.4,110.3 68.1,104.8 74.8,88.3 81.5,51.7"/>
+<circle cx="48.0" cy="134.2" r="4" fill="#d62728"/>
+<text x="54.0" y="128.2" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="110.3" r="4" fill="#d62728"/>
+<text x="67.4" y="104.3" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="104.8" r="4" fill="#d62728"/>
+<text x="74.1" y="98.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="88.3" r="4" fill="#d62728"/>
+<text x="80.8" y="82.3" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="51.7" r="4" fill="#d62728"/>
+<text x="87.5" y="45.7" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="1686" font-size="12" font-family="sans-serif" fill="#d62728">openai/gpt-5.2</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,114.0 61.4,60.8 68.1,59.0 74.8,55.3 81.5,51.7"/>
+<circle cx="48.0" cy="114.0" r="4" fill="#2ca02c"/>
+<text x="54.0" y="108.0" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="60.8" r="4" fill="#2ca02c"/>
+<text x="67.4" y="54.8" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="59.0" r="4" fill="#2ca02c"/>
+<text x="74.1" y="53.0" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="55.3" r="4" fill="#2ca02c"/>
+<text x="80.8" y="49.3" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="51.7" r="4" fill="#2ca02c"/>
+<text x="87.5" y="45.7" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="1704" font-size="12" font-family="sans-serif" fill="#2ca02c">openai/gpt-5.4</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,141.5 61.4,71.8 68.1,73.7 74.8,71.8 81.5,64.5"/>
+<circle cx="48.0" cy="141.5" r="4" fill="#9467bd"/>
+<text x="54.0" y="135.5" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="71.8" r="4" fill="#9467bd"/>
+<text x="67.4" y="65.8" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="73.7" r="4" fill="#9467bd"/>
+<text x="74.1" y="67.7" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="71.8" r="4" fill="#9467bd"/>
+<text x="80.8" y="65.8" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="64.5" r="4" fill="#9467bd"/>
+<text x="87.5" y="58.5" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="1722" font-size="12" font-family="sans-serif" fill="#9467bd">openai/gpt-5.4-mini</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,214.8 61.4,172.7 68.1,123.2 74.8,95.7 81.5,70.0"/>
+<circle cx="48.0" cy="214.8" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="208.8" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="172.7" r="4" fill="#ff7f0e"/>
+<text x="67.4" y="166.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="123.2" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="117.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="95.7" r="4" fill="#ff7f0e"/>
+<text x="80.8" y="89.7" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="70.0" r="4" fill="#ff7f0e"/>
+<text x="87.5" y="64.0" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="1740" font-size="12" font-family="sans-serif" fill="#ff7f0e">openai/gpt-5.4-nano</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,90.2 61.4,53.5 68.1,48.0 74.8,51.7 81.5,48.0"/>
+<circle cx="48.0" cy="90.2" r="4" fill="#1f77b4"/>
+<text x="54.0" y="84.2" font-size="11" font-family="sans-serif">none</text>
+<circle cx="61.4" cy="53.5" r="4" fill="#1f77b4"/>
+<text x="67.4" y="47.5" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="48.0" r="4" fill="#1f77b4"/>
+<text x="74.1" y="42.0" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="51.7" r="4" fill="#1f77b4"/>
+<text x="80.8" y="45.7" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="48.0" r="4" fill="#1f77b4"/>
+<text x="87.5" y="42.0" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="1758" font-size="12" font-family="sans-serif" fill="#1f77b4">openai/gpt-5.5</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="61.4,92.0 68.1,62.7 74.8,71.8"/>
+<circle cx="61.4" cy="92.0" r="4" fill="#d62728"/>
+<text x="67.4" y="86.0" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="62.7" r="4" fill="#d62728"/>
+<text x="74.1" y="56.7" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="71.8" r="4" fill="#d62728"/>
+<text x="80.8" y="65.8" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1776" font-size="12" font-family="sans-serif" fill="#d62728">openai/gpt-oss-120b</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="61.4,106.7 68.1,82.8 74.8,68.2"/>
+<circle cx="61.4" cy="106.7" r="4" fill="#2ca02c"/>
+<text x="67.4" y="100.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="82.8" r="4" fill="#2ca02c"/>
+<text x="74.1" y="76.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="68.2" r="4" fill="#2ca02c"/>
+<text x="80.8" y="62.2" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1794" font-size="12" font-family="sans-serif" fill="#2ca02c">openai/gpt-oss-20b</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="61.4,57.2 68.1,51.7 74.8,53.5"/>
+<circle cx="61.4" cy="57.2" r="4" fill="#9467bd"/>
+<text x="67.4" y="51.2" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="51.7" r="4" fill="#9467bd"/>
+<text x="74.1" y="45.7" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="53.5" r="4" fill="#9467bd"/>
+<text x="80.8" y="47.5" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1812" font-size="12" font-family="sans-serif" fill="#9467bd">openai/o1</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="61.4,60.8 68.1,48.0 74.8,48.0"/>
+<circle cx="61.4" cy="60.8" r="4" fill="#ff7f0e"/>
+<text x="67.4" y="54.8" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="48.0" r="4" fill="#ff7f0e"/>
+<text x="74.1" y="42.0" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="48.0" r="4" fill="#ff7f0e"/>
+<text x="80.8" y="42.0" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1830" font-size="12" font-family="sans-serif" fill="#ff7f0e">openai/o3</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="61.4,73.7 68.1,62.7 74.8,55.3"/>
+<circle cx="61.4" cy="73.7" r="4" fill="#1f77b4"/>
+<text x="67.4" y="67.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="62.7" r="4" fill="#1f77b4"/>
+<text x="74.1" y="56.7" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="55.3" r="4" fill="#1f77b4"/>
+<text x="80.8" y="49.3" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1848" font-size="12" font-family="sans-serif" fill="#1f77b4">openai/o3-mini</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="61.4,53.5 68.1,57.2 74.8,60.8"/>
+<circle cx="61.4" cy="53.5" r="4" fill="#d62728"/>
+<text x="67.4" y="47.5" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="57.2" r="4" fill="#d62728"/>
+<text x="74.1" y="51.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="60.8" r="4" fill="#d62728"/>
+<text x="80.8" y="54.8" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1866" font-size="12" font-family="sans-serif" fill="#d62728">openai/o3-mini-high</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="61.4,59.0 68.1,55.3 74.8,51.7"/>
+<circle cx="61.4" cy="59.0" r="4" fill="#2ca02c"/>
+<text x="67.4" y="53.0" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="55.3" r="4" fill="#2ca02c"/>
+<text x="74.1" y="49.3" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="51.7" r="4" fill="#2ca02c"/>
+<text x="80.8" y="45.7" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1884" font-size="12" font-family="sans-serif" fill="#2ca02c">openai/o4-mini</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="61.4,55.3 68.1,57.2 74.8,57.2"/>
+<circle cx="61.4" cy="55.3" r="4" fill="#9467bd"/>
+<text x="67.4" y="49.3" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="57.2" r="4" fill="#9467bd"/>
+<text x="74.1" y="51.2" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="57.2" r="4" fill="#9467bd"/>
+<text x="80.8" y="51.2" font-size="11" font-family="sans-serif">high</text>
+<text x="530" y="1902" font-size="12" font-family="sans-serif" fill="#9467bd">openai/o4-mini-high</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,172.7"/>
+<circle cx="54.7" cy="172.7" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="166.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1920" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen-2.5-72b-instruct</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,205.7"/>
+<circle cx="54.7" cy="205.7" r="4" fill="#1f77b4"/>
+<text x="60.7" y="199.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1938" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen-2.5-7b-instruct</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,137.8"/>
+<circle cx="54.7" cy="137.8" r="4" fill="#d62728"/>
+<text x="60.7" y="131.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1956" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen-plus</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,152.5"/>
+<circle cx="54.7" cy="152.5" r="4" fill="#2ca02c"/>
+<text x="60.7" y="146.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1974" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen-plus-2025-07-28</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,213.0"/>
+<circle cx="54.7" cy="213.0" r="4" fill="#9467bd"/>
+<text x="60.7" y="207.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="1992" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen2.5-vl-72b-instruct</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,70.0"/>
+<circle cx="54.7" cy="70.0" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="64.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2010" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3-14b</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,73.7"/>
+<circle cx="54.7" cy="73.7" r="4" fill="#1f77b4"/>
+<text x="60.7" y="67.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2028" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3-235b-a22b</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,167.2"/>
+<circle cx="54.7" cy="167.2" r="4" fill="#d62728"/>
+<text x="60.7" y="161.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2046" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen3-235b-a22b-2507</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,62.7"/>
+<circle cx="54.7" cy="62.7" r="4" fill="#2ca02c"/>
+<text x="60.7" y="56.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2064" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen3-235b-a22b-thinking-2507</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,62.7"/>
+<circle cx="54.7" cy="62.7" r="4" fill="#9467bd"/>
+<text x="60.7" y="56.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2082" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen3-30b-a3b</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,183.7"/>
+<circle cx="54.7" cy="183.7" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="177.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2100" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3-30b-a3b-instruct-2507</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,57.2"/>
+<circle cx="54.7" cy="57.2" r="4" fill="#1f77b4"/>
+<text x="60.7" y="51.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2118" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3-30b-a3b-thinking-2507</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,114.0"/>
+<circle cx="54.7" cy="114.0" r="4" fill="#d62728"/>
+<text x="60.7" y="108.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2136" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen3-32b</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,147.0"/>
+<circle cx="54.7" cy="147.0" r="4" fill="#2ca02c"/>
+<text x="60.7" y="141.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2154" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen3-8b</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,148.8"/>
+<circle cx="54.7" cy="148.8" r="4" fill="#9467bd"/>
+<text x="60.7" y="142.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2172" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen3-coder</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,189.2"/>
+<circle cx="54.7" cy="189.2" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="183.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2190" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3-coder-30b-a3b-instruct</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,178.2"/>
+<circle cx="54.7" cy="178.2" r="4" fill="#1f77b4"/>
+<text x="60.7" y="172.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2208" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3-coder-flash</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,198.3"/>
+<circle cx="54.7" cy="198.3" r="4" fill="#d62728"/>
+<text x="60.7" y="192.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2226" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen3-coder-next</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,161.7"/>
+<circle cx="54.7" cy="161.7" r="4" fill="#2ca02c"/>
+<text x="60.7" y="155.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2244" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen3-coder-plus</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="88.2,130.5"/>
+<circle cx="88.2" cy="130.5" r="4" fill="#9467bd"/>
+<text x="94.2" y="124.5" font-size="11" font-family="sans-serif">max</text>
+<text x="530" y="2262" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen3-max</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,163.5"/>
+<circle cx="54.7" cy="163.5" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="157.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2280" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3-next-80b-a3b-instruct</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,71.8"/>
+<circle cx="54.7" cy="71.8" r="4" fill="#1f77b4"/>
+<text x="60.7" y="65.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2298" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3-next-80b-a3b-thinking</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,143.3"/>
+<circle cx="54.7" cy="143.3" r="4" fill="#d62728"/>
+<text x="60.7" y="137.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2316" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen3-vl-235b-a22b-instruct</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,57.2"/>
+<circle cx="54.7" cy="57.2" r="4" fill="#2ca02c"/>
+<text x="60.7" y="51.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2334" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen3-vl-235b-a22b-thinking</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,189.2"/>
+<circle cx="54.7" cy="189.2" r="4" fill="#9467bd"/>
+<text x="60.7" y="183.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2352" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen3-vl-30b-a3b-instruct</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,77.3"/>
+<circle cx="54.7" cy="77.3" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="71.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2370" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3-vl-30b-a3b-thinking</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,196.5"/>
+<circle cx="54.7" cy="196.5" r="4" fill="#1f77b4"/>
+<text x="60.7" y="190.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2388" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3-vl-8b-instruct</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,84.7"/>
+<circle cx="54.7" cy="84.7" r="4" fill="#d62728"/>
+<text x="60.7" y="78.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2406" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen3-vl-8b-thinking</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,55.3"/>
+<circle cx="54.7" cy="55.3" r="4" fill="#2ca02c"/>
+<text x="60.7" y="49.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2424" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen3.5-122b-a10b</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,48.0"/>
+<circle cx="54.7" cy="48.0" r="4" fill="#9467bd"/>
+<text x="60.7" y="42.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2442" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen3.5-27b</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,70.0"/>
+<circle cx="54.7" cy="70.0" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="64.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2460" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3.5-35b-a3b</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,49.8"/>
+<circle cx="54.7" cy="49.8" r="4" fill="#1f77b4"/>
+<text x="60.7" y="43.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2478" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3.5-397b-a17b</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,99.3"/>
+<circle cx="54.7" cy="99.3" r="4" fill="#d62728"/>
+<text x="60.7" y="93.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2496" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen3.5-9b</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,68.2"/>
+<circle cx="54.7" cy="68.2" r="4" fill="#2ca02c"/>
+<text x="60.7" y="62.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2514" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen3.5-flash-02-23</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,51.7"/>
+<circle cx="54.7" cy="51.7" r="4" fill="#9467bd"/>
+<text x="60.7" y="45.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2532" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen3.5-plus-02-15</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,70.0"/>
+<circle cx="54.7" cy="70.0" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="64.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2550" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3.5-plus-20260420</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="54.7,73.7"/>
+<circle cx="54.7" cy="73.7" r="4" fill="#1f77b4"/>
+<text x="60.7" y="67.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2568" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3.6-27b</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,77.3 61.4,81.0"/>
+<circle cx="54.7" cy="77.3" r="4" fill="#d62728"/>
+<text x="60.7" y="71.3" font-size="11" font-family="sans-serif">default</text>
+<circle cx="61.4" cy="81.0" r="4" fill="#d62728"/>
+<text x="67.4" y="75.0" font-size="11" font-family="sans-serif">low</text>
+<text x="530" y="2586" font-size="12" font-family="sans-serif" fill="#d62728">qwen/qwen3.6-35b-a3b</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="54.7,81.0 61.4,77.3"/>
+<circle cx="54.7" cy="81.0" r="4" fill="#2ca02c"/>
+<text x="60.7" y="75.0" font-size="11" font-family="sans-serif">default</text>
+<circle cx="61.4" cy="77.3" r="4" fill="#2ca02c"/>
+<text x="67.4" y="71.3" font-size="11" font-family="sans-serif">low</text>
+<text x="530" y="2604" font-size="12" font-family="sans-serif" fill="#2ca02c">qwen/qwen3.6-flash</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="88.2,53.5"/>
+<circle cx="88.2" cy="53.5" r="4" fill="#9467bd"/>
+<text x="94.2" y="47.5" font-size="11" font-family="sans-serif">max</text>
+<text x="530" y="2622" font-size="12" font-family="sans-serif" fill="#9467bd">qwen/qwen3.6-max-preview</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="54.7,62.7"/>
+<circle cx="54.7" cy="62.7" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="56.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2640" font-size="12" font-family="sans-serif" fill="#ff7f0e">qwen/qwen3.6-plus</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="88.2,55.3"/>
+<circle cx="88.2" cy="55.3" r="4" fill="#1f77b4"/>
+<text x="94.2" y="49.3" font-size="11" font-family="sans-serif">max</text>
+<text x="530" y="2658" font-size="12" font-family="sans-serif" fill="#1f77b4">qwen/qwen3.7-max</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,161.7 61.4,51.7 68.1,51.7 74.8,51.7 81.5,55.3"/>
+<circle cx="48.0" cy="161.7" r="4" fill="#d62728"/>
+<text x="54.0" y="155.7" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="61.4" cy="51.7" r="4" fill="#d62728"/>
+<text x="67.4" y="45.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="51.7" r="4" fill="#d62728"/>
+<text x="74.1" y="45.7" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="51.7" r="4" fill="#d62728"/>
+<text x="80.8" y="45.7" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="55.3" r="4" fill="#d62728"/>
+<text x="87.5" y="49.3" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="2676" font-size="12" font-family="sans-serif" fill="#d62728">x-ai/grok-4.20</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,183.7 61.4,57.2 68.1,53.5 74.8,51.7 81.5,53.5"/>
+<circle cx="48.0" cy="183.7" r="4" fill="#2ca02c"/>
+<text x="54.0" y="177.7" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="61.4" cy="57.2" r="4" fill="#2ca02c"/>
+<text x="67.4" y="51.2" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="53.5" r="4" fill="#2ca02c"/>
+<text x="74.1" y="47.5" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="51.7" r="4" fill="#2ca02c"/>
+<text x="80.8" y="45.7" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="53.5" r="4" fill="#2ca02c"/>
+<text x="87.5" y="47.5" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="2694" font-size="12" font-family="sans-serif" fill="#2ca02c">x-ai/grok-4.3</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,49.8 61.4,51.7 68.1,49.8 74.8,49.8 81.5,55.3"/>
+<circle cx="54.7" cy="49.8" r="4" fill="#9467bd"/>
+<text x="60.7" y="43.8" font-size="11" font-family="sans-serif">default</text>
+<circle cx="61.4" cy="51.7" r="4" fill="#9467bd"/>
+<text x="67.4" y="45.7" font-size="11" font-family="sans-serif">low</text>
+<circle cx="68.1" cy="49.8" r="4" fill="#9467bd"/>
+<text x="74.1" y="43.8" font-size="11" font-family="sans-serif">medium</text>
+<circle cx="74.8" cy="49.8" r="4" fill="#9467bd"/>
+<text x="80.8" y="43.8" font-size="11" font-family="sans-serif">high</text>
+<circle cx="81.5" cy="55.3" r="4" fill="#9467bd"/>
+<text x="87.5" y="49.3" font-size="11" font-family="sans-serif">xhigh</text>
+<text x="530" y="2712" font-size="12" font-family="sans-serif" fill="#9467bd">x-ai/grok-build-0.1</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,154.3 54.7,68.2"/>
+<circle cx="48.0" cy="154.3" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="148.3" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="68.2" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="62.2" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2730" font-size="12" font-family="sans-serif" fill="#ff7f0e">z-ai/glm-4.5</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,172.7 54.7,88.3"/>
+<circle cx="48.0" cy="172.7" r="4" fill="#1f77b4"/>
+<text x="54.0" y="166.7" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="88.3" r="4" fill="#1f77b4"/>
+<text x="60.7" y="82.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2748" font-size="12" font-family="sans-serif" fill="#1f77b4">z-ai/glm-4.5-air</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="54.7,110.3"/>
+<circle cx="54.7" cy="110.3" r="4" fill="#d62728"/>
+<text x="60.7" y="104.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2766" font-size="12" font-family="sans-serif" fill="#d62728">z-ai/glm-4.5v</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,158.0 54.7,84.7"/>
+<circle cx="48.0" cy="158.0" r="4" fill="#2ca02c"/>
+<text x="54.0" y="152.0" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="84.7" r="4" fill="#2ca02c"/>
+<text x="60.7" y="78.7" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2784" font-size="12" font-family="sans-serif" fill="#2ca02c">z-ai/glm-4.6</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="54.7,81.0"/>
+<circle cx="54.7" cy="81.0" r="4" fill="#9467bd"/>
+<text x="60.7" y="75.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2802" font-size="12" font-family="sans-serif" fill="#9467bd">z-ai/glm-4.6v</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="48.0,161.7 54.7,70.0"/>
+<circle cx="48.0" cy="161.7" r="4" fill="#ff7f0e"/>
+<text x="54.0" y="155.7" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="70.0" r="4" fill="#ff7f0e"/>
+<text x="60.7" y="64.0" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2820" font-size="12" font-family="sans-serif" fill="#ff7f0e">z-ai/glm-4.7</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2" points="48.0,213.0 54.7,126.8"/>
+<circle cx="48.0" cy="213.0" r="4" fill="#1f77b4"/>
+<text x="54.0" y="207.0" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="126.8" r="4" fill="#1f77b4"/>
+<text x="60.7" y="120.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2838" font-size="12" font-family="sans-serif" fill="#1f77b4">z-ai/glm-4.7-flash</text>
+<polyline fill="none" stroke="#d62728" stroke-width="2" points="48.0,147.0 54.7,66.3"/>
+<circle cx="48.0" cy="147.0" r="4" fill="#d62728"/>
+<text x="54.0" y="141.0" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="66.3" r="4" fill="#d62728"/>
+<text x="60.7" y="60.3" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2856" font-size="12" font-family="sans-serif" fill="#d62728">z-ai/glm-5</text>
+<polyline fill="none" stroke="#2ca02c" stroke-width="2" points="48.0,154.3 54.7,60.8"/>
+<circle cx="48.0" cy="154.3" r="4" fill="#2ca02c"/>
+<text x="54.0" y="148.3" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="60.8" r="4" fill="#2ca02c"/>
+<text x="60.7" y="54.8" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2874" font-size="12" font-family="sans-serif" fill="#2ca02c">z-ai/glm-5-turbo</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="2" points="48.0,134.2 54.7,53.5"/>
+<circle cx="48.0" cy="134.2" r="4" fill="#9467bd"/>
+<text x="54.0" y="128.2" font-size="11" font-family="sans-serif">disabled</text>
+<circle cx="54.7" cy="53.5" r="4" fill="#9467bd"/>
+<text x="60.7" y="47.5" font-size="11" font-family="sans-serif">default</text>
+<text x="530" y="2892" font-size="12" font-family="sans-serif" fill="#9467bd">z-ai/glm-5.1</text>
+<text x="8" y="316.0" font-size="11" font-family="sans-serif">0%</text>
+<line x1="44" y1="312.0" x2="712" y2="312.0" stroke="#eee"/>
+<text x="8" y="250.0" font-size="11" font-family="sans-serif">25%</text>
+<line x1="44" y1="246.0" x2="712" y2="246.0" stroke="#eee"/>
+<text x="8" y="184.0" font-size="11" font-family="sans-serif">50%</text>
+<line x1="44" y1="180.0" x2="712" y2="180.0" stroke="#eee"/>
+<text x="8" y="118.0" font-size="11" font-family="sans-serif">75%</text>
+<line x1="44" y1="114.0" x2="712" y2="114.0" stroke="#eee"/>
+<text x="8" y="52.0" font-size="11" font-family="sans-serif">100%</text>
+<line x1="44" y1="48.0" x2="712" y2="48.0" stroke="#eee"/>
+</svg>

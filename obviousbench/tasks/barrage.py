@@ -12,7 +12,7 @@ from obviousbench.scorers.dynamic import dynamic_metadata_scorer
 
 @task
 def barrage(
-    profile: str = "balanced_8x10",
+    profile: str = "balanced_8x5",
     split: str = "public_v0",
     seed: int = 20260531,
     dataset: str | None = None,

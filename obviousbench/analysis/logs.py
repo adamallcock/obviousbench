@@ -72,6 +72,7 @@ def load_eval_logs_with_failures(
                     reasoning_summary=str(
                         getattr(generate_config, "reasoning_summary", None) or ""
                     ),
+                    service_tier=_service_tier_from_generate_config(generate_config),
                     input_tokens=_usage_int(usage, "input_tokens"),
                     output_tokens=_usage_int(usage, "output_tokens"),
                     reasoning_tokens=_usage_int(usage, "reasoning_tokens"),
@@ -120,6 +121,13 @@ def load_eval_logs_with_failures(
     return list(records_by_key.values()), list(entries_by_key.values())
 
 
+def _service_tier_from_generate_config(generate_config) -> str:
+    extra_body = getattr(generate_config, "extra_body", None) or {}
+    if isinstance(extra_body, dict):
+        return str(extra_body.get("service_tier") or "")
+    return ""
+
+
 def score_sample(sample, *, provider_error: bool, rescore: bool) -> ScoreDecision:
     if provider_error:
         return ScoreDecision(
@@ -138,6 +146,8 @@ def score_sample(sample, *, provider_error: bool, rescore: bool) -> ScoreDecisio
             accepted_targets=accepted_answers_for_sample(
                 sample_id=str(getattr(sample, "id", "") or ""),
                 metadata=sample.metadata or {},
+                target=str(sample.target),
+                scorer_name=scorer_name,
             ),
         )
         return ScoreDecision(

@@ -171,6 +171,21 @@ def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
     heatmap = paths.family_heatmap_csv.read_text(encoding="utf-8")
 
     assert "Expanded Sweep" in html
+    assert 'class="report-controls"' in html
+    assert 'data-metric="answer"' in html
+    assert 'id="comparable-only"' in html
+    assert 'id="provider-filter"' in html
+    assert 'id="selected-model-panel"' in html
+    assert 'id="leaderboard-data"' in html
+    assert '"display_label": "Model A (provider default)"' in html
+    assert "function setMetric(metric)" in html
+    assert "function selectModel(label)" in html
+    assert "chart-block" in html
+    assert "ob-chart-title" in html
+    assert "ob-direct-label" in html
+    assert "ob-range-bar" in html
+    assert "ob-segmented-bar" in html
+    assert "Mode: Answer" in html
     assert "Answer Accuracy vs Run Cost" in html
     assert "Accuracy vs tokens" in html
     assert "Overthinking index" in html
@@ -211,6 +226,39 @@ def test_build_benchmark_report_writes_leaderboard_charts_and_heatmap(tmp_path):
     assert "Format" in html
     assert "cost_per_correct_usd" in leaderboard
     assert "Model B,spelling_transform,100.00" in heatmap
+
+
+def test_benchmark_report_embeds_progressive_interaction_hooks(tmp_path):
+    comparison_dir = tmp_path / "comparison"
+    shutil.copytree(REPORT_FIXTURES / "rich_comparison", comparison_dir)
+    output_dir = tmp_path / "report"
+
+    paths = build_benchmark_report(
+        BenchmarkReportInputs(
+            comparison_dir=comparison_dir,
+            output_dir=output_dir,
+            generated_on="2026-06-14",
+            title="Interactive Fixture Sweep",
+        )
+    )
+
+    html = paths.html.read_text(encoding="utf-8")
+
+    assert "<noscript>" in html
+    assert "Interactive controls are optional" in html
+    assert 'aria-pressed="true">Answer' in html
+    assert 'aria-pressed="false">Format' in html
+    assert 'aria-pressed="false">Strict' in html
+    assert 'data-metric-answer="97.5"' in html
+    assert 'data-metric-format="82.5"' in html
+    assert 'data-metric-strict="77.5"' in html
+    assert 'data-provider="provider"' in html
+    assert 'data-comparable="true"' in html
+    assert 'data-comparable="false"' in html
+    assert "selected-row" in html
+    assert "Comparable only" in html
+    assert "Why this row matters" in html
+    assert "metricButtons.forEach" in html
 
 
 def test_leaderboard_does_not_treat_reported_tokens_as_configured_thinking(tmp_path):

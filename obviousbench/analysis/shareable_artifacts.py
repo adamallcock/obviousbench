@@ -13,7 +13,7 @@ class ShareableArtifactInputs:
     output_dir: Path
     generated_on: str
     benchmark_card_source: Path
-    model_matrix_source: Path = Path("configs/models_v0.example.yaml")
+    model_matrix_source: Path = Path("configs/model_panels/models_v0.example.yaml")
     max_failures: int = 8
 
 

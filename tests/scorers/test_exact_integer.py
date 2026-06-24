@@ -8,6 +8,7 @@ from obviousbench.scorers.exact_integer import score_exact_integer_extract_first
     [
         ("3", "3", True, "3", "none"),
         ("There are 3.", "3", True, "3", "none"),
+        ("5,000 milliliters", "5000", True, "5000", "none"),
         ("There are 2 r's.", "3", False, "2", "incorrect_count"),
         ("There are two.", "3", False, "2", "incorrect_count"),
         ("four days", "6", False, "4", "incorrect_count"),

@@ -19,6 +19,19 @@ def test_rescore_output_uses_current_dynamic_scorer():
     assert not decision.strict_correct
 
 
+def test_rescore_output_accepts_item_level_alternate_targets():
+    decision = rescore_output(
+        scorer_name="normalized_list_v0",
+        output=".@#?!",
+        target="@, #, ?, !",
+        accepted_targets=["., @, #, ?, !"],
+    )
+
+    assert decision.correct
+    assert decision.extracted == "., @, #, ?, !"
+    assert decision.failure_type == "none"
+
+
 def test_score_sample_applies_planet_item_accepted_answer_override():
     sample = SimpleNamespace(
         id="obviousbench.spell.en.v0.public.000014",
@@ -32,6 +45,53 @@ def test_score_sample_applies_planet_item_accepted_answer_override():
 
     assert decision.correct
     assert decision.extracted == "Mars"
+    assert decision.failure_type == "none"
+    assert decision.answer_correct
+    assert decision.format_correct
+    assert decision.strict_correct
+
+
+def test_score_sample_rescore_uses_benchmark_metadata_accepted_targets():
+    sample = SimpleNamespace(
+        metadata={
+            "scorer": "normalized_list_v0",
+            "benchmark_metadata": {"accepted_targets": ["., @, #, ?, !"]},
+        },
+        output=SimpleNamespace(completion=".@#?!"),
+        target="@, #, ?, !",
+        scores={},
+    )
+
+    decision = score_sample(sample, provider_error=False, rescore=True)
+
+    assert decision.correct
+    assert decision.extracted == "., @, #, ?, !"
+    assert decision.strict_correct
+
+
+def test_score_sample_rescore_accepts_correct_multiple_choice_option_text_as_strict():
+    sample = SimpleNamespace(
+        id="obviousbench.constraint.en.v0.public.000013",
+        metadata={
+            "scorer": "multiple_choice_letter_v0",
+            "benchmark_metadata": {
+                "choices": [
+                    "Take the boat there",
+                    "Walk down the dock",
+                    "Bring only a rope",
+                    "It is impossible",
+                ],
+            },
+        },
+        output=SimpleNamespace(completion="Take the boat there"),
+        target="A",
+        scores={},
+    )
+
+    decision = score_sample(sample, provider_error=False, rescore=True)
+
+    assert decision.correct
+    assert decision.extracted == "A"
     assert decision.failure_type == "none"
     assert decision.answer_correct
     assert decision.format_correct
@@ -98,7 +158,7 @@ def test_load_eval_logs_discovers_nested_batch_logs(tmp_path, monkeypatch):
                 model="openrouter/model",
                 task_args={"profile": "balanced_8x10", "seed": 1},
                 metadata={
-                    "barrage_profile": "hard_obvious_8x10_seed_20260531",
+                    "barrage_profile": "balanced_8x5_seed_20260531",
                     "barrage_seed": 20260531,
                 },
                 model_generate_config=SimpleNamespace(
@@ -133,7 +193,7 @@ def test_load_eval_logs_discovers_nested_batch_logs(tmp_path, monkeypatch):
 
     assert len(records) == 1
     assert records[0].sample_id == "sample-1"
-    assert records[0].barrage_profile == "hard_obvious_8x10_seed_20260531"
+    assert records[0].barrage_profile == "balanced_8x5_seed_20260531"
     assert records[0].barrage_seed == 20260531
 
 

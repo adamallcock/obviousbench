@@ -5,7 +5,7 @@ from pathlib import Path
 
 import yaml
 
-from scripts.generate_item_card_stubs import generate_item_card_stubs, main
+from scripts.datasets.generate_item_card_stubs import generate_item_card_stubs, main
 from tests.datasets.test_schemas import valid_record
 
 

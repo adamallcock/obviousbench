@@ -1,0 +1,19 @@
+{
+  "config": "configs/releases/release_v0_2_0.yaml",
+  "generator": "scripts/release/build_v0_2_release_assets.py",
+  "public_boundary": {
+    "private_attempt_level_outcomes_included": false,
+    "private_item_level_outcomes_included": false,
+    "private_prompts_included": false,
+    "private_raw_outputs_included": false,
+    "private_review_html_included": false
+  },
+  "release_metadata": "docs/release/v0_2/generated/release-metadata.json",
+  "source_docs": {
+    "evidence_packet": "docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-evidence-packet.md",
+    "results_memo": "docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-rhetoric-packet.md",
+    "sanity_supplement": "docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-sanity-supplement.md",
+    "split_inventory": "docs/research/2026-06-15-obviousbench-v0-2-split-inventory-and-question-supply.md"
+  },
+  "status": "local-publication-prep"
+}

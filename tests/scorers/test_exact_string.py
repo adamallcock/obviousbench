@@ -135,6 +135,40 @@ def test_exact_string_accepts_markdown_wrapped_answer_as_wrong_format():
     assert not decision.resolved_format_correct
 
 
+def test_exact_string_accepts_repeated_letter_with_separators_as_wrong_format():
+    decision = score_exact_string_trim("e, e", "ee")
+
+    assert decision.correct
+    assert decision.extracted == "e, e"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_replacement_spacing_as_wrong_format():
+    decision = score_exact_string_trim("+oo+ h", "+oo+h")
+
+    assert decision.correct
+    assert decision.extracted == "+oo+ h"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_rejects_plain_word_spacing_difference():
+    decision = score_exact_string_trim("blue and red", "blueandred")
+
+    assert not decision.correct
+    assert decision.extracted == "blue and red"
+    assert decision.failure_type == "wrong_letter_or_substring"
+
+
+def test_exact_string_rejects_wrong_repeated_letter_count_with_separators():
+    decision = score_exact_string_trim("e e e", "ee")
+
+    assert not decision.correct
+    assert decision.extracted == "e e e"
+    assert decision.failure_type == "wrong_letter_or_substring"
+
+
 def test_exact_string_accepts_colon_suffix_answer_as_wrong_format():
     decision = score_exact_string_trim(
         "strawberry without the letter e: strawbrry",
@@ -145,6 +179,58 @@ def test_exact_string_accepts_colon_suffix_answer_as_wrong_format():
     assert decision.extracted == "strawbrry"
     assert decision.failure_type == "verbose_noncompliance"
     assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_arrow_suffix_answer_as_wrong_format():
+    decision = score_exact_string_trim("coconut -> ccnut", "ccnut")
+
+    assert decision.correct
+    assert decision.extracted == "ccnut"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_unicode_arrow_suffix_answer_as_wrong_format():
+    decision = score_exact_string_trim("coconut → ccnut", "ccnut")
+
+    assert decision.correct
+    assert decision.extracted == "ccnut"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_accepts_becomes_suffix_answer_as_wrong_format():
+    decision = score_exact_string_trim("freezer becomes fr33z3r", "fr33z3r")
+
+    assert decision.correct
+    assert decision.extracted == "fr33z3r"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_rejects_broad_becomes_sentence():
+    decision = score_exact_string_trim("the word becomes fr33z3r", "fr33z3r")
+
+    assert not decision.correct
+    assert decision.extracted == "the word becomes fr33z3r"
+    assert decision.failure_type == "wrong_letter_or_substring"
+
+
+def test_exact_string_accepts_remove_letter_explanation_as_wrong_format():
+    decision = score_exact_string_trim("umbrea without the letter l", "umbrea")
+
+    assert decision.correct
+    assert decision.extracted == "umbrea"
+    assert decision.failure_type == "verbose_noncompliance"
+    assert not decision.resolved_format_correct
+
+
+def test_exact_string_rejects_wrong_leading_remove_letter_explanation():
+    decision = score_exact_string_trim("eahhell without the letter s", "eahell")
+
+    assert not decision.correct
+    assert decision.extracted == "eahhell without the letter s"
+    assert decision.failure_type == "wrong_letter_or_substring"
 
 
 def test_exact_string_accepts_terminal_copula_answer_as_wrong_format():

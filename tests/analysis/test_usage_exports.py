@@ -78,6 +78,7 @@ def test_export_usage_by_sample_csv(tmp_path):
     )
     assert rows[0]["sample_id"] == "id1"
     assert rows[0]["input_tokens"] == "10"
+    assert rows[0]["service_tier"] == ""
     assert rows[0]["answer_correct"] == "True"
     assert rows[0]["format_correct"] == "True"
     assert rows[0]["strict_correct"] == "True"
@@ -260,6 +261,7 @@ def test_build_cost_input_uses_normalized_usage_fields():
         "model": "openai/gpt-5-nano",
         "provider": "openai",
         "surface": "normalized.usage",
+        "service_tier": "",
         "usage": {
             "input_tokens": 10,
             "output_tokens": 5,

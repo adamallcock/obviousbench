@@ -1,8 +1,0 @@
-label,model,summary_dir
-Gemini 3.5 Flash,google/gemini-3.5-flash,results/summaries/paper-v1-affected-rerun-10k/paper-gemini-3-5-flash
-Grok 4.3,grok/grok-4.3,results/summaries/paper-v1-affected-rerun-10k/paper-grok-4-3
-NVIDIA Nemotron 3 Nano 30B A3B,openrouter/nvidia/nemotron-3-nano-30b-a3b,results/summaries/paper-v1-affected-rerun-10k/paper-openrouter-nemotron-3-nano
-OpenAI GPT-OSS 20B,openrouter/openai/gpt-oss-20b,results/summaries/paper-v1-affected-rerun-10k/paper-openrouter-gpt-oss-20b
-OpenAI GPT-5 nano minimal,openai/gpt-5-nano,results/summaries/paper-v1-minor-cap-rerun-10k/paper-openai-gpt-5-nano-minimal
-Anthropic Claude Sonnet 4.6,anthropic/claude-sonnet-4-6,results/summaries/paper-v1-minor-cap-rerun-10k/paper-anthropic-claude-sonnet-4-6
-Anthropic Claude Haiku 4.5,anthropic/claude-haiku-4-5,results/summaries/paper-v1-minor-cap-rerun-10k/paper-anthropic-claude-haiku-4-5

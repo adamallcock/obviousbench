@@ -6,7 +6,7 @@ from pathlib import Path
 def _module():
     spec = importlib.util.spec_from_file_location(
         "smoke_model_registry",
-        Path("scripts/smoke_model_registry.py"),
+        Path("scripts/model_registry/smoke_model_registry.py"),
     )
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None

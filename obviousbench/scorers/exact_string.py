@@ -22,6 +22,11 @@ _FINAL_ANSWER_RE = re.compile(
     r"(?P<answer>[^\n.;,]+)[\s.;,!]*$",
     re.IGNORECASE,
 )
+_ARROW_SUFFIX_RE = re.compile(r"(?:->|→)\s*(?P<answer>[^\n.;,]+)[\s.;,!]*$")
+_BECOMES_SUFFIX_RE = re.compile(
+    r"^\s*[\w@#$%&*'\"]+\s+becomes\s+(?P<answer>[^\n.;,]+)[\s.;,!]*$",
+    re.IGNORECASE,
+)
 _QUOTED_EQUALS_RE = re.compile(r"=\s*['\"](?P<answer>[^'\"]+)['\"]\s*[.!]?$")
 _COLON_SUFFIX_RE = re.compile(r":\s*(?P<answer>[^\n.;,]+)[\s.;,!]*$")
 _FINAL_COPULA_RE = re.compile(
@@ -29,6 +34,11 @@ _FINAL_COPULA_RE = re.compile(
     re.IGNORECASE,
 )
 _ANSWER_CUE_RE = re.compile(r"\b(?:answer|final answer|result|therefore)\b", re.IGNORECASE)
+_REMOVE_LETTER_SUFFIX_RE = re.compile(
+    r"without\s+(?:the\s+)?letter\s+['\"]?[A-Za-z]['\"]?\.?",
+    re.IGNORECASE,
+)
+_REPLACEMENT_MARKERS = frozenset("@#$%&*+0")
 
 
 def score_exact_string_trim(
@@ -99,12 +109,36 @@ def _score_exact_string_against_target(output: str, target: str) -> ScoreDecisio
             f"Matched {target} after removing markdown wrapper.",
             format_correct=False,
         )
+    if _repeated_letter_with_separators_equal(extracted, target):
+        return ScoreDecision(
+            True,
+            extracted,
+            "verbose_noncompliance",
+            f"Matched repeated-letter target {target} after removing separators.",
+            format_correct=False,
+        )
+    if _replacement_token_with_spacing_equal(extracted, target):
+        return ScoreDecision(
+            True,
+            extracted,
+            "verbose_noncompliance",
+            f"Matched replacement target {target} after removing internal spacing.",
+            format_correct=False,
+        )
     if _starts_with_target(extracted, target):
         return ScoreDecision(
             True,
             target,
             "verbose_noncompliance",
             f"Matched {target}, with extra text.",
+            format_correct=False,
+        )
+    if _starts_with_target_remove_letter_explanation(extracted, target):
+        return ScoreDecision(
+            True,
+            target,
+            "verbose_noncompliance",
+            f"Matched {target}, with remove-letter explanation.",
             format_correct=False,
         )
     first_line = _first_line_candidate(extracted)
@@ -185,7 +219,13 @@ def _answers_equal(candidate: str | None, target: str) -> bool:
 
 
 def _extract_final_answer_candidate(output: str) -> str | None:
-    for pattern in (_QUOTED_EQUALS_RE, _FINAL_ANSWER_RE, _COLON_SUFFIX_RE):
+    for pattern in (
+        _QUOTED_EQUALS_RE,
+        _ARROW_SUFFIX_RE,
+        _BECOMES_SUFFIX_RE,
+        _FINAL_ANSWER_RE,
+        _COLON_SUFFIX_RE,
+    ):
         match = pattern.search(output)
         if match:
             return _clean_candidate(match.group("answer"))
@@ -212,6 +252,17 @@ def _starts_with_target(output: str, target: str) -> bool:
     return re.match(r"^(?:is|are|was|were)\b", remainder, re.IGNORECASE) is not None
 
 
+def _starts_with_target_remove_letter_explanation(output: str, target: str) -> bool:
+    if (
+        not target
+        or not output.casefold().startswith(target.casefold())
+        or len(output) == len(target)
+    ):
+        return False
+    remainder = output[len(target) :].strip()
+    return bool(_REMOVE_LETTER_SUFFIX_RE.fullmatch(remainder))
+
+
 def _ends_with_target_after_answer_cue(output: str, target: str) -> bool:
     if not output.endswith(target) or not _ANSWER_CUE_RE.search(output):
         return False
@@ -230,6 +281,42 @@ def _clean_candidate(value: str) -> str:
     }:
         candidate = candidate[1:-1].strip()
     return candidate
+
+
+def _repeated_letter_with_separators_equal(candidate: str, target: str) -> bool:
+    normalized_target = target.strip().casefold()
+    if len(normalized_target) < 2 or len(set(normalized_target)) != 1:
+        return False
+    if not normalized_target.isalpha():
+        return False
+    normalized_candidate = normalize_token_artifacts(candidate).strip().casefold()
+    if not normalized_candidate:
+        return False
+    if normalized_candidate == normalized_target:
+        return False
+    if any(char.isalnum() and char != normalized_target[0] for char in normalized_candidate):
+        return False
+    letters_only = "".join(char for char in normalized_candidate if char.isalpha())
+    return letters_only == normalized_target
+
+
+def _replacement_token_with_spacing_equal(candidate: str, target: str) -> bool:
+    normalized_target = target.strip().casefold()
+    if not normalized_target or any(char.isspace() for char in normalized_target):
+        return False
+    if not any(char.isalpha() for char in normalized_target):
+        return False
+    if not any(char in _REPLACEMENT_MARKERS for char in normalized_target):
+        return False
+    normalized_candidate = normalize_token_artifacts(candidate).strip().casefold()
+    if normalized_candidate == normalized_target:
+        return False
+    if "\n" in normalized_candidate or "\r" in normalized_candidate:
+        return False
+    if not any(char in " \t" for char in normalized_candidate):
+        return False
+    without_spacing = re.sub(r"[ \t]+", "", normalized_candidate)
+    return without_spacing == normalized_target
 
 
 def _strip_terminal_answer_punctuation(value: str) -> str | None:

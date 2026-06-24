@@ -72,7 +72,7 @@ def test_build_shareable_artifacts_promotes_card_comparison_and_gallery(tmp_path
             comparison_dir=comparison_dir,
             output_dir=output_dir,
             generated_on="2026-05-31",
-            benchmark_card_source=Path("docs/benchmark_card.md"),
+            benchmark_card_source=Path("docs/reference/benchmark-card.md"),
             model_matrix_source=model_matrix,
         )
     )

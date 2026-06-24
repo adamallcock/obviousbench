@@ -47,6 +47,24 @@ examples:
     output: "final answer: B"
     expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
     notes: Final-answer choice wrappers are answer-correct but not strict.
+  - id: multiple_choice.correct_answer_phrase.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "Thus, the correct answer is:\n\n**B. Ride the motorcycle there**"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Correct-answer phrase wrappers with option text are answer-correct but not strict.
+  - id: multiple_choice.final_standalone_line.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "The mechanic needs the motorcycle at the shop.\n\nB"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: A final standalone choice line after prose is answer-correct but not strict.
+  - id: multiple_choice.boxed_letter.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "The motorcycle should be ridden there.\n\n$$\n\\boxed{B}\n$$"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: A single boxed choice letter is answer-correct but not strict.
   - id: multiple_choice.choice_equals_lower.correct
     scorer: multiple_choice_letter_v0
     target: "B"

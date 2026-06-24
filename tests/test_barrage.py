@@ -63,11 +63,11 @@ def test_parse_balanced_profile_name():
 
 
 def test_parse_hard_obvious_profile_name():
-    profile = BarrageProfile.parse("hard_obvious_8x10")
+    profile = BarrageProfile.parse("hard_obvious_8x5")
 
     assert profile.family_count == 8
-    assert profile.per_family == 10
-    assert profile.name == "hard_obvious_8x10"
+    assert profile.per_family == 5
+    assert profile.name == "hard_obvious_8x5"
     assert profile.strategy == "hard_obvious"
 
 

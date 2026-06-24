@@ -66,6 +66,7 @@ def export_usage_by_sample_csv(records: list[EvalRecord], path: Path) -> None:
         "barrage_seed",
         "reasoning_effort",
         "reasoning_summary",
+        "service_tier",
         "sample_id",
         "family",
         "subfamily",
@@ -102,6 +103,7 @@ def export_usage_by_sample_csv(records: list[EvalRecord], path: Path) -> None:
                     "barrage_seed": record.barrage_seed,
                     "reasoning_effort": record.reasoning_effort,
                     "reasoning_summary": record.reasoning_summary,
+                    "service_tier": record.service_tier,
                     "sample_id": record.sample_id,
                     "family": record.family,
                     "subfamily": record.subfamily,
@@ -365,6 +367,7 @@ def build_cost_input(records: list[EvalRecord]) -> dict[str, Any]:
                 "model": record.model,
                 "provider": _provider_from_model(record.model),
                 "surface": "normalized.usage",
+                "service_tier": record.service_tier,
                 "usage": {
                     "input_tokens": record.input_tokens,
                     "output_tokens": record.output_tokens,
@@ -385,7 +388,10 @@ def write_cost_ledger(ledger: dict[str, Any], path: Path) -> None:
 
 
 def _provider_from_model(model: str) -> str:
-    return model.split("/", 1)[0] if "/" in model else "unknown"
+    provider = model.split("/", 1)[0] if "/" in model else "unknown"
+    if provider == "grok":
+        return "xai"
+    return provider
 
 
 def _join_unique(values) -> str:
