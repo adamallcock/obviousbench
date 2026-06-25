@@ -1,15 +1,18 @@
 # ObviousBench
 
+[**Open the ObviousBench launch site and interactive results**](https://obviousbench.com)
+
+The launch site is the best place to read the release essay, explore the
+interactive charts, and understand the public v0.2 result story. This GitHub
+repository is the source/data companion: runnable benchmark code, public example
+items, model/config metadata, release aggregate CSVs, license, and citation
+materials.
+
 ObviousBench is a benchmark for visible, user-recognizable mistakes in language
 models: short prompts, objective answers, and repeated reliability checks.
 
-**Launch site:** [obviousbench.com](https://obviousbench.com) is the canonical
-public narrative, interactive results, and chart surface for the v0.2 release.
-This repository is the source, public examples, release data, and reproducible
-code companion to that site.
-
-**Public data:** the website should link back to this repository for public
-examples, release metadata, and aggregate CSVs such as
+**Public data:** the website links back to this repository for public examples,
+release metadata, and aggregate CSVs such as
 [`reports/v0_2/aggregate/summary.csv`](reports/v0_2/aggregate/summary.csv).
 
 The public repository contains the runnable benchmark code, public examples,
@@ -95,6 +98,14 @@ because product-visible failure and format adherence are different signals.
 
 The launch site itself is not duplicated in this repository. See
 `docs/reference/website.md` for the public repo / website boundary.
+
+## Website Boundary
+
+The website content should live in the website release lane, not as a copied
+build artifact in this repository. GitHub should link prominently to
+[obviousbench.com](https://obviousbench.com), and the website should link back
+to this repository for the public examples, aggregate data, source code,
+license, citation, and reproducibility materials.
 
 ## License
 

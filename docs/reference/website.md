@@ -23,6 +23,12 @@ built from the same public-safe aggregate data, but the deployable site source
 belongs in the website release lane so prose, styling, and deployment are not
 maintained in two places.
 
+It is fine for this repository to include short release summaries, README links,
+benchmark-card language, and generated release notes that point to the website.
+It should not include a second copy of the long-form website essay or chart
+application unless that content is intentionally moved into the public-source
+release process.
+
 For that reason, this repository should expose durable, linkable public
 materials that the website can reference:
 

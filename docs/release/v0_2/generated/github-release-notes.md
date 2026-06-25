@@ -1,5 +1,11 @@
 # ObviousBench v0.2.0 Draft Release Notes
 
+Start with the public launch site:
+[https://obviousbench.com](https://obviousbench.com). It is the canonical
+release essay, interactive chart, and public results surface. This repository
+is the public source/data companion for code, public examples, aggregate CSVs,
+license, citation, and reproducibility materials.
+
 ## Generated Artifact Notice
 
 - Source config: `configs/releases/release_v0_2_0.yaml`
@@ -50,9 +56,10 @@ Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated
 as model-quality evidence.
 
-The canonical public narrative and interactive charts are on
-[obviousbench.com](https://obviousbench.com). This repository is the
-public source/data companion for those results.
+The canonical public narrative and interactive charts are on the launch site.
+The aggregate CSV and release metadata are intentionally kept in this
+repository so the website can link to stable source files rather than asking
+readers to download opaque copies.
 
 ## What Changed Since v0.1
 
