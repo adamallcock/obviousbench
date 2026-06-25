@@ -41,7 +41,6 @@ def _root_docs(root: Path) -> None:
         "docs/reference/source-policy.md",
         "docs/reference/scoring-policy.md",
         "docs/reference/website.md",
-        "docs/positioning/background-and-rhetoric.md",
     ):
         _write(root / relative, f"# {relative}\n")
 
@@ -136,10 +135,6 @@ def _config(root: Path, aggregate_files: dict[str, str]) -> Path:
     )
     _write_yaml(
         root / "configs/registries/model_registry_v1.yaml",
-        {"models": []},
-    )
-    _write_yaml(
-        root / "configs/registries/model_thinking_settings_v1.yaml",
         {"models": []},
     )
     return config

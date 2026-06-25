@@ -133,6 +133,7 @@ def test_build_v0_2_release_assets_writes_public_safe_surfaces(tmp_path: Path) -
     assert not (out_dir / "project-page.md").exists()
     assert not (out_dir / "launch-essay-draft.md").exists()
     assert not (out_dir / "background-and-rhetoric.md").exists()
+    assert not (out_dir / "huggingface-dataset-card.md").exists()
     assert not (out_dir / "social-snippets.md").exists()
     assert not (out_dir / "public-release-checklist.md").exists()
     metadata = json.loads((out_dir / "release-metadata.json").read_text(encoding="utf-8"))

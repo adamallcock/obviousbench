@@ -14,8 +14,8 @@ these lanes over adding more root-level YAML or CSV files under `configs/`.
 
 - `configs/model_panels/`: example model/config panels for running the public
   example set, plus the public-safe v0.2 aggregate model/config panel.
-- `configs/registries/`: public model metadata, pricing, thinking-setting, and
-  display registries used by reports and release views.
+- `configs/registries/`: public model metadata, pricing, and display
+  registries used by reports and release views.
 - `configs/releases/`: public-safe release bundle metadata. These configs point
   to public examples and aggregate CSVs only; they do not include private split
   manifests or raw run paths.

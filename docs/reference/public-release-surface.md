@@ -55,8 +55,8 @@ The public repository must not include:
 | Generators | Retired from the public surface; public examples are materialized data, not regenerated from private pools. |
 | Analysis helpers | Kept only where they support public aggregate inspection and source-level reproducibility. |
 | Model panel | `configs/model_panels/models_v0_2_public.yaml` is included because it is public configuration metadata, not private data. |
-| Documentation | Active public docs are limited to benchmark reference, positioning, website boundary, release metadata, and this public-surface record. |
-| Registries | `configs/registries/` is included because model/reasoning metadata is necessary to interpret public aggregate rows. |
+| Documentation | Active public docs are limited to benchmark reference, website boundary, release metadata, and this public-surface record; narrative positioning lives on the launch site and in the internal lane. |
+| Registries | `configs/registries/model_registry_v1.yaml` is included because public model metadata is necessary to interpret aggregate rows. Pre-final thinking-panel planning metadata is internal and not part of the published result. |
 | Tests | Tests are scoped to public package behavior, public datasets, scoring, registries, hygiene, and release-bundle guards. |
 | Package layout | The `obviousbench/` package remains nested in the repository so users can install and import it normally. |
 

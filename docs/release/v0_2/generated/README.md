@@ -41,7 +41,6 @@ Canonical public launch site:
 - `README.md`
 - `release-metadata.json`
 - `github-release-notes.md`
-- `huggingface-dataset-card.md`
 - `provenance.json`
 
 The launch-site narrative and interactive charts live at

@@ -33,20 +33,17 @@ SAFE_ROOT_DOCS = (
     "docs/reference/source-policy.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/website.md",
-    "docs/positioning/background-and-rhetoric.md",
 )
 
 SAFE_CONFIGS = (
     "configs/releases/release_v0_2_0.yaml",
     "configs/model_panels/models_v0_2_public.yaml",
     "configs/registries/model_registry_v1.yaml",
-    "configs/registries/model_thinking_settings_v1.yaml",
 )
 
 SAFE_GENERATED_SURFACES = (
     "README.md",
     "github-release-notes.md",
-    "huggingface-dataset-card.md",
     "provenance.json",
     "release-metadata.json",
 )

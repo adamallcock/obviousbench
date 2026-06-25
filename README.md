@@ -27,12 +27,13 @@ private outcomes used for final private evaluation.
   runner utilities, costing helpers, and public release support code.
 - `data/public_examples/`: public example items for documentation, smoke tests,
   and contributor orientation.
-- `configs/registries/`: public model registry and reasoning-setting metadata.
+- `configs/registries/`: public model registry metadata used to interpret
+  release rows and public reruns.
 - `configs/model_panels/models_v0.example.yaml`: a small example model panel.
 - `configs/model_panels/models_v0_2_public.yaml`: the public v0.2
   model/config panel used by the aggregate release surface.
 - `reports/v0_2/aggregate/`: public-safe v0.2 aggregate result tables.
-- `docs/reference/` and `docs/positioning/`: public benchmark reference docs.
+- `docs/reference/`: public benchmark reference docs.
 - `scripts/`: public dataset, model-registry, runner, and release helpers.
 - `tests/`: public test coverage for the package and public release artifacts.
 

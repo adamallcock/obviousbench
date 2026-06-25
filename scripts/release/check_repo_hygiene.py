@@ -61,6 +61,7 @@ FORBIDDEN_REPORT_PREFIXES = (
 DISALLOWED_DOC_FILES = {
     "docs/evidence-and-claims.md",
     "docs/positioning/branding.md",
+    "docs/positioning/background-and-rhetoric.md",
 }
 
 DISALLOWED_DOC_PREFIXES = (
@@ -91,8 +92,6 @@ REQUIRED_REPO_FILES = (
     "configs/model_panels/models_v0.example.yaml",
     "configs/model_panels/models_v0_2_public.yaml",
     "configs/registries/model_registry_v1.yaml",
-    "configs/registries/model_thinking_settings_v1.yaml",
-    "docs/positioning/background-and-rhetoric.md",
     "docs/reference/benchmark-card.md",
     "docs/reference/methodology.md",
     "docs/reference/public-release-surface.md",
@@ -110,7 +109,6 @@ ACTIVE_TEXT_FILES = (
     "LICENSE-DATA-DOCS.md",
     "README.md",
     "configs/README.md",
-    "docs/positioning/background-and-rhetoric.md",
     "docs/reference/benchmark-card.md",
     "docs/reference/methodology.md",
     "docs/reference/public-release-surface.md",

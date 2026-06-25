@@ -36,7 +36,6 @@ experiments. They are not the source of the v0.2 private held-out results.
 | Script | Purpose |
 |---|---|
 | `scripts/model_registry/build_model_registry.mjs` | Build or refresh model-registry metadata from public provider catalogs. |
-| `scripts/model_registry/build_thinking_model_panel.mjs` | Build public model-panel drafts from model-reasoning metadata. |
 | `scripts/model_registry/smoke_model_registry.py` | Smoke-check the public model registry and example panel metadata. |
 
 ## Public Release Scripts
