@@ -1,0 +1,14 @@
+{
+  "config": "configs/releases/release_v0_2_0.yaml",
+  "generator": "scripts/release/build_v0_2_release_assets.py",
+  "public_boundary": {
+    "private_attempt_level_outcomes_included": false,
+    "private_item_level_outcomes_included": false,
+    "private_prompts_included": false,
+    "private_raw_outputs_included": false,
+    "private_review_html_included": false
+  },
+  "release_metadata": "docs/release/v0_2/generated/release-metadata.json",
+  "source_docs": {},
+  "status": "local-publication-prep"
+}

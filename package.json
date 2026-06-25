@@ -1,0 +1,11 @@
+{
+  "name": "benchmark-obviousbench",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "runcost": "^0.1.4"
+  }
+}

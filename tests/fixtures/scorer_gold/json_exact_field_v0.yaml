@@ -1,0 +1,121 @@
+examples:
+  - id: json_field.string_answer.correct
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '{"answer": "3"}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Exact answer field string is accepted.
+  - id: json_field.whitespace.correct
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '  {"answer": "3"}  '
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Outer whitespace around JSON is ignored.
+  - id: json_field.fenced.verbose
+    scorer: json_exact_field_v0
+    target: "north"
+    output: "```json\n{\"answer\": \"north\"}\n```"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "north", failure_type: verbose_noncompliance}
+    notes: Fenced JSON is answer-correct but not strict.
+  - id: json_field.numeric_answer.correct
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '{"answer": 3}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: JSON numeric values are stringified before comparison.
+  - id: json_field.boolean_answer.correct
+    scorer: json_exact_field_v0
+    target: "true"
+    output: '{"answer": true}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "true", failure_type: none}
+    notes: JSON booleans are rendered with JSON literal text for comparison.
+  - id: json_field.extra_fields.correct
+    scorer: json_exact_field_v0
+    target: "north"
+    output: '{"answer": "north", "reason": "compass"}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "north", failure_type: none}
+    notes: Extra JSON fields are allowed when answer matches.
+  - id: json_field.missing_answer.format_failure
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '{"result": "3"}'
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: format_noncompliance}
+    notes: Missing answer field is format noncompliance.
+  - id: json_field.array_top_level.format_failure
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '[{"answer": "3"}]'
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: format_noncompliance}
+    notes: Top-level JSON must be an object.
+  - id: json_field.malformed.json_failure
+    scorer: json_exact_field_v0
+    target: "3"
+    output: "{answer: 3}"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: json_malformed}
+    notes: Non-JSON object syntax is malformed.
+  - id: json_field.empty.non_answer
+    scorer: json_exact_field_v0
+    target: "3"
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty JSON output is a non-answer.
+  - id: json_field.wrong_value.incorrect
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '{"answer": "2"}'
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "2", failure_type: wrong_letter_or_substring}
+    notes: Valid JSON with a wrong answer field is answer-incorrect.
+  - id: json_field.null_answer.correct
+    scorer: json_exact_field_v0
+    target: "null"
+    output: '{"answer": null}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "null", failure_type: none}
+    notes: JSON null is rendered with JSON literal text for comparison.
+  - id: json_field.fenced_plain.verbose
+    scorer: json_exact_field_v0
+    target: "3"
+    output: "```\n{\"answer\": \"3\"}\n```"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "3", failure_type: verbose_noncompliance}
+    notes: Plain fenced JSON is accepted as verbose.
+  - id: json_field.fenced_json.verbose
+    scorer: json_exact_field_v0
+    target: "3"
+    output: "```json\n{\"answer\": \"3\"}\n```"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "3", failure_type: verbose_noncompliance}
+    notes: Language-tagged fenced JSON is accepted as verbose.
+  - id: json_field.preface.malformed
+    scorer: json_exact_field_v0
+    target: "3"
+    output: 'Here is {"answer": "3"}'
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: json_malformed}
+    notes: Prose outside JSON is not stripped.
+  - id: json_field.list_value.correct
+    scorer: json_exact_field_v0
+    target: "['a', 'b']"
+    output: '{"answer": ["a", "b"]}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "['a', 'b']", failure_type: none}
+    notes: Non-string answer values are compared after Python stringification.
+  - id: json_field.trailing_text.malformed
+    scorer: json_exact_field_v0
+    target: "blue"
+    output: "{\"answer\": \"blue\"}\nextra"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: null, failure_type: json_malformed}
+    notes: Trailing text after JSON is malformed.
+  - id: json_field.empty_string.correct
+    scorer: json_exact_field_v0
+    target: ""
+    output: '{"answer": ""}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "", failure_type: none}
+    notes: Empty string answer fields can match empty targets.
+  - id: json_field.answer_and_answer2.correct
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '{"answer": "3", "answer2": "4"}'
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Similar extra field names do not affect answer extraction.
+  - id: json_field.decimal_string_wrong.incorrect
+    scorer: json_exact_field_v0
+    target: "3"
+    output: '{"answer": "3.0"}'
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "3.0", failure_type: wrong_letter_or_substring}
+    notes: JSON exact field comparison is string exact, not numeric-equivalent.

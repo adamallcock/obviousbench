@@ -1,0 +1,139 @@
+examples:
+  - id: multiple_choice.exact_letter.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "B"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "B", failure_type: none}
+    notes: Exact uppercase choice letter is accepted.
+  - id: multiple_choice.lowercase_whitespace.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: " b\n"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "B", failure_type: none}
+    notes: Whitespace is trimmed and choice letters are uppercased.
+  - id: multiple_choice.wrong_letter.incorrect
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "A"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "A", failure_type: negation_error}
+    notes: Clean wrong choice letters are incorrect but well formatted.
+  - id: multiple_choice.empty.non_answer
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty multiple-choice output is a non-answer.
+  - id: multiple_choice.answer_is_verbose.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "The answer is B"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Verbose answer text can be answer-correct but not strict.
+  - id: multiple_choice.leading_option_text.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "B. The bicycle"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Leading choice with option text is extracted as verbose.
+  - id: multiple_choice.option_word.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "Option B"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Option-word wrappers are accepted as verbose answer-correct output.
+  - id: multiple_choice.final_answer_colon.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "final answer: B"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Final-answer choice wrappers are answer-correct but not strict.
+  - id: multiple_choice.correct_answer_phrase.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "Thus, the correct answer is:\n\n**B. Ride the motorcycle there**"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Correct-answer phrase wrappers with option text are answer-correct but not strict.
+  - id: multiple_choice.final_standalone_line.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "The mechanic needs the motorcycle at the shop.\n\nB"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: A final standalone choice line after prose is answer-correct but not strict.
+  - id: multiple_choice.boxed_letter.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "The motorcycle should be ridden there.\n\n$$\n\\boxed{B}\n$$"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: A single boxed choice letter is answer-correct but not strict.
+  - id: multiple_choice.choice_equals_lower.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "Choice = b"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Choice-equals wrapper extracts lowercase letters.
+  - id: multiple_choice.leading_wrong_option_text.incorrect
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "C. Bicycle"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "C", failure_type: negation_error}
+    notes: Leading wrong option text extracts the wrong letter.
+  - id: multiple_choice.answer_is_wrong.incorrect
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "The answer is C"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "C", failure_type: negation_error}
+    notes: Verbose wrong answers are incorrect.
+  - id: multiple_choice.leading_or_current.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "B or C"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Current extractor accepts the leading choice even when prose adds another option.
+  - id: multiple_choice.slash_ambiguous.format_failure
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "B/C"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "B/C", failure_type: format_noncompliance}
+    notes: Slash-combined choices are rejected as malformed.
+  - id: multiple_choice.choice_word_only.format_failure
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "Blue"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "BLUE", failure_type: format_noncompliance}
+    notes: Natural-language option text alone is not a choice letter.
+  - id: multiple_choice.choose_phrase.format_failure
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "I choose B."
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "I CHOOSE B.", failure_type: format_noncompliance}
+    notes: Choose-phrase wrappers are not currently parsed.
+  - id: multiple_choice.parenthesized.format_failure
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "(B)"
+    expected: {answer_correct: false, format_correct: false, strict_correct: false, extracted: "(B)", failure_type: format_noncompliance}
+    notes: Parenthesized letters are not accepted by the current extractor.
+  - id: multiple_choice.leading_paren.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "B)"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: A leading letter followed by a closing parenthesis is extracted.
+  - id: multiple_choice.leading_colon.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "B:"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: A leading letter followed by a colon is extracted.
+  - id: multiple_choice.answer_because.correct
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "answer: b because the clue says so"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "B", failure_type: verbose_noncompliance}
+    notes: Answer-cue extraction accepts a following explanation.
+  - id: multiple_choice.clean_wrong_d.incorrect
+    scorer: multiple_choice_letter_v0
+    target: "B"
+    output: "D"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "D", failure_type: negation_error}
+    notes: Another clean wrong letter remains a negation error.

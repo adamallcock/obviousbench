@@ -1,0 +1,121 @@
+examples:
+  - id: normalized_string.exact.correct
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "apple"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "apple", failure_type: none}
+    notes: Normalized string currently dispatches to exact string trim.
+  - id: normalized_string.whitespace.correct
+    scorer: normalized_string_v0
+    target: "apple"
+    output: " apple\n"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "apple", failure_type: none}
+    notes: Surrounding whitespace is trimmed.
+  - id: normalized_string.answer_cue.verbose
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "Answer: apple."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "apple", failure_type: verbose_noncompliance}
+    notes: Terminal answer cue is answer-correct, but the wrapper is not strict.
+  - id: normalized_string.quoted_equals.verbose
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "word = \"apple\""
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "apple", failure_type: verbose_noncompliance}
+    notes: Quoted equals extraction is answer-correct, but the wrapper is not strict.
+  - id: normalized_string.integer_unit.correct
+    scorer: normalized_string_v0
+    target: "7"
+    output: "7 meters"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "7", failure_type: none}
+    notes: Numeric unit suffix policy applies through the registry alias.
+  - id: normalized_string.leading_zero_numeric.correct
+    scorer: normalized_string_v0
+    target: "7"
+    output: "007"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "007", failure_type: none}
+    notes: Decimal numeric fallback treats leading zeroes as equivalent.
+  - id: normalized_string.numeric_conflict.ambiguous
+    scorer: normalized_string_v0
+    target: "7"
+    output: "7 and 8"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "7 and 8", failure_type: ambiguous_output}
+    notes: Multiple numeric candidates are ambiguous.
+  - id: normalized_string.case_sensitive.wrong
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "Apple"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "Apple", failure_type: none}
+    notes: Normalized strings are compared case-insensitively.
+  - id: normalized_string.trailing_punctuation.wrong
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "apple."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "apple", failure_type: verbose_noncompliance}
+    notes: Terminal punctuation is answer-correct but not strict final-answer format.
+  - id: normalized_string.empty.non_answer
+    scorer: normalized_string_v0
+    target: "apple"
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty output is a non-answer.
+  - id: normalized_string.refusal.wrong
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "I refuse"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "I refuse", failure_type: wrong_letter_or_substring}
+    notes: Refusal-like text is not specially classified by this scorer.
+  - id: normalized_string.so_answer_bang.correct
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "So answer: apple!"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "So answer: apple!", failure_type: wrong_letter_or_substring}
+    notes: Greedy terminal answer extraction keeps the exclamation, so this is rejected.
+  - id: normalized_string.therefore.verbose
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "therefore: apple"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "apple", failure_type: verbose_noncompliance}
+    notes: Therefore is an answer-correct terminal cue, but the wrapper is not strict.
+  - id: normalized_string.single_quoted_result.verbose
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "result = 'apple'"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "apple", failure_type: verbose_noncompliance}
+    notes: Quoted terminal result values are cleaned, but the wrapper is not strict.
+  - id: normalized_string.extra_word.wrong
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "apple pie"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "apple pie", failure_type: wrong_letter_or_substring}
+    notes: Extra words make a string mismatch.
+  - id: normalized_string.decimal_equivalence.correct
+    scorer: normalized_string_v0
+    target: ".5"
+    output: "0.500 kg"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "0.500", failure_type: none}
+    notes: Decimal fallback handles equivalent decimal forms.
+  - id: normalized_string.negative_numeric_unit.correct
+    scorer: normalized_string_v0
+    target: "-2"
+    output: "-2 C"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "-2", failure_type: none}
+    notes: Negative numeric unit suffixes are accepted.
+  - id: normalized_string.number_word_numeric.wrong
+    scorer: normalized_string_v0
+    target: "2"
+    output: "two"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "two", failure_type: wrong_letter_or_substring}
+    notes: Numeric fallback does not accept number words.
+  - id: normalized_string.nonterminal_answer.wrong
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "answer: apple, or banana"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "answer: apple, or banana", failure_type: wrong_letter_or_substring}
+    notes: Non-terminal answer cues with additional alternatives are rejected.
+  - id: normalized_string.case_mismatched_cue.wrong
+    scorer: normalized_string_v0
+    target: "apple"
+    output: "Therefore: APPLE"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "APPLE", failure_type: verbose_noncompliance}
+    notes: Extracted final answers are compared case-insensitively.

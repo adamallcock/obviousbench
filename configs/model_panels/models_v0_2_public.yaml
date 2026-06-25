@@ -1,0 +1,2055 @@
+# ObviousBench v0.2 public aggregate model/config panel.
+# Generated from reports/v0_2/aggregate/summary.csv.
+# This file contains model/config identifiers only; it does not contain prompts, raw outputs, or item-level private outcomes.
+release_panel:
+- label: 'Anthropic: Claude 3 Haiku'
+  inspect_model: openrouter/anthropic/claude-3-haiku
+  provider_model: anthropic/claude-3-haiku
+  model_entry_id: requested-042-anthropic-claude-3-haiku-default
+  model_setting_key: openrouter-anthropic-claude-3-haiku:6aad94ffc138946a
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Anthropic: Claude 3.5 Haiku'
+  inspect_model: openrouter/anthropic/claude-3.5-haiku
+  provider_model: anthropic/claude-3.5-haiku
+  model_entry_id: requested-043-anthropic-claude-3-5-haiku-default
+  model_setting_key: openrouter-anthropic-claude-3-5-haiku:5f6e8cbb75d7bea1
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: Anthropic Claude Haiku 4.5
+  inspect_model: anthropic/claude-haiku-4-5
+  provider_model: anthropic/claude-haiku-4.5
+  model_entry_id: old-5-anthropic-claude-haiku-4-5
+  model_setting_key: anthropic-claude-haiku-4-5:72a6718c6c03bacb
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: Anthropic Claude Haiku 4.5 high_budget_8192
+  inspect_model: anthropic/claude-haiku-4-5
+  provider_model: anthropic/claude-haiku-4.5
+  model_entry_id: manual-20260612-anthropic-claude-haiku-4-5-high-budget-8192
+  model_setting_key: anthropic-claude-haiku-4-5:243da1214ae91ec5
+  profile: v0_2_public_aggregate
+  reasoning_effort: high_budget_8192
+- label: Anthropic Claude Haiku 4.5 low_budget_1024
+  inspect_model: anthropic/claude-haiku-4-5
+  provider_model: anthropic/claude-haiku-4.5
+  model_entry_id: manual-20260612-anthropic-claude-haiku-4-5-low-budget-1024
+  model_setting_key: anthropic-claude-haiku-4-5:0ccdd63aa781dc99
+  profile: v0_2_public_aggregate
+  reasoning_effort: low_budget_1024
+- label: Anthropic Claude Haiku 4.5 medium_budget_2048
+  inspect_model: anthropic/claude-haiku-4-5
+  provider_model: anthropic/claude-haiku-4.5
+  model_entry_id: manual-20260612-anthropic-claude-haiku-4-5-medium-budget-2048
+  model_setting_key: anthropic-claude-haiku-4-5:f0392a020661f8af
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium_budget_2048
+- label: Anthropic Claude Haiku 4.5 xhigh_budget_16384
+  inspect_model: anthropic/claude-haiku-4-5
+  provider_model: anthropic/claude-haiku-4.5
+  model_entry_id: manual-20260612-anthropic-claude-haiku-4-5-xhigh-budget-16384
+  model_setting_key: anthropic-claude-haiku-4-5:ab65794f12b63cd6
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh_budget_16384
+- label: Anthropic Claude Opus 4.6 low
+  inspect_model: anthropic/claude-opus-4-6
+  provider_model: anthropic/claude-opus-4-6
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-6-low
+  model_setting_key: anthropic-claude-opus-4-6:9b0df420f6e132a3
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Opus 4.6 medium
+  inspect_model: anthropic/claude-opus-4-6
+  provider_model: anthropic/claude-opus-4-6
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-6-medium
+  model_setting_key: anthropic-claude-opus-4-6:63d1d5da15a1eddc
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Opus 4.6 high
+  inspect_model: anthropic/claude-opus-4-6
+  provider_model: anthropic/claude-opus-4-6
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-6-high
+  model_setting_key: anthropic-claude-opus-4-6:fa557f552e8a1bc9
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Opus 4.6 xhigh
+  inspect_model: anthropic/claude-opus-4-6
+  provider_model: anthropic/claude-opus-4-6
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-6-xhigh
+  model_setting_key: anthropic-claude-opus-4-6:789153120c3ca9ef
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Opus 4.6 max
+  inspect_model: anthropic/claude-opus-4-6
+  provider_model: anthropic/claude-opus-4-6
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-6-max
+  model_setting_key: anthropic-claude-opus-4-6:0a7eebdd620bd1e5
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: Anthropic Claude Opus 4.7 low
+  inspect_model: anthropic/claude-opus-4-7
+  provider_model: anthropic/claude-opus-4-7
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-7-low
+  model_setting_key: anthropic-claude-opus-4-7:bd10259ecaeb7c21
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Opus 4.7 medium
+  inspect_model: anthropic/claude-opus-4-7
+  provider_model: anthropic/claude-opus-4-7
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-7-medium
+  model_setting_key: anthropic-claude-opus-4-7:6fcd98b498bac827
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Opus 4.7 high
+  inspect_model: anthropic/claude-opus-4-7
+  provider_model: anthropic/claude-opus-4-7
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-7-high
+  model_setting_key: anthropic-claude-opus-4-7:512f48118696b767
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Opus 4.7 xhigh
+  inspect_model: anthropic/claude-opus-4-7
+  provider_model: anthropic/claude-opus-4-7
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-7-xhigh
+  model_setting_key: anthropic-claude-opus-4-7:479a7642e4e515c6
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Opus 4.7 max
+  inspect_model: anthropic/claude-opus-4-7
+  provider_model: anthropic/claude-opus-4-7
+  model_entry_id: manual-20260612-anthropic-claude-opus-4-7-max
+  model_setting_key: anthropic-claude-opus-4-7:3ba76346afd43c02
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: 'Anthropic: Claude Opus 4.5 none'
+  inspect_model: anthropic/claude-opus-4-5
+  provider_model: anthropic/claude-opus-4.5
+  model_entry_id: requested-022-anthropic-claude-opus-4-5-none
+  model_setting_key: anthropic-claude-opus-4-5:6a0233592ec71ab8
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Anthropic: Claude Opus 4.5 low_budget_1024'
+  inspect_model: anthropic/claude-opus-4-5
+  provider_model: anthropic/claude-opus-4.5
+  model_entry_id: requested-023-anthropic-claude-opus-4-5-low-budget-1024
+  model_setting_key: anthropic-claude-opus-4-5:f8200b70282ca5f8
+  profile: v0_2_public_aggregate
+  reasoning_effort: low_budget_1024
+- label: 'Anthropic: Claude Opus 4.5 medium_budget_2048'
+  inspect_model: anthropic/claude-opus-4-5
+  provider_model: anthropic/claude-opus-4.5
+  model_entry_id: requested-024-anthropic-claude-opus-4-5-medium-budget-2048
+  model_setting_key: anthropic-claude-opus-4-5:673e97aac3b81534
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium_budget_2048
+- label: 'Anthropic: Claude Opus 4.5 high_budget_8192'
+  inspect_model: anthropic/claude-opus-4-5
+  provider_model: anthropic/claude-opus-4.5
+  model_entry_id: requested-025-anthropic-claude-opus-4-5-high-budget-8192
+  model_setting_key: anthropic-claude-opus-4-5:e865b88fdef48e9c
+  profile: v0_2_public_aggregate
+  reasoning_effort: high_budget_8192
+- label: 'Anthropic: Claude Opus 4.5 xhigh_budget_16384'
+  inspect_model: anthropic/claude-opus-4-5
+  provider_model: anthropic/claude-opus-4.5
+  model_entry_id: requested-026-anthropic-claude-opus-4-5-xhigh-budget-16384
+  model_setting_key: anthropic-claude-opus-4-5:b4d76a23e0a9f67d
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh_budget_16384
+- label: Claude Opus 4.8 none
+  inspect_model: anthropic/claude-opus-4-8
+  provider_model: anthropic/claude-opus-4.8
+  model_entry_id: old-236-claude-opus-4-8-none
+  model_setting_key: anthropic-claude-opus-4-8:6492af2d4e431e21
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Claude Opus 4.8 low
+  inspect_model: anthropic/claude-opus-4-8
+  provider_model: anthropic/claude-opus-4.8
+  model_entry_id: old-211-claude-opus-4-8-low
+  model_setting_key: anthropic-claude-opus-4-8:076b1433cdd544c9
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Claude Opus 4.8 medium
+  inspect_model: anthropic/claude-opus-4-8
+  provider_model: anthropic/claude-opus-4.8
+  model_entry_id: old-212-claude-opus-4-8-medium
+  model_setting_key: anthropic-claude-opus-4-8:05a57c7c3be8c538
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Claude Opus 4.8 high
+  inspect_model: anthropic/claude-opus-4-8
+  provider_model: anthropic/claude-opus-4.8
+  model_entry_id: old-213-claude-opus-4-8-high
+  model_setting_key: anthropic-claude-opus-4-8:1dd03a19c45c84d3
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Claude Opus 4.8 xhigh
+  inspect_model: anthropic/claude-opus-4-8
+  provider_model: anthropic/claude-opus-4.8
+  model_entry_id: old-214-claude-opus-4-8-xhigh
+  model_setting_key: anthropic-claude-opus-4-8:1c8837af9a279914
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Claude Opus 4.8 max
+  inspect_model: anthropic/claude-opus-4-8
+  provider_model: anthropic/claude-opus-4.8
+  model_entry_id: old-215-claude-opus-4-8-max
+  model_setting_key: anthropic-claude-opus-4-8:ca4421b75142368a
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: 'Anthropic: Claude Sonnet 4 none'
+  inspect_model: openrouter/anthropic/claude-sonnet-4
+  provider_model: anthropic/claude-sonnet-4
+  model_entry_id: requested-027-anthropic-claude-sonnet-4-none
+  model_setting_key: openrouter-anthropic-claude-sonnet-4:243a37130a6fc7fc
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Anthropic: Claude Sonnet 4 low'
+  inspect_model: openrouter/anthropic/claude-sonnet-4
+  provider_model: anthropic/claude-sonnet-4
+  model_entry_id: requested-028-anthropic-claude-sonnet-4-low
+  model_setting_key: openrouter-anthropic-claude-sonnet-4:c6b1f7f2cada48d4
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Anthropic: Claude Sonnet 4 medium'
+  inspect_model: openrouter/anthropic/claude-sonnet-4
+  provider_model: anthropic/claude-sonnet-4
+  model_entry_id: requested-029-anthropic-claude-sonnet-4-medium
+  model_setting_key: openrouter-anthropic-claude-sonnet-4:bd8cdfb4f1cb7d87
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Anthropic: Claude Sonnet 4 high'
+  inspect_model: openrouter/anthropic/claude-sonnet-4
+  provider_model: anthropic/claude-sonnet-4
+  model_entry_id: requested-030-anthropic-claude-sonnet-4-high
+  model_setting_key: openrouter-anthropic-claude-sonnet-4:57371731099d7d9a
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Anthropic: Claude Sonnet 4 xhigh'
+  inspect_model: openrouter/anthropic/claude-sonnet-4
+  provider_model: anthropic/claude-sonnet-4
+  model_entry_id: requested-031-anthropic-claude-sonnet-4-xhigh
+  model_setting_key: openrouter-anthropic-claude-sonnet-4:7d1247d821f1aa88
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: 'Anthropic: Claude Sonnet 4.5 none'
+  inspect_model: openrouter/anthropic/claude-sonnet-4.5
+  provider_model: anthropic/claude-sonnet-4.5
+  model_entry_id: requested-032-anthropic-claude-sonnet-4-5-none
+  model_setting_key: openrouter-anthropic-claude-sonnet-4-5:99f2b3d29892f274
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Anthropic: Claude Sonnet 4.5 low'
+  inspect_model: openrouter/anthropic/claude-sonnet-4.5
+  provider_model: anthropic/claude-sonnet-4.5
+  model_entry_id: requested-033-anthropic-claude-sonnet-4-5-low
+  model_setting_key: openrouter-anthropic-claude-sonnet-4-5:b7c9385e405da840
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Anthropic: Claude Sonnet 4.5 medium'
+  inspect_model: openrouter/anthropic/claude-sonnet-4.5
+  provider_model: anthropic/claude-sonnet-4.5
+  model_entry_id: requested-034-anthropic-claude-sonnet-4-5-medium
+  model_setting_key: openrouter-anthropic-claude-sonnet-4-5:5083325eed5614c9
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Anthropic: Claude Sonnet 4.5 high'
+  inspect_model: openrouter/anthropic/claude-sonnet-4.5
+  provider_model: anthropic/claude-sonnet-4.5
+  model_entry_id: requested-035-anthropic-claude-sonnet-4-5-high
+  model_setting_key: openrouter-anthropic-claude-sonnet-4-5:0076c483e37c9e51
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Anthropic: Claude Sonnet 4.5 xhigh'
+  inspect_model: openrouter/anthropic/claude-sonnet-4.5
+  provider_model: anthropic/claude-sonnet-4.5
+  model_entry_id: requested-036-anthropic-claude-sonnet-4-5-xhigh
+  model_setting_key: openrouter-anthropic-claude-sonnet-4-5:1f81d379d7c0d2ad
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Claude Sonnet 4.6 none
+  inspect_model: anthropic/claude-sonnet-4-6
+  provider_model: anthropic/claude-sonnet-4.6
+  model_entry_id: old-237-claude-sonnet-4-6-none
+  model_setting_key: anthropic-claude-sonnet-4-6:bb14326198832a63
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Anthropic Claude Sonnet 4.6
+  inspect_model: anthropic/claude-sonnet-4-6
+  provider_model: anthropic/claude-sonnet-4.6
+  model_entry_id: old-4-anthropic-claude-sonnet-4-6
+  model_setting_key: anthropic-claude-sonnet-4-6:c7ae17cc4706c274
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: Claude Sonnet 4.6 low
+  inspect_model: anthropic/claude-sonnet-4-6
+  provider_model: anthropic/claude-sonnet-4.6
+  model_entry_id: old-216-claude-sonnet-4-6-low
+  model_setting_key: anthropic-claude-sonnet-4-6:ef7abe04d716b193
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Claude Sonnet 4.6 medium
+  inspect_model: anthropic/claude-sonnet-4-6
+  provider_model: anthropic/claude-sonnet-4.6
+  model_entry_id: old-217-claude-sonnet-4-6-medium
+  model_setting_key: anthropic-claude-sonnet-4-6:74e66c92ba93a8ab
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Claude Sonnet 4.6 high
+  inspect_model: anthropic/claude-sonnet-4-6
+  provider_model: anthropic/claude-sonnet-4.6
+  model_entry_id: old-218-claude-sonnet-4-6-high
+  model_setting_key: anthropic-claude-sonnet-4-6:ca1eec2cec55eee2
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Claude Sonnet 4.6 max
+  inspect_model: anthropic/claude-sonnet-4-6
+  provider_model: anthropic/claude-sonnet-4.6
+  model_entry_id: old-219-claude-sonnet-4-6-max
+  model_setting_key: anthropic-claude-sonnet-4-6:a5e481df9e03384e
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: 'DeepSeek: DeepSeek V3'
+  inspect_model: openrouter/deepseek/deepseek-chat
+  provider_model: deepseek/deepseek-chat
+  model_entry_id: old-76-deepseek-deepseek-v3
+  model_setting_key: openrouter-deepseek-deepseek-chat:aca29a9c27f327d3
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'DeepSeek: DeepSeek V3 0324'
+  inspect_model: openrouter/deepseek/deepseek-chat-v3-0324
+  provider_model: deepseek/deepseek-chat-v3-0324
+  model_entry_id: old-69-deepseek-deepseek-v3-0324
+  model_setting_key: openrouter-deepseek-deepseek-chat-v3-0324:f8e72f12e1015a2c
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'DeepSeek: DeepSeek V3.1'
+  inspect_model: openrouter/deepseek/deepseek-chat-v3.1
+  provider_model: deepseek/deepseek-chat-v3.1
+  model_entry_id: old-73-deepseek-deepseek-v3-1
+  model_setting_key: openrouter-deepseek-deepseek-chat-v3-1:a1bab219605b0579
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'DeepSeek: DeepSeek V3.1 Terminus'
+  inspect_model: openrouter/deepseek/deepseek-v3.1-terminus
+  provider_model: deepseek/deepseek-v3.1-terminus
+  model_entry_id: old-80-deepseek-deepseek-v3-1-terminus
+  model_setting_key: openrouter-deepseek-deepseek-v3-1-terminus:6ebd2ebdf76a3180
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'DeepSeek: DeepSeek V3.2'
+  inspect_model: openrouter/deepseek/deepseek-v3.2
+  provider_model: deepseek/deepseek-v3.2
+  model_entry_id: old-47-deepseek-deepseek-v3-2
+  model_setting_key: openrouter-deepseek-deepseek-v3-2:67900c1519814ba9
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'DeepSeek: DeepSeek V3.2 Exp'
+  inspect_model: openrouter/deepseek/deepseek-v3.2-exp
+  provider_model: deepseek/deepseek-v3.2-exp
+  model_entry_id: old-57-deepseek-deepseek-v3-2-exp
+  model_setting_key: openrouter-deepseek-deepseek-v3-2-exp:fcab714ac4ba5f53
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'DeepSeek: DeepSeek V4 Flash'
+  inspect_model: openrouter/deepseek/deepseek-v4-flash
+  provider_model: deepseek/deepseek-v4-flash
+  model_entry_id: old-35-deepseek-deepseek-v4-flash
+  model_setting_key: openrouter-deepseek-deepseek-v4-flash:84fe7d3f33b4e8e2
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'DeepSeek: DeepSeek V4 Pro'
+  inspect_model: openrouter/deepseek/deepseek-v4-pro
+  provider_model: deepseek/deepseek-v4-pro
+  model_entry_id: old-78-deepseek-deepseek-v4-pro
+  model_setting_key: openrouter-deepseek-deepseek-v4-pro:8a1e2e56b483bd63
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Google: Gemini 2.5 Flash none'
+  inspect_model: openrouter/google/gemini-2.5-flash
+  provider_model: google/gemini-2.5-flash
+  model_entry_id: manual-20260612-google-gemini-2-5-flash-none
+  model_setting_key: openrouter-google-gemini-2-5-flash:f1c7ede96b11290e
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemini 2.5 Flash low'
+  inspect_model: openrouter/google/gemini-2.5-flash
+  provider_model: google/gemini-2.5-flash
+  model_entry_id: manual-20260612-google-gemini-2-5-flash-low
+  model_setting_key: openrouter-google-gemini-2-5-flash:e6de5ee4971277bd
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemini 2.5 Flash medium'
+  inspect_model: openrouter/google/gemini-2.5-flash
+  provider_model: google/gemini-2.5-flash
+  model_entry_id: manual-20260612-google-gemini-2-5-flash-medium
+  model_setting_key: openrouter-google-gemini-2-5-flash:f71118c9b79dff7f
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemini 2.5 Flash high'
+  inspect_model: openrouter/google/gemini-2.5-flash
+  provider_model: google/gemini-2.5-flash
+  model_entry_id: manual-20260612-google-gemini-2-5-flash-high
+  model_setting_key: openrouter-google-gemini-2-5-flash:00024a2b9ec50f91
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Google: Gemini 2.5 Flash Lite none'
+  inspect_model: openrouter/google/gemini-2.5-flash-lite
+  provider_model: google/gemini-2.5-flash-lite
+  model_entry_id: manual-20260612-google-gemini-2-5-flash-lite-none
+  model_setting_key: openrouter-google-gemini-2-5-flash-lite:32d7a64bd924d50d
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Gemini 2.5 Flash-Lite low_budget_1024
+  inspect_model: openrouter/google/gemini-2.5-flash-lite
+  provider_model: google/gemini-2.5-flash-lite
+  model_entry_id: old-189-gemini-2-5-flash-lite-low-budget-1024
+  model_setting_key: openrouter-google-gemini-2-5-flash-lite:995165954feb629f
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Gemini 2.5 Flash-Lite medium_budget_8192
+  inspect_model: openrouter/google/gemini-2.5-flash-lite
+  provider_model: google/gemini-2.5-flash-lite
+  model_entry_id: old-197-gemini-2-5-flash-lite-medium-budget-8192
+  model_setting_key: openrouter-google-gemini-2-5-flash-lite:d41194a06a7d0a4b
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemini 2.5 Flash Lite high'
+  inspect_model: openrouter/google/gemini-2.5-flash-lite
+  provider_model: google/gemini-2.5-flash-lite
+  model_entry_id: manual-20260612-google-gemini-2-5-flash-lite-high
+  model_setting_key: openrouter-google-gemini-2-5-flash-lite:4845c51c12509e21
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Google: Gemini 2.5 Pro low'
+  inspect_model: openrouter/google/gemini-2.5-pro
+  provider_model: google/gemini-2.5-pro
+  model_entry_id: requested-045-google-gemini-2-5-pro-low
+  model_setting_key: openrouter-google-gemini-2-5-pro:1b9605fe4301c779
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemini 2.5 Pro dynamic'
+  inspect_model: openrouter/google/gemini-2.5-pro
+  provider_model: google/gemini-2.5-pro
+  model_entry_id: requested-044-google-gemini-2-5-pro-dynamic
+  model_setting_key: openrouter-google-gemini-2-5-pro:088f2c1665547e1d
+  profile: v0_2_public_aggregate
+  reasoning_effort: dynamic
+- label: 'Google: Gemini 2.5 Pro medium'
+  inspect_model: openrouter/google/gemini-2.5-pro
+  provider_model: google/gemini-2.5-pro
+  model_entry_id: requested-046-google-gemini-2-5-pro-medium
+  model_setting_key: openrouter-google-gemini-2-5-pro:051893608ebafa43
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemini 2.5 Pro high'
+  inspect_model: openrouter/google/gemini-2.5-pro
+  provider_model: google/gemini-2.5-pro
+  model_entry_id: requested-047-google-gemini-2-5-pro-high
+  model_setting_key: openrouter-google-gemini-2-5-pro:b074d1c3a805e575
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Google: Gemini 2.5 Pro xhigh'
+  inspect_model: openrouter/google/gemini-2.5-pro
+  provider_model: google/gemini-2.5-pro
+  model_entry_id: requested-048-google-gemini-2-5-pro-xhigh
+  model_setting_key: openrouter-google-gemini-2-5-pro:1c8cd687dc446ee0
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: 'Google: Gemini 3 Flash Preview minimal'
+  inspect_model: openrouter/google/gemini-3-flash-preview
+  provider_model: google/gemini-3-flash-preview
+  model_entry_id: manual-20260612-google-gemini-3-flash-preview-minimal
+  model_setting_key: openrouter-google-gemini-3-flash-preview:bd779dd00c0ce5f4
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Gemini 3 Flash Preview
+  inspect_model: openrouter/google/gemini-3-flash-preview
+  provider_model: google/gemini-3-flash-preview
+  model_entry_id: old-159-gemini-3-flash-preview
+  model_setting_key: openrouter-google-gemini-3-flash-preview:3ca45261d46b17a4
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Google: Gemini 3 Flash Preview low'
+  inspect_model: openrouter/google/gemini-3-flash-preview
+  provider_model: google/gemini-3-flash-preview
+  model_entry_id: manual-20260612-google-gemini-3-flash-preview-low
+  model_setting_key: openrouter-google-gemini-3-flash-preview:8d15b0e0d728f962
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemini 3 Flash Preview medium'
+  inspect_model: openrouter/google/gemini-3-flash-preview
+  provider_model: google/gemini-3-flash-preview
+  model_entry_id: manual-20260612-google-gemini-3-flash-preview-medium
+  model_setting_key: openrouter-google-gemini-3-flash-preview:6f881b90eab698e0
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemini 3 Flash Preview high'
+  inspect_model: openrouter/google/gemini-3-flash-preview
+  provider_model: google/gemini-3-flash-preview
+  model_entry_id: manual-20260612-google-gemini-3-flash-preview-high
+  model_setting_key: openrouter-google-gemini-3-flash-preview:1901da4c8c57013e
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Gemini 3.1 Flash-Lite minimal_budget_1024
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  provider_model: google/gemini-3.1-flash-lite
+  model_entry_id: old-193-gemini-3-1-flash-lite-minimal-budget-1024
+  model_setting_key: openrouter-google-gemini-3-1-flash-lite:61cece17bda6bf72
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Gemini 3.1 Flash-Lite
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  provider_model: google/gemini-3.1-flash-lite
+  model_entry_id: old-141-gemini-3-1-flash-lite
+  model_setting_key: openrouter-google-gemini-3-1-flash-lite:57396c29f53c51f2
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Google: Gemini 3.1 Flash Lite low'
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  provider_model: google/gemini-3.1-flash-lite
+  model_entry_id: old-227-google-gemini-3-1-flash-lite-low
+  model_setting_key: openrouter-google-gemini-3-1-flash-lite:8ed0ca8cd7402c72
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemini 3.1 Flash Lite medium'
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  provider_model: google/gemini-3.1-flash-lite
+  model_entry_id: old-228-google-gemini-3-1-flash-lite-medium
+  model_setting_key: openrouter-google-gemini-3-1-flash-lite:b34b1586ec169a4f
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemini 3.1 Flash Lite high'
+  inspect_model: openrouter/google/gemini-3.1-flash-lite
+  provider_model: google/gemini-3.1-flash-lite
+  model_entry_id: old-229-google-gemini-3-1-flash-lite-high
+  model_setting_key: openrouter-google-gemini-3-1-flash-lite:70c29da9b887248f
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Google: Gemini 3.5 Flash minimal'
+  inspect_model: openrouter/google/gemini-3.5-flash
+  provider_model: google/gemini-3.5-flash
+  model_entry_id: old-220-google-gemini-3-5-flash-minimal
+  model_setting_key: openrouter-google-gemini-3-5-flash:fd72c6406e828ed7
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Gemini 3.5 Flash
+  inspect_model: openrouter/google/gemini-3.5-flash
+  provider_model: google/gemini-3.5-flash
+  model_entry_id: old-6-gemini-3-5-flash
+  model_setting_key: openrouter-google-gemini-3-5-flash:88a3ce639451cd24
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Google: Gemini 3.5 Flash low'
+  inspect_model: openrouter/google/gemini-3.5-flash
+  provider_model: google/gemini-3.5-flash
+  model_entry_id: old-221-google-gemini-3-5-flash-low
+  model_setting_key: openrouter-google-gemini-3-5-flash:cc6d75b3e55b3279
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemini 3.5 Flash medium'
+  inspect_model: openrouter/google/gemini-3.5-flash
+  provider_model: google/gemini-3.5-flash
+  model_entry_id: old-222-google-gemini-3-5-flash-medium
+  model_setting_key: openrouter-google-gemini-3-5-flash:f404d0d7d02cc1c1
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemini 3.5 Flash high'
+  inspect_model: openrouter/google/gemini-3.5-flash
+  provider_model: google/gemini-3.5-flash
+  model_entry_id: old-223-google-gemini-3-5-flash-high
+  model_setting_key: openrouter-google-gemini-3-5-flash:b6ec4c67d3557bc5
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Google: Gemma 2 27B'
+  inspect_model: openrouter/google/gemma-2-27b-it
+  provider_model: google/gemma-2-27b-it
+  model_entry_id: old-67-google-gemma-2-27b
+  model_setting_key: openrouter-google-gemma-2-27b-it:9f070720e02c9675
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemma 3 12B'
+  inspect_model: openrouter/google/gemma-3-12b-it
+  provider_model: google/gemma-3-12b-it
+  model_entry_id: old-101-google-gemma-3-12b
+  model_setting_key: openrouter-google-gemma-3-12b-it:7b0ba603c89f6f87
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemma 3 27B'
+  inspect_model: openrouter/google/gemma-3-27b-it
+  provider_model: google/gemma-3-27b-it
+  model_entry_id: old-105-google-gemma-3-27b
+  model_setting_key: openrouter-google-gemma-3-27b-it:862e73d404cdfcd3
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemma 3 4B'
+  inspect_model: openrouter/google/gemma-3-4b-it
+  provider_model: google/gemma-3-4b-it
+  model_entry_id: old-100-google-gemma-3-4b
+  model_setting_key: openrouter-google-gemma-3-4b-it:4ddd117e9a0ddb77
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemma 3n 4B'
+  inspect_model: openrouter/google/gemma-3n-e4b-it
+  provider_model: google/gemma-3n-e4b-it
+  model_entry_id: old-27-google-gemma-3n-4b
+  model_setting_key: openrouter-google-gemma-3n-e4b-it:97bb92f79f78995b
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemma 4 26B A4B '
+  inspect_model: openrouter/google/gemma-4-26b-a4b-it
+  provider_model: google/gemma-4-26b-a4b-it
+  model_entry_id: old-112-google-gemma-4-26b-a4b
+  model_setting_key: openrouter-google-gemma-4-26b-a4b-it:1cf0008a343f02b4
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemma 4 26B A4B low'
+  inspect_model: openrouter/google/gemma-4-26b-a4b-it
+  provider_model: google/gemma-4-26b-a4b-it
+  model_entry_id: manual-20260612-google-gemma-4-26b-a4b-it-low
+  model_setting_key: openrouter-google-gemma-4-26b-a4b-it:f3305ea9561aa00c
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemma 4 26B A4B medium'
+  inspect_model: openrouter/google/gemma-4-26b-a4b-it
+  provider_model: google/gemma-4-26b-a4b-it
+  model_entry_id: manual-20260612-google-gemma-4-26b-a4b-it-medium
+  model_setting_key: openrouter-google-gemma-4-26b-a4b-it:a9a510a8419c263d
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemma 4 26B A4B high'
+  inspect_model: openrouter/google/gemma-4-26b-a4b-it
+  provider_model: google/gemma-4-26b-a4b-it
+  model_entry_id: manual-20260612-google-gemma-4-26b-a4b-it-high
+  model_setting_key: openrouter-google-gemma-4-26b-a4b-it:8c486a7b48c25c52
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Google: Gemma 4 31B'
+  inspect_model: openrouter/google/gemma-4-31b-it
+  provider_model: google/gemma-4-31b-it
+  model_entry_id: old-116-google-gemma-4-31b
+  model_setting_key: openrouter-google-gemma-4-31b-it:23193ab8e1e75e97
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Google: Gemma 4 31B low'
+  inspect_model: openrouter/google/gemma-4-31b-it
+  provider_model: google/gemma-4-31b-it
+  model_entry_id: manual-20260612-google-gemma-4-31b-it-low
+  model_setting_key: openrouter-google-gemma-4-31b-it:8299a083fcc08612
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemma 4 31B medium'
+  inspect_model: openrouter/google/gemma-4-31b-it
+  provider_model: google/gemma-4-31b-it
+  model_entry_id: manual-20260612-google-gemma-4-31b-it-medium
+  model_setting_key: openrouter-google-gemma-4-31b-it:0fcc7bde7e97b198
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemma 4 31B high'
+  inspect_model: openrouter/google/gemma-4-31b-it
+  provider_model: google/gemma-4-31b-it
+  model_entry_id: manual-20260612-google-gemma-4-31b-it-high
+  model_setting_key: openrouter-google-gemma-4-31b-it:b5728fc81e67d95c
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Meta: Llama 3 70B Instruct'
+  inspect_model: openrouter/meta-llama/llama-3-70b-instruct
+  provider_model: meta-llama/llama-3-70b-instruct
+  model_entry_id: old-68-meta-llama-3-70b-instruct
+  model_setting_key: openrouter-meta-llama-llama-3-70b-instruct:5235b7b53211db40
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 3 8B Instruct'
+  inspect_model: openrouter/meta-llama/llama-3-8b-instruct
+  provider_model: meta-llama/llama-3-8b-instruct
+  model_entry_id: old-15-meta-llama-3-8b-instruct
+  model_setting_key: openrouter-meta-llama-llama-3-8b-instruct:879867407e1dee4a
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 3.1 70B Instruct'
+  inspect_model: openrouter/meta-llama/llama-3.1-70b-instruct
+  provider_model: meta-llama/llama-3.1-70b-instruct
+  model_entry_id: old-56-meta-llama-3-1-70b-instruct
+  model_setting_key: openrouter-meta-llama-llama-3-1-70b-instruct:f03a9fea763c79a4
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 3.1 8B Instruct'
+  inspect_model: openrouter/meta-llama/llama-3.1-8b-instruct
+  provider_model: meta-llama/llama-3.1-8b-instruct
+  model_entry_id: old-16-meta-llama-3-1-8b-instruct
+  model_setting_key: openrouter-meta-llama-llama-3-1-8b-instruct:083b3393b7767405
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 3.2 11B Vision Instruct'
+  inspect_model: openrouter/meta-llama/llama-3.2-11b-vision-instruct
+  provider_model: meta-llama/llama-3.2-11b-vision-instruct
+  model_entry_id: old-117-meta-llama-3-2-11b-vision-instruct
+  model_setting_key: openrouter-meta-llama-llama-3-2-11b-vision-instruct:7b10c19199528527
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 3.2 1B Instruct'
+  inspect_model: openrouter/meta-llama/llama-3.2-1b-instruct
+  provider_model: meta-llama/llama-3.2-1b-instruct
+  model_entry_id: old-36-meta-llama-3-2-1b-instruct
+  model_setting_key: openrouter-meta-llama-llama-3-2-1b-instruct:3c61302e512ddb93
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 3.3 70B Instruct'
+  inspect_model: openrouter/meta-llama/llama-3.3-70b-instruct
+  provider_model: meta-llama/llama-3.3-70b-instruct
+  model_entry_id: old-45-meta-llama-3-3-70b-instruct
+  model_setting_key: openrouter-meta-llama-llama-3-3-70b-instruct:5d26b4cd05351fa5
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 4 Maverick'
+  inspect_model: openrouter/meta-llama/llama-4-maverick
+  provider_model: meta-llama/llama-4-maverick
+  model_entry_id: old-125-meta-llama-4-maverick
+  model_setting_key: openrouter-meta-llama-llama-4-maverick:0e9e004ca1bc25b7
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Meta: Llama 4 Scout'
+  inspect_model: openrouter/meta-llama/llama-4-scout
+  provider_model: meta-llama/llama-4-scout
+  model_entry_id: old-111-meta-llama-4-scout
+  model_setting_key: openrouter-meta-llama-llama-4-scout:65fe4c4d98c164a5
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'MiniMax: MiniMax-01'
+  inspect_model: openrouter/minimax/minimax-01
+  provider_model: minimax/minimax-01
+  model_entry_id: old-134-minimax-minimax-01
+  model_setting_key: openrouter-minimax-minimax-01:f4eb5e6b0b456505
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MiniMax: MiniMax M2'
+  inspect_model: openrouter/minimax/minimax-m2
+  provider_model: minimax/minimax-m2
+  model_entry_id: old-83-minimax-minimax-m2
+  model_setting_key: openrouter-minimax-minimax-m2:5b75da8937838cee
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MiniMax: MiniMax M2.1'
+  inspect_model: openrouter/minimax/minimax-m2.1
+  provider_model: minimax/minimax-m2.1
+  model_entry_id: old-81-minimax-minimax-m2-1
+  model_setting_key: openrouter-minimax-minimax-m2-1:eb1d355ea74c7cec
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MiniMax: MiniMax M2.5'
+  inspect_model: openrouter/minimax/minimax-m2.5
+  provider_model: minimax/minimax-m2.5
+  model_entry_id: old-88-minimax-minimax-m2-5
+  model_setting_key: openrouter-minimax-minimax-m2-5:98dd93676fe6951c
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MiniMax: MiniMax M2.7'
+  inspect_model: openrouter/minimax/minimax-m2.7
+  provider_model: minimax/minimax-m2.7
+  model_entry_id: old-89-minimax-minimax-m2-7
+  model_setting_key: openrouter-minimax-minimax-m2-7:c3b6ac716447e08b
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MiniMax: MiniMax M3'
+  inspect_model: openrouter/minimax/minimax-m3
+  provider_model: minimax/minimax-m3
+  model_entry_id: old-138-minimax-minimax-m3
+  model_setting_key: openrouter-minimax-minimax-m3:233665e8d3ca2853
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Codestral 2508'
+  inspect_model: openrouter/mistralai/codestral-2508
+  provider_model: mistralai/codestral-2508
+  model_entry_id: old-133-mistral-codestral-2508
+  model_setting_key: openrouter-mistralai-codestral-2508:5f2bbdcb87c8c88a
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Devstral 2 2512'
+  inspect_model: openrouter/mistralai/devstral-2512
+  provider_model: mistralai/devstral-2512
+  model_entry_id: old-150-mistral-devstral-2-2512
+  model_setting_key: openrouter-mistralai-devstral-2512:a07741fe406d5d68
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Ministral 3 14B 2512'
+  inspect_model: openrouter/mistralai/ministral-14b-2512
+  provider_model: mistralai/ministral-14b-2512
+  model_entry_id: old-113-mistral-ministral-3-14b-2512
+  model_setting_key: openrouter-mistralai-ministral-14b-2512:a7740f6eb493fa1d
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Ministral 3 3B 2512'
+  inspect_model: openrouter/mistralai/ministral-3b-2512
+  provider_model: mistralai/ministral-3b-2512
+  model_entry_id: old-103-mistral-ministral-3-3b-2512
+  model_setting_key: openrouter-mistralai-ministral-3b-2512:bfeda3ffdd3a5399
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Ministral 3 8B 2512'
+  inspect_model: openrouter/mistralai/ministral-8b-2512
+  provider_model: mistralai/ministral-8b-2512
+  model_entry_id: old-107-mistral-ministral-3-8b-2512
+  model_setting_key: openrouter-mistralai-ministral-8b-2512:a8cf25c9efd3d91e
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: Mistral Large
+  inspect_model: openrouter/mistralai/mistral-large
+  provider_model: mistralai/mistral-large
+  model_entry_id: requested-019-mistral-large-default
+  model_setting_key: openrouter-mistralai-mistral-large:892e5a7673a5160d
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: Mistral Large 2407
+  inspect_model: openrouter/mistralai/mistral-large-2407
+  provider_model: mistralai/mistral-large-2407
+  model_entry_id: old-174-mistral-large-2407
+  model_setting_key: openrouter-mistralai-mistral-large-2407:d0845ce8b3d5bc48
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Mistral Large 3 2512'
+  inspect_model: openrouter/mistralai/mistral-large-2512
+  provider_model: mistralai/mistral-large-2512
+  model_entry_id: old-144-mistral-mistral-large-3-2512
+  model_setting_key: openrouter-mistralai-mistral-large-2512:487c602f877ecad7
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Mistral Medium 3'
+  inspect_model: openrouter/mistralai/mistral-medium-3
+  provider_model: mistralai/mistral-medium-3
+  model_entry_id: old-153-mistral-mistral-medium-3
+  model_setting_key: openrouter-mistralai-mistral-medium-3:9315df4b2e58dc27
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Mistral Medium 3.5 disabled
+  inspect_model: openrouter/mistralai/mistral-medium-3-5
+  provider_model: mistralai/mistral-medium-3-5
+  model_entry_id: manual-20260612-mistralai-mistral-medium-3-5-disabled
+  model_setting_key: openrouter-mistralai-mistral-medium-3-5:bb3f29ce2f68287c
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: Mistral Medium 3.5 low
+  inspect_model: openrouter/mistralai/mistral-medium-3-5
+  provider_model: mistralai/mistral-medium-3-5
+  model_entry_id: manual-20260612-mistralai-mistral-medium-3-5-low
+  model_setting_key: openrouter-mistralai-mistral-medium-3-5:aeb487b4abc27d31
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Mistral: Mistral Medium 3.5'
+  inspect_model: openrouter/mistralai/mistral-medium-3-5
+  provider_model: mistralai/mistral-medium-3-5
+  model_entry_id: old-175-mistral-mistral-medium-3-5
+  model_setting_key: openrouter-mistralai-mistral-medium-3-5:1c4541e77b731e6a
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Mistral Medium 3.5 high
+  inspect_model: openrouter/mistralai/mistral-medium-3-5
+  provider_model: mistralai/mistral-medium-3-5
+  model_entry_id: manual-20260612-mistralai-mistral-medium-3-5-high
+  model_setting_key: openrouter-mistralai-mistral-medium-3-5:72c164d572b8f61f
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Mistral: Mistral Medium 3.1'
+  inspect_model: openrouter/mistralai/mistral-medium-3.1
+  provider_model: mistralai/mistral-medium-3.1
+  model_entry_id: old-151-mistral-mistral-medium-3-1
+  model_setting_key: openrouter-mistralai-mistral-medium-3-1:e3654a36ebff7aea
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Mistral: Mistral Nemo'
+  inspect_model: openrouter/mistralai/mistral-nemo
+  provider_model: mistralai/mistral-nemo
+  model_entry_id: old-13-mistral-mistral-nemo
+  model_setting_key: openrouter-mistralai-mistral-nemo:6da07eb7f85fe6d4
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Saba'
+  inspect_model: openrouter/mistralai/mistral-saba
+  provider_model: mistralai/mistral-saba
+  model_entry_id: old-126-mistral-saba
+  model_setting_key: openrouter-mistralai-mistral-saba:f0515e5df4ee6cf6
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Mistral Small 3'
+  inspect_model: openrouter/mistralai/mistral-small-24b-instruct-2501
+  provider_model: mistralai/mistral-small-24b-instruct-2501
+  model_entry_id: old-19-mistral-mistral-small-3
+  model_setting_key: openrouter-mistralai-mistral-small-24b-instruct-2501:f9d54d5bbb431074
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Mistral Small 4'
+  inspect_model: openrouter/mistralai/mistral-small-2603
+  provider_model: mistralai/mistral-small-2603
+  model_entry_id: old-124-mistral-mistral-small-4
+  model_setting_key: openrouter-mistralai-mistral-small-2603:6b174f7a4e72e877
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Mistral Small 3.2 24B'
+  inspect_model: openrouter/mistralai/mistral-small-3.2-24b-instruct
+  provider_model: mistralai/mistral-small-3.2-24b-instruct
+  model_entry_id: old-106-mistral-mistral-small-3-2-24b
+  model_setting_key: openrouter-mistralai-mistral-small-3-2-24b-instruct:c1d16c9b6655e482
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Mixtral 8x22B Instruct'
+  inspect_model: openrouter/mistralai/mixtral-8x22b-instruct
+  provider_model: mistralai/mixtral-8x22b-instruct
+  model_entry_id: old-173-mistral-mixtral-8x22b-instruct
+  model_setting_key: openrouter-mistralai-mixtral-8x22b-instruct:da7bd4fcc18797e1
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Mistral: Voxtral Small 24B 2507'
+  inspect_model: openrouter/mistralai/voxtral-small-24b-2507
+  provider_model: mistralai/voxtral-small-24b-2507
+  model_entry_id: old-114-mistral-voxtral-small-24b-2507
+  model_setting_key: openrouter-mistralai-voxtral-small-24b-2507:413c1d56f92addfb
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MoonshotAI: Kimi K2 0711'
+  inspect_model: openrouter/moonshotai/kimi-k2
+  provider_model: moonshotai/kimi-k2
+  model_entry_id: old-98-moonshotai-kimi-k2-0711
+  model_setting_key: openrouter-moonshotai-kimi-k2:46f5ca12f573a3d7
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MoonshotAI: Kimi K2 0905'
+  inspect_model: openrouter/moonshotai/kimi-k2-0905
+  provider_model: moonshotai/kimi-k2-0905
+  model_entry_id: old-99-moonshotai-kimi-k2-0905
+  model_setting_key: openrouter-moonshotai-kimi-k2-0905:326565c2924512f9
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'MoonshotAI: Kimi K2 Thinking'
+  inspect_model: openrouter/moonshotai/kimi-k2-thinking
+  provider_model: moonshotai/kimi-k2-thinking
+  model_entry_id: requested-020-moonshotai-kimi-k2-thinking-default
+  model_setting_key: openrouter-moonshotai-kimi-k2-thinking:8c92c0c0210c108e
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter moonshotai/kimi-k2.5 disabled
+  inspect_model: openrouter/moonshotai/kimi-k2.5
+  provider_model: moonshotai/kimi-k2.5
+  model_entry_id: manual-20260612-moonshotai-kimi-k2-5-disabled
+  model_setting_key: openrouter-moonshotai-kimi-k2-5:3996e6f760ceeb25
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'MoonshotAI: Kimi K2.5'
+  inspect_model: openrouter/moonshotai/kimi-k2.5
+  provider_model: moonshotai/kimi-k2.5
+  model_entry_id: old-148-moonshotai-kimi-k2-5
+  model_setting_key: openrouter-moonshotai-kimi-k2-5:e7be1bda03305f46
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter moonshotai/kimi-k2.6 disabled
+  inspect_model: openrouter/moonshotai/kimi-k2.6
+  provider_model: moonshotai/kimi-k2.6
+  model_entry_id: manual-20260612-moonshotai-kimi-k2-6-disabled
+  model_setting_key: openrouter-moonshotai-kimi-k2-6:6c696e12602acdcd
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'MoonshotAI: Kimi K2.6'
+  inspect_model: openrouter/moonshotai/kimi-k2.6
+  provider_model: moonshotai/kimi-k2.6
+  model_entry_id: old-164-moonshotai-kimi-k2-6
+  model_setting_key: openrouter-moonshotai-kimi-k2-6:39570a9ecf6c889e
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: MoonshotAI Kimi K2.7 Code
+  inspect_model: openrouter/moonshotai/kimi-k2.7-code
+  provider_model: moonshotai/kimi-k2.7-code
+  model_entry_id: manual-20260612-moonshotai-kimi-k2-7-code-default
+  model_setting_key: openrouter-moonshotai-kimi-k2-7-code:82d1497fed596749
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'NVIDIA: Nemotron 3 Nano 30B A3B'
+  inspect_model: openrouter/nvidia/nemotron-3-nano-30b-a3b
+  provider_model: nvidia/nemotron-3-nano-30b-a3b
+  model_entry_id: manual-20260612-nvidia-nemotron-3-nano-30b-a3b-default
+  model_setting_key: openrouter-nvidia-nemotron-3-nano-30b-a3b:ece841fc7b0c7ffc
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'NVIDIA: Nemotron 3 Super'
+  inspect_model: openrouter/nvidia/nemotron-3-super-120b-a12b
+  provider_model: nvidia/nemotron-3-super-120b-a12b
+  model_entry_id: manual-20260612-nvidia-nemotron-3-super-120b-a12b-default
+  model_setting_key: openrouter-nvidia-nemotron-3-super-120b-a12b:9ca201c210c55225
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'NVIDIA: Nemotron 3 Ultra'
+  inspect_model: openrouter/nvidia/nemotron-3-ultra-550b-a55b
+  provider_model: nvidia/nemotron-3-ultra-550b-a55b
+  model_entry_id: requested-021-nvidia-nemotron-3-ultra-default
+  model_setting_key: openrouter-nvidia-nemotron-3-ultra-550b-a55b:9413159303a4389a
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'OpenAI: GPT-3.5 Turbo'
+  inspect_model: openrouter/openai/gpt-3.5-turbo
+  provider_model: openai/gpt-3.5-turbo
+  model_entry_id: requested-001-openai-gpt-3-5-turbo-default
+  model_setting_key: openrouter-openai-gpt-3-5-turbo:1ee13072d2fd7e58
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-3.5 Turbo (older v0613)'
+  inspect_model: openrouter/openai/gpt-3.5-turbo-0613
+  provider_model: openai/gpt-3.5-turbo-0613
+  model_entry_id: requested-002-openai-gpt-3-5-turbo-older-v0613-default
+  model_setting_key: openrouter-openai-gpt-3-5-turbo-0613:b5aa152c96d42c93
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-3.5 Turbo 16k'
+  inspect_model: openrouter/openai/gpt-3.5-turbo-16k
+  provider_model: openai/gpt-3.5-turbo-16k
+  model_entry_id: requested-003-openai-gpt-3-5-turbo-16k-default
+  model_setting_key: openrouter-openai-gpt-3-5-turbo-16k:467cbe53606dbe64
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-3.5 Turbo Instruct'
+  inspect_model: openrouter/openai/gpt-3.5-turbo-instruct
+  provider_model: openai/gpt-3.5-turbo-instruct
+  model_entry_id: requested-004-openai-gpt-3-5-turbo-instruct-default
+  model_setting_key: openrouter-openai-gpt-3-5-turbo-instruct:43301deed2b5dc8c
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-4'
+  inspect_model: openrouter/openai/gpt-4
+  provider_model: openai/gpt-4
+  model_entry_id: requested-005-openai-gpt-4-default
+  model_setting_key: openrouter-openai-gpt-4:4a6c9e3437fbe047
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-4 Turbo'
+  inspect_model: openrouter/openai/gpt-4-turbo
+  provider_model: openai/gpt-4-turbo
+  model_entry_id: requested-006-openai-gpt-4-turbo-default
+  model_setting_key: openrouter-openai-gpt-4-turbo:eb5c1def1705f44a
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-4.1
+  inspect_model: openai/gpt-4.1
+  provider_model: openai/gpt-4.1
+  model_entry_id: old-2-openai-gpt-4-1
+  model_setting_key: openai-gpt-4-1:689c204410d95253
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-4.1 mini
+  inspect_model: openai/gpt-4.1-mini
+  provider_model: openai/gpt-4.1-mini
+  model_entry_id: old-3-openai-gpt-4-1-mini
+  model_setting_key: openai-gpt-4-1-mini:e7ceb0c1ac88b3fb
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-4.1 nano
+  inspect_model: openai/gpt-4.1-nano
+  provider_model: openai/gpt-4.1-nano
+  model_entry_id: old-118-openai-gpt-4-1-nano
+  model_setting_key: openai-gpt-4-1-nano:b74fe1fa885dd920
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-4o
+  inspect_model: openai/gpt-4o
+  provider_model: openai/gpt-4o
+  model_entry_id: old-178-openai-gpt-4o
+  model_setting_key: openai-gpt-4o:8c1bae5297e93dcc
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-4o (2024-05-13)'
+  inspect_model: openrouter/openai/gpt-4o-2024-05-13
+  provider_model: openai/gpt-4o-2024-05-13
+  model_entry_id: requested-007-openai-gpt-4o-2024-05-13-default
+  model_setting_key: openrouter-openai-gpt-4o-2024-05-13:caec9f14464c777b
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-4o (2024-08-06)'
+  inspect_model: openrouter/openai/gpt-4o-2024-08-06
+  provider_model: openai/gpt-4o-2024-08-06
+  model_entry_id: requested-008-openai-gpt-4o-2024-08-06-default
+  model_setting_key: openrouter-openai-gpt-4o-2024-08-06:5ff2e1358ccc5af5
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-4o (2024-11-20)'
+  inspect_model: openrouter/openai/gpt-4o-2024-11-20
+  provider_model: openai/gpt-4o-2024-11-20
+  model_entry_id: requested-009-openai-gpt-4o-2024-11-20-default
+  model_setting_key: openrouter-openai-gpt-4o-2024-11-20:284f6aa502b43a65
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-4o mini
+  inspect_model: openai/gpt-4o-mini
+  provider_model: openai/gpt-4o-mini
+  model_entry_id: old-123-openai-gpt-4o-mini
+  model_setting_key: openai-gpt-4o-mini:ebea6f5629a45b94
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'OpenAI: GPT-4o-mini (2024-07-18)'
+  inspect_model: openrouter/openai/gpt-4o-mini-2024-07-18
+  provider_model: openai/gpt-4o-mini-2024-07-18
+  model_entry_id: requested-010-openai-gpt-4o-mini-2024-07-18-default
+  model_setting_key: openrouter-openai-gpt-4o-mini-2024-07-18:300c770b927c0a68
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5 minimal
+  inspect_model: openai/gpt-5
+  provider_model: openai/gpt-5
+  model_entry_id: old-177-openai-gpt-5-minimal
+  model_setting_key: openai-gpt-5:b8037af849747e1e
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: OpenAI openai/gpt-5 low
+  inspect_model: openai/gpt-5
+  provider_model: openai/gpt-5
+  model_entry_id: manual-20260612-openai-gpt-5-low
+  model_setting_key: openai-gpt-5:bf895cae0ea50d1a
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI openai/gpt-5 medium
+  inspect_model: openai/gpt-5
+  provider_model: openai/gpt-5
+  model_entry_id: manual-20260612-openai-gpt-5-medium
+  model_setting_key: openai-gpt-5:d8bd778b919bc605
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI openai/gpt-5 high
+  inspect_model: openai/gpt-5
+  provider_model: openai/gpt-5
+  model_entry_id: manual-20260612-openai-gpt-5-high
+  model_setting_key: openai-gpt-5:a6d0ff1e3e3eeac7
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5 mini minimal
+  inspect_model: openai/gpt-5-mini
+  provider_model: openai/gpt-5-mini
+  model_entry_id: old-146-openai-gpt-5-mini-minimal
+  model_setting_key: openai-gpt-5-mini:87eb75d2ccac5d50
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: OpenAI openai/gpt-5-mini low
+  inspect_model: openai/gpt-5-mini
+  provider_model: openai/gpt-5-mini
+  model_entry_id: manual-20260612-openai-gpt-5-mini-low
+  model_setting_key: openai-gpt-5-mini:d7f6c7f13e7d1157
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI openai/gpt-5-mini medium
+  inspect_model: openai/gpt-5-mini
+  provider_model: openai/gpt-5-mini
+  model_entry_id: manual-20260612-openai-gpt-5-mini-medium
+  model_setting_key: openai-gpt-5-mini:70d58b43ca95bdcd
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI openai/gpt-5-mini high
+  inspect_model: openai/gpt-5-mini
+  provider_model: openai/gpt-5-mini
+  model_entry_id: manual-20260612-openai-gpt-5-mini-high
+  model_setting_key: openai-gpt-5-mini:dd2a8eb78a23fe84
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5 nano minimal
+  inspect_model: openai/gpt-5-nano
+  provider_model: openai/gpt-5-nano
+  model_entry_id: old-1-openai-gpt-5-nano-minimal
+  model_setting_key: openai-gpt-5-nano:4836966d09173fec
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: OpenAI GPT-5 nano low
+  inspect_model: openai/gpt-5-nano
+  provider_model: openai/gpt-5-nano
+  model_entry_id: old-188-openai-gpt-5-nano-low
+  model_setting_key: openai-gpt-5-nano:332eb23dd007be64
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5 nano medium
+  inspect_model: openai/gpt-5-nano
+  provider_model: openai/gpt-5-nano
+  model_entry_id: old-190-openai-gpt-5-nano-medium
+  model_setting_key: openai-gpt-5-nano:e85f35e3737e9542
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI openai/gpt-5-nano high
+  inspect_model: openai/gpt-5-nano
+  provider_model: openai/gpt-5-nano
+  model_entry_id: manual-20260612-openai-gpt-5-nano-high
+  model_setting_key: openai-gpt-5-nano:751867ab877c1b3e
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.2 no thinking
+  inspect_model: openai/gpt-5.2
+  provider_model: openai/gpt-5.2
+  model_entry_id: old-180-openai-gpt-5-2-no-thinking
+  model_setting_key: openai-gpt-5-2:dbe251a394f19b81
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI openai/gpt-5.2 low
+  inspect_model: openai/gpt-5.2
+  provider_model: openai/gpt-5.2
+  model_entry_id: manual-20260612-openai-gpt-5-2-low
+  model_setting_key: openai-gpt-5-2:92b5ee4883a29999
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI openai/gpt-5.2 medium
+  inspect_model: openai/gpt-5.2
+  provider_model: openai/gpt-5.2
+  model_entry_id: manual-20260612-openai-gpt-5-2-medium
+  model_setting_key: openai-gpt-5-2:9d9a8d2eaa1c7e90
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI openai/gpt-5.2 high
+  inspect_model: openai/gpt-5.2
+  provider_model: openai/gpt-5.2
+  model_entry_id: manual-20260612-openai-gpt-5-2-high
+  model_setting_key: openai-gpt-5-2:ad9eff0ae57d79ef
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI openai/gpt-5.2 xhigh
+  inspect_model: openai/gpt-5.2
+  provider_model: openai/gpt-5.2
+  model_entry_id: manual-20260612-openai-gpt-5-2-xhigh
+  model_setting_key: openai-gpt-5-2:ffa8037ec4f4a0cd
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-5.4 no thinking
+  inspect_model: openai/gpt-5.4
+  provider_model: openai/gpt-5.4
+  model_entry_id: old-181-openai-gpt-5-4-no-thinking
+  model_setting_key: openai-gpt-5-4:05c289ae1475b90d
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5.4 low
+  inspect_model: openai/gpt-5.4
+  provider_model: openai/gpt-5.4
+  model_entry_id: old-207-openai-gpt-5-4-low
+  model_setting_key: openai-gpt-5-4:27937fff228cc19b
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.4 medium
+  inspect_model: openai/gpt-5.4
+  provider_model: openai/gpt-5.4
+  model_entry_id: old-208-openai-gpt-5-4-medium
+  model_setting_key: openai-gpt-5-4:29cc809e747b41e5
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.4 high
+  inspect_model: openai/gpt-5.4
+  provider_model: openai/gpt-5.4
+  model_entry_id: old-209-openai-gpt-5-4-high
+  model_setting_key: openai-gpt-5-4:33d1771cebf7281e
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.4 xhigh
+  inspect_model: openai/gpt-5.4
+  provider_model: openai/gpt-5.4
+  model_entry_id: old-210-openai-gpt-5-4-xhigh
+  model_setting_key: openai-gpt-5-4:d19f51c2f7a24a62
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-5.4 mini no thinking
+  inspect_model: openai/gpt-5.4-mini
+  provider_model: openai/gpt-5.4-mini
+  model_entry_id: old-169-openai-gpt-5-4-mini-no-thinking
+  model_setting_key: openai-gpt-5-4-mini:e75a536a4ff8cce2
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5.4 mini low
+  inspect_model: openai/gpt-5.4-mini
+  provider_model: openai/gpt-5.4-mini
+  model_entry_id: old-170-openai-gpt-5-4-mini-low
+  model_setting_key: openai-gpt-5-4-mini:a5243153b76aa1dd
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.4 mini medium
+  inspect_model: openai/gpt-5.4-mini
+  provider_model: openai/gpt-5.4-mini
+  model_entry_id: old-232-openai-gpt-5-4-mini-medium
+  model_setting_key: openai-gpt-5-4-mini:3017da8593009838
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.4 mini high
+  inspect_model: openai/gpt-5.4-mini
+  provider_model: openai/gpt-5.4-mini
+  model_entry_id: old-233-openai-gpt-5-4-mini-high
+  model_setting_key: openai-gpt-5-4-mini:6197e3e75fc42577
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.4 mini xhigh
+  inspect_model: openai/gpt-5.4-mini
+  provider_model: openai/gpt-5.4-mini
+  model_entry_id: old-235-openai-gpt-5-4-mini-xhigh
+  model_setting_key: openai-gpt-5-4-mini:8ce318df970cabd8
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-5.4 nano no thinking
+  inspect_model: openai/gpt-5.4-nano
+  provider_model: openai/gpt-5.4-nano
+  model_entry_id: old-136-openai-gpt-5-4-nano-no-thinking
+  model_setting_key: openai-gpt-5-4-nano:951957ceb4ec8896
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5.4 nano low
+  inspect_model: openai/gpt-5.4-nano
+  provider_model: openai/gpt-5.4-nano
+  model_entry_id: old-199-openai-gpt-5-4-nano-low
+  model_setting_key: openai-gpt-5-4-nano:a62c5fbfd05da4b9
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.4 nano medium
+  inspect_model: openai/gpt-5.4-nano
+  provider_model: openai/gpt-5.4-nano
+  model_entry_id: old-230-openai-gpt-5-4-nano-medium
+  model_setting_key: openai-gpt-5-4-nano:525e52c5d96bfbb3
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.4 nano high
+  inspect_model: openai/gpt-5.4-nano
+  provider_model: openai/gpt-5.4-nano
+  model_entry_id: old-231-openai-gpt-5-4-nano-high
+  model_setting_key: openai-gpt-5-4-nano:10cfc786a9d76fa6
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.4 nano xhigh
+  inspect_model: openai/gpt-5.4-nano
+  provider_model: openai/gpt-5.4-nano
+  model_entry_id: old-234-openai-gpt-5-4-nano-xhigh
+  model_setting_key: openai-gpt-5-4-nano:a86fbd4a5e7087cd
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-5.5 no thinking
+  inspect_model: openai/gpt-5.5
+  provider_model: openai/gpt-5.5
+  model_entry_id: old-186-openai-gpt-5-5-no-thinking
+  model_setting_key: openai-gpt-5-5:8813833177eb49af
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5.5 low
+  inspect_model: openai/gpt-5.5
+  provider_model: openai/gpt-5.5
+  model_entry_id: old-185-openai-gpt-5-5-low
+  model_setting_key: openai-gpt-5-5:06b1946238f60937
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.5 medium
+  inspect_model: openai/gpt-5.5
+  provider_model: openai/gpt-5.5
+  model_entry_id: old-203-openai-gpt-5-5-medium
+  model_setting_key: openai-gpt-5-5:324dedeba69dd772
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.5 high
+  inspect_model: openai/gpt-5.5
+  provider_model: openai/gpt-5.5
+  model_entry_id: old-204-openai-gpt-5-5-high
+  model_setting_key: openai-gpt-5-5:91bdafeec3993404
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.5 xhigh
+  inspect_model: openai/gpt-5.5
+  provider_model: openai/gpt-5.5
+  model_entry_id: old-205-openai-gpt-5-5-xhigh
+  model_setting_key: openai-gpt-5-5:92578fdfdf4046b6
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenRouter openai/gpt-oss-120b low
+  inspect_model: openrouter/openai/gpt-oss-120b
+  provider_model: openai/gpt-oss-120b
+  model_entry_id: manual-20260612-openai-gpt-oss-120b-low
+  model_setting_key: openrouter-openai-gpt-oss-120b:d4b3754e80efd2f0
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/gpt-oss-120b medium
+  inspect_model: openrouter/openai/gpt-oss-120b
+  provider_model: openai/gpt-oss-120b
+  model_entry_id: manual-20260612-openai-gpt-oss-120b-medium
+  model_setting_key: openrouter-openai-gpt-oss-120b:ea324b57598111ca
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter openai/gpt-oss-120b high
+  inspect_model: openrouter/openai/gpt-oss-120b
+  provider_model: openai/gpt-oss-120b
+  model_entry_id: manual-20260612-openai-gpt-oss-120b-high
+  model_setting_key: openrouter-openai-gpt-oss-120b:609ebe98794d222e
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter openai/gpt-oss-20b low
+  inspect_model: openrouter/openai/gpt-oss-20b
+  provider_model: openai/gpt-oss-20b
+  model_entry_id: manual-20260612-openai-gpt-oss-20b-low
+  model_setting_key: openrouter-openai-gpt-oss-20b:fd23187425b2678c
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/gpt-oss-20b medium
+  inspect_model: openrouter/openai/gpt-oss-20b
+  provider_model: openai/gpt-oss-20b
+  model_entry_id: manual-20260612-openai-gpt-oss-20b-medium
+  model_setting_key: openrouter-openai-gpt-oss-20b:cf360e464b4ca0cd
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter openai/gpt-oss-20b high
+  inspect_model: openrouter/openai/gpt-oss-20b
+  provider_model: openai/gpt-oss-20b
+  model_entry_id: manual-20260612-openai-gpt-oss-20b-high
+  model_setting_key: openrouter-openai-gpt-oss-20b:9654d64fbed87f4c
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter openai/o1 low
+  inspect_model: openrouter/openai/o1
+  provider_model: openai/o1
+  model_entry_id: manual-20260612-openai-o1-low
+  model_setting_key: openrouter-openai-o1:3f0d419824691e99
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/o1 medium
+  inspect_model: openrouter/openai/o1
+  provider_model: openai/o1
+  model_entry_id: manual-20260612-openai-o1-medium
+  model_setting_key: openrouter-openai-o1:60a536d39c35d6cf
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter openai/o1 high
+  inspect_model: openrouter/openai/o1
+  provider_model: openai/o1
+  model_entry_id: manual-20260612-openai-o1-high
+  model_setting_key: openrouter-openai-o1:1db71e24e8886713
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter openai/o3 low
+  inspect_model: openrouter/openai/o3
+  provider_model: openai/o3
+  model_entry_id: manual-20260612-openai-o3-low
+  model_setting_key: openrouter-openai-o3:d654369d6d9287ff
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/o3 medium
+  inspect_model: openrouter/openai/o3
+  provider_model: openai/o3
+  model_entry_id: manual-20260612-openai-o3-medium
+  model_setting_key: openrouter-openai-o3:f5aa45d8d2989066
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter openai/o3 high
+  inspect_model: openrouter/openai/o3
+  provider_model: openai/o3
+  model_entry_id: manual-20260612-openai-o3-high
+  model_setting_key: openrouter-openai-o3:ed38446db4b8f75c
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter openai/o3-mini low
+  inspect_model: openrouter/openai/o3-mini
+  provider_model: openai/o3-mini
+  model_entry_id: manual-20260612-openai-o3-mini-low
+  model_setting_key: openrouter-openai-o3-mini:6635590d6d31726a
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/o3-mini medium
+  inspect_model: openrouter/openai/o3-mini
+  provider_model: openai/o3-mini
+  model_entry_id: manual-20260612-openai-o3-mini-medium
+  model_setting_key: openrouter-openai-o3-mini:8f3e9ad3483c38a9
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter openai/o3-mini high
+  inspect_model: openrouter/openai/o3-mini
+  provider_model: openai/o3-mini
+  model_entry_id: manual-20260612-openai-o3-mini-high
+  model_setting_key: openrouter-openai-o3-mini:857121070f92c57b
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter openai/o3-mini-high low
+  inspect_model: openrouter/openai/o3-mini-high
+  provider_model: openai/o3-mini-high
+  model_entry_id: manual-20260612-openai-o3-mini-high-low
+  model_setting_key: openrouter-openai-o3-mini-high:e8081f05a717f6d0
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/o3-mini-high medium
+  inspect_model: openrouter/openai/o3-mini-high
+  provider_model: openai/o3-mini-high
+  model_entry_id: manual-20260612-openai-o3-mini-high-medium
+  model_setting_key: openrouter-openai-o3-mini-high:c92aede17796fd92
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'OpenAI: o3 Mini High high'
+  inspect_model: openrouter/openai/o3-mini-high
+  provider_model: openai/o3-mini-high
+  model_entry_id: requested-014-openai-o3-mini-high-high
+  model_setting_key: openrouter-openai-o3-mini-high:371ac74d68b00e62
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter openai/o4-mini low
+  inspect_model: openrouter/openai/o4-mini
+  provider_model: openai/o4-mini
+  model_entry_id: manual-20260612-openai-o4-mini-low
+  model_setting_key: openrouter-openai-o4-mini:ac02fd4950a42207
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/o4-mini medium
+  inspect_model: openrouter/openai/o4-mini
+  provider_model: openai/o4-mini
+  model_entry_id: manual-20260612-openai-o4-mini-medium
+  model_setting_key: openrouter-openai-o4-mini:d735d9c466d6ee10
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter openai/o4-mini high
+  inspect_model: openrouter/openai/o4-mini
+  provider_model: openai/o4-mini
+  model_entry_id: manual-20260612-openai-o4-mini-high
+  model_setting_key: openrouter-openai-o4-mini:ab3a1de66dbb1d28
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter openai/o4-mini-high low
+  inspect_model: openrouter/openai/o4-mini-high
+  provider_model: openai/o4-mini-high
+  model_entry_id: manual-20260612-openai-o4-mini-high-low
+  model_setting_key: openrouter-openai-o4-mini-high:5506cd4e15930b3b
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter openai/o4-mini-high medium
+  inspect_model: openrouter/openai/o4-mini-high
+  provider_model: openai/o4-mini-high
+  model_entry_id: manual-20260612-openai-o4-mini-high-medium
+  model_setting_key: openrouter-openai-o4-mini-high:9d8be51babaaee34
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'OpenAI: o4 Mini High high'
+  inspect_model: openrouter/openai/o4-mini-high
+  provider_model: openai/o4-mini-high
+  model_entry_id: requested-016-openai-o4-mini-high-high
+  model_setting_key: openrouter-openai-o4-mini-high:2860a29b154f042b
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Qwen2.5 72B Instruct
+  inspect_model: openrouter/qwen/qwen-2.5-72b-instruct
+  provider_model: qwen/qwen-2.5-72b-instruct
+  model_entry_id: old-54-qwen2-5-72b-instruct
+  model_setting_key: openrouter-qwen-qwen-2-5-72b-instruct:87b706d378ff4673
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen2.5 7B Instruct'
+  inspect_model: openrouter/qwen/qwen-2.5-7b-instruct
+  provider_model: qwen/qwen-2.5-7b-instruct
+  model_entry_id: old-20-qwen-qwen2-5-7b-instruct
+  model_setting_key: openrouter-qwen-qwen-2-5-7b-instruct:6a575fb4a06fb077
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen-Plus'
+  inspect_model: openrouter/qwen/qwen-plus
+  provider_model: qwen/qwen-plus
+  model_entry_id: old-71-qwen-qwen-plus
+  model_setting_key: openrouter-qwen-qwen-plus:20f17aa0cfaad72b
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen Plus 0728'
+  inspect_model: openrouter/qwen/qwen-plus-2025-07-28
+  provider_model: qwen/qwen-plus-2025-07-28
+  model_entry_id: old-72-qwen-qwen-plus-0728
+  model_setting_key: openrouter-qwen-qwen-plus-2025-07-28:a3e07f4ff6e6f9ab
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen2.5 VL 72B Instruct'
+  inspect_model: openrouter/qwen/qwen2.5-vl-72b-instruct
+  provider_model: qwen/qwen2.5-vl-72b-instruct
+  model_entry_id: old-128-qwen-qwen2-5-vl-72b-instruct
+  model_setting_key: openrouter-qwen-qwen2-5-vl-72b-instruct:cd19bff8789e443e
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 14B'
+  inspect_model: openrouter/qwen/qwen3-14b
+  provider_model: qwen/qwen3-14b
+  model_entry_id: old-38-qwen-qwen3-14b
+  model_setting_key: openrouter-qwen-qwen3-14b:507ddf465346b833
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 235B A22B'
+  inspect_model: openrouter/qwen/qwen3-235b-a22b
+  provider_model: qwen/qwen3-235b-a22b
+  model_entry_id: old-95-qwen-qwen3-235b-a22b
+  model_setting_key: openrouter-qwen-qwen3-235b-a22b:3be70a482cfc6792
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 235B A22B Instruct 2507'
+  inspect_model: openrouter/qwen/qwen3-235b-a22b-2507
+  provider_model: qwen/qwen3-235b-a22b-2507
+  model_entry_id: old-22-qwen-qwen3-235b-a22b-instruct-2507
+  model_setting_key: openrouter-qwen-qwen3-235b-a22b-2507:a73162d85f53940a
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 235B A22B Thinking 2507'
+  inspect_model: openrouter/qwen/qwen3-235b-a22b-thinking-2507
+  provider_model: qwen/qwen3-235b-a22b-thinking-2507
+  model_entry_id: old-23-qwen-qwen3-235b-a22b-thinking-2507
+  model_setting_key: openrouter-qwen-qwen3-235b-a22b-thinking-2507:cf06140e8130825b
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 30B A3B'
+  inspect_model: openrouter/qwen/qwen3-30b-a3b
+  provider_model: qwen/qwen3-30b-a3b
+  model_entry_id: old-60-qwen-qwen3-30b-a3b
+  model_setting_key: openrouter-qwen-qwen3-30b-a3b:2b8b02db17172ab5
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 30B A3B Instruct 2507'
+  inspect_model: openrouter/qwen/qwen3-30b-a3b-instruct-2507
+  provider_model: qwen/qwen3-30b-a3b-instruct-2507
+  model_entry_id: old-33-qwen-qwen3-30b-a3b-instruct-2507
+  model_setting_key: openrouter-qwen-qwen3-30b-a3b-instruct-2507:02bdc14cbc25b0fb
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 30B A3B Thinking 2507'
+  inspect_model: openrouter/qwen/qwen3-30b-a3b-thinking-2507
+  provider_model: qwen/qwen3-30b-a3b-thinking-2507
+  model_entry_id: old-51-qwen-qwen3-30b-a3b-thinking-2507
+  model_setting_key: openrouter-qwen-qwen3-30b-a3b-thinking-2507:e4eb0f3e19dab2db
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 32B'
+  inspect_model: openrouter/qwen/qwen3-32b
+  provider_model: qwen/qwen3-32b
+  model_entry_id: old-40-qwen-qwen3-32b
+  model_setting_key: openrouter-qwen-qwen3-32b:7ebd1a5371e17f4c
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 8B'
+  inspect_model: openrouter/qwen/qwen3-8b
+  provider_model: qwen/qwen3-8b
+  model_entry_id: old-49-qwen-qwen3-8b
+  model_setting_key: openrouter-qwen-qwen3-8b:8ce70b1faac526ab
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 Coder 480B A35B'
+  inspect_model: openrouter/qwen/qwen3-coder
+  provider_model: qwen/qwen3-coder
+  model_entry_id: old-94-qwen-qwen3-coder-480b-a35b
+  model_setting_key: openrouter-qwen-qwen3-coder:68350b2ac144c8cc
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 Coder 30B A3B Instruct'
+  inspect_model: openrouter/qwen/qwen3-coder-30b-a3b-instruct
+  provider_model: qwen/qwen3-coder-30b-a3b-instruct
+  model_entry_id: old-39-qwen-qwen3-coder-30b-a3b-instruct
+  model_setting_key: openrouter-qwen-qwen3-coder-30b-a3b-instruct:4428e26bb9a479e2
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 Coder Flash'
+  inspect_model: openrouter/qwen/qwen3-coder-flash
+  provider_model: qwen/qwen3-coder-flash
+  model_entry_id: old-82-qwen-qwen3-coder-flash
+  model_setting_key: openrouter-qwen-qwen3-coder-flash:61e4bcf413d2a0e9
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 Coder Next'
+  inspect_model: openrouter/qwen/qwen3-coder-next
+  provider_model: qwen/qwen3-coder-next
+  model_entry_id: old-74-qwen-qwen3-coder-next
+  model_setting_key: openrouter-qwen-qwen3-coder-next:0458c1f3e46a7bac
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 Coder Plus'
+  inspect_model: openrouter/qwen/qwen3-coder-plus
+  provider_model: qwen/qwen3-coder-plus
+  model_entry_id: old-160-qwen-qwen3-coder-plus
+  model_setting_key: openrouter-qwen-qwen3-coder-plus:546e054b53b26313
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 Max'
+  inspect_model: openrouter/qwen/qwen3-max
+  provider_model: qwen/qwen3-max
+  model_entry_id: old-165-qwen-qwen3-max
+  model_setting_key: openrouter-qwen-qwen3-max:1e8ff07e8dbdfa5d
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: Qwen3 Next 80B A3B Instruct
+  inspect_model: openrouter/qwen/qwen3-next-80b-a3b-instruct
+  provider_model: qwen/qwen3-next-80b-a3b-instruct
+  model_entry_id: old-12-qwen3-next-80b-a3b-instruct
+  model_setting_key: openrouter-qwen-qwen3-next-80b-a3b-instruct:cc6d43c133aeda5d
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 Next 80B A3B Thinking'
+  inspect_model: openrouter/qwen/qwen3-next-80b-a3b-thinking
+  provider_model: qwen/qwen3-next-80b-a3b-thinking
+  model_entry_id: old-70-qwen-qwen3-next-80b-a3b-thinking
+  model_setting_key: openrouter-qwen-qwen3-next-80b-a3b-thinking:8eaa0476d08b898a
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 VL 235B A22B Instruct'
+  inspect_model: openrouter/qwen/qwen3-vl-235b-a22b-instruct
+  provider_model: qwen/qwen3-vl-235b-a22b-instruct
+  model_entry_id: old-129-qwen-qwen3-vl-235b-a22b-instruct
+  model_setting_key: openrouter-qwen-qwen3-vl-235b-a22b-instruct:e37c7e2239371f2b
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 VL 235B A22B Thinking'
+  inspect_model: openrouter/qwen/qwen3-vl-235b-a22b-thinking
+  provider_model: qwen/qwen3-vl-235b-a22b-thinking
+  model_entry_id: old-156-qwen-qwen3-vl-235b-a22b-thinking
+  model_setting_key: openrouter-qwen-qwen3-vl-235b-a22b-thinking:aa80639d6ff0acd9
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 VL 30B A3B Instruct'
+  inspect_model: openrouter/qwen/qwen3-vl-30b-a3b-instruct
+  provider_model: qwen/qwen3-vl-30b-a3b-instruct
+  model_entry_id: old-121-qwen-qwen3-vl-30b-a3b-instruct
+  model_setting_key: openrouter-qwen-qwen3-vl-30b-a3b-instruct:e564f1efb8773685
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 VL 30B A3B Thinking'
+  inspect_model: openrouter/qwen/qwen3-vl-30b-a3b-thinking
+  provider_model: qwen/qwen3-vl-30b-a3b-thinking
+  model_entry_id: old-140-qwen-qwen3-vl-30b-a3b-thinking
+  model_setting_key: openrouter-qwen-qwen3-vl-30b-a3b-thinking:4caf0324c3d4e66e
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 VL 8B Instruct'
+  inspect_model: openrouter/qwen/qwen3-vl-8b-instruct
+  provider_model: qwen/qwen3-vl-8b-instruct
+  model_entry_id: old-120-qwen-qwen3-vl-8b-instruct
+  model_setting_key: openrouter-qwen-qwen3-vl-8b-instruct:c27dcd3d5c987786
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3 VL 8B Thinking'
+  inspect_model: openrouter/qwen/qwen3-vl-8b-thinking
+  provider_model: qwen/qwen3-vl-8b-thinking
+  model_entry_id: old-137-qwen-qwen3-vl-8b-thinking
+  model_setting_key: openrouter-qwen-qwen3-vl-8b-thinking:009b0eba520c05b5
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5-122B-A10B'
+  inspect_model: openrouter/qwen/qwen3.5-122b-a10b
+  provider_model: qwen/qwen3.5-122b-a10b
+  model_entry_id: old-149-qwen-qwen3-5-122b-a10b
+  model_setting_key: openrouter-qwen-qwen3-5-122b-a10b:a5c631edf9d86b01
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5-27B'
+  inspect_model: openrouter/qwen/qwen3.5-27b
+  provider_model: qwen/qwen3.5-27b
+  model_entry_id: old-142-qwen-qwen3-5-27b
+  model_setting_key: openrouter-qwen-qwen3-5-27b:f19782de7da36de9
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5-35B-A3B'
+  inspect_model: openrouter/qwen/qwen3.5-35b-a3b
+  provider_model: qwen/qwen3.5-35b-a3b
+  model_entry_id: old-131-qwen-qwen3-5-35b-a3b
+  model_setting_key: openrouter-qwen-qwen3-5-35b-a3b:ffdf97945c4a9581
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5 397B A17B'
+  inspect_model: openrouter/qwen/qwen3.5-397b-a17b
+  provider_model: qwen/qwen3.5-397b-a17b
+  model_entry_id: old-154-qwen-qwen3-5-397b-a17b
+  model_setting_key: openrouter-qwen-qwen3-5-397b-a17b:05055c3ab4e8affa
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5-9B'
+  inspect_model: openrouter/qwen/qwen3.5-9b
+  provider_model: qwen/qwen3.5-9b
+  model_entry_id: old-102-qwen-qwen3-5-9b
+  model_setting_key: openrouter-qwen-qwen3-5-9b:b064b612f84f8582
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5-Flash'
+  inspect_model: openrouter/qwen/qwen3.5-flash-02-23
+  provider_model: qwen/qwen3.5-flash-02-23
+  model_entry_id: old-109-qwen-qwen3-5-flash
+  model_setting_key: openrouter-qwen-qwen3-5-flash-02-23:e5fb023743e125c9
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5 Plus 2026-02-15'
+  inspect_model: openrouter/qwen/qwen3.5-plus-02-15
+  provider_model: qwen/qwen3.5-plus-02-15
+  model_entry_id: old-143-qwen-qwen3-5-plus-2026-02-15
+  model_setting_key: openrouter-qwen-qwen3-5-plus-02-15:d923a907f53df628
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.5 Plus 2026-04-20'
+  inspect_model: openrouter/qwen/qwen3.5-plus-20260420
+  provider_model: qwen/qwen3.5-plus-20260420
+  model_entry_id: old-145-qwen-qwen3-5-plus-2026-04-20
+  model_setting_key: openrouter-qwen-qwen3-5-plus-20260420:1e13d1aa80a85317
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.6 27B'
+  inspect_model: openrouter/qwen/qwen3.6-27b
+  provider_model: qwen/qwen3.6-27b
+  model_entry_id: old-158-qwen-qwen3-6-27b
+  model_setting_key: openrouter-qwen-qwen3-6-27b:7ba87ea7be4efd94
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.6 35B A3B'
+  inspect_model: openrouter/qwen/qwen3.6-35b-a3b
+  provider_model: qwen/qwen3.6-35b-a3b
+  model_entry_id: old-130-qwen-qwen3-6-35b-a3b
+  model_setting_key: openrouter-qwen-qwen3-6-35b-a3b:a97f1819a5b2d504
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.6 35B A3B low_budget_512'
+  inspect_model: openrouter/qwen/qwen3.6-35b-a3b
+  provider_model: qwen/qwen3.6-35b-a3b
+  model_entry_id: old-196-qwen-qwen3-6-35b-a3b-low-budget-512
+  model_setting_key: openrouter-qwen-qwen3-6-35b-a3b:42b609ed25232404
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.6 Flash'
+  inspect_model: openrouter/qwen/qwen3.6-flash
+  provider_model: qwen/qwen3.6-flash
+  model_entry_id: old-135-qwen-qwen3-6-flash
+  model_setting_key: openrouter-qwen-qwen3-6-flash:a1358eb2d56784b5
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.6 Flash low_budget_512'
+  inspect_model: openrouter/qwen/qwen3.6-flash
+  provider_model: qwen/qwen3.6-flash
+  model_entry_id: old-198-qwen-qwen3-6-flash-low-budget-512
+  model_setting_key: openrouter-qwen-qwen3-6-flash:5c1e4a5be08b97af
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.6 Max Preview'
+  inspect_model: openrouter/qwen/qwen3.6-max-preview
+  provider_model: qwen/qwen3.6-max-preview
+  model_entry_id: old-171-qwen-qwen3-6-max-preview
+  model_setting_key: openrouter-qwen-qwen3-6-max-preview:57df20013ebd6c40
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: 'Qwen: Qwen3.6 Plus'
+  inspect_model: openrouter/qwen/qwen3.6-plus
+  provider_model: qwen/qwen3.6-plus
+  model_entry_id: old-147-qwen-qwen3-6-plus
+  model_setting_key: openrouter-qwen-qwen3-6-plus:7e7647c87639a1e5
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Qwen: Qwen3.7 Max'
+  inspect_model: openrouter/qwen/qwen3.7-max
+  provider_model: qwen/qwen3.7-max
+  model_entry_id: old-166-qwen-qwen3-7-max
+  model_setting_key: openrouter-qwen-qwen3-7-max:890c68a827465ce8
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: OpenRouter x-ai/grok-4.20 disabled
+  inspect_model: openrouter/x-ai/grok-4.20
+  provider_model: x-ai/grok-4.20
+  model_entry_id: manual-20260612-x-ai-grok-4-20-disabled
+  model_setting_key: openrouter-x-ai-grok-4-20:e6a5f536cc542e85
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: OpenRouter x-ai/grok-4.20 low
+  inspect_model: openrouter/x-ai/grok-4.20
+  provider_model: x-ai/grok-4.20
+  model_entry_id: manual-20260612-x-ai-grok-4-20-low
+  model_setting_key: openrouter-x-ai-grok-4-20:f37d9562b6a0376b
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter x-ai/grok-4.20 medium
+  inspect_model: openrouter/x-ai/grok-4.20
+  provider_model: x-ai/grok-4.20
+  model_entry_id: manual-20260612-x-ai-grok-4-20-medium
+  model_setting_key: openrouter-x-ai-grok-4-20:1e31465139293a58
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter x-ai/grok-4.20 high
+  inspect_model: openrouter/x-ai/grok-4.20
+  provider_model: x-ai/grok-4.20
+  model_entry_id: manual-20260612-x-ai-grok-4-20-high
+  model_setting_key: openrouter-x-ai-grok-4-20:7705f62da199a888
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter x-ai/grok-4.20 xhigh
+  inspect_model: openrouter/x-ai/grok-4.20
+  provider_model: x-ai/grok-4.20
+  model_entry_id: manual-20260612-x-ai-grok-4-20-xhigh
+  model_setting_key: openrouter-x-ai-grok-4-20:8d7e56197d320b96
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenRouter x-ai/grok-4.3 disabled
+  inspect_model: openrouter/x-ai/grok-4.3
+  provider_model: x-ai/grok-4.3
+  model_entry_id: manual-20260612-x-ai-grok-4-3-disabled
+  model_setting_key: openrouter-x-ai-grok-4-3:3d68573347f7526b
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: OpenRouter x-ai/grok-4.3 low
+  inspect_model: openrouter/x-ai/grok-4.3
+  provider_model: x-ai/grok-4.3
+  model_entry_id: manual-20260612-x-ai-grok-4-3-low
+  model_setting_key: openrouter-x-ai-grok-4-3:e5ecc692e52c2249
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter x-ai/grok-4.3 medium
+  inspect_model: openrouter/x-ai/grok-4.3
+  provider_model: x-ai/grok-4.3
+  model_entry_id: manual-20260612-x-ai-grok-4-3-medium
+  model_setting_key: openrouter-x-ai-grok-4-3:24512969e6a3d83f
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter x-ai/grok-4.3 high
+  inspect_model: openrouter/x-ai/grok-4.3
+  provider_model: x-ai/grok-4.3
+  model_entry_id: manual-20260612-x-ai-grok-4-3-high
+  model_setting_key: openrouter-x-ai-grok-4-3:46ecbf4254ba5a8f
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter x-ai/grok-4.3 xhigh
+  inspect_model: openrouter/x-ai/grok-4.3
+  provider_model: x-ai/grok-4.3
+  model_entry_id: manual-20260612-x-ai-grok-4-3-xhigh
+  model_setting_key: openrouter-x-ai-grok-4-3:57b60814859ed41b
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Grok Build 0.1
+  inspect_model: grok/grok-build-0.1
+  provider_model: x-ai/grok-build-0.1
+  model_entry_id: old-157-grok-build-0-1
+  model_setting_key: grok-grok-build-0-1:79c4f8d473e2034c
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter x-ai/grok-build-0.1 low
+  inspect_model: openrouter/x-ai/grok-build-0.1
+  provider_model: x-ai/grok-build-0.1
+  model_entry_id: manual-20260612-x-ai-grok-build-0-1-low
+  model_setting_key: openrouter-x-ai-grok-build-0-1:9c36d43605dd01be
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenRouter x-ai/grok-build-0.1 medium
+  inspect_model: openrouter/x-ai/grok-build-0.1
+  provider_model: x-ai/grok-build-0.1
+  model_entry_id: manual-20260612-x-ai-grok-build-0-1-medium
+  model_setting_key: openrouter-x-ai-grok-build-0-1:8ac994c3683d90bf
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenRouter x-ai/grok-build-0.1 high
+  inspect_model: openrouter/x-ai/grok-build-0.1
+  provider_model: x-ai/grok-build-0.1
+  model_entry_id: manual-20260612-x-ai-grok-build-0-1-high
+  model_setting_key: openrouter-x-ai-grok-build-0-1:57c906fc476bc122
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenRouter x-ai/grok-build-0.1 xhigh
+  inspect_model: openrouter/x-ai/grok-build-0.1
+  provider_model: x-ai/grok-build-0.1
+  model_entry_id: manual-20260612-x-ai-grok-build-0-1-xhigh
+  model_setting_key: openrouter-x-ai-grok-build-0-1:c3c1015a3a74418d
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenRouter z-ai/glm-4.5 disabled
+  inspect_model: openrouter/z-ai/glm-4.5
+  provider_model: z-ai/glm-4.5
+  model_entry_id: manual-20260612-z-ai-glm-4-5-disabled
+  model_setting_key: openrouter-z-ai-glm-4-5:26fab80f711b5975
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 4.5'
+  inspect_model: openrouter/z-ai/glm-4.5
+  provider_model: z-ai/glm-4.5
+  model_entry_id: old-97-z-ai-glm-4-5
+  model_setting_key: openrouter-z-ai-glm-4-5:0a91244bc8ccbbf7
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter z-ai/glm-4.5-air disabled
+  inspect_model: openrouter/z-ai/glm-4.5-air
+  provider_model: z-ai/glm-4.5-air
+  model_entry_id: manual-20260612-z-ai-glm-4-5-air-disabled
+  model_setting_key: openrouter-z-ai-glm-4-5-air:18243281d93db521
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 4.5 Air'
+  inspect_model: openrouter/z-ai/glm-4.5-air
+  provider_model: z-ai/glm-4.5-air
+  model_entry_id: old-77-z-ai-glm-4-5-air
+  model_setting_key: openrouter-z-ai-glm-4-5-air:10026bd61e7a017e
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Z.ai: GLM 4.5V'
+  inspect_model: openrouter/z-ai/glm-4.5v
+  provider_model: z-ai/glm-4.5v
+  model_entry_id: old-152-z-ai-glm-4-5v
+  model_setting_key: openrouter-z-ai-glm-4-5v:63eb3e1568e50723
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter z-ai/glm-4.6 disabled
+  inspect_model: openrouter/z-ai/glm-4.6
+  provider_model: z-ai/glm-4.6
+  model_entry_id: manual-20260612-z-ai-glm-4-6-disabled
+  model_setting_key: openrouter-z-ai-glm-4-6:b02c0a7a0e420d55
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 4.6'
+  inspect_model: openrouter/z-ai/glm-4.6
+  provider_model: z-ai/glm-4.6
+  model_entry_id: old-92-z-ai-glm-4-6
+  model_setting_key: openrouter-z-ai-glm-4-6:e6388d9423f0eb30
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: 'Z.ai: GLM 4.6V'
+  inspect_model: openrouter/z-ai/glm-4.6v
+  provider_model: z-ai/glm-4.6v
+  model_entry_id: old-132-z-ai-glm-4-6v
+  model_setting_key: openrouter-z-ai-glm-4-6v:80c6fbf18824d426
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter z-ai/glm-4.7 disabled
+  inspect_model: openrouter/z-ai/glm-4.7
+  provider_model: z-ai/glm-4.7
+  model_entry_id: manual-20260612-z-ai-glm-4-7-disabled
+  model_setting_key: openrouter-z-ai-glm-4-7:2a4ac1a19b5a592f
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 4.7'
+  inspect_model: openrouter/z-ai/glm-4.7
+  provider_model: z-ai/glm-4.7
+  model_entry_id: old-93-z-ai-glm-4-7
+  model_setting_key: openrouter-z-ai-glm-4-7:11ca6c93654b1f18
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter z-ai/glm-4.7-flash disabled
+  inspect_model: openrouter/z-ai/glm-4.7-flash
+  provider_model: z-ai/glm-4.7-flash
+  model_entry_id: manual-20260612-z-ai-glm-4-7-flash-disabled
+  model_setting_key: openrouter-z-ai-glm-4-7-flash:67ecae91b623762e
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 4.7 Flash'
+  inspect_model: openrouter/z-ai/glm-4.7-flash
+  provider_model: z-ai/glm-4.7-flash
+  model_entry_id: old-50-z-ai-glm-4-7-flash
+  model_setting_key: openrouter-z-ai-glm-4-7-flash:4e8e1588f568bfd3
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter z-ai/glm-5 disabled
+  inspect_model: openrouter/z-ai/glm-5
+  provider_model: z-ai/glm-5
+  model_entry_id: manual-20260612-z-ai-glm-5-disabled
+  model_setting_key: openrouter-z-ai-glm-5:fbc5321a1d8d5a4f
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 5'
+  inspect_model: openrouter/z-ai/glm-5
+  provider_model: z-ai/glm-5
+  model_entry_id: old-96-z-ai-glm-5
+  model_setting_key: openrouter-z-ai-glm-5:e98575919c059bd2
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter z-ai/glm-5-turbo disabled
+  inspect_model: openrouter/z-ai/glm-5-turbo
+  provider_model: z-ai/glm-5-turbo
+  model_entry_id: manual-20260612-z-ai-glm-5-turbo-disabled
+  model_setting_key: openrouter-z-ai-glm-5-turbo:13e1957aa57cf0f2
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 5 Turbo'
+  inspect_model: openrouter/z-ai/glm-5-turbo
+  provider_model: z-ai/glm-5-turbo
+  model_entry_id: old-167-z-ai-glm-5-turbo
+  model_setting_key: openrouter-z-ai-glm-5-turbo:0060fdad6be415c1
+  profile: v0_2_public_aggregate
+  reasoning_effort: default
+- label: OpenRouter z-ai/glm-5.1 disabled
+  inspect_model: openrouter/z-ai/glm-5.1
+  provider_model: z-ai/glm-5.1
+  model_entry_id: manual-20260612-z-ai-glm-5-1-disabled
+  model_setting_key: openrouter-z-ai-glm-5-1:a8445a0b9f2c1e3c
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: 'Z.ai: GLM 5.1'
+  inspect_model: openrouter/z-ai/glm-5.1
+  provider_model: z-ai/glm-5.1
+  model_entry_id: old-162-z-ai-glm-5-1
+  model_setting_key: openrouter-z-ai-glm-5-1:ad3637f1d29ec6ac
+  profile: v0_2_public_aggregate
+  reasoning_effort: default

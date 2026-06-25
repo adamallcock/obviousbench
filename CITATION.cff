@@ -1,0 +1,20 @@
+# Public citation metadata for the ObviousBench v0.2 release.
+cff-version: 1.2.0
+message: "If you use ObviousBench, please cite the repository and archived release."
+title: "ObviousBench: Where Obvious Tasks Still Break Language Models"
+version: "0.2.0"
+date-released: "2026-06-18"
+authors:
+  - family-names: "Allcock"
+    given-names: "Adam"
+repository-code: "https://github.com/adamallcock/obviousbench"
+url: "https://obviousbench.com"
+license: "Apache-2.0"
+abstract: >-
+  ObviousBench is a compact benchmark for short prompts that should be easy for
+  a careful human but still produce visible failures in public-facing language
+  models.
+keywords:
+  - language-model-evaluation
+  - benchmark
+  - reliability

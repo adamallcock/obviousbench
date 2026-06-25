@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "obviousbench"
+version = "0.2.0"
+description = "A lightweight Inspect AI benchmark for obvious public-facing LLM failures."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = [
+  "anthropic>=0.105,<1",
+  "google-genai>=1.53,<2",
+  "inspect-ai>=0.3.231",
+  "openai>=2.38,<3",
+  "pydantic>=2.13,<3",
+  "pyyaml>=6.0.3",
+  "xai_sdk>=1.15,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4",
+  "ruff>=0.15",
+]
+
+[project.scripts]
+obviousbench = "obviousbench.cli:main"
+
+[project.entry-points.inspect_ai]
+obviousbench = "obviousbench._registry"
+
+[tool.setuptools.packages.find]
+include = ["obviousbench*"]
+
+[tool.pytest.ini_options]
+markers = [
+  "provider: tests that call external model providers",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

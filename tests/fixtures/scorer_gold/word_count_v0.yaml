@@ -1,0 +1,121 @@
+examples:
+  - id: word_count.digit.correct
+    scorer: word_count_v0
+    target: "5"
+    output: "5"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "5", failure_type: none}
+    notes: Exact count digit is accepted.
+  - id: word_count.whitespace.correct
+    scorer: word_count_v0
+    target: "5"
+    output: " 5\n"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "5", failure_type: none}
+    notes: Whitespace around a count is ignored.
+  - id: word_count.sentence_wrapper.correct
+    scorer: word_count_v0
+    target: "5"
+    output: "There are 5 words."
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "5", failure_type: none}
+    notes: Non-strict word-count tasks tolerate a short sentence wrapper.
+  - id: word_count.number_word.correct
+    scorer: word_count_v0
+    target: "5"
+    output: "five"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "5", failure_type: none}
+    notes: Supported number words are accepted.
+  - id: word_count.unit_suffix.correct
+    scorer: word_count_v0
+    target: "5"
+    output: "5 words"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "5", failure_type: none}
+    notes: Unit suffix text without another number is accepted.
+  - id: word_count.leading_match_with_explanation.verbose
+    scorer: word_count_v0
+    target: "5"
+    output: "5\nindices 1 and 2"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "5", failure_type: verbose_noncompliance}
+    notes: Leading correct count with extra numbers is answer-correct but verbose.
+  - id: word_count.wrong_digit.incorrect
+    scorer: word_count_v0
+    target: "5"
+    output: "4"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "4", failure_type: list_count_error}
+    notes: Word-count remaps wrong integer counts to list_count_error.
+  - id: word_count.wrong_word.incorrect
+    scorer: word_count_v0
+    target: "5"
+    output: "four"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "4", failure_type: list_count_error}
+    notes: Wrong number words are extracted and remapped to list_count_error.
+  - id: word_count.conflicting_numbers.ambiguous
+    scorer: word_count_v0
+    target: "5"
+    output: "4 or 5"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: ambiguous_output}
+    notes: Multiple incompatible numbers are ambiguous.
+  - id: word_count.empty.non_answer
+    scorer: word_count_v0
+    target: "5"
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty output is a non-answer.
+  - id: word_count.no_number.non_answer
+    scorer: word_count_v0
+    target: "5"
+    output: "No answer"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Text without a numeric candidate is a non-answer.
+  - id: word_count.twenty_word.correct
+    scorer: word_count_v0
+    target: "20"
+    output: "twenty"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "20", failure_type: none}
+    notes: Twenty is the largest supported number word.
+  - id: word_count.above_word_range.incorrect
+    scorer: word_count_v0
+    target: "20"
+    output: "21"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "21", failure_type: list_count_error}
+    notes: Wrong digit counts above the word range are extracted.
+  - id: word_count.negative_digit.correct
+    scorer: word_count_v0
+    target: "-1"
+    output: "-1"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "-1", failure_type: none}
+    notes: Signed digit counts are accepted by the shared integer extractor.
+  - id: word_count.negative_word.non_answer
+    scorer: word_count_v0
+    target: "-1"
+    output: "minus one"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "1", failure_type: list_count_error}
+    notes: Signed number words are extracted as unsigned values and remapped to list_count_error.
+  - id: word_count.leading_zero.incorrect
+    scorer: word_count_v0
+    target: "5"
+    output: "05"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "05", failure_type: list_count_error}
+    notes: Word-count integer comparison does not normalize leading zeroes.
+  - id: word_count.same_digit_and_word.correct
+    scorer: word_count_v0
+    target: "5"
+    output: "5 or five"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "5", failure_type: none}
+    notes: Repeating the same numeric value is not ambiguous.
+  - id: word_count.leading_count_with_confidence.verbose
+    scorer: word_count_v0
+    target: "5"
+    output: "5, confidence 90"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "5", failure_type: verbose_noncompliance}
+    notes: Leading correct count with a confidence number is verbose noncompliance.
+  - id: word_count.wrong_number_word.incorrect
+    scorer: word_count_v0
+    target: "5"
+    output: "six words"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "6", failure_type: list_count_error}
+    notes: Wrong number word with unit text is a list count error.
+  - id: word_count.two_number_words.ambiguous
+    scorer: word_count_v0
+    target: "2"
+    output: "one two"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: ambiguous_output}
+    notes: Two different number words are ambiguous.

@@ -1,0 +1,121 @@
+examples:
+  - id: exact_integer.digit.correct
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "3"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Exact digit match is accepted.
+  - id: exact_integer.whitespace.correct
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "  3\n"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Harmless whitespace around a single integer is accepted.
+  - id: exact_integer.sentence_wrapper.correct
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "There are 3."
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Non-strict integer tasks tolerate a short sentence wrapper.
+  - id: exact_integer.number_word.correct
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "three"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Simple number words zero through twenty are accepted.
+  - id: exact_integer.unit_suffix.correct
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "3 items"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Unit suffix text without another number is accepted.
+  - id: exact_integer.count_phrase.correct
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "The count is 3 items."
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: A single matching integer can be buried in a short count phrase.
+  - id: exact_integer.leading_match_with_explanation.verbose
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "3\n\nPositions 1 and 2 contain the letter."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "3", failure_type: verbose_noncompliance}
+    notes: Leading correct integer wins answer correctness but extra numbers make format noncompliant.
+  - id: exact_integer.same_digit_and_word.correct
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "3 or three"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3", failure_type: none}
+    notes: Repeating the same numeric value is not ambiguous.
+  - id: exact_integer.wrong_digit.incorrect
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "2"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "2", failure_type: incorrect_count}
+    notes: A clean but wrong integer is an incorrect count.
+  - id: exact_integer.wrong_number_word.incorrect
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "two"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "2", failure_type: incorrect_count}
+    notes: Wrong number words are extracted and marked incorrect.
+  - id: exact_integer.conflicting_numbers.ambiguous
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "2 or 3"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: ambiguous_output}
+    notes: Multiple incompatible numbers are ambiguous when the leading one is not the target.
+  - id: exact_integer.word_conflict.ambiguous
+    scorer: exact_integer_extract_first_v0
+    target: "6"
+    output: "one d in four days"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: ambiguous_output}
+    notes: Multiple different number words are ambiguous.
+  - id: exact_integer.empty.non_answer
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty output is a non-answer.
+  - id: exact_integer.no_number.non_answer
+    scorer: exact_integer_extract_first_v0
+    target: "3"
+    output: "No idea"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Text with no integer candidate is a non-answer.
+  - id: exact_integer.negative_digit.correct
+    scorer: exact_integer_extract_first_v0
+    target: "-2"
+    output: "-2"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "-2", failure_type: none}
+    notes: Signed digit integers are accepted.
+  - id: exact_integer.negative_word.non_answer
+    scorer: exact_integer_extract_first_v0
+    target: "-2"
+    output: "minus two"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "2", failure_type: incorrect_count}
+    notes: Signed number words are extracted as their unsigned value.
+  - id: exact_integer.above_word_range.incorrect
+    scorer: exact_integer_extract_first_v0
+    target: "20"
+    output: "21"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "21", failure_type: incorrect_count}
+    notes: Numeric digits above the word range are still extracted.
+  - id: exact_integer.twenty_word.correct
+    scorer: exact_integer_extract_first_v0
+    target: "20"
+    output: "twenty"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "20", failure_type: none}
+    notes: Twenty is the highest supported number word.
+  - id: exact_integer.leading_zero.incorrect
+    scorer: exact_integer_extract_first_v0
+    target: "20"
+    output: "020"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "020", failure_type: incorrect_count}
+    notes: Integer string comparison does not normalize leading zeroes.
+  - id: exact_integer.leading_large_with_confidence.verbose
+    scorer: exact_integer_extract_first_v0
+    target: "210"
+    output: "210\n\n\\confidence{90}"
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "210", failure_type: verbose_noncompliance}
+    notes: Leading correct answer with a conflicting confidence number is answer-correct but not strict.

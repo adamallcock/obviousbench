@@ -1,0 +1,3 @@
+model_base,barrage_profile,reasoning_summary,effort_order,reasoning_effort,accuracy,strict_accuracy,total_tokens,reasoning_tokens,estimated_cost_usd,accuracy_delta_from_min_effort,token_delta_from_min_effort,cost_delta_from_min_effort,efficiency_warning
+provider/verbose-model,balanced_8x10,reasoning-visible,2,medium,0.875,0.775,7600,3600,0.071,0,5600,0.055,higher_cost_no_accuracy_gain
+provider/flaky-model,balanced_8x10,provider-retry,1,low,0.75,0.71875,2200,200,0.0095,0,0,0,

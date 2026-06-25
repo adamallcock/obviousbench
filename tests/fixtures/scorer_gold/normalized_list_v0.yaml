@@ -1,0 +1,121 @@
+examples:
+  - id: normalized_list.comma.correct
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "a, b, c"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "a, b, c", failure_type: none}
+    notes: Comma-separated list in target order is accepted.
+  - id: normalized_list.whitespace.correct
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "  a, b, c\n"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "a, b, c", failure_type: none}
+    notes: Outer whitespace is ignored.
+  - id: normalized_list.bracketed_letters.correct
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "[a,b,c]"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "a, b, c", failure_type: none}
+    notes: Bracketed arrays are accepted for non-strict list tasks.
+  - id: normalized_list.quoted_array.correct
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "[\"a\", \"b\", \"c\"]"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "a, b, c", failure_type: none}
+    notes: Quoted JSON-like array strings are normalized.
+  - id: normalized_list.casefold.correct
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "A, B, C"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "a, b, c", failure_type: none}
+    notes: List items are casefolded.
+  - id: normalized_list.decimals.correct
+    scorer: normalized_list_v0
+    target: "3.01, 3.1, 3.2"
+    output: "3.01,3.1, 3.2"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3.01, 3.1, 3.2", failure_type: none}
+    notes: Decimal list spacing is normalized.
+  - id: normalized_list.bracketed_decimal_order.correct
+    scorer: normalized_list_v0
+    target: "3.01, 3.1, 3.2"
+    output: "[3.01,3.1, 3.2]"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "3.01, 3.1, 3.2", failure_type: none}
+    notes: Observed regression guard for bracketed ordering answers.
+  - id: normalized_list.parenthesized.correct
+    scorer: normalized_list_v0
+    target: "north, east, south"
+    output: "(north, east, south)"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "north, east, south", failure_type: none}
+    notes: Parenthesized list wrappers are stripped.
+  - id: normalized_list.braced.correct
+    scorer: normalized_list_v0
+    target: "red, blue"
+    output: "{red, blue}"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "red, blue", failure_type: none}
+    notes: Braced list wrappers are stripped.
+  - id: normalized_list.space_separated.correct
+    scorer: normalized_list_v0
+    target: "alpha, beta, gamma"
+    output: "alpha beta gamma"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "alpha, beta, gamma", failure_type: none}
+    notes: Whitespace splitting is accepted when no commas are present.
+  - id: normalized_list.wrong_order.incorrect
+    scorer: normalized_list_v0
+    target: "3, 9, 12"
+    output: "9, 3, 12"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "9, 3, 12", failure_type: ordering_error}
+    notes: Wrong order is rejected.
+  - id: normalized_list.missing_item.incorrect
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "a, b"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "a, b", failure_type: ordering_error}
+    notes: Missing items are rejected as list mismatch.
+  - id: normalized_list.extra_item.incorrect
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "a, b, c, d"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "a, b, c, d", failure_type: ordering_error}
+    notes: Extra items are rejected as list mismatch.
+  - id: normalized_list.wrong_item.incorrect
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "a, x, c"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "a, x, c", failure_type: ordering_error}
+    notes: Wrong item values are rejected.
+  - id: normalized_list.empty.non_answer
+    scorer: normalized_list_v0
+    target: "a, b"
+    output: ""
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty list output is a non-answer.
+  - id: normalized_list.empty_brackets.non_answer
+    scorer: normalized_list_v0
+    target: "a, b"
+    output: "[]"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: null, failure_type: non_answer}
+    notes: Empty brackets produce no list items.
+  - id: normalized_list.semicolon.incorrect
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "a; b; c"
+    expected: {answer_correct: false, format_correct: true, strict_correct: false, extracted: "a;, b;, c", failure_type: ordering_error}
+    notes: Semicolons are not treated as separators.
+  - id: normalized_list.item_punctuation.incorrect
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "a, b, c."
+    expected: {answer_correct: true, format_correct: false, strict_correct: false, extracted: "a, b, c", failure_type: verbose_noncompliance}
+    notes: Terminal punctuation is answer-correct but not strict list format.
+  - id: normalized_list.empty_segment.correct
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "a,, b, c"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "a, b, c", failure_type: none}
+    notes: Empty comma segments are ignored by current normalization.
+  - id: normalized_list.single_quoted_items.correct
+    scorer: normalized_list_v0
+    target: "a, b, c"
+    output: "'a', 'b', 'c'"
+    expected: {answer_correct: true, format_correct: true, strict_correct: true, extracted: "a, b, c", failure_type: none}
+    notes: Matching single quotes around each item are stripped.
