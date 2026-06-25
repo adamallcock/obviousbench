@@ -81,6 +81,10 @@ REQUIRED_IGNORE_PATTERNS = (
 )
 
 REQUIRED_REPO_FILES = (
+    ".zenodo.json",
+    "CITATION.cff",
+    "LICENSE",
+    "LICENSE-DATA-DOCS.md",
     "README.md",
     "configs/README.md",
     "configs/releases/release_v0_2_0.yaml",
@@ -91,6 +95,7 @@ REQUIRED_REPO_FILES = (
     "docs/positioning/background-and-rhetoric.md",
     "docs/reference/benchmark-card.md",
     "docs/reference/methodology.md",
+    "docs/reference/public-release-surface.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/source-policy.md",
     "docs/reference/website.md",
@@ -101,11 +106,14 @@ REQUIRED_REPO_FILES = (
 )
 
 ACTIVE_TEXT_FILES = (
+    "CITATION.cff",
+    "LICENSE-DATA-DOCS.md",
     "README.md",
     "configs/README.md",
     "docs/positioning/background-and-rhetoric.md",
     "docs/reference/benchmark-card.md",
     "docs/reference/methodology.md",
+    "docs/reference/public-release-surface.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/source-policy.md",
     "docs/reference/website.md",
@@ -117,6 +125,7 @@ BANNED_ACTIVE_TEXT = (
     "docs/concepts",
     "docs/internal",
     "docs/superpowers/plans",
+    "paper_arxiv",
     "wrong_answer_review.html",
     "question_failure_review.html",
 )

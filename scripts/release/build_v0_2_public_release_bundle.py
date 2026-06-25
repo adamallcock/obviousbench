@@ -22,9 +22,14 @@ DEFAULT_CONFIG = ROOT / "configs/releases/release_v0_2_0.yaml"
 DEFAULT_OUT = ROOT / "dist/obviousbench-v0.2-public-local"
 
 SAFE_ROOT_DOCS = (
+    ".zenodo.json",
+    "CITATION.cff",
+    "LICENSE",
+    "LICENSE-DATA-DOCS.md",
     "README.md",
     "docs/reference/methodology.md",
     "docs/reference/benchmark-card.md",
+    "docs/reference/public-release-surface.md",
     "docs/reference/source-policy.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/website.md",

@@ -30,9 +30,14 @@ def _write_yaml(path: Path, payload: dict) -> None:
 
 def _root_docs(root: Path) -> None:
     for relative in (
+        ".zenodo.json",
+        "CITATION.cff",
+        "LICENSE",
+        "LICENSE-DATA-DOCS.md",
         "README.md",
         "docs/reference/methodology.md",
         "docs/reference/benchmark-card.md",
+        "docs/reference/public-release-surface.md",
         "docs/reference/source-policy.md",
         "docs/reference/scoring-policy.md",
         "docs/reference/website.md",

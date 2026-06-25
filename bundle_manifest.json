@@ -2,6 +2,10 @@
   "bundle": "obviousbench-v0.2-public-local",
   "generated_on": "2026-06-18",
   "included_files": [
+    ".zenodo.json",
+    "CITATION.cff",
+    "LICENSE",
+    "LICENSE-DATA-DOCS.md",
     "README.md",
     "bundle_manifest.json",
     "configs/model_panels/models_v0_2_public.yaml",
@@ -19,6 +23,7 @@
     "docs/positioning/background-and-rhetoric.md",
     "docs/reference/benchmark-card.md",
     "docs/reference/methodology.md",
+    "docs/reference/public-release-surface.md",
     "docs/reference/scoring-policy.md",
     "docs/reference/source-policy.md",
     "docs/reference/website.md",

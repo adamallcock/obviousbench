@@ -63,7 +63,7 @@ Run static checks:
 
 ```bash
 uv run --extra dev python -m ruff check .
-uv run --extra dev python -m compileall -q obviousbench
+uv run --extra dev python -m compileall -q obviousbench scripts
 ```
 
 Audit the public bundle:
@@ -97,7 +97,9 @@ diagnostically, but the public release emphasizes non-strict answer correctness
 because product-visible failure and format adherence are different signals.
 
 The launch site itself is not duplicated in this repository. See
-`docs/reference/website.md` for the public repo / website boundary.
+[`docs/reference/website.md`](docs/reference/website.md) and
+[`docs/reference/public-release-surface.md`](docs/reference/public-release-surface.md)
+for the public repo / website boundary.
 
 ## Website Boundary
 

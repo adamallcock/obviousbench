@@ -48,3 +48,7 @@ Recommended link pattern:
   license, and citation files.
 - GitHub links to [https://obviousbench.com](https://obviousbench.com) as the
   canonical narrative, interactive chart, and public explanation surface.
+
+See also
+[`docs/reference/public-release-surface.md`](public-release-surface.md) for the
+current public repository inclusion and exclusion record.
