@@ -2,15 +2,15 @@
 title: ObviousBench Background And Rhetoric
 date: 2026-06-16
 type: positioning
-status: draft
+status: current
 ---
 
 # ObviousBench Background And Rhetoric
 
 This is the hand-authored source for durable ObviousBench v0.2 positioning. It
-promotes the reusable language from earlier v0.1 launch drafts, the paused
-paper lane, the root build plan, and the generated v0.2 release surfaces while
-dropping stale v0.1 counts and paper-specific claims.
+keeps the reusable public story in one place so release surfaces can adapt it
+without reintroducing stale counts, private evidence, or unpublished research
+lanes.
 
 Generated release surfaces may adapt this language, but this file is the source
 to edit when the public story changes.
@@ -119,6 +119,7 @@ The v0.2 public story may include aggregate private results and public example
 questions. It must not include private held-out prompts, raw private outputs,
 item-level private outcomes, private review HTML, or raw attempt logs.
 
-Until public repository, dataset, and project URLs exist and the public bundle
-has been rebuilt and audited with those URLs, all v0.2 release copy remains
-local publication prep.
+The canonical public narrative and interactive results live at
+[https://obviousbench.com](https://obviousbench.com). The public repository is
+the source/data companion for public examples, aggregate CSVs, model metadata,
+reproducibility documentation, license, and citation files.

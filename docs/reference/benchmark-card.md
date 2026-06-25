@@ -1,6 +1,6 @@
 ---
 title: ObviousBench Benchmark Card
-date: 2026-06-15
+date: 2026-06-18
 type: reference
 status: current
 ---
@@ -12,10 +12,11 @@ systems. It focuses on short questions where the expected answer is obvious to
 a person and embarrassing when a model misses it.
 
 The current intended publication-prep snapshot is v0.2. The private v0.2
-headline evidence is aggregate-only: 144 held-out items, 300 model/config rows,
-294 complete rows, 129,600 attempted cells, and non-strict answer pass^3 as the
-primary metric. Private prompts, raw private completions, item-level private
-outcomes, and private review HTML remain out of public materials.
+headline evidence is aggregate-only: 144 held-out items, 293 complete
+model/config rows, 126,576 scored attempts, and non-strict answer pass^3 as the
+primary metric. Private prompts, raw private completions, provider logs,
+item-level private outcomes, and private review HTML remain out of public
+materials.
 
 ## What This Measures
 
@@ -36,10 +37,10 @@ Current intended publication-prep version: `v0.2`.
 Current private evidence shape:
 
 - 144 private held-out items.
-- 300 model/config rows.
-- 294 complete rows.
-- 129,600 attempted item/config/pass cells.
-- 128,172 scored attempts.
+- 293 complete model/config rows.
+- 126,576 attempted item/config/pass cells.
+- 126,576 scored attempts.
+- Estimated measured run cost: about $131.00.
 - Primary headline metric: non-strict answer pass^3.
 
 The strongest v0.2 model/config rows saturate or near-saturate the benchmark.
@@ -59,13 +60,20 @@ system prompt, and deterministic Python scorers.
 
 ## Shareable Proof Point
 
-The promoted snapshot uses an 80-sample balanced barrage with 10 samples from
-each of 8 task families. The tracked shareable bundle contains:
+The shareable public surface is aggregate-only. It contains:
 
-- `benchmark-card.md` for scope, headline metrics, and caveats.
-- `failure-gallery.md` for readable examples of observed misses.
-- `model-comparison.csv` and `family-comparison.csv` for compact metrics.
-- `model-matrix.yaml` for exact Inspect model strings.
+- [https://obviousbench.com](https://obviousbench.com) for the canonical public
+  narrative and interactive charts.
+- `data/public_examples/` for public example questions and contributor
+  orientation.
+- `configs/model_panels/models_v0_2_public.yaml` for the public v0.2
+  model/config panel.
+- `reports/v0_2/aggregate/summary.csv` for the public-safe aggregate result
+  table.
+- `reports/v0_2/aggregate/report.md` for the public-safe aggregate evidence
+  summary.
+- `docs/release/v0_2/generated/` for generated release notes, metadata, and
+  dataset-card drafts.
 
 Raw Inspect logs and provider payloads remain local and ignored by git.
 

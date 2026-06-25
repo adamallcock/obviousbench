@@ -20,7 +20,7 @@ def test_build_benchmark_site_uses_comparison_artifacts(tmp_path):
             comparison_dir=comparison_dir,
             output_dir=output_dir,
             generated_on="2026-06-14",
-            title="ObviousBench v0.1",
+            title="ObviousBench Example Site",
             report_href="../archive/reports/report.html",
         )
     )
@@ -36,7 +36,7 @@ def test_build_benchmark_site_uses_comparison_artifacts(tmp_path):
     assert leaderboard_rows[0]["display_label"] == (
         "Verbose Correct Model (thinking=medium/reasoning-visible)"
     )
-    assert "ObviousBench v0.1" in html
+    assert "ObviousBench Example Site" in html
     assert "Human-trivial reliability, made inspectable" in html
     assert "Model Frontier" in html
     assert "Failure Archetypes" in html

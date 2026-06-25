@@ -184,9 +184,9 @@ def test_model_panel_runner_translates_anthropic_adaptive_effort(tmp_path: Path)
 def test_generation_settings_enables_thinking_when_control_style_dropped():
     # Panels reconstructed from comparison/leaderboard CSVs lose control_style;
     # a bare anthropic effort entry must still translate to reasoning_effort so
-    # extended thinking is not silently disabled (the expand222 regression).
+    # extended thinking is not silently disabled in reconstructed release rows.
     entry = {
-        "id": "expand222-top-thinking-015-anthropic-claude-opus-4-8-max",
+        "id": "release-top-thinking-015-anthropic-claude-opus-4-8-max",
         "inspect_model": "anthropic/claude-opus-4-8",
         "control_style": None,
         "generation_settings": {"effort": "max", "max_tokens": 32840},
@@ -199,13 +199,13 @@ def test_generation_settings_enables_thinking_when_control_style_dropped():
 def test_select_entries_restores_anthropic_control_style_when_dropped():
     entries = [
         {
-            "id": "expand222-top-thinking-015-anthropic-claude-opus-4-8-max",
+            "id": "release-top-thinking-015-anthropic-claude-opus-4-8-max",
             "inspect_model": "anthropic/claude-opus-4-8",
             "generation_settings": {"effort": "max", "max_tokens": 32840},
             "run_status": "planned",
         },
         {
-            "id": "expand222-paper-anthropic-claude-sonnet-4-6",
+            "id": "release-smoke-anthropic-claude-sonnet-4-6",
             "inspect_model": "anthropic/claude-sonnet-4-6",
             "generation_settings": {"max_tokens": 64, "temperature": 0},
             "run_status": "planned",
@@ -223,7 +223,7 @@ def test_generation_settings_leaves_effortless_anthropic_default_thinking_off():
     # No-effort baseline entries (provider default) must stay thinking-off:
     # there is no effort to rename, so no reasoning_effort is added.
     entry = {
-        "id": "expand222-paper-anthropic-claude-sonnet-4-6",
+        "id": "release-smoke-anthropic-claude-sonnet-4-6",
         "inspect_model": "anthropic/claude-sonnet-4-6",
         "control_style": None,
         "generation_settings": {"max_tokens": 64, "temperature": 0},

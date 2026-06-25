@@ -1,6 +1,6 @@
 ---
 title: ObviousBench Methodology
-date: 2026-06-15
+date: 2026-06-18
 type: reference
 status: current
 ---
@@ -40,6 +40,11 @@ itself. Public release surfaces may include aggregate private results and public
 example questions, but must not include private held-out prompts, raw private
 completions, item-level private outcomes, private review HTML, or raw attempt
 logs.
+
+The public website is the narrative and interactive chart surface. The public
+repository is the code/data/reproducibility companion: public examples, scoring
+code, model metadata, aggregate CSVs, release metadata, license, and citation
+files.
 
 Primary metric:
 

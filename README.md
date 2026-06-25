@@ -8,6 +8,10 @@ public narrative, interactive results, and chart surface for the v0.2 release.
 This repository is the source, public examples, release data, and reproducible
 code companion to that site.
 
+**Public data:** the website should link back to this repository for public
+examples, release metadata, and aggregate CSVs such as
+[`reports/v0_2/aggregate/summary.csv`](reports/v0_2/aggregate/summary.csv).
+
 The public repository contains the runnable benchmark code, public examples,
 model metadata, scoring logic, release aggregate results, and documentation
 needed to inspect the public release surface. It intentionally does not include
@@ -70,6 +74,13 @@ uv run --extra dev python scripts/release/check_repo_hygiene.py
 The most readable public results are on the launch site:
 
 - [https://obviousbench.com](https://obviousbench.com)
+
+This repository is the stable public source for the files the website can cite:
+
+- [`data/public_examples/`](data/public_examples/)
+- [`configs/model_panels/models_v0_2_public.yaml`](configs/model_panels/models_v0_2_public.yaml)
+- [`reports/v0_2/aggregate/summary.csv`](reports/v0_2/aggregate/summary.csv)
+- [`reports/v0_2/aggregate/report.md`](reports/v0_2/aggregate/report.md)
 
 The v0.2 public aggregate release data lives in:
 

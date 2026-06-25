@@ -430,7 +430,7 @@ def test_cli_build_site_passes_paths(monkeypatch, tmp_path, capsys):
             "--generated-on",
             "2026-06-14",
             "--title",
-            "ObviousBench v0.1",
+            "ObviousBench Example Site",
             "--report-href",
             "../archive/reports/report.html",
         ]
@@ -440,7 +440,7 @@ def test_cli_build_site_passes_paths(monkeypatch, tmp_path, capsys):
     assert calls["comparison_dir"].as_posix() == "results/summaries/comparison"
     assert calls["output_dir"] == tmp_path / "site"
     assert calls["generated_on"] == "2026-06-14"
-    assert calls["title"] == "ObviousBench v0.1"
+    assert calls["title"] == "ObviousBench Example Site"
     assert calls["report_href"] == "../archive/reports/report.html"
     assert "index.html" in capsys.readouterr().out
 
