@@ -1,9 +1,9 @@
 {
-  "attempt_rows": 130032,
-  "complete_model_setting_rows": 301,
-  "estimated_cost_usd": 135.583609,
+  "attempt_rows": 132192,
+  "complete_model_setting_rows": 306,
+  "estimated_cost_usd": 140.990029,
   "generated_on": "2026-07-01",
-  "model_setting_rows": 301,
+  "model_setting_rows": 306,
   "primary_metric": "non-strict answer pass^3",
   "public_links": {
     "launch_site": "https://obviousbench.com",
