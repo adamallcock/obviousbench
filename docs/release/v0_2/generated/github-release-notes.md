@@ -4,7 +4,7 @@
 
 - Source config: `configs/releases/release_v0_2_0.yaml`
 - Generator: `uv run --extra dev python scripts/release/build_v0_2_release_assets.py --config configs/releases/release_v0_2_0.yaml`
-- Release date: `2026-06-18`
+- Release date: `2026-07-01`
 - Status: `local-publication-prep`
 - Public/private boundary: excludes private held-out prompts, raw outputs,
   item-level private outcomes, private review HTML, and attempt-level outcomes.
@@ -46,11 +46,11 @@ the top end.
 | Metric | Value |
 |---|---|
 | Private held-out items | 144 |
-| Model/config rows | 293 |
-| Included headline rows | 293 |
-| Attempt rows | 126576 |
-| Scored attempts | 126576 |
-| Estimated cost | $131.00 |
+| Model/config rows | 301 |
+| Included headline rows | 301 |
+| Attempt rows | 130032 |
+| Scored attempts | 130032 |
+| Estimated cost | $135.58 |
 
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated

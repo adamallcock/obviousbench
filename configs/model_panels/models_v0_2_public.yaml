@@ -310,6 +310,41 @@ release_panel:
   model_setting_key: anthropic-claude-sonnet-4-6:a5e481df9e03384e
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: Anthropic Claude Sonnet 5 low
+  inspect_model: anthropic/claude-sonnet-5
+  provider_model: anthropic/claude-sonnet-5
+  model_entry_id: manual-20260630-anthropic-claude-sonnet-5-low
+  model_setting_key: anthropic-claude-sonnet-5:91db73e1ff32510e
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Sonnet 5 medium
+  inspect_model: anthropic/claude-sonnet-5
+  provider_model: anthropic/claude-sonnet-5
+  model_entry_id: manual-20260630-anthropic-claude-sonnet-5-medium
+  model_setting_key: anthropic-claude-sonnet-5:6651233ac64a8784
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Sonnet 5 high
+  inspect_model: anthropic/claude-sonnet-5
+  provider_model: anthropic/claude-sonnet-5
+  model_entry_id: manual-20260630-anthropic-claude-sonnet-5-high
+  model_setting_key: anthropic-claude-sonnet-5:db94fe588835015a
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Sonnet 5 xhigh
+  inspect_model: anthropic/claude-sonnet-5
+  provider_model: anthropic/claude-sonnet-5
+  model_entry_id: manual-20260630-anthropic-claude-sonnet-5-xhigh
+  model_setting_key: anthropic-claude-sonnet-5:26970afb9e1aa0ac
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Sonnet 5 max
+  inspect_model: anthropic/claude-sonnet-5
+  provider_model: anthropic/claude-sonnet-5
+  model_entry_id: manual-20260630-anthropic-claude-sonnet-5-max
+  model_setting_key: anthropic-claude-sonnet-5:7fc561aeb2249752
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: 'DeepSeek: DeepSeek V3'
   inspect_model: openrouter/deepseek/deepseek-chat
   provider_model: deepseek/deepseek-chat
@@ -525,6 +560,27 @@ release_panel:
   provider_model: google/gemini-3.1-flash-lite
   model_entry_id: old-229-google-gemini-3-1-flash-lite-high
   model_setting_key: openrouter-google-gemini-3-1-flash-lite:70c29da9b887248f
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Google: Gemini 3.1 Pro Preview low'
+  inspect_model: openrouter/google/gemini-3.1-pro-preview
+  provider_model: google/gemini-3.1-pro-preview
+  model_entry_id: manual-20260625-google-gemini-3-1-pro-preview-low
+  model_setting_key: openrouter-google-gemini-3-1-pro-preview:6ada7da815d63447
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Google: Gemini 3.1 Pro Preview medium'
+  inspect_model: openrouter/google/gemini-3.1-pro-preview
+  provider_model: google/gemini-3.1-pro-preview
+  model_entry_id: manual-20260625-google-gemini-3-1-pro-preview-medium
+  model_setting_key: openrouter-google-gemini-3-1-pro-preview:55b9832b352b9a74
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Google: Gemini 3.1 Pro Preview high'
+  inspect_model: openrouter/google/gemini-3.1-pro-preview
+  provider_model: google/gemini-3.1-pro-preview
+  model_entry_id: manual-20260625-google-gemini-3-1-pro-preview-high
+  model_setting_key: openrouter-google-gemini-3-1-pro-preview:bef98d5045e32de3
   profile: v0_2_public_aggregate
   reasoning_effort: high
 - label: 'Google: Gemini 3.5 Flash minimal'
