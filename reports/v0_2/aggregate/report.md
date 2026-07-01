@@ -1,6 +1,6 @@
 ---
 title: ObviousBench v0.2 Public Aggregate Report
-date: 2026-06-18
+date: 2026-07-01
 type: report
 status: public-release-candidate
 ---
@@ -20,11 +20,11 @@ HTML, or item-level private outcomes.
 | Metric | Value |
 | --- | ---: |
 | Held-out items | 144 |
-| Model/config rows | 293 |
-| Complete model/config rows | 293 |
-| Attempt rows | 126,576 |
-| Scored attempts | 126,576 |
-| Estimated measured run cost | $131.00 |
+| Model/config rows | 301 |
+| Complete model/config rows | 301 |
+| Attempt rows | 130,032 |
+| Scored attempts | 130,032 |
+| Estimated measured run cost | $135.58 |
 | Provider errors in public snapshot | 0 |
 | Aggregate manual-adjustment footprint | 14 attempts across 9 rows |
 
@@ -55,10 +55,10 @@ Rows below are sorted by answer `pass^3`, then lower measured run cost.
 | OpenAI openai/gpt-5 medium | medium | 100.0% | $0.708 | 51,584 |
 | OpenAI GPT-5.5 medium | medium | 100.0% | $0.744 | 17,991 |
 | Google: Gemini 3.5 Flash high | high | 100.0% | $0.996 | 106,673 |
+| Google: Gemini 3.1 Pro Preview medium | medium | 100.0% | $1.002 | 79,567 |
 | OpenAI GPT-5.5 xhigh | xhigh | 100.0% | $1.090 | 29,507 |
+| Google: Gemini 3.1 Pro Preview high | high | 100.0% | $1.168 | 93,361 |
 | OpenAI openai/gpt-5 high | high | 100.0% | $1.174 | 97,728 |
-| Grok Build 0.1 | default | 99.3% | $0.022 | 299,679 |
-| Google: Gemma 4 31B medium | medium | 99.3% | $0.025 | 41,697 |
 
 ## Cost-Efficient Near-Ceiling Rows
 
@@ -78,6 +78,21 @@ Rows below are the cheapest rows at or above 95.0% answer `pass^3`.
 | Google: Gemini 3.1 Flash Lite medium | medium | 95.8% | $0.118 | 74,360 |
 | Qwen: Qwen3 30B A3B Thinking 2507 | default | 96.5% | $0.137 | 334,987 |
 | OpenAI openai/gpt-5-mini medium | medium | 95.1% | $0.140 | 50,432 |
+
+## Newly Added Public Rows
+
+These rows were added to the public aggregate surface in this refresh.
+
+| Model/config | Effort | Answer pass^3 | Est. cost | Reasoning tokens |
+| --- | --- | ---: | ---: | ---: |
+| Google: Gemini 3.1 Pro Preview low | low | 99.3% | $0.903 | 71,286 |
+| Google: Gemini 3.1 Pro Preview medium | medium | 100.0% | $1.002 | 79,567 |
+| Google: Gemini 3.1 Pro Preview high | high | 100.0% | $1.168 | 93,361 |
+| Anthropic Claude Sonnet 5 low | low | 82.6% | $0.144 | 1,483 |
+| Anthropic Claude Sonnet 5 medium | medium | 80.6% | $0.149 | 1,992 |
+| Anthropic Claude Sonnet 5 high | high | 86.8% | $0.194 | 3,856 |
+| Anthropic Claude Sonnet 5 xhigh | xhigh | 90.3% | $0.264 | 7,363 |
+| Anthropic Claude Sonnet 5 max | max | 96.5% | $0.765 | 22,125 |
 
 ## Public / Private Boundary
 
