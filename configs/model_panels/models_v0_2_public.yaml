@@ -16,6 +16,41 @@ release_panel:
   model_setting_key: openrouter-anthropic-claude-3-5-haiku:5f6e8cbb75d7bea1
   profile: v0_2_public_aggregate
   reasoning_effort: default
+- label: Anthropic Claude Fable 5 low
+  inspect_model: anthropic/claude-fable-5
+  provider_model: anthropic/claude-fable-5
+  model_entry_id: manual-20260701-anthropic-claude-fable-5-low
+  model_setting_key: anthropic-claude-fable-5:e077652f9fcf4486
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Fable 5 medium
+  inspect_model: anthropic/claude-fable-5
+  provider_model: anthropic/claude-fable-5
+  model_entry_id: manual-20260701-anthropic-claude-fable-5-medium
+  model_setting_key: anthropic-claude-fable-5:b7732520ec599e51
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Fable 5 high
+  inspect_model: anthropic/claude-fable-5
+  provider_model: anthropic/claude-fable-5
+  model_entry_id: manual-20260701-anthropic-claude-fable-5-high
+  model_setting_key: anthropic-claude-fable-5:1bcf008f23ca2ac5
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Fable 5 xhigh
+  inspect_model: anthropic/claude-fable-5
+  provider_model: anthropic/claude-fable-5
+  model_entry_id: manual-20260701-anthropic-claude-fable-5-xhigh
+  model_setting_key: anthropic-claude-fable-5:db1757c62151bca3
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Fable 5 max
+  inspect_model: anthropic/claude-fable-5
+  provider_model: anthropic/claude-fable-5
+  model_entry_id: manual-20260701-anthropic-claude-fable-5-max
+  model_setting_key: anthropic-claude-fable-5:3318474fab2a92ce
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: Anthropic Claude Haiku 4.5
   inspect_model: anthropic/claude-haiku-4-5
   provider_model: anthropic/claude-haiku-4.5
