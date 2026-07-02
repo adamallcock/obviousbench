@@ -8,6 +8,14 @@ repository is the source/data companion: runnable benchmark code, public example
 items, model/config metadata, release aggregate CSVs, license, and citation
 materials.
 
+## Website Source Boundary
+
+This repository is not the Cloudflare Pages website source. The public website
+is published from `adamallcock/website-obviousbench-com`; do not add generated
+launch-site bundles such as `docs/release/v0_2/launch_site/` here. To update
+the website, copy the release-safe standalone launch HTML into the website
+repo's root `index.html`, run that repo's tests, and merge its `main` branch.
+
 ObviousBench is a benchmark for visible, user-recognizable mistakes in language
 models: short prompts, objective answers, and repeated reliability checks.
 
