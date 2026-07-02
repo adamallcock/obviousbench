@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ObviousBench measures visible LLM mistakes across repeated attempts and shows the cost-reliability tradeoff.">
+  <meta name="theme-color" content="#f4f1e8">
+  <title>ObviousBench - Obvious mistakes are now a product tradeoff</title>
+  <link rel="canonical" href="https://obviousbench.com/">
+  <meta property="og:title" content="ObviousBench - Obvious mistakes are now a product tradeoff">
+  <meta property="og:description" content="ObviousBench measures visible LLM mistakes across repeated attempts and shows the cost-reliability tradeoff.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://obviousbench.com/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ObviousBench - Obvious mistakes are now a product tradeoff">
+  <meta name="twitter:description" content="ObviousBench measures visible LLM mistakes across repeated attempts and shows the cost-reliability tradeoff.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="nav-shell">
+    <a class="brand" href="#overview" aria-label="ObviousBench home">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/obviousbench-mark.png" alt="">
+      </span>
+      <span>ObviousBench</span>
+    </a>
+    <nav class="primary-nav" aria-label="Page sections">
+      <a href="#frontier">Findings</a>
+      <a href="#thresholds">Decision table</a>
+      <a href="#result">Reasoning proof</a>
+      <a href="#explorer">Data</a>
+    </nav>
+    <a class="nav-cta" href="https://github.com/adamallcock/obviousbench" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+
+<main id="main">
+  <section id="overview" class="hero section-shell">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Benchmark release · July 2026</p>
+        <h1>Obvious mistakes are now a product tradeoff.</h1>
+        <p class="hero-deck">ObviousBench measures whether models avoid simple, visible mistakes across repeated attempts—and what that reliability costs.</p>
+        <div class="hero-actions" aria-label="Release links">
+          <a class="button button-primary" href="#frontier">See the findings</a>
+          <a class="text-link" href="#thresholds">Compare reliability bars</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-summary" aria-label="Benchmark snapshot">
+      <div><strong data-build-stat="row_count">—</strong><span>model/config rows</span></div>
+      <div><strong>144</strong><span>private held-out items</span></div>
+      <div><strong>8</strong><span>visible-failure families</span></div>
+      <div><strong>pass^3</strong><span>all three sampled answers correct</span></div>
+    </div>
+
+    <div class="essay-grid hero-essay">
+      <div class="essay-prose">
+        <p class="lede">Large language models can now do things that would have sounded absurd a few years ago. They can summarize thousands of pages in seconds, write simple applications in minutes, and plan entire businesses in hours.</p>
+        <p>And yet, the same class of system can show up in a flagship product and get basic arithmetic wrong, make obvious contradictions, or even fail to <a class="inline-text-link" href="https://techcrunch.com/2026/05/27/why-googles-ai-cant-spell-google-or-anything-else/" target="_blank" rel="noopener noreferrer">spell its own name</a>. These are the kinds of mistakes that can cause users to lose trust in the technology, the product, and the company behind it.</p>
+        <p>Larger models and deeper reasoning can reduce these failures, but they also add cost and latency. Product teams still need to know what visible mistakes become more likely when they choose a smaller model, cheaper route, or shorter reasoning budget.</p>
+      </div>
+      <blockquote class="pull-quote">
+        <p>ObviousBench is not a smart-versus-dumb ranking. It is a way to compare capability, visible brittleness, and cost before those choices reach users.</p>
+      </blockquote>
+    </div>
+
+    <div class="hero-measure-grid">
+      <div>
+        <p class="proof-kicker">What this measures</p>
+        <p>Plain tasks with objective answers: literal counting, spelling transforms, ordering, negation, formatting, arithmetic, word counting, and simple constraint awareness.</p>
+      </div>
+      <div>
+        <p class="proof-kicker">How to read it</p>
+        <p><strong>Answer pass^3 is not pass@3.</strong> It requires all three sampled answers to be correct. Strict pass^3 stays available as a formatting diagnostic.</p>
+      </div>
+      <div>
+        <p class="proof-kicker">What it is not</p>
+        <p>Not a global intelligence ranking, not a shame board, and not a claim that one visible miss makes a model generally bad.</p>
+      </div>
+    </div>
+
+    <div class="category-ribbon category-examples hero-category-ribbon" aria-label="Eight benchmark categories">
+      <span><strong>Arithmetic</strong><small><em>What is 27 - 9 + 4?</em><b>→ 22</b></small></span>
+      <span><strong>Character counting</strong><small><em>How many lowercase “a” characters are in “abracadabra”?</em><b>→ 5</b></small></span>
+      <span><strong>Spelling transforms</strong><small><em>Replace every e in freezer with 3.</em><b>→ fr33z3r</b></small></span>
+      <span><strong>Ordering</strong><small><em>Sort q, m, z, h, r alphabetically.</em><b>→ h, m, q, r, z</b></small></span>
+      <span><strong>Negation</strong><small><em>Choose the word without the letter e: peach, melon, plum, cherry.</em><b>→ plum</b></small></span>
+      <span><strong>Format compliance</strong><small><em>Reply with exactly this string and nothing else.</em><b>→ receipt-204</b></small></span>
+      <span><strong>Word counting</strong><small><em>How many words are in “Fresh bread cooled on the rack”?</em><b>→ 6</b></small></span>
+      <span><strong>Constraint awareness</strong><small><em>The car wash is 100m away. If I want my car washed, should I walk there or drive there?</em><b>→ drive there</b></small></span>
+    </div>
+  </section>
+
+  <section id="frontier" class="section section-shell section-dark">
+    <div class="section-number" aria-hidden="true">01</div>
+    <div class="section-heading heading-split heading-on-dark">
+      <div>
+        <p class="eyebrow">The aggregate thesis</p>
+        <h2>The results form a cost–reliability frontier.</h2>
+      </div>
+      <p>Pass rates should be read alongside cost and reported reasoning effort. The preferred region is the upper-right: higher repeated reliability at lower estimated full-run cost.</p>
+    </div>
+
+    <div class="story-tabs" role="tablist" aria-label="Aggregate result views" data-tab-group="frontier">
+      <button class="story-tab active" type="button" role="tab" aria-selected="true" data-frontier-view="cost">Cost frontier</button>
+      <button class="story-tab" type="button" role="tab" aria-selected="false" data-frontier-view="open">Open weights</button>
+      <button class="story-tab" type="button" role="tab" aria-selected="false" data-frontier-view="no-reasoning">No reported reasoning</button>
+    </div>
+
+    <div class="frontier-toolbar" aria-label="Scatter plot controls">
+      <div class="control control-provider-picker">
+        <span>Provider</span>
+        <div class="provider-picker" id="frontier-provider-picker" data-value="all">
+          <button class="provider-picker-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="frontier-provider-label">All providers</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="provider-picker-menu" role="listbox" hidden></div>
+        </div>
+      </div>
+      <div class="control control-model-picker">
+        <span>Model</span>
+        <div class="provider-picker" id="frontier-model-picker" data-value="all">
+          <button class="provider-picker-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="frontier-model-label">All models</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="provider-picker-menu" role="listbox" hidden></div>
+        </div>
+      </div>
+      <div class="control control-effort-picker">
+        <span>Effort</span>
+        <div class="provider-picker" id="frontier-effort-picker" data-value="all">
+          <button class="provider-picker-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="frontier-effort-label">All efforts</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="provider-picker-menu" role="listbox" hidden></div>
+        </div>
+      </div>
+      <label class="control"><span>X axis</span><select id="frontier-x-axis"><option value="cost">Estimated run cost</option><option value="reasoning_tokens">Reasoning tokens</option></select></label>
+    </div>
+    <div id="frontier-provider-strip" class="frontier-provider-strip" aria-label="Provider shortcuts"></div>
+    <div class="frontier-legend" aria-label="Scatter plot legend">
+      <span><i class="legend-dot" aria-hidden="true"></i><span id="frontier-color-legend">Color = provider</span></span>
+      <span><i class="legend-diamond" aria-hidden="true"></i>Diamond = reported reasoning</span>
+      <span><i class="legend-circle" aria-hidden="true"></i>Circle = no/minimal reported reasoning</span>
+      <span><i class="legend-line" aria-hidden="true"></i>Black line = Pareto frontier</span>
+    </div>
+
+    <div class="frontier-stage">
+      <figure class="chart-card chart-card-dark">
+        <div id="frontier-chart" class="chart chart-frontier" role="img" aria-label="Interactive scatter plot of answer pass^3 against estimated benchmark run cost"></div>
+        <figcaption id="frontier-caption">All public-surface configurations. Quiet points show the field; the connected points are not beaten on both score and cost.</figcaption>
+      </figure>
+      <aside class="frontier-aside" aria-live="polite">
+        <p class="proof-kicker">Current view</p>
+        <h3 id="frontier-view-title">Cost frontier</h3>
+        <p id="frontier-view-copy">The aggregate result is not a winner-take-all ranking. It is a set of increasingly expensive ways to reduce visible failure risk.</p>
+        <dl class="frontier-stats">
+          <div><dt>Rows shown</dt><dd id="frontier-row-count">—</dd></div>
+          <div><dt>Pareto rows</dt><dd id="frontier-pareto-count">—</dd></div>
+          <div><dt>Cost range</dt><dd id="frontier-cost-range">—</dd></div>
+        </dl>
+        <p id="frontier-selected-series" class="aside-note">Hover or focus a point for details. Click a point to label that model family across settings.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="thresholds" class="section section-shell section-tint">
+    <div class="section-number" aria-hidden="true">02</div>
+    <div class="section-heading heading-split">
+      <div>
+        <p class="eyebrow">A decision table, not a podium</p>
+        <h2>What it costs to cross a reliability bar.</h2>
+      </div>
+      <p>Because the benchmark is intentionally saturatable, the practical view is the cheapest setting in each family that clears a chosen quality threshold.</p>
+    </div>
+
+    <div class="threshold-toolbar" aria-label="Reliability table controls">
+      <div class="segmented" role="group" aria-label="Answer pass^3 threshold">
+        <button type="button" data-threshold="90">90%+</button>
+        <button type="button" data-threshold="95" class="active">95%+</button>
+        <button type="button" data-threshold="99">99%+</button>
+      </div>
+      <div class="segmented" role="group" aria-label="Weights availability">
+        <button type="button" data-threshold-weights="all" class="active">All</button>
+        <button type="button" data-threshold-weights="open_weights" aria-label="Open weights">Open</button>
+      </div>
+      <p id="threshold-summary" class="toolbar-summary" aria-live="polite"></p>
+    </div>
+
+    <div class="table-card">
+      <div class="table-scroll">
+        <table class="decision-table">
+          <thead>
+            <tr>
+              <th scope="col" title="Model family">Model</th>
+              <th scope="col" title="Minimum reasoning setting">Effort</th>
+              <th scope="col" class="numeric" title="Answer pass^3">Pass^3</th>
+              <th scope="col" class="numeric" title="Estimated full-run cost">Cost</th>
+              <th scope="col" class="numeric" title="Reported reasoning tokens">Tokens</th>
+              <th scope="col">Weights</th>
+            </tr>
+          </thead>
+          <tbody id="threshold-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <aside class="feature-callout">
+      <div>
+        <p class="eyebrow">Notable value result</p>
+        <h3>Gemma 4 31B reaches the ceiling in this snapshot.</h3>
+      </div>
+      <p>Its low and high rows reach <strong data-story="gemma-low-answer">—</strong> answer pass^3, while the medium row reaches <strong data-story="gemma-medium-answer">—</strong>, at approximately <strong data-story="gemma-cost-range">—</strong> per full run.</p>
+    </aside>
+  </section>
+
+  <section id="result" class="section section-shell">
+    <div class="section-number" aria-hidden="true">03</div>
+    <div class="section-heading heading-split">
+      <div>
+        <p class="eyebrow">One-model proof</p>
+        <h2>The same model can be brittle or reliable.</h2>
+      </div>
+      <div class="essay-prose compact-prose">
+        <p>The benchmark’s central result is visible inside a single model family. Turning up reasoning does not merely add a few points for GPT‑5.4 nano; it changes the apparent product risk.</p>
+      </div>
+    </div>
+
+    <div class="evidence-layout">
+      <div class="evidence-copy">
+        <p class="result-sentence">GPT‑5.4 nano moves from <strong data-story="nano-none-answer">—</strong> answer pass^3 with no explicit reasoning to <strong data-story="nano-low-answer">—</strong> at low, <strong data-story="nano-medium-answer">—</strong> at medium, <strong data-story="nano-high-answer">—</strong> at high, and <strong data-story="nano-xhigh-answer">—</strong> at xhigh.</p>
+        <p>The first jumps are enormous. Later settings still improve reliability, but the larger points show the progressively higher run cost and reported reasoning-token use required to buy those gains.</p>
+      </div>
+      <figure class="chart-card chart-card-large">
+        <div id="nano-chart" class="chart chart-nano" role="img" aria-label="GPT-5.4 nano answer pass^3 by reasoning effort"></div>
+        <figcaption>Answer pass^3 across five GPT‑5.4 nano effort settings. The line shows repeated-answer reliability; the blue bars and right axis show estimated full-run cost for 144 items and 432 attempts.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="saturation" class="section section-shell section-tint">
+    <div class="section-number" aria-hidden="true">04</div>
+    <div class="evidence-layout">
+      <div class="evidence-copy">
+        <p class="eyebrow">A ceiling by design</p>
+        <h2>Saturation is evidence, not a defect.</h2>
+        <div class="essay-prose compact-prose">
+          <p>While most benchmarks seek to test harder and harder capabilities, ObviousBench aims to be saturatable by top models. It is designed to provide contrast between model sizes and reasoning depths, not to remain unsolved at the frontier or obscure false negatives.</p>
+          <p>Once several systems solve nearly every item, the useful question changes. Rank matters less than the cost and reasoning budget required to reach the same reliability bar.</p>
+        </div>
+        <p class="contrast-note" data-story="saturation-contrast">—</p>
+      </div>
+      <figure class="chart-card">
+        <div id="saturation-chart" class="chart chart-saturation" role="img" aria-label="Distribution of each model family's best answer pass^3 result"></div>
+        <figcaption>Each model family contributes its best public-surface configuration, grouped by answer pass^3 band.</figcaption>
+        <div id="saturation-roster" class="saturation-roster" aria-label="Best-row examples by score band"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section id="comparisons" class="section section-shell">
+    <div class="section-number" aria-hidden="true">05</div>
+    <div class="section-heading heading-split">
+      <div>
+        <p class="eyebrow">Secondary stories</p>
+        <h2>Useful cuts through the same result surface.</h2>
+      </div>
+      <p>The same aggregate data tells several product stories: newer rows are not always cheaper reliability improvements, early reasoning models remain surprisingly strong, and open-weight rows can be unusually efficient.</p>
+    </div>
+
+    <div class="comparison-tabs" role="tablist" aria-label="Comparison stories">
+      <button class="comparison-tab active" type="button" role="tab" aria-selected="true" data-comparison="history" data-comparison-provider="openai" data-comparison-provider-label="OpenAI">Non-reasoning progression</button>
+      <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="o-series" data-comparison-provider="openai" data-comparison-provider-label="OpenAI">Reasoning progression</button>
+      <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="gpt5-family" data-comparison-provider="openai" data-comparison-provider-label="OpenAI">GPT‑5.x family</button>
+      <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="opus" data-comparison-provider="anthropic" data-comparison-provider-label="Anthropic">Claude Opus progress</button>
+      <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="sonnet" data-comparison-provider="anthropic" data-comparison-provider-label="Anthropic">Claude Sonnet Progress</button>
+      <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="haiku" data-comparison-provider="anthropic" data-comparison-provider-label="Anthropic">Claude Haiku Progress</button>
+      <button class="comparison-tab" type="button" role="tab" aria-selected="false" data-comparison="gemini" data-comparison-provider="google" data-comparison-provider-label="Google">Gemini Flash progression</button>
+    </div>
+
+    <div class="comparison-panel active" data-comparison-panel="history">
+      <div class="comparison-copy">
+        <p class="eyebrow">OpenAI history</p>
+        <h3>No-thinking performance has improved unevenly.</h3>
+        <p>The progress of OpenAI's thinking models has been surprisingly slow, with GPT‑4.1 still maintained on their performance - cost efficient frontier; matching GPT‑5.4 performance at 56% the cost. GPT‑5.5 was a significant step up in performance but at double the cost of GPT‑5.4.</p>
+        <p>The useful product question is not just whether the newest label is better. It is whether each generation shifts the efficient frontier, or asks teams to pay more for similar visible-risk exposure.</p>
+      </div>
+      <figure class="chart-card"><div id="history-chart" class="chart chart-comparison" role="img" aria-label="Selected OpenAI no-reported-reasoning configurations by answer pass^3 and estimated run cost"></div><figcaption>Selected public-surface rows with no reported reasoning telemetry. The line shows answer pass^3; bars show measured run cost.</figcaption></figure>
+    </div>
+
+    <div class="comparison-panel" data-comparison-panel="gpt5-family" hidden>
+      <div class="comparison-copy">
+        <p class="eyebrow">GPT‑5 family</p>
+        <h3>Reasoning helps, but the curve differs by generation.</h3>
+        <p>GPT‑5, 5.2, 5.4, and 5.5 scores represent why ObviousBench is a chart of tradeoffs rather than a straight leaderboard. GPT‑5.2 was a significant regression from GPT‑5, and while GPT‑5.5 outscores GPT‑5.4, it does not improve the efficient frontier due to its much increased cost.</p>
+      </div>
+      <figure class="chart-card"><div id="gpt5-family-chart" class="chart chart-comparison" role="img" aria-label="GPT-5 family answer pass^3 against run cost across reasoning settings"></div><figcaption>Cost is reversed on a log scale: cheaper rows appear farther right. Connected points are settings within the same model family.</figcaption></figure>
+    </div>
+
+    <div class="comparison-panel" data-comparison-panel="gemini" hidden>
+      <div class="comparison-copy">
+        <p class="eyebrow">Gemini Flash</p>
+        <h3>Gemini Flash improved, then became more expensive.</h3>
+        <p>Gemini 2.5 Flash to 3 Flash improved the reliability and cost efficiency across the board. However, Gemini 3.5 Flash's high pricing regressed the efficient frontier to that established by 2.5 Flash.</p>
+        <p>The 3.5 Flash low-effort row already reaches the ceiling region, which is a useful signal for product teams: Google’s flash path may need surprisingly little extra reported reasoning to avoid these visible mistakes.</p>
+      </div>
+      <figure class="chart-card"><div id="gemini-chart" class="chart chart-comparison" role="img" aria-label="Gemini Flash answer pass^3 against estimated run cost"></div><figcaption>Cost is reversed on a log scale: cheaper rows appear farther right. Connected points are settings within one Gemini Flash generation.</figcaption></figure>
+    </div>
+
+    <div class="comparison-panel" data-comparison-panel="o-series" hidden>
+      <div class="comparison-copy">
+        <p class="eyebrow">OpenAI reasoning progress</p>
+        <h3>Strong reasoning became dramatically cheaper.</h3>
+        <p>o1 remains strong despite its 2024 vintage, though that comes at more than a 10x price compared to modern GPT‑5.5.</p>
+        <p>o3 remains incredibly competitive in both reasoning and cost for such an early reasoning model. The most likely explanation was that o3 was priced significantly under its actual compute cost.</p>
+      </div>
+      <figure class="chart-card"><div id="o-series-chart" class="chart chart-comparison" role="img" aria-label="OpenAI o1, o3, and GPT-5.5 answer pass^3 against estimated run cost"></div><figcaption>Cost is reversed on a log scale: cheaper rows appear farther right. Connected points are settings within the same model family.</figcaption></figure>
+    </div>
+
+    <div class="comparison-panel" data-comparison-panel="opus" hidden>
+      <div class="comparison-copy">
+        <p class="eyebrow">Claude Opus Progress</p>
+        <h3>Opus improves, regresses, then recovers unevenly.</h3>
+        <p>In this run, Opus 4.6 was a clear improvement over 4.5 at a similar cost, however Opus 4.7 was a visible regression, failing questions at all reasoning levels. Opus 4.8 recovers some of the ground against Opus 4.6 but at markedly higher prices, potentially due to the new tokenizer.</p>
+      </div>
+      <figure class="chart-card"><div id="opus-chart" class="chart chart-comparison" role="img" aria-label="Claude Opus answer pass^3 against estimated run cost"></div><figcaption>Cost is reversed on a log scale: cheaper rows appear farther right. Effort labels are shown for context, but provider effort labels do not define equal compute budgets.</figcaption></figure>
+    </div>
+
+    <div class="comparison-panel" data-comparison-panel="sonnet" hidden>
+      <div class="comparison-copy">
+        <p class="eyebrow">Claude Sonnet Progress</p>
+        <h3>Sonnet gains reliability, but not in a perfectly monotonic line.</h3>
+        <p>Sonnet 4.5 improves the high-effort frontier over Sonnet 4 in this slice, while Sonnet 4.6 shows a stronger high-effort ceiling with a different cost shape. The no-reasoning rows also move upward, which is the important product story: the base model is getting less brittle before extra compute is applied. Claude Sonnet 4.6 'Low' appeared 'overconfident' in its limited use of reasoning with poor results. Sonnet 5 performs similarly to 4.6 but at higher costs due to the tokenizer change.</p>
+      </div>
+      <figure class="chart-card"><div id="sonnet-chart" class="chart chart-comparison" role="img" aria-label="Claude Sonnet answer pass^3 against estimated run cost"></div><figcaption>Cost is reversed on a log scale: cheaper rows appear farther right. Connected points are settings within one Sonnet generation.</figcaption></figure>
+    </div>
+
+    <div class="comparison-panel" data-comparison-panel="haiku" hidden>
+      <div class="comparison-copy">
+        <p class="eyebrow">Claude Haiku Progress</p>
+        <h3>Haiku has made limited progress.</h3>
+        <p>It is interesting to note that Claude Haiku has made little progress in the efficient frontier, with changes from Claude 3 Haiku and 3.5 Haiku almost perfectly increasing performance (but also costs) in lockstep.</p>
+      </div>
+      <figure class="chart-card"><div id="haiku-chart" class="chart chart-comparison" role="img" aria-label="Claude Haiku answer pass^3 against estimated run cost"></div><figcaption>Cost is reversed on a log scale: cheaper rows appear farther right. Earlier Haiku rows only have no/default reasoning entries in this release surface.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="explorer" class="section section-shell section-tint">
+    <div class="section-number" aria-hidden="true">06</div>
+    <div class="section-heading heading-split">
+      <div>
+        <p class="eyebrow">Appendix</p>
+        <h2>Data.</h2>
+      </div>
+      <p>The launch story uses curated, defensible cuts. This appendix keeps the complete aggregate surface available for checking alternative questions.</p>
+    </div>
+
+    <div class="explorer-controls" aria-label="Aggregate data filters">
+      <label class="control control-search"><span>Search</span><input id="explorer-search" type="search" placeholder="Model, provider, reasoning effort"></label>
+      <div class="control control-model-picker">
+        <span>Models</span>
+        <div class="provider-picker model-picker" id="explorer-model-picker" data-value="all">
+          <button class="provider-picker-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="explorer-model-label">All models</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="provider-picker-menu model-picker-menu" role="listbox" hidden></div>
+        </div>
+      </div>
+      <div class="control control-provider-picker">
+        <span>Provider</span>
+        <div class="provider-picker" id="explorer-provider-picker" data-value="all">
+          <button class="provider-picker-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="explorer-provider-label">All providers</span>
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="provider-picker-menu" role="listbox" hidden></div>
+        </div>
+      </div>
+      <label class="control"><span>Weights</span><select id="explorer-weights"><option value="all">All</option><option value="proprietary">Proprietary</option><option value="open_weights">Open weights</option><option value="unclassified">Not reviewed</option></select></label>
+      <label class="control"><span>Reasoning effort</span><select id="explorer-effort"><option value="all">All efforts</option><option value="none">None / disabled</option><option value="minimal">Minimal</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option><option value="xhigh">Xhigh</option><option value="max">Max</option><option value="reasoning">Reasoning / dynamic</option></select></label>
+      <label class="control"><span>Minimum answer pass^3</span><select id="explorer-min-score"><option value="0">Any score</option><option value="80">80%+</option><option value="90">90%+</option><option value="95">95%+</option><option value="99">99%+</option></select></label>
+      <button id="explorer-reset" class="button button-small" type="button">Reset filters</button>
+    </div>
+
+    <div class="explorer-meta">
+      <p id="explorer-count" aria-live="polite">—</p>
+      <p class="muted">Click a column heading to sort.</p>
+    </div>
+
+    <div class="table-card explorer-table-card">
+      <div class="table-scroll table-scroll-tall">
+        <table class="explorer-table" id="explorer-table">
+          <thead>
+            <tr>
+              <th scope="col"><button type="button" data-sort="model_family_label">Models</button></th>
+              <th scope="col"><button type="button" data-sort="provider_label">Provider</button></th>
+              <th scope="col"><button type="button" data-sort="effort_order" title="Reasoning effort">Effort</button></th>
+              <th scope="col" class="numeric"><button type="button" data-sort="answer" title="Answer pass^3">Pass^3</button></th>
+              <th scope="col" class="numeric"><button type="button" data-sort="cost" title="Run cost">Cost</button></th>
+              <th scope="col" class="numeric"><button type="button" data-sort="reasoning_tokens" title="Reasoning tokens">Tokens</button></th>
+              <th scope="col"><button type="button" data-sort="availability_label">Weights</button></th>
+            </tr>
+          </thead>
+          <tbody id="explorer-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-shell">
+    <div>
+      <a class="brand footer-brand" href="#overview">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/obviousbench-mark.png" alt="">
+        </span>
+        <span>ObviousBench</span>
+      </a>
+      <p>Aggregate release surface for visible LLM product mistakes.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#explorer">See data</a>
+      <a href="#explorer">Data explorer</a>
+      <a href="https://github.com/adamallcock/obviousbench" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
+    <p class="build-stamp">Release <span data-build-stat="release_date">2026-07-01</span> · <span data-build-stat="row_count">—</span> rows · checksum <code id="build-checksum">—</code></p>
+  </div>
+</footer>
+
+<script src="vendor/echarts.min.js"></script>
+<script src="data/provider-icons.js"></script>
+<script src="data/results.js"></script>
+<script src="data/build.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
