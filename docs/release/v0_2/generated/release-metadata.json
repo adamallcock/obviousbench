@@ -1,7 +1,7 @@
 {
   "attempt_rows": 132192,
   "complete_model_setting_rows": 306,
-  "estimated_cost_usd": 140.990029,
+  "estimated_cost_usd": 141.169184,
   "generated_on": "2026-07-01",
   "model_setting_rows": 306,
   "primary_metric": "non-strict answer pass^3",

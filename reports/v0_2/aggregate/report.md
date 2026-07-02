@@ -14,18 +14,18 @@ status: draft
 
 ## Manual adjustments
 
-- 109 attempt row(s) were manually adjusted before aggregation. Treat affected benchmark rows with an asterisk; see `manual_adjustments_applied.csv` for the exact source rows.
-- Adjustment ids: `fable-5-persistent-safety-filter-non-answer, post-high-cap-persistent-blank-output-non-answer`
+- 104 attempt row(s) were manually adjusted before aggregation. Treat affected benchmark rows with an asterisk; see `manual_adjustments_applied.csv` for the exact source rows.
+- Adjustment ids: `fable-5-retry-provider-filter-opus48-same-effort-substitution, post-high-cap-persistent-blank-output-non-answer`
 
 | Model | Effort | Complete items | Valid attempts | Answer pass^3 | Strict pass^3 | Strict any^3 | Input tok | Output tok | Reason tok | Total tok | Est. cost | Manual adj. | Provider errors |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | anthropic/claude-3-haiku | default | 144/144 | 432 | 0.444444 | 0.444444 | 0.645833 | 21435 | 2534 | 0 | 23969 | 0.00852625 | 0 | 0 |
 | anthropic/claude-3.5-haiku | default | 144/144 | 432 | 0.590278 | 0.590278 | 0.715278 | 21435 | 3035 | 0 | 24470 | 0.029288 | 0 | 0 |
-| anthropic/claude-fable-5 | low | 144/144 | 432 | 0.958333 | 0.951389 | 0.965278 | 27705 | 6285 | 6632 | 33990 | 0.5913 | 12 | 0 |
-| anthropic/claude-fable-5 | medium | 144/144 | 432 | 0.951389 | 0.951389 | 0.965278 | 27705 | 8790 | 9438 | 36495 | 0.71655 | 12 | 0 |
-| anthropic/claude-fable-5 | high | 144/144 | 432 | 0.951389 | 0.944444 | 0.958333 | 27487 | 11347 | 12363 | 38834 | 0.84222 | 16 | 0 |
-| anthropic/claude-fable-5 | xhigh | 144/144 | 432 | 0.9375 | 0.9375 | 0.951389 | 27215 | 14401 | 15018 | 41616 | 0.9922 | 21 | 0 |
-| anthropic/claude-fable-5 | max | 144/144 | 432 | 0.881944 | 0.881944 | 0.902778 | 25555 | 40172 | 22266 | 65727 | 2.26415 | 43 | 0 |
+| anthropic/claude-fable-5 | low | 144/144 | 432 | 0.986111 | 0.979167 | 0.993056 | 28272 | 6360 | 6632 | 34632 | 0.59601 | 12 | 0 |
+| anthropic/claude-fable-5 | medium | 144/144 | 432 | 0.979167 | 0.979167 | 0.993056 | 28272 | 8951 | 9533 | 37223 | 0.72341 | 12 | 0 |
+| anthropic/claude-fable-5 | high | 144/144 | 432 | 0.993056 | 0.986111 | 0.993056 | 28272 | 11607 | 12533 | 39879 | 0.853555 | 15 | 0 |
+| anthropic/claude-fable-5 | xhigh | 144/144 | 432 | 0.986111 | 0.986111 | 0.993056 | 28272 | 14938 | 15321 | 43210 | 1.012335 | 19 | 0 |
+| anthropic/claude-fable-5 | max | 144/144 | 432 | 0.993056 | 0.993056 | 0.993056 | 28272 | 44842 | 24631 | 73114 | 2.400265 | 41 | 0 |
 | anthropic/claude-haiku-4.5 | default | 144/144 | 432 | 0.652778 | 0.604167 | 0.722222 | 21435 | 4095 | 0 | 25530 | 0.04191 | 0 | 0 |
 | anthropic/claude-haiku-4.5 | high_budget_8192 | 144/144 | 432 | 0.902778 | 0.895833 | 0.986111 | 33963 | 77376 | 71239 | 111339 | 0.420843 | 0 | 0 |
 | anthropic/claude-haiku-4.5 | low_budget_1024 | 144/144 | 432 | 0.916667 | 0.902778 | 0.986111 | 33963 | 65433 | 62454 | 99396 | 0.361128 | 0 | 0 |

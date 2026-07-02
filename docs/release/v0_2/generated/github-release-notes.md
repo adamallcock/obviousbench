@@ -50,7 +50,7 @@ the top end.
 | Included headline rows | 306 |
 | Attempt rows | 132192 |
 | Scored attempts | 132192 |
-| Estimated cost | $140.99 |
+| Estimated cost | $141.17 |
 
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated

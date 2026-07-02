@@ -30,7 +30,7 @@ outputs, item-level private outcomes, and private review HTML.
 | Complete rows | 306 |
 | Attempts | 132192 |
 | Scored attempts | 132192 |
-| Estimated cost | $140.99 |
+| Estimated cost | $141.17 |
 | Primary metric | non-strict answer pass^3 |
 
 Canonical public launch site:
