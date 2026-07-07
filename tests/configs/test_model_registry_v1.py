@@ -99,6 +99,27 @@ def test_model_registry_price_metadata_is_explicit():
             assert entry["output_price_per_mtok_usd"] >= 0
 
 
+def test_tencent_hy3_release_route_is_pinned_with_paid_equivalent_pricing():
+    entries = _entries()
+    [hy3] = [
+        entry
+        for entry in entries
+        if entry["id"] == "openrouter-pinned-tencent-hy3-free"
+    ]
+
+    assert hy3["provider_route"] == "openrouter"
+    assert hy3["upstream_provider"] == "tencent"
+    assert hy3["inspect_model"] == "openrouter/tencent/hy3:free"
+    assert hy3["model_id"] == "tencent/hy3:free"
+    assert hy3["priced_as_model_id"] == "tencent/hy3"
+    assert hy3["input_price_per_mtok_usd"] == 0.2
+    assert hy3["output_price_per_mtok_usd"] == 0.8
+    assert hy3["cache_read_price_per_mtok_usd"] == 0.5
+    assert hy3["pricing_source"] == "openrouter_models_api"
+    assert "free-endpoint" in hy3["tags"]
+    assert "paid-equivalent-pricing" in hy3["tags"]
+
+
 def test_model_registry_does_not_store_secrets():
     forbidden_key_parts = ("api_key", "apikey", "password", "secret")
     forbidden_value_parts = ("sk-", "xai-", "AIza", "anthropic_api_key")
