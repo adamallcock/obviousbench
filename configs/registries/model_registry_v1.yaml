@@ -17,6 +17,7 @@ sources:
     fetched_model_count: 343
     eligible_text_model_count: 343
     selected_count: 185
+    pinned_release_count: 1
   runcost_default_price_cards:
     package: "runcost"
     card_count: 7480
@@ -3848,6 +3849,40 @@ entries:
       - "tools-supported"
       - "reasoning-parameter-supported"
     id: "openrouter-126-tencent-hy3-preview"
+  -
+    label: "Tencent: Hy3 (free endpoint; paid-equivalent pricing)"
+    provider_route: "openrouter"
+    upstream_provider: "tencent"
+    inspect_model: "openrouter/tencent/hy3:free"
+    model_id: "tencent/hy3:free"
+    priced_as_model_id: "tencent/hy3"
+    canonical_slug: "tencent/hy3"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 262144
+    max_output_tokens: 0
+    input_price_per_mtok_usd: 0.2
+    output_price_per_mtok_usd: 0.8
+    cache_read_price_per_mtok_usd: 0.5
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: null
+    runcost_price_source: null
+    source: "curated_openrouter_release_pin"
+    priority: "release-pin"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "free-endpoint"
+      - "paid-equivalent-pricing"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+    id: "openrouter-pinned-tencent-hy3-free"
   -
     label: "Xiaomi: MiMo-V2.5-Pro"
     provider_route: "openrouter"

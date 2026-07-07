@@ -1913,6 +1913,27 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-7-max:890c68a827465ce8
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: 'Tencent: Hy3 none'
+  inspect_model: openrouter/tencent/hy3:free
+  provider_model: tencent/hy3
+  model_entry_id: manual-20260706-tencent-hy3-none
+  model_setting_key: openrouter-tencent-hy3-free:5f7c0ed0cb1ed253
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Tencent: Hy3 low'
+  inspect_model: openrouter/tencent/hy3:free
+  provider_model: tencent/hy3
+  model_entry_id: manual-20260706-tencent-hy3-low
+  model_setting_key: openrouter-tencent-hy3-free:7c8c593580076887
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Tencent: Hy3 high'
+  inspect_model: openrouter/tencent/hy3:free
+  provider_model: tencent/hy3
+  model_entry_id: manual-20260706-tencent-hy3-high
+  model_setting_key: openrouter-tencent-hy3-free:9e0e48f9d143f8d7
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: OpenRouter x-ai/grok-4.20 disabled
   inspect_model: openrouter/x-ai/grok-4.20
   provider_model: x-ai/grok-4.20

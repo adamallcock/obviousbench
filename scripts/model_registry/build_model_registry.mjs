@@ -141,6 +141,35 @@ const DIRECT_PROVIDER_ENTRIES = [
   direct("grok-4-20", "Grok 4.20", "grok", "grok/grok-4.20", "grok-4.20", {}, ["frontier", "prior-baseline"]),
 ];
 
+const PINNED_OPENROUTER_ENTRIES = [
+  openRouterPinned(
+    "openrouter-pinned-tencent-hy3-free",
+    "Tencent: Hy3 (free endpoint; paid-equivalent pricing)",
+    "tencent/hy3:free",
+    {
+      priced_as_model_id: "tencent/hy3",
+      canonical_slug: "tencent/hy3",
+      context_window_tokens: 262144,
+      max_output_tokens: 0,
+      input_price_per_mtok_usd: 0.2,
+      output_price_per_mtok_usd: 0.8,
+      cache_read_price_per_mtok_usd: 0.5,
+      source: "curated_openrouter_release_pin",
+      priority: "release-pin",
+      tags: [
+        "open-weight",
+        "free-endpoint",
+        "paid-equivalent-pricing",
+        "cheap",
+        "text-only",
+        "non-thinking-candidate",
+        "tools-supported",
+        "reasoning-parameter-supported",
+      ],
+    },
+  ),
+];
+
 async function main() {
   const generatedAt = new Date().toISOString();
   const [openRouterModels, priceCards] = await Promise.all([
@@ -161,7 +190,11 @@ async function main() {
   const directEntries = DIRECT_PROVIDER_ENTRIES.map((entry) =>
     enrichDirectEntry(entry, priceIndex),
   );
-  const entries = [...openRouterEntries, ...directEntries];
+  const selectedOpenRouterIds = new Set(openRouterEntries.map((entry) => entry.model_id));
+  const pinnedOpenRouterEntries = PINNED_OPENROUTER_ENTRIES.filter(
+    (entry) => !selectedOpenRouterIds.has(entry.model_id),
+  );
+  const entries = [...openRouterEntries, ...pinnedOpenRouterEntries, ...directEntries];
   const registry = {
     schema_version: "model-registry-v1",
     generated_at: generatedAt,
@@ -179,6 +212,7 @@ async function main() {
         fetched_model_count: openRouterModels.length,
         eligible_text_model_count: eligibleOpenRouterModels.length,
         selected_count: openRouterEntries.length,
+        pinned_release_count: pinnedOpenRouterEntries.length,
       },
       runcost_default_price_cards: {
         package: "runcost",
@@ -194,6 +228,7 @@ async function main() {
         "small, lite, mini, nano, flash, and cheap models",
         "non-thinking defaults where generation settings can suppress reasoning",
         "a small direct-provider baseline for existing OpenAI, Anthropic, Gemini, and Grok credentials",
+        "pinned current release routes whose aggregate rows are published before the next full registry refresh",
       ],
       exclusions: [
         "image-only models",
@@ -210,6 +245,7 @@ async function main() {
   await writeFile(OUTPUT_PATH, `${toYaml(registry)}\n`, "utf8");
   console.log(`Wrote ${entries.length} entries to ${OUTPUT_PATH}`);
   console.log(`OpenRouter selected: ${openRouterEntries.length}`);
+  console.log(`Pinned OpenRouter entries: ${pinnedOpenRouterEntries.length}`);
   console.log(`Direct-provider selected: ${directEntries.length}`);
   console.log(
     `Free OpenRouter entries: ${entries.filter((entry) => entry.tags.includes("free")).length}`,
@@ -230,6 +266,25 @@ function direct(id, label, providerRoute, inspectModel, modelId, settings, tags)
     tags: unique(["direct-provider", ...tags]),
     priority: tags.includes("prior-baseline") ? "baseline" : "secondary",
     source: "curated_direct_provider_baseline",
+  };
+}
+
+function openRouterPinned(id, label, modelId, overrides) {
+  return {
+    id,
+    label,
+    provider_route: "openrouter",
+    upstream_provider: modelId.split("/")[0],
+    inspect_model: `openrouter/${modelId}`,
+    model_id: modelId,
+    profile: DEFAULT_PROFILE,
+    seed: DEFAULT_SEED,
+    generation_settings: generationSettings(overrides.max_output_tokens),
+    pricing_source: "openrouter_models_api",
+    runcost_price_card_id: null,
+    runcost_price_source: null,
+    ...overrides,
+    tags: unique(["openrouter", ...overrides.tags]),
   };
 }
 
