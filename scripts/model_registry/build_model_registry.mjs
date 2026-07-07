@@ -157,6 +157,7 @@ const PINNED_OPENROUTER_ENTRIES = [
       source: "curated_openrouter_release_pin",
       priority: "release-pin",
       tags: [
+        "open-weight",
         "free-endpoint",
         "paid-equivalent-pricing",
         "cheap",

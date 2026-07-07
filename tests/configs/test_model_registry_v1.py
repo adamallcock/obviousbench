@@ -116,6 +116,7 @@ def test_tencent_hy3_release_route_is_pinned_with_paid_equivalent_pricing():
     assert hy3["output_price_per_mtok_usd"] == 0.8
     assert hy3["cache_read_price_per_mtok_usd"] == 0.5
     assert hy3["pricing_source"] == "openrouter_models_api"
+    assert "open-weight" in hy3["tags"]
     assert "free-endpoint" in hy3["tags"]
     assert "paid-equivalent-pricing" in hy3["tags"]
 

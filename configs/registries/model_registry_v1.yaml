@@ -3874,6 +3874,7 @@ entries:
     priority: "release-pin"
     tags:
       - "openrouter"
+      - "open-weight"
       - "free-endpoint"
       - "paid-equivalent-pricing"
       - "cheap"
