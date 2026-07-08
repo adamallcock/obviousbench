@@ -132,6 +132,7 @@ def test_model_registry_includes_grok_4_5_with_manual_xai_price():
     assert row["inspect_model"] == "grok/grok-4.5"
     assert row["model_id"] == "grok-4.5"
     assert row["provider_route"] == "grok"
+    assert row["upstream_provider"] == "xai"
     assert row["input_price_per_mtok_usd"] == 2.0
     assert row["output_price_per_mtok_usd"] == 6.0
     assert row["pricing_source"] == "xai_grok_4_5_docs_2026_07_08"

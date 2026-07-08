@@ -1936,21 +1936,21 @@ release_panel:
   reasoning_effort: high
 - label: Grok 4.5 low
   inspect_model: grok/grok-4.5
-  provider_model: grok-4.5
+  provider_model: x-ai/grok-4.5
   model_entry_id: manual-20260708-grok-4-5-low
   model_setting_key: grok-grok-4-5:61ff4360a81aba0f
   profile: v0_2_public_aggregate
   reasoning_effort: low
 - label: Grok 4.5 medium
   inspect_model: grok/grok-4.5
-  provider_model: grok-4.5
+  provider_model: x-ai/grok-4.5
   model_entry_id: manual-20260708-grok-4-5-medium
   model_setting_key: grok-grok-4-5:30be1ad9f0a31a39
   profile: v0_2_public_aggregate
   reasoning_effort: medium
 - label: Grok 4.5 high
   inspect_model: grok/grok-4.5
-  provider_model: grok-4.5
+  provider_model: x-ai/grok-4.5
   model_entry_id: manual-20260708-grok-4-5-high
   model_setting_key: grok-grok-4-5:758e3c05355d4db1
   profile: v0_2_public_aggregate

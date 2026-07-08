@@ -265,7 +265,7 @@ function direct(id, label, providerRoute, inspectModel, modelId, settings, tags)
     id,
     label,
     provider_route: providerRoute,
-    upstream_provider: providerRoute,
+    upstream_provider: providerRoute === "grok" ? "xai" : providerRoute,
     inspect_model: inspectModel,
     model_id: modelId,
     profile: DEFAULT_PROFILE,
