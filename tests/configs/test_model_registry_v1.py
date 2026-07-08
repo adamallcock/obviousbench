@@ -61,6 +61,7 @@ def test_model_registry_entries_are_unique_and_runnable():
         assert entry["pricing_source"] in {
             "openrouter_models_api",
             "runcost_default_price_cards",
+            "xai_grok_4_5_docs_2026_07_08",
             "manual_lookup_required",
         }
         assert isinstance(entry["tags"], list)
@@ -119,6 +120,21 @@ def test_tencent_hy3_release_route_is_pinned_with_paid_equivalent_pricing():
     assert "open-weight" in hy3["tags"]
     assert "free-endpoint" in hy3["tags"]
     assert "paid-equivalent-pricing" in hy3["tags"]
+
+
+def test_model_registry_includes_grok_4_5_with_manual_xai_price():
+    entries = _entries()
+    rows = [entry for entry in entries if entry["id"] == "grok-4-5"]
+
+    assert len(rows) == 1
+    row = rows[0]
+    assert row["label"] == "Grok 4.5"
+    assert row["inspect_model"] == "grok/grok-4.5"
+    assert row["model_id"] == "grok-4.5"
+    assert row["provider_route"] == "grok"
+    assert row["input_price_per_mtok_usd"] == 2.0
+    assert row["output_price_per_mtok_usd"] == 6.0
+    assert row["pricing_source"] == "xai_grok_4_5_docs_2026_07_08"
 
 
 def test_model_registry_does_not_store_secrets():

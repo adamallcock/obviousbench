@@ -27,6 +27,15 @@ const STATIC_OPENROUTER_PRICE_CARDS = {
     input_cache_read: 0.00000015,
   },
 };
+const STATIC_PROVIDER_PRICE_CARDS = {
+  "xai:grok-4.5": {
+    source: "xai_grok_4_5_docs_2026_07_08",
+    prompt: 0.000002,
+    completion: 0.000006,
+    reasoning: 0.000006,
+    input_cache_read: 0.0000005,
+  },
+};
 
 for (const record of payload.records ?? []) {
   const fallback = priceWithStaticFallback(record);
@@ -159,8 +168,11 @@ function shouldPriceReasoningSeparately(record) {
 function priceWithStaticFallback(record) {
   const provider = normalizedProvider(record);
   const model = billedModel(record.model);
-  const card = STATIC_OPENROUTER_PRICE_CARDS[model];
-  if (provider !== "openrouter" || !card) {
+  const providerModelKey = `${provider}:${model}`;
+  const providerCard = STATIC_PROVIDER_PRICE_CARDS[providerModelKey];
+  const openRouterCard = provider === "openrouter" ? STATIC_OPENROUTER_PRICE_CARDS[model] : null;
+  const card = providerCard ?? openRouterCard;
+  if (!card) {
     return null;
   }
   const usage = record.usage ?? {};
@@ -168,6 +180,7 @@ function priceWithStaticFallback(record) {
   const cacheReadTokens = numberValue(usage.cache_read_tokens);
   const cacheWriteTokens = numberValue(usage.cache_write_tokens);
   const outputTokens = numberValue(usage.output_tokens);
+  const reasoningTokens = numberValue(usage.reasoning_tokens);
   const uncachedInputTokens = Math.max(
     inputTokens - cacheReadTokens - cacheWriteTokens,
     0,
@@ -176,7 +189,8 @@ function priceWithStaticFallback(record) {
     uncachedInputTokens * card.prompt +
     cacheReadTokens * card.input_cache_read +
     cacheWriteTokens * card.prompt +
-    outputTokens * card.completion;
+    outputTokens * card.completion +
+    reasoningTokens * (card.reasoning ?? 0);
   return {
     sample_id: record.sample_id,
     model: record.model,
@@ -189,6 +203,10 @@ function priceWithStaticFallback(record) {
       raw_usage: usage,
       metadata: {
         fallback_reason: "runcost_missing_current_openrouter_price_card",
+        reasoning_token_treatment:
+          card.reasoning == null
+            ? "observability_only"
+            : "priced_at_reasoning_rate",
       },
     },
     warnings: [],

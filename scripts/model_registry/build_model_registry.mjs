@@ -13,6 +13,13 @@ const DEFAULT_GENERATION_SETTINGS = {
   temperature: 0,
   max_tokens: OUTPUT_SAFETY_MAX_TOKENS,
 };
+const DIRECT_PRICE_OVERRIDES_USD_PER_MTOK = {
+  "grok:grok-4.5": {
+    source: "xai_grok_4_5_docs_2026_07_08",
+    input: 2.0,
+    output: 6.0,
+  },
+};
 
 const SOURCE_PRIORITY = ["openrouter", "models.dev", "llm-prices", "litellm"];
 const OPEN_WEIGHT_PATTERNS = [
@@ -136,6 +143,7 @@ const DIRECT_PROVIDER_ENTRIES = [
   direct("gemini-3-flash-preview", "Gemini 3 Flash Preview", "gemini", "google/gemini-3-flash-preview", "gemini-3-flash-preview", {}, ["small", "preview", "prior-baseline"]),
   direct("gemini-2-5-flash-lite", "Gemini 2.5 Flash-Lite", "gemini", "google/gemini-2.5-flash-lite", "gemini-2.5-flash-lite", {}, ["small", "flash-lite"]),
   direct("gemini-2-5-flash", "Gemini 2.5 Flash", "gemini", "google/gemini-2.5-flash", "gemini-2.5-flash", {}, ["small", "flash"]),
+  direct("grok-4-5", "Grok 4.5", "grok", "grok/grok-4.5", "grok-4.5", {}, ["frontier"]),
   direct("grok-4-3", "Grok 4.3", "grok", "grok/grok-4.3", "grok-4.3", {}, ["frontier", "prior-baseline"]),
   direct("grok-build-0-1", "Grok Build 0.1", "grok", "grok/grok-build-0.1", "grok-build-0.1", {}, ["coding", "fast"]),
   direct("grok-4-20", "Grok 4.20", "grok", "grok/grok-4.20", "grok-4.20", {}, ["frontier", "prior-baseline"]),
@@ -400,6 +408,19 @@ function enrichDirectEntry(entry, priceIndex) {
     gemini: "google",
     grok: "xai",
   }[entry.provider_route] ?? entry.provider_route;
+  const manualPrice = DIRECT_PRICE_OVERRIDES_USD_PER_MTOK[
+    `${entry.provider_route}:${entry.model_id}`
+  ];
+  if (manualPrice) {
+    return {
+      ...entry,
+      input_price_per_mtok_usd: manualPrice.input,
+      output_price_per_mtok_usd: manualPrice.output,
+      pricing_source: manualPrice.source,
+      runcost_price_card_id: null,
+      runcost_price_source: null,
+    };
+  }
   const runcostCard = findPriceCard(priceIndex, runcostProvider, entry.model_id);
   return {
     ...entry,

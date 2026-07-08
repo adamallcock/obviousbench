@@ -179,3 +179,35 @@ def test_runcost_bridge_prices_free_nemotron_nano_at_paid_equivalent_rate():
 
     assert record["cost_source"] == "user_paid_equivalent_override_2026_06_17"
     assert record["estimated_cost_usd"] == pytest.approx(0.00001)
+
+
+def test_runcost_bridge_prices_direct_grok_4_5_at_xai_docs_rate():
+    bridge = Path("scripts/runners/price_usage_with_runcost.mjs")
+    payload = {
+        "records": [
+            {
+                "sample_id": "grok-4-5",
+                "provider": "grok",
+                "model": "grok/grok-4.5",
+                "usage": {
+                    "input_tokens": 100,
+                    "output_tokens": 25,
+                    "reasoning_tokens": 20,
+                    "cache_read_tokens": 10,
+                },
+            }
+        ]
+    }
+
+    completed = subprocess.run(
+        ["node", str(bridge)],
+        input=json.dumps(payload),
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    record = json.loads(completed.stdout)["records"][0]
+
+    expected_cost = 90 * 0.000002 + 10 * 0.0000005 + (25 + 20) * 0.000006
+    assert record["cost_source"] == "xai_grok_4_5_docs_2026_07_08"
+    assert record["estimated_cost_usd"] == pytest.approx(expected_cost)

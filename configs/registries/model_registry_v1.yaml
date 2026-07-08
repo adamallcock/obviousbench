@@ -6233,6 +6233,28 @@ entries:
     runcost_price_card_id: "google:gemini-2.5-flash:models-dev"
     runcost_price_source: "models.dev"
   -
+    id: "grok-4-5"
+    label: "Grok 4.5"
+    provider_route: "grok"
+    upstream_provider: "grok"
+    inspect_model: "grok/grok-4.5"
+    model_id: "grok-4.5"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    tags:
+      - "direct-provider"
+      - "frontier"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 2
+    output_price_per_mtok_usd: 6
+    pricing_source: "xai_grok_4_5_docs_2026_07_08"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
     id: "grok-4-3"
     label: "Grok 4.3"
     provider_route: "grok"
