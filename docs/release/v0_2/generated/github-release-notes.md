@@ -46,11 +46,11 @@ the top end.
 | Metric | Value |
 |---|---|
 | Private held-out items | 144 |
-| Model/config rows | 317 |
-| Included headline rows | 317 |
-| Attempt rows | 136944 |
-| Scored attempts | 136944 |
-| Estimated cost | $145.68 |
+| Model/config rows | 335 |
+| Included headline rows | 335 |
+| Attempt rows | 144720 |
+| Scored attempts | 144720 |
+| Estimated cost | $149.14 |
 
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated
