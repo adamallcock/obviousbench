@@ -63,6 +63,7 @@ def test_model_registry_entries_are_unique_and_runnable():
             "runcost_default_price_cards",
             "xai_grok_4_5_docs_2026_07_08",
             "meta_model_api_blog_2026_07_09",
+            "openai_standard_short_context_2026_07_09",
             "manual_lookup_required",
         }
         assert isinstance(entry["tags"], list)
@@ -137,6 +138,32 @@ def test_model_registry_includes_grok_4_5_with_manual_xai_price():
     assert row["input_price_per_mtok_usd"] == 2.0
     assert row["output_price_per_mtok_usd"] == 6.0
     assert row["pricing_source"] == "xai_grok_4_5_docs_2026_07_08"
+
+
+def test_model_registry_includes_gpt_5_6_defaults_with_standard_prices():
+    rows = {
+        entry["model_id"]: entry
+        for entry in _entries()
+        if entry["id"].startswith("openai-gpt-5-6-")
+    }
+
+    assert set(rows) == {"gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"}
+    assert {
+        model_id: (
+            row["input_price_per_mtok_usd"],
+            row["output_price_per_mtok_usd"],
+        )
+        for model_id, row in rows.items()
+    } == {
+        "gpt-5.6-sol": (5, 30),
+        "gpt-5.6-terra": (2.5, 15),
+        "gpt-5.6-luna": (1, 6),
+    }
+    for row in rows.values():
+        assert row["provider_route"] == "openai"
+        assert row["generation_settings"]["reasoning_effort"] == "medium"
+        assert row["generation_settings"]["extra_body"] == {"service_tier": "flex"}
+        assert row["pricing_source"] == "openai_standard_short_context_2026_07_09"
 
 
 def test_model_registry_does_not_store_secrets():

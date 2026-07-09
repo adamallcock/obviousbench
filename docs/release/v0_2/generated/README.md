@@ -26,11 +26,11 @@ outputs, item-level private outcomes, and private review HTML.
 | Field | Value |
 |---|---|
 | Private items | 144 |
-| Model/config rows | 317 |
-| Complete rows | 317 |
-| Attempts | 136944 |
-| Scored attempts | 136944 |
-| Estimated cost | $145.68 |
+| Model/config rows | 335 |
+| Complete rows | 335 |
+| Attempts | 144720 |
+| Scored attempts | 144720 |
+| Estimated cost | $149.14 |
 | Primary metric | non-strict answer pass^3 |
 
 Canonical public launch site:

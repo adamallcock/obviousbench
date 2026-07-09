@@ -807,6 +807,41 @@ release_panel:
   model_setting_key: openrouter-meta-llama-llama-4-scout:65fe4c4d98c164a5
   profile: v0_2_public_aggregate
   reasoning_effort: none
+- label: Meta Muse Spark 1.1 minimal
+  inspect_model: meta/muse-spark-1.1
+  provider_model: meta/muse-spark-1.1
+  model_entry_id: manual-20260709-meta-muse-spark-1-1-minimal
+  model_setting_key: meta-muse-spark-1-1:a4856a38b6e3ea5e
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Meta Muse Spark 1.1 low
+  inspect_model: meta/muse-spark-1.1
+  provider_model: meta/muse-spark-1.1
+  model_entry_id: manual-20260709-meta-muse-spark-1-1-low
+  model_setting_key: meta-muse-spark-1-1:c63292e7b0998ab5
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Meta Muse Spark 1.1 medium
+  inspect_model: meta/muse-spark-1.1
+  provider_model: meta/muse-spark-1.1
+  model_entry_id: manual-20260709-meta-muse-spark-1-1-medium
+  model_setting_key: meta-muse-spark-1-1:13fdb93d0fbae250
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Meta Muse Spark 1.1 high
+  inspect_model: meta/muse-spark-1.1
+  provider_model: meta/muse-spark-1.1
+  model_entry_id: manual-20260709-meta-muse-spark-1-1-high
+  model_setting_key: meta-muse-spark-1-1:2e97ae393c23d3c2
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Meta Muse Spark 1.1 xhigh
+  inspect_model: meta/muse-spark-1.1
+  provider_model: meta/muse-spark-1.1
+  model_entry_id: manual-20260709-meta-muse-spark-1-1-xhigh
+  model_setting_key: meta-muse-spark-1-1:a11c2f94003f0000
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: 'MiniMax: MiniMax-01'
   inspect_model: openrouter/minimax/minimax-01
   provider_model: minimax/minimax-01
@@ -1437,6 +1472,132 @@ release_panel:
   model_setting_key: openai-gpt-5-5:92578fdfdf4046b6
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
+- label: OpenAI GPT-5.6 Luna none
+  inspect_model: openai/gpt-5.6-luna
+  provider_model: openai/gpt-5.6-luna
+  model_entry_id: manual-20260709-openai-gpt-5-6-luna-none
+  model_setting_key: openai-gpt-5-6-luna:be1d405fdf4d4b35
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5.6 Luna low
+  inspect_model: openai/gpt-5.6-luna
+  provider_model: openai/gpt-5.6-luna
+  model_entry_id: manual-20260709-openai-gpt-5-6-luna-low
+  model_setting_key: openai-gpt-5-6-luna:36cb3438747ae8a6
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.6 Luna medium
+  inspect_model: openai/gpt-5.6-luna
+  provider_model: openai/gpt-5.6-luna
+  model_entry_id: manual-20260709-openai-gpt-5-6-luna-medium
+  model_setting_key: openai-gpt-5-6-luna:90768205d6de04fc
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.6 Luna high
+  inspect_model: openai/gpt-5.6-luna
+  provider_model: openai/gpt-5.6-luna
+  model_entry_id: manual-20260709-openai-gpt-5-6-luna-high
+  model_setting_key: openai-gpt-5-6-luna:9def4e3f52ef0fec
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.6 Luna xhigh
+  inspect_model: openai/gpt-5.6-luna
+  provider_model: openai/gpt-5.6-luna
+  model_entry_id: manual-20260709-openai-gpt-5-6-luna-xhigh
+  model_setting_key: openai-gpt-5-6-luna:bb02f576f521e23e
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-5.6 Luna max
+  inspect_model: openai/gpt-5.6-luna
+  provider_model: openai/gpt-5.6-luna
+  model_entry_id: manual-20260709-openai-gpt-5-6-luna-max
+  model_setting_key: openai-gpt-5-6-luna:703a6acc221d74b1
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: OpenAI GPT-5.6 Sol none
+  inspect_model: openai/gpt-5.6-sol
+  provider_model: openai/gpt-5.6-sol
+  model_entry_id: manual-20260709-openai-gpt-5-6-sol-none
+  model_setting_key: openai-gpt-5-6-sol:bd9faaeae770b34d
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5.6 Sol low
+  inspect_model: openai/gpt-5.6-sol
+  provider_model: openai/gpt-5.6-sol
+  model_entry_id: manual-20260709-openai-gpt-5-6-sol-low
+  model_setting_key: openai-gpt-5-6-sol:720bf02bb915ea49
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.6 Sol medium
+  inspect_model: openai/gpt-5.6-sol
+  provider_model: openai/gpt-5.6-sol
+  model_entry_id: manual-20260709-openai-gpt-5-6-sol-medium
+  model_setting_key: openai-gpt-5-6-sol:b6830897b7ebe905
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.6 Sol high
+  inspect_model: openai/gpt-5.6-sol
+  provider_model: openai/gpt-5.6-sol
+  model_entry_id: manual-20260709-openai-gpt-5-6-sol-high
+  model_setting_key: openai-gpt-5-6-sol:eabc6fe233d73a32
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.6 Sol xhigh
+  inspect_model: openai/gpt-5.6-sol
+  provider_model: openai/gpt-5.6-sol
+  model_entry_id: manual-20260709-openai-gpt-5-6-sol-xhigh
+  model_setting_key: openai-gpt-5-6-sol:f4ce07a580b9fe20
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-5.6 Sol max
+  inspect_model: openai/gpt-5.6-sol
+  provider_model: openai/gpt-5.6-sol
+  model_entry_id: manual-20260709-openai-gpt-5-6-sol-max
+  model_setting_key: openai-gpt-5-6-sol:60a46f3513572c81
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: OpenAI GPT-5.6 Terra none
+  inspect_model: openai/gpt-5.6-terra
+  provider_model: openai/gpt-5.6-terra
+  model_entry_id: manual-20260709-openai-gpt-5-6-terra-none
+  model_setting_key: openai-gpt-5-6-terra:237bbbea0447f9e8
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-5.6 Terra low
+  inspect_model: openai/gpt-5.6-terra
+  provider_model: openai/gpt-5.6-terra
+  model_entry_id: manual-20260709-openai-gpt-5-6-terra-low
+  model_setting_key: openai-gpt-5-6-terra:ed07e4bdd09f679e
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.6 Terra medium
+  inspect_model: openai/gpt-5.6-terra
+  provider_model: openai/gpt-5.6-terra
+  model_entry_id: manual-20260709-openai-gpt-5-6-terra-medium
+  model_setting_key: openai-gpt-5-6-terra:19abc0c2968ff994
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.6 Terra high
+  inspect_model: openai/gpt-5.6-terra
+  provider_model: openai/gpt-5.6-terra
+  model_entry_id: manual-20260709-openai-gpt-5-6-terra-high
+  model_setting_key: openai-gpt-5-6-terra:24cf61303b10237f
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.6 Terra xhigh
+  inspect_model: openai/gpt-5.6-terra
+  provider_model: openai/gpt-5.6-terra
+  model_entry_id: manual-20260709-openai-gpt-5-6-terra-xhigh
+  model_setting_key: openai-gpt-5-6-terra:0837441ee003ac82
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-5.6 Terra max
+  inspect_model: openai/gpt-5.6-terra
+  provider_model: openai/gpt-5.6-terra
+  model_entry_id: manual-20260709-openai-gpt-5-6-terra-max
+  model_setting_key: openai-gpt-5-6-terra:8c1cbae5eb4a2fab
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: OpenRouter openai/gpt-oss-120b low
   inspect_model: openrouter/openai/gpt-oss-120b
   provider_model: openai/gpt-oss-120b
@@ -1934,27 +2095,6 @@ release_panel:
   model_setting_key: openrouter-tencent-hy3-free:9e0e48f9d143f8d7
   profile: v0_2_public_aggregate
   reasoning_effort: high
-- label: Grok 4.5 low
-  inspect_model: grok/grok-4.5
-  provider_model: x-ai/grok-4.5
-  model_entry_id: manual-20260708-grok-4-5-low
-  model_setting_key: grok-grok-4-5:61ff4360a81aba0f
-  profile: v0_2_public_aggregate
-  reasoning_effort: low
-- label: Grok 4.5 medium
-  inspect_model: grok/grok-4.5
-  provider_model: x-ai/grok-4.5
-  model_entry_id: manual-20260708-grok-4-5-medium
-  model_setting_key: grok-grok-4-5:30be1ad9f0a31a39
-  profile: v0_2_public_aggregate
-  reasoning_effort: medium
-- label: Grok 4.5 high
-  inspect_model: grok/grok-4.5
-  provider_model: x-ai/grok-4.5
-  model_entry_id: manual-20260708-grok-4-5-high
-  model_setting_key: grok-grok-4-5:758e3c05355d4db1
-  profile: v0_2_public_aggregate
-  reasoning_effort: high
 - label: OpenRouter x-ai/grok-4.20 disabled
   inspect_model: openrouter/x-ai/grok-4.20
   provider_model: x-ai/grok-4.20
@@ -2025,6 +2165,27 @@ release_panel:
   model_setting_key: openrouter-x-ai-grok-4-3:57b60814859ed41b
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
+- label: Grok 4.5 low
+  inspect_model: grok/grok-4.5
+  provider_model: x-ai/grok-4.5
+  model_entry_id: manual-20260708-grok-4-5-low
+  model_setting_key: grok-grok-4-5:61ff4360a81aba0f
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Grok 4.5 medium
+  inspect_model: grok/grok-4.5
+  provider_model: x-ai/grok-4.5
+  model_entry_id: manual-20260708-grok-4-5-medium
+  model_setting_key: grok-grok-4-5:30be1ad9f0a31a39
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Grok 4.5 high
+  inspect_model: grok/grok-4.5
+  provider_model: x-ai/grok-4.5
+  model_entry_id: manual-20260708-grok-4-5-high
+  model_setting_key: grok-grok-4-5:758e3c05355d4db1
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: Grok Build 0.1
   inspect_model: grok/grok-build-0.1
   provider_model: x-ai/grok-build-0.1
