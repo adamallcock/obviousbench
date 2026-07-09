@@ -33,7 +33,7 @@ selection_policy:
     - "open-weight or open-source families"
     - "small, lite, mini, nano, flash, and cheap models"
     - "non-thinking defaults where generation settings can suppress reasoning"
-    - "a small direct-provider baseline for existing OpenAI, Anthropic, Gemini, and Grok credentials"
+    - "a small direct-provider baseline for existing OpenAI, Anthropic, Gemini, Grok, and Meta credentials"
   exclusions:
     - "image-only models"
     - "audio-only models"
@@ -6232,6 +6232,181 @@ entries:
     pricing_source: "runcost_default_price_cards"
     runcost_price_card_id: "google:gemini-2.5-flash:models-dev"
     runcost_price_source: "models.dev"
+  -
+    id: "meta-muse-spark-1-1-minimal"
+    label: "Meta Muse Spark 1.1 minimal"
+    provider_route: "meta"
+    upstream_provider: "meta"
+    inspect_model: "meta/muse-spark-1.1"
+    model_id: "muse-spark-1.1"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "minimal"
+    provider_api: "meta_model_api_openai_compatible"
+    run_status: "api_preview_available"
+    source_refs:
+      - "https://developer.meta.com/ai/resources/blog/build-with-muse-spark/"
+      - "https://dev.meta.ai/docs/getting-started/sdks"
+      - "https://dev.meta.ai/docs/getting-started/models"
+      - "https://dev.meta.ai/docs/features/reasoning"
+      - "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+      - "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/"
+    access_status: "public_preview"
+    tags:
+      - "direct-provider"
+      - "frontier"
+      - "thinking"
+      - "api-preview"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 4.25
+    pricing_source: "meta_model_api_blog_2026_07_09"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "meta-muse-spark-1-1-low"
+    label: "Meta Muse Spark 1.1 low"
+    provider_route: "meta"
+    upstream_provider: "meta"
+    inspect_model: "meta/muse-spark-1.1"
+    model_id: "muse-spark-1.1"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+    provider_api: "meta_model_api_openai_compatible"
+    run_status: "api_preview_available"
+    source_refs:
+      - "https://developer.meta.com/ai/resources/blog/build-with-muse-spark/"
+      - "https://dev.meta.ai/docs/getting-started/sdks"
+      - "https://dev.meta.ai/docs/getting-started/models"
+      - "https://dev.meta.ai/docs/features/reasoning"
+      - "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+      - "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/"
+    access_status: "public_preview"
+    tags:
+      - "direct-provider"
+      - "frontier"
+      - "thinking"
+      - "api-preview"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 4.25
+    pricing_source: "meta_model_api_blog_2026_07_09"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "meta-muse-spark-1-1-medium"
+    label: "Meta Muse Spark 1.1 medium"
+    provider_route: "meta"
+    upstream_provider: "meta"
+    inspect_model: "meta/muse-spark-1.1"
+    model_id: "muse-spark-1.1"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+    provider_api: "meta_model_api_openai_compatible"
+    run_status: "api_preview_available"
+    source_refs:
+      - "https://developer.meta.com/ai/resources/blog/build-with-muse-spark/"
+      - "https://dev.meta.ai/docs/getting-started/sdks"
+      - "https://dev.meta.ai/docs/getting-started/models"
+      - "https://dev.meta.ai/docs/features/reasoning"
+      - "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+      - "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/"
+    access_status: "public_preview"
+    tags:
+      - "direct-provider"
+      - "frontier"
+      - "thinking"
+      - "api-preview"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 4.25
+    pricing_source: "meta_model_api_blog_2026_07_09"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "meta-muse-spark-1-1-high"
+    label: "Meta Muse Spark 1.1 high"
+    provider_route: "meta"
+    upstream_provider: "meta"
+    inspect_model: "meta/muse-spark-1.1"
+    model_id: "muse-spark-1.1"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+    provider_api: "meta_model_api_openai_compatible"
+    run_status: "api_preview_available"
+    source_refs:
+      - "https://developer.meta.com/ai/resources/blog/build-with-muse-spark/"
+      - "https://dev.meta.ai/docs/getting-started/sdks"
+      - "https://dev.meta.ai/docs/getting-started/models"
+      - "https://dev.meta.ai/docs/features/reasoning"
+      - "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+      - "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/"
+    access_status: "public_preview"
+    tags:
+      - "direct-provider"
+      - "frontier"
+      - "thinking"
+      - "api-preview"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 4.25
+    pricing_source: "meta_model_api_blog_2026_07_09"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "meta-muse-spark-1-1-xhigh"
+    label: "Meta Muse Spark 1.1 xhigh"
+    provider_route: "meta"
+    upstream_provider: "meta"
+    inspect_model: "meta/muse-spark-1.1"
+    model_id: "muse-spark-1.1"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "xhigh"
+    provider_api: "meta_model_api_openai_compatible"
+    run_status: "api_preview_available"
+    source_refs:
+      - "https://developer.meta.com/ai/resources/blog/build-with-muse-spark/"
+      - "https://dev.meta.ai/docs/getting-started/sdks"
+      - "https://dev.meta.ai/docs/getting-started/models"
+      - "https://dev.meta.ai/docs/features/reasoning"
+      - "https://dev.meta.ai/docs/getting-started/pricing-rate-limits"
+      - "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/"
+    access_status: "public_preview"
+    tags:
+      - "direct-provider"
+      - "frontier"
+      - "thinking"
+      - "api-preview"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 4.25
+    pricing_source: "meta_model_api_blog_2026_07_09"
+    runcost_price_card_id: null
+    runcost_price_source: null
   -
     id: "grok-4-5"
     label: "Grok 4.5"
