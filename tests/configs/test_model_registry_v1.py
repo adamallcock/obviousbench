@@ -62,6 +62,7 @@ def test_model_registry_entries_are_unique_and_runnable():
             "openrouter_models_api",
             "runcost_default_price_cards",
             "xai_grok_4_5_docs_2026_07_08",
+            "meta_model_api_blog_2026_07_09",
             "manual_lookup_required",
         }
         assert isinstance(entry["tags"], list)
