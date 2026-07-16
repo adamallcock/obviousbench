@@ -11,6 +11,7 @@ status: draft
 - Primary metric: answer pass^3, defined only for item/model/settings groups with attempts 1, 2, and 3 all valid and answer-correct.
 - Strict and format correctness remain available as diagnostics.
 - Incomplete rows are shown but should not be used for final public claims.
+- A `~` before a Tinker reasoning-token value marks an estimate reconstructed from its billed completion total and Inkling's tokenizer; it is not provider-reported reasoning telemetry.
 
 | Model | Effort | Complete items | Valid attempts | Answer pass^3 | Strict pass^3 | Strict any^3 | Input tok | Output tok | Reason tok | Total tok | Est. cost | Manual adj. | Provider errors |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -314,12 +315,12 @@ status: draft
 | tencent/hy3 | none | 144/144 | 432 | 0.645833 | 0.645833 | 0.756944 | 17133 | 1453 | 0 | 24778 | 0.0069026 | 0 | 0 |
 | tencent/hy3 | low | 144/144 | 432 | 0.993056 | 0.993056 | 1.0 | 16653 | 66374 | 62647 | 88403 | 0.058379 | 0 | 0 |
 | tencent/hy3 | high | 144/144 | 432 | 1.0 | 1.0 | 1.0 | 16653 | 66767 | 63486 | 88796 | 0.0586934 | 0 | 0 |
-| thinkingmachines/Inkling | minimal | 144/144 | 432 | 0.951389 | 0.951389 | 0.986111 | 22824 | 21285 | 0 | 44109 | 0.28458936 | 0 | 0 |
+| thinkingmachines/Inkling | minimal | 144/144 | 432 | 0.951389 | 0.951389 | 0.986111 | 22824 | 2722 | ~18563 | 44109 | 0.28458936 | 0 | 0 |
 | thinkingmachines/Inkling | none | 144/144 | 432 | 0.631944 | 0.625 | 0.756944 | 21960 | 2716 | 0 | 24676 | 0.10755216 | 0 | 0 |
-| thinkingmachines/Inkling | low | 144/144 | 432 | 0.923611 | 0.923611 | 0.986111 | 22824 | 22541 | 0 | 45365 | 0.29634552 | 0 | 0 |
-| thinkingmachines/Inkling | medium | 144/144 | 432 | 0.979167 | 0.979167 | 1.0 | 22824 | 36640 | 0 | 59464 | 0.42831216 | 0 | 0 |
-| thinkingmachines/Inkling | high | 144/144 | 432 | 0.979167 | 0.979167 | 1.0 | 22824 | 42887 | 0 | 65711 | 0.48678408 | 0 | 0 |
-| thinkingmachines/Inkling | xhigh | 144/144 | 432 | 0.972222 | 0.972222 | 1.0 | 22824 | 51522 | 0 | 74346 | 0.56760768 | 0 | 0 |
+| thinkingmachines/Inkling | low | 144/144 | 432 | 0.923611 | 0.923611 | 0.986111 | 22824 | 2719 | ~19822 | 45365 | 0.29634552 | 0 | 0 |
+| thinkingmachines/Inkling | medium | 144/144 | 432 | 0.979167 | 0.979167 | 1.0 | 22824 | 2719 | ~33921 | 59464 | 0.42831216 | 0 | 0 |
+| thinkingmachines/Inkling | high | 144/144 | 432 | 0.979167 | 0.979167 | 1.0 | 22824 | 2720 | ~40167 | 65711 | 0.48678408 | 0 | 0 |
+| thinkingmachines/Inkling | xhigh | 144/144 | 432 | 0.972222 | 0.972222 | 1.0 | 22824 | 6808 | ~44714 | 74346 | 0.56760768 | 0 | 0 |
 | x-ai/grok-4.20 | disabled | 144/144 | 432 | 0.569444 | 0.541667 | 0.6875 | 15179 | 3046 | 0 | 72433 | 0.0204791 | 0 | 0 |
 | x-ai/grok-4.20 | low | 144/144 | 432 | 0.986111 | 0.041667 | 0.305556 | 14635 | 335892 | 295276 | 406143 | 0.8517207 | 0 | 0 |
 | x-ai/grok-4.20 | medium | 144/144 | 432 | 0.986111 | 0.083333 | 0.381944 | 13803 | 327824 | 288195 | 398075 | 0.83133085 | 0 | 0 |
