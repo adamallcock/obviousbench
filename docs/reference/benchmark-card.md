@@ -1,6 +1,6 @@
 ---
 title: ObviousBench Benchmark Card
-date: 2026-07-09
+date: 2026-07-15
 type: reference
 status: current
 ---
@@ -12,8 +12,8 @@ systems. It focuses on short questions where the expected answer is obvious to
 a person and embarrassing when a model misses it.
 
 The current intended publication-prep snapshot is v0.2. The private v0.2
-headline evidence is aggregate-only: 144 held-out items, 335 model/config rows,
-335 complete rows, 144,720 attempted cells, and non-strict answer pass^3 as the
+headline evidence is aggregate-only: 144 held-out items, 343 model/config rows,
+343 complete rows, 148,176 attempted cells, and non-strict answer pass^3 as the
 primary metric. Private prompts, raw private completions, item-level private
 outcomes, and private review HTML remain out of public materials.
 
@@ -36,10 +36,10 @@ Current intended publication-prep version: `v0.2`.
 Current private evidence shape:
 
 - 144 private held-out items.
-- 335 model/config rows.
-- 335 complete rows.
-- 144,720 attempted item/config/pass cells.
-- 144,720 scored attempts.
+- 343 model/config rows.
+- 343 complete rows.
+- 148,176 attempted item/config/pass cells.
+- 148,176 scored attempts.
 - Primary headline metric: non-strict answer pass^3.
 
 The strongest v0.2 model/config rows saturate or near-saturate the benchmark.

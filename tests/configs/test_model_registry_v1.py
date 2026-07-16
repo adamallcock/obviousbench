@@ -26,7 +26,7 @@ def test_model_registry_v1_has_comprehensive_coverage():
     assert registry["defaults"]["seed"] == 20260531
     assert 190 <= len(entries) <= 230
     assert route_counts["openrouter"] >= 180
-    assert {"openrouter", "openai", "anthropic", "gemini", "grok"}.issubset(
+    assert {"openrouter", "openai", "anthropic", "gemini", "grok", "tinker"}.issubset(
         route_counts
     )
     assert sum("free" in entry["tags"] for entry in entries) >= 20
@@ -64,6 +64,7 @@ def test_model_registry_entries_are_unique_and_runnable():
             "xai_grok_4_5_docs_2026_07_08",
             "meta_model_api_blog_2026_07_09",
             "openai_standard_short_context_2026_07_09",
+            "tinker_inkling_undiscounted_pricing_2026_07_15",
             "manual_lookup_required",
         }
         assert isinstance(entry["tags"], list)
@@ -164,6 +165,41 @@ def test_model_registry_includes_gpt_5_6_defaults_with_standard_prices():
         assert row["generation_settings"]["reasoning_effort"] == "medium"
         assert row["generation_settings"]["extra_body"] == {"service_tier": "flex"}
         assert row["pricing_source"] == "openai_standard_short_context_2026_07_09"
+
+
+def test_model_registry_includes_tinker_inkling_effort_rows_at_undiscounted_prices():
+    rows = {
+        entry["id"]: entry
+        for entry in _entries()
+        if entry["provider_route"] == "tinker"
+    }
+
+    assert set(rows) == {
+        "tinker-inkling-none",
+        "tinker-inkling-minimal",
+        "tinker-inkling-low",
+        "tinker-inkling-medium",
+        "tinker-inkling-high",
+        "tinker-inkling-xhigh",
+    }
+    assert {row["generation_settings"].get("reasoning_effort") for row in rows.values()} == {
+        "none",
+        "minimal",
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+    }
+    assert all(
+        row["inspect_model"] == "tinker/thinkingmachines/Inkling"
+        and row["model_id"] == "thinkingmachines/Inkling"
+        and row["provider_api"] == "tinker_openai_compatible"
+        and row["pricing_source"] == "tinker_inkling_undiscounted_pricing_2026_07_15"
+        and row["input_price_per_mtok_usd"] == 3.74
+        and row["cached_input_price_per_mtok_usd"] == 0.748
+        and row["output_price_per_mtok_usd"] == 9.36
+        for row in rows.values()
+    )
 
 
 def test_model_registry_does_not_store_secrets():

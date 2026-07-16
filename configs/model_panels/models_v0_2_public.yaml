@@ -660,6 +660,13 @@ release_panel:
   model_setting_key: openrouter-google-gemma-2-27b-it:9f070720e02c9675
   profile: v0_2_public_aggregate
   reasoning_effort: none
+- label: 'Google: Gemma 2 9B (LM Studio Q8)'
+  inspect_model: openai-api/lmstudio/google/gemma-2-9b
+  provider_model: google/gemma-2-9b
+  model_entry_id: manual-20260713-google-gemma-2-9b-none
+  model_setting_key: openai-api-lmstudio-google-gemma-2-9b:c7b6452671bc26b7
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
 - label: 'Google: Gemma 3 12B'
   inspect_model: openrouter/google/gemma-3-12b-it
   provider_model: google/gemma-3-12b-it
@@ -2095,6 +2102,48 @@ release_panel:
   model_setting_key: openrouter-tencent-hy3-free:9e0e48f9d143f8d7
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: Thinking Machines Inkling minimal
+  inspect_model: tinker/thinkingmachines/Inkling
+  provider_model: thinkingmachines/Inkling
+  model_entry_id: manual-20260715-thinkingmachines-inkling-minimal
+  model_setting_key: tinker-thinkingmachines-inkling:b4eea8ce7a653c7f
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Thinking Machines Inkling none
+  inspect_model: tinker/thinkingmachines/Inkling
+  provider_model: thinkingmachines/Inkling
+  model_entry_id: manual-20260715-thinkingmachines-inkling-none
+  model_setting_key: tinker-thinkingmachines-inkling:fbe2ae1cf084fa70
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Thinking Machines Inkling low
+  inspect_model: tinker/thinkingmachines/Inkling
+  provider_model: thinkingmachines/Inkling
+  model_entry_id: manual-20260715-thinkingmachines-inkling-low
+  model_setting_key: tinker-thinkingmachines-inkling:b44e54045402e10a
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Thinking Machines Inkling medium
+  inspect_model: tinker/thinkingmachines/Inkling
+  provider_model: thinkingmachines/Inkling
+  model_entry_id: manual-20260715-thinkingmachines-inkling-medium
+  model_setting_key: tinker-thinkingmachines-inkling:ee091cfcd56f161e
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Thinking Machines Inkling high
+  inspect_model: tinker/thinkingmachines/Inkling
+  provider_model: thinkingmachines/Inkling
+  model_entry_id: manual-20260715-thinkingmachines-inkling-high
+  model_setting_key: tinker-thinkingmachines-inkling:b2b7e110910d92ab
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Thinking Machines Inkling xhigh
+  inspect_model: tinker/thinkingmachines/Inkling
+  provider_model: thinkingmachines/Inkling
+  model_entry_id: manual-20260715-thinkingmachines-inkling-xhigh
+  model_setting_key: tinker-thinkingmachines-inkling:d0eebea2a91d7925
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: OpenRouter x-ai/grok-4.20 disabled
   inspect_model: openrouter/x-ai/grok-4.20
   provider_model: x-ai/grok-4.20
@@ -2186,13 +2235,6 @@ release_panel:
   model_setting_key: grok-grok-4-5:758e3c05355d4db1
   profile: v0_2_public_aggregate
   reasoning_effort: high
-- label: Grok Build 0.1
-  inspect_model: grok/grok-build-0.1
-  provider_model: x-ai/grok-build-0.1
-  model_entry_id: old-157-grok-build-0-1
-  model_setting_key: grok-grok-build-0-1:79c4f8d473e2034c
-  profile: v0_2_public_aggregate
-  reasoning_effort: default
 - label: OpenRouter x-ai/grok-build-0.1 low
   inspect_model: openrouter/x-ai/grok-build-0.1
   provider_model: x-ai/grok-build-0.1
@@ -2221,6 +2263,20 @@ release_panel:
   model_setting_key: openrouter-x-ai-grok-build-0-1:c3c1015a3a74418d
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
+- label: Grok 4.1 Fast Non-Reasoning
+  inspect_model: openai-api/agent-platform/xai/grok-4.1-fast-non-reasoning
+  provider_model: xai/grok-4.1-fast-non-reasoning
+  model_entry_id: manual-20260713-xai-grok-4-1-fast-non-reasoning-none
+  model_setting_key: openai-api-agent-platform-xai-grok-4-1-fast-non-reasoning:0954701285bcbd50
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Grok 4.1 Fast Reasoning
+  inspect_model: openai-api/agent-platform/xai/grok-4.1-fast-reasoning
+  provider_model: xai/grok-4.1-fast-reasoning
+  model_entry_id: manual-20260713-xai-grok-4-1-fast-reasoning-reasoning
+  model_setting_key: openai-api-agent-platform-xai-grok-4-1-fast-reasoning:02036ed15d7879c6
+  profile: v0_2_public_aggregate
+  reasoning_effort: reasoning
 - label: OpenRouter z-ai/glm-4.5 disabled
   inspect_model: openrouter/z-ai/glm-4.5
   provider_model: z-ai/glm-4.5

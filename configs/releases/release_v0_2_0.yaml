@@ -2,7 +2,7 @@
 release:
   id: obviousbench-v0.2.0-public-aggregate
   version: 0.2.0
-  date: '2026-07-09'
+  date: '2026-07-15'
 generated:
   output_dir: docs/release/v0_2/generated
 public_safety:
@@ -18,11 +18,11 @@ public_links:
 snapshot:
   summary_csv: reports/v0_2/aggregate/summary.csv
   report_markdown: reports/v0_2/aggregate/report.md
-  attempt_count: 144720
-  scored_attempt_count: 144720
-  model_setting_count: 335
-  complete_model_setting_count: 335
+  attempt_count: 148176
+  scored_attempt_count: 148176
+  model_setting_count: 343
+  complete_model_setting_count: 343
   private_item_count: 144
-  estimated_cost_usd: 149.1437091442
+  estimated_cost_usd: 151.1675147942
   provider_error_attempt_count: 0
-  manual_adjusted_attempt_count: 104
+  manual_adjusted_attempt_count: 99

@@ -32,6 +32,12 @@ sources:
     checked_on: "2026-07-09"
     execution_service_tier: "flex"
     public_pricing_service_tier: "standard"
+  tinker_inkling:
+    models_and_pricing: "https://tinker-docs.thinkingmachines.ai/tinker/models/"
+    openai_compatible_api: "https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/openai/"
+    checked_on: "2026-07-15"
+    model_id: "thinkingmachines/Inkling"
+    list_price_semantics: "Listed Inkling rates carry a limited-time 50% discount; registry prices intentionally double them. Cached prefill remains 80% below the undiscounted input rate."
 selection_policy:
   target_openrouter_entries: 185
   emphasis:
@@ -39,7 +45,7 @@ selection_policy:
     - "open-weight or open-source families"
     - "small, lite, mini, nano, flash, and cheap models"
     - "non-thinking defaults where generation settings can suppress reasoning"
-    - "a small direct-provider baseline for existing OpenAI, Anthropic, Gemini, Grok, and Meta credentials"
+    - "a small direct-provider baseline for existing OpenAI, Anthropic, Gemini, Grok, Meta, and Thinking Machines credentials"
   exclusions:
     - "image-only models"
     - "audio-only models"
@@ -6586,5 +6592,215 @@ entries:
     input_price_per_mtok_usd: null
     output_price_per_mtok_usd: null
     pricing_source: "manual_lookup_required"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "tinker-inkling-none"
+    label: "Thinking Machines Inkling none"
+    provider_route: "tinker"
+    upstream_provider: "thinkingmachines"
+    inspect_model: "tinker/thinkingmachines/Inkling"
+    model_id: "thinkingmachines/Inkling"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "none"
+    provider_api: "tinker_openai_compatible"
+    run_status: "beta_testing_available"
+    source_refs:
+      - "https://tinker-docs.thinkingmachines.ai/tinker/models/"
+      - "https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/openai/"
+    access_status: "api_key_required"
+    cached_input_price_per_mtok_usd: 0.748
+    pricing_note: "Undiscounted estimate: twice Tinker's listed limited-time 50% discounted Inkling rates; cached prefill retains the documented 80% cache discount."
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "large"
+      - "non-thinking"
+      - "reasoning-none"
+      - "beta"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 3.74
+    output_price_per_mtok_usd: 9.36
+    pricing_source: "tinker_inkling_undiscounted_pricing_2026_07_15"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "tinker-inkling-minimal"
+    label: "Thinking Machines Inkling minimal"
+    provider_route: "tinker"
+    upstream_provider: "thinkingmachines"
+    inspect_model: "tinker/thinkingmachines/Inkling"
+    model_id: "thinkingmachines/Inkling"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "minimal"
+    provider_api: "tinker_openai_compatible"
+    run_status: "beta_testing_available"
+    source_refs:
+      - "https://tinker-docs.thinkingmachines.ai/tinker/models/"
+      - "https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/openai/"
+    access_status: "api_key_required"
+    cached_input_price_per_mtok_usd: 0.748
+    pricing_note: "Undiscounted estimate: twice Tinker's listed limited-time 50% discounted Inkling rates; cached prefill retains the documented 80% cache discount."
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "large"
+      - "thinking"
+      - "reasoning-minimal"
+      - "beta"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 3.74
+    output_price_per_mtok_usd: 9.36
+    pricing_source: "tinker_inkling_undiscounted_pricing_2026_07_15"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "tinker-inkling-low"
+    label: "Thinking Machines Inkling low"
+    provider_route: "tinker"
+    upstream_provider: "thinkingmachines"
+    inspect_model: "tinker/thinkingmachines/Inkling"
+    model_id: "thinkingmachines/Inkling"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+    provider_api: "tinker_openai_compatible"
+    run_status: "beta_testing_available"
+    source_refs:
+      - "https://tinker-docs.thinkingmachines.ai/tinker/models/"
+      - "https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/openai/"
+    access_status: "api_key_required"
+    cached_input_price_per_mtok_usd: 0.748
+    pricing_note: "Undiscounted estimate: twice Tinker's listed limited-time 50% discounted Inkling rates; cached prefill retains the documented 80% cache discount."
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "large"
+      - "thinking"
+      - "reasoning-low"
+      - "beta"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 3.74
+    output_price_per_mtok_usd: 9.36
+    pricing_source: "tinker_inkling_undiscounted_pricing_2026_07_15"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "tinker-inkling-medium"
+    label: "Thinking Machines Inkling medium"
+    provider_route: "tinker"
+    upstream_provider: "thinkingmachines"
+    inspect_model: "tinker/thinkingmachines/Inkling"
+    model_id: "thinkingmachines/Inkling"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+    provider_api: "tinker_openai_compatible"
+    run_status: "beta_testing_available"
+    source_refs:
+      - "https://tinker-docs.thinkingmachines.ai/tinker/models/"
+      - "https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/openai/"
+    access_status: "api_key_required"
+    cached_input_price_per_mtok_usd: 0.748
+    pricing_note: "Undiscounted estimate: twice Tinker's listed limited-time 50% discounted Inkling rates; cached prefill retains the documented 80% cache discount."
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "large"
+      - "thinking"
+      - "reasoning-medium"
+      - "beta"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 3.74
+    output_price_per_mtok_usd: 9.36
+    pricing_source: "tinker_inkling_undiscounted_pricing_2026_07_15"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "tinker-inkling-high"
+    label: "Thinking Machines Inkling high"
+    provider_route: "tinker"
+    upstream_provider: "thinkingmachines"
+    inspect_model: "tinker/thinkingmachines/Inkling"
+    model_id: "thinkingmachines/Inkling"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+    provider_api: "tinker_openai_compatible"
+    run_status: "beta_testing_available"
+    source_refs:
+      - "https://tinker-docs.thinkingmachines.ai/tinker/models/"
+      - "https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/openai/"
+    access_status: "api_key_required"
+    cached_input_price_per_mtok_usd: 0.748
+    pricing_note: "Undiscounted estimate: twice Tinker's listed limited-time 50% discounted Inkling rates; cached prefill retains the documented 80% cache discount."
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "large"
+      - "thinking"
+      - "reasoning-high"
+      - "beta"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 3.74
+    output_price_per_mtok_usd: 9.36
+    pricing_source: "tinker_inkling_undiscounted_pricing_2026_07_15"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "tinker-inkling-xhigh"
+    label: "Thinking Machines Inkling xhigh"
+    provider_route: "tinker"
+    upstream_provider: "thinkingmachines"
+    inspect_model: "tinker/thinkingmachines/Inkling"
+    model_id: "thinkingmachines/Inkling"
+    profile: "balanced_8x5"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "xhigh"
+    provider_api: "tinker_openai_compatible"
+    run_status: "beta_testing_available"
+    source_refs:
+      - "https://tinker-docs.thinkingmachines.ai/tinker/models/"
+      - "https://tinker-docs.thinkingmachines.ai/tinker/compatible-apis/openai/"
+    access_status: "api_key_required"
+    cached_input_price_per_mtok_usd: 0.748
+    pricing_note: "Undiscounted estimate: twice Tinker's listed limited-time 50% discounted Inkling rates; cached prefill retains the documented 80% cache discount."
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "large"
+      - "thinking"
+      - "reasoning-xhigh"
+      - "beta"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 3.74
+    output_price_per_mtok_usd: 9.36
+    pricing_source: "tinker_inkling_undiscounted_pricing_2026_07_15"
     runcost_price_card_id: null
     runcost_price_source: null
