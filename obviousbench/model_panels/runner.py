@@ -305,6 +305,9 @@ def _generation_settings(
         if key in entry:
             _set_generation_setting(settings, value, entry[key])
     _translate_control_style_generation_settings(entry, settings)
+    for key in entry.get("omit_generation_settings") or ():
+        if isinstance(key, str):
+            settings.pop(key, None)
     return settings
 
 

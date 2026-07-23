@@ -1,8 +1,10 @@
 ---
 release:
-  id: obviousbench-v0.2.0-public-aggregate
+  id: obviousbench-v0.2.0-provider-expansion
   version: 0.2.0
-  date: '2026-07-15'
+  date: '2026-07-23'
+  status: local-publication-prep
+  publication_intent: non_arxiv_public_release
 generated:
   output_dir: docs/release/v0_2/generated
 public_safety:
@@ -16,13 +18,15 @@ public_links:
   launch_site: https://obviousbench.com
   repository: https://github.com/adamallcock/obviousbench
 snapshot:
+  name: v0.2 aggregate provider expansion; Perplexity request fee corrected (2026-07-23)
   summary_csv: reports/v0_2/aggregate/summary.csv
   report_markdown: reports/v0_2/aggregate/report.md
-  attempt_count: 148176
-  scored_attempt_count: 148176
-  model_setting_count: 343
-  complete_model_setting_count: 343
+  attempt_count: 185760
+  scored_attempt_count: 185760
+  model_setting_count: 430
+  complete_model_setting_count: 430
   private_item_count: 144
-  estimated_cost_usd: 151.1675147942
+  estimated_cost_usd: 205.7757932522
   provider_error_attempt_count: 0
   manual_adjusted_attempt_count: 99
+  primary_metric_label: non-strict answer pass^3
