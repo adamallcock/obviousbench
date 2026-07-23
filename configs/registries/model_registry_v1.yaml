@@ -1,5 +1,5 @@
 schema_version: "model-registry-v1"
-generated_at: "2026-07-23T17:52:25.226Z"
+generated_at: "2026-07-23T20:09:23.211Z"
 defaults:
   task: "obviousbench/tasks/barrage.py"
   profile: "hard_obvious_8x10"
@@ -7176,7 +7176,6 @@ entries:
     priority: "requested-expansion"
     tags:
       - "openrouter"
-      - "open-weight"
       - "small"
       - "cheap"
       - "multimodal"
@@ -7184,13 +7183,17 @@ entries:
       - "tools-supported"
       - "reasoning-parameter-supported"
       - "requested-expansion"
+      - "open-weight"
+    weight_status: "open_weights"
+    weight_status_source_refs:
+      - "https://huggingface.co/stepfun-ai/Step-3.7-Flash"
     id: "openrouter-requested-2026-07-21-stepfun-step-3-7-flash"
     source_refs:
       - "https://openrouter.ai/api/v1/models"
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "medium"
     reasoning_token_estimate_status: "not_estimated"
@@ -10506,6 +10509,12 @@ entries:
     pricing_source: "perplexity_sonar_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
+    reasoning_telemetry:
+      mode: "not_applicable"
+      thinking_model: false
+      output_token_semantics: "not_applicable"
+      cost_basis: "not_applicable"
+      evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface."
   -
     id: "perplexity-sonar-pro-provider-default"
     label: "Perplexity sonar-pro provider default"
@@ -10548,6 +10557,12 @@ entries:
     pricing_source: "perplexity_sonar_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
+    reasoning_telemetry:
+      mode: "not_applicable"
+      thinking_model: false
+      output_token_semantics: "not_applicable"
+      cost_basis: "not_applicable"
+      evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface."
   -
     id: "perplexity-sonar-reasoning-pro-provider-default"
     label: "Perplexity sonar-reasoning-pro provider default"
@@ -10590,6 +10605,12 @@ entries:
     pricing_source: "perplexity_sonar_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
+    reasoning_telemetry:
+      mode: "aggregate_completion"
+      thinking_model: true
+      output_token_semantics: "includes_reasoning"
+      cost_basis: "aggregate_completion"
+      evidence: "Perplexity Sonar Reasoning Pro documents a <think> section and a usage payload with prompt, completion, and total tokens but no separate reasoning-token count."
   -
     id: "zai-glm-5-2-none"
     label: "Z.AI GLM-5.2 none"
