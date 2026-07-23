@@ -254,6 +254,37 @@ def test_generation_settings_maps_release_max_output_tokens_and_skips_provider_d
     }
 
 
+def test_generation_settings_can_omit_default_controls_for_provider_contracts():
+    settings = _generation_settings(
+        {
+            "id": "nova-2-lite-high",
+            "control_style": "bedrock_nova_2_lite_reasoning_effort",
+            "generation_settings": {"reasoning_effort": "high"},
+            "omit_generation_settings": ["max_tokens", "temperature"],
+        },
+        defaults={"max_output_tokens": 4096, "temperature": 0},
+    )
+
+    assert settings == {"reasoning_effort": "high"}
+
+
+def test_generation_settings_can_omit_only_output_cap_for_provider_default():
+    settings = _generation_settings(
+        {
+            "id": "uncapped-provider-default",
+            "generation_settings": {"temperature": 0},
+            "omit_generation_settings": ["max_tokens"],
+        },
+        defaults={
+            "max_output_tokens": 10_000,
+            "reasoning_summary": "none",
+            "temperature": 0,
+        },
+    )
+
+    assert settings == {"reasoning_summary": "none", "temperature": 0}
+
+
 def test_model_panel_runner_skips_completed_and_executes_remaining(tmp_path: Path):
     inputs = _inputs(tmp_path)
     completed_summary = tmp_path / "summaries" / "entry-complete" / "summary.csv"

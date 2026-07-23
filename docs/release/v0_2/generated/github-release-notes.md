@@ -4,7 +4,7 @@
 
 - Source config: `configs/releases/release_v0_2_0.yaml`
 - Generator: `uv run --extra dev python scripts/release/build_v0_2_release_assets.py --config configs/releases/release_v0_2_0.yaml`
-- Release date: `2026-07-15`
+- Release date: `2026-07-23`
 - Status: `local-publication-prep`
 - Public/private boundary: excludes private held-out prompts, raw outputs,
   item-level private outcomes, private review HTML, and attempt-level outcomes.
@@ -17,8 +17,8 @@ is the public source/data companion for code, public examples, aggregate CSVs,
 license, citation, and reproducibility materials.
 
 Status: local prep only. Do not publish until repository visibility,
-dataset publication, website link checks, and bundle-audit gates are
-complete.
+website link checks, and bundle-audit gates are complete. The existing
+public-example split remains unchanged by this aggregate-results update.
 
 ## What Is ObviousBench?
 
@@ -46,11 +46,11 @@ the top end.
 | Metric | Value |
 |---|---|
 | Private held-out items | 144 |
-| Model/config rows | 343 |
-| Included headline rows | 343 |
-| Attempt rows | 148176 |
-| Scored attempts | 148176 |
-| Estimated cost | $151.17 |
+| Model/config rows | 430 |
+| Included headline rows | 430 |
+| Attempt rows | 185760 |
+| Scored attempts | 185760 |
+| Estimated cost | $205.78 |
 
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated

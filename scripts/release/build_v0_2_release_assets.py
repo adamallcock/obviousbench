@@ -307,10 +307,16 @@ def build_release_assets(
             "attempt_rows": attempt_rows,
             "scored_attempts": scored_attempts,
             "provider_error_attempts": int(
-                report_summary.get("provider_error_attempt_rows", 0)
+                report_summary.get(
+                    "provider_error_attempt_rows",
+                    snapshot.get("provider_error_attempt_count", 0),
+                )
             ),
             "manual_adjusted_attempts": int(
-                report_summary.get("manual_adjusted_attempt_rows", 0)
+                report_summary.get(
+                    "manual_adjusted_attempt_rows",
+                    snapshot.get("manual_adjusted_attempt_count", 0),
+                )
             ),
             "blank_provider_fault_attempts": int(
                 report_summary.get("blank_provider_fault_attempt_rows", 0)
@@ -474,8 +480,8 @@ def build_release_assets(
                 "license, citation, and reproducibility materials.",
                 "",
                 "Status: local prep only. Do not publish until repository visibility,",
-                "dataset publication, website link checks, and bundle-audit gates are",
-                "complete.",
+                "website link checks, and bundle-audit gates are complete. The existing",
+                "public-example split remains unchanged by this aggregate-results update.",
                 "",
                 "## What Is ObviousBench?",
                 "",

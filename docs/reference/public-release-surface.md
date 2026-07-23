@@ -1,6 +1,6 @@
 ---
 title: Public Release Surface
-date: 2026-06-24
+date: 2026-07-23
 type: reference
 status: current
 ---
@@ -65,9 +65,9 @@ uv run --extra dev python scripts/release/check_repo_hygiene.py
 | Area | Public decision |
 | --- | --- |
 | Aggregate curve artifacts | Removed `answer_pass3_cost_curve.*` and `effort_curve.*`; the release keeps `summary.csv` and `report.md` as the aggregate evidence. |
-| Aggregate report provenance | `reports/v0_2/aggregate/report.md` is the v0.2 public aggregate summary dated 2026-06-18. |
+| Aggregate report provenance | `reports/v0_2/aggregate/report.md` is the v0.2 public aggregate summary updated 2026-07-23. |
 | Manual adjustments | Reported only as aggregate adjustment counts; private source rows and raw completions stay out of the public repo. |
-| Probe helpers | Retired from the public surface; provider smoke/probe scripts belong in the internal lane. |
+| Provider credentials | Credentialed provider smokes/probes remain in the internal lane; public adapter tests are unit-level only. |
 | Paper V1 cost helper | Retired from the public surface; old paper dry-run cost helpers are not part of the v0.2 source release. |
 | Empty release package | Retired from the public package. |
 | Generators | Retired from the public surface; public examples are materialized data, not regenerated from private pools. |
@@ -75,6 +75,9 @@ uv run --extra dev python scripts/release/check_repo_hygiene.py
 | Model panel | `configs/model_panels/models_v0_2_public.yaml` is included because it is public configuration metadata, not private data. |
 | Documentation | Active public docs are limited to benchmark reference, website boundary, release metadata, and this public-surface record; narrative positioning lives on the launch site and in the internal lane. |
 | Registries | `configs/registries/model_registry_v1.yaml` is included because public model metadata is necessary to interpret aggregate rows. Pre-final thinking-panel planning metadata is internal and not part of the published result. |
+| Manufacturer vs. route | Model makers are recorded separately from execution transports: Amazon rather than Bedrock, and the upstream maker rather than OpenRouter. Route metadata remains available for reproducibility. |
+| Weight availability | `open_weights` is source-backed at the canonical model/version level; using a hosted route does not change the model's weight status. |
+| Perplexity pricing | Sonar rows include Perplexity's documented per-request fee in addition to input/output token charges. Sonar Reasoning Pro does not expose a separate reasoning-token count. |
 | Tests | Tests are scoped to public package behavior, public datasets, scoring, registries, hygiene, and release-bundle guards. |
 | Package layout | The `obviousbench/` package remains nested in the repository so users can install and import it normally. |
 
