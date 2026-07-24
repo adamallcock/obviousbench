@@ -10,6 +10,13 @@ const OPENROUTER_MODELS_URL = "https://openrouter.ai/api/v1/models";
 const OUTPUT_PATH = argumentValue("--output", "configs/registries/model_registry_v1.yaml");
 const TARGET_OPENROUTER_ENTRIES = 185;
 const OPENROUTER_REQUESTED_EXPANSION_SOURCE = "openrouter_requested_expansion_2026_07_21";
+const OPENROUTER_LING_3_0_FLASH_SOURCE = "openrouter_inclusionai_ling_3_0_flash_2026_07_24";
+const LING_3_0_FLASH_MODEL_ID = "inclusionai/ling-3.0-flash:free";
+const LING_3_0_FLASH_TEMPORARY_PRICES = {
+  input: 0.01,
+  output: 0.03,
+  source: "owner_directed_ling_2_6_flash_equivalent_2026_07_24",
+};
 const REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS = [
   "kwaipilot/kat-coder-air-v2.5",
   "kwaipilot/kat-coder-pro-v2.5",
@@ -58,6 +65,10 @@ const REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS = [
 const REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET = new Set(
   REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
 );
+const DECLARED_OPENROUTER_MODEL_ID_SET = new Set([
+  ...REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
+  LING_3_0_FLASH_MODEL_ID,
+]);
 const REQUESTED_OPENROUTER_DEFAULT_THINKING_DEPTHS = {
   "sakana/fugu-ultra": "xhigh",
   "inclusionai/ring-2.6-1t": "high",
@@ -66,10 +77,6 @@ const REQUESTED_OPENROUTER_DEFAULT_THINKING_DEPTHS = {
   "inception/mercury-2": "medium",
   "stepfun/step-3.7-flash": "medium",
 };
-const EXCLUDED_OPENROUTER_REQUESTED_EXPANSION_MODEL_ID_SET = new Set([
-  "poolside/laguna-xs.2",
-]);
-
 // OpenRouter's catalog metadata is useful for discovery, but weight availability
 // is a model-family property. These frozen corrections use the manufacturers'
 // published checkpoints rather than inferring availability from the transport.
@@ -90,6 +97,11 @@ const WEIGHT_STATUS_OVERRIDES = {
     openWeight: true,
     sourceRefs: ["https://huggingface.co/inclusionAI/Ling-2.6-flash"],
   },
+  [LING_3_0_FLASH_MODEL_ID]: {
+    openWeight: false,
+    sourceRefs: ["https://openrouter.ai/inclusionai/ling-3.0-flash:free"],
+    note: "No publisher-hosted weights are linked in the current catalog; classify as proprietary pending a primary weights release.",
+  },
   "inclusionai/ring-2.6-1t": {
     openWeight: true,
     sourceRefs: ["https://huggingface.co/inclusionAI/Ring-2.6-1T"],
@@ -103,6 +115,12 @@ const WEIGHT_STATUS_OVERRIDES = {
     // weights are not yet available in the reviewed release window.
     openWeight: false,
     sourceRefs: ["https://platform.kimi.ai/docs/guide/kimi-k3-quickstart"],
+  },
+  "stepfun/step-3.7-flash": {
+    // This is a model-family property, shared by the provider-default row
+    // and every documented OpenRouter reasoning setting.
+    openWeight: true,
+    sourceRefs: ["https://huggingface.co/stepfun-ai/Step-3.7-Flash"],
   },
 };
 const LONGCAT_2_0_WEIGHTS_SOURCE = "https://huggingface.co/meituan-longcat/LongCat-2.0";
@@ -1129,6 +1147,7 @@ const DIRECT_PROVIDER_ENTRIES = [
   }),
   ...["sonar", "sonar-pro", "sonar-reasoning-pro"].map((modelId) => {
     const price = PERPLEXITY_SONAR_STANDARD_PRICES[modelId];
+    const reasoningModel = modelId === "sonar-reasoning-pro";
     return direct(
       `perplexity-${slug(modelId)}-provider-default`,
       `Perplexity ${modelId} provider default`,
@@ -1151,6 +1170,21 @@ const DIRECT_PROVIDER_ENTRIES = [
           request_fee_context_label: "low search context size (provider default)",
           cost_accounting: "token_prices_plus_low_context_request_fee",
           pricing_note: "Standard Sonar token prices plus the documented low search-context request fee; low is the provider default and no Pro Search option is set.",
+          reasoning_telemetry: reasoningModel
+            ? {
+                mode: "aggregate_completion",
+                thinking_model: true,
+                output_token_semantics: "includes_reasoning",
+                cost_basis: "aggregate_completion",
+                evidence: "Perplexity Sonar Reasoning Pro documents a <think> section and a usage payload with prompt, completion, and total tokens but no separate reasoning-token count.",
+              }
+            : {
+                mode: "not_applicable",
+                thinking_model: false,
+                output_token_semantics: "not_applicable",
+                cost_basis: "not_applicable",
+                evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface.",
+              },
         },
       ),
     )
@@ -1237,8 +1271,7 @@ async function main() {
   const eligibleOpenRouterModels = openRouterModels.filter(isEligibleOpenRouterModel);
   const automaticallySelectedOpenRouterEntries = eligibleOpenRouterModels
     .filter((model) => (
-      !REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET.has(model.id) &&
-      !EXCLUDED_OPENROUTER_REQUESTED_EXPANSION_MODEL_ID_SET.has(model.id)
+      !DECLARED_OPENROUTER_MODEL_ID_SET.has(model.id)
     ))
     .map((model) => openRouterEntry(model, priceIndex))
     .sort(compareRankedEntries)
@@ -1252,9 +1285,15 @@ async function main() {
     REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
     "requested OpenRouter expansion",
   ).map((model) => requestedOpenRouterEntry(model, priceIndex));
+  const ling3FlashEntries = requiredOpenRouterModels(
+    openRouterModels,
+    [LING_3_0_FLASH_MODEL_ID],
+    "Ling 3.0 Flash OpenRouter addition",
+  ).map((model) => ling3FlashOpenRouterEntry(model, priceIndex));
   const openRouterEntries = [
     ...automaticallySelectedOpenRouterEntries,
     ...requestedOpenRouterEntries,
+    ...ling3FlashEntries,
   ];
   const directEntries = DIRECT_PROVIDER_ENTRIES.map((entry) =>
     enrichDirectEntry(entry, priceIndex),
@@ -1286,9 +1325,6 @@ async function main() {
           "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens",
         ],
         declared_model_ids: REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
-        excluded_model_ids: {
-          "poolside/laguna-xs.2": "not_a_current_OpenRouter_model_id",
-        },
         revalidated_model_ids: {
           "poolside/laguna-xs-2.1": "current_catalog_listed_after_prior_xs_2_1_omission",
           "arcee-ai/virtuoso-large": "current_catalog_listed_after_prior_live_smoke_http_400",
@@ -1296,6 +1332,27 @@ async function main() {
           "inflection/inflection-3-pi": "current_catalog_listed_after_prior_live_smoke_http_404",
         },
         pricing_source: "current_openrouter_models_api",
+      },
+      [OPENROUTER_LING_3_0_FLASH_SOURCE]: {
+        checked_on: "2026-07-24",
+        source_refs: [
+          OPENROUTER_MODELS_URL,
+          "https://openrouter.ai/inclusionai/ling-3.0-flash:free",
+        ],
+        declared_model_ids: [LING_3_0_FLASH_MODEL_ID],
+        endpoint_pricing_observed: {
+          availability: "free_only",
+          input_price_per_mtok_usd: 0,
+          output_price_per_mtok_usd: 0,
+        },
+        benchmark_price_accounting: {
+          reference_model: "inclusionai/ling-2.6-flash",
+          input_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.input,
+          output_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.output,
+          pricing_source: LING_3_0_FLASH_TEMPORARY_PRICES.source,
+          review_due: "2026-07-31",
+        },
+        reasoning_setting_policy: "provider_default_only_until_discrete_supported_efforts_are_documented",
       },
       direct_provider_expansion_2026_07_21: {
         checked_on: "2026-07-21",
@@ -1568,6 +1625,41 @@ function requestedOpenRouterEntry(model, priceIndex) {
   });
 }
 
+function ling3FlashOpenRouterEntry(model, priceIndex) {
+  const entry = withoutScore(openRouterEntry(model, priceIndex));
+  return applyWeightStatusOverride({
+    ...entry,
+    id: "openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free",
+    label: "inclusionAI: Ling-3.0-flash",
+    source: OPENROUTER_LING_3_0_FLASH_SOURCE,
+    source_refs: [
+      OPENROUTER_MODELS_URL,
+      "https://openrouter.ai/inclusionai/ling-3.0-flash:free",
+    ],
+    control_style: "openrouter_provider_default",
+    reasoning_effort: "provider_default",
+    reasoning_effort_label: "Default",
+    thinking_depth: "provider_default",
+    thinking_default_expected: "unmeasured",
+    reasoning_token_estimate_status: "not_estimated",
+    run_status: "free_endpoint_available",
+    access_status: "api_key_required",
+    input_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.input,
+    output_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.output,
+    pricing_source: LING_3_0_FLASH_TEMPORARY_PRICES.source,
+    pricing_note: "OpenRouter currently exposes only the free endpoint. Until a paid rate is published, benchmark accounting uses Ling-2.6-flash rates ($0.01/$0.03 per 1M input/output tokens); review due 2026-07-31.",
+    runcost_price_card_id: null,
+    runcost_price_source: null,
+    cost_accounting: "temporary_ling_2_6_flash_equivalent_until_paid_price_is_published",
+    priority: "requested-expansion",
+    tags: unique([
+      ...entry.tags,
+      "requested-expansion",
+      "temporary-price-equivalent",
+    ]),
+  });
+}
+
 function openRouterEntry(model, priceIndex) {
   const inputPerMtok = perMillion(model.pricing?.prompt);
   const outputPerMtok = perMillion(model.pricing?.completion);
@@ -1646,6 +1738,7 @@ function applyWeightStatusOverride(entry) {
     ]),
     weight_status: override.openWeight ? "open_weights" : "proprietary",
     weight_status_source_refs: override.sourceRefs,
+    ...(override.note ? { weight_status_note: override.note } : {}),
   };
 }
 

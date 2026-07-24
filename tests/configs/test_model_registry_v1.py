@@ -34,7 +34,7 @@ def test_model_registry_v1_has_comprehensive_coverage():
     assert registry["schema_version"] == "model-registry-v1"
     assert registry["defaults"]["profile"] == "hard_obvious_8x10"
     assert registry["defaults"]["seed"] == 20260531
-    assert len(entries) == 326
+    assert len(entries) == 327
     assert route_counts["openrouter"] >= 220
     assert {
         "openrouter",
@@ -115,6 +115,7 @@ def test_model_registry_entries_are_unique_and_runnable():
             "perplexity_sonar_standard_pricing_2026_07_21",
             "zai_glm_5_2_standard_pricing_2026_07_21",
             "nvidia_nim_free_endpoint_pricing_2026_07_21",
+            "owner_directed_ling_2_6_flash_equivalent_2026_07_24",
             "manual_lookup_required",
         }
         assert isinstance(entry["tags"], list)
@@ -321,6 +322,10 @@ def test_provider_expansion_weight_statuses_are_source_backed():
             "open_weights",
             "https://huggingface.co/inclusionAI/Ling-2.6-flash",
         ),
+        "openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free": (
+            "proprietary",
+            "https://openrouter.ai/inclusionai/ling-3.0-flash:free",
+        ),
         "openrouter-requested-2026-07-21-inclusionai-ring-2-6-1t": (
             "open_weights",
             "https://huggingface.co/inclusionAI/Ring-2.6-1T",
@@ -334,6 +339,50 @@ def test_provider_expansion_weight_statuses_are_source_backed():
         entry = entries[entry_id]
         assert entry["weight_status"] == status
         assert entry["weight_status_source_refs"] == [source]
+
+
+def test_model_registry_includes_ling_3_0_flash_with_explicit_temporary_pricing():
+    registry = _registry()
+    entries = {entry["id"]: entry for entry in registry["entries"]}
+    entry = entries["openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free"]
+
+    assert entry["label"] == "inclusionAI: Ling-3.0-flash"
+    assert entry["inspect_model"] == "openrouter/inclusionai/ling-3.0-flash:free"
+    assert entry["model_id"] == "inclusionai/ling-3.0-flash:free"
+    assert entry["provider_route"] == "openrouter"
+    assert entry["upstream_provider"] == "inclusionai"
+    assert entry["reasoning_effort"] == "provider_default"
+    assert entry["reasoning_effort_label"] == "Default"
+    assert entry["input_price_per_mtok_usd"] == 0.01
+    assert entry["output_price_per_mtok_usd"] == 0.03
+    assert entry["pricing_source"] == (
+        "owner_directed_ling_2_6_flash_equivalent_2026_07_24"
+    )
+    assert entry["cost_accounting"] == (
+        "temporary_ling_2_6_flash_equivalent_until_paid_price_is_published"
+    )
+    assert entry["weight_status"] == "proprietary"
+    assert entry["weight_status_note"] == (
+        "No publisher-hosted weights are linked in the current catalog; classify "
+        "as proprietary pending a primary weights release."
+    )
+    assert "free" in entry["tags"]
+    assert "temporary-price-equivalent" in entry["tags"]
+
+    source = registry["sources"]["openrouter_inclusionai_ling_3_0_flash_2026_07_24"]
+    assert source["declared_model_ids"] == ["inclusionai/ling-3.0-flash:free"]
+    assert source["endpoint_pricing_observed"] == {
+        "availability": "free_only",
+        "input_price_per_mtok_usd": 0,
+        "output_price_per_mtok_usd": 0,
+    }
+    assert source["benchmark_price_accounting"] == {
+        "reference_model": "inclusionai/ling-2.6-flash",
+        "input_price_per_mtok_usd": 0.01,
+        "output_price_per_mtok_usd": 0.03,
+        "pricing_source": "owner_directed_ling_2_6_flash_equivalent_2026_07_24",
+        "review_due": "2026-07-31",
+    }
 
 
 def test_model_registry_does_not_store_secrets():

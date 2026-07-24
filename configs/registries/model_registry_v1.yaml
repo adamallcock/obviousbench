@@ -1,5 +1,5 @@
 schema_version: "model-registry-v1"
-generated_at: "2026-07-23T20:09:23.211Z"
+generated_at: "2026-07-24T13:47:18.348Z"
 defaults:
   task: "obviousbench/tasks/barrage.py"
   profile: "hard_obvious_8x10"
@@ -67,8 +67,6 @@ sources:
       - "tencent/hunyuan-a13b-instruct"
       - "xiaomi/mimo-v2.5"
       - "xiaomi/mimo-v2.5-pro"
-    excluded_model_ids:
-      poolside/laguna-xs.2: "not_a_current_OpenRouter_model_id"
     revalidated_model_ids:
       poolside/laguna-xs-2.1: "current_catalog_listed_after_prior_xs_2_1_omission"
       arcee-ai/virtuoso-large: "current_catalog_listed_after_prior_live_smoke_http_400"
@@ -223,6 +221,24 @@ sources:
     reasoning_effort: "max"
     public_pricing_service_tier: "standard"
     batch_discount_included_in_registry_price: false
+  openrouter_inclusionai_ling_3_0_flash_2026_07_24:
+    checked_on: "2026-07-24"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/inclusionai/ling-3.0-flash:free"
+    declared_model_ids:
+      - "inclusionai/ling-3.0-flash:free"
+    endpoint_pricing_observed:
+      availability: "free_only"
+      input_price_per_mtok_usd: 0
+      output_price_per_mtok_usd: 0
+    benchmark_price_accounting:
+      reference_model: "inclusionai/ling-2.6-flash"
+      input_price_per_mtok_usd: 0.01
+      output_price_per_mtok_usd: 0.03
+      pricing_source: "owner_directed_ling_2_6_flash_equivalent_2026_07_24"
+      review_due: "2026-07-31"
+    reasoning_setting_policy: "provider_default_only_until_discrete_supported_efforts_are_documented"
 selection_policy:
   target_openrouter_entries: 185
   emphasis:
@@ -10907,3 +10923,53 @@ entries:
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
+  -
+    label: "inclusionAI: Ling-3.0-flash"
+    provider_route: "openrouter"
+    upstream_provider: "inclusionai"
+    inspect_model: "openrouter/inclusionai/ling-3.0-flash:free"
+    model_id: "inclusionai/ling-3.0-flash:free"
+    canonical_slug: "inclusionai/ling-3.0-flash-20260723"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 262144
+    max_output_tokens: 32768
+    input_price_per_mtok_usd: 0.01
+    output_price_per_mtok_usd: 0.03
+    pricing_source: "owner_directed_ling_2_6_flash_equivalent_2026_07_24"
+    runcost_price_card_id: null
+    runcost_price_source: null
+    source: "openrouter_inclusionai_ling_3_0_flash_2026_07_24"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "free"
+      - "small"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "requested-expansion"
+      - "temporary-price-equivalent"
+    weight_status: "proprietary"
+    weight_status_source_refs:
+      - "https://openrouter.ai/inclusionai/ling-3.0-flash:free"
+    weight_status_note: "No publisher-hosted weights are linked in the current catalog; classify as proprietary pending a primary weights release."
+    id: "openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/inclusionai/ling-3.0-flash:free"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "free_endpoint_available"
+    access_status: "api_key_required"
+    pricing_note: "OpenRouter currently exposes only the free endpoint. Until a paid rate is published, benchmark accounting uses Ling-2.6-flash rates ($0.01/$0.03 per 1M input/output tokens); review due 2026-07-31."
+    cost_accounting: "temporary_ling_2_6_flash_equivalent_until_paid_price_is_published"
