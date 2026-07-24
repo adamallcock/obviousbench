@@ -10,6 +10,13 @@ const OPENROUTER_MODELS_URL = "https://openrouter.ai/api/v1/models";
 const OUTPUT_PATH = argumentValue("--output", "configs/registries/model_registry_v1.yaml");
 const TARGET_OPENROUTER_ENTRIES = 185;
 const OPENROUTER_REQUESTED_EXPANSION_SOURCE = "openrouter_requested_expansion_2026_07_21";
+const OPENROUTER_LING_3_0_FLASH_SOURCE = "openrouter_inclusionai_ling_3_0_flash_2026_07_24";
+const LING_3_0_FLASH_MODEL_ID = "inclusionai/ling-3.0-flash:free";
+const LING_3_0_FLASH_TEMPORARY_PRICES = {
+  input: 0.01,
+  output: 0.03,
+  source: "owner_directed_ling_2_6_flash_equivalent_2026_07_24",
+};
 const REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS = [
   "kwaipilot/kat-coder-air-v2.5",
   "kwaipilot/kat-coder-pro-v2.5",
@@ -58,6 +65,10 @@ const REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS = [
 const REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET = new Set(
   REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
 );
+const DECLARED_OPENROUTER_MODEL_ID_SET = new Set([
+  ...REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
+  LING_3_0_FLASH_MODEL_ID,
+]);
 const REQUESTED_OPENROUTER_DEFAULT_THINKING_DEPTHS = {
   "sakana/fugu-ultra": "xhigh",
   "inclusionai/ring-2.6-1t": "high",
@@ -85,6 +96,11 @@ const WEIGHT_STATUS_OVERRIDES = {
   "inclusionai/ling-2.6-flash": {
     openWeight: true,
     sourceRefs: ["https://huggingface.co/inclusionAI/Ling-2.6-flash"],
+  },
+  [LING_3_0_FLASH_MODEL_ID]: {
+    openWeight: false,
+    sourceRefs: ["https://openrouter.ai/inclusionai/ling-3.0-flash:free"],
+    note: "No publisher-hosted weights are linked in the current catalog; classify as proprietary pending a primary weights release.",
   },
   "inclusionai/ring-2.6-1t": {
     openWeight: true,
@@ -1233,7 +1249,7 @@ async function main() {
   const eligibleOpenRouterModels = openRouterModels.filter(isEligibleOpenRouterModel);
   const automaticallySelectedOpenRouterEntries = eligibleOpenRouterModels
     .filter((model) => (
-      !REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET.has(model.id)
+      !DECLARED_OPENROUTER_MODEL_ID_SET.has(model.id)
     ))
     .map((model) => openRouterEntry(model, priceIndex))
     .sort(compareRankedEntries)
@@ -1247,9 +1263,15 @@ async function main() {
     REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
     "requested OpenRouter expansion",
   ).map((model) => requestedOpenRouterEntry(model, priceIndex));
+  const ling3FlashEntries = requiredOpenRouterModels(
+    openRouterModels,
+    [LING_3_0_FLASH_MODEL_ID],
+    "Ling 3.0 Flash OpenRouter addition",
+  ).map((model) => ling3FlashOpenRouterEntry(model, priceIndex));
   const openRouterEntries = [
     ...automaticallySelectedOpenRouterEntries,
     ...requestedOpenRouterEntries,
+    ...ling3FlashEntries,
   ];
   const directEntries = DIRECT_PROVIDER_ENTRIES.map((entry) =>
     enrichDirectEntry(entry, priceIndex),
@@ -1288,6 +1310,27 @@ async function main() {
           "inflection/inflection-3-pi": "current_catalog_listed_after_prior_live_smoke_http_404",
         },
         pricing_source: "current_openrouter_models_api",
+      },
+      [OPENROUTER_LING_3_0_FLASH_SOURCE]: {
+        checked_on: "2026-07-24",
+        source_refs: [
+          OPENROUTER_MODELS_URL,
+          "https://openrouter.ai/inclusionai/ling-3.0-flash:free",
+        ],
+        declared_model_ids: [LING_3_0_FLASH_MODEL_ID],
+        endpoint_pricing_observed: {
+          availability: "free_only",
+          input_price_per_mtok_usd: 0,
+          output_price_per_mtok_usd: 0,
+        },
+        benchmark_price_accounting: {
+          reference_model: "inclusionai/ling-2.6-flash",
+          input_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.input,
+          output_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.output,
+          pricing_source: LING_3_0_FLASH_TEMPORARY_PRICES.source,
+          review_due: "2026-07-31",
+        },
+        reasoning_setting_policy: "provider_default_only_until_discrete_supported_efforts_are_documented",
       },
       direct_provider_expansion_2026_07_21: {
         checked_on: "2026-07-21",
@@ -1560,6 +1603,41 @@ function requestedOpenRouterEntry(model, priceIndex) {
   });
 }
 
+function ling3FlashOpenRouterEntry(model, priceIndex) {
+  const entry = withoutScore(openRouterEntry(model, priceIndex));
+  return applyWeightStatusOverride({
+    ...entry,
+    id: "openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free",
+    label: "inclusionAI: Ling-3.0-flash",
+    source: OPENROUTER_LING_3_0_FLASH_SOURCE,
+    source_refs: [
+      OPENROUTER_MODELS_URL,
+      "https://openrouter.ai/inclusionai/ling-3.0-flash:free",
+    ],
+    control_style: "openrouter_provider_default",
+    reasoning_effort: "provider_default",
+    reasoning_effort_label: "Default",
+    thinking_depth: "provider_default",
+    thinking_default_expected: "unmeasured",
+    reasoning_token_estimate_status: "not_estimated",
+    run_status: "free_endpoint_available",
+    access_status: "api_key_required",
+    input_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.input,
+    output_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.output,
+    pricing_source: LING_3_0_FLASH_TEMPORARY_PRICES.source,
+    pricing_note: "OpenRouter currently exposes only the free endpoint. Until a paid rate is published, benchmark accounting uses Ling-2.6-flash rates ($0.01/$0.03 per 1M input/output tokens); review due 2026-07-31.",
+    runcost_price_card_id: null,
+    runcost_price_source: null,
+    cost_accounting: "temporary_ling_2_6_flash_equivalent_until_paid_price_is_published",
+    priority: "requested-expansion",
+    tags: unique([
+      ...entry.tags,
+      "requested-expansion",
+      "temporary-price-equivalent",
+    ]),
+  });
+}
+
 function openRouterEntry(model, priceIndex) {
   const inputPerMtok = perMillion(model.pricing?.prompt);
   const outputPerMtok = perMillion(model.pricing?.completion);
@@ -1638,6 +1716,7 @@ function applyWeightStatusOverride(entry) {
     ]),
     weight_status: override.openWeight ? "open_weights" : "proprietary",
     weight_status_source_refs: override.sourceRefs,
+    ...(override.note ? { weight_status_note: override.note } : {}),
   };
 }
 

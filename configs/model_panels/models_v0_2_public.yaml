@@ -1066,6 +1066,13 @@ release_panel:
   model_setting_key: openrouter-inclusionai-ling-2-6-flash:50e5b76719a2fcf1
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'inclusionAI: Ling-3.0-flash'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash:free
+  provider_model: inclusionai/ling-3.0-flash:free
+  model_entry_id: openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-free:14c921c8b91ba273
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'inclusionAI: Ring-2.6-1T high'
   inspect_model: openrouter/inclusionai/ring-2.6-1t
   provider_model: inclusionai/ring-2.6-1t
@@ -2578,13 +2585,6 @@ release_panel:
   model_setting_key: openrouter-stepfun-step-3-5-flash:8b9bc42ff277833e
   profile: v0_2_public_aggregate
   reasoning_effort: Default
-- label: 'StepFun: Step 3.7 Flash'
-  inspect_model: openrouter/stepfun/step-3.7-flash
-  provider_model: stepfun/step-3.7-flash
-  model_entry_id: openrouter-requested-2026-07-21-stepfun-step-3-7-flash
-  model_setting_key: openrouter-stepfun-step-3-7-flash:9edefda843437b0a
-  profile: v0_2_public_aggregate
-  reasoning_effort: Default
 - label: 'StepFun: Step 3.7 Flash low'
   inspect_model: openrouter/stepfun/step-3.7-flash
   provider_model: stepfun/step-3.7-flash
@@ -2606,6 +2606,13 @@ release_panel:
   model_setting_key: openrouter-stepfun-step-3-7-flash:74b0538b9fd510d2
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: 'StepFun: Step 3.7 Flash'
+  inspect_model: openrouter/stepfun/step-3.7-flash
+  provider_model: stepfun/step-3.7-flash
+  model_entry_id: openrouter-requested-2026-07-21-stepfun-step-3-7-flash
+  model_setting_key: openrouter-stepfun-step-3-7-flash:9edefda843437b0a
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Tencent: Hunyuan A13B Instruct'
   inspect_model: openrouter/tencent/hunyuan-a13b-instruct
   provider_model: tencent/hunyuan-a13b-instruct
