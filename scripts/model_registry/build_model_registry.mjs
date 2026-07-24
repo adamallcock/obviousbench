@@ -66,10 +66,6 @@ const REQUESTED_OPENROUTER_DEFAULT_THINKING_DEPTHS = {
   "inception/mercury-2": "medium",
   "stepfun/step-3.7-flash": "medium",
 };
-const EXCLUDED_OPENROUTER_REQUESTED_EXPANSION_MODEL_ID_SET = new Set([
-  "poolside/laguna-xs.2",
-]);
-
 // OpenRouter's catalog metadata is useful for discovery, but weight availability
 // is a model-family property. These frozen corrections use the manufacturers'
 // published checkpoints rather than inferring availability from the transport.
@@ -1237,8 +1233,7 @@ async function main() {
   const eligibleOpenRouterModels = openRouterModels.filter(isEligibleOpenRouterModel);
   const automaticallySelectedOpenRouterEntries = eligibleOpenRouterModels
     .filter((model) => (
-      !REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET.has(model.id) &&
-      !EXCLUDED_OPENROUTER_REQUESTED_EXPANSION_MODEL_ID_SET.has(model.id)
+      !REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET.has(model.id)
     ))
     .map((model) => openRouterEntry(model, priceIndex))
     .sort(compareRankedEntries)
@@ -1286,9 +1281,6 @@ async function main() {
           "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens",
         ],
         declared_model_ids: REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
-        excluded_model_ids: {
-          "poolside/laguna-xs.2": "not_a_current_OpenRouter_model_id",
-        },
         revalidated_model_ids: {
           "poolside/laguna-xs-2.1": "current_catalog_listed_after_prior_xs_2_1_omission",
           "arcee-ai/virtuoso-large": "current_catalog_listed_after_prior_live_smoke_http_400",
