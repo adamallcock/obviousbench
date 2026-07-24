@@ -67,8 +67,6 @@ sources:
       - "tencent/hunyuan-a13b-instruct"
       - "xiaomi/mimo-v2.5"
       - "xiaomi/mimo-v2.5-pro"
-    excluded_model_ids:
-      poolside/laguna-xs.2: "not_a_current_OpenRouter_model_id"
     revalidated_model_ids:
       poolside/laguna-xs-2.1: "current_catalog_listed_after_prior_xs_2_1_omission"
       arcee-ai/virtuoso-large: "current_catalog_listed_after_prior_live_smoke_http_400"
