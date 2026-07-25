@@ -561,7 +561,7 @@ release_panel:
   model_entry_id: celeris-celeris-1-provider-default
   model_setting_key: celeris-celeris-1:5b50a059918512f2
   profile: v0_2_public_aggregate
-  reasoning_effort: none
+  reasoning_effort: Default
 - label: Claude Opus 5 none
   inspect_model: anthropic-opus5/claude-opus-5
   provider_model: claude-opus-5

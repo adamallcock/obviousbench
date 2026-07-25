@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import sys
 from dataclasses import dataclass
@@ -76,6 +77,28 @@ IGNORED_BUNDLE_FILENAMES = {
 
 IGNORED_BUNDLE_PATH_PARTS = {
     "__MACOSX",
+}
+
+V0_2_AGGREGATE_SUMMARY_RELATIVE = Path("reports/v0_2/aggregate/summary.csv")
+
+# These describe how a provider bills completion tokens, not whether a raw
+# per-attempt reasoning-token value was observed.  They must never become the
+# source of the public Tokens column.
+ACCOUNTING_ONLY_REASONING_SOURCES = {
+    "aggregate_completion_contract",
+    "aggregate_usage_only",
+    "thinking_disabled_contract",
+}
+REASONING_STATUSES_WITH_VALUE = {
+    "estimated",
+    "reported_mixed",
+    "reported_positive",
+    "reported_zero",
+}
+REASONING_STATUSES_WITHOUT_VALUE = {
+    "mixed",
+    "not_separately_reported",
+    "unknown",
 }
 
 
@@ -332,6 +355,142 @@ def validate_bundle_manifest(bundle_dir: Path) -> list[AuditIssue]:
     return []
 
 
+def validate_aggregate_reasoning_telemetry(summary_path: Path) -> list[AuditIssue]:
+    """Reject public aggregates that confuse billing with reasoning telemetry.
+
+    ``reasoning_tokens`` is a measurement field.  A provider may bill its
+    thinking inside an aggregate completion count, but that accounting detail
+    cannot erase a measured count or substitute for an unavailable one.  This
+    guard applies to the public v0.2 aggregate at both build and bundle-audit
+    time.
+    """
+
+    issues: list[AuditIssue] = []
+    required_columns = {
+        "model_entry_id",
+        "reasoning_tokens",
+        "reasoning_token_status",
+        "reasoning_token_source",
+    }
+    try:
+        with summary_path.open(newline="", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
+            fieldnames = set(reader.fieldnames or [])
+            missing_columns = sorted(required_columns - fieldnames)
+            if missing_columns:
+                return [
+                    AuditIssue(
+                        code="missing_reasoning_telemetry_columns",
+                        message="Public v0.2 aggregate is missing reasoning telemetry columns.",
+                        path=rel(summary_path),
+                        label=",".join(missing_columns),
+                    )
+                ]
+
+            for line_number, row in enumerate(reader, start=2):
+                entry_id = str(row.get("model_entry_id") or "").strip()
+                source = str(row.get("reasoning_token_source") or "").strip()
+                status = str(row.get("reasoning_token_status") or "").strip()
+                token_text = str(row.get("reasoning_tokens") or "").strip()
+
+                if source in ACCOUNTING_ONLY_REASONING_SOURCES:
+                    issues.append(
+                        AuditIssue(
+                            code="accounting_as_reasoning_telemetry",
+                            message=(
+                                "Billing/accounting metadata was used as reasoning-token "
+                                "telemetry."
+                            ),
+                            path=rel(summary_path),
+                            line=line_number,
+                            label=entry_id or source,
+                        )
+                    )
+
+                if status in REASONING_STATUSES_WITHOUT_VALUE and token_text:
+                    issues.append(
+                        AuditIssue(
+                            code="unavailable_reasoning_has_numeric_value",
+                            message=(
+                                "Unavailable or mixed reasoning telemetry must not be "
+                                "published as a numeric count."
+                            ),
+                            path=rel(summary_path),
+                            line=line_number,
+                            label=entry_id or status,
+                        )
+                    )
+                    continue
+
+                if status not in REASONING_STATUSES_WITH_VALUE:
+                    continue
+                if not token_text:
+                    issues.append(
+                        AuditIssue(
+                            code="reported_reasoning_missing_numeric_value",
+                            message=(
+                                "Reported or estimated reasoning telemetry requires a "
+                                "numeric reasoning_tokens value."
+                            ),
+                            path=rel(summary_path),
+                            line=line_number,
+                            label=entry_id or status,
+                        )
+                    )
+                    continue
+                try:
+                    token_count = int(token_text)
+                except ValueError:
+                    issues.append(
+                        AuditIssue(
+                            code="invalid_reasoning_token_value",
+                            message=(
+                                "reasoning_tokens must be an integer when telemetry is "
+                                "reported."
+                            ),
+                            path=rel(summary_path),
+                            line=line_number,
+                            label=entry_id or token_text,
+                        )
+                    )
+                    continue
+                if token_count < 0 or (
+                    status == "reported_zero" and token_count != 0
+                ) or (status == "reported_positive" and token_count <= 0):
+                    issues.append(
+                        AuditIssue(
+                            code="reasoning_token_status_value_mismatch",
+                            message=(
+                                "reasoning_token_status does not agree with the published "
+                                "reasoning_tokens value."
+                            ),
+                            path=rel(summary_path),
+                            line=line_number,
+                            label=entry_id or status,
+                        )
+                    )
+    except (OSError, csv.Error) as exc:
+        return [
+            AuditIssue(
+                code="invalid_reasoning_telemetry_summary",
+                message=f"Could not read public v0.2 reasoning telemetry: {exc}",
+                path=rel(summary_path),
+            )
+        ]
+    return issues
+
+
+def is_v0_2_reasoning_telemetry_summary(summary_path: Path) -> bool:
+    """Recognize the versioned aggregate without constraining generic test bundles."""
+
+    try:
+        with summary_path.open(newline="", encoding="utf-8") as handle:
+            header = next(csv.reader(handle), [])
+    except (OSError, csv.Error):
+        return False
+    return "model_entry_id" in header
+
+
 def audit_public_bundle(
     *,
     bundle_dir: Path = DEFAULT_BUNDLE_DIR,
@@ -362,6 +521,9 @@ def audit_public_bundle(
     issues.extend(validate_bundle_manifest(bundle_dir))
     issues.extend(validate_generated_markdown_provenance(bundle_dir))
     issues.extend(scan_private_terms(bundle_dir=bundle_dir, leak_terms=terms))
+    aggregate_summary = bundle_dir / V0_2_AGGREGATE_SUMMARY_RELATIVE
+    if aggregate_summary.exists() and is_v0_2_reasoning_telemetry_summary(aggregate_summary):
+        issues.extend(validate_aggregate_reasoning_telemetry(aggregate_summary))
     return {
         "ok": not issues,
         "issue_count": len(issues),
