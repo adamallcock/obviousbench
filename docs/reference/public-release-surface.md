@@ -1,6 +1,6 @@
 ---
 title: Public Release Surface
-date: 2026-07-23
+date: 2026-07-25
 type: reference
 status: current
 ---
@@ -65,7 +65,7 @@ uv run --extra dev python scripts/release/check_repo_hygiene.py
 | Area | Public decision |
 | --- | --- |
 | Aggregate curve artifacts | Removed `answer_pass3_cost_curve.*` and `effort_curve.*`; the release keeps `summary.csv` and `report.md` as the aggregate evidence. |
-| Aggregate report provenance | `reports/v0_2/aggregate/report.md` is the v0.2 public aggregate summary updated 2026-07-23. |
+| Aggregate report provenance | `reports/v0_2/aggregate/report.md` is the v0.2 public aggregate summary updated 2026-07-25. |
 | Manual adjustments | Reported only as aggregate adjustment counts; private source rows and raw completions stay out of the public repo. |
 | Provider credentials | Credentialed provider smokes/probes remain in the internal lane; public adapter tests are unit-level only. |
 | Paper V1 cost helper | Retired from the public surface; old paper dry-run cost helpers are not part of the v0.2 source release. |

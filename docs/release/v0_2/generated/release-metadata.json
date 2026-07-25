@@ -1,9 +1,9 @@
 {
-  "attempt_rows": 185760,
-  "complete_model_setting_rows": 430,
-  "estimated_cost_usd": 205.775793,
-  "generated_on": "2026-07-23",
-  "model_setting_rows": 430,
+  "attempt_rows": 189216,
+  "complete_model_setting_rows": 438,
+  "estimated_cost_usd": 209.015225,
+  "generated_on": "2026-07-25",
+  "model_setting_rows": 438,
   "primary_metric": "non-strict answer pass^3",
   "public_links": {
     "launch_site": "https://obviousbench.com",
@@ -11,7 +11,7 @@
   },
   "publication_intent": "non_arxiv_public_release",
   "release_id": "obviousbench-v0.2.0-provider-expansion",
-  "snapshot_name": "v0.2 aggregate provider expansion; Perplexity request fee corrected (2026-07-23)",
+  "snapshot_name": "v0.2 aggregate provider expansion; Ling 3.0 Flash, Celeris-1, and Claude Opus 5 (2026-07-25)",
   "source_config": "configs/releases/release_v0_2_0.yaml",
   "status": "local-publication-prep",
   "version": "0.2.0"

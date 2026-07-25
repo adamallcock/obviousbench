@@ -1,5 +1,5 @@
 schema_version: "model-registry-v1"
-generated_at: "2026-07-23T20:09:23.211Z"
+generated_at: "2026-07-25T04:43:45.423Z"
 defaults:
   task: "obviousbench/tasks/barrage.py"
   profile: "hard_obvious_8x10"
@@ -67,8 +67,6 @@ sources:
       - "tencent/hunyuan-a13b-instruct"
       - "xiaomi/mimo-v2.5"
       - "xiaomi/mimo-v2.5-pro"
-    excluded_model_ids:
-      poolside/laguna-xs.2: "not_a_current_OpenRouter_model_id"
     revalidated_model_ids:
       poolside/laguna-xs-2.1: "current_catalog_listed_after_prior_xs_2_1_omission"
       arcee-ai/virtuoso-large: "current_catalog_listed_after_prior_live_smoke_http_400"
@@ -174,6 +172,42 @@ sources:
         - "none"
         - "high"
         - "xhigh"
+  direct_provider_expansion_2026_07_24_celeris_opus5:
+    checked_on: "2026-07-24"
+    celeris:
+      sources:
+        - "https://docs.celeris.ai/making-requests"
+        - "https://docs.celeris.ai/models"
+        - "https://docs.celeris.ai/pricing"
+      model_id: "celeris-1"
+      provider_route: "celeris"
+      output_cap_contract: "positive_multiple_of_256_and_prompt_plus_output_within_8192"
+      reasoning_control: "not_documented"
+      pricing:
+        input: 2
+        output: 6
+        source: "celeris_standard_pricing_2026_07_24"
+    anthropic_opus_5:
+      sources:
+        - "https://platform.claude.com/docs/en/about-claude/models/overview"
+        - "https://platform.claude.com/docs/en/build-with-claude/thinking"
+        - "https://platform.claude.com/docs/en/build-with-claude/thinking-troubleshooting"
+        - "https://platform.claude.com/docs/en/build-with-claude/effort"
+      model_id: "claude-opus-5"
+      provider_route: "anthropic"
+      default_effort: "high"
+      distinct_rows:
+        - "none"
+        - "low"
+        - "medium"
+        - "high"
+        - "xhigh"
+        - "max"
+      omitted_duplicate: "default_equivalent_to_high"
+      pricing:
+        input: 5
+        output: 25
+        source: "anthropic_claude_opus_5_standard_pricing_2026_07_24"
   runcost_external_price_resolution:
     package: "runcost"
     mode: "runtime_external_sources"
@@ -223,6 +257,24 @@ sources:
     reasoning_effort: "max"
     public_pricing_service_tier: "standard"
     batch_discount_included_in_registry_price: false
+  openrouter_inclusionai_ling_3_0_flash_2026_07_24:
+    checked_on: "2026-07-24"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/inclusionai/ling-3.0-flash:free"
+    declared_model_ids:
+      - "inclusionai/ling-3.0-flash:free"
+    endpoint_pricing_observed:
+      availability: "free_only"
+      input_price_per_mtok_usd: 0
+      output_price_per_mtok_usd: 0
+    benchmark_price_accounting:
+      reference_model: "inclusionai/ling-2.6-flash"
+      input_price_per_mtok_usd: 0.01
+      output_price_per_mtok_usd: 0.03
+      pricing_source: "owner_directed_ling_2_6_flash_equivalent_2026_07_24"
+      review_due: "2026-07-31"
+    reasoning_setting_policy: "provider_default_only_until_discrete_supported_efforts_are_documented"
 selection_policy:
   target_openrouter_entries: 185
   emphasis:
@@ -5809,7 +5861,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -5847,7 +5899,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -5885,7 +5937,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "xhigh"
     reasoning_token_estimate_status: "not_estimated"
@@ -6009,7 +6061,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6049,7 +6101,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6089,7 +6141,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "medium"
     reasoning_token_estimate_status: "not_estimated"
@@ -6129,7 +6181,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "medium"
     reasoning_token_estimate_status: "not_estimated"
@@ -6209,7 +6261,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "medium"
     reasoning_token_estimate_status: "not_estimated"
@@ -6246,7 +6298,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6283,7 +6335,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6322,7 +6374,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6358,7 +6410,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6398,7 +6450,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6435,7 +6487,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6473,7 +6525,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6513,7 +6565,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6553,7 +6605,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6592,7 +6644,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6631,7 +6683,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6671,7 +6723,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6753,7 +6805,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6792,7 +6844,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6833,7 +6885,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6873,7 +6925,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6911,7 +6963,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6950,7 +7002,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -6989,7 +7041,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7028,7 +7080,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7067,7 +7119,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7108,7 +7160,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7149,7 +7201,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7233,7 +7285,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7273,7 +7325,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7313,7 +7365,7 @@ entries:
       - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
     control_style: "openrouter_provider_default"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -7817,6 +7869,51 @@ entries:
     pricing_source: "runcost_external_price_resolution"
     runcost_price_card_id: "anthropic:claude-opus-4-8:genai-prices:current"
     runcost_price_source: "genai-prices"
+  -
+    id: "anthropic-claude-opus-5"
+    label: "Claude Opus 5"
+    provider_route: "anthropic"
+    upstream_provider: "anthropic"
+    inspect_model: "anthropic-opus5/claude-opus-5"
+    model_id: "claude-opus-5"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+    provider_api: "anthropic_messages"
+    source: "direct_provider_expansion_2026_07_24_celeris_opus5"
+    run_status: "planned"
+    access_status: "api_key_required"
+    source_refs:
+      - "https://platform.claude.com/docs/en/about-claude/models/overview"
+      - "https://platform.claude.com/docs/en/build-with-claude/thinking"
+      - "https://platform.claude.com/docs/en/build-with-claude/thinking-troubleshooting"
+      - "https://platform.claude.com/docs/en/build-with-claude/effort"
+    control_style: "anthropic_opus_5_adaptive_thinking_effort"
+    thinking_depth: "high"
+    thinking_default_expected: "adaptive_high"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    context_window_tokens: 1000000
+    max_output_tokens: 128000
+    reasoning_telemetry:
+      mode: "aggregate_completion"
+      thinking_model: true
+      output_token_semantics: "includes_reasoning"
+      cost_basis: "aggregate_completion"
+      evidence: "Anthropic documents that Claude Opus 5 thinking tokens are billed as output tokens and its Messages usage object reports aggregate output usage rather than a separate hidden-thinking field."
+    tags:
+      - "direct-provider"
+      - "frontier"
+      - "thinking"
+    priority: "secondary"
+    input_price_per_mtok_usd: 5
+    output_price_per_mtok_usd: 25
+    pricing_source: "anthropic_claude_opus_5_standard_pricing_2026_07_24"
+    runcost_price_card_id: null
+    runcost_price_source: null
   -
     id: "anthropic-claude-sonnet-4-6"
     label: "Anthropic Claude Sonnet 4.6"
@@ -8942,10 +9039,55 @@ entries:
     runcost_price_card_id: null
     runcost_price_source: null
   -
+    id: "celeris-celeris-1-provider-default"
+    label: "Celeris-1"
+    provider_route: "celeris"
+    upstream_provider: "celeris"
+    inspect_model: "celeris/celeris-1"
+    model_id: "celeris-1"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 2048
+    provider_api: "celeris_openai_compatible"
+    source: "direct_provider_expansion_2026_07_24_celeris_opus5"
+    run_status: "planned"
+    access_status: "api_key_required"
+    source_refs:
+      - "https://docs.celeris.ai/making-requests"
+      - "https://docs.celeris.ai/models"
+      - "https://docs.celeris.ai/pricing"
+    context_window_tokens: 8192
+    max_output_tokens: 8192
+    pricing_note: "Celeris requires max_tokens to be a positive multiple of 256; the benchmark requests 2,048 to reserve input context within the documented 8,192-token window."
+    reasoning_telemetry:
+      mode: "not_applicable"
+      thinking_model: false
+      output_token_semantics: "not_applicable"
+      cost_basis: "not_applicable"
+      evidence: "Celeris documents a single OpenAI-compatible chat model and no reasoning or thinking request control."
+    control_style: "provider_default_non_thinking"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "non_thinking"
+    reasoning_token_estimate_status: "not_applicable"
+    tags:
+      - "direct-provider"
+      - "provider-default"
+      - "non-thinking"
+    priority: "secondary"
+    input_price_per_mtok_usd: 2
+    output_price_per_mtok_usd: 6
+    pricing_source: "celeris_standard_pricing_2026_07_24"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
     id: "aion-aion-labs-aion-2-0-none"
     label: "AionLabs Aion 2.0 none"
     provider_route: "aion"
-    upstream_provider: "aion"
+    upstream_provider: "aion-labs"
     inspect_model: "aion/aion-labs/aion-2.0"
     model_id: "aion-labs/aion-2.0"
     profile: "hard_obvious_8x10"
@@ -8978,7 +9120,7 @@ entries:
     id: "aion-aion-labs-aion-2-0-low"
     label: "AionLabs Aion 2.0 low"
     provider_route: "aion"
-    upstream_provider: "aion"
+    upstream_provider: "aion-labs"
     inspect_model: "aion/aion-labs/aion-2.0"
     model_id: "aion-labs/aion-2.0"
     profile: "hard_obvious_8x10"
@@ -9011,7 +9153,7 @@ entries:
     id: "aion-aion-labs-aion-2-0-medium"
     label: "AionLabs Aion 2.0 medium"
     provider_route: "aion"
-    upstream_provider: "aion"
+    upstream_provider: "aion-labs"
     inspect_model: "aion/aion-labs/aion-2.0"
     model_id: "aion-labs/aion-2.0"
     profile: "hard_obvious_8x10"
@@ -9044,7 +9186,7 @@ entries:
     id: "aion-aion-labs-aion-2-0-high"
     label: "AionLabs Aion 2.0 high"
     provider_route: "aion"
-    upstream_provider: "aion"
+    upstream_provider: "aion-labs"
     inspect_model: "aion/aion-labs/aion-2.0"
     model_id: "aion-labs/aion-2.0"
     profile: "hard_obvious_8x10"
@@ -9077,7 +9219,7 @@ entries:
     id: "aion-aion-labs-aion-2-5-provider-default"
     label: "AionLabs Aion 2.5 provider default"
     provider_route: "aion"
-    upstream_provider: "aion"
+    upstream_provider: "aion-labs"
     inspect_model: "aion/aion-labs/aion-2.5"
     model_id: "aion-labs/aion-2.5"
     profile: "hard_obvious_8x10"
@@ -9093,7 +9235,7 @@ entries:
     cached_input_price_per_mtok_usd: 0.35
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9112,7 +9254,7 @@ entries:
     id: "aion-aion-labs-aion-3-0-provider-default"
     label: "AionLabs Aion 3.0 provider default"
     provider_route: "aion"
-    upstream_provider: "aion"
+    upstream_provider: "aion-labs"
     inspect_model: "aion/aion-labs/aion-3.0"
     model_id: "aion-labs/aion-3.0"
     profile: "hard_obvious_8x10"
@@ -9128,7 +9270,7 @@ entries:
     cached_input_price_per_mtok_usd: 0.75
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9147,7 +9289,7 @@ entries:
     id: "aion-aion-labs-aion-3-0-mini-provider-default"
     label: "AionLabs Aion 3.0 Mini provider default"
     provider_route: "aion"
-    upstream_provider: "aion"
+    upstream_provider: "aion-labs"
     inspect_model: "aion/aion-labs/aion-3.0-mini"
     model_id: "aion-labs/aion-3.0-mini"
     profile: "hard_obvious_8x10"
@@ -9163,7 +9305,7 @@ entries:
     cached_input_price_per_mtok_usd: 0.18
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9607,7 +9749,7 @@ entries:
       max_tokens: 8192
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9647,7 +9789,7 @@ entries:
       max_tokens: 4096
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9687,7 +9829,7 @@ entries:
       max_tokens: 8000
     control_style: "cohere_translate_no_sampling_parameters"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9727,7 +9869,7 @@ entries:
       max_tokens: 8192
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9767,7 +9909,7 @@ entries:
       max_tokens: 4096
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9807,7 +9949,7 @@ entries:
       max_tokens: 4096
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9849,7 +9991,7 @@ entries:
     manual_price_lookup_required: true
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9891,7 +10033,7 @@ entries:
     manual_price_lookup_required: true
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9933,7 +10075,7 @@ entries:
     manual_price_lookup_required: true
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -9975,7 +10117,7 @@ entries:
     manual_price_lookup_required: true
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -10015,7 +10157,7 @@ entries:
       max_tokens: 4096
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -10057,7 +10199,7 @@ entries:
     manual_price_lookup_required: true
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -10097,7 +10239,7 @@ entries:
       max_tokens: 10000
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -10491,9 +10633,15 @@ entries:
     request_fee_context_label: "low search context size (provider default)"
     cost_accounting: "token_prices_plus_low_context_request_fee"
     pricing_note: "Standard Sonar token prices plus the documented low search-context request fee; low is the provider default and no Pro Search option is set."
+    reasoning_telemetry:
+      mode: "not_applicable"
+      thinking_model: false
+      output_token_semantics: "not_applicable"
+      cost_basis: "not_applicable"
+      evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface."
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -10509,12 +10657,6 @@ entries:
     pricing_source: "perplexity_sonar_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
-    reasoning_telemetry:
-      mode: "not_applicable"
-      thinking_model: false
-      output_token_semantics: "not_applicable"
-      cost_basis: "not_applicable"
-      evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface."
   -
     id: "perplexity-sonar-pro-provider-default"
     label: "Perplexity sonar-pro provider default"
@@ -10539,9 +10681,15 @@ entries:
     request_fee_context_label: "low search context size (provider default)"
     cost_accounting: "token_prices_plus_low_context_request_fee"
     pricing_note: "Standard Sonar token prices plus the documented low search-context request fee; low is the provider default and no Pro Search option is set."
+    reasoning_telemetry:
+      mode: "not_applicable"
+      thinking_model: false
+      output_token_semantics: "not_applicable"
+      cost_basis: "not_applicable"
+      evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface."
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -10557,12 +10705,6 @@ entries:
     pricing_source: "perplexity_sonar_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
-    reasoning_telemetry:
-      mode: "not_applicable"
-      thinking_model: false
-      output_token_semantics: "not_applicable"
-      cost_basis: "not_applicable"
-      evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface."
   -
     id: "perplexity-sonar-reasoning-pro-provider-default"
     label: "Perplexity sonar-reasoning-pro provider default"
@@ -10587,9 +10729,15 @@ entries:
     request_fee_context_label: "low search context size (provider default)"
     cost_accounting: "token_prices_plus_low_context_request_fee"
     pricing_note: "Standard Sonar token prices plus the documented low search-context request fee; low is the provider default and no Pro Search option is set."
+    reasoning_telemetry:
+      mode: "aggregate_completion"
+      thinking_model: true
+      output_token_semantics: "includes_reasoning"
+      cost_basis: "aggregate_completion"
+      evidence: "Perplexity Sonar Reasoning Pro documents a <think> section and a usage payload with prompt, completion, and total tokens but no separate reasoning-token count."
     control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
+    reasoning_effort_label: "Default"
     thinking_depth: "provider_default"
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
@@ -10605,12 +10753,6 @@ entries:
     pricing_source: "perplexity_sonar_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
-    reasoning_telemetry:
-      mode: "aggregate_completion"
-      thinking_model: true
-      output_token_semantics: "includes_reasoning"
-      cost_basis: "aggregate_completion"
-      evidence: "Perplexity Sonar Reasoning Pro documents a <think> section and a usage payload with prompt, completion, and total tokens but no separate reasoning-token count."
   -
     id: "zai-glm-5-2-none"
     label: "Z.AI GLM-5.2 none"
@@ -10658,6 +10800,207 @@ entries:
     pricing_source: "zai_glm_5_2_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
+  -
+    label: "Poolside: Laguna XS 2.1"
+    provider_route: "openrouter"
+    upstream_provider: "poolside"
+    inspect_model: "openrouter/poolside/laguna-xs-2.1"
+    model_id: "poolside/laguna-xs-2.1"
+    canonical_slug: "poolside/laguna-xs-2.1-20260625"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 262144
+    max_output_tokens: 32768
+    input_price_per_mtok_usd: 0.06
+    output_price_per_mtok_usd: 0.12
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:poolside/laguna-xs-2.1:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_requested_expansion_2026_07_21"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "requested-expansion"
+    id: "openrouter-requested-2026-07-21-poolside-laguna-xs-2-1"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+  -
+    label: "Arcee AI: Virtuoso Large"
+    provider_route: "openrouter"
+    upstream_provider: "arcee-ai"
+    inspect_model: "openrouter/arcee-ai/virtuoso-large"
+    model_id: "arcee-ai/virtuoso-large"
+    canonical_slug: "arcee-ai/virtuoso-large"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 131072
+    max_output_tokens: 64000
+    input_price_per_mtok_usd: 0.75
+    output_price_per_mtok_usd: 1.2
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:arcee-ai/virtuoso-large:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_requested_expansion_2026_07_21"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "requested-expansion"
+    id: "openrouter-requested-2026-07-21-arcee-ai-virtuoso-large"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+  -
+    label: "Inflection: Inflection 3 Productivity"
+    provider_route: "openrouter"
+    upstream_provider: "inflection"
+    inspect_model: "openrouter/inflection/inflection-3-productivity"
+    model_id: "inflection/inflection-3-productivity"
+    canonical_slug: "inflection/inflection-3-productivity"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 1024
+    context_window_tokens: 8000
+    max_output_tokens: 1024
+    input_price_per_mtok_usd: 2.5
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:inflection/inflection-3-productivity:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_requested_expansion_2026_07_21"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "requested-expansion"
+    id: "openrouter-requested-2026-07-21-inflection-inflection-3-productivity"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+  -
+    label: "Inflection: Inflection 3 Pi"
+    provider_route: "openrouter"
+    upstream_provider: "inflection"
+    inspect_model: "openrouter/inflection/inflection-3-pi"
+    model_id: "inflection/inflection-3-pi"
+    canonical_slug: "inflection/inflection-3-pi"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 1024
+    context_window_tokens: 8000
+    max_output_tokens: 1024
+    input_price_per_mtok_usd: 2.5
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:inflection/inflection-3-pi:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_requested_expansion_2026_07_21"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "requested-expansion"
+    id: "openrouter-requested-2026-07-21-inflection-inflection-3-pi"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+  -
+    label: "inclusionAI: Ling-3.0-flash"
+    provider_route: "openrouter"
+    upstream_provider: "inclusionai"
+    inspect_model: "openrouter/inclusionai/ling-3.0-flash:free"
+    model_id: "inclusionai/ling-3.0-flash:free"
+    canonical_slug: "inclusionai/ling-3.0-flash-20260723"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 262144
+    max_output_tokens: 32768
+    input_price_per_mtok_usd: 0.01
+    output_price_per_mtok_usd: 0.03
+    pricing_source: "owner_directed_ling_2_6_flash_equivalent_2026_07_24"
+    runcost_price_card_id: null
+    runcost_price_source: null
+    source: "openrouter_inclusionai_ling_3_0_flash_2026_07_24"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "free"
+      - "small"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "requested-expansion"
+      - "temporary-price-equivalent"
+    weight_status: "proprietary"
+    weight_status_source_refs:
+      - "https://openrouter.ai/inclusionai/ling-3.0-flash:free"
+    weight_status_note: "No publisher-hosted weights are linked in the current catalog; classify as proprietary pending a primary weights release."
+    id: "openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/inclusionai/ling-3.0-flash:free"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "free_endpoint_available"
+    access_status: "api_key_required"
+    pricing_note: "OpenRouter currently exposes only the free endpoint. Until a paid rate is published, benchmark accounting uses Ling-2.6-flash rates ($0.01/$0.03 per 1M input/output tokens); review due 2026-07-31."
+    cost_accounting: "temporary_ling_2_6_flash_equivalent_until_paid_price_is_published"
   -
     id: "zai-glm-5-2-high"
     label: "Z.AI GLM-5.2 high"
@@ -10756,154 +11099,3 @@ entries:
     pricing_source: "zai_glm_5_2_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
-  -
-    label: "Poolside: Laguna XS 2.1"
-    provider_route: "openrouter"
-    upstream_provider: "poolside"
-    inspect_model: "openrouter/poolside/laguna-xs-2.1"
-    model_id: "poolside/laguna-xs-2.1"
-    canonical_slug: "poolside/laguna-xs-2.1-20260625"
-    profile: "hard_obvious_8x10"
-    seed: 20260531
-    generation_settings:
-      temperature: 0
-      max_tokens: 10000
-    context_window_tokens: 262144
-    max_output_tokens: 32768
-    input_price_per_mtok_usd: 0.06
-    output_price_per_mtok_usd: 0.12
-    pricing_source: "openrouter_models_api"
-    runcost_price_card_id: "openrouter:poolside/laguna-xs-2.1:openrouter-models"
-    runcost_price_source: "openrouter"
-    source: "openrouter_requested_expansion_2026_07_21"
-    priority: "requested-expansion"
-    tags:
-      - "openrouter"
-      - "open-weight"
-      - "small"
-      - "cheap"
-      - "text-only"
-      - "non-thinking-candidate"
-      - "tools-supported"
-      - "reasoning-parameter-supported"
-      - "requested-expansion"
-    id: "openrouter-requested-2026-07-21-poolside-laguna-xs-2-1"
-    source_refs:
-      - "https://openrouter.ai/api/v1/models"
-      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
-    control_style: "openrouter_provider_default"
-    reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
-    thinking_depth: "provider_default"
-    thinking_default_expected: "unmeasured"
-    reasoning_token_estimate_status: "not_estimated"
-  -
-    label: "Arcee AI: Virtuoso Large"
-    provider_route: "openrouter"
-    upstream_provider: "arcee-ai"
-    inspect_model: "openrouter/arcee-ai/virtuoso-large"
-    model_id: "arcee-ai/virtuoso-large"
-    canonical_slug: "arcee-ai/virtuoso-large"
-    profile: "hard_obvious_8x10"
-    seed: 20260531
-    generation_settings:
-      temperature: 0
-      max_tokens: 10000
-    context_window_tokens: 131072
-    max_output_tokens: 64000
-    input_price_per_mtok_usd: 0.75
-    output_price_per_mtok_usd: 1.2
-    pricing_source: "openrouter_models_api"
-    runcost_price_card_id: "openrouter:arcee-ai/virtuoso-large:openrouter-models"
-    runcost_price_source: "openrouter"
-    source: "openrouter_requested_expansion_2026_07_21"
-    priority: "requested-expansion"
-    tags:
-      - "openrouter"
-      - "cheap"
-      - "text-only"
-      - "non-thinking-candidate"
-      - "tools-supported"
-      - "requested-expansion"
-    id: "openrouter-requested-2026-07-21-arcee-ai-virtuoso-large"
-    source_refs:
-      - "https://openrouter.ai/api/v1/models"
-      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
-    control_style: "openrouter_provider_default"
-    reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
-    thinking_depth: "provider_default"
-    thinking_default_expected: "unmeasured"
-    reasoning_token_estimate_status: "not_estimated"
-  -
-    label: "Inflection: Inflection 3 Productivity"
-    provider_route: "openrouter"
-    upstream_provider: "inflection"
-    inspect_model: "openrouter/inflection/inflection-3-productivity"
-    model_id: "inflection/inflection-3-productivity"
-    canonical_slug: "inflection/inflection-3-productivity"
-    profile: "hard_obvious_8x10"
-    seed: 20260531
-    generation_settings:
-      temperature: 0
-      max_tokens: 1024
-    context_window_tokens: 8000
-    max_output_tokens: 1024
-    input_price_per_mtok_usd: 2.5
-    output_price_per_mtok_usd: 10
-    pricing_source: "openrouter_models_api"
-    runcost_price_card_id: "openrouter:inflection/inflection-3-productivity:openrouter-models"
-    runcost_price_source: "openrouter"
-    source: "openrouter_requested_expansion_2026_07_21"
-    priority: "requested-expansion"
-    tags:
-      - "openrouter"
-      - "text-only"
-      - "non-thinking-candidate"
-      - "requested-expansion"
-    id: "openrouter-requested-2026-07-21-inflection-inflection-3-productivity"
-    source_refs:
-      - "https://openrouter.ai/api/v1/models"
-      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
-    control_style: "openrouter_provider_default"
-    reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
-    thinking_depth: "provider_default"
-    thinking_default_expected: "unmeasured"
-    reasoning_token_estimate_status: "not_estimated"
-  -
-    label: "Inflection: Inflection 3 Pi"
-    provider_route: "openrouter"
-    upstream_provider: "inflection"
-    inspect_model: "openrouter/inflection/inflection-3-pi"
-    model_id: "inflection/inflection-3-pi"
-    canonical_slug: "inflection/inflection-3-pi"
-    profile: "hard_obvious_8x10"
-    seed: 20260531
-    generation_settings:
-      temperature: 0
-      max_tokens: 1024
-    context_window_tokens: 8000
-    max_output_tokens: 1024
-    input_price_per_mtok_usd: 2.5
-    output_price_per_mtok_usd: 10
-    pricing_source: "openrouter_models_api"
-    runcost_price_card_id: "openrouter:inflection/inflection-3-pi:openrouter-models"
-    runcost_price_source: "openrouter"
-    source: "openrouter_requested_expansion_2026_07_21"
-    priority: "requested-expansion"
-    tags:
-      - "openrouter"
-      - "text-only"
-      - "non-thinking-candidate"
-      - "requested-expansion"
-    id: "openrouter-requested-2026-07-21-inflection-inflection-3-pi"
-    source_refs:
-      - "https://openrouter.ai/api/v1/models"
-      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
-    control_style: "openrouter_provider_default"
-    reasoning_effort: "provider_default"
-    reasoning_effort_label: "provider_default"
-    thinking_depth: "provider_default"
-    thinking_default_expected: "unmeasured"
-    reasoning_token_estimate_status: "not_estimated"

@@ -485,13 +485,6 @@ release_panel:
   model_setting_key: openrouter-bytedance-seed-seed-2-0-lite:2d5a3a6e37bc2550
   profile: v0_2_public_aggregate
   reasoning_effort: minimal
-- label: 'ByteDance Seed: Seed-2.0-Lite'
-  inspect_model: openrouter/bytedance-seed/seed-2.0-lite
-  provider_model: bytedance-seed/seed-2.0-lite
-  model_entry_id: openrouter-requested-2026-07-21-bytedance-seed-seed-2-0-lite
-  model_setting_key: openrouter-bytedance-seed-seed-2-0-lite:74f8383e11fbb29f
-  profile: v0_2_public_aggregate
-  reasoning_effort: Default
 - label: 'ByteDance Seed: Seed-2.0-Lite low'
   inspect_model: openrouter/bytedance-seed/seed-2.0-lite
   provider_model: bytedance-seed/seed-2.0-lite
@@ -513,6 +506,13 @@ release_panel:
   model_setting_key: openrouter-bytedance-seed-seed-2-0-lite:511d96158f68ef27
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: 'ByteDance Seed: Seed-2.0-Lite'
+  inspect_model: openrouter/bytedance-seed/seed-2.0-lite
+  provider_model: bytedance-seed/seed-2.0-lite
+  model_entry_id: openrouter-requested-2026-07-21-bytedance-seed-seed-2-0-lite
+  model_setting_key: openrouter-bytedance-seed-seed-2-0-lite:74f8383e11fbb29f
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'ByteDance Seed: Seed-2.0-Mini minimal'
   inspect_model: openrouter/bytedance-seed/seed-2.0-mini
   provider_model: bytedance-seed/seed-2.0-mini
@@ -520,13 +520,6 @@ release_panel:
   model_setting_key: openrouter-bytedance-seed-seed-2-0-mini:c8d2f9bb31743ebb
   profile: v0_2_public_aggregate
   reasoning_effort: minimal
-- label: 'ByteDance Seed: Seed-2.0-Mini'
-  inspect_model: openrouter/bytedance-seed/seed-2.0-mini
-  provider_model: bytedance-seed/seed-2.0-mini
-  model_entry_id: openrouter-requested-2026-07-21-bytedance-seed-seed-2-0-mini
-  model_setting_key: openrouter-bytedance-seed-seed-2-0-mini:59d902419ec6d034
-  profile: v0_2_public_aggregate
-  reasoning_effort: Default
 - label: 'ByteDance Seed: Seed-2.0-Mini low'
   inspect_model: openrouter/bytedance-seed/seed-2.0-mini
   provider_model: bytedance-seed/seed-2.0-mini
@@ -548,6 +541,13 @@ release_panel:
   model_setting_key: openrouter-bytedance-seed-seed-2-0-mini:9933ab4a56bd85d5
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: 'ByteDance Seed: Seed-2.0-Mini'
+  inspect_model: openrouter/bytedance-seed/seed-2.0-mini
+  provider_model: bytedance-seed/seed-2.0-mini
+  model_entry_id: openrouter-requested-2026-07-21-bytedance-seed-seed-2-0-mini
+  model_setting_key: openrouter-bytedance-seed-seed-2-0-mini:59d902419ec6d034
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'ByteDance: UI-TARS 7B '
   inspect_model: openrouter/bytedance/ui-tars-1.5-7b
   provider_model: bytedance/ui-tars-1.5-7b
@@ -555,6 +555,55 @@ release_panel:
   model_setting_key: openrouter-bytedance-ui-tars-1-5-7b:9d0ef6bd2ab4e127
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: Celeris-1
+  inspect_model: celeris/celeris-1
+  provider_model: celeris-1
+  model_entry_id: celeris-celeris-1-provider-default
+  model_setting_key: celeris-celeris-1:5b50a059918512f2
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Claude Opus 5 none
+  inspect_model: anthropic-opus5/claude-opus-5
+  provider_model: claude-opus-5
+  model_entry_id: anthropic-claude-opus-5-none
+  model_setting_key: anthropic-opus5-claude-opus-5:c1c912c58f7ff4f9
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Claude Opus 5 low
+  inspect_model: anthropic-opus5/claude-opus-5
+  provider_model: claude-opus-5
+  model_entry_id: anthropic-claude-opus-5-low
+  model_setting_key: anthropic-opus5-claude-opus-5:d34b2ffaf39817b0
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Claude Opus 5 medium
+  inspect_model: anthropic-opus5/claude-opus-5
+  provider_model: claude-opus-5
+  model_entry_id: anthropic-claude-opus-5-medium
+  model_setting_key: anthropic-opus5-claude-opus-5:9e00555c509e7d49
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Claude Opus 5 high
+  inspect_model: anthropic-opus5/claude-opus-5
+  provider_model: claude-opus-5
+  model_entry_id: anthropic-claude-opus-5-high
+  model_setting_key: anthropic-opus5-claude-opus-5:5b5f5516b9e055fc
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Claude Opus 5 xhigh
+  inspect_model: anthropic-opus5/claude-opus-5
+  provider_model: claude-opus-5
+  model_entry_id: anthropic-claude-opus-5-xhigh
+  model_setting_key: anthropic-opus5-claude-opus-5:274e305247c7ec2f
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Claude Opus 5 max
+  inspect_model: anthropic-opus5/claude-opus-5
+  provider_model: claude-opus-5
+  model_entry_id: anthropic-claude-opus-5-max
+  model_setting_key: anthropic-opus5-claude-opus-5:3ae03b376085c72c
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: 'Deep Cogito: Cogito v2.1 671B'
   inspect_model: openrouter/deepcogito/cogito-v2.1-671b
   provider_model: deepcogito/cogito-v2.1-671b
@@ -1064,6 +1113,13 @@ release_panel:
   provider_model: inclusionai/ling-2.6-flash
   model_entry_id: openrouter-requested-2026-07-21-inclusionai-ling-2-6-flash
   model_setting_key: openrouter-inclusionai-ling-2-6-flash:50e5b76719a2fcf1
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'inclusionAI: Ling-3.0-flash'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash:free
+  provider_model: inclusionai/ling-3.0-flash:free
+  model_entry_id: openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-free:14c921c8b91ba273
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: 'inclusionAI: Ring-2.6-1T high'
@@ -2522,13 +2578,6 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-7-max:890c68a827465ce8
   profile: v0_2_public_aggregate
   reasoning_effort: max
-- label: 'Sakana: Fugu Ultra'
-  inspect_model: openrouter/sakana/fugu-ultra
-  provider_model: sakana/fugu-ultra
-  model_entry_id: openrouter-requested-2026-07-21-sakana-fugu-ultra
-  model_setting_key: openrouter-sakana-fugu-ultra:3c51cdcc0032a40a
-  profile: v0_2_public_aggregate
-  reasoning_effort: Default
 - label: 'Sakana: Fugu Ultra high'
   inspect_model: openrouter/sakana/fugu-ultra
   provider_model: sakana/fugu-ultra
@@ -2550,6 +2599,13 @@ release_panel:
   model_setting_key: openrouter-sakana-fugu-ultra:935e5f578c59d8ab
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: 'Sakana: Fugu Ultra'
+  inspect_model: openrouter/sakana/fugu-ultra
+  provider_model: sakana/fugu-ultra
+  model_entry_id: openrouter-requested-2026-07-21-sakana-fugu-ultra
+  model_setting_key: openrouter-sakana-fugu-ultra:3c51cdcc0032a40a
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: Perplexity sonar Default
   inspect_model: perplexity/sonar
   provider_model: sonar
@@ -2578,13 +2634,6 @@ release_panel:
   model_setting_key: openrouter-stepfun-step-3-5-flash:8b9bc42ff277833e
   profile: v0_2_public_aggregate
   reasoning_effort: Default
-- label: 'StepFun: Step 3.7 Flash'
-  inspect_model: openrouter/stepfun/step-3.7-flash
-  provider_model: stepfun/step-3.7-flash
-  model_entry_id: openrouter-requested-2026-07-21-stepfun-step-3-7-flash
-  model_setting_key: openrouter-stepfun-step-3-7-flash:9edefda843437b0a
-  profile: v0_2_public_aggregate
-  reasoning_effort: Default
 - label: 'StepFun: Step 3.7 Flash low'
   inspect_model: openrouter/stepfun/step-3.7-flash
   provider_model: stepfun/step-3.7-flash
@@ -2606,6 +2655,13 @@ release_panel:
   model_setting_key: openrouter-stepfun-step-3-7-flash:74b0538b9fd510d2
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: 'StepFun: Step 3.7 Flash'
+  inspect_model: openrouter/stepfun/step-3.7-flash
+  provider_model: stepfun/step-3.7-flash
+  model_entry_id: openrouter-requested-2026-07-21-stepfun-step-3-7-flash
+  model_setting_key: openrouter-stepfun-step-3-7-flash:9edefda843437b0a
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Tencent: Hunyuan A13B Instruct'
   inspect_model: openrouter/tencent/hunyuan-a13b-instruct
   provider_model: tencent/hunyuan-a13b-instruct
