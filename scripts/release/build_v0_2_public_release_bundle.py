@@ -13,9 +13,19 @@ from typing import Any
 import yaml
 
 try:
-    from scripts.release.audit_v0_2_public_bundle import private_leak_terms, private_manifest_rows
+    from scripts.release.audit_v0_2_public_bundle import (
+        V0_2_AGGREGATE_SUMMARY_RELATIVE,
+        private_leak_terms,
+        private_manifest_rows,
+        validate_aggregate_reasoning_telemetry,
+    )
 except ModuleNotFoundError:  # pragma: no cover - direct script execution path
-    from audit_v0_2_public_bundle import private_leak_terms, private_manifest_rows
+    from audit_v0_2_public_bundle import (  # type: ignore[no-redef]
+        V0_2_AGGREGATE_SUMMARY_RELATIVE,
+        private_leak_terms,
+        private_manifest_rows,
+        validate_aggregate_reasoning_telemetry,
+    )
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG = ROOT / "configs/releases/release_v0_2_0.yaml"
@@ -221,6 +231,14 @@ def copy_aggregate_evidence(
     included: list[str],
 ) -> None:
     snapshot = config["snapshot"]
+    summary_relative = Path(str(snapshot["summary_csv"]))
+    if summary_relative == V0_2_AGGREGATE_SUMMARY_RELATIVE:
+        telemetry_issues = validate_aggregate_reasoning_telemetry(root / summary_relative)
+        if telemetry_issues:
+            details = "; ".join(
+                f"{issue.code}:{issue.label or issue.message}" for issue in telemetry_issues
+            )
+            raise ValueError(f"v0.2 aggregate reasoning telemetry guard failed: {details}")
     for key in SAFE_AGGREGATE_REPORT_KEYS:
         source = root / snapshot[key]
         if not source.exists():

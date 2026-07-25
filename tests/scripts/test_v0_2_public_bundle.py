@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import csv
 import json
 from pathlib import Path
 
+import pytest
 import yaml
 
 from scripts.release.audit_v0_2_public_bundle import audit_public_bundle
@@ -249,3 +251,45 @@ def test_v0_2_public_bundle_audit_requires_generated_markdown_notice(
 
     assert audit["ok"] is False
     assert "missing_generated_provenance" in {issue["code"] for issue in audit["issues"]}
+
+
+def test_v0_2_public_bundle_rejects_billing_as_reasoning_telemetry(tmp_path: Path) -> None:
+    _root_docs(tmp_path)
+    _public_example(tmp_path)
+    config = _config(tmp_path, _aggregate_files(tmp_path))
+    payload = yaml.safe_load(config.read_text(encoding="utf-8"))
+    payload["snapshot"]["summary_csv"] = "reports/v0_2/aggregate/summary.csv"
+    payload["snapshot"]["report_markdown"] = "reports/v0_2/aggregate/report.md"
+    _write_yaml(config, payload)
+    _write(
+        tmp_path / "reports/v0_2/aggregate/report.md",
+        "# Report\n\n- Primary metric: answer pass^3\n",
+    )
+    summary_path = tmp_path / "reports/v0_2/aggregate/summary.csv"
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    with summary_path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "model_entry_id",
+                "reasoning_tokens",
+                "reasoning_token_status",
+                "reasoning_token_source",
+            ],
+        )
+        writer.writeheader()
+        writer.writerow(
+            {
+                "model_entry_id": "test-model",
+                "reasoning_tokens": "",
+                "reasoning_token_status": "not_separately_reported",
+                "reasoning_token_source": "aggregate_completion_contract",
+            }
+        )
+
+    with pytest.raises(ValueError, match="accounting_as_reasoning_telemetry"):
+        build_public_release_bundle(
+            config_path=config,
+            output_dir=tmp_path / "dist/bundle",
+            root=tmp_path,
+        )
