@@ -2,7 +2,9 @@
 
 from obviousbench.providers import (
     aion,
+    anthropic_opus5,
     bedrock_flex,
+    celeris,
     cohere,
     gemini_flex,
     longcat,
@@ -23,9 +25,11 @@ from obviousbench.tasks import (
 
 __all__ = [
     "aion",
+    "anthropic_opus5",
     "arithmetic",
     "barrage",
     "bedrock_flex",
+    "celeris",
     "character_count",
     "cohere",
     "constraint_awareness",

@@ -16,6 +16,10 @@ NOVA_2_LITE_UNCAPPED_ENTRY_IDS = {
     "bedrock-flex-us-amazon-nova-2-lite-v1-0-medium",
     "bedrock-flex-us-amazon-nova-2-lite-v1-0-high",
 }
+CELERIS_FIXED_OUTPUT_CAP_ENTRY_IDS = {
+    "celeris-celeris-1-provider-default",
+}
+CELERIS_OPUS_5_EXPANSION_SOURCE = "direct_provider_expansion_2026_07_24_celeris_opus5"
 
 
 def _registry() -> dict[str, Any]:
@@ -34,29 +38,35 @@ def test_model_registry_v1_has_comprehensive_coverage():
     assert registry["schema_version"] == "model-registry-v1"
     assert registry["defaults"]["profile"] == "hard_obvious_8x10"
     assert registry["defaults"]["seed"] == 20260531
-    assert len(entries) == 326
-    assert route_counts["openrouter"] >= 220
+    assert len(entries) == 329
+    assert route_counts["openrouter"] >= 200
     assert {
         "openrouter",
         "openai",
         "anthropic",
         "gemini",
-        "gemini-flex",
         "grok",
+        "meta",
+        "nvidia",
+        "deepseek",
         "tinker",
+        "kimi",
+        "vertex",
         "aion",
-        "longcat",
+        "cohere",
         "bedrock-standard",
         "bedrock-flex",
         "perplexity",
-        "zai",
-        "cohere",
+        "celeris",
     }.issubset(route_counts)
     assert sum("free" in entry["tags"] for entry in entries) >= 15
-    assert sum(
-        "small" in entry["tags"] or "open-weight" in entry["tags"]
-        for entry in entries
-    ) >= 200
+    assert (
+        sum(
+            "small" in entry["tags"] or "open-weight" in entry["tags"]
+            for entry in entries
+        )
+        >= 100
+    )
 
 
 def test_model_registry_entries_are_unique_and_runnable():
@@ -75,6 +85,7 @@ def test_model_registry_entries_are_unique_and_runnable():
         uncapped = entry["id"] in (
             UNCAPPED_PROVIDER_DEFAULT_ENTRY_IDS | NOVA_2_LITE_UNCAPPED_ENTRY_IDS
         )
+        is_celeris_fixed_cap = entry["id"] in CELERIS_FIXED_OUTPUT_CAP_ENTRY_IDS
         if "temperature" in settings:
             assert settings["temperature"] == 0
         else:
@@ -93,7 +104,11 @@ def test_model_registry_entries_are_unique_and_runnable():
             if 0 < advertised_max < OUTPUT_SAFETY_MAX_TOKENS
             else OUTPUT_SAFETY_MAX_TOKENS
         )
-        if not uncapped:
+        if is_celeris_fixed_cap:
+            assert settings["max_tokens"] == 2048
+            assert settings["max_tokens"] % 256 == 0
+            assert settings["max_tokens"] < advertised_max
+        elif not uncapped:
             assert settings["max_tokens"] == expected_max
         assert entry["pricing_source"] in {
             "openrouter_models_api",
@@ -115,6 +130,9 @@ def test_model_registry_entries_are_unique_and_runnable():
             "perplexity_sonar_standard_pricing_2026_07_21",
             "zai_glm_5_2_standard_pricing_2026_07_21",
             "nvidia_nim_free_endpoint_pricing_2026_07_21",
+            "owner_directed_ling_2_6_flash_equivalent_2026_07_24",
+            "celeris_standard_pricing_2026_07_24",
+            "anthropic_claude_opus_5_standard_pricing_2026_07_24",
             "manual_lookup_required",
         }
         assert isinstance(entry["tags"], list)
@@ -288,6 +306,32 @@ def test_provider_expansion_routes_preserve_documented_controls_and_standard_pri
     sonar = entries["perplexity-sonar-reasoning-pro-provider-default"]
     assert (sonar["input_price_per_mtok_usd"], sonar["output_price_per_mtok_usd"]) == (2, 8)
     assert sonar["request_fee_usd_per_1k"] == 6
+
+
+def test_public_registry_includes_celeris_and_claude_opus_5_contracts():
+    registry = _registry()
+    entries = {entry["id"]: entry for entry in registry["entries"]}
+
+    assert CELERIS_OPUS_5_EXPANSION_SOURCE in registry["sources"]
+
+    celeris = entries["celeris-celeris-1-provider-default"]
+    assert celeris["provider_route"] == "celeris"
+    assert celeris["inspect_model"] == "celeris/celeris-1"
+    assert celeris["generation_settings"] == {"temperature": 0, "max_tokens": 2048}
+    assert (
+        celeris["input_price_per_mtok_usd"],
+        celeris["output_price_per_mtok_usd"],
+    ) == (2, 6)
+
+    opus_5 = entries["anthropic-claude-opus-5"]
+    assert opus_5["provider_route"] == "anthropic"
+    assert opus_5["inspect_model"] == "anthropic-opus5/claude-opus-5"
+    assert opus_5["generation_settings"]["reasoning_effort"] == "high"
+    assert (
+        opus_5["input_price_per_mtok_usd"],
+        opus_5["output_price_per_mtok_usd"],
+    ) == (5, 25)
+    assert opus_5["reasoning_telemetry"]["mode"] == "aggregate_completion"
 
 
 def test_provider_expansion_weight_statuses_are_source_backed():

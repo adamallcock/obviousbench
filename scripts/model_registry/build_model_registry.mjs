@@ -10,6 +10,14 @@ const OPENROUTER_MODELS_URL = "https://openrouter.ai/api/v1/models";
 const OUTPUT_PATH = argumentValue("--output", "configs/registries/model_registry_v1.yaml");
 const TARGET_OPENROUTER_ENTRIES = 185;
 const OPENROUTER_REQUESTED_EXPANSION_SOURCE = "openrouter_requested_expansion_2026_07_21";
+const OPENROUTER_LING_3_0_FLASH_SOURCE = "openrouter_inclusionai_ling_3_0_flash_2026_07_24";
+const CELERIS_OPUS_5_ADDITION_SOURCE = "direct_provider_expansion_2026_07_24_celeris_opus5";
+const LING_3_0_FLASH_MODEL_ID = "inclusionai/ling-3.0-flash:free";
+const LING_3_0_FLASH_TEMPORARY_PRICES = {
+  input: 0.01,
+  output: 0.03,
+  source: "owner_directed_ling_2_6_flash_equivalent_2026_07_24",
+};
 const REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS = [
   "kwaipilot/kat-coder-air-v2.5",
   "kwaipilot/kat-coder-pro-v2.5",
@@ -58,6 +66,10 @@ const REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS = [
 const REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET = new Set(
   REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
 );
+const DECLARED_OPENROUTER_MODEL_ID_SET = new Set([
+  ...REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
+  LING_3_0_FLASH_MODEL_ID,
+]);
 const REQUESTED_OPENROUTER_DEFAULT_THINKING_DEPTHS = {
   "sakana/fugu-ultra": "xhigh",
   "inclusionai/ring-2.6-1t": "high",
@@ -66,10 +78,6 @@ const REQUESTED_OPENROUTER_DEFAULT_THINKING_DEPTHS = {
   "inception/mercury-2": "medium",
   "stepfun/step-3.7-flash": "medium",
 };
-const EXCLUDED_OPENROUTER_REQUESTED_EXPANSION_MODEL_ID_SET = new Set([
-  "poolside/laguna-xs.2",
-]);
-
 // OpenRouter's catalog metadata is useful for discovery, but weight availability
 // is a model-family property. These frozen corrections use the manufacturers'
 // published checkpoints rather than inferring availability from the transport.
@@ -90,6 +98,11 @@ const WEIGHT_STATUS_OVERRIDES = {
     openWeight: true,
     sourceRefs: ["https://huggingface.co/inclusionAI/Ling-2.6-flash"],
   },
+  [LING_3_0_FLASH_MODEL_ID]: {
+    openWeight: false,
+    sourceRefs: ["https://openrouter.ai/inclusionai/ling-3.0-flash:free"],
+    note: "No publisher-hosted weights are linked in the current catalog; classify as proprietary pending a primary weights release.",
+  },
   "inclusionai/ring-2.6-1t": {
     openWeight: true,
     sourceRefs: ["https://huggingface.co/inclusionAI/Ring-2.6-1T"],
@@ -103,6 +116,12 @@ const WEIGHT_STATUS_OVERRIDES = {
     // weights are not yet available in the reviewed release window.
     openWeight: false,
     sourceRefs: ["https://platform.kimi.ai/docs/guide/kimi-k3-quickstart"],
+  },
+  "stepfun/step-3.7-flash": {
+    // This is a model-family property, shared by the provider-default row
+    // and every documented OpenRouter reasoning setting.
+    openWeight: true,
+    sourceRefs: ["https://huggingface.co/stepfun-ai/Step-3.7-Flash"],
   },
 };
 const LONGCAT_2_0_WEIGHTS_SOURCE = "https://huggingface.co/meituan-longcat/LongCat-2.0";
@@ -162,6 +181,17 @@ const GEMINI_FLEX_SOURCES = [
 const LONGCAT_SOURCES = [
   "https://longcat.chat/platform/docs/",
 ];
+const CELERIS_SOURCES = [
+  "https://docs.celeris.ai/making-requests",
+  "https://docs.celeris.ai/models",
+  "https://docs.celeris.ai/pricing",
+];
+const ANTHROPIC_OPUS_5_SOURCES = [
+  "https://platform.claude.com/docs/en/about-claude/models/overview",
+  "https://platform.claude.com/docs/en/build-with-claude/thinking",
+  "https://platform.claude.com/docs/en/build-with-claude/thinking-troubleshooting",
+  "https://platform.claude.com/docs/en/build-with-claude/effort",
+];
 const AION_SOURCES = [
   "https://www.aionlabs.ai/docs/api-reference/",
 ];
@@ -217,6 +247,16 @@ const LONGCAT_2_0_NORMAL_PRICES = {
   input: 0.75,
   output: 2.95,
   source: "longcat_normal_pricing_2026_07_21",
+};
+const CELERIS_1_STANDARD_PRICES = {
+  input: 2,
+  output: 6,
+  source: "celeris_standard_pricing_2026_07_24",
+};
+const ANTHROPIC_OPUS_5_STANDARD_PRICES = {
+  input: 5,
+  output: 25,
+  source: "anthropic_claude_opus_5_standard_pricing_2026_07_24",
 };
 const AION_DIRECT_PRICES = {
   "aion-labs/aion-2.0": { input: 0.8, cached_input: 0.2, output: 1.6 },
@@ -483,6 +523,40 @@ const DIRECT_PROVIDER_ENTRIES = [
   direct("openai-gpt-oss-120b", "OpenAI GPT-OSS 120B", "openai", "openai/gpt-oss-120b", "gpt-oss-120b", {}, ["open-weight"]),
   direct("openai-gpt-oss-20b", "OpenAI GPT-OSS 20B", "openai", "openai/gpt-oss-20b", "gpt-oss-20b", {}, ["open-weight", "small"]),
   direct("anthropic-claude-opus-4-8", "Anthropic Claude Opus 4.8", "anthropic", "anthropic/claude-opus-4-8", "claude-opus-4-8", {}, ["frontier", "prior-baseline"]),
+  direct(
+    "anthropic-claude-opus-5",
+    "Claude Opus 5",
+    "anthropic",
+    "anthropic-opus5/claude-opus-5",
+    "claude-opus-5",
+    { reasoning_effort: "high" },
+    ["frontier", "thinking"],
+    {
+      provider_api: "anthropic_messages",
+      source: CELERIS_OPUS_5_ADDITION_SOURCE,
+      run_status: "planned",
+      access_status: "api_key_required",
+      source_refs: ANTHROPIC_OPUS_5_SOURCES,
+      control_style: "anthropic_opus_5_adaptive_thinking_effort",
+      thinking_depth: "high",
+      thinking_default_expected: "adaptive_high",
+      reasoning_effort: "high",
+      reasoning_effort_label: "high",
+      context_window_tokens: 1_000_000,
+      max_output_tokens: 128_000,
+      // Opus 5 bills all thinking inside the provider's aggregate output
+      // counter.  Do not emit a separate reasoning price: doing so would
+      // double charge a summarized-thinking observation from Inspect.
+      manual_prices: ANTHROPIC_OPUS_5_STANDARD_PRICES,
+      reasoning_telemetry: {
+        mode: "aggregate_completion",
+        thinking_model: true,
+        output_token_semantics: "includes_reasoning",
+        cost_basis: "aggregate_completion",
+        evidence: "Anthropic documents that Claude Opus 5 thinking tokens are billed as output tokens and its Messages usage object reports aggregate output usage rather than a separate hidden-thinking field.",
+      },
+    },
+  ),
   direct("anthropic-claude-sonnet-4-6", "Anthropic Claude Sonnet 4.6", "anthropic", "anthropic/claude-sonnet-4-6", "claude-sonnet-4-6", {}, ["frontier", "prior-baseline"]),
   direct("anthropic-claude-haiku-4-5", "Anthropic Claude Haiku 4.5", "anthropic", "anthropic/claude-haiku-4-5", "claude-haiku-4-5", {}, ["small", "prior-baseline"]),
   direct("anthropic-claude-opus-4-7", "Anthropic Claude Opus 4.7", "anthropic", "anthropic/claude-opus-4-7", "claude-opus-4-7", {}, ["frontier", "prior-baseline"]),
@@ -750,6 +824,33 @@ const DIRECT_PROVIDER_ENTRIES = [
       },
     )
   ),
+  direct(
+    "celeris-celeris-1-provider-default",
+    "Celeris-1",
+    "celeris",
+    "celeris/celeris-1",
+    "celeris-1",
+    { max_tokens: 2048 },
+    ["provider-default", "non-thinking"],
+    nonThinkingDefaultMetadata({
+      provider_api: "celeris_openai_compatible",
+      source: CELERIS_OPUS_5_ADDITION_SOURCE,
+      run_status: "planned",
+      access_status: "api_key_required",
+      source_refs: CELERIS_SOURCES,
+      context_window_tokens: 8192,
+      max_output_tokens: 8192,
+      manual_prices: CELERIS_1_STANDARD_PRICES,
+      pricing_note: "Celeris requires max_tokens to be a positive multiple of 256; the benchmark requests 2,048 to reserve input context within the documented 8,192-token window.",
+      reasoning_telemetry: {
+        mode: "not_applicable",
+        thinking_model: false,
+        output_token_semantics: "not_applicable",
+        cost_basis: "not_applicable",
+        evidence: "Celeris documents a single OpenAI-compatible chat model and no reasoning or thinking request control.",
+      },
+    }),
+  ),
   ...["none", "low", "medium", "high"].map((effort) => {
     const price = AION_DIRECT_PRICES["aion-labs/aion-2.0"];
     return direct(
@@ -1002,7 +1103,7 @@ const DIRECT_PROVIDER_ENTRIES = [
     "bedrock-flex",
     "bedrock-flex/us.amazon.nova-pro-v1:0",
     "us.amazon.nova-pro-v1:0",
-    {},
+    { max_tokens: 10000 },
     ["amazon-nova", "flex-execution", "non-thinking"],
     nonThinkingDefaultMetadata({
         upstream_provider: "amazon",
@@ -1067,6 +1168,8 @@ const DIRECT_PROVIDER_ENTRIES = [
       reasoning_token_estimate_status: "not_estimated",
       execution_service_tier: "flex",
       public_pricing_service_tier: "standard",
+      generation_settings: { temperature: 0 },
+      omit_generation_settings: ["max_tokens"],
       provider_request_settings: { serviceTier: { type: "flex" } },
       cached_input_price_per_mtok_usd: BEDROCK_NOVA_US_GEO_STANDARD_PRICES["us.amazon.nova-2-lite-v1:0"].cached_input,
       manual_prices: {
@@ -1104,9 +1207,9 @@ const DIRECT_PROVIDER_ENTRIES = [
             reasoningConfig: { type: "enabled", maxReasoningEffort: effort },
           },
         },
-        ...(high ? { generation_settings: { reasoning_effort: "high" } } : {}),
         ...(high
           ? {
+              generation_settings: { reasoning_effort: "high" },
               omit_generation_settings: [
                 "max_tokens",
                 "temperature",
@@ -1114,9 +1217,13 @@ const DIRECT_PROVIDER_ENTRIES = [
                 "top_k",
               ],
             }
-          : {}),
-        // AWS requires maxTokens to be omitted at high effort. Preserve that
-        // unconstrained wire contract rather than inventing a cost-only cap.
+          : {
+              generation_settings: { temperature: 0, reasoning_effort: effort },
+              omit_generation_settings: ["max_tokens"],
+            }),
+        // The Nova 2 Lite contract permits no output cap at every available
+        // reasoning level. Preserve that unconstrained wire contract rather
+        // than introducing a benchmark-only output ceiling.
         cached_input_price_per_mtok_usd: BEDROCK_NOVA_US_GEO_STANDARD_PRICES["us.amazon.nova-2-lite-v1:0"].cached_input,
         manual_prices: {
           input: BEDROCK_NOVA_US_GEO_STANDARD_PRICES["us.amazon.nova-2-lite-v1:0"].input,
@@ -1129,6 +1236,7 @@ const DIRECT_PROVIDER_ENTRIES = [
   }),
   ...["sonar", "sonar-pro", "sonar-reasoning-pro"].map((modelId) => {
     const price = PERPLEXITY_SONAR_STANDARD_PRICES[modelId];
+    const reasoningModel = modelId === "sonar-reasoning-pro";
     return direct(
       `perplexity-${slug(modelId)}-provider-default`,
       `Perplexity ${modelId} provider default`,
@@ -1151,6 +1259,21 @@ const DIRECT_PROVIDER_ENTRIES = [
           request_fee_context_label: "low search context size (provider default)",
           cost_accounting: "token_prices_plus_low_context_request_fee",
           pricing_note: "Standard Sonar token prices plus the documented low search-context request fee; low is the provider default and no Pro Search option is set.",
+          reasoning_telemetry: reasoningModel
+            ? {
+                mode: "aggregate_completion",
+                thinking_model: true,
+                output_token_semantics: "includes_reasoning",
+                cost_basis: "aggregate_completion",
+                evidence: "Perplexity Sonar Reasoning Pro documents a <think> section and a usage payload with prompt, completion, and total tokens but no separate reasoning-token count.",
+              }
+            : {
+                mode: "not_applicable",
+                thinking_model: false,
+                output_token_semantics: "not_applicable",
+                cost_basis: "not_applicable",
+                evidence: "The selected Sonar route has no separately configurable reasoning mode in the documented API surface.",
+              },
         },
       ),
     )
@@ -1237,8 +1360,7 @@ async function main() {
   const eligibleOpenRouterModels = openRouterModels.filter(isEligibleOpenRouterModel);
   const automaticallySelectedOpenRouterEntries = eligibleOpenRouterModels
     .filter((model) => (
-      !REQUESTED_OPENROUTER_EXPANSION_MODEL_ID_SET.has(model.id) &&
-      !EXCLUDED_OPENROUTER_REQUESTED_EXPANSION_MODEL_ID_SET.has(model.id)
+      !DECLARED_OPENROUTER_MODEL_ID_SET.has(model.id)
     ))
     .map((model) => openRouterEntry(model, priceIndex))
     .sort(compareRankedEntries)
@@ -1252,9 +1374,15 @@ async function main() {
     REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
     "requested OpenRouter expansion",
   ).map((model) => requestedOpenRouterEntry(model, priceIndex));
+  const ling3FlashEntries = requiredOpenRouterModels(
+    openRouterModels,
+    [LING_3_0_FLASH_MODEL_ID],
+    "Ling 3.0 Flash OpenRouter addition",
+  ).map((model) => ling3FlashOpenRouterEntry(model, priceIndex));
   const openRouterEntries = [
     ...automaticallySelectedOpenRouterEntries,
     ...requestedOpenRouterEntries,
+    ...ling3FlashEntries,
   ];
   const directEntries = DIRECT_PROVIDER_ENTRIES.map((entry) =>
     enrichDirectEntry(entry, priceIndex),
@@ -1286,9 +1414,6 @@ async function main() {
           "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens",
         ],
         declared_model_ids: REQUESTED_OPENROUTER_EXPANSION_MODEL_IDS,
-        excluded_model_ids: {
-          "poolside/laguna-xs.2": "not_a_current_OpenRouter_model_id",
-        },
         revalidated_model_ids: {
           "poolside/laguna-xs-2.1": "current_catalog_listed_after_prior_xs_2_1_omission",
           "arcee-ai/virtuoso-large": "current_catalog_listed_after_prior_live_smoke_http_400",
@@ -1296,6 +1421,27 @@ async function main() {
           "inflection/inflection-3-pi": "current_catalog_listed_after_prior_live_smoke_http_404",
         },
         pricing_source: "current_openrouter_models_api",
+      },
+      [OPENROUTER_LING_3_0_FLASH_SOURCE]: {
+        checked_on: "2026-07-24",
+        source_refs: [
+          OPENROUTER_MODELS_URL,
+          "https://openrouter.ai/inclusionai/ling-3.0-flash:free",
+        ],
+        declared_model_ids: [LING_3_0_FLASH_MODEL_ID],
+        endpoint_pricing_observed: {
+          availability: "free_only",
+          input_price_per_mtok_usd: 0,
+          output_price_per_mtok_usd: 0,
+        },
+        benchmark_price_accounting: {
+          reference_model: "inclusionai/ling-2.6-flash",
+          input_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.input,
+          output_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.output,
+          pricing_source: LING_3_0_FLASH_TEMPORARY_PRICES.source,
+          review_due: "2026-07-31",
+        },
+        reasoning_setting_policy: "provider_default_only_until_discrete_supported_efforts_are_documented",
       },
       direct_provider_expansion_2026_07_21: {
         checked_on: "2026-07-21",
@@ -1362,6 +1508,26 @@ async function main() {
           context_window_tokens: 1_000_000,
           max_output_tokens: 128_000,
           emitted_reasoning_rows: ["none", "high", "xhigh"],
+        },
+      },
+      [CELERIS_OPUS_5_ADDITION_SOURCE]: {
+        checked_on: "2026-07-24",
+        celeris: {
+          sources: CELERIS_SOURCES,
+          model_id: "celeris-1",
+          provider_route: "celeris",
+          output_cap_contract: "positive_multiple_of_256_and_prompt_plus_output_within_8192",
+          reasoning_control: "not_documented",
+          pricing: CELERIS_1_STANDARD_PRICES,
+        },
+        anthropic_opus_5: {
+          sources: ANTHROPIC_OPUS_5_SOURCES,
+          model_id: "claude-opus-5",
+          provider_route: "anthropic",
+          default_effort: "high",
+          distinct_rows: ["none", "low", "medium", "high", "xhigh", "max"],
+          omitted_duplicate: "default_equivalent_to_high",
+          pricing: ANTHROPIC_OPUS_5_STANDARD_PRICES,
         },
       },
       runcost_external_price_resolution: {
@@ -1568,6 +1734,41 @@ function requestedOpenRouterEntry(model, priceIndex) {
   });
 }
 
+function ling3FlashOpenRouterEntry(model, priceIndex) {
+  const entry = withoutScore(openRouterEntry(model, priceIndex));
+  return applyWeightStatusOverride({
+    ...entry,
+    id: "openrouter-requested-2026-07-24-inclusionai-ling-3-0-flash-free",
+    label: "inclusionAI: Ling-3.0-flash",
+    source: OPENROUTER_LING_3_0_FLASH_SOURCE,
+    source_refs: [
+      OPENROUTER_MODELS_URL,
+      "https://openrouter.ai/inclusionai/ling-3.0-flash:free",
+    ],
+    control_style: "openrouter_provider_default",
+    reasoning_effort: "provider_default",
+    reasoning_effort_label: "Default",
+    thinking_depth: "provider_default",
+    thinking_default_expected: "unmeasured",
+    reasoning_token_estimate_status: "not_estimated",
+    run_status: "free_endpoint_available",
+    access_status: "api_key_required",
+    input_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.input,
+    output_price_per_mtok_usd: LING_3_0_FLASH_TEMPORARY_PRICES.output,
+    pricing_source: LING_3_0_FLASH_TEMPORARY_PRICES.source,
+    pricing_note: "OpenRouter currently exposes only the free endpoint. Until a paid rate is published, benchmark accounting uses Ling-2.6-flash rates ($0.01/$0.03 per 1M input/output tokens); review due 2026-07-31.",
+    runcost_price_card_id: null,
+    runcost_price_source: null,
+    cost_accounting: "temporary_ling_2_6_flash_equivalent_until_paid_price_is_published",
+    priority: "requested-expansion",
+    tags: unique([
+      ...entry.tags,
+      "requested-expansion",
+      "temporary-price-equivalent",
+    ]),
+  });
+}
+
 function openRouterEntry(model, priceIndex) {
   const inputPerMtok = perMillion(model.pricing?.prompt);
   const outputPerMtok = perMillion(model.pricing?.completion);
@@ -1646,6 +1847,7 @@ function applyWeightStatusOverride(entry) {
     ]),
     weight_status: override.openWeight ? "open_weights" : "proprietary",
     weight_status_source_refs: override.sourceRefs,
+    ...(override.note ? { weight_status_note: override.note } : {}),
   };
 }
 
@@ -1682,6 +1884,9 @@ function enrichDirectEntry(entry, priceIndex) {
         ? {}
         : { cached_input_price_per_mtok_usd: manual_prices.cached_input }),
       output_price_per_mtok_usd: manual_prices.output,
+      ...(manual_prices.reasoning === undefined
+        ? {}
+        : { reasoning_price_per_mtok_usd: manual_prices.reasoning }),
       pricing_source: manual_prices.source,
       runcost_price_card_id: null,
       runcost_price_source: null,
