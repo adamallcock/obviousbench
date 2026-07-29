@@ -9062,21 +9062,21 @@ entries:
     max_output_tokens: 8192
     pricing_note: "Celeris requires max_tokens to be a positive multiple of 256; the benchmark requests 2,048 to reserve input context within the documented 8,192-token window."
     reasoning_telemetry:
-      mode: "not_applicable"
+      mode: "aggregate_usage_only"
       thinking_model: false
-      output_token_semantics: "not_applicable"
-      cost_basis: "not_applicable"
-      evidence: "Celeris documents a single OpenAI-compatible chat model and no reasoning or thinking request control."
-    control_style: "provider_default_non_thinking"
+      output_token_semantics: "aggregate_prompt_completion_only"
+      cost_basis: "aggregate_completion"
+      evidence: "Celeris documents a single OpenAI-compatible chat model, aggregate prompt/completion/total usage, and no reasoning or thinking request control."
+    control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "none"
-    thinking_depth: "none"
-    thinking_default_expected: "non_thinking"
-    reasoning_token_estimate_status: "not_applicable"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
     tags:
       - "direct-provider"
       - "provider-default"
-      - "non-thinking"
+      - "aggregate-usage-only"
     priority: "secondary"
     input_price_per_mtok_usd: 2
     output_price_per_mtok_usd: 6

@@ -4,21 +4,14 @@
 
 - Source config: `configs/releases/release_v0_2_0.yaml`
 - Generator: `uv run --extra dev python scripts/release/build_v0_2_release_assets.py --config configs/releases/release_v0_2_0.yaml`
-- Release date: `2026-07-25`
+- Release date: `2026-07-28`
 - Status: `local-publication-prep`
 - Public/private boundary: excludes private held-out prompts, raw outputs,
   item-level private outcomes, private review HTML, and attempt-level outcomes.
 
 
-Start with the public launch site:
-[https://obviousbench.com](https://obviousbench.com). It is the canonical
-release essay, interactive chart, and public results surface. This repository
-is the public source/data companion for code, public examples, aggregate CSVs,
-license, citation, and reproducibility materials.
-
-Status: local prep only. Do not publish until repository visibility,
-website link checks, and bundle-audit gates are complete. The existing
-public-example split remains unchanged by this aggregate-results update.
+Status: local prep only. Do not publish until repository, dataset,
+project-page, and bundle-audit gates are complete.
 
 ## What Is ObviousBench?
 
@@ -36,7 +29,7 @@ obvious literal mistakes before those mistakes reach users.
 
 The v0.2 private pass^3 snapshot has the desired shape: top
 model/config rows saturate or near-saturate the benchmark, while
-smaller, no-thinking, or lower-test-time-compute rows still fail
+smaller, no-reasoning, or lower-test-time-compute rows still fail
 visibly. That means the tasks are solvable by sufficiently capable
 systems, and still useful for measuring obvious-mistake risk below
 the top end.
@@ -46,29 +39,28 @@ the top end.
 | Metric | Value |
 |---|---|
 | Private held-out items | 144 |
-| Model/config rows | 438 |
+| Measured model/config rows | 446 |
+| Headline model/config rows | 438 |
+| Diagnostic duplicate rows excluded from headline tables | 7 |
 | Included headline rows | 438 |
-| Attempt rows | 189216 |
-| Scored attempts | 189216 |
-| Estimated cost | $209.02 |
+| Attempt rows | 192672 |
+| Scored attempts | 192672 |
+| Estimated measured cost | $210.11 |
+| Estimated headline cost | $203.46 |
 
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated
 as model-quality evidence.
 
-The canonical public narrative and interactive charts are on
-[obviousbench.com](https://obviousbench.com). This repository is the
-public source/data companion for those results.
+## What Changed Since v0.1
 
-## Release Contents
-
-- Public example items for orientation, documentation, and smoke
-  testing.
-- Public-safe aggregate private-set results at model/configuration
-  level.
-- Public model/config panel and registry metadata.
-- Runnable package code, deterministic scoring policy, methodology,
-  license, and citation metadata.
+- v0.2 rebalances toward subfamilies that still separate modern
+  models.
+- Saturated low-signal forms are reduced or removed.
+- Ambiguous wording found during private review was corrected before
+  the final run.
+- The primary headline metric is non-strict answer pass^3; strict
+  and format correctness remain diagnostics.
 
 ## How To Read The Results
 

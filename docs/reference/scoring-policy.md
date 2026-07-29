@@ -1,6 +1,6 @@
 ---
 title: Scoring Policy
-date: 2026-05-31
+date: 2026-07-05
 type: policy
 status: current
 ---
@@ -41,6 +41,13 @@ for target `3.01, 3.1, 3.2`. A leading matching list followed by explanation or
 a trailing confidence annotation is answer-correct but not strict. Wrong order,
 missing items, extra items, semicolon-separated text, and punctuation attached
 to list items are rejected.
+
+Yes/no tasks are strict when the output is exactly `yes` or `no` after
+whitespace and token-artifact normalization, case-insensitive. Final-answer
+cues such as `Answer: yes`, correction cues such as `the correct answer is
+no`, and answer-like line starts such as `No.` followed by explanation are
+answer-correct but not strict. Outputs containing both `yes` and `no` without
+a resolving cue are ambiguous and incorrect.
 
 Multiple-choice tasks are strict when the output is only a letter. Verbose
 wrappers such as `The answer is B`, `B. option text`, and `final answer: B` can
@@ -86,5 +93,6 @@ Supported scorer names:
 - `regex_match_v0`
 - `json_exact_field_v0`
 - `word_count_v0`
+- `yes_no_v0`
 
 Every scorer returns a correctness value, extracted answer, explanation, scorer name, strict-format flag, and failure type.
