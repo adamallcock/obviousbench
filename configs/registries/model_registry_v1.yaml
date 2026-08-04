@@ -852,7 +852,7 @@ entries:
       - "reasoning-parameter-supported"
     id: "openrouter-018-poolside-laguna-xs-2-1"
   -
-    label: "DeepSeek: DeepSeek V4 Flash"
+    label: "DeepSeek: DeepSeek V4 Flash 0423"
     provider_route: "openrouter"
     upstream_provider: "deepseek"
     inspect_model: "openrouter/deepseek/deepseek-v4-flash"
@@ -3329,7 +3329,7 @@ entries:
       - "reasoning-parameter-supported"
     id: "openrouter-100-nvidia-nemotron-3-ultra-550b-a55b"
   -
-    label: "DeepSeek: DeepSeek V4 Pro"
+    label: "DeepSeek: DeepSeek V4 Pro 0423"
     provider_route: "openrouter"
     upstream_provider: "deepseek"
     inspect_model: "openrouter/deepseek/deepseek-v4-pro"
@@ -4595,6 +4595,44 @@ entries:
       - "tools-supported"
       - "reasoning-parameter-supported"
     id: "openrouter-143-qwen-qwen3-7-max"
+  -
+    label: "Qwen: Qwen3.8 Max"
+    provider_route: "openrouter"
+    upstream_provider: "qwen"
+    inspect_model: "openrouter/qwen/qwen3.8-max"
+    model_id: "qwen/qwen3.8-max"
+    canonical_slug: "qwen/qwen3.8-max-20260802"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 1000000
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 2.0
+    output_price_per_mtok_usd: 6.0
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:qwen/qwen3.8-max:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_models_api"
+    priority: "stress-candidate"
+    reasoning_effort_note: >-
+      Qwen documents reasoning_effort xhigh (default), medium and low. The
+      OpenRouter endpoint accepts a superset and normalizes onto those, and
+      refuses to disable reasoning at all: reasoning_effort=none and
+      reasoning.enabled=false both return "Reasoning is mandatory for this
+      endpoint and cannot be disabled", while the native API's
+      enable_thinking=false is silently ignored. There is therefore no
+      non-thinking row on this route.
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "frontier"
+      - "text-only"
+      - "thinking"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+    id: "openrouter-qwen-qwen3-8-max"
   -
     label: "Qwen: Qwen3.6 Max Preview"
     provider_route: "openrouter"
@@ -7420,10 +7458,18 @@ entries:
       - "flex-execution"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 2.5
-    output_price_per_mtok_usd: 15
-    pricing_source: "openai_standard_short_context_2026_07_09"
-    runcost_price_card_id: null
+    input_price_per_mtok_usd: 2
+    output_price_per_mtok_usd: 12
+    pricing_source: "openai_standard_short_context_2026_07_30"
+    pricing_effective_from: "2026-07-30"
+    pricing_history:
+      - pricing_card_id: "openai-gpt-5-6-terra-standard-2026-07-09"
+        pricing_source: "openai_standard_short_context_2026_07_09"
+        pricing_effective_from: "2026-07-09"
+        pricing_effective_to: "2026-07-29"
+        input_price_per_mtok_usd: 2.5
+        output_price_per_mtok_usd: 15
+    runcost_price_card_id: "openai-gpt-5-6-terra-standard-2026-07-30"
     runcost_price_source: null
   -
     id: "openai-gpt-5-6-luna-medium"
@@ -7448,10 +7494,18 @@ entries:
       - "flex-execution"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 1
-    output_price_per_mtok_usd: 6
-    pricing_source: "openai_standard_short_context_2026_07_09"
-    runcost_price_card_id: null
+    input_price_per_mtok_usd: 0.2
+    output_price_per_mtok_usd: 1.2
+    pricing_source: "openai_standard_short_context_2026_07_30"
+    pricing_effective_from: "2026-07-30"
+    pricing_history:
+      - pricing_card_id: "openai-gpt-5-6-luna-standard-2026-07-09"
+        pricing_source: "openai_standard_short_context_2026_07_09"
+        pricing_effective_from: "2026-07-09"
+        pricing_effective_to: "2026-07-29"
+        input_price_per_mtok_usd: 1
+        output_price_per_mtok_usd: 6
+    runcost_price_card_id: "openai-gpt-5-6-luna-standard-2026-07-30"
     runcost_price_source: null
   -
     id: "openai-gpt-5-5-none"
@@ -8428,7 +8482,7 @@ entries:
     runcost_price_source: null
   -
     id: "deepseek-v4-flash-no-thinking"
-    label: "DeepSeek V4 Flash no thinking"
+    label: "DeepSeek V4 Flash 0423 no thinking"
     provider_route: "deepseek"
     upstream_provider: "deepseek"
     inspect_model: "deepseek/deepseek-v4-flash"
@@ -8463,7 +8517,7 @@ entries:
     runcost_price_source: null
   -
     id: "deepseek-v4-flash-high"
-    label: "DeepSeek V4 Flash high"
+    label: "DeepSeek V4 Flash 0423 high"
     provider_route: "deepseek"
     upstream_provider: "deepseek"
     inspect_model: "deepseek/deepseek-v4-flash"
@@ -8500,7 +8554,7 @@ entries:
     runcost_price_source: null
   -
     id: "deepseek-v4-pro-high"
-    label: "DeepSeek V4 Pro high"
+    label: "DeepSeek V4 Pro 0423 high"
     provider_route: "deepseek"
     upstream_provider: "deepseek"
     inspect_model: "deepseek/deepseek-v4-pro"
@@ -8531,6 +8585,176 @@ entries:
     source: "curated_direct_provider_baseline"
     input_price_per_mtok_usd: 0.435
     output_price_per_mtok_usd: 0.87
+    pricing_source: "deepseek_v4_pricing_2026_07_14"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "deepseek-v4-flash-0731-no-thinking"
+    label: "DeepSeek V4 Flash 0731 no thinking"
+    provider_route: "deepseek"
+    upstream_provider: "deepseek"
+    inspect_model: "deepseek/deepseek-v4-flash"
+    model_id: "deepseek-v4-flash"
+    canonical_slug: "deepseek/deepseek-v4-flash-0731"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 65536
+      extra_body:
+        thinking:
+          type: "disabled"
+    provider_api: "deepseek_openai_compatible"
+    run_status: "api_available"
+    source_refs:
+      - "https://api-docs.deepseek.com/"
+      - "https://api-docs.deepseek.com/quick_start/pricing"
+      - "https://api-docs.deepseek.com/guides/thinking_mode/"
+    access_status: "api_key_required"
+    checkpoint_note: >-
+      The native DeepSeek API exposes only the undated `deepseek-v4-flash`
+      model name and serves the latest checkpoint. This row records the
+      2026-07-31 checkpoint by run date; the API cannot pin it by name, so a
+      later DeepSeek rollout will change what this model id returns.
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "non-thinking"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 0.14
+    output_price_per_mtok_usd: 0.28
+    pricing_source: "deepseek_v4_pricing_2026_07_14"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "deepseek-v4-flash-0731-low"
+    label: "DeepSeek V4 Flash 0731 low"
+    provider_route: "deepseek"
+    upstream_provider: "deepseek"
+    inspect_model: "deepseek/deepseek-v4-flash"
+    model_id: "deepseek-v4-flash"
+    canonical_slug: "deepseek/deepseek-v4-flash-0731"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 65536
+      reasoning_effort: "low"
+      extra_body:
+        thinking:
+          type: "enabled"
+    provider_api: "deepseek_openai_compatible"
+    run_status: "api_available"
+    source_refs:
+      - "https://api-docs.deepseek.com/"
+      - "https://api-docs.deepseek.com/quick_start/pricing"
+      - "https://api-docs.deepseek.com/guides/thinking_mode/"
+    access_status: "api_key_required"
+    checkpoint_note: >-
+      The native DeepSeek API exposes only the undated `deepseek-v4-flash`
+      model name and serves the latest checkpoint. This row records the
+      2026-07-31 checkpoint by run date; the API cannot pin it by name, so a
+      later DeepSeek rollout will change what this model id returns.
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "thinking"
+      - "reasoning-low"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 0.14
+    output_price_per_mtok_usd: 0.28
+    pricing_source: "deepseek_v4_pricing_2026_07_14"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "deepseek-v4-flash-0731-high"
+    label: "DeepSeek V4 Flash 0731 high"
+    provider_route: "deepseek"
+    upstream_provider: "deepseek"
+    inspect_model: "deepseek/deepseek-v4-flash"
+    model_id: "deepseek-v4-flash"
+    canonical_slug: "deepseek/deepseek-v4-flash-0731"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 65536
+      reasoning_effort: "high"
+      extra_body:
+        thinking:
+          type: "enabled"
+    provider_api: "deepseek_openai_compatible"
+    run_status: "api_available"
+    source_refs:
+      - "https://api-docs.deepseek.com/"
+      - "https://api-docs.deepseek.com/quick_start/pricing"
+      - "https://api-docs.deepseek.com/guides/thinking_mode/"
+    access_status: "api_key_required"
+    checkpoint_note: >-
+      The native DeepSeek API exposes only the undated `deepseek-v4-flash`
+      model name and serves the latest checkpoint. This row records the
+      2026-07-31 checkpoint by run date; the API cannot pin it by name, so a
+      later DeepSeek rollout will change what this model id returns.
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "thinking"
+      - "reasoning-high"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 0.14
+    output_price_per_mtok_usd: 0.28
+    pricing_source: "deepseek_v4_pricing_2026_07_14"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "deepseek-v4-flash-0731-max"
+    label: "DeepSeek V4 Flash 0731 max"
+    provider_route: "deepseek"
+    upstream_provider: "deepseek"
+    inspect_model: "deepseek/deepseek-v4-flash"
+    model_id: "deepseek-v4-flash"
+    canonical_slug: "deepseek/deepseek-v4-flash-0731"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 65536
+      reasoning_effort: "max"
+      extra_body:
+        thinking:
+          type: "enabled"
+    provider_api: "deepseek_openai_compatible"
+    run_status: "api_available"
+    source_refs:
+      - "https://api-docs.deepseek.com/"
+      - "https://api-docs.deepseek.com/quick_start/pricing"
+      - "https://api-docs.deepseek.com/guides/thinking_mode/"
+    access_status: "api_key_required"
+    checkpoint_note: >-
+      The native DeepSeek API exposes only the undated `deepseek-v4-flash`
+      model name and serves the latest checkpoint. This row records the
+      2026-07-31 checkpoint by run date; the API cannot pin it by name, so a
+      later DeepSeek rollout will change what this model id returns.
+    tags:
+      - "direct-provider"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "thinking"
+      - "reasoning-max"
+    priority: "secondary"
+    source: "curated_direct_provider_baseline"
+    input_price_per_mtok_usd: 0.14
+    output_price_per_mtok_usd: 0.28
     pricing_source: "deepseek_v4_pricing_2026_07_14"
     runcost_price_card_id: null
     runcost_price_source: null
@@ -9062,21 +9286,21 @@ entries:
     max_output_tokens: 8192
     pricing_note: "Celeris requires max_tokens to be a positive multiple of 256; the benchmark requests 2,048 to reserve input context within the documented 8,192-token window."
     reasoning_telemetry:
-      mode: "not_applicable"
+      mode: "aggregate_usage_only"
       thinking_model: false
-      output_token_semantics: "not_applicable"
-      cost_basis: "not_applicable"
-      evidence: "Celeris documents a single OpenAI-compatible chat model and no reasoning or thinking request control."
-    control_style: "provider_default_non_thinking"
+      output_token_semantics: "aggregate_prompt_completion_only"
+      cost_basis: "aggregate_completion"
+      evidence: "Celeris documents a single OpenAI-compatible chat model, aggregate prompt/completion/total usage, and no reasoning or thinking request control."
+    control_style: "provider_default_unmeasured"
     reasoning_effort: "provider_default"
-    reasoning_effort_label: "none"
-    thinking_depth: "none"
-    thinking_default_expected: "non_thinking"
-    reasoning_token_estimate_status: "not_applicable"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
     tags:
       - "direct-provider"
       - "provider-default"
-      - "non-thinking"
+      - "aggregate-usage-only"
     priority: "secondary"
     input_price_per_mtok_usd: 2
     output_price_per_mtok_usd: 6

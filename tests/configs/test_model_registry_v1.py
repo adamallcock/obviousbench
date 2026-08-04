@@ -16,6 +16,18 @@ NOVA_2_LITE_UNCAPPED_ENTRY_IDS = {
     "bedrock-flex-us-amazon-nova-2-lite-v1-0-medium",
     "bedrock-flex-us-amazon-nova-2-lite-v1-0-high",
 }
+# DeepSeek V4 Flash 0731 raises the output cap above OUTPUT_SAFETY_MAX_TOKENS.
+# Thinking is on by default on that route and reasoning bills as completion
+# tokens, so a 10k cap returns empty content with the budget spent reasoning.
+# 65536 is well inside the provider's accepted range and is the value the
+# 2026-07-31 run executed with.
+DEEPSEEK_0731_HIGH_OUTPUT_CAP = 65_536
+DEEPSEEK_0731_HIGH_OUTPUT_ENTRY_IDS = {
+    "deepseek-v4-flash-0731-no-thinking",
+    "deepseek-v4-flash-0731-low",
+    "deepseek-v4-flash-0731-high",
+    "deepseek-v4-flash-0731-max",
+}
 CELERIS_FIXED_OUTPUT_CAP_ENTRY_IDS = {
     "celeris-celeris-1-provider-default",
 }
@@ -38,7 +50,7 @@ def test_model_registry_v1_has_comprehensive_coverage():
     assert registry["schema_version"] == "model-registry-v1"
     assert registry["defaults"]["profile"] == "hard_obvious_8x10"
     assert registry["defaults"]["seed"] == 20260531
-    assert len(entries) == 329
+    assert len(entries) == 334
     assert route_counts["openrouter"] >= 200
     assert {
         "openrouter",
@@ -86,6 +98,7 @@ def test_model_registry_entries_are_unique_and_runnable():
             UNCAPPED_PROVIDER_DEFAULT_ENTRY_IDS | NOVA_2_LITE_UNCAPPED_ENTRY_IDS
         )
         is_celeris_fixed_cap = entry["id"] in CELERIS_FIXED_OUTPUT_CAP_ENTRY_IDS
+        is_deepseek_0731_high_cap = entry["id"] in DEEPSEEK_0731_HIGH_OUTPUT_ENTRY_IDS
         if "temperature" in settings:
             assert settings["temperature"] == 0
         else:
@@ -108,6 +121,9 @@ def test_model_registry_entries_are_unique_and_runnable():
             assert settings["max_tokens"] == 2048
             assert settings["max_tokens"] % 256 == 0
             assert settings["max_tokens"] < advertised_max
+        elif is_deepseek_0731_high_cap:
+            assert settings["max_tokens"] == DEEPSEEK_0731_HIGH_OUTPUT_CAP
+            assert settings["max_tokens"] > OUTPUT_SAFETY_MAX_TOKENS
         elif not uncapped:
             assert settings["max_tokens"] == expected_max
         assert entry["pricing_source"] in {
@@ -116,6 +132,7 @@ def test_model_registry_entries_are_unique_and_runnable():
             "xai_grok_4_5_docs_2026_07_08",
             "meta_model_api_blog_2026_07_09",
             "openai_standard_short_context_2026_07_09",
+            "openai_standard_short_context_2026_07_30",
             "deepseek_v4_pricing_2026_07_14",
             "tinker_inkling_undiscounted_pricing_2026_07_15",
             "kimi_k3_standard_pricing_2026_07_16",
@@ -221,15 +238,22 @@ def test_model_registry_includes_gpt_5_6_defaults_with_standard_prices():
         )
         for model_id, row in rows.items()
     } == {
+        # Terra and Luna adopted OpenAI's permanent 2026-07-30 prices; Sol is
+        # unchanged. Twelve historical price references are published alongside
+        # as comparison rows, ineligible for the Pareto frontier.
         "gpt-5.6-sol": (5, 30),
-        "gpt-5.6-terra": (2.5, 15),
-        "gpt-5.6-luna": (1, 6),
+        "gpt-5.6-terra": (2, 12),
+        "gpt-5.6-luna": (0.2, 1.2),
     }
     for row in rows.values():
         assert row["provider_route"] == "openai"
         assert row["generation_settings"]["reasoning_effort"] == "medium"
         assert row["generation_settings"]["extra_body"] == {"service_tier": "flex"}
-        assert row["pricing_source"] == "openai_standard_short_context_2026_07_09"
+    assert {m: r["pricing_source"] for m, r in rows.items()} == {
+        "gpt-5.6-sol": "openai_standard_short_context_2026_07_09",
+        "gpt-5.6-terra": "openai_standard_short_context_2026_07_30",
+        "gpt-5.6-luna": "openai_standard_short_context_2026_07_30",
+    }
 
 
 def test_model_registry_includes_tinker_inkling_effort_rows_at_undiscounted_prices():

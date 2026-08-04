@@ -94,38 +94,38 @@ release_panel:
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: Anthropic Claude Fable 5 low
-  inspect_model: anthropic/claude-fable-5
+  inspect_model: anthropic-fallback/claude-fable-5
   provider_model: anthropic/claude-fable-5
   model_entry_id: manual-20260701-anthropic-claude-fable-5-low
-  model_setting_key: anthropic-claude-fable-5:e077652f9fcf4486
+  model_setting_key: anthropic-fallback-claude-fable-5:3f89876bca7eb05f
   profile: v0_2_public_aggregate
   reasoning_effort: low
 - label: Anthropic Claude Fable 5 medium
-  inspect_model: anthropic/claude-fable-5
+  inspect_model: anthropic-fallback/claude-fable-5
   provider_model: anthropic/claude-fable-5
   model_entry_id: manual-20260701-anthropic-claude-fable-5-medium
-  model_setting_key: anthropic-claude-fable-5:b7732520ec599e51
+  model_setting_key: anthropic-fallback-claude-fable-5:bd58836ca6ab9845
   profile: v0_2_public_aggregate
   reasoning_effort: medium
 - label: Anthropic Claude Fable 5 high
-  inspect_model: anthropic/claude-fable-5
+  inspect_model: anthropic-fallback/claude-fable-5
   provider_model: anthropic/claude-fable-5
   model_entry_id: manual-20260701-anthropic-claude-fable-5-high
-  model_setting_key: anthropic-claude-fable-5:1bcf008f23ca2ac5
+  model_setting_key: anthropic-fallback-claude-fable-5:ad4a8a76dade19a9
   profile: v0_2_public_aggregate
   reasoning_effort: high
 - label: Anthropic Claude Fable 5 xhigh
-  inspect_model: anthropic/claude-fable-5
+  inspect_model: anthropic-fallback/claude-fable-5
   provider_model: anthropic/claude-fable-5
   model_entry_id: manual-20260701-anthropic-claude-fable-5-xhigh
-  model_setting_key: anthropic-claude-fable-5:db1757c62151bca3
+  model_setting_key: anthropic-fallback-claude-fable-5:4641abf788d8399f
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
 - label: Anthropic Claude Fable 5 max
-  inspect_model: anthropic/claude-fable-5
+  inspect_model: anthropic-fallback/claude-fable-5
   provider_model: anthropic/claude-fable-5
   model_entry_id: manual-20260701-anthropic-claude-fable-5-max
-  model_setting_key: anthropic-claude-fable-5:3318474fab2a92ce
+  model_setting_key: anthropic-fallback-claude-fable-5:dc5f5772ca932596
   profile: v0_2_public_aggregate
   reasoning_effort: max
 - label: Anthropic Claude Haiku 4.5
@@ -611,6 +611,34 @@ release_panel:
   model_setting_key: openrouter-deepcogito-cogito-v2-1-671b:6a0ec68abc164614
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: DeepSeek V4 Flash 0731 no thinking
+  inspect_model: deepseek/deepseek-v4-flash
+  provider_model: deepseek-v4-flash
+  model_entry_id: manual-20260731-deepseek-v4-flash-disabled
+  model_setting_key: deepseek-deepseek-v4-flash:b1d926e3c5b07487
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: DeepSeek V4 Flash 0731 low
+  inspect_model: deepseek/deepseek-v4-flash
+  provider_model: deepseek-v4-flash
+  model_entry_id: manual-20260731-deepseek-v4-flash-low
+  model_setting_key: deepseek-deepseek-v4-flash:a59f1759f7afdf03
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: DeepSeek V4 Flash 0731 high
+  inspect_model: deepseek/deepseek-v4-flash
+  provider_model: deepseek-v4-flash
+  model_entry_id: manual-20260731-deepseek-v4-flash-high
+  model_setting_key: deepseek-deepseek-v4-flash:880e1f91c5364063
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: DeepSeek V4 Flash 0731 max
+  inspect_model: deepseek/deepseek-v4-flash
+  provider_model: deepseek-v4-flash
+  model_entry_id: manual-20260731-deepseek-v4-flash-max
+  model_setting_key: deepseek-deepseek-v4-flash:ba4bf9721675947b
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: 'DeepSeek: DeepSeek V3'
   inspect_model: openrouter/deepseek/deepseek-chat
   provider_model: deepseek/deepseek-chat
@@ -653,14 +681,14 @@ release_panel:
   model_setting_key: openrouter-deepseek-deepseek-v3-2-exp:fcab714ac4ba5f53
   profile: v0_2_public_aggregate
   reasoning_effort: Default
-- label: 'DeepSeek: DeepSeek V4 Flash'
+- label: 'DeepSeek: DeepSeek V4 Flash 0423'
   inspect_model: openrouter/deepseek/deepseek-v4-flash
   provider_model: deepseek/deepseek-v4-flash
   model_entry_id: old-35-deepseek-deepseek-v4-flash
   model_setting_key: openrouter-deepseek-deepseek-v4-flash:84fe7d3f33b4e8e2
   profile: v0_2_public_aggregate
   reasoning_effort: Default
-- label: 'DeepSeek: DeepSeek V4 Pro'
+- label: 'DeepSeek: DeepSeek V4 Pro 0423'
   inspect_model: openrouter/deepseek/deepseek-v4-pro
   provider_model: deepseek/deepseek-v4-pro
   model_entry_id: old-78-deepseek-deepseek-v4-pro
@@ -2571,6 +2599,34 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-6-plus:7e7647c87639a1e5
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'Qwen: Qwen3.7 Flash none (reasoning disabled)'
+  inspect_model: openrouter/qwen/qwen3.7-flash
+  provider_model: qwen/qwen3.7-flash
+  model_entry_id: openrouter-qwen-qwen3-7-flash-none
+  model_setting_key: openrouter-qwen-qwen3-7-flash:1c486c3870c5d38e
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Qwen: Qwen3.7 Flash low_budget_512'
+  inspect_model: openrouter/qwen/qwen3.7-flash
+  provider_model: qwen/qwen3.7-flash
+  model_entry_id: openrouter-qwen-qwen3-7-flash-low
+  model_setting_key: openrouter-qwen-qwen3-7-flash:c09fdcdf6d0f0ad7
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.7 Flash medium_budget_2048'
+  inspect_model: openrouter/qwen/qwen3.7-flash
+  provider_model: qwen/qwen3.7-flash
+  model_entry_id: openrouter-qwen-qwen3-7-flash-medium
+  model_setting_key: openrouter-qwen-qwen3-7-flash:33be98f2a3b509ae
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Qwen: Qwen3.7 Flash high_budget_8192'
+  inspect_model: openrouter/qwen/qwen3.7-flash
+  provider_model: qwen/qwen3.7-flash
+  model_entry_id: openrouter-qwen-qwen3-7-flash-high
+  model_setting_key: openrouter-qwen-qwen3-7-flash:da97f232baeb290c
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: 'Qwen: Qwen3.7 Max'
   inspect_model: openrouter/qwen/qwen3.7-max
   provider_model: qwen/qwen3.7-max
@@ -2578,6 +2634,55 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-7-max:890c68a827465ce8
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: 'Qwen: Qwen3.7 Plus none (reasoning disabled)'
+  inspect_model: openrouter/qwen/qwen3.7-plus
+  provider_model: qwen/qwen3.7-plus
+  model_entry_id: openrouter-qwen-qwen3-7-plus-none
+  model_setting_key: openrouter-qwen-qwen3-7-plus:b6cac53f18d56b7c
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Qwen: Qwen3.7 Plus low_budget_512'
+  inspect_model: openrouter/qwen/qwen3.7-plus
+  provider_model: qwen/qwen3.7-plus
+  model_entry_id: openrouter-qwen-qwen3-7-plus-low
+  model_setting_key: openrouter-qwen-qwen3-7-plus:f4aae57ed3a3f29b
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.7 Plus medium_budget_2048'
+  inspect_model: openrouter/qwen/qwen3.7-plus
+  provider_model: qwen/qwen3.7-plus
+  model_entry_id: openrouter-qwen-qwen3-7-plus-medium
+  model_setting_key: openrouter-qwen-qwen3-7-plus:8dbba92454983890
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Qwen: Qwen3.7 Plus high_budget_8192'
+  inspect_model: openrouter/qwen/qwen3.7-plus
+  provider_model: qwen/qwen3.7-plus
+  model_entry_id: openrouter-qwen-qwen3-7-plus-high
+  model_setting_key: openrouter-qwen-qwen3-7-plus:499dc59451eb7747
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Qwen: Qwen3.8-Max low'
+  inspect_model: openrouter/qwen/qwen3.8-max
+  provider_model: qwen/qwen3.8-max
+  model_entry_id: manual-20260803-qwen-qwen3-8-max-low
+  model_setting_key: openrouter-qwen-qwen3-8-max:c65f47d06af6a196
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.8-Max medium'
+  inspect_model: openrouter/qwen/qwen3.8-max
+  provider_model: qwen/qwen3.8-max
+  model_entry_id: manual-20260803-qwen-qwen3-8-max-medium
+  model_setting_key: openrouter-qwen-qwen3-8-max:aedbb48a1fe4982f
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Qwen: Qwen3.8-Max xhigh'
+  inspect_model: openrouter/qwen/qwen3.8-max
+  provider_model: qwen/qwen3.8-max
+  model_entry_id: manual-20260803-qwen-qwen3-8-max-xhigh
+  model_setting_key: openrouter-qwen-qwen3-8-max:397b2c7371db8d9e
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: 'Sakana: Fugu Ultra high'
   inspect_model: openrouter/sakana/fugu-ultra
   provider_model: sakana/fugu-ultra

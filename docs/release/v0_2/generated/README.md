@@ -1,6 +1,6 @@
 ---
 title: ObviousBench v0.2.0 Local Release Surfaces
-date: 2026-07-25
+date: 2026-07-31
 type: release
 status: local-prep
 ---
@@ -9,7 +9,7 @@ status: local-prep
 
 - Source config: `configs/releases/release_v0_2_0.yaml`
 - Generator: `uv run --extra dev python scripts/release/build_v0_2_release_assets.py --config configs/releases/release_v0_2_0.yaml`
-- Release date: `2026-07-25`
+- Release date: `2026-07-31`
 - Status: `local-publication-prep`
 - Public/private boundary: excludes private held-out prompts, raw outputs,
   item-level private outcomes, private review HTML, and attempt-level outcomes.
@@ -26,30 +26,35 @@ outputs, item-level private outcomes, and private review HTML.
 | Field | Value |
 |---|---|
 | Private items | 144 |
-| Model/config rows | 438 |
-| Complete rows | 438 |
-| Attempts | 189216 |
-| Scored attempts | 189216 |
-| Estimated cost | $209.02 |
+| Measured model/config rows | 453 |
+| Headline model/config rows | 445 |
+| Diagnostic duplicates excluded from headline rows | 7 |
+| Complete headline rows | 445 |
+| Attempts | 195696 |
+| Scored attempts | 195696 |
+| Estimated cost | $210.93 |
+| Headline cost | $204.28 |
 | Primary metric | non-strict answer pass^3 |
-
-Canonical public launch site:
-[https://obviousbench.com](https://obviousbench.com)
 
 ## Generated Files
 
-- `README.md`
 - `release-metadata.json`
 - `github-release-notes.md`
+- `huggingface-dataset-card.md`
+- `project-page.md`
+- `launch-essay-draft.md`
+- `background-and-rhetoric.md`
+- `interactive-results.html`
+- `model-size-review.csv`
+- `social-snippets.md`
+- `public-release-checklist.md`
 - `provenance.json`
-
-The launch-site narrative and interactive charts live at
-[https://obviousbench.com](https://obviousbench.com). This repository
-keeps the public-safe source data, configs, aggregate CSVs, and
-reproducibility materials rather than duplicating the deployable website
-source.
 
 ## Source Evidence
 
+- Results memo: `docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-rhetoric-packet.md`
+- Evidence packet: `docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-evidence-packet.md`
+- Sanity supplement: `docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-sanity-supplement.md`
+- Split inventory: `docs/research/2026-06-15-obviousbench-v0-2-split-inventory-and-question-supply.md`
 - Aggregate report: copied into the public bundle under
   `reports/v0_2/aggregate/report.md` after bundle build.
