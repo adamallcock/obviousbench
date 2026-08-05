@@ -1,5 +1,7 @@
 # ObviousBench
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21781601.svg)](https://doi.org/10.5281/zenodo.21781601)
+
 [**Open the ObviousBench launch site and interactive results**](https://obviousbench.com)
 
 The launch site is the best place to read the release essay, explore the
@@ -117,6 +119,25 @@ build artifact in this repository. GitHub should link prominently to
 [obviousbench.com](https://obviousbench.com), and the website should link back
 to this repository for the public examples, aggregate data, source code,
 license, citation, and reproducibility materials.
+
+## Paper and Citation
+
+The ObviousBench paper is published as a preprint with a DOI:
+[ObviousBench: The Cost of Not Making Obvious Mistakes](https://doi.org/10.5281/zenodo.21781601)
+(an arXiv version is pending moderation and will be cross-linked on
+announcement).
+
+```bibtex
+@misc{allcock2026obviousbench,
+  author    = {Allcock, Adam},
+  title     = {ObviousBench: The Cost of Not Making Obvious Mistakes},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21781601},
+  url       = {https://doi.org/10.5281/zenodo.21781601},
+  note      = {Preprint; arXiv version pending}
+}
+```
 
 ## License
 
