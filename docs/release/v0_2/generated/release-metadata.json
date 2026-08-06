@@ -1,12 +1,12 @@
 {
-  "attempt_rows": 195696,
-  "complete_model_setting_rows": 445,
+  "attempt_rows": 200448,
+  "complete_model_setting_rows": 456,
   "diagnostic_duplicate_rows": 7,
-  "estimated_cost_usd": 210.931704,
+  "estimated_cost_usd": 214.765875,
   "generated_on": "2026-07-31",
-  "headline_estimated_cost_usd": 204.277957,
-  "headline_model_setting_rows": 445,
-  "model_setting_rows": 453,
+  "headline_estimated_cost_usd": 208.112129,
+  "headline_model_setting_rows": 456,
+  "model_setting_rows": 464,
   "primary_metric": "non-strict answer pass^3",
   "public_links": {
     "dataset_url": {
@@ -28,7 +28,7 @@
   },
   "publication_intent": "arxiv_and_public_release",
   "release_id": "obviousbench-v0.2.0-private-pass3-v3",
-  "snapshot_name": "v0_2_private_pass3_full_gpt56_price_eras_deepseek0731_qwen38max_20260803T200000Z",
+  "snapshot_name": "v0_2_private_pass3_full_gpt56_price_eras_deepseek0731_qwen38max_inklingsmall_musespark12_20260806T213000Z",
   "source_config": "configs/releases/release_v0_2_0.yaml",
   "status": "local-publication-prep",
   "version": "0.2.0"

@@ -1283,6 +1283,41 @@ release_panel:
   model_setting_key: meta-muse-spark-1-1:a11c2f94003f0000
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
+- label: Meta Muse Spark 1.2 minimal
+  inspect_model: meta/muse-spark-1.2
+  provider_model: meta/muse-spark-1.2
+  model_entry_id: manual-20260806-meta-muse-spark-1-2-minimal
+  model_setting_key: meta-muse-spark-1-2:c9c8d8fff124834b
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Meta Muse Spark 1.2 low
+  inspect_model: meta/muse-spark-1.2
+  provider_model: meta/muse-spark-1.2
+  model_entry_id: manual-20260806-meta-muse-spark-1-2-low
+  model_setting_key: meta-muse-spark-1-2:198b1f3f65bfc0c0
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Meta Muse Spark 1.2 medium
+  inspect_model: meta/muse-spark-1.2
+  provider_model: meta/muse-spark-1.2
+  model_entry_id: manual-20260806-meta-muse-spark-1-2-medium
+  model_setting_key: meta-muse-spark-1-2:6f1b2af161c65101
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Meta Muse Spark 1.2 high
+  inspect_model: meta/muse-spark-1.2
+  provider_model: meta/muse-spark-1.2
+  model_entry_id: manual-20260806-meta-muse-spark-1-2-high
+  model_setting_key: meta-muse-spark-1-2:4cf1612043891e5a
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Meta Muse Spark 1.2 xhigh
+  inspect_model: meta/muse-spark-1.2
+  provider_model: meta/muse-spark-1.2
+  model_entry_id: manual-20260806-meta-muse-spark-1-2-xhigh
+  model_setting_key: meta-muse-spark-1-2:faea8e7e10082f2f
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: 'Microsoft: Phi 4'
   inspect_model: openrouter/microsoft/phi-4
   provider_model: microsoft/phi-4
@@ -2835,6 +2870,48 @@ release_panel:
   provider_model: thinkingmachines/Inkling
   model_entry_id: manual-20260715-thinkingmachines-inkling-xhigh
   model_setting_key: tinker-thinkingmachines-inkling:d0eebea2a91d7925
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Thinking Machines Inkling-Small minimal
+  inspect_model: tinker-native/thinkingmachines/Inkling-Small
+  provider_model: thinkingmachines/Inkling-Small
+  model_entry_id: manual-20260730-thinkingmachines-inkling-small-minimal
+  model_setting_key: tinker-native-thinkingmachines-inkling-small:64c0131e160b2aaf
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Thinking Machines Inkling-Small none
+  inspect_model: tinker-native/thinkingmachines/Inkling-Small
+  provider_model: thinkingmachines/Inkling-Small
+  model_entry_id: manual-20260730-thinkingmachines-inkling-small-none
+  model_setting_key: tinker-native-thinkingmachines-inkling-small:2f3ed8ff94bd3849
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Thinking Machines Inkling-Small low
+  inspect_model: tinker-native/thinkingmachines/Inkling-Small
+  provider_model: thinkingmachines/Inkling-Small
+  model_entry_id: manual-20260730-thinkingmachines-inkling-small-low
+  model_setting_key: tinker-native-thinkingmachines-inkling-small:6999b29ea7638060
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Thinking Machines Inkling-Small medium
+  inspect_model: tinker-native/thinkingmachines/Inkling-Small
+  provider_model: thinkingmachines/Inkling-Small
+  model_entry_id: manual-20260730-thinkingmachines-inkling-small-medium
+  model_setting_key: tinker-native-thinkingmachines-inkling-small:6ea070836bb4284c
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Thinking Machines Inkling-Small high
+  inspect_model: tinker-native/thinkingmachines/Inkling-Small
+  provider_model: thinkingmachines/Inkling-Small
+  model_entry_id: manual-20260730-thinkingmachines-inkling-small-high
+  model_setting_key: tinker-native-thinkingmachines-inkling-small:9b1bd5fa2bda2b48
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Thinking Machines Inkling-Small xhigh
+  inspect_model: tinker-native/thinkingmachines/Inkling-Small
+  provider_model: thinkingmachines/Inkling-Small
+  model_entry_id: manual-20260730-thinkingmachines-inkling-small-xhigh
+  model_setting_key: tinker-native-thinkingmachines-inkling-small:ecad195a69b7c1c7
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
 - label: 'Upstage: Solar Pro 3'
