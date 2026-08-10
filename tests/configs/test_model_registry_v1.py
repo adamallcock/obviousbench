@@ -50,7 +50,7 @@ def test_model_registry_v1_has_comprehensive_coverage():
     assert registry["schema_version"] == "model-registry-v1"
     assert registry["defaults"]["profile"] == "hard_obvious_8x10"
     assert registry["defaults"]["seed"] == 20260531
-    assert len(entries) == 334
+    assert len(entries) == 342
     assert route_counts["openrouter"] >= 200
     assert {
         "openrouter",
@@ -148,8 +148,11 @@ def test_model_registry_entries_are_unique_and_runnable():
             "zai_glm_5_2_standard_pricing_2026_07_21",
             "nvidia_nim_free_endpoint_pricing_2026_07_21",
             "owner_directed_ling_2_6_flash_equivalent_2026_07_24",
+            "owner_directed_ling_3_0_flash_published_rate_2026_08_06",
+            "owner_directed_muse_spark_1_2_matches_1_1_2026_08_06",
             "celeris_standard_pricing_2026_07_24",
             "anthropic_claude_opus_5_standard_pricing_2026_07_24",
+            "tinker_inkling_small_native_long_term_pricing_2026_07_30",
             "manual_lookup_required",
         }
         assert isinstance(entry["tags"], list)
@@ -193,15 +196,15 @@ def test_tencent_hy3_catalog_route_uses_current_openrouter_pricing():
     [hy3] = [
         entry
         for entry in entries
-        if entry["id"] == "openrouter-098-tencent-hy3"
+        if entry["id"] == "openrouter-101-tencent-hy3"
     ]
 
     assert hy3["provider_route"] == "openrouter"
     assert hy3["upstream_provider"] == "tencent"
     assert hy3["inspect_model"] == "openrouter/tencent/hy3"
     assert hy3["model_id"] == "tencent/hy3"
-    assert hy3["input_price_per_mtok_usd"] == 0.14
-    assert hy3["output_price_per_mtok_usd"] == 0.58
+    assert hy3["input_price_per_mtok_usd"] == 0.132
+    assert hy3["output_price_per_mtok_usd"] == 0.528
     assert hy3["pricing_source"] == "openrouter_models_api"
     assert "open-weight" in hy3["tags"]
     assert "cheap" in hy3["tags"]
@@ -355,7 +358,7 @@ def test_public_registry_includes_celeris_and_claude_opus_5_contracts():
         opus_5["input_price_per_mtok_usd"],
         opus_5["output_price_per_mtok_usd"],
     ) == (5, 25)
-    assert opus_5["reasoning_telemetry"]["mode"] == "aggregate_completion"
+    assert opus_5["reasoning_telemetry"]["mode"] == "separate_usage"
 
 
 def test_provider_expansion_weight_statuses_are_source_backed():
@@ -393,7 +396,7 @@ def test_provider_expansion_weight_statuses_are_source_backed():
             "open_weights",
             "https://huggingface.co/inclusionAI/Ring-2.6-1T",
         ),
-        "openrouter-147-moonshotai-kimi-k3": (
+        "openrouter-154-moonshotai-kimi-k3": (
             "proprietary",
             "https://platform.kimi.ai/docs/guide/kimi-k3-quickstart",
         ),
