@@ -163,6 +163,20 @@ release_panel:
   model_setting_key: anthropic-claude-haiku-4-5:ab65794f12b63cd6
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh_budget_16384
+- label: 'Anthropic: Claude Opus 4'
+  inspect_model: openrouter/anthropic/claude-opus-4
+  provider_model: anthropic/claude-opus-4
+  model_entry_id: openrouter-requested-2026-08-10-anthropic-claude-opus-4
+  model_setting_key: openrouter-anthropic-claude-opus-4:23f5d7e8a9e62d23
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Anthropic: Claude Opus 4 enabled'
+  inspect_model: openrouter/anthropic/claude-opus-4
+  provider_model: anthropic/claude-opus-4
+  model_entry_id: openrouter-requested-2026-08-12-anthropic-claude-opus-4-enabled
+  model_setting_key: openrouter-anthropic-claude-opus-4:934e825bde419d39
+  profile: v0_2_public_aggregate
+  reasoning_effort: enabled
 - label: Anthropic Claude Opus 4.6 low
   inspect_model: anthropic/claude-opus-4-6
   provider_model: anthropic/claude-opus-4-6
@@ -233,6 +247,20 @@ release_panel:
   model_setting_key: anthropic-claude-opus-4-7:3ba76346afd43c02
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: 'Anthropic: Claude Opus 4.1'
+  inspect_model: openrouter/anthropic/claude-opus-4.1
+  provider_model: anthropic/claude-opus-4.1
+  model_entry_id: openrouter-requested-2026-08-10-anthropic-claude-opus-4-1
+  model_setting_key: openrouter-anthropic-claude-opus-4-1:714cf198eb3f5165
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Anthropic: Claude Opus 4.1 enabled'
+  inspect_model: openrouter/anthropic/claude-opus-4.1
+  provider_model: anthropic/claude-opus-4.1
+  model_entry_id: openrouter-requested-2026-08-12-anthropic-claude-opus-4-1-enabled
+  model_setting_key: openrouter-anthropic-claude-opus-4-1:ffb3ade392d6d5ac
+  profile: v0_2_public_aggregate
+  reasoning_effort: enabled
 - label: 'Anthropic: Claude Opus 4.5 none'
   inspect_model: anthropic/claude-opus-4-5
   provider_model: anthropic/claude-opus-4.5
@@ -457,6 +485,13 @@ release_panel:
   model_setting_key: anthropic-claude-sonnet-5:7fc561aeb2249752
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: 'Arcee AI: Trinity Large Thinking'
+  inspect_model: openrouter/arcee-ai/trinity-large-thinking
+  provider_model: arcee-ai/trinity-large-thinking
+  model_entry_id: openrouter-requested-2026-07-21-arcee-ai-trinity-large-thinking
+  model_setting_key: openrouter-arcee-ai-trinity-large-thinking:a6a6765da6b271d8
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Baidu: ERNIE 4.5 VL 424B A47B '
   inspect_model: openrouter/baidu/ernie-4.5-vl-424b-a47b
   provider_model: baidu/ernie-4.5-vl-424b-a47b
@@ -478,6 +513,48 @@ release_panel:
   model_setting_key: openrouter-bytedance-seed-seed-1-6-flash:b99b82ea25f2891e
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'ByteDance Seed: Seed 2.1 Turbo none'
+  inspect_model: openrouter/bytedance-seed/seed-2-1-turbo
+  provider_model: bytedance-seed/seed-2-1-turbo
+  model_entry_id: openrouter-requested-2026-08-12-bytedance-seed-seed-2-1-turbo-none
+  model_setting_key: openrouter-bytedance-seed-seed-2-1-turbo:71ca4d84526d2530
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'ByteDance Seed: Seed 2.1 Turbo enabled'
+  inspect_model: openrouter/bytedance-seed/seed-2-1-turbo
+  provider_model: bytedance-seed/seed-2-1-turbo
+  model_entry_id: openrouter-requested-2026-08-12-bytedance-seed-seed-2-1-turbo-enabled
+  model_setting_key: openrouter-bytedance-seed-seed-2-1-turbo:a1ea092ec09688d9
+  profile: v0_2_public_aggregate
+  reasoning_effort: enabled
+- label: 'ByteDance Seed: Seed-2.0-Code none'
+  inspect_model: openrouter/bytedance-seed/seed-2.0-code
+  provider_model: bytedance-seed/seed-2.0-code
+  model_entry_id: openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-none
+  model_setting_key: openrouter-bytedance-seed-seed-2-0-code:2e90b35076596050
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'ByteDance Seed: Seed-2.0-Code low'
+  inspect_model: openrouter/bytedance-seed/seed-2.0-code
+  provider_model: bytedance-seed/seed-2.0-code
+  model_entry_id: openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-low
+  model_setting_key: openrouter-bytedance-seed-seed-2-0-code:9b8673c91968650c
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'ByteDance Seed: Seed-2.0-Code medium'
+  inspect_model: openrouter/bytedance-seed/seed-2.0-code
+  provider_model: bytedance-seed/seed-2.0-code
+  model_entry_id: openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-medium
+  model_setting_key: openrouter-bytedance-seed-seed-2-0-code:1fc0da2e4dadbd60
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'ByteDance Seed: Seed-2.0-Code high'
+  inspect_model: openrouter/bytedance-seed/seed-2.0-code
+  provider_model: bytedance-seed/seed-2.0-code
+  model_entry_id: openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-high
+  model_setting_key: openrouter-bytedance-seed-seed-2-0-code:7489580c7961165c
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: 'ByteDance Seed: Seed-2.0-Lite minimal'
   inspect_model: openrouter/bytedance-seed/seed-2.0-lite
   provider_model: bytedance-seed/seed-2.0-lite
@@ -637,6 +714,34 @@ release_panel:
   provider_model: deepseek-v4-flash
   model_entry_id: manual-20260731-deepseek-v4-flash-max
   model_setting_key: deepseek-deepseek-v4-flash:ba4bf9721675947b
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: DeepSeek V4 Pro 0813 no thinking
+  inspect_model: deepseek/deepseek-v4-pro
+  provider_model: deepseek-v4-pro
+  model_entry_id: manual-20260813-deepseek-v4-pro-disabled
+  model_setting_key: deepseek-deepseek-v4-pro:8a33e15372e546fa
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: DeepSeek V4 Pro 0813 low
+  inspect_model: deepseek/deepseek-v4-pro
+  provider_model: deepseek-v4-pro
+  model_entry_id: manual-20260813-deepseek-v4-pro-low
+  model_setting_key: deepseek-deepseek-v4-pro:3f58cf4c0f13efd1
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: DeepSeek V4 Pro 0813 high
+  inspect_model: deepseek/deepseek-v4-pro
+  provider_model: deepseek-v4-pro
+  model_entry_id: manual-20260813-deepseek-v4-pro-high
+  model_setting_key: deepseek-deepseek-v4-pro:5e13ffaecac90dd1
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: DeepSeek V4 Pro 0813 max
+  inspect_model: deepseek/deepseek-v4-pro
+  provider_model: deepseek-v4-pro
+  model_entry_id: manual-20260813-deepseek-v4-pro-max
+  model_setting_key: deepseek-deepseek-v4-pro:550bfa6847c42a88
   profile: v0_2_public_aggregate
   reasoning_effort: max
 - label: 'DeepSeek: DeepSeek V3'
@@ -1087,6 +1192,34 @@ release_panel:
   model_setting_key: openrouter-google-gemma-4-31b-it:b5728fc81e67d95c
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: OpenAI GPT-5.3 Codex low
+  inspect_model: openai/gpt-5.3-codex
+  provider_model: gpt-5.3-codex
+  model_entry_id: openai-gpt-5-3-codex-low
+  model_setting_key: openai-gpt-5-3-codex:95f67093ebc86a90
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-5.3 Codex medium
+  inspect_model: openai/gpt-5.3-codex
+  provider_model: gpt-5.3-codex
+  model_entry_id: openai-gpt-5-3-codex-medium
+  model_setting_key: openai-gpt-5-3-codex:4be29ecb5550eaa8
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-5.3 Codex high
+  inspect_model: openai/gpt-5.3-codex
+  provider_model: gpt-5.3-codex
+  model_entry_id: openai-gpt-5-3-codex-high
+  model_setting_key: openai-gpt-5-3-codex:55bed3a3ea8365a4
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-5.3 Codex xhigh
+  inspect_model: openai/gpt-5.3-codex
+  provider_model: gpt-5.3-codex
+  model_entry_id: openai-gpt-5-3-codex-xhigh
+  model_setting_key: openai-gpt-5-3-codex:dc40992101d711c3
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: 'IBM: Granite 4.0 Micro'
   inspect_model: openrouter/ibm-granite/granite-4.0-h-micro
   provider_model: ibm-granite/granite-4.0-h-micro
@@ -1178,6 +1311,13 @@ release_panel:
   model_setting_key: openrouter-kwaipilot-kat-coder-air-v2-5:dea64d32565a3683
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'Kwaipilot: KAT-Coder-Pro V2'
+  inspect_model: openrouter/kwaipilot/kat-coder-pro-v2
+  provider_model: kwaipilot/kat-coder-pro-v2
+  model_entry_id: openrouter-requested-2026-08-10-kwaipilot-kat-coder-pro-v2
+  model_setting_key: openrouter-kwaipilot-kat-coder-pro-v2:724ee9615960a30f
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Kwaipilot: KAT-Coder-Pro V2.5'
   inspect_model: openrouter/kwaipilot/kat-coder-pro-v2.5
   provider_model: kwaipilot/kat-coder-pro-v2.5
@@ -1248,6 +1388,34 @@ release_panel:
   model_setting_key: openrouter-meta-llama-llama-4-scout:65fe4c4d98c164a5
   profile: v0_2_public_aggregate
   reasoning_effort: none
+- label: 'Meta: Muse Glimmer 30B low'
+  inspect_model: openrouter/meta/muse-glimmer-30b
+  provider_model: meta/muse-glimmer-30b
+  model_entry_id: openrouter-requested-2026-08-11-meta-muse-glimmer-30b-low
+  model_setting_key: openrouter-meta-muse-glimmer-30b:57891a841fa10400
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Meta: Muse Glimmer 30B medium'
+  inspect_model: openrouter/meta/muse-glimmer-30b
+  provider_model: meta/muse-glimmer-30b
+  model_entry_id: openrouter-requested-2026-08-11-meta-muse-glimmer-30b-medium
+  model_setting_key: openrouter-meta-muse-glimmer-30b:ed4dd39946b3370f
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Meta: Muse Glimmer 30B high'
+  inspect_model: openrouter/meta/muse-glimmer-30b
+  provider_model: meta/muse-glimmer-30b
+  model_entry_id: openrouter-requested-2026-08-11-meta-muse-glimmer-30b-high
+  model_setting_key: openrouter-meta-muse-glimmer-30b:f526176b62bb162b
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Meta: Muse Glimmer 30B xhigh'
+  inspect_model: openrouter/meta/muse-glimmer-30b
+  provider_model: meta/muse-glimmer-30b
+  model_entry_id: openrouter-requested-2026-08-11-meta-muse-glimmer-30b-xhigh
+  model_setting_key: openrouter-meta-muse-glimmer-30b:8c2d7f963354c35c
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: Meta Muse Spark 1.1 minimal
   inspect_model: meta/muse-spark-1.1
   provider_model: meta/muse-spark-1.1
@@ -1344,6 +1512,13 @@ release_panel:
   provider_model: minimax/minimax-m2
   model_entry_id: old-83-minimax-minimax-m2
   model_setting_key: openrouter-minimax-minimax-m2:5b75da8937838cee
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'MiniMax: MiniMax M2-her'
+  inspect_model: openrouter/minimax/minimax-m2-her
+  provider_model: minimax/minimax-m2-her
+  model_entry_id: openrouter-162-minimax-minimax-m2-her
+  model_setting_key: openrouter-minimax-minimax-m2-her:4f2c886d09bc03e0
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: 'MiniMax: MiniMax M2.1'
@@ -1661,6 +1836,13 @@ release_panel:
   model_setting_key: openrouter-nvidia-nemotron-3-ultra-550b-a55b:9413159303a4389a
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'NVIDIA: Nemotron 3.5 Lightning none'
+  inspect_model: openrouter/nvidia/nemotron-3.5-lightning
+  provider_model: nvidia/nemotron-3.5-lightning
+  model_entry_id: openrouter-requested-2026-08-12-nvidia-nemotron-3-5-lightning-none
+  model_setting_key: openrouter-nvidia-nemotron-3-5-lightning:5634c61ad92df2a2
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
 - label: 'OpenAI: GPT-3.5 Turbo'
   inspect_model: openrouter/openai/gpt-3.5-turbo
   provider_model: openai/gpt-3.5-turbo
@@ -2326,6 +2508,13 @@ release_panel:
   model_setting_key: openrouter-poolside-laguna-m-1:ce9be6cb5f918098
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'Poolside: Laguna S 2.1'
+  inspect_model: openrouter/poolside/laguna-s-2.1
+  provider_model: poolside/laguna-s-2.1
+  model_entry_id: openrouter-099-poolside-laguna-s-2-1
+  model_setting_key: openrouter-poolside-laguna-s-2-1:aa7facec6fa7ad1a
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Poolside: Laguna XS 2.1'
   inspect_model: openrouter/poolside/laguna-xs-2.1
   provider_model: poolside/laguna-xs-2.1
@@ -2359,6 +2548,13 @@ release_panel:
   provider_model: qwen/qwen-plus-2025-07-28
   model_entry_id: old-72-qwen-qwen-plus-0728
   model_setting_key: openrouter-qwen-qwen-plus-2025-07-28:a3e07f4ff6e6f9ab
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Qwen: Qwen Plus 0728 (thinking)'
+  inspect_model: openrouter/qwen/qwen-plus-2025-07-28:thinking
+  provider_model: qwen/qwen-plus-2025-07-28:thinking
+  model_entry_id: openrouter-164-qwen-qwen-plus-2025-07-28-thinking
+  model_setting_key: openrouter-qwen-qwen-plus-2025-07-28-thinking:1546dc8e03b08fab
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: 'Qwen: Qwen2.5 VL 72B Instruct'
@@ -2697,6 +2893,27 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-7-plus:499dc59451eb7747
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: 'Qwen: Qwen3.8 2.4T A95B low'
+  inspect_model: openrouter/qwen/qwen3.8-2.4t-a95b
+  provider_model: qwen/qwen3.8-2.4t-a95b
+  model_entry_id: openrouter-requested-2026-08-12-qwen-qwen3-8-2-4t-a95b-low
+  model_setting_key: openrouter-qwen-qwen3-8-2-4t-a95b:6be59bb4cb212422
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.8 2.4T A95B medium'
+  inspect_model: openrouter/qwen/qwen3.8-2.4t-a95b
+  provider_model: qwen/qwen3.8-2.4t-a95b
+  model_entry_id: openrouter-requested-2026-08-12-qwen-qwen3-8-2-4t-a95b-medium
+  model_setting_key: openrouter-qwen-qwen3-8-2-4t-a95b:9c05f4a285b4f605
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Qwen: Qwen3.8 2.4T A95B xhigh'
+  inspect_model: openrouter/qwen/qwen3.8-2.4t-a95b
+  provider_model: qwen/qwen3.8-2.4t-a95b
+  model_entry_id: openrouter-requested-2026-08-12-qwen-qwen3-8-2-4t-a95b-xhigh
+  model_setting_key: openrouter-qwen-qwen3-8-2-4t-a95b:a0bb897dfe3421f9
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: 'Qwen: Qwen3.8-Max low'
   inspect_model: openrouter/qwen/qwen3.8-max
   provider_model: qwen/qwen3.8-max
@@ -2718,6 +2935,13 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-8-max:397b2c7371db8d9e
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
+- label: Reka Edge
+  inspect_model: openrouter/rekaai/reka-edge
+  provider_model: rekaai/reka-edge
+  model_entry_id: openrouter-requested-2026-07-21-rekaai-reka-edge
+  model_setting_key: openrouter-rekaai-reka-edge:992ee2edc846d7b3
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Sakana: Fugu Ultra high'
   inspect_model: openrouter/sakana/fugu-ultra
   provider_model: sakana/fugu-ultra
@@ -2744,6 +2968,20 @@ release_panel:
   provider_model: sakana/fugu-ultra
   model_entry_id: openrouter-requested-2026-07-21-sakana-fugu-ultra
   model_setting_key: openrouter-sakana-fugu-ultra:3c51cdcc0032a40a
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Sao10K: Llama 3.1 Euryale 70B v2.2'
+  inspect_model: openrouter/sao10k/l3.1-euryale-70b
+  provider_model: sao10k/l3.1-euryale-70b
+  model_entry_id: openrouter-172-sao10k-l3-1-euryale-70b
+  model_setting_key: openrouter-sao10k-l3-1-euryale-70b:e69a603ad9541023
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Sao10K: Llama 3.3 Euryale 70B'
+  inspect_model: openrouter/sao10k/l3.3-euryale-70b
+  provider_model: sao10k/l3.3-euryale-70b
+  model_entry_id: openrouter-169-sao10k-l3-3-euryale-70b
+  model_setting_key: openrouter-sao10k-l3-3-euryale-70b:699870fd0d4c1eb9
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: Perplexity sonar Default
@@ -2921,6 +3159,20 @@ release_panel:
   model_setting_key: openrouter-upstage-solar-pro-3:9a1809dbcf2bb4ed
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'Upstage: Solar Pro 4 none'
+  inspect_model: openrouter/upstage/solar-pro4
+  provider_model: upstage/solar-pro4
+  model_entry_id: openrouter-requested-2026-08-11-upstage-solar-pro4-none
+  model_setting_key: openrouter-upstage-solar-pro4:44b38a33c4c278cc
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Upstage: Solar Pro 4 enabled'
+  inspect_model: openrouter/upstage/solar-pro4
+  provider_model: upstage/solar-pro4
+  model_entry_id: openrouter-requested-2026-08-11-upstage-solar-pro4-enabled
+  model_setting_key: openrouter-upstage-solar-pro4:6655bc1de63f0177
+  profile: v0_2_public_aggregate
+  reasoning_effort: enabled
 - label: Amazon Nova 2 Lite Flex none (omitted)
   inspect_model: bedrock-flex/us.amazon.nova-2-lite-v1:0
   provider_model: us.amazon.nova-2-lite-v1:0
@@ -3066,6 +3318,27 @@ release_panel:
   provider_model: x-ai/grok-4.5
   model_entry_id: manual-20260708-grok-4-5-high
   model_setting_key: grok-grok-4-5:758e3c05355d4db1
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Grok 4.6 low
+  inspect_model: grok/grok-4.6
+  provider_model: x-ai/grok-4.6
+  model_entry_id: manual-20260812-grok-4-6-low
+  model_setting_key: grok-grok-4-6:f2d5f98ebc65351c
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Grok 4.6 medium
+  inspect_model: grok/grok-4.6
+  provider_model: x-ai/grok-4.6
+  model_entry_id: manual-20260812-grok-4-6-medium
+  model_setting_key: grok-grok-4-6:8fd0cf0a8a111681
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Grok 4.6 high
+  inspect_model: grok/grok-4.6
+  provider_model: x-ai/grok-4.6
+  model_entry_id: manual-20260812-grok-4-6-high
+  model_setting_key: grok-grok-4-6:120d3897598a08a3
   profile: v0_2_public_aggregate
   reasoning_effort: high
 - label: OpenRouter x-ai/grok-build-0.1 low

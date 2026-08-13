@@ -137,6 +137,8 @@ def test_model_registry_entries_are_unique_and_runnable():
             "openai_model_page_standard_pricing_2026_08_10",
             "openai_model_page_standard_pricing_2026_08_12",
             "deepseek_v4_pricing_2026_07_14",
+            "deepseek_official_pricing_2026_08_13",
+            "deepseek_official_offpeak_pricing_2026_08_16",
             "tinker_inkling_undiscounted_pricing_2026_07_15",
             "kimi_k3_standard_pricing_2026_07_16",
             "vertex_gemini_standard_pricing_2026_07_21",
