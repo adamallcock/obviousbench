@@ -1,5 +1,5 @@
 schema_version: "model-registry-v1"
-generated_at: "2026-08-06T19:57:01.411Z"
+generated_at: "2026-08-13T00:50:23.890Z"
 defaults:
   task: "obviousbench/tasks/barrage.py"
   profile: "hard_obvious_8x10"
@@ -14,11 +14,14 @@ defaults:
 sources:
   openrouter_models_api:
     url: "https://openrouter.ai/api/v1/models"
-    fetched_model_count: 401
-    eligible_text_model_count: 401
-    selected_count: 227
+    fetched_model_count: 408
+    eligible_text_model_count: 408
+    selected_count: 266
     automatically_selected_count: 185
     currently_missing_requested_model_ids: []
+    automatically_excluded_model_ids:
+      - "nvidia/nemotron-3.5-content-safety:free"
+      - "x-ai/grok-4.6"
   openrouter_requested_expansion_2026_07_21:
     checked_on: "2026-07-21"
     source_refs:
@@ -89,6 +92,175 @@ sources:
       output_price_per_mtok_usd: 0.22
       pricing_source: "owner_directed_ling_3_0_flash_published_rate_2026_08_06"
     reasoning_setting_policy: "provider_default_only_until_discrete_supported_efforts_are_documented"
+  openrouter_model_expansion_2026_08_10:
+    checked_on: "2026-08-10"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    declared_model_ids:
+      - "anthropic/claude-opus-4.1"
+      - "anthropic/claude-opus-4"
+      - "kwaipilot/kat-coder-pro-v2"
+      - "openai/gpt-5.2-codex"
+      - "openai/gpt-5.1-codex"
+      - "openai/gpt-5.1-codex-mini"
+      - "openai/gpt-5.1-codex-max"
+      - "openai/gpt-5.2-chat"
+      - "openai/gpt-4-turbo-preview"
+    preexisting_registry_model_ids:
+      - "poolside/laguna-s-2.1"
+      - "minimax/minimax-m2-her"
+      - "qwen/qwen-plus-2025-07-28:thinking"
+      - "sao10k/l3.3-euryale-70b"
+      - "sao10k/l3.1-euryale-70b"
+      - "minimax/minimax-m1"
+    selection_policy: "fixed_sync_text_routes_only; no batch, free, latest, fast, or image variants"
+    pricing_source: "current_openrouter_models_api"
+  openrouter_model_expansion_2026_08_11:
+    checked_on: "2026-08-11"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    declared_model_ids:
+      - "sakana/sakana-namazu"
+      - "upstage/solar-pro4"
+      - "meta/muse-glimmer-30b"
+    emitted_variants:
+      sakana/sakana-namazu:
+        - "none"
+        - "high"
+      upstage/solar-pro4:
+        - "none"
+        - "enabled"
+      meta/muse-glimmer-30b:
+        - "low"
+        - "medium"
+        - "high"
+        - "xhigh"
+    omitted_provider_default_aliases:
+      upstage/solar-pro4: "authenticated probe matched explicit reasoning none"
+      meta/muse-glimmer-30b: "catalog default_effort is medium"
+      sakana/sakana-namazu: "catalog default_effort is high"
+    blocked_by_current_account_data_policy:
+      - "sakana/sakana-namazu"
+    deferred_provider_recheck:
+      sakana/sakana-namazu: "recheck only when OpenRouter lists an additional endpoint provider; do not change account privacy settings"
+    selection_policy: "emit each distinct documented reasoning condition; omit provider-default duplicates; do not advance privacy-blocked or free-only routes"
+    pricing_source: "current_openrouter_models_api"
+  openrouter_model_expansion_2026_08_12_full_spectrum:
+    checked_on: "2026-08-12"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    declared_model_ids:
+      - "nvidia/nemotron-3.5-lightning"
+      - "bytedance-seed/seed-2.0-code"
+      - "openai/gpt-5.2-codex"
+      - "openai/gpt-5.1-codex"
+      - "openai/gpt-5.1-codex-mini"
+      - "openai/gpt-5.1-codex-max"
+      - "anthropic/claude-opus-4.1"
+      - "anthropic/claude-opus-4"
+      - "poolside/laguna-s-2.1"
+    emitted_missing_variants:
+      nvidia/nemotron-3.5-lightning:
+        - "none"
+        - "enabled"
+      bytedance-seed/seed-2.0-code:
+        - "none"
+        - "low"
+        - "medium"
+        - "high"
+      openai/gpt-5.2-codex:
+        - "low"
+        - "high"
+        - "xhigh"
+      openai/gpt-5.1-codex:
+        - "low"
+        - "high"
+      openai/gpt-5.1-codex-mini:
+        - "none"
+        - "low"
+        - "high"
+      openai/gpt-5.1-codex-max:
+        - "low"
+        - "high"
+        - "xhigh"
+      anthropic/claude-opus-4.1:
+        - "enabled"
+      anthropic/claude-opus-4:
+        - "enabled"
+      poolside/laguna-s-2.1:
+        - "none"
+    prior_result_aliases:
+      anthropic/claude-opus-4.1: "2026-08-10 provider default aliases explicit none"
+      anthropic/claude-opus-4: "2026-08-10 provider default aliases explicit none"
+      poolside/laguna-s-2.1: "2026-08-10 provider default aliases explicit enabled"
+      openai/gpt-5.2-codex: "2026-08-10 explicit medium"
+      openai/gpt-5.1-codex: "2026-08-10 explicit medium"
+      openai/gpt-5.1-codex-mini: "2026-08-10 explicit medium"
+      openai/gpt-5.1-codex-max: "2026-08-10 explicit medium"
+    prior_result_status:
+      openai/gpt-5.2-codex: "incomplete transport ceiling after two exact-key retries"
+      openai/gpt-5.1-codex: "incomplete transport ceiling after two exact-key retries"
+      openai/gpt-5.1-codex-mini: "incomplete transport ceiling after two exact-key retries"
+      openai/gpt-5.1-codex-max: "incomplete transport ceiling after two exact-key retries"
+      anthropic/claude-opus-4.1: "complete"
+      anthropic/claude-opus-4: "complete"
+      poolside/laguna-s-2.1: "complete"
+    no_additional_control_models:
+      - "kwaipilot/kat-coder-pro-v2"
+      - "minimax/minimax-m2-her"
+      - "sao10k/l3.3-euryale-70b"
+      - "sao10k/l3.1-euryale-70b"
+      - "rekaai/reka-edge"
+    mandatory_single_condition_models:
+      - "arcee-ai/trinity-large-thinking"
+      - "rekaai/reka-flash-3"
+    selection_policy: "emit every missing documented control; reuse empirically verified prior default aliases; never synthesize unsupported effort labels"
+    pricing_source: "current_openrouter_models_api"
+  direct_openai_codex_backfill_2026_08_10:
+    checked_on: "2026-08-10"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    model_ids:
+      - "gpt-5.3-codex"
+      - "gpt-5.2-codex"
+      - "gpt-5.1-codex"
+      - "gpt-5.1-codex-mini"
+      - "gpt-5.1-codex-max"
+      - "gpt-5.2-chat-latest"
+    execution_service_tier: "standard"
+    flex_support_status: "none_of_these_ids_is_listed_in_the_current_openai_flex_pricing_table"
+    availability_evidence: "authenticated_v1_models_list"
+    smoke_status: "pending"
+  direct_openai_gpt_5_3_codex_full_spectrum_2026_08_12:
+    checked_on: "2026-08-12"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    model_id: "gpt-5.3-codex"
+    emitted_missing_efforts:
+      - "low"
+      - "high"
+      - "xhigh"
+    prior_result_alias: "2026-08-10 explicit medium"
+    execution_service_tier: "standard"
+    reasoning_summary_wire_policy: "omit_for_no_summary"
+    availability_evidence: "authenticated_responses_api_probe_all_efforts_http_200"
   direct_provider_expansion_2026_07_21:
     checked_on: "2026-07-21"
     vertex_gemini:
@@ -237,15 +409,15 @@ sources:
         status: "cache_fresh"
         card_count: 1294
         retrieved_at: "2026-08-03T22:47:28Z"
-        validated_at: "2026-08-06T13:12:39Z"
+        validated_at: "2026-08-12T12:35:27Z"
         checksum: "sha256:cca400c914ecd66dbb3c3f9e26fb66e5528a2986aeceed14b831361722cd4740"
         etag: "W/\"944a0c4a1464deed5a9884e355ad3757a179887d97ded6e55d8bc5063f23d86d\""
         selected: true
-    openrouter_card_count: 401
-    card_count: 1695
+    openrouter_card_count: 408
+    card_count: 1702
     source_counts:
       genai-prices: 1294
-      openrouter: 401
+      openrouter: 408
   openai_gpt_5_6:
     model_guide: "https://developers.openai.com/api/docs/guides/latest-model"
     pricing: "https://developers.openai.com/api/docs/pricing"
@@ -281,6 +453,34 @@ sources:
     reasoning_effort: "max"
     public_pricing_service_tier: "standard"
     batch_discount_included_in_registry_price: false
+  openrouter_new_catalog_2026_08_12:
+    checked_on: "2026-08-12"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+      - "https://openrouter.ai/bytedance-seed/seed-2-1-turbo"
+      - "https://openrouter.ai/qwen/qwen3.8-2.4t-a95b"
+    declared_model_ids:
+      - "bytedance-seed/seed-2-1-turbo"
+      - "qwen/qwen3.8-2.4t-a95b"
+    emitted_variants:
+      bytedance-seed/seed-2-1-turbo:
+        - "none"
+        - "enabled"
+      qwen/qwen3.8-2.4t-a95b:
+        - "low"
+        - "medium"
+        - "xhigh"
+    omitted_provider_default_aliases:
+      bytedance-seed/seed-2-1-turbo: "catalog default aliases explicit enabled"
+      qwen/qwen3.8-2.4t-a95b: "catalog default_effort is xhigh"
+    negative_control_findings:
+      qwen/qwen3.8-2.4t-a95b:none: "HTTP 400 because reasoning is mandatory"
+      qwen/qwen3.8-2.4t-a95b:undocumented_efforts: "accepted labels may be provider-normalized; only catalog-documented low, medium, and xhigh are emitted"
+    already_complete_model_ids:
+      bytedance-seed/seed-2.0-code: "none, low, medium, and high completed in the full-spectrum 2026-08-12 run"
+    selection_policy: "emit each distinct documented reasoning condition; omit provider-default aliases and undocumented accepted labels"
+    pricing_source: "current_openrouter_models_api"
 selection_policy:
   target_openrouter_entries: 185
   emphasis:
@@ -297,7 +497,40 @@ selection_policy:
     - "embedding-only models"
     - "expired model endpoints"
     - "extra high-cost frontier duplicates beyond the direct-provider baseline"
+    - "specialist content-safety and moderation classifiers"
 entries:
+  -
+    label: "inclusionAI: Ling 3.0 Tiny (free)"
+    provider_route: "openrouter"
+    upstream_provider: "inclusionai"
+    inspect_model: "openrouter/inclusionai/ling-3.0-tiny:free"
+    model_id: "inclusionai/ling-3.0-tiny:free"
+    canonical_slug: "inclusionai/ling-3.0-tiny-20260806"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 262144
+    max_output_tokens: 32768
+    input_price_per_mtok_usd: 0
+    output_price_per_mtok_usd: 0
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:inclusionai/ling-3.0-tiny:free:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_models_api"
+    priority: "free-first"
+    tags:
+      - "openrouter"
+      - "free"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+    id: "openrouter-001-inclusionai-ling-3-0-tiny-free"
   -
     label: "Poolside: Laguna XS 2.1 (free)"
     provider_route: "openrouter"
@@ -329,7 +562,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-001-poolside-laguna-xs-2-1-free"
+    id: "openrouter-002-poolside-laguna-xs-2-1-free"
   -
     label: "Cohere: North Mini Code (free)"
     provider_route: "openrouter"
@@ -361,7 +594,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-002-cohere-north-mini-code-free"
+    id: "openrouter-003-cohere-north-mini-code-free"
   -
     label: "NVIDIA: Nemotron 3 Super (free)"
     provider_route: "openrouter"
@@ -393,7 +626,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-003-nvidia-nemotron-3-super-120b-a12b-free"
+    id: "openrouter-004-nvidia-nemotron-3-super-120b-a12b-free"
   -
     label: "NVIDIA: Nemotron 3 Nano 30B A3B (free)"
     provider_route: "openrouter"
@@ -425,7 +658,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-004-nvidia-nemotron-3-nano-30b-a3b-free"
+    id: "openrouter-005-nvidia-nemotron-3-nano-30b-a3b-free"
   -
     label: "NVIDIA: Nemotron Nano 9B V2 (free)"
     provider_route: "openrouter"
@@ -457,7 +690,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-005-nvidia-nemotron-nano-9b-v2-free"
+    id: "openrouter-006-nvidia-nemotron-nano-9b-v2-free"
   -
     label: "OpenAI: gpt-oss-20b (free)"
     provider_route: "openrouter"
@@ -489,7 +722,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-006-openai-gpt-oss-20b-free"
+    id: "openrouter-007-openai-gpt-oss-20b-free"
   -
     label: "Google: Gemma 4 26B A4B  (free)"
     provider_route: "openrouter"
@@ -521,7 +754,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-007-google-gemma-4-26b-a4b-it-free"
+    id: "openrouter-008-google-gemma-4-26b-a4b-it-free"
   -
     label: "NVIDIA: Nemotron Nano 12B 2 VL (free)"
     provider_route: "openrouter"
@@ -553,7 +786,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-008-nvidia-nemotron-nano-12b-v2-vl-free"
+    id: "openrouter-009-nvidia-nemotron-nano-12b-v2-vl-free"
   -
     label: "NVIDIA: Nemotron 3 Nano Omni (free)"
     provider_route: "openrouter"
@@ -585,7 +818,7 @@ entries:
       - "thinking-named"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-009-nvidia-nemotron-3-nano-omni-30b-a3b-reasoning-free"
+    id: "openrouter-010-nvidia-nemotron-3-nano-omni-30b-a3b-reasoning-free"
   -
     label: "Poolside: Laguna S 2.1 (free)"
     provider_route: "openrouter"
@@ -616,7 +849,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-010-poolside-laguna-s-2-1-free"
+    id: "openrouter-011-poolside-laguna-s-2-1-free"
   -
     label: "NVIDIA: Nemotron 3 Ultra (free)"
     provider_route: "openrouter"
@@ -647,37 +880,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-011-nvidia-nemotron-3-ultra-550b-a55b-free"
-  -
-    label: "NVIDIA: Nemotron 3.5 Content Safety (free)"
-    provider_route: "openrouter"
-    upstream_provider: "nvidia"
-    inspect_model: "openrouter/nvidia/nemotron-3.5-content-safety:free"
-    model_id: "nvidia/nemotron-3.5-content-safety:free"
-    canonical_slug: "nvidia/nemotron-3.5-content-safety-20260604"
-    profile: "hard_obvious_8x10"
-    seed: 20260531
-    generation_settings:
-      temperature: 0
-      max_tokens: 8192
-    context_window_tokens: 128000
-    max_output_tokens: 8192
-    input_price_per_mtok_usd: 0
-    output_price_per_mtok_usd: 0
-    pricing_source: "openrouter_models_api"
-    runcost_price_card_id: "openrouter:nvidia/nemotron-3.5-content-safety:free:openrouter-models"
-    runcost_price_source: "openrouter"
-    source: "openrouter_models_api"
-    priority: "free-first"
-    tags:
-      - "openrouter"
-      - "free"
-      - "open-weight"
-      - "cheap"
-      - "multimodal"
-      - "non-thinking-candidate"
-      - "reasoning-parameter-supported"
-    id: "openrouter-012-nvidia-nemotron-3-5-content-safety-free"
+    id: "openrouter-012-nvidia-nemotron-3-ultra-550b-a55b-free"
   -
     label: "Google: Gemma 4 31B (free)"
     provider_route: "openrouter"
@@ -808,9 +1011,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 1048576
-    max_output_tokens: 65536
-    input_price_per_mtok_usd: 0.09
-    output_price_per_mtok_usd: 0.18
+    max_output_tokens: 0
+    input_price_per_mtok_usd: 0.079996
+    output_price_per_mtok_usd: 0.252
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:~deepseek/deepseek-v4-flash-latest:openrouter-models"
     runcost_price_source: "openrouter"
@@ -839,8 +1042,8 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 1048576
-    max_output_tokens: 65536
-    input_price_per_mtok_usd: 0.09
+    max_output_tokens: 384000
+    input_price_per_mtok_usd: 0.08
     output_price_per_mtok_usd: 0.18
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:deepseek/deepseek-v4-flash-0731:openrouter-models"
@@ -869,10 +1072,10 @@ entries:
     generation_settings:
       temperature: 0
       max_tokens: 10000
-    context_window_tokens: 131072
+    context_window_tokens: 262144
     max_output_tokens: 32768
-    input_price_per_mtok_usd: 0.075
-    output_price_per_mtok_usd: 0.22
+    input_price_per_mtok_usd: 0.021
+    output_price_per_mtok_usd: 0.063
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:inclusionai/ling-3.0-flash:openrouter-models"
     runcost_price_source: "openrouter"
@@ -901,9 +1104,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 1048576
-    max_output_tokens: 131072
-    input_price_per_mtok_usd: 0.0882
-    output_price_per_mtok_usd: 0.1764
+    max_output_tokens: 393216
+    input_price_per_mtok_usd: 0.14
+    output_price_per_mtok_usd: 0.28
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:deepseek/deepseek-v4-flash:openrouter-models"
     runcost_price_source: "openrouter"
@@ -933,8 +1136,8 @@ entries:
       max_tokens: 10000
     context_window_tokens: 204800
     max_output_tokens: 131072
-    input_price_per_mtok_usd: 0.27
-    output_price_per_mtok_usd: 1.08
+    input_price_per_mtok_usd: 0.3
+    output_price_per_mtok_usd: 1.2
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:minimax/minimax-m2.7:openrouter-models"
     runcost_price_source: "openrouter"
@@ -1087,7 +1290,7 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 262144
-    max_output_tokens: 262144
+    max_output_tokens: 228000
     input_price_per_mtok_usd: 0.05
     output_price_per_mtok_usd: 0.2
     pricing_source: "openrouter_models_api"
@@ -1300,7 +1503,7 @@ entries:
       max_tokens: 10000
     context_window_tokens: 131072
     max_output_tokens: 131072
-    input_price_per_mtok_usd: 0.037
+    input_price_per_mtok_usd: 0.03
     output_price_per_mtok_usd: 0.17
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:openai/gpt-oss-120b:openrouter-models"
@@ -1361,9 +1564,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 262144
-    max_output_tokens: 32768
+    max_output_tokens: 262144
     input_price_per_mtok_usd: 0.07
-    output_price_per_mtok_usd: 0.27
+    output_price_per_mtok_usd: 0.28
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:qwen/qwen3-coder-30b-a3b-instruct:openrouter-models"
     runcost_price_source: "openrouter"
@@ -1569,11 +1772,11 @@ entries:
     seed: 20260531
     generation_settings:
       temperature: 0
-      max_tokens: 8192
+      max_tokens: 10000
     context_window_tokens: 131072
-    max_output_tokens: 8192
-    input_price_per_mtok_usd: 0.2275
-    output_price_per_mtok_usd: 0.91
+    max_output_tokens: 16384
+    input_price_per_mtok_usd: 0.12
+    output_price_per_mtok_usd: 0.24
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:qwen/qwen3-14b:openrouter-models"
     runcost_price_source: "openrouter"
@@ -1959,9 +2162,9 @@ entries:
     seed: 20260531
     generation_settings:
       temperature: 0
-      max_tokens: 2048
+      max_tokens: 6144
     context_window_tokens: 6144
-    max_output_tokens: 2048
+    max_output_tokens: 6144
     input_price_per_mtok_usd: 0.45
     output_price_per_mtok_usd: 0.65
     pricing_source: "openrouter_models_api"
@@ -1991,8 +2194,8 @@ entries:
       max_tokens: 4096
     context_window_tokens: 8192
     max_output_tokens: 4096
-    input_price_per_mtok_usd: 0.08
-    output_price_per_mtok_usd: 0.11
+    input_price_per_mtok_usd: 0.06
+    output_price_per_mtok_usd: 0.06
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:gryphe/mythomax-l2-13b:openrouter-models"
     runcost_price_source: "openrouter"
@@ -2144,7 +2347,7 @@ entries:
       max_tokens: 10000
     context_window_tokens: 262144
     max_output_tokens: 262144
-    input_price_per_mtok_usd: 0.14
+    input_price_per_mtok_usd: 0.15
     output_price_per_mtok_usd: 1
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:qwen/qwen3.6-35b-a3b:openrouter-models"
@@ -2205,9 +2408,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 262144
-    max_output_tokens: 16384
-    input_price_per_mtok_usd: 0.07
-    output_price_per_mtok_usd: 0.34
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.12
+    output_price_per_mtok_usd: 0.4
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:google/gemma-4-26b-a4b-it:openrouter-models"
     runcost_price_source: "openrouter"
@@ -2360,9 +2563,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 262144
-    max_output_tokens: 65536
-    input_price_per_mtok_usd: 0.26
-    output_price_per_mtok_usd: 2.08
+    max_output_tokens: 81920
+    input_price_per_mtok_usd: 0.29
+    output_price_per_mtok_usd: 2.4
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:qwen/qwen3.5-122b-a10b:openrouter-models"
     runcost_price_source: "openrouter"
@@ -2422,9 +2625,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 262144
-    max_output_tokens: 65536
-    input_price_per_mtok_usd: 0.39
-    output_price_per_mtok_usd: 2.34
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 3.6
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:qwen/qwen3.5-397b-a17b:openrouter-models"
     runcost_price_source: "openrouter"
@@ -2664,8 +2867,8 @@ entries:
       max_tokens: 10000
     context_window_tokens: 262144
     max_output_tokens: 32768
-    input_price_per_mtok_usd: 0.21
-    output_price_per_mtok_usd: 1.9
+    input_price_per_mtok_usd: 0.26
+    output_price_per_mtok_usd: 1.04
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:qwen/qwen3-vl-235b-a22b-instruct:openrouter-models"
     runcost_price_source: "openrouter"
@@ -2752,9 +2955,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 1048576
-    max_output_tokens: 16384
+    max_output_tokens: 0
     input_price_per_mtok_usd: 0.2
-    output_price_per_mtok_usd: 0.8
+    output_price_per_mtok_usd: 0.696
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:meta-llama/llama-4-maverick:openrouter-models"
     runcost_price_source: "openrouter"
@@ -3045,7 +3248,7 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 262144
-    max_output_tokens: 0
+    max_output_tokens: 262144
     input_price_per_mtok_usd: 0.15
     output_price_per_mtok_usd: 1.2
     pricing_source: "openrouter_models_api"
@@ -3167,8 +3370,8 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 524288
-    max_output_tokens: 0
-    input_price_per_mtok_usd: 0.5
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.45
     output_price_per_mtok_usd: 1.2
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:thinkingmachines/inkling-small:openrouter-models"
@@ -3261,8 +3464,8 @@ entries:
       max_tokens: 10000
     context_window_tokens: 131072
     max_output_tokens: 32768
-    input_price_per_mtok_usd: 0.98
-    output_price_per_mtok_usd: 3.95
+    input_price_per_mtok_usd: 0.4
+    output_price_per_mtok_usd: 4
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:qwen/qwen3-vl-235b-a22b-thinking:openrouter-models"
     runcost_price_source: "openrouter"
@@ -3384,9 +3587,9 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 1048576
-    max_output_tokens: 128000
-    input_price_per_mtok_usd: 0.56
-    output_price_per_mtok_usd: 1.76
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 3.15
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:z-ai/glm-5.2:openrouter-models"
     runcost_price_source: "openrouter"
@@ -3492,36 +3695,6 @@ entries:
       - "reasoning-parameter-supported"
     id: "openrouter-105-nvidia-nemotron-3-ultra-550b-a55b-batch"
   -
-    label: "DeepSeek: DeepSeek V4 Pro"
-    provider_route: "openrouter"
-    upstream_provider: "deepseek"
-    inspect_model: "openrouter/deepseek/deepseek-v4-pro"
-    model_id: "deepseek/deepseek-v4-pro"
-    canonical_slug: "deepseek/deepseek-v4-pro-20260423"
-    profile: "hard_obvious_8x10"
-    seed: 20260531
-    generation_settings:
-      temperature: 0
-      max_tokens: 10000
-    context_window_tokens: 1048576
-    max_output_tokens: 384000
-    input_price_per_mtok_usd: 0.435
-    output_price_per_mtok_usd: 0.87
-    pricing_source: "openrouter_models_api"
-    runcost_price_card_id: "openrouter:deepseek/deepseek-v4-pro:openrouter-models"
-    runcost_price_source: "openrouter"
-    source: "openrouter_models_api"
-    priority: "stress-candidate"
-    tags:
-      - "openrouter"
-      - "open-weight"
-      - "cheap"
-      - "text-only"
-      - "non-thinking-candidate"
-      - "tools-supported"
-      - "reasoning-parameter-supported"
-    id: "openrouter-106-deepseek-deepseek-v4-pro"
-  -
     label: "Tencent: Hy3 preview"
     provider_route: "openrouter"
     upstream_provider: "tencent"
@@ -3550,37 +3723,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-107-tencent-hy3-preview"
-  -
-    label: "Z.ai: GLM 5.1"
-    provider_route: "openrouter"
-    upstream_provider: "z-ai"
-    inspect_model: "openrouter/z-ai/glm-5.1"
-    model_id: "z-ai/glm-5.1"
-    canonical_slug: "z-ai/glm-5.1-20260406"
-    profile: "hard_obvious_8x10"
-    seed: 20260531
-    generation_settings:
-      temperature: 0
-      max_tokens: 10000
-    context_window_tokens: 204800
-    max_output_tokens: 131072
-    input_price_per_mtok_usd: 0.952
-    output_price_per_mtok_usd: 2.992
-    pricing_source: "openrouter_models_api"
-    runcost_price_card_id: "openrouter:z-ai/glm-5.1:openrouter-models"
-    runcost_price_source: "openrouter"
-    source: "openrouter_models_api"
-    priority: "stress-candidate"
-    tags:
-      - "openrouter"
-      - "open-weight"
-      - "cheap"
-      - "text-only"
-      - "non-thinking-candidate"
-      - "tools-supported"
-      - "reasoning-parameter-supported"
-    id: "openrouter-108-z-ai-glm-5-1"
+    id: "openrouter-106-tencent-hy3-preview"
   -
     label: "Z.ai: GLM 5"
     provider_route: "openrouter"
@@ -3610,7 +3753,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-109-z-ai-glm-5"
+    id: "openrouter-107-z-ai-glm-5"
   -
     label: "Qwen: Qwen3 Coder Next"
     provider_route: "openrouter"
@@ -3639,7 +3782,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-110-qwen-qwen3-coder-next"
+    id: "openrouter-108-qwen-qwen3-coder-next"
   -
     label: "Z.ai: GLM 4.7"
     provider_route: "openrouter"
@@ -3669,7 +3812,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-111-z-ai-glm-4-7"
+    id: "openrouter-109-z-ai-glm-4-7"
   -
     label: "DeepSeek: DeepSeek V3.2"
     provider_route: "openrouter"
@@ -3699,7 +3842,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-112-deepseek-deepseek-v3-2"
+    id: "openrouter-110-deepseek-deepseek-v3-2"
   -
     label: "Z.ai: GLM 4.6"
     provider_route: "openrouter"
@@ -3714,8 +3857,8 @@ entries:
       max_tokens: 10000
     context_window_tokens: 204800
     max_output_tokens: 131072
-    input_price_per_mtok_usd: 0.5
-    output_price_per_mtok_usd: 2
+    input_price_per_mtok_usd: 0.55
+    output_price_per_mtok_usd: 2.2
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:z-ai/glm-4.6:openrouter-models"
     runcost_price_source: "openrouter"
@@ -3729,7 +3872,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-113-z-ai-glm-4-6"
+    id: "openrouter-111-z-ai-glm-4-6"
   -
     label: "DeepSeek: DeepSeek V3.2 Exp"
     provider_route: "openrouter"
@@ -3759,7 +3902,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-114-deepseek-deepseek-v3-2-exp"
+    id: "openrouter-112-deepseek-deepseek-v3-2-exp"
   -
     label: "Qwen: Qwen3 Max"
     provider_route: "openrouter"
@@ -3788,7 +3931,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-115-qwen-qwen3-max"
+    id: "openrouter-113-qwen-qwen3-max"
   -
     label: "Qwen: Qwen3 Coder Plus"
     provider_route: "openrouter"
@@ -3817,7 +3960,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-116-qwen-qwen3-coder-plus"
+    id: "openrouter-114-qwen-qwen3-coder-plus"
   -
     label: "DeepSeek: DeepSeek V3.1 Terminus"
     provider_route: "openrouter"
@@ -3833,7 +3976,7 @@ entries:
     context_window_tokens: 163840
     max_output_tokens: 32768
     input_price_per_mtok_usd: 0.27
-    output_price_per_mtok_usd: 1
+    output_price_per_mtok_usd: 0.95
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:deepseek/deepseek-v3.1-terminus:openrouter-models"
     runcost_price_source: "openrouter"
@@ -3847,7 +3990,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-117-deepseek-deepseek-v3-1-terminus"
+    id: "openrouter-115-deepseek-deepseek-v3-1-terminus"
   -
     label: "Qwen: Qwen Plus 0728"
     provider_route: "openrouter"
@@ -3876,7 +4019,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-118-qwen-qwen-plus-2025-07-28"
+    id: "openrouter-116-qwen-qwen-plus-2025-07-28"
   -
     label: "MoonshotAI: Kimi K2 0905"
     provider_route: "openrouter"
@@ -3905,7 +4048,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-119-moonshotai-kimi-k2-0905"
+    id: "openrouter-117-moonshotai-kimi-k2-0905"
   -
     label: "DeepSeek: DeepSeek V3.1"
     provider_route: "openrouter"
@@ -3935,7 +4078,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-120-deepseek-deepseek-chat-v3-1"
+    id: "openrouter-118-deepseek-deepseek-chat-v3-1"
   -
     label: "Z.ai: GLM 4.5"
     provider_route: "openrouter"
@@ -3965,7 +4108,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-121-z-ai-glm-4-5"
+    id: "openrouter-119-z-ai-glm-4-5"
   -
     label: "Z.ai: GLM 4.5 Air"
     provider_route: "openrouter"
@@ -3995,7 +4138,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-122-z-ai-glm-4-5-air"
+    id: "openrouter-120-z-ai-glm-4-5-air"
   -
     label: "Qwen: Qwen3 Coder 480B A35B"
     provider_route: "openrouter"
@@ -4024,7 +4167,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-123-qwen-qwen3-coder"
+    id: "openrouter-121-qwen-qwen3-coder"
   -
     label: "MoonshotAI: Kimi K2 0711"
     provider_route: "openrouter"
@@ -4053,7 +4196,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-124-moonshotai-kimi-k2"
+    id: "openrouter-122-moonshotai-kimi-k2"
   -
     label: "DeepSeek: DeepSeek V3 0324"
     provider_route: "openrouter"
@@ -4082,7 +4225,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-125-deepseek-deepseek-chat-v3-0324"
+    id: "openrouter-123-deepseek-deepseek-chat-v3-0324"
   -
     label: "TheDrummer: Skyfall 36B V2"
     provider_route: "openrouter"
@@ -4110,7 +4253,7 @@ entries:
       - "cheap"
       - "text-only"
       - "non-thinking-candidate"
-    id: "openrouter-126-thedrummer-skyfall-36b-v2"
+    id: "openrouter-124-thedrummer-skyfall-36b-v2"
   -
     label: "Qwen: Qwen-Plus"
     provider_route: "openrouter"
@@ -4139,7 +4282,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-127-qwen-qwen-plus"
+    id: "openrouter-125-qwen-qwen-plus"
   -
     label: "DeepSeek: DeepSeek V3"
     provider_route: "openrouter"
@@ -4168,7 +4311,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-128-deepseek-deepseek-chat"
+    id: "openrouter-126-deepseek-deepseek-chat"
   -
     label: "Meta: Llama 3.3 70B Instruct"
     provider_route: "openrouter"
@@ -4197,7 +4340,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-129-meta-llama-llama-3-3-70b-instruct"
+    id: "openrouter-127-meta-llama-llama-3-3-70b-instruct"
   -
     label: "Meta: Llama 3.2 1B Instruct"
     provider_route: "openrouter"
@@ -4225,7 +4368,7 @@ entries:
       - "cheap"
       - "text-only"
       - "non-thinking-candidate"
-    id: "openrouter-130-meta-llama-llama-3-2-1b-instruct"
+    id: "openrouter-128-meta-llama-llama-3-2-1b-instruct"
   -
     label: "Meta: Llama 3.1 70B Instruct"
     provider_route: "openrouter"
@@ -4254,7 +4397,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-131-meta-llama-llama-3-1-70b-instruct"
+    id: "openrouter-129-meta-llama-llama-3-1-70b-instruct"
   -
     label: "Mistral: Mistral Nemo"
     provider_route: "openrouter"
@@ -4283,7 +4426,7 @@ entries:
       - "text-only"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-132-mistralai-mistral-nemo"
+    id: "openrouter-130-mistralai-mistral-nemo"
   -
     label: "MoonshotAI: Kimi K2.7 Code"
     provider_route: "openrouter"
@@ -4313,7 +4456,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-133-moonshotai-kimi-k2-7-code"
+    id: "openrouter-131-moonshotai-kimi-k2-7-code"
   -
     label: "MoonshotAI: Kimi K2.7 Code (batch)"
     provider_route: "openrouter"
@@ -4343,7 +4486,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-134-moonshotai-kimi-k2-7-code-batch"
+    id: "openrouter-132-moonshotai-kimi-k2-7-code-batch"
   -
     label: "Qwen: Qwen3.7 Plus"
     provider_route: "openrouter"
@@ -4373,7 +4516,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-135-qwen-qwen3-7-plus"
+    id: "openrouter-133-qwen-qwen3-7-plus"
   -
     label: "Qwen: Qwen3.5 Plus 2026-04-20"
     provider_route: "openrouter"
@@ -4403,7 +4546,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-136-qwen-qwen3-5-plus-20260420"
+    id: "openrouter-134-qwen-qwen3-5-plus-20260420"
   -
     label: "MoonshotAI: Kimi K2.6"
     provider_route: "openrouter"
@@ -4418,8 +4561,8 @@ entries:
       max_tokens: 10000
     context_window_tokens: 262144
     max_output_tokens: 262144
-    input_price_per_mtok_usd: 0.57
-    output_price_per_mtok_usd: 2.4
+    input_price_per_mtok_usd: 0.5795
+    output_price_per_mtok_usd: 2.44
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:moonshotai/kimi-k2.6:openrouter-models"
     runcost_price_source: "openrouter"
@@ -4433,7 +4576,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-137-moonshotai-kimi-k2-6"
+    id: "openrouter-135-moonshotai-kimi-k2-6"
   -
     label: "Google: Gemma 4 31B"
     provider_route: "openrouter"
@@ -4463,7 +4606,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-138-google-gemma-4-31b-it"
+    id: "openrouter-136-google-gemma-4-31b-it"
   -
     label: "Qwen: Qwen3.6 Plus"
     provider_route: "openrouter"
@@ -4493,7 +4636,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-139-qwen-qwen3-6-plus"
+    id: "openrouter-137-qwen-qwen3-6-plus"
   -
     label: "Qwen: Qwen3.5 Plus 2026-02-15"
     provider_route: "openrouter"
@@ -4523,7 +4666,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-140-qwen-qwen3-5-plus-02-15"
+    id: "openrouter-138-qwen-qwen3-5-plus-02-15"
   -
     label: "MoonshotAI: Kimi K2.5"
     provider_route: "openrouter"
@@ -4553,7 +4696,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-141-moonshotai-kimi-k2-5"
+    id: "openrouter-139-moonshotai-kimi-k2-5"
   -
     label: "Z.ai: GLM 4.6V"
     provider_route: "openrouter"
@@ -4583,7 +4726,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-142-z-ai-glm-4-6v"
+    id: "openrouter-140-z-ai-glm-4-6v"
   -
     label: "Mistral: Mistral Large 3 2512"
     provider_route: "openrouter"
@@ -4612,7 +4755,7 @@ entries:
       - "multimodal"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-143-mistralai-mistral-large-2512"
+    id: "openrouter-141-mistralai-mistral-large-2512"
   -
     label: "Mistral: Mistral Medium 3.1"
     provider_route: "openrouter"
@@ -4641,7 +4784,7 @@ entries:
       - "multimodal"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-144-mistralai-mistral-medium-3-1"
+    id: "openrouter-142-mistralai-mistral-medium-3-1"
   -
     label: "Z.ai: GLM 4.5V"
     provider_route: "openrouter"
@@ -4671,7 +4814,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-145-z-ai-glm-4-5v"
+    id: "openrouter-143-z-ai-glm-4-5v"
   -
     label: "Mistral: Codestral 2508"
     provider_route: "openrouter"
@@ -4700,7 +4843,7 @@ entries:
       - "multimodal"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-146-mistralai-codestral-2508"
+    id: "openrouter-144-mistralai-codestral-2508"
   -
     label: "Mistral: Mistral Medium 3"
     provider_route: "openrouter"
@@ -4729,7 +4872,7 @@ entries:
       - "multimodal"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-147-mistralai-mistral-medium-3"
+    id: "openrouter-145-mistralai-mistral-medium-3"
   -
     label: "Mistral: Saba"
     provider_route: "openrouter"
@@ -4758,7 +4901,7 @@ entries:
       - "multimodal"
       - "non-thinking-candidate"
       - "tools-supported"
-    id: "openrouter-148-mistralai-mistral-saba"
+    id: "openrouter-146-mistralai-mistral-saba"
   -
     label: "Qwen: Qwen3.7 Max"
     provider_route: "openrouter"
@@ -4787,7 +4930,7 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-149-qwen-qwen3-7-max"
+    id: "openrouter-147-qwen-qwen3-7-max"
   -
     label: "Qwen: Qwen3.6 Max Preview"
     provider_route: "openrouter"
@@ -4816,7 +4959,65 @@ entries:
       - "non-thinking-candidate"
       - "tools-supported"
       - "reasoning-parameter-supported"
-    id: "openrouter-150-qwen-qwen3-6-max-preview"
+    id: "openrouter-148-qwen-qwen3-6-max-preview"
+  -
+    label: "DeepSeek: DeepSeek V4 Pro"
+    provider_route: "openrouter"
+    upstream_provider: "deepseek"
+    inspect_model: "openrouter/deepseek/deepseek-v4-pro"
+    model_id: "deepseek/deepseek-v4-pro"
+    canonical_slug: "deepseek/deepseek-v4-pro-20260423"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 1048576
+    max_output_tokens: 393216
+    input_price_per_mtok_usd: 1.168
+    output_price_per_mtok_usd: 2.336
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:deepseek/deepseek-v4-pro:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_models_api"
+    priority: "stress-candidate"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+    id: "openrouter-149-deepseek-deepseek-v4-pro"
+  -
+    label: "Z.ai: GLM 5.1"
+    provider_route: "openrouter"
+    upstream_provider: "z-ai"
+    inspect_model: "openrouter/z-ai/glm-5.1"
+    model_id: "z-ai/glm-5.1"
+    canonical_slug: "z-ai/glm-5.1-20260406"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 204800
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 1.4
+    output_price_per_mtok_usd: 4.4
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:z-ai/glm-5.1:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_models_api"
+    priority: "stress-candidate"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+    id: "openrouter-150-z-ai-glm-5-1"
   -
     label: "Z.ai: GLM 5 Turbo"
     provider_route: "openrouter"
@@ -4976,7 +5177,7 @@ entries:
       max_tokens: 10000
     context_window_tokens: 1048576
     max_output_tokens: 1048576
-    input_price_per_mtok_usd: 2.9
+    input_price_per_mtok_usd: 2.8
     output_price_per_mtok_usd: 14
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:~moonshotai/kimi-latest:openrouter-models"
@@ -5560,8 +5761,8 @@ entries:
       temperature: 0
       max_tokens: 10000
     context_window_tokens: 1048576
-    max_output_tokens: 0
-    input_price_per_mtok_usd: 1
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.95
     output_price_per_mtok_usd: 4.05
     pricing_source: "openrouter_models_api"
     runcost_price_card_id: "openrouter:thinkingmachines/inkling:openrouter-models"
@@ -7467,6 +7668,2009 @@ entries:
     thinking_default_expected: "unmeasured"
     reasoning_token_estimate_status: "not_estimated"
   -
+    label: "Anthropic: Claude Opus 4.1"
+    provider_route: "openrouter"
+    upstream_provider: "anthropic"
+    inspect_model: "openrouter/anthropic/claude-opus-4.1"
+    model_id: "anthropic/claude-opus-4.1"
+    canonical_slug: "anthropic/claude-4.1-opus-20250805"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 200000
+    max_output_tokens: 32000
+    input_price_per_mtok_usd: 15
+    output_price_per_mtok_usd: 75
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:anthropic/claude-opus-4.1:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-anthropic-claude-opus-4-1"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "Anthropic: Claude Opus 4"
+    provider_route: "openrouter"
+    upstream_provider: "anthropic"
+    inspect_model: "openrouter/anthropic/claude-opus-4"
+    model_id: "anthropic/claude-opus-4"
+    canonical_slug: "anthropic/claude-4-opus-20250522"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 200000
+    max_output_tokens: 32000
+    input_price_per_mtok_usd: 15
+    output_price_per_mtok_usd: 75
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:anthropic/claude-opus-4:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-anthropic-claude-opus-4"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "Kwaipilot: KAT-Coder-Pro V2"
+    provider_route: "openrouter"
+    upstream_provider: "kwaipilot"
+    inspect_model: "openrouter/kwaipilot/kat-coder-pro-v2"
+    model_id: "kwaipilot/kat-coder-pro-v2"
+    canonical_slug: "kwaipilot/kat-coder-pro-v2-20260327"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 262144
+    max_output_tokens: 80000
+    input_price_per_mtok_usd: 0.3
+    output_price_per_mtok_usd: 1.2
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:kwaipilot/kat-coder-pro-v2:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-kwaipilot-kat-coder-pro-v2"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.2-Codex"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.2-codex"
+    model_id: "openai/gpt-5.2-codex"
+    canonical_slug: "openai/gpt-5.2-codex-20260114"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.75
+    output_price_per_mtok_usd: 14
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.2-codex:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking"
+      - "reasoning-medium"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-openai-gpt-5-2-codex"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    thinking_default_expected: "explicit_medium"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex"
+    model_id: "openai/gpt-5.1-codex"
+    canonical_slug: "openai/gpt-5.1-codex-20251113"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking"
+      - "reasoning-medium"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-openai-gpt-5-1-codex"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    thinking_default_expected: "explicit_medium"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Mini"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-mini"
+    model_id: "openai/gpt-5.1-codex-mini"
+    canonical_slug: "openai/gpt-5.1-codex-mini-20251113"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 0.25
+    output_price_per_mtok_usd: 2
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-mini:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking"
+      - "reasoning-medium"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-openai-gpt-5-1-codex-mini"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    thinking_default_expected: "explicit_medium"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Max"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-max"
+    model_id: "openai/gpt-5.1-codex-max"
+    canonical_slug: "openai/gpt-5.1-codex-max-20251204"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-max:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking"
+      - "reasoning-medium"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-openai-gpt-5-1-codex-max"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    thinking_default_expected: "explicit_medium"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.2 Chat"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.2-chat"
+    model_id: "openai/gpt-5.2-chat"
+    canonical_slug: "openai/gpt-5.2-chat-20251211"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    context_window_tokens: 128000
+    max_output_tokens: 32000
+    input_price_per_mtok_usd: 1.75
+    output_price_per_mtok_usd: 14
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.2-chat:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-openai-gpt-5-2-chat"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-4 Turbo Preview"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-4-turbo-preview"
+    model_id: "openai/gpt-4-turbo-preview"
+    canonical_slug: "openai/gpt-4-turbo-preview"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 4096
+    context_window_tokens: 128000
+    max_output_tokens: 4096
+    input_price_per_mtok_usd: 10
+    output_price_per_mtok_usd: 30
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-4-turbo-preview:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_10"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "requested-expansion"
+      - "expansion-2026-08-10"
+    id: "openrouter-requested-2026-08-10-openai-gpt-4-turbo-preview"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_provider_default"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "Default"
+    thinking_depth: "provider_default"
+    thinking_default_expected: "unmeasured"
+    reasoning_token_estimate_status: "not_estimated"
+    run_status: "catalog_and_endpoint_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+  -
+    label: "Sakana: Sakana Namazu none"
+    provider_route: "openrouter"
+    upstream_provider: "sakana"
+    inspect_model: "openrouter/sakana/sakana-namazu"
+    model_id: "sakana/sakana-namazu"
+    canonical_slug: "sakana/namazu-20260811"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: false
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 65536
+    input_price_per_mtok_usd: 0.95
+    output_price_per_mtok_usd: 4
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:sakana/sakana-namazu:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-disabled"
+      - "reasoning-none"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "blocked"
+    id: "openrouter-requested-2026-08-11-sakana-sakana-namazu-none"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "none"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "explicit_none"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: false
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.15
+    run_status: "deferred_pending_additional_openrouter_provider"
+    access_status: "blocked_by_openrouter_account_data_policy_2026_08_11"
+    block_reasons:
+      - "authenticated_probe_rejected_by_current_openrouter_data_policy"
+      - "recheck_when_openrouter_endpoint_provider_inventory_changes"
+    requires_privacy_policy_change: true
+  -
+    label: "Sakana: Sakana Namazu high"
+    provider_route: "openrouter"
+    upstream_provider: "sakana"
+    inspect_model: "openrouter/sakana/sakana-namazu"
+    model_id: "sakana/sakana-namazu"
+    canonical_slug: "sakana/namazu-20260811"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "high"
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 65536
+    input_price_per_mtok_usd: 0.95
+    output_price_per_mtok_usd: 4
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:sakana/sakana-namazu:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-high"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "blocked"
+    id: "openrouter-requested-2026-08-11-sakana-sakana-namazu-high"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    thinking_default_expected: "explicit_high"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "high"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.15
+    run_status: "deferred_pending_additional_openrouter_provider"
+    access_status: "blocked_by_openrouter_account_data_policy_2026_08_11"
+    block_reasons:
+      - "authenticated_probe_rejected_by_current_openrouter_data_policy"
+      - "recheck_when_openrouter_endpoint_provider_inventory_changes"
+    requires_privacy_policy_change: true
+  -
+    label: "Upstage: Solar Pro 4 none"
+    provider_route: "openrouter"
+    upstream_provider: "upstage"
+    inspect_model: "openrouter/upstage/solar-pro4"
+    model_id: "upstage/solar-pro4"
+    canonical_slug: "upstage/solar-pro4-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: false
+          exclude: true
+    context_window_tokens: 524288
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.03
+    output_price_per_mtok_usd: 0.12
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:upstage/solar-pro4:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "text-only"
+      - "thinking-named"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-disabled"
+      - "reasoning-none"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-11-upstage-solar-pro4-none"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "none"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "explicit_none"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: false
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.006
+    run_status: "authenticated_reasoning_probe_passed_2026_08_11_private_one_cell_pending"
+    access_status: "api_key_required"
+  -
+    label: "Upstage: Solar Pro 4 enabled"
+    provider_route: "openrouter"
+    upstream_provider: "upstage"
+    inspect_model: "openrouter/upstage/solar-pro4"
+    model_id: "upstage/solar-pro4"
+    canonical_slug: "upstage/solar-pro4-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: true
+          exclude: true
+    context_window_tokens: 524288
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.03
+    output_price_per_mtok_usd: 0.12
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:upstage/solar-pro4:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "text-only"
+      - "thinking-named"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-11-upstage-solar-pro4-enabled"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "enabled"
+    thinking_depth: "enabled"
+    thinking_default_expected: "explicit_enabled"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: true
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.006
+    run_status: "authenticated_reasoning_probe_passed_2026_08_11_private_one_cell_pending"
+    access_status: "api_key_required"
+  -
+    label: "Meta: Muse Glimmer 30B low"
+    provider_route: "openrouter"
+    upstream_provider: "meta"
+    inspect_model: "openrouter/meta/muse-glimmer-30b"
+    model_id: "meta/muse-glimmer-30b"
+    canonical_slug: "meta/muse-glimmer-30b-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "low"
+          exclude: true
+    context_window_tokens: 131072
+    max_output_tokens: 0
+    input_price_per_mtok_usd: 0.35
+    output_price_per_mtok_usd: 1.5
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:meta/muse-glimmer-30b:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-low"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-11-meta-muse-glimmer-30b-low"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    thinking_default_expected: "explicit_low"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "low"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.04
+    run_status: "authenticated_reasoning_probe_passed_2026_08_11_private_one_cell_pending"
+    access_status: "api_key_required"
+  -
+    label: "Meta: Muse Glimmer 30B medium"
+    provider_route: "openrouter"
+    upstream_provider: "meta"
+    inspect_model: "openrouter/meta/muse-glimmer-30b"
+    model_id: "meta/muse-glimmer-30b"
+    canonical_slug: "meta/muse-glimmer-30b-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "medium"
+          exclude: true
+    context_window_tokens: 131072
+    max_output_tokens: 0
+    input_price_per_mtok_usd: 0.35
+    output_price_per_mtok_usd: 1.5
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:meta/muse-glimmer-30b:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-medium"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-11-meta-muse-glimmer-30b-medium"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    thinking_default_expected: "explicit_medium"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "medium"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.04
+    run_status: "authenticated_reasoning_probe_passed_2026_08_11_private_one_cell_pending"
+    access_status: "api_key_required"
+  -
+    label: "Meta: Muse Glimmer 30B high"
+    provider_route: "openrouter"
+    upstream_provider: "meta"
+    inspect_model: "openrouter/meta/muse-glimmer-30b"
+    model_id: "meta/muse-glimmer-30b"
+    canonical_slug: "meta/muse-glimmer-30b-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "high"
+          exclude: true
+    context_window_tokens: 131072
+    max_output_tokens: 0
+    input_price_per_mtok_usd: 0.35
+    output_price_per_mtok_usd: 1.5
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:meta/muse-glimmer-30b:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-high"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-11-meta-muse-glimmer-30b-high"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    thinking_default_expected: "explicit_high"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "high"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.04
+    run_status: "authenticated_reasoning_probe_passed_2026_08_11_private_one_cell_pending"
+    access_status: "api_key_required"
+  -
+    label: "Meta: Muse Glimmer 30B xhigh"
+    provider_route: "openrouter"
+    upstream_provider: "meta"
+    inspect_model: "openrouter/meta/muse-glimmer-30b"
+    model_id: "meta/muse-glimmer-30b"
+    canonical_slug: "meta/muse-glimmer-30b-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "xhigh"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "xhigh"
+          exclude: true
+    context_window_tokens: 131072
+    max_output_tokens: 0
+    input_price_per_mtok_usd: 0.35
+    output_price_per_mtok_usd: 1.5
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:meta/muse-glimmer-30b:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_11"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-xhigh"
+      - "requested-expansion"
+      - "expansion-2026-08-11"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-11-meta-muse-glimmer-30b-xhigh"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "xhigh"
+    reasoning_effort_label: "xhigh"
+    thinking_depth: "xhigh"
+    thinking_default_expected: "explicit_xhigh"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_11"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "xhigh"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.04
+    run_status: "authenticated_reasoning_probe_passed_2026_08_11_private_one_cell_pending"
+    access_status: "api_key_required"
+  -
+    label: "NVIDIA: Nemotron 3.5 Lightning none"
+    provider_route: "openrouter"
+    upstream_provider: "nvidia"
+    inspect_model: "openrouter/nvidia/nemotron-3.5-lightning"
+    model_id: "nvidia/nemotron-3.5-lightning"
+    canonical_slug: "nvidia/nemotron-3.5-lightning-20260807"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: false
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.1
+    output_price_per_mtok_usd: 0.25
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:nvidia/nemotron-3.5-lightning:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-disabled"
+      - "reasoning-none"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-nvidia-nemotron-3-5-lightning-none"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "none"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "explicit_none"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: false
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.05
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "NVIDIA: Nemotron 3.5 Lightning enabled"
+    provider_route: "openrouter"
+    upstream_provider: "nvidia"
+    inspect_model: "openrouter/nvidia/nemotron-3.5-lightning"
+    model_id: "nvidia/nemotron-3.5-lightning"
+    canonical_slug: "nvidia/nemotron-3.5-lightning-20260807"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: true
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.1
+    output_price_per_mtok_usd: 0.25
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:nvidia/nemotron-3.5-lightning:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "small"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-nvidia-nemotron-3-5-lightning-enabled"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "enabled"
+    thinking_depth: "enabled"
+    thinking_default_expected: "explicit_enabled"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: true
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.05
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "ByteDance Seed: Seed-2.0-Code none"
+    provider_route: "openrouter"
+    upstream_provider: "bytedance-seed"
+    inspect_model: "openrouter/bytedance-seed/seed-2.0-code"
+    model_id: "bytedance-seed/seed-2.0-code"
+    canonical_slug: "bytedance-seed/seed-2.0-code-20260730"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: false
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 3
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:bytedance-seed/seed-2.0-code:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-disabled"
+      - "reasoning-none"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-none"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "none"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "explicit_none"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: false
+        exclude: true
+    cached_input_price_per_mtok_usd: 0
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "ByteDance Seed: Seed-2.0-Code low"
+    provider_route: "openrouter"
+    upstream_provider: "bytedance-seed"
+    inspect_model: "openrouter/bytedance-seed/seed-2.0-code"
+    model_id: "bytedance-seed/seed-2.0-code"
+    canonical_slug: "bytedance-seed/seed-2.0-code-20260730"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "low"
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 3
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:bytedance-seed/seed-2.0-code:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-low"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-low"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    thinking_default_expected: "explicit_low"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "low"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "ByteDance Seed: Seed-2.0-Code medium"
+    provider_route: "openrouter"
+    upstream_provider: "bytedance-seed"
+    inspect_model: "openrouter/bytedance-seed/seed-2.0-code"
+    model_id: "bytedance-seed/seed-2.0-code"
+    canonical_slug: "bytedance-seed/seed-2.0-code-20260730"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "medium"
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 3
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:bytedance-seed/seed-2.0-code:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-medium"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-medium"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    thinking_default_expected: "explicit_medium"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "medium"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "ByteDance Seed: Seed-2.0-Code high"
+    provider_route: "openrouter"
+    upstream_provider: "bytedance-seed"
+    inspect_model: "openrouter/bytedance-seed/seed-2.0-code"
+    model_id: "bytedance-seed/seed-2.0-code"
+    canonical_slug: "bytedance-seed/seed-2.0-code-20260730"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "high"
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 3
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:bytedance-seed/seed-2.0-code:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-high"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-bytedance-seed-seed-2-0-code-high"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    thinking_default_expected: "explicit_high"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "high"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.2-Codex low"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.2-codex"
+    model_id: "openai/gpt-5.2-codex"
+    canonical_slug: "openai/gpt-5.2-codex-20260114"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "low"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.75
+    output_price_per_mtok_usd: 14
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.2-codex:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-low"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-2-codex-low"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    thinking_default_expected: "explicit_low"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "low"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.175
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.2-Codex high"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.2-codex"
+    model_id: "openai/gpt-5.2-codex"
+    canonical_slug: "openai/gpt-5.2-codex-20260114"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "high"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.75
+    output_price_per_mtok_usd: 14
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.2-codex:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-high"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-2-codex-high"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    thinking_default_expected: "explicit_high"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "high"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.175
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.2-Codex xhigh"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.2-codex"
+    model_id: "openai/gpt-5.2-codex"
+    canonical_slug: "openai/gpt-5.2-codex-20260114"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "xhigh"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "xhigh"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.75
+    output_price_per_mtok_usd: 14
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.2-codex:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-xhigh"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-2-codex-xhigh"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "xhigh"
+    reasoning_effort_label: "xhigh"
+    thinking_depth: "xhigh"
+    thinking_default_expected: "explicit_xhigh"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "xhigh"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.175
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex low"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex"
+    model_id: "openai/gpt-5.1-codex"
+    canonical_slug: "openai/gpt-5.1-codex-20251113"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "low"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-low"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-low"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    thinking_default_expected: "explicit_low"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "low"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.13
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex high"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex"
+    model_id: "openai/gpt-5.1-codex"
+    canonical_slug: "openai/gpt-5.1-codex-20251113"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "high"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-high"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-high"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    thinking_default_expected: "explicit_high"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "high"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.13
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Mini none"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-mini"
+    model_id: "openai/gpt-5.1-codex-mini"
+    canonical_slug: "openai/gpt-5.1-codex-mini-20251113"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: false
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 0.25
+    output_price_per_mtok_usd: 2
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-mini:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-disabled"
+      - "reasoning-none"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-mini-none"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "none"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "explicit_none"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: false
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.03
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Mini low"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-mini"
+    model_id: "openai/gpt-5.1-codex-mini"
+    canonical_slug: "openai/gpt-5.1-codex-mini-20251113"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "low"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 0.25
+    output_price_per_mtok_usd: 2
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-mini:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-low"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-mini-low"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    thinking_default_expected: "explicit_low"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "low"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.03
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Mini high"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-mini"
+    model_id: "openai/gpt-5.1-codex-mini"
+    canonical_slug: "openai/gpt-5.1-codex-mini-20251113"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "high"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 0.25
+    output_price_per_mtok_usd: 2
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-mini:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "small"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-high"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-mini-high"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    thinking_default_expected: "explicit_high"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "high"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.03
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Max low"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-max"
+    model_id: "openai/gpt-5.1-codex-max"
+    canonical_slug: "openai/gpt-5.1-codex-max-20251204"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "low"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-max:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-low"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-max-low"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    thinking_default_expected: "explicit_low"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "low"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.125
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Max high"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-max"
+    model_id: "openai/gpt-5.1-codex-max"
+    canonical_slug: "openai/gpt-5.1-codex-max-20251204"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "high"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-max:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-high"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-max-high"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    thinking_default_expected: "explicit_high"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "high"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.125
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "OpenAI: GPT-5.1-Codex-Max xhigh"
+    provider_route: "openrouter"
+    upstream_provider: "openai"
+    inspect_model: "openrouter/openai/gpt-5.1-codex-max"
+    model_id: "openai/gpt-5.1-codex-max"
+    canonical_slug: "openai/gpt-5.1-codex-max-20251204"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "xhigh"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "xhigh"
+          exclude: true
+    context_window_tokens: 400000
+    max_output_tokens: 128000
+    input_price_per_mtok_usd: 1.25
+    output_price_per_mtok_usd: 10
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:openai/gpt-5.1-codex-max:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-xhigh"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-openai-gpt-5-1-codex-max-xhigh"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "xhigh"
+    reasoning_effort_label: "xhigh"
+    thinking_depth: "xhigh"
+    thinking_default_expected: "explicit_xhigh"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "xhigh"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.125
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "Anthropic: Claude Opus 4.1 enabled"
+    provider_route: "openrouter"
+    upstream_provider: "anthropic"
+    inspect_model: "openrouter/anthropic/claude-opus-4.1"
+    model_id: "anthropic/claude-opus-4.1"
+    canonical_slug: "anthropic/claude-4.1-opus-20250805"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: true
+          exclude: true
+    context_window_tokens: 200000
+    max_output_tokens: 32000
+    input_price_per_mtok_usd: 15
+    output_price_per_mtok_usd: 75
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:anthropic/claude-opus-4.1:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-anthropic-claude-opus-4-1-enabled"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "enabled"
+    thinking_depth: "enabled"
+    thinking_default_expected: "explicit_enabled"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: true
+        exclude: true
+    cached_input_price_per_mtok_usd: 1.5
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "Anthropic: Claude Opus 4 enabled"
+    provider_route: "openrouter"
+    upstream_provider: "anthropic"
+    inspect_model: "openrouter/anthropic/claude-opus-4"
+    model_id: "anthropic/claude-opus-4"
+    canonical_slug: "anthropic/claude-4-opus-20250522"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: true
+          exclude: true
+    context_window_tokens: 200000
+    max_output_tokens: 32000
+    input_price_per_mtok_usd: 15
+    output_price_per_mtok_usd: 75
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:anthropic/claude-opus-4:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-anthropic-claude-opus-4-enabled"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "enabled"
+    thinking_depth: "enabled"
+    thinking_default_expected: "explicit_enabled"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: true
+        exclude: true
+    cached_input_price_per_mtok_usd: 1.5
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "Poolside: Laguna S 2.1 none"
+    provider_route: "openrouter"
+    upstream_provider: "poolside"
+    inspect_model: "openrouter/poolside/laguna-s-2.1"
+    model_id: "poolside/laguna-s-2.1"
+    canonical_slug: "poolside/laguna-s-2.1-20260720"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: false
+          exclude: true
+    context_window_tokens: 1048576
+    max_output_tokens: 131072
+    input_price_per_mtok_usd: 0.09
+    output_price_per_mtok_usd: 0.18
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:poolside/laguna-s-2.1:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_model_expansion_2026_08_12_full_spectrum"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "cheap"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-disabled"
+      - "reasoning-none"
+      - "requested-expansion"
+      - "expansion-2026-08-12"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-poolside-laguna-s-2-1-none"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "none"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "explicit_none"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: false
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.009
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+  -
     label: "inclusionAI: Ling-3.0-flash"
     provider_route: "openrouter"
     upstream_provider: "inclusionai"
@@ -7772,6 +9976,426 @@ entries:
     pricing_source: "runcost_external_price_resolution"
     runcost_price_card_id: "openai:gpt-5.2:genai-prices:current"
     runcost_price_source: "genai-prices"
+  -
+    id: "openai-gpt-5-3-codex-medium"
+    label: "OpenAI GPT-5.3 Codex medium"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.3-codex"
+    model_id: "gpt-5.3-codex"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      reasoning_summary: "none"
+    provider_api: "openai_responses"
+    run_status: "model_list_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+    source: "direct_openai_codex_backfill_2026_08_10"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_10"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-medium"
+      - "current-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.75
+    cached_input_price_per_mtok_usd: 0.175
+    output_price_per_mtok_usd: 14
+    pricing_source: "openai_model_page_standard_pricing_2026_08_10"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-2-codex-medium"
+    label: "OpenAI GPT-5.2 Codex medium"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.2-codex"
+    model_id: "gpt-5.2-codex"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      reasoning_summary: "none"
+    provider_api: "openai_responses"
+    run_status: "model_list_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+    source: "direct_openai_codex_backfill_2026_08_10"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_10"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-medium"
+      - "deprecated-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.75
+    cached_input_price_per_mtok_usd: 0.175
+    output_price_per_mtok_usd: 14
+    pricing_source: "openai_model_page_standard_pricing_2026_08_10"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-1-codex-medium"
+    label: "OpenAI GPT-5.1 Codex medium"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.1-codex"
+    model_id: "gpt-5.1-codex"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      reasoning_summary: "none"
+    provider_api: "openai_responses"
+    run_status: "model_list_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+    source: "direct_openai_codex_backfill_2026_08_10"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_10"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-medium"
+      - "deprecated-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.25
+    cached_input_price_per_mtok_usd: 0.125
+    output_price_per_mtok_usd: 10
+    pricing_source: "openai_model_page_standard_pricing_2026_08_10"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-1-codex-mini-medium"
+    label: "OpenAI GPT-5.1 Codex mini medium"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.1-codex-mini"
+    model_id: "gpt-5.1-codex-mini"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      reasoning_summary: "none"
+    provider_api: "openai_responses"
+    run_status: "model_list_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+    source: "direct_openai_codex_backfill_2026_08_10"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_10"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-medium"
+      - "deprecated-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 0.25
+    cached_input_price_per_mtok_usd: 0.025
+    output_price_per_mtok_usd: 2
+    pricing_source: "openai_model_page_standard_pricing_2026_08_10"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-1-codex-max-medium"
+    label: "OpenAI GPT-5.1 Codex Max medium"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.1-codex-max"
+    model_id: "gpt-5.1-codex-max"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      reasoning_summary: "none"
+    provider_api: "openai_responses"
+    run_status: "model_list_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+    source: "direct_openai_codex_backfill_2026_08_10"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_10"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-medium"
+      - "deprecated-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.25
+    cached_input_price_per_mtok_usd: 0.125
+    output_price_per_mtok_usd: 10
+    pricing_source: "openai_model_page_standard_pricing_2026_08_10"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-3-codex-low"
+    label: "OpenAI GPT-5.3 Codex low"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.3-codex"
+    model_id: "gpt-5.3-codex"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+    provider_api: "openai_responses"
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+    source: "direct_openai_gpt_5_3_codex_full_spectrum_2026_08_12"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_12"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-low"
+      - "current-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.75
+    cached_input_price_per_mtok_usd: 0.175
+    output_price_per_mtok_usd: 14
+    pricing_source: "openai_model_page_standard_pricing_2026_08_12"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-3-codex-high"
+    label: "OpenAI GPT-5.3 Codex high"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.3-codex"
+    model_id: "gpt-5.3-codex"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "high"
+    provider_api: "openai_responses"
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+    source: "direct_openai_gpt_5_3_codex_full_spectrum_2026_08_12"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "high"
+    reasoning_effort_label: "high"
+    thinking_depth: "high"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_12"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-high"
+      - "current-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.75
+    cached_input_price_per_mtok_usd: 0.175
+    output_price_per_mtok_usd: 14
+    pricing_source: "openai_model_page_standard_pricing_2026_08_12"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-3-codex-xhigh"
+    label: "OpenAI GPT-5.3 Codex xhigh"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.3-codex"
+    model_id: "gpt-5.3-codex"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "xhigh"
+    provider_api: "openai_responses"
+    run_status: "private_one_cell_qualified_2026_08_12"
+    access_status: "api_key_required"
+    source: "direct_openai_gpt_5_3_codex_full_spectrum_2026_08_12"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    control_style: "openai_reasoning_effort_standard"
+    reasoning_effort: "xhigh"
+    reasoning_effort_label: "xhigh"
+    thinking_depth: "xhigh"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_12"
+    tags:
+      - "direct-provider"
+      - "coding"
+      - "thinking"
+      - "reasoning-xhigh"
+      - "current-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.75
+    cached_input_price_per_mtok_usd: 0.175
+    output_price_per_mtok_usd: 14
+    pricing_source: "openai_model_page_standard_pricing_2026_08_12"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "openai-gpt-5-2-chat-latest-provider-default"
+    label: "OpenAI GPT-5.2 Chat"
+    provider_route: "openai"
+    upstream_provider: "openai"
+    inspect_model: "openai/gpt-5.2-chat-latest"
+    model_id: "gpt-5.2-chat-latest"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    provider_api: "openai_responses"
+    run_status: "model_list_verified_2026_08_10_smoke_pending"
+    access_status: "api_key_required"
+    source: "direct_openai_codex_backfill_2026_08_10"
+    source_refs:
+      - "https://developers.openai.com/api/docs/models/gpt-5.3-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-max"
+      - "https://developers.openai.com/api/docs/models/gpt-5.1-codex-mini"
+      - "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest"
+      - "https://developers.openai.com/api/docs/guides/flex-processing"
+      - "https://developers.openai.com/api/docs/pricing"
+    execution_service_tier: "standard"
+    public_pricing_service_tier: "standard"
+    flex_support_status: "not_listed_in_openai_flex_pricing_2026_08_10"
+    alias_note: "Direct OpenAI exposes gpt-5.2-chat-latest; OpenRouter exposes the same ChatGPT snapshot as openai/gpt-5.2-chat."
+    control_style: "provider_default_non_thinking"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "non_thinking"
+    reasoning_token_estimate_status: "not_applicable"
+    tags:
+      - "direct-provider"
+      - "chat-model"
+      - "non-thinking"
+      - "deprecated-api-model"
+    priority: "secondary"
+    input_price_per_mtok_usd: 1.75
+    cached_input_price_per_mtok_usd: 0.175
+    output_price_per_mtok_usd: 14
+    pricing_source: "openai_model_page_standard_pricing_2026_08_10"
+    runcost_price_card_id: null
+    runcost_price_source: null
   -
     id: "openai-gpt-5-minimal"
     label: "OpenAI GPT-5 minimal"
@@ -8310,6 +10934,39 @@ entries:
     input_price_per_mtok_usd: 2
     output_price_per_mtok_usd: 6
     pricing_source: "xai_grok_4_5_docs_2026_07_08"
+    runcost_price_card_id: null
+    runcost_price_source: null
+  -
+    id: "grok-4-6"
+    label: "Grok 4.6"
+    provider_route: "grok"
+    upstream_provider: "xai"
+    inspect_model: "grok/grok-4.6"
+    model_id: "grok-4.6"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+    provider_api: "xai_responses"
+    run_status: "private_full_run_complete_2026_08_12"
+    access_status: "api_key_required"
+    context_window_tokens: 500000
+    source: "direct_xai_grok_4_6_2026_08_12"
+    source_refs:
+      - "https://console.x.ai/"
+      - "https://docs.x.ai/developers/model-capabilities/text/reasoning"
+      - "https://docs.x.ai/developers/pricing"
+    tags:
+      - "direct-provider"
+      - "frontier"
+    priority: "secondary"
+    input_price_per_mtok_usd: 2
+    output_price_per_mtok_usd: 6
+    pricing_source: "xai_grok_4_6_console_2026_08_12"
+    cached_input_price_per_mtok_usd: 0.5
+    reasoning_price_per_mtok_usd: 6
+    pricing_note: "Base tier for requests up to 200K input tokens; xAI doubles input, cached-input, and output rates above 200K."
     runcost_price_card_id: null
     runcost_price_source: null
   -
@@ -11645,3 +14302,295 @@ entries:
     pricing_source: "zai_glm_5_2_standard_pricing_2026_07_21"
     runcost_price_card_id: null
     runcost_price_source: null
+  -
+    label: "ByteDance Seed: Seed 2.1 Turbo none"
+    provider_route: "openrouter"
+    upstream_provider: "bytedance-seed"
+    inspect_model: "openrouter/bytedance-seed/seed-2-1-turbo"
+    model_id: "bytedance-seed/seed-2-1-turbo"
+    canonical_slug: "bytedance-seed/seed-2-1-turbo-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: false
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 2.5
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:bytedance-seed/seed-2-1-turbo:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_new_catalog_2026_08_12"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-disabled"
+      - "reasoning-none"
+      - "requested-expansion"
+      - "expansion-2026-08-12-new-catalog"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-bytedance-seed-seed-2-1-turbo-none"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+      - "https://openrouter.ai/bytedance-seed/seed-2-1-turbo"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "none"
+    reasoning_effort_label: "none"
+    thinking_depth: "none"
+    thinking_default_expected: "explicit_none"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: false
+        exclude: true
+    cached_input_price_per_mtok_usd: 0
+    run_status: "private_full_run_complete_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "ByteDance Seed: Seed 2.1 Turbo enabled"
+    provider_route: "openrouter"
+    upstream_provider: "bytedance-seed"
+    inspect_model: "openrouter/bytedance-seed/seed-2-1-turbo"
+    model_id: "bytedance-seed/seed-2-1-turbo"
+    canonical_slug: "bytedance-seed/seed-2-1-turbo-20260810"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          enabled: true
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 262144
+    input_price_per_mtok_usd: 0.5
+    output_price_per_mtok_usd: 2.5
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:bytedance-seed/seed-2-1-turbo:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_new_catalog_2026_08_12"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "cheap"
+      - "multimodal"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "requested-expansion"
+      - "expansion-2026-08-12-new-catalog"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-bytedance-seed-seed-2-1-turbo-enabled"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+      - "https://openrouter.ai/bytedance-seed/seed-2-1-turbo"
+    control_style: "openrouter_reasoning_enabled"
+    reasoning_effort: "provider_default"
+    reasoning_effort_label: "enabled"
+    thinking_depth: "enabled"
+    thinking_default_expected: "explicit_enabled"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        enabled: true
+        exclude: true
+    cached_input_price_per_mtok_usd: 0
+    run_status: "private_full_run_complete_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "Qwen: Qwen3.8 2.4T A95B low"
+    provider_route: "openrouter"
+    upstream_provider: "qwen"
+    inspect_model: "openrouter/qwen/qwen3.8-2.4t-a95b"
+    model_id: "qwen/qwen3.8-2.4t-a95b"
+    canonical_slug: "qwen/qwen3.8-2.4t-a95b-20260812"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "low"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "low"
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 52429
+    input_price_per_mtok_usd: 2
+    output_price_per_mtok_usd: 6
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:qwen/qwen3.8-2.4t-a95b:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_new_catalog_2026_08_12"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-low"
+      - "requested-expansion"
+      - "expansion-2026-08-12-new-catalog"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-qwen-qwen3-8-2-4t-a95b-low"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+      - "https://openrouter.ai/qwen/qwen3.8-2.4t-a95b"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "low"
+    reasoning_effort_label: "low"
+    thinking_depth: "low"
+    thinking_default_expected: "explicit_low"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "low"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.2
+    run_status: "private_full_run_complete_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "Qwen: Qwen3.8 2.4T A95B medium"
+    provider_route: "openrouter"
+    upstream_provider: "qwen"
+    inspect_model: "openrouter/qwen/qwen3.8-2.4t-a95b"
+    model_id: "qwen/qwen3.8-2.4t-a95b"
+    canonical_slug: "qwen/qwen3.8-2.4t-a95b-20260812"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "medium"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "medium"
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 52429
+    input_price_per_mtok_usd: 2
+    output_price_per_mtok_usd: 6
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:qwen/qwen3.8-2.4t-a95b:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_new_catalog_2026_08_12"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-medium"
+      - "requested-expansion"
+      - "expansion-2026-08-12-new-catalog"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-qwen-qwen3-8-2-4t-a95b-medium"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+      - "https://openrouter.ai/qwen/qwen3.8-2.4t-a95b"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "medium"
+    reasoning_effort_label: "medium"
+    thinking_depth: "medium"
+    thinking_default_expected: "explicit_medium"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "medium"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.2
+    run_status: "private_full_run_complete_2026_08_12"
+    access_status: "api_key_required"
+  -
+    label: "Qwen: Qwen3.8 2.4T A95B xhigh"
+    provider_route: "openrouter"
+    upstream_provider: "qwen"
+    inspect_model: "openrouter/qwen/qwen3.8-2.4t-a95b"
+    model_id: "qwen/qwen3.8-2.4t-a95b"
+    canonical_slug: "qwen/qwen3.8-2.4t-a95b-20260812"
+    profile: "hard_obvious_8x10"
+    seed: 20260531
+    generation_settings:
+      temperature: 0
+      max_tokens: 10000
+      reasoning_effort: "xhigh"
+      extra_body:
+        include_reasoning: false
+        reasoning:
+          effort: "xhigh"
+          exclude: true
+    context_window_tokens: 262144
+    max_output_tokens: 52429
+    input_price_per_mtok_usd: 2
+    output_price_per_mtok_usd: 6
+    pricing_source: "openrouter_models_api"
+    runcost_price_card_id: "openrouter:qwen/qwen3.8-2.4t-a95b:openrouter-models"
+    runcost_price_source: "openrouter"
+    source: "openrouter_new_catalog_2026_08_12"
+    priority: "requested-expansion"
+    tags:
+      - "openrouter"
+      - "open-weight"
+      - "text-only"
+      - "non-thinking-candidate"
+      - "tools-supported"
+      - "reasoning-parameter-supported"
+      - "thinking-variation"
+      - "reasoning-enabled"
+      - "reasoning-xhigh"
+      - "requested-expansion"
+      - "expansion-2026-08-12-new-catalog"
+      - "transport-qualified"
+    id: "openrouter-requested-2026-08-12-qwen-qwen3-8-2-4t-a95b-xhigh"
+    source_refs:
+      - "https://openrouter.ai/api/v1/models"
+      - "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens"
+      - "https://openrouter.ai/qwen/qwen3.8-2.4t-a95b"
+    control_style: "openrouter_reasoning_effort"
+    reasoning_effort: "xhigh"
+    reasoning_effort_label: "xhigh"
+    thinking_depth: "xhigh"
+    thinking_default_expected: "explicit_xhigh"
+    reasoning_token_estimate_status: "authenticated_probe_observed_2026_08_12"
+    provider_request_settings:
+      include_reasoning: false
+      reasoning:
+        effort: "xhigh"
+        exclude: true
+    cached_input_price_per_mtok_usd: 0.2
+    run_status: "private_full_run_complete_2026_08_12"
+    access_status: "api_key_required"

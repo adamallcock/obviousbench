@@ -1,6 +1,6 @@
 ---
 title: ObviousBench v0.2.0 Local Release Surfaces
-date: 2026-07-31
+date: 2026-08-13
 type: release
 status: local-prep
 ---
@@ -9,7 +9,7 @@ status: local-prep
 
 - Source config: `configs/releases/release_v0_2_0.yaml`
 - Generator: `uv run --extra dev python scripts/release/build_v0_2_release_assets.py --config configs/releases/release_v0_2_0.yaml`
-- Release date: `2026-07-31`
+- Release date: `2026-08-13`
 - Status: `local-publication-prep`
 - Public/private boundary: excludes private held-out prompts, raw outputs,
   item-level private outcomes, private review HTML, and attempt-level outcomes.
@@ -26,14 +26,14 @@ outputs, item-level private outcomes, and private review HTML.
 | Field | Value |
 |---|---|
 | Private items | 144 |
-| Measured model/config rows | 464 |
-| Headline model/config rows | 456 |
+| Measured model/config rows | 499 |
+| Headline model/config rows | 491 |
 | Diagnostic duplicates excluded from headline rows | 7 |
-| Complete headline rows | 456 |
-| Attempts | 200448 |
-| Scored attempts | 200448 |
-| Estimated cost | $214.26 |
-| Headline cost | $207.61 |
+| Complete headline rows | 491 |
+| Attempts | 215568 |
+| Scored attempts | 215568 |
+| Estimated cost | $233.95 |
+| Headline cost | $227.29 |
 | Primary metric | non-strict answer pass^3 |
 
 ## Generated Files
