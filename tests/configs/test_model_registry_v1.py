@@ -50,7 +50,7 @@ def test_model_registry_v1_has_comprehensive_coverage():
     assert registry["schema_version"] == "model-registry-v1"
     assert registry["defaults"]["profile"] == "hard_obvious_8x10"
     assert registry["defaults"]["seed"] == 20260531
-    assert len(entries) == 342
+    assert len(entries) == 394
     assert route_counts["openrouter"] >= 200
     assert {
         "openrouter",
@@ -130,9 +130,12 @@ def test_model_registry_entries_are_unique_and_runnable():
             "openrouter_models_api",
             "runcost_external_price_resolution",
             "xai_grok_4_5_docs_2026_07_08",
+            "xai_grok_4_6_console_2026_08_12",
             "meta_model_api_blog_2026_07_09",
             "openai_standard_short_context_2026_07_09",
             "openai_standard_short_context_2026_07_30",
+            "openai_model_page_standard_pricing_2026_08_10",
+            "openai_model_page_standard_pricing_2026_08_12",
             "deepseek_v4_pricing_2026_07_14",
             "tinker_inkling_undiscounted_pricing_2026_07_15",
             "kimi_k3_standard_pricing_2026_07_16",

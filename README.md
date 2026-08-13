@@ -1,6 +1,6 @@
 ---
 title: ObviousBench v0.2.0 Public-Local Release Bundle
-date: 2026-07-31
+date: 2026-08-13
 type: release-bundle
 status: local-prep
 ---
@@ -17,11 +17,11 @@ attempt-level outcomes.
 ## Snapshot
 
 - Private held-out items: 144
-- Model/config rows: 464
-- Complete rows: 464
-- Attempt rows: 200448
-- Scored attempts: 200448
-- Estimated cost: $214.26
+- Model/config rows: 499
+- Complete rows: 499
+- Attempt rows: 215568
+- Scored attempts: 215568
+- Estimated cost: $233.95
 
 ## Included Files
 
