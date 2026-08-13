@@ -1012,10 +1012,10 @@ entries:
       max_tokens: 10000
     context_window_tokens: 1048576
     max_output_tokens: 0
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: "openrouter:~deepseek/deepseek-v4-flash-latest:openrouter-models"
     runcost_price_source: "openrouter"
     source: "openrouter_models_api"
@@ -1044,10 +1044,10 @@ entries:
       max_tokens: 10000
     context_window_tokens: 1048576
     max_output_tokens: 384000
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: "openrouter:deepseek/deepseek-v4-flash-0731:openrouter-models"
     runcost_price_source: "openrouter"
     source: "openrouter_models_api"
@@ -11458,10 +11458,10 @@ entries:
       - "non-thinking"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: null
     runcost_price_source: null
   -
@@ -11496,10 +11496,10 @@ entries:
       - "reasoning-high"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: null
     runcost_price_source: null
   -
@@ -11534,10 +11534,10 @@ entries:
       - "non-thinking"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: null
     runcost_price_source: null
   -
@@ -11574,10 +11574,10 @@ entries:
       - "reasoning-low"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: null
     runcost_price_source: null
   -
@@ -11614,10 +11614,10 @@ entries:
       - "reasoning-high"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: null
     runcost_price_source: null
   -
@@ -11654,10 +11654,10 @@ entries:
       - "reasoning-max"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 0.14
-    output_price_per_mtok_usd: 0.28
-    input_cache_read_price_per_mtok_usd: 0.0028
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.22
+    output_price_per_mtok_usd: 0.66
+    input_cache_read_price_per_mtok_usd: 0.007
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: null
     runcost_price_source: null
   -
@@ -11691,10 +11691,10 @@ entries:
       - "reasoning-high"
     priority: "secondary"
     source: "curated_direct_provider_baseline"
-    input_price_per_mtok_usd: 0.435
-    output_price_per_mtok_usd: 0.87
-    input_cache_read_price_per_mtok_usd: 0.003625
-    pricing_source: "deepseek_official_pricing_2026_08_13"
+    input_price_per_mtok_usd: 0.66
+    output_price_per_mtok_usd: 1.98
+    input_cache_read_price_per_mtok_usd: 0.022
+    pricing_source: "deepseek_official_offpeak_pricing_2026_08_16"
     runcost_price_card_id: null
     runcost_price_source: null
   -

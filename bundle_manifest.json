@@ -43,6 +43,8 @@
     "public_examples_included": true
   },
   "release_id": "obviousbench-v0.2.0-private-pass3-v3",
-  "skipped_optional_paths": [],
+  "skipped_optional_paths": [
+    "docs/release/v0_2/generated/public-bundle-audit.json"
+  ],
   "skipped_public_examples_count": 14
 }
