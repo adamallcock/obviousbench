@@ -143,6 +143,10 @@ def test_model_registry_entries_are_unique_and_runnable():
             "kimi_k3_standard_pricing_2026_07_16",
             "vertex_gemini_standard_pricing_2026_07_21",
             "gemini_api_standard_pricing_2026_07_21",
+            # Google's promotional rate through 2026-12-31, applied to both
+            # 3.6 and 3.7 Flash. The 1.5/7.5 rate it replaced returns on
+            # 2027-01-01 and is carried as a price era, not a live price.
+            "gemini_api_introductory_pricing_2026_08_13",
             "longcat_normal_pricing_2026_07_21",
             "aionlabs_direct_pricing_2026_07_21",
             "cohere_direct_public_pricing_2026_07_21",
@@ -327,9 +331,13 @@ def test_provider_expansion_routes_preserve_documented_controls_and_standard_pri
     assert gemini["execution_service_tier"] == "flex"
     assert gemini["public_pricing_service_tier"] == "standard"
     assert (gemini["input_price_per_mtok_usd"], gemini["output_price_per_mtok_usd"]) == (
-        1.5,
-        7.5,
+        0.75,
+        3.75,
     )
+
+    # Gemini 3.7 Flash sits in the thinking-settings registry, which is not a
+    # published surface, so only its price era reaches this repo -- through the
+    # aggregate report, not through model_registry_v1.yaml.
 
     glm = entries["zai-glm-5-2-xhigh"]
     assert glm["generation_settings"]["reasoning_effort"] == "xhigh"
