@@ -12,11 +12,15 @@ license = "Apache-2.0"
 dependencies = [
   "anthropic>=0.105,<1",
   "google-genai>=1.53,<2",
-  "inspect-ai>=0.3.231",
-  "openai>=2.45.0,<3",
+  # Inspect 0.3.259 and OpenAI 3.1 migrate the compatible-provider stack to HTTPX2.
+  "inspect-ai>=0.3.259,<0.3.260",
+  "openai>=3.1,<4",
+  # ObviousBench's Cohere and Bedrock providers use legacy HTTPX directly.
+  "httpx>=0.28,<1",
   "pydantic>=2.13,<3",
   "pyyaml>=6.0.3",
-  "xai_sdk>=1.15,<2",
+  # Inspect 0.3.259 uses the xAI 1.18 enum for native xhigh reasoning effort.
+  "xai_sdk>=1.18,<2",
 ]
 
 [project.optional-dependencies]
