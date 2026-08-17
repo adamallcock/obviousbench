@@ -1,12 +1,12 @@
 {
-  "attempt_rows": 217296,
-  "complete_model_setting_rows": 495,
+  "attempt_rows": 218592,
+  "complete_model_setting_rows": 498,
   "diagnostic_duplicate_rows": 7,
-  "estimated_cost_usd": 234.138415,
+  "estimated_cost_usd": 233.293104,
   "generated_on": "2026-08-13",
-  "headline_estimated_cost_usd": 227.484669,
-  "headline_model_setting_rows": 495,
-  "model_setting_rows": 503,
+  "headline_estimated_cost_usd": 226.639357,
+  "headline_model_setting_rows": 498,
+  "model_setting_rows": 506,
   "primary_metric": "non-strict answer pass^3",
   "public_links": {
     "dataset_url": {
@@ -28,7 +28,7 @@
   },
   "publication_intent": "arxiv_and_public_release",
   "release_id": "obviousbench-v0.2.0-private-pass3-v3",
-  "snapshot_name": "v0_2_private_pass3_complete_model_expansion_deepseek_pro_0813_20260813T210000Z",
+  "snapshot_name": "v0_2_private_pass3_gemini_3_7_flash_20260813T233000Z",
   "source_config": "configs/releases/release_v0_2_0.yaml",
   "status": "local-publication-prep",
   "version": "0.2.0"
