@@ -55,7 +55,7 @@ def test_public_opus_celeris_and_sonar_rows_publish_their_actual_reasoning_state
         rows["celeris-celeris-1-provider-default"]["reasoning_token_status"],
         rows["celeris-celeris-1-provider-default"]["reasoning_token_source"],
     ) == ("0", "reported_zero", "not_applicable_contract")
-    assert rows["celeris-celeris-1-provider-default"]["reasoning_effort"] == "Default"
+    assert rows["celeris-celeris-1-provider-default"]["reasoning_effort"] == "default"
 
     for entry_id in (
         "perplexity-sonar-provider-default",
