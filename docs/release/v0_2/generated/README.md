@@ -26,14 +26,14 @@ outputs, item-level private outcomes, and private review HTML.
 | Field | Value |
 |---|---|
 | Private items | 144 |
-| Measured model/config rows | 518 |
-| Headline model/config rows | 510 |
+| Measured model/config rows | 548 |
+| Headline model/config rows | 540 |
 | Diagnostic duplicates excluded from headline rows | 7 |
-| Complete headline rows | 510 |
-| Attempts | 223776 |
-| Scored attempts | 223776 |
-| Estimated cost | $233.82 |
-| Headline cost | $228.60 |
+| Complete headline rows | 540 |
+| Attempts | 236736 |
+| Scored attempts | 236736 |
+| Estimated cost | $254.26 |
+| Headline cost | $244.80 |
 | Primary metric | non-strict answer pass^3 |
 
 ## Generated Files

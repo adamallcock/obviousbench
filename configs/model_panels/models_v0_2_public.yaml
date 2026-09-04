@@ -128,6 +128,41 @@ release_panel:
   model_setting_key: anthropic-fallback-claude-fable-5:dc5f5772ca932596
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: Anthropic Claude Fable 5.1 low
+  inspect_model: anthropic-fallback/claude-fable-5-1
+  provider_model: anthropic/claude-fable-5-1
+  model_entry_id: manual-20260830-anthropic-claude-fable-5-1-low
+  model_setting_key: anthropic-fallback-claude-fable-5-1:4c1787a768ce6c24
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Fable 5.1 medium
+  inspect_model: anthropic-fallback/claude-fable-5-1
+  provider_model: anthropic/claude-fable-5-1
+  model_entry_id: manual-20260830-anthropic-claude-fable-5-1-medium
+  model_setting_key: anthropic-fallback-claude-fable-5-1:ab43c6b2aaa4778c
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Fable 5.1 high
+  inspect_model: anthropic-fallback/claude-fable-5-1
+  provider_model: anthropic/claude-fable-5-1
+  model_entry_id: manual-20260830-anthropic-claude-fable-5-1-high
+  model_setting_key: anthropic-fallback-claude-fable-5-1:84f1d0b14ba9441d
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Fable 5.1 xhigh
+  inspect_model: anthropic-fallback/claude-fable-5-1
+  provider_model: anthropic/claude-fable-5-1
+  model_entry_id: manual-20260830-anthropic-claude-fable-5-1-xhigh
+  model_setting_key: anthropic-fallback-claude-fable-5-1:91ede561b2c42beb
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Fable 5.1 max
+  inspect_model: anthropic-fallback/claude-fable-5-1
+  provider_model: anthropic/claude-fable-5-1
+  model_entry_id: manual-20260830-anthropic-claude-fable-5-1-max
+  model_setting_key: anthropic-fallback-claude-fable-5-1:0614bf076394e961
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: Anthropic Claude Haiku 4.5
   inspect_model: anthropic/claude-haiku-4-5
   provider_model: anthropic/claude-haiku-4.5
@@ -884,6 +919,27 @@ release_panel:
   model_setting_key: gemini-flex-gemini-3-7-flash:f3e30d3f28198285
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: Gemini 3.8 Flash Flex low_budget_1024
+  inspect_model: gemini-flex/gemini-3.8-flash
+  provider_model: gemini-3.8-flash
+  model_entry_id: gemini-flex-gemini-3-8-flash-low
+  model_setting_key: gemini-flex-gemini-3-8-flash:96f98d4ee282bb60
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Gemini 3.8 Flash Flex medium_budget_8192
+  inspect_model: gemini-flex/gemini-3.8-flash
+  provider_model: gemini-3.8-flash
+  model_entry_id: gemini-flex-gemini-3-8-flash-medium
+  model_setting_key: gemini-flex-gemini-3-8-flash:cd54fbf6367dbd03
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Gemini 3.8 Flash Flex high_budget_24576
+  inspect_model: gemini-flex/gemini-3.8-flash
+  provider_model: gemini-3.8-flash
+  model_entry_id: gemini-flex-gemini-3-8-flash-high
+  model_setting_key: gemini-flex-gemini-3-8-flash:5165665a0c518045
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: Z.AI GLM-5.2 none
   inspect_model: zai/glm-5.2
   provider_model: glm-5.2
@@ -1304,6 +1360,34 @@ release_panel:
   model_setting_key: openrouter-ibm-granite-granite-4-1-8b:0501fda52b297d4e
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: IBM Granite 4.2 8B none (reasoning disabled)
+  inspect_model: openrouter/ibm-granite/granite-4.2-8b
+  provider_model: ibm-granite/granite-4.2-8b
+  model_entry_id: manual-20260830-ibm-granite-granite-4-2-8b-none
+  model_setting_key: openrouter-ibm-granite-granite-4-2-8b:66d5ab1d9147b34a
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: IBM Granite 4.2 8B low
+  inspect_model: openrouter/ibm-granite/granite-4.2-8b
+  provider_model: ibm-granite/granite-4.2-8b
+  model_entry_id: manual-20260830-ibm-granite-granite-4-2-8b-low
+  model_setting_key: openrouter-ibm-granite-granite-4-2-8b:3f993ecb7a3e064c
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: IBM Granite 4.2 8B medium
+  inspect_model: openrouter/ibm-granite/granite-4.2-8b
+  provider_model: ibm-granite/granite-4.2-8b
+  model_entry_id: manual-20260830-ibm-granite-granite-4-2-8b-medium
+  model_setting_key: openrouter-ibm-granite-granite-4-2-8b:a444fc3830cc6841
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: IBM Granite 4.2 8B high
+  inspect_model: openrouter/ibm-granite/granite-4.2-8b
+  provider_model: ibm-granite/granite-4.2-8b
+  model_entry_id: manual-20260830-ibm-granite-granite-4-2-8b-high
+  model_setting_key: openrouter-ibm-granite-granite-4-2-8b:60318a3e6ba8f9e4
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: 'Inception: Mercury 2 none'
   inspect_model: openrouter/inception/mercury-2
   provider_model: inception/mercury-2
@@ -1330,6 +1414,34 @@ release_panel:
   provider_model: inception/mercury-2
   model_entry_id: openrouter-inception-mercury-2-high
   model_setting_key: openrouter-inception-mercury-2:eaf90aa6fa053744
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Inception: Mercury 2.5 Preview none (reasoning disabled)'
+  inspect_model: openrouter/inception/mercury-2.5-preview
+  provider_model: inception/mercury-2.5-preview
+  model_entry_id: manual-20260830-inception-mercury-2-5-preview-none
+  model_setting_key: openrouter-inception-mercury-2-5-preview:2fb7de830c209caf
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Inception: Mercury 2.5 Preview low'
+  inspect_model: openrouter/inception/mercury-2.5-preview
+  provider_model: inception/mercury-2.5-preview
+  model_entry_id: manual-20260830-inception-mercury-2-5-preview-low
+  model_setting_key: openrouter-inception-mercury-2-5-preview:a6b4740b169d463d
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Inception: Mercury 2.5 Preview medium'
+  inspect_model: openrouter/inception/mercury-2.5-preview
+  provider_model: inception/mercury-2.5-preview
+  model_entry_id: manual-20260830-inception-mercury-2-5-preview-medium
+  model_setting_key: openrouter-inception-mercury-2-5-preview:acef74fb6f12adca
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Inception: Mercury 2.5 Preview high'
+  inspect_model: openrouter/inception/mercury-2.5-preview
+  provider_model: inception/mercury-2.5-preview
+  model_entry_id: manual-20260830-inception-mercury-2-5-preview-high
+  model_setting_key: openrouter-inception-mercury-2-5-preview:8180f4d13237fba0
   profile: v0_2_public_aggregate
   reasoning_effort: high
 - label: 'inclusionAI: Ling-2.6-1T'
@@ -1554,6 +1666,41 @@ release_panel:
   provider_model: meta/muse-spark-1.2
   model_entry_id: manual-20260806-meta-muse-spark-1-2-xhigh
   model_setting_key: meta-muse-spark-1-2:faea8e7e10082f2f
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Meta Muse Spark 1.3 minimal
+  inspect_model: meta/muse-spark-1.3
+  provider_model: meta/muse-spark-1.3
+  model_entry_id: manual-20260830-meta-muse-spark-1-3-minimal
+  model_setting_key: meta-muse-spark-1-3:5183afc8d8363c13
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: Meta Muse Spark 1.3 low
+  inspect_model: meta/muse-spark-1.3
+  provider_model: meta/muse-spark-1.3
+  model_entry_id: manual-20260830-meta-muse-spark-1-3-low
+  model_setting_key: meta-muse-spark-1-3:165657970bfcdfee
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Meta Muse Spark 1.3 medium
+  inspect_model: meta/muse-spark-1.3
+  provider_model: meta/muse-spark-1.3
+  model_entry_id: manual-20260830-meta-muse-spark-1-3-medium
+  model_setting_key: meta-muse-spark-1-3:9875c2e1c6dfc3b9
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Meta Muse Spark 1.3 high
+  inspect_model: meta/muse-spark-1.3
+  provider_model: meta/muse-spark-1.3
+  model_entry_id: manual-20260830-meta-muse-spark-1-3-high
+  model_setting_key: meta-muse-spark-1-3:ca2774b88f2fe25a
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Meta Muse Spark 1.3 xhigh
+  inspect_model: meta/muse-spark-1.3
+  provider_model: meta/muse-spark-1.3
+  model_entry_id: manual-20260830-meta-muse-spark-1-3-xhigh
+  model_setting_key: meta-muse-spark-1-3:9140c1e48baa3919
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
 - label: 'Microsoft: Phi 4'
@@ -2396,6 +2543,41 @@ release_panel:
   model_setting_key: openai-gpt-5-6-terra:8c1cbae5eb4a2fab
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: OpenAI GPT-6 Astra low
+  inspect_model: openai/gpt-6-astra
+  provider_model: openai/gpt-6-astra
+  model_entry_id: manual-20260904-openai-gpt-6-astra-low
+  model_setting_key: openai-gpt-6-astra:3e74f786a84c3221
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-6 Astra medium
+  inspect_model: openai/gpt-6-astra
+  provider_model: openai/gpt-6-astra
+  model_entry_id: manual-20260904-openai-gpt-6-astra-medium
+  model_setting_key: openai-gpt-6-astra:5952fd484f02a90e
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-6 Astra high
+  inspect_model: openai/gpt-6-astra
+  provider_model: openai/gpt-6-astra
+  model_entry_id: manual-20260904-openai-gpt-6-astra-high
+  model_setting_key: openai-gpt-6-astra:0632de59ad4b7aa0
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-6 Astra xhigh
+  inspect_model: openai/gpt-6-astra
+  provider_model: openai/gpt-6-astra
+  model_entry_id: manual-20260904-openai-gpt-6-astra-xhigh
+  model_setting_key: openai-gpt-6-astra:3ba4902a7508745b
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-6 Astra max
+  inspect_model: openai/gpt-6-astra
+  provider_model: openai/gpt-6-astra
+  model_entry_id: manual-20260904-openai-gpt-6-astra-max
+  model_setting_key: openai-gpt-6-astra:e3c7536507209077
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: OpenRouter openai/gpt-oss-120b low
   inspect_model: openrouter/openai/gpt-oss-120b
   provider_model: openai/gpt-oss-120b
@@ -3171,6 +3353,34 @@ release_panel:
   provider_model: tencent/hy3
   model_entry_id: manual-20260706-tencent-hy3-high
   model_setting_key: openrouter-tencent-hy3-free:9e0e48f9d143f8d7
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: 'Tencent: Hy4 Preview none (reasoning disabled)'
+  inspect_model: openrouter/tencent/hy4-preview
+  provider_model: tencent/hy4-preview
+  model_entry_id: manual-20260830-tencent-hy4-preview-none
+  model_setting_key: openrouter-tencent-hy4-preview:edac1b5abd26fb4a
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Tencent: Hy4 Preview low'
+  inspect_model: openrouter/tencent/hy4-preview
+  provider_model: tencent/hy4-preview
+  model_entry_id: manual-20260830-tencent-hy4-preview-low
+  model_setting_key: openrouter-tencent-hy4-preview:3670ddbdf4b2b6e0
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Tencent: Hy4 Preview medium'
+  inspect_model: openrouter/tencent/hy4-preview
+  provider_model: tencent/hy4-preview
+  model_entry_id: manual-20260830-tencent-hy4-preview-medium
+  model_setting_key: openrouter-tencent-hy4-preview:466d3a8234b284ac
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Tencent: Hy4 Preview high'
+  inspect_model: openrouter/tencent/hy4-preview
+  provider_model: tencent/hy4-preview
+  model_entry_id: manual-20260830-tencent-hy4-preview-high
+  model_setting_key: openrouter-tencent-hy4-preview:8b32ce85aeb37781
   profile: v0_2_public_aggregate
   reasoning_effort: high
 - label: Thinking Machines Inkling minimal
