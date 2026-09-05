@@ -31,6 +31,15 @@ DEEPSEEK_0731_HIGH_OUTPUT_ENTRY_IDS = {
 CELERIS_FIXED_OUTPUT_CAP_ENTRY_IDS = {
     "celeris-celeris-1-provider-default",
 }
+# Morph V3 Fast raises the output cap above OUTPUT_SAFETY_MAX_TOKENS for the
+# same reason DeepSeek V4 Flash 0731 does. At 10k it spent the whole budget and
+# returned a malformed answer on 3 of 432 attempts, so the cap was scoring as a
+# model mistake. This is the only row that truncated at 10k; the others that
+# merely reached it keep the standard cap.
+MORPH_V3_FAST_HIGH_OUTPUT_CAP = 32_768
+MORPH_V3_FAST_HIGH_OUTPUT_ENTRY_IDS = {
+    "openrouter-requested-2026-07-21-morph-morph-v3-fast",
+}
 CELERIS_OPUS_5_EXPANSION_SOURCE = "direct_provider_expansion_2026_07_24_celeris_opus5"
 
 
@@ -99,6 +108,9 @@ def test_model_registry_entries_are_unique_and_runnable():
         )
         is_celeris_fixed_cap = entry["id"] in CELERIS_FIXED_OUTPUT_CAP_ENTRY_IDS
         is_deepseek_0731_high_cap = entry["id"] in DEEPSEEK_0731_HIGH_OUTPUT_ENTRY_IDS
+        is_morph_v3_fast_high_cap = (
+            entry["id"] in MORPH_V3_FAST_HIGH_OUTPUT_ENTRY_IDS
+        )
         if "temperature" in settings:
             assert settings["temperature"] == 0
         else:
@@ -124,6 +136,10 @@ def test_model_registry_entries_are_unique_and_runnable():
         elif is_deepseek_0731_high_cap:
             assert settings["max_tokens"] == DEEPSEEK_0731_HIGH_OUTPUT_CAP
             assert settings["max_tokens"] > OUTPUT_SAFETY_MAX_TOKENS
+        elif is_morph_v3_fast_high_cap:
+            assert settings["max_tokens"] == MORPH_V3_FAST_HIGH_OUTPUT_CAP
+            assert settings["max_tokens"] > OUTPUT_SAFETY_MAX_TOKENS
+            assert settings["max_tokens"] < advertised_max
         elif not uncapped:
             assert settings["max_tokens"] == expected_max
         assert entry["pricing_source"] in {
