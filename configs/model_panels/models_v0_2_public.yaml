@@ -3222,6 +3222,27 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-8-max:397b2c7371db8d9e
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
+- label: 'Qwen: Qwen3.8-Max 0902 low'
+  inspect_model: openrouter/qwen/qwen3.8-max-0902
+  provider_model: qwen/qwen3.8-max-0902
+  model_entry_id: manual-20260905-qwen-qwen3-8-max-0902-low
+  model_setting_key: openrouter-qwen-qwen3-8-max-0902:3a740b24915f740a
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.8-Max 0902 medium'
+  inspect_model: openrouter/qwen/qwen3.8-max-0902
+  provider_model: qwen/qwen3.8-max-0902
+  model_entry_id: manual-20260905-qwen-qwen3-8-max-0902-medium
+  model_setting_key: openrouter-qwen-qwen3-8-max-0902:579ad4590bee6e93
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Qwen: Qwen3.8-Max 0902 xhigh'
+  inspect_model: openrouter/qwen/qwen3.8-max-0902
+  provider_model: qwen/qwen3.8-max-0902
+  model_entry_id: manual-20260905-qwen-qwen3-8-max-0902-xhigh
+  model_setting_key: openrouter-qwen-qwen3-8-max-0902:8bebe356c614535b
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: Reka Edge
   inspect_model: openrouter/rekaai/reka-edge
   provider_model: rekaai/reka-edge
