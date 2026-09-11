@@ -17,11 +17,11 @@ attempt-level outcomes.
 ## Snapshot
 
 - Private held-out items: 144
-- Model/config rows: 561
-- Complete rows: 561
-- Attempt rows: 242352
-- Scored attempts: 242352
-- Estimated cost: $255.74
+- Model/config rows: 565
+- Complete rows: 565
+- Attempt rows: 244080
+- Scored attempts: 244080
+- Estimated cost: $259.07
 
 ## Included Files
 

@@ -1528,6 +1528,20 @@ release_panel:
   model_setting_key: openrouter-inclusionai-ling-2-6-flash:50e5b76719a2fcf1
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'inclusionAI: Ling-3.0-flash-VL none (reasoning disabled)'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash-vl
+  provider_model: inclusionai/ling-3.0-flash-vl
+  model_entry_id: manual-20260911-inclusionai-ling-3-0-flash-vl-none
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-vl:48a34fc8133127da
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'inclusionAI: Ling-3.0-flash-VL'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash-vl
+  provider_model: inclusionai/ling-3.0-flash-vl
+  model_entry_id: manual-20260911-inclusionai-ling-3-0-flash-vl-provider-default
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-vl:296bf0d4d9b6429d
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'inclusionAI: Ling-3.0-flash'
   inspect_model: openrouter/inclusionai/ling-3.0-flash:free
   provider_model: inclusionai/ling-3.0-flash:free
@@ -3320,6 +3334,13 @@ release_panel:
   model_setting_key: openrouter-rekaai-reka-edge:992ee2edc846d7b3
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'Sakana: Fugu Max'
+  inspect_model: openrouter/sakana/fugu-max
+  provider_model: sakana/fugu-max
+  model_entry_id: manual-20260911-sakana-fugu-max-provider-default
+  model_setting_key: openrouter-sakana-fugu-max:bc64acfd2c157ed1
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Sakana: Fugu Ultra'
   inspect_model: openrouter/sakana/fugu-ultra
   provider_model: sakana/fugu-ultra
@@ -3348,6 +3369,13 @@ release_panel:
   model_setting_key: openrouter-sakana-fugu-ultra:935e5f578c59d8ab
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: 'Sakana: Fugu Ultra v2'
+  inspect_model: openrouter/sakana/fugu-ultra-v2
+  provider_model: sakana/fugu-ultra-v2
+  model_entry_id: manual-20260911-sakana-fugu-ultra-v2-provider-default
+  model_setting_key: openrouter-sakana-fugu-ultra-v2:dbd18f5366560352
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Sao10K: Llama 3.1 Euryale 70B v2.2'
   inspect_model: openrouter/sao10k/l3.1-euryale-70b
   provider_model: sao10k/l3.1-euryale-70b
