@@ -723,6 +723,48 @@ release_panel:
   model_setting_key: openrouter-deepcogito-cogito-v2-1-671b:6a0ec68abc164614
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: DeepSeek V4.1 Flash no thinking
+  inspect_model: deepseek/deepseek-flash
+  provider_model: deepseek-flash
+  model_entry_id: manual-20260910-deepseek-flash-disabled
+  model_setting_key: deepseek-deepseek-flash:a5e0e636e15148b0
+  profile: v0_2_public_aggregate
+  reasoning_effort: disabled
+- label: DeepSeek V4.1 Flash minimal
+  inspect_model: deepseek/deepseek-flash
+  provider_model: deepseek-flash
+  model_entry_id: manual-20260910-deepseek-flash-minimal
+  model_setting_key: deepseek-deepseek-flash:eb24485bfc7f6e62
+  profile: v0_2_public_aggregate
+  reasoning_effort: minimal
+- label: DeepSeek V4.1 Flash low
+  inspect_model: deepseek/deepseek-flash
+  provider_model: deepseek-flash
+  model_entry_id: manual-20260910-deepseek-flash-low
+  model_setting_key: deepseek-deepseek-flash:b063af6bb9807885
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: DeepSeek V4.1 Flash high
+  inspect_model: deepseek/deepseek-flash
+  provider_model: deepseek-flash
+  model_entry_id: manual-20260910-deepseek-flash-high
+  model_setting_key: deepseek-deepseek-flash:d38865f1c45be38b
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: DeepSeek V4.1 Flash max
+  inspect_model: deepseek/deepseek-flash
+  provider_model: deepseek-flash
+  model_entry_id: manual-20260910-deepseek-flash-max
+  model_setting_key: deepseek-deepseek-flash:6aa12d2eae41b4c3
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: DeepSeek V4.1 Flash adaptive
+  inspect_model: deepseek/deepseek-flash
+  provider_model: deepseek-flash
+  model_entry_id: manual-20260910-deepseek-flash-adaptive
+  model_setting_key: deepseek-deepseek-flash:0549ce96edea9325
+  profile: v0_2_public_aggregate
+  reasoning_effort: adaptive
 - label: DeepSeek V4 Flash 0731 no thinking
   inspect_model: deepseek/deepseek-v4-flash
   provider_model: deepseek-v4-flash
@@ -1416,6 +1458,34 @@ release_panel:
   model_setting_key: openrouter-inception-mercury-2:eaf90aa6fa053744
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: 'Inception: Mercury 2.5 none (reasoning disabled)'
+  inspect_model: openrouter/inception/mercury-2.5
+  provider_model: inception/mercury-2.5
+  model_entry_id: manual-20260910-inception-mercury-2-5-none
+  model_setting_key: openrouter-inception-mercury-2-5:d5442390059a7f88
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Inception: Mercury 2.5 low'
+  inspect_model: openrouter/inception/mercury-2.5
+  provider_model: inception/mercury-2.5
+  model_entry_id: manual-20260910-inception-mercury-2-5-low
+  model_setting_key: openrouter-inception-mercury-2-5:78917369431faa5a
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Inception: Mercury 2.5 medium'
+  inspect_model: openrouter/inception/mercury-2.5
+  provider_model: inception/mercury-2.5
+  model_entry_id: manual-20260910-inception-mercury-2-5-medium
+  model_setting_key: openrouter-inception-mercury-2-5:e5e2e65688e448c8
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Inception: Mercury 2.5 high'
+  inspect_model: openrouter/inception/mercury-2.5
+  provider_model: inception/mercury-2.5
+  model_entry_id: manual-20260910-inception-mercury-2-5-high
+  model_setting_key: openrouter-inception-mercury-2-5:249f17b9a446028b
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: 'Inception: Mercury 2.5 Preview none (reasoning disabled)'
   inspect_model: openrouter/inception/mercury-2.5-preview
   provider_model: inception/mercury-2.5-preview
@@ -1456,6 +1526,20 @@ release_panel:
   provider_model: inclusionai/ling-2.6-flash
   model_entry_id: openrouter-requested-2026-07-21-inclusionai-ling-2-6-flash
   model_setting_key: openrouter-inclusionai-ling-2-6-flash:50e5b76719a2fcf1
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'inclusionAI: Ling-3.0-flash-VL none (reasoning disabled)'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash-vl
+  provider_model: inclusionai/ling-3.0-flash-vl
+  model_entry_id: manual-20260911-inclusionai-ling-3-0-flash-vl-none
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-vl:48a34fc8133127da
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'inclusionAI: Ling-3.0-flash-VL'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash-vl
+  provider_model: inclusionai/ling-3.0-flash-vl
+  model_entry_id: manual-20260911-inclusionai-ling-3-0-flash-vl-provider-default
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-vl:296bf0d4d9b6429d
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: 'inclusionAI: Ling-3.0-flash'
@@ -3201,21 +3285,21 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-8-flash:1efc71cb060d9307
   profile: v0_2_public_aggregate
   reasoning_effort: Default
-- label: 'Qwen: Qwen3.8-Max low'
+- label: 'Qwen: Qwen3.8-Max (pre-0902 checkpoint) low'
   inspect_model: openrouter/qwen/qwen3.8-max
   provider_model: qwen/qwen3.8-max
   model_entry_id: manual-20260803-qwen-qwen3-8-max-low
   model_setting_key: openrouter-qwen-qwen3-8-max:c65f47d06af6a196
   profile: v0_2_public_aggregate
   reasoning_effort: low
-- label: 'Qwen: Qwen3.8-Max medium'
+- label: 'Qwen: Qwen3.8-Max (pre-0902 checkpoint) medium'
   inspect_model: openrouter/qwen/qwen3.8-max
   provider_model: qwen/qwen3.8-max
   model_entry_id: manual-20260803-qwen-qwen3-8-max-medium
   model_setting_key: openrouter-qwen-qwen3-8-max:aedbb48a1fe4982f
   profile: v0_2_public_aggregate
   reasoning_effort: medium
-- label: 'Qwen: Qwen3.8-Max xhigh'
+- label: 'Qwen: Qwen3.8-Max (pre-0902 checkpoint) xhigh'
   inspect_model: openrouter/qwen/qwen3.8-max
   provider_model: qwen/qwen3.8-max
   model_entry_id: manual-20260803-qwen-qwen3-8-max-xhigh
@@ -3250,6 +3334,13 @@ release_panel:
   model_setting_key: openrouter-rekaai-reka-edge:992ee2edc846d7b3
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: 'Sakana: Fugu Max'
+  inspect_model: openrouter/sakana/fugu-max
+  provider_model: sakana/fugu-max
+  model_entry_id: manual-20260911-sakana-fugu-max-provider-default
+  model_setting_key: openrouter-sakana-fugu-max:bc64acfd2c157ed1
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Sakana: Fugu Ultra'
   inspect_model: openrouter/sakana/fugu-ultra
   provider_model: sakana/fugu-ultra
@@ -3278,6 +3369,13 @@ release_panel:
   model_setting_key: openrouter-sakana-fugu-ultra:935e5f578c59d8ab
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: 'Sakana: Fugu Ultra v2'
+  inspect_model: openrouter/sakana/fugu-ultra-v2
+  provider_model: sakana/fugu-ultra-v2
+  model_entry_id: manual-20260911-sakana-fugu-ultra-v2-provider-default
+  model_setting_key: openrouter-sakana-fugu-ultra-v2:dbd18f5366560352
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
 - label: 'Sao10K: Llama 3.1 Euryale 70B v2.2'
   inspect_model: openrouter/sao10k/l3.1-euryale-70b
   provider_model: sao10k/l3.1-euryale-70b

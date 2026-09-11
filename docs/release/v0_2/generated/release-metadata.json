@@ -1,12 +1,12 @@
 {
-  "attempt_rows": 238032,
-  "complete_model_setting_rows": 543,
+  "attempt_rows": 244080,
+  "complete_model_setting_rows": 557,
   "diagnostic_duplicate_rows": 7,
-  "estimated_cost_usd": 255.285788,
+  "estimated_cost_usd": 259.074445,
   "generated_on": "2026-08-13",
-  "headline_estimated_cost_usd": 245.817942,
-  "headline_model_setting_rows": 543,
-  "model_setting_rows": 551,
+  "headline_estimated_cost_usd": 249.6066,
+  "headline_model_setting_rows": 557,
+  "model_setting_rows": 565,
   "primary_metric": "non-strict answer pass^3",
   "public_links": {
     "dataset_url": {
@@ -28,7 +28,7 @@
   },
   "publication_intent": "arxiv_and_public_release",
   "release_id": "obviousbench-v0.2.0-private-pass3-v3",
-  "snapshot_name": "v0_2_release_qwen38max0902_20260906T0400Z",
+  "snapshot_name": "v0_2_release_sakana_lingvl_20260911T1400Z",
   "source_config": "configs/releases/release_v0_2_0.yaml",
   "status": "local-publication-prep",
   "version": "0.2.0"
