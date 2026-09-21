@@ -1045,6 +1045,27 @@ release_panel:
   model_setting_key: zai-glm-5-3-flash:849844e7e9ca0e93
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: Z.AI GLM-5.3 FlashX low
+  inspect_model: zai/glm-5.3-flashx
+  provider_model: glm-5.3-flashx
+  model_entry_id: manual-20260921-glm-5-3-flashx-low
+  model_setting_key: zai-glm-5-3-flashx:da6c7aee7b36ed7a
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Z.AI GLM-5.3 FlashX high
+  inspect_model: zai/glm-5.3-flashx
+  provider_model: glm-5.3-flashx
+  model_entry_id: manual-20260921-glm-5-3-flashx-high
+  model_setting_key: zai-glm-5-3-flashx:6c9e68d126187cf6
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Z.AI GLM-5.3 FlashX max
+  inspect_model: zai/glm-5.3-flashx
+  provider_model: glm-5.3-flashx
+  model_entry_id: manual-20260921-glm-5-3-flashx-max
+  model_setting_key: zai-glm-5-3-flashx:78edab835703f4e3
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: 'Google: Gemini 2.5 Flash none'
   inspect_model: openrouter/google/gemini-2.5-flash
   provider_model: google/gemini-2.5-flash
@@ -1526,6 +1547,20 @@ release_panel:
   provider_model: inclusionai/ling-2.6-flash
   model_entry_id: openrouter-requested-2026-07-21-inclusionai-ling-2-6-flash
   model_setting_key: openrouter-inclusionai-ling-2-6-flash:50e5b76719a2fcf1
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'inclusionAI: Ling-3.0-flash-sante none (reasoning disabled)'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash-sante:free
+  provider_model: inclusionai/ling-3.0-flash-sante:free
+  model_entry_id: manual-20260910-inclusionai-ling-3-0-flash-sante-free-none
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-sante-free:fc883b332ad34337
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'inclusionAI: Ling-3.0-flash-sante'
+  inspect_model: openrouter/inclusionai/ling-3.0-flash-sante:free
+  provider_model: inclusionai/ling-3.0-flash-sante:free
+  model_entry_id: manual-20260910-inclusionai-ling-3-0-flash-sante-free-provider-default
+  model_setting_key: openrouter-inclusionai-ling-3-0-flash-sante-free:00ad94fadfdc53da
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: 'inclusionAI: Ling-3.0-flash-VL none (reasoning disabled)'
@@ -2079,6 +2114,34 @@ release_panel:
   provider_model: nex-agi/nex-n2-pro
   model_entry_id: openrouter-requested-2026-07-21-nex-agi-nex-n2-pro
   model_setting_key: openrouter-nex-agi-nex-n2-pro:0d7cb7f4aef19815
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Nex AGI: Nex-N2.5-Mini none (reasoning disabled)'
+  inspect_model: openrouter/nex-agi/nex-n2.5-mini:free
+  provider_model: nex-agi/nex-n2.5-mini:free
+  model_entry_id: manual-20260910-nex-agi-nex-n2-5-mini-free-none
+  model_setting_key: openrouter-nex-agi-nex-n2-5-mini-free:50c552a4964526b0
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Nex AGI: Nex-N2.5-Mini'
+  inspect_model: openrouter/nex-agi/nex-n2.5-mini:free
+  provider_model: nex-agi/nex-n2.5-mini:free
+  model_entry_id: manual-20260910-nex-agi-nex-n2-5-mini-free-provider-default
+  model_setting_key: openrouter-nex-agi-nex-n2-5-mini-free:6095a26ead51d7f2
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Nex AGI: Nex-N2.5-Pro none (reasoning disabled)'
+  inspect_model: openrouter/nex-agi/nex-n2.5-pro:free
+  provider_model: nex-agi/nex-n2.5-pro:free
+  model_entry_id: manual-20260910-nex-agi-nex-n2-5-pro-free-none
+  model_setting_key: openrouter-nex-agi-nex-n2-5-pro-free:14913c5b219224ab
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Nex AGI: Nex-N2.5-Pro'
+  inspect_model: openrouter/nex-agi/nex-n2.5-pro:free
+  provider_model: nex-agi/nex-n2.5-pro:free
+  model_entry_id: manual-20260910-nex-agi-nex-n2-5-pro-free-provider-default
+  model_setting_key: openrouter-nex-agi-nex-n2-5-pro-free:64547564de4b916e
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: 'Nous: Hermes 3 405B Instruct'
@@ -2849,6 +2912,20 @@ release_panel:
   provider_model: poolside/laguna-xs-2.1
   model_entry_id: openrouter-requested-2026-07-21-poolside-laguna-xs-2-1
   model_setting_key: openrouter-poolside-laguna-xs-2-1:ddda45759c1e5cbd
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'PrismML: Ternary Bonsai 2 27B none (reasoning disabled)'
+  inspect_model: openrouter/prism-ml/ternary-bonsai-2-27b
+  provider_model: prism-ml/ternary-bonsai-2-27b
+  model_entry_id: manual-20260921-prism-ml-ternary-bonsai-2-27b-none
+  model_setting_key: openrouter-prism-ml-ternary-bonsai-2-27b:b2780edbf542de20
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'PrismML: Ternary Bonsai 2 27B'
+  inspect_model: openrouter/prism-ml/ternary-bonsai-2-27b
+  provider_model: prism-ml/ternary-bonsai-2-27b
+  model_entry_id: manual-20260921-prism-ml-ternary-bonsai-2-27b-provider-default
+  model_setting_key: openrouter-prism-ml-ternary-bonsai-2-27b:868261294dcd5d90
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: Qwen2.5 72B Instruct
@@ -3775,6 +3852,34 @@ release_panel:
   model_setting_key: grok-grok-4-6:120d3897598a08a3
   profile: v0_2_public_aggregate
   reasoning_effort: high
+- label: Grok 4.7 low
+  inspect_model: grok/grok-4.7
+  provider_model: x-ai/grok-4.7
+  model_entry_id: manual-20260921-grok-4-7-low
+  model_setting_key: grok-grok-4-7:2c86dac291a07442
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Grok 4.7 medium
+  inspect_model: grok/grok-4.7
+  provider_model: x-ai/grok-4.7
+  model_entry_id: manual-20260921-grok-4-7-medium
+  model_setting_key: grok-grok-4-7:00a67305ef21c0b0
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Grok 4.7 high
+  inspect_model: grok/grok-4.7
+  provider_model: x-ai/grok-4.7
+  model_entry_id: manual-20260921-grok-4-7-high
+  model_setting_key: grok-grok-4-7:e50999c9d2c47ddb
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Grok 4.7 xhigh
+  inspect_model: grok/grok-4.7
+  provider_model: x-ai/grok-4.7
+  model_entry_id: manual-20260921-grok-4-7-xhigh
+  model_setting_key: grok-grok-4-7:6d2c57073e5f6cef
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
 - label: OpenRouter x-ai/grok-build-0.1 low
   inspect_model: openrouter/x-ai/grok-build-0.1
   provider_model: x-ai/grok-build-0.1
@@ -3829,6 +3934,34 @@ release_panel:
   provider_model: xiaomi/mimo-v2.5-pro
   model_entry_id: openrouter-requested-2026-07-21-xiaomi-mimo-v2-5-pro
   model_setting_key: openrouter-xiaomi-mimo-v2-5-pro:edd0a03601c3185b
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Xiaomi: MiMo-V2.6-Flash none (reasoning disabled)'
+  inspect_model: openrouter/xiaomi/mimo-v2.6-flash
+  provider_model: xiaomi/mimo-v2.6-flash
+  model_entry_id: manual-20260921-xiaomi-mimo-v2-6-flash-none
+  model_setting_key: openrouter-xiaomi-mimo-v2-6-flash:02350d6e963a2ef5
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Xiaomi: MiMo-V2.6-Flash'
+  inspect_model: openrouter/xiaomi/mimo-v2.6-flash
+  provider_model: xiaomi/mimo-v2.6-flash
+  model_entry_id: manual-20260921-xiaomi-mimo-v2-6-flash-provider-default
+  model_setting_key: openrouter-xiaomi-mimo-v2-6-flash:f3095f102e579601
+  profile: v0_2_public_aggregate
+  reasoning_effort: Default
+- label: 'Xiaomi: MiMo-V2.6-Pro none (reasoning disabled)'
+  inspect_model: openrouter/xiaomi/mimo-v2.6-pro
+  provider_model: xiaomi/mimo-v2.6-pro
+  model_entry_id: manual-20260921-xiaomi-mimo-v2-6-pro-none
+  model_setting_key: openrouter-xiaomi-mimo-v2-6-pro:b88587babb3a2c52
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Xiaomi: MiMo-V2.6-Pro'
+  inspect_model: openrouter/xiaomi/mimo-v2.6-pro
+  provider_model: xiaomi/mimo-v2.6-pro
+  model_entry_id: manual-20260921-xiaomi-mimo-v2-6-pro-provider-default
+  model_setting_key: openrouter-xiaomi-mimo-v2-6-pro:4b4bcabc70da05de
   profile: v0_2_public_aggregate
   reasoning_effort: Default
 - label: OpenRouter z-ai/glm-4.5 disabled
