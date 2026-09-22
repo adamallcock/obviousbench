@@ -373,6 +373,41 @@ release_panel:
   model_setting_key: anthropic-claude-opus-4-8:ca4421b75142368a
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: Anthropic Claude Opus 5.5 low
+  inspect_model: anthropic-fallback/claude-opus-5-5
+  provider_model: anthropic/claude-opus-5-5
+  model_entry_id: manual-20260922-anthropic-claude-opus-5-5-low
+  model_setting_key: anthropic-fallback-claude-opus-5-5:c38b39222a780678
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Opus 5.5 medium
+  inspect_model: anthropic-fallback/claude-opus-5-5
+  provider_model: anthropic/claude-opus-5-5
+  model_entry_id: manual-20260922-anthropic-claude-opus-5-5-medium
+  model_setting_key: anthropic-fallback-claude-opus-5-5:27e22e0d39a0227f
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Opus 5.5 high
+  inspect_model: anthropic-fallback/claude-opus-5-5
+  provider_model: anthropic/claude-opus-5-5
+  model_entry_id: manual-20260922-anthropic-claude-opus-5-5-high
+  model_setting_key: anthropic-fallback-claude-opus-5-5:f012704c38df86ba
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Opus 5.5 xhigh
+  inspect_model: anthropic-fallback/claude-opus-5-5
+  provider_model: anthropic/claude-opus-5-5
+  model_entry_id: manual-20260922-anthropic-claude-opus-5-5-xhigh
+  model_setting_key: anthropic-fallback-claude-opus-5-5:c3be6107fb1a3523
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Opus 5.5 max
+  inspect_model: anthropic-fallback/claude-opus-5-5
+  provider_model: anthropic/claude-opus-5-5
+  model_entry_id: manual-20260922-anthropic-claude-opus-5-5-max
+  model_setting_key: anthropic-fallback-claude-opus-5-5:e19e8cf3c016812c
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: 'Anthropic: Claude Sonnet 4 none'
   inspect_model: openrouter/anthropic/claude-sonnet-4
   provider_model: anthropic/claude-sonnet-4
