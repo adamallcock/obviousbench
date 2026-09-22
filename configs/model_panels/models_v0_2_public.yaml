@@ -2760,6 +2760,90 @@ release_panel:
   model_setting_key: openai-gpt-6-astra:e3c7536507209077
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: OpenAI GPT-6 Luna none
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna
+  model_entry_id: manual-20260922-openai-gpt-6-luna-none
+  model_setting_key: openai-gpt-6-luna:d3c3df4ac78a0074
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-6 Luna low
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna
+  model_entry_id: manual-20260922-openai-gpt-6-luna-low
+  model_setting_key: openai-gpt-6-luna:af213bb79b1d8ca7
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-6 Luna medium
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna
+  model_entry_id: manual-20260922-openai-gpt-6-luna-medium
+  model_setting_key: openai-gpt-6-luna:97b0771859c3a4cb
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-6 Luna high
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna
+  model_entry_id: manual-20260922-openai-gpt-6-luna-high
+  model_setting_key: openai-gpt-6-luna:fdc3da166e2162cf
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-6 Luna xhigh
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna
+  model_entry_id: manual-20260922-openai-gpt-6-luna-xhigh
+  model_setting_key: openai-gpt-6-luna:cdb1c39af6da7398
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-6 Luna max
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna
+  model_entry_id: manual-20260922-openai-gpt-6-luna-max
+  model_setting_key: openai-gpt-6-luna:2bb4c1546db9673f
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: OpenAI GPT-6 Sol none
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol
+  model_entry_id: manual-20260922-openai-gpt-6-sol-none
+  model_setting_key: openai-gpt-6-sol:c03e5595e64dd699
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-6 Sol low
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol
+  model_entry_id: manual-20260922-openai-gpt-6-sol-low
+  model_setting_key: openai-gpt-6-sol:c93c97ef4a6b661c
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-6 Sol medium
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol
+  model_entry_id: manual-20260922-openai-gpt-6-sol-medium
+  model_setting_key: openai-gpt-6-sol:b566409989a2e0ec
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-6 Sol high
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol
+  model_entry_id: manual-20260922-openai-gpt-6-sol-high
+  model_setting_key: openai-gpt-6-sol:e4e43c529d9709fe
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-6 Sol xhigh
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol
+  model_entry_id: manual-20260922-openai-gpt-6-sol-xhigh
+  model_setting_key: openai-gpt-6-sol:895003ac02d47e9d
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-6 Sol max
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol
+  model_entry_id: manual-20260922-openai-gpt-6-sol-max
+  model_setting_key: openai-gpt-6-sol:bf17db10f12f5537
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: OpenRouter openai/gpt-oss-120b low
   inspect_model: openrouter/openai/gpt-oss-120b
   provider_model: openai/gpt-oss-120b

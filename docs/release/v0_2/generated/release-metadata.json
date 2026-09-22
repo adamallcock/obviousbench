@@ -1,12 +1,12 @@
 {
-  "attempt_rows": 254448,
-  "complete_model_setting_rows": 581,
+  "attempt_rows": 259632,
+  "complete_model_setting_rows": 593,
   "diagnostic_duplicate_rows": 7,
-  "estimated_cost_usd": 257.686086,
+  "estimated_cost_usd": 258.563046,
   "generated_on": "2026-08-13",
-  "headline_estimated_cost_usd": 248.21824,
-  "headline_model_setting_rows": 581,
-  "model_setting_rows": 589,
+  "headline_estimated_cost_usd": 249.095201,
+  "headline_model_setting_rows": 593,
+  "model_setting_rows": 601,
   "primary_metric": "non-strict answer pass^3",
   "public_links": {
     "dataset_url": {
@@ -28,7 +28,7 @@
   },
   "publication_intent": "arxiv_and_public_release",
   "release_id": "obviousbench-v0.2.0-private-pass3-v3",
-  "snapshot_name": "v0_2_release_opus55_20260922T1800Z",
+  "snapshot_name": "v0_2_release_gpt6_sol_luna_20260922T2000Z",
   "source_config": "configs/releases/release_v0_2_0.yaml",
   "status": "local-publication-prep",
   "version": "0.2.0"
