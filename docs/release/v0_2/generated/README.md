@@ -32,8 +32,8 @@ outputs, item-level private outcomes, and private review HTML.
 | Complete headline rows | 593 |
 | Attempts | 259632 |
 | Scored attempts | 259632 |
-| Estimated cost | $258.56 |
-| Headline cost | $249.10 |
+| Estimated cost | $258.55 |
+| Headline cost | $249.09 |
 | Primary metric | non-strict answer pass^3 |
 
 ## Generated Files

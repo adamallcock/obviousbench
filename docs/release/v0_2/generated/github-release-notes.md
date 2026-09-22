@@ -45,8 +45,8 @@ the top end.
 | Included headline rows | 593 |
 | Attempt rows | 259632 |
 | Scored attempts | 259632 |
-| Estimated measured cost | $258.56 |
-| Estimated headline cost | $249.10 |
+| Estimated measured cost | $258.55 |
+| Estimated headline cost | $249.09 |
 
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated

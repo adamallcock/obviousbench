@@ -21,7 +21,7 @@ attempt-level outcomes.
 - Complete rows: 601
 - Attempt rows: 259632
 - Scored attempts: 259632
-- Estimated cost: $258.56
+- Estimated cost: $258.55
 
 ## Included Files
 
