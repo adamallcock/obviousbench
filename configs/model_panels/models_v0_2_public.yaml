@@ -65,6 +65,48 @@ release_panel:
   model_setting_key: aion-aion-labs-aion-3-0-mini:02a0a4aacb4c5c8e
   profile: v0_2_public_aggregate
   reasoning_effort: Default
+- label: AionLabs Aion 3.5 low
+  inspect_model: aion/aion-labs/aion-3.5
+  provider_model: aion-labs/aion-3.5
+  model_entry_id: manual-20260923-aion-labs-aion-3-5-low
+  model_setting_key: aion-aion-labs-aion-3-5:1cddcba0d2b0100d
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: AionLabs Aion 3.5 high
+  inspect_model: aion/aion-labs/aion-3.5
+  provider_model: aion-labs/aion-3.5
+  model_entry_id: manual-20260923-aion-labs-aion-3-5-high
+  model_setting_key: aion-aion-labs-aion-3-5:cac68355980e3487
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: AionLabs Aion 3.5 max
+  inspect_model: aion/aion-labs/aion-3.5
+  provider_model: aion-labs/aion-3.5
+  model_entry_id: manual-20260923-aion-labs-aion-3-5-max
+  model_setting_key: aion-aion-labs-aion-3-5:294a129b77f8be15
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: AionLabs Aion 3.5 Mini low
+  inspect_model: aion/aion-labs/aion-3.5-mini
+  provider_model: aion-labs/aion-3.5-mini
+  model_entry_id: manual-20260923-aion-labs-aion-3-5-mini-low
+  model_setting_key: aion-aion-labs-aion-3-5-mini:e8ce9961df77f598
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: AionLabs Aion 3.5 Mini high
+  inspect_model: aion/aion-labs/aion-3.5-mini
+  provider_model: aion-labs/aion-3.5-mini
+  model_entry_id: manual-20260923-aion-labs-aion-3-5-mini-high
+  model_setting_key: aion-aion-labs-aion-3-5-mini:202e5fb40a445624
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: AionLabs Aion 3.5 Mini max
+  inspect_model: aion/aion-labs/aion-3.5-mini
+  provider_model: aion-labs/aion-3.5-mini
+  model_entry_id: manual-20260923-aion-labs-aion-3-5-mini-max
+  model_setting_key: aion-aion-labs-aion-3-5-mini:ffd91a4e3e72e03a
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: AionLabs Aion RP Llama 3.1 8B Default
   inspect_model: aion/aion-labs/aion-rp-llama-3.1-8b
   provider_model: aion-labs/aion-rp-llama-3.1-8b
@@ -2802,6 +2844,48 @@ release_panel:
   model_setting_key: openai-gpt-6-luna:2bb4c1546db9673f
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: OpenAI GPT-6 Luna Pro none
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna-pro
+  model_entry_id: manual-20260923-openai-gpt-6-luna-pro-none
+  model_setting_key: openai-gpt-6-luna:6c35e1b3d4a582a4
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-6 Luna Pro low
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna-pro
+  model_entry_id: manual-20260923-openai-gpt-6-luna-pro-low
+  model_setting_key: openai-gpt-6-luna:3f75a684d370a192
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-6 Luna Pro medium
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna-pro
+  model_entry_id: manual-20260923-openai-gpt-6-luna-pro-medium
+  model_setting_key: openai-gpt-6-luna:a781e7e58eee4cd9
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-6 Luna Pro high
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna-pro
+  model_entry_id: manual-20260923-openai-gpt-6-luna-pro-high
+  model_setting_key: openai-gpt-6-luna:890df66aba6e48ab
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-6 Luna Pro xhigh
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna-pro
+  model_entry_id: manual-20260923-openai-gpt-6-luna-pro-xhigh
+  model_setting_key: openai-gpt-6-luna:e26dba515623a94c
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-6 Luna Pro max
+  inspect_model: openai/gpt-6-luna
+  provider_model: openai/gpt-6-luna-pro
+  model_entry_id: manual-20260923-openai-gpt-6-luna-pro-max
+  model_setting_key: openai-gpt-6-luna:2824727ec4755380
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: OpenAI GPT-6 Sol none
   inspect_model: openai/gpt-6-sol
   provider_model: openai/gpt-6-sol
@@ -2842,6 +2926,48 @@ release_panel:
   provider_model: openai/gpt-6-sol
   model_entry_id: manual-20260922-openai-gpt-6-sol-max
   model_setting_key: openai-gpt-6-sol:bf17db10f12f5537
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: OpenAI GPT-6 Sol Pro none
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol-pro
+  model_entry_id: manual-20260923-openai-gpt-6-sol-pro-none
+  model_setting_key: openai-gpt-6-sol:0458d7e06f5a26cb
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: OpenAI GPT-6 Sol Pro low
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol-pro
+  model_entry_id: manual-20260923-openai-gpt-6-sol-pro-low
+  model_setting_key: openai-gpt-6-sol:07f6f6bebaf67b21
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-6 Sol Pro medium
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol-pro
+  model_entry_id: manual-20260923-openai-gpt-6-sol-pro-medium
+  model_setting_key: openai-gpt-6-sol:f1bb25d20a96830c
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-6 Sol Pro high
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol-pro
+  model_entry_id: manual-20260923-openai-gpt-6-sol-pro-high
+  model_setting_key: openai-gpt-6-sol:ac29033f4ee24425
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-6 Sol Pro xhigh
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol-pro
+  model_entry_id: manual-20260923-openai-gpt-6-sol-pro-xhigh
+  model_setting_key: openai-gpt-6-sol:735212e8b47f1056
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-6 Sol Pro max
+  inspect_model: openai/gpt-6-sol
+  provider_model: openai/gpt-6-sol-pro
+  model_entry_id: manual-20260923-openai-gpt-6-sol-pro-max
+  model_setting_key: openai-gpt-6-sol:f683253a80358e7b
   profile: v0_2_public_aggregate
   reasoning_effort: max
 - label: OpenRouter openai/gpt-oss-120b low
@@ -3523,6 +3649,34 @@ release_panel:
   model_setting_key: openrouter-qwen-qwen3-8-max-0902:8bebe356c614535b
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh
+- label: 'Qwen: Qwen3.8 Omni Flash none (reasoning disabled)'
+  inspect_model: openrouter/qwen/qwen3.8-omni-flash
+  provider_model: qwen/qwen3.8-omni-flash
+  model_entry_id: manual-20260923-qwen-qwen3-8-omni-flash-none
+  model_setting_key: openrouter-qwen-qwen3-8-omni-flash:3cd5ffea8a7fe977
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: 'Qwen: Qwen3.8 Omni Flash low'
+  inspect_model: openrouter/qwen/qwen3.8-omni-flash
+  provider_model: qwen/qwen3.8-omni-flash
+  model_entry_id: manual-20260923-qwen-qwen3-8-omni-flash-low
+  model_setting_key: openrouter-qwen-qwen3-8-omni-flash:3a24294c1b0ad7d8
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: 'Qwen: Qwen3.8 Omni Flash medium'
+  inspect_model: openrouter/qwen/qwen3.8-omni-flash
+  provider_model: qwen/qwen3.8-omni-flash
+  model_entry_id: manual-20260923-qwen-qwen3-8-omni-flash-medium
+  model_setting_key: openrouter-qwen-qwen3-8-omni-flash:c76fc267ea7ee72f
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: 'Qwen: Qwen3.8 Omni Flash high'
+  inspect_model: openrouter/qwen/qwen3.8-omni-flash
+  provider_model: qwen/qwen3.8-omni-flash
+  model_entry_id: manual-20260923-qwen-qwen3-8-omni-flash-high
+  model_setting_key: openrouter-qwen-qwen3-8-omni-flash:3cdc21cbc7727134
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
 - label: Reka Edge
   inspect_model: openrouter/rekaai/reka-edge
   provider_model: rekaai/reka-edge
