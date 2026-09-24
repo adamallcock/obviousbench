@@ -39,14 +39,14 @@ the top end.
 | Metric | Value |
 |---|---|
 | Private held-out items | 144 |
-| Measured model/config rows | 589 |
-| Headline model/config rows | 581 |
+| Measured model/config rows | 633 |
+| Headline model/config rows | 625 |
 | Diagnostic duplicate rows excluded from headline tables | 7 |
-| Included headline rows | 581 |
-| Attempt rows | 254448 |
-| Scored attempts | 254448 |
-| Estimated measured cost | $257.69 |
-| Estimated headline cost | $248.22 |
+| Included headline rows | 625 |
+| Attempt rows | 273456 |
+| Scored attempts | 273456 |
+| Estimated measured cost | $268.57 |
+| Estimated headline cost | $259.10 |
 
 Rows affected by provider unavailability or route-level blank-output
 failures are excluded from headline comparisons rather than treated
