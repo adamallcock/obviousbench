@@ -275,13 +275,6 @@ release_panel:
   model_setting_key: anthropic-claude-opus-4-6:fa557f552e8a1bc9
   profile: v0_2_public_aggregate
   reasoning_effort: high
-- label: Anthropic Claude Opus 4.6 xhigh
-  inspect_model: anthropic/claude-opus-4-6
-  provider_model: anthropic/claude-opus-4-6
-  model_entry_id: manual-20260612-anthropic-claude-opus-4-6-xhigh
-  model_setting_key: anthropic-claude-opus-4-6:789153120c3ca9ef
-  profile: v0_2_public_aggregate
-  reasoning_effort: xhigh
 - label: Anthropic Claude Opus 4.6 max
   inspect_model: anthropic/claude-opus-4-6
   provider_model: anthropic/claude-opus-4-6
@@ -595,6 +588,48 @@ release_panel:
   provider_model: anthropic/claude-sonnet-5
   model_entry_id: manual-20260630-anthropic-claude-sonnet-5-max
   model_setting_key: anthropic-claude-sonnet-5:7fc561aeb2249752
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
+- label: Anthropic Claude Sonnet 5.5 none
+  inspect_model: anthropic/claude-sonnet-5-5
+  provider_model: anthropic/claude-sonnet-5-5
+  model_entry_id: manual-20260928-anthropic-claude-sonnet-5-5-none
+  model_setting_key: anthropic-claude-sonnet-5-5:4322374a0caffcf9
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Anthropic Claude Sonnet 5.5 low
+  inspect_model: anthropic/claude-sonnet-5-5
+  provider_model: anthropic/claude-sonnet-5-5
+  model_entry_id: manual-20260928-anthropic-claude-sonnet-5-5-low
+  model_setting_key: anthropic-claude-sonnet-5-5:4cf992490a647e33
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Sonnet 5.5 medium
+  inspect_model: anthropic/claude-sonnet-5-5
+  provider_model: anthropic/claude-sonnet-5-5
+  model_entry_id: manual-20260928-anthropic-claude-sonnet-5-5-medium
+  model_setting_key: anthropic-claude-sonnet-5-5:cedaa0539f619055
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Sonnet 5.5 high
+  inspect_model: anthropic/claude-sonnet-5-5
+  provider_model: anthropic/claude-sonnet-5-5
+  model_entry_id: manual-20260928-anthropic-claude-sonnet-5-5-high
+  model_setting_key: anthropic-claude-sonnet-5-5:2ef0cf4c801b8b7e
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Sonnet 5.5 xhigh
+  inspect_model: anthropic/claude-sonnet-5-5
+  provider_model: anthropic/claude-sonnet-5-5
+  model_entry_id: manual-20260928-anthropic-claude-sonnet-5-5-xhigh
+  model_setting_key: anthropic-claude-sonnet-5-5:da3cce1e24cad59b
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Sonnet 5.5 max
+  inspect_model: anthropic/claude-sonnet-5-5
+  provider_model: anthropic/claude-sonnet-5-5
+  model_entry_id: manual-20260928-anthropic-claude-sonnet-5-5-max
+  model_setting_key: anthropic-claude-sonnet-5-5:2d7f10f149985a5d
   profile: v0_2_public_aggregate
   reasoning_effort: max
 - label: 'Arcee AI: Trinity Large Thinking'
@@ -3347,7 +3382,7 @@ release_panel:
   model_entry_id: old-165-qwen-qwen3-max
   model_setting_key: openrouter-qwen-qwen3-max:1e8ff07e8dbdfa5d
   profile: v0_2_public_aggregate
-  reasoning_effort: max
+  reasoning_effort: none
 - label: Qwen3 Next 80B A3B Instruct
   inspect_model: openrouter/qwen/qwen3-next-80b-a3b-instruct
   provider_model: qwen/qwen3-next-80b-a3b-instruct
@@ -3501,7 +3536,7 @@ release_panel:
   model_entry_id: old-171-qwen-qwen3-6-max-preview
   model_setting_key: openrouter-qwen-qwen3-6-max-preview:57df20013ebd6c40
   profile: v0_2_public_aggregate
-  reasoning_effort: max
+  reasoning_effort: xhigh
 - label: 'Qwen: Qwen3.6 Plus'
   inspect_model: openrouter/qwen/qwen3.6-plus
   provider_model: qwen/qwen3.6-plus
@@ -3543,7 +3578,7 @@ release_panel:
   model_entry_id: old-166-qwen-qwen3-7-max
   model_setting_key: openrouter-qwen-qwen3-7-max:890c68a827465ce8
   profile: v0_2_public_aggregate
-  reasoning_effort: max
+  reasoning_effort: xhigh
 - label: 'Qwen: Qwen3.7 Plus none (reasoning disabled)'
   inspect_model: openrouter/qwen/qwen3.7-plus
   provider_model: qwen/qwen3.7-plus
@@ -3764,8 +3799,8 @@ release_panel:
 - label: 'Sakana: Fugu Ultra max'
   inspect_model: openrouter/sakana/fugu-ultra
   provider_model: sakana/fugu-ultra
-  model_entry_id: openrouter-sakana-fugu-ultra-max
-  model_setting_key: openrouter-sakana-fugu-ultra:935e5f578c59d8ab
+  model_entry_id: manual-20260928-sakana-fugu-ultra-max
+  model_setting_key: openrouter-sakana-fugu-ultra:c8076e145e862436
   profile: v0_2_public_aggregate
   reasoning_effort: max
 - label: 'Sakana: Fugu Ultra v2'
