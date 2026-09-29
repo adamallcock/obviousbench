@@ -3033,6 +3033,41 @@ release_panel:
   model_setting_key: openai-gpt-6-sol:f683253a80358e7b
   profile: v0_2_public_aggregate
   reasoning_effort: max
+- label: OpenAI GPT-6.1 Sol low
+  inspect_model: openai/gpt-6.1-sol
+  provider_model: openai/gpt-6.1-sol
+  model_entry_id: manual-20260929-openai-gpt-6-1-sol-low
+  model_setting_key: openai-gpt-6-1-sol:681fb3ba2bd0477f
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: OpenAI GPT-6.1 Sol medium
+  inspect_model: openai/gpt-6.1-sol
+  provider_model: openai/gpt-6.1-sol
+  model_entry_id: manual-20260929-openai-gpt-6-1-sol-medium
+  model_setting_key: openai-gpt-6-1-sol:9b6332ff7ff21e26
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: OpenAI GPT-6.1 Sol high
+  inspect_model: openai/gpt-6.1-sol
+  provider_model: openai/gpt-6.1-sol
+  model_entry_id: manual-20260929-openai-gpt-6-1-sol-high
+  model_setting_key: openai-gpt-6-1-sol:79446b2b67f9fec3
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: OpenAI GPT-6.1 Sol xhigh
+  inspect_model: openai/gpt-6.1-sol
+  provider_model: openai/gpt-6.1-sol
+  model_entry_id: manual-20260929-openai-gpt-6-1-sol-xhigh
+  model_setting_key: openai-gpt-6-1-sol:4a665446791e7415
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: OpenAI GPT-6.1 Sol max
+  inspect_model: openai/gpt-6.1-sol
+  provider_model: openai/gpt-6.1-sol
+  model_entry_id: manual-20260929-openai-gpt-6-1-sol-max
+  model_setting_key: openai-gpt-6-1-sol:f2d71114ef13150a
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: OpenRouter openai/gpt-oss-120b low
   inspect_model: openrouter/openai/gpt-oss-120b
   provider_model: openai/gpt-oss-120b
