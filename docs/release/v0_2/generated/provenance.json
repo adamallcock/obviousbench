@@ -32,6 +32,7 @@
     "qwen37_addition_evidence": "docs/research/2026-07-28-obviousbench-v0-2-qwen3-7-addition-evidence.md",
     "qwen37_historical_completeness_recovery": "docs/research/2026-07-28-qwen37-historical-matrix-completeness-recovery.md",
     "raw_log_remediation": "docs/research/2026-07-24-raw-log-remediation.md",
+    "reasoning_effort_wire_audit": "docs/research/2026-09-25-reasoning-effort-wire-audit.md",
     "results_memo": "docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-rhetoric-packet.md",
     "sanity_supplement": "docs/research/2026-06-18-obviousbench-v0-2-final-no-minimaxm1-sanity-supplement.md",
     "sonnet5_addition_evidence": "docs/research/2026-06-30-obviousbench-v0-2-sonnet-5-thinking-settings-test.md",
