@@ -240,6 +240,48 @@ release_panel:
   model_setting_key: anthropic-claude-haiku-4-5:ab65794f12b63cd6
   profile: v0_2_public_aggregate
   reasoning_effort: xhigh_budget_16384
+- label: Anthropic Claude Haiku 5.5 none
+  inspect_model: anthropic/claude-haiku-5-5
+  provider_model: anthropic/claude-haiku-5-5
+  model_entry_id: manual-20261010-anthropic-claude-haiku-5-5-none
+  model_setting_key: anthropic-claude-haiku-5-5:e790f60f2787e5c8
+  profile: v0_2_public_aggregate
+  reasoning_effort: none
+- label: Anthropic Claude Haiku 5.5 low
+  inspect_model: anthropic/claude-haiku-5-5
+  provider_model: anthropic/claude-haiku-5-5
+  model_entry_id: manual-20261010-anthropic-claude-haiku-5-5-low
+  model_setting_key: anthropic-claude-haiku-5-5:4725b762ed7ab08d
+  profile: v0_2_public_aggregate
+  reasoning_effort: low
+- label: Anthropic Claude Haiku 5.5 medium
+  inspect_model: anthropic/claude-haiku-5-5
+  provider_model: anthropic/claude-haiku-5-5
+  model_entry_id: manual-20261010-anthropic-claude-haiku-5-5-medium
+  model_setting_key: anthropic-claude-haiku-5-5:389ad1e835c946d6
+  profile: v0_2_public_aggregate
+  reasoning_effort: medium
+- label: Anthropic Claude Haiku 5.5 high
+  inspect_model: anthropic/claude-haiku-5-5
+  provider_model: anthropic/claude-haiku-5-5
+  model_entry_id: manual-20261010-anthropic-claude-haiku-5-5-high
+  model_setting_key: anthropic-claude-haiku-5-5:0d7bb78128f02865
+  profile: v0_2_public_aggregate
+  reasoning_effort: high
+- label: Anthropic Claude Haiku 5.5 xhigh
+  inspect_model: anthropic/claude-haiku-5-5
+  provider_model: anthropic/claude-haiku-5-5
+  model_entry_id: manual-20261010-anthropic-claude-haiku-5-5-xhigh
+  model_setting_key: anthropic-claude-haiku-5-5:bf35393d5a359052
+  profile: v0_2_public_aggregate
+  reasoning_effort: xhigh
+- label: Anthropic Claude Haiku 5.5 max
+  inspect_model: anthropic/claude-haiku-5-5
+  provider_model: anthropic/claude-haiku-5-5
+  model_entry_id: manual-20261010-anthropic-claude-haiku-5-5-max
+  model_setting_key: anthropic-claude-haiku-5-5:cd8c5d87bffd01d6
+  profile: v0_2_public_aggregate
+  reasoning_effort: max
 - label: 'Anthropic: Claude Opus 4'
   inspect_model: openrouter/anthropic/claude-opus-4
   provider_model: anthropic/claude-opus-4
